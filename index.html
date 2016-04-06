@@ -1,0 +1,48 @@
+---
+layout: page
+description: {{site.description}}
+keywords: {{site.keywords}}
+---
+<style>
+.page-header {
+	padding-bottom: 17px;
+	margin: 18px 0;
+	border-bottom: 1px solid #eeeeee;
+}
+
+.page-header h4 {
+	line-height: 1;
+}
+
+.homecont:before {
+	content: "･";
+}
+</style>
+
+<div class="home">
+	<div class="page-header">
+		<h4>{{site.description}}</h4>
+		<div style="font-size: 0.9rem;">
+			<div class="homecont"><span><a href="https://twitter.com/Nymphium" target="_blank">@Nymphium</a></span></div>
+			<div class="homecont"><span><a href="https://github.com/Nymphium" target="_blank">GitHub</a></span></div>
+			<div class="homecont"><span><a href="https://idolook.aikatsu.com/idolooks/index/nDggu4fmSdESdR83/" target="_blank">アイカツ&#33; マイルーム</a></span></div>
+			<div class="homecont"><span><a href="http://www.amazon.co.jp/registry/wishlist/17TF1JSMGF11N" target="_blank">Cotribute</a></span></div>
+		</div>
+	</div>
+	<ul class="posts">
+		<ul class="post-list">{% assign posts_collate = site.posts %}{% for post in posts_collate %}{% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}{% capture this_month %}{{ post.date | date: "%B" }}{% endcapture %}{% capture next_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}{% capture next_month %}{{ post.previous.date | date: "%B" }}{% endcapture %}{% if forloop.first %}
+			<h3 class="post-meta">{{this_year}}</h3>
+			<h4 class="post-meta">{{this_month}}</h4>
+			<ul> {% endif %}
+				<li><span class="post-meta">{{ post.date | date: "%e (%a)" }}</span> <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>{% if forloop.last %}
+			</ul> {% else %}{% if this_year != next_year %}
+			</ul>
+			<h3 class="post-meta">{{next_year}}</h3>
+			<h4 class="post-meta">{{next_month}}</h4>
+			<ul>{% else %}{% if this_month != next_month %}
+			</ul>
+			<h4 class="post-meta">{{next_month}}</h4>
+			<ul>{% endif %}{% endif %}{% endif %}{% endfor %}
+		</ul>
+	</ul>
+</div>

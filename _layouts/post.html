@@ -1,0 +1,39 @@
+---
+layout: default
+---
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<header class="post-header">
+		<h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+		<span class="post-meta">
+			<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}
+			<p>tag: &#91;
+				{% for tag in page.tags %}
+				<a href="{{BASE_PATH}}/tags.html#{{tag}}-ref">{{tag}}</a>
+				{% endfor %}
+			&#93;</p>
+		</span>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="https://rawgit.com/JoelSutherland/GitHub-jQuery-Repo-Widget/master/jquery.githubRepoWidget.min.js"></script>
+		<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<link href="{{ ASSET_PATH }}/../github-widget/gh-widget.css" rel="stylesheet">
+	</header>
+	<div class="post-content" itemprop="articleBody">
+		{{ content }}
+	</div>
+	<hr>
+		<div class="pagination btn-group" style="text-align: center">
+			{% if page.previous %}
+			<a class="btn prev" href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Previous</a>
+			{% else %}
+			<span class="btn disabled prev">&larr; Previous</span>
+			{% endif %}
+			&#47;<a class="btn" href="/">Top</a>&#47;
+			{% if page.next %}
+			<a class="btn next" href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">Next &rarr;</a>
+			{% else %}
+			<span class="btn next disabled">Next &rarr;</span>
+			{% endif %}
+			<span style="padding-right: 4rem;"/>
+		</div>
+	</hr>
+</article>
