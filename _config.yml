@@ -4,9 +4,8 @@ url: "http://nymphium.github.io"
 keywords: lily,百合,Aikatsu,アイカツ,Linux,Lua,MoonScript
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "vendor", "Gemfile", "Gemfile.lock"]
 gems:
-  - jekyll-sitemap
   - jemoji
   - jekyll-gist
 markdown: redcarpet
 redcarpet:
-  extensions: ["tables", "autolink", "strikethrough", "no_intra_emphasis", "fenced_code_blocks", "with_toc_data", "footnotes"]
+  extensions: ["tables", "autolink", "with_toc_data", "footnotes", "strikethrough", "no_intra_emphasis"]
