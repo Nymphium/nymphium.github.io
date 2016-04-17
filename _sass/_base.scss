@@ -92,11 +92,21 @@ article {
 	}
 
 	.post-content[itemprop="articleBody"] {
-		margin-bottom: -3rem;
+		margin-bottom: -2rem;
 
-		h1, h2, h3, h4, h5, h6 {
-			border-bottom: solid 1px #eee;
+		h1 {
+			border-bottom: solid 3px #eee;
 			margin-top: 2rem;
+		}
+
+		h2 {
+			border-bottom: solid 2px #eee;
+			margin-top: 2rem;
+		}
+
+		h3, h4, h5, h6 {
+			border-bottom: solid 1px #eee;
+			margin-top: 1rem;
 		}
 	}
 }
@@ -104,6 +114,14 @@ article {
 .github-widget {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
+}
+
+div.pagination.btn-group {
+	padding-top: 3rem;
+}
+
+code {
+	margin: 0px 5px 0px 5px;
 }
 
 /**
