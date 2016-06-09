@@ -3,9 +3,12 @@ def sectionize content
 	has_section = false
 	codeflag = false
 	secnum, subsecnum, subsubsecnum = 0, 0, 0
+
 	content.each_line{|txt|
-		next unless has_section = (txt.match("<!--sectionize on-->") != nil) || has_section
+		next unless has_section = (txt.match(/<!--+\s*sectionize on\s*--+>/) != nil) || has_section
 		next if codeflag = (txt.match(/^\s*```(?!`)/) != nil) ^ codeflag
+
+		section.sub!(/<!--+\s*sectionize on\s*--+>/, "")
 
 		# section
 		if sec = txt.match(/^#\s*([^!#].*)$/)
@@ -15,7 +18,8 @@ def sectionize content
 		else
 			txt.match(/^#\!\s*([^#].*)$/){|nonumsec|
 				section.sub!(/^#\!\s*#{Regexp.escape nonumsec[1]}/, "##{nonumsec[1]}")
-		} end
+			}
+		end
 
 		## subsection
 		if subsec = txt.match(/^##\s*([^!#].*)$/)
@@ -24,7 +28,8 @@ def sectionize content
 		else
 			txt.match(/^##\!\s*([^#].*)$/){|nonumsubsec|
 				section.sub!(/^##\!\s*#{Regexp.escape nonumsubsec[1]}/, "###{nonumsubsec[1]}")
-		} end
+			}
+		end
 
 		### subsubsection
 		if subsec = txt.match(/^###\s*([^!#].*)$/)
@@ -32,8 +37,10 @@ def sectionize content
 		else
 			txt.match(/^###\!\s*([^#].*)$/){|nonumsubsec|
 				section.sub!(/^###\!\s*#{Regexp.escape nonumsubsec[1]}/, "####{nonumsubsec[1]}")
-		} end
+			}
+		end
 	}
+
 	section
 end
 
