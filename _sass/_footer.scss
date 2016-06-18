@@ -1,9 +1,3 @@
-.site-header {
-	position: fixed;
-	background: $background-color-transp;
-	width: 100%;
-}
-
 div.pagination.btn-group {
 	position: fixed;
 	bottom: 0;
@@ -12,5 +6,4 @@ div.pagination.btn-group {
 	width: 100%;
 	background: $background-color-transp;
 	padding-bottom: 1rem;
-	border-top: 1px solid #e8e8e8;
 }

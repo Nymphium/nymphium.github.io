@@ -7,6 +7,6 @@
       <div class="wrapper">
 {{ content }}
       </div>
-    </div>
+    </div>{% if page.layout == "post" %}{% include footer.html %}{% endif %}
   </body>
 </html>
