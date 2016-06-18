@@ -16,6 +16,7 @@ $spacing-unit:     30px;
 
 $text-color:       #2b2e2f;
 $background-color: #cddee3;
+$background-color-transp: rgba(205, 222, 227, 0.8);
 $brand-color:      #2a7ae2;
 
 $grey-color:       #828282;
@@ -79,5 +80,6 @@ td {
 @import
 	"base",
 	"layout",
-	"syntax"
+	"syntax",
+	"header"
 ;
