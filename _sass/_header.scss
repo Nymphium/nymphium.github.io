@@ -1,16 +1,29 @@
+$nav-width: 70pt;
+$nav-height: 69px;
+
 .site-header {
 	position: fixed;
 	background: $background-color-transp;
 	width: 100%;
+
+	@include media-query($on-palm) {
+		height: $nav-height;
+
+		.site-title {
+			margin-top: 8px;
+		}
+	}
 }
 
-div.pagination.btn-group {
-	position: fixed;
-	bottom: 0;
-	right: 0;
-	left: 0;
-	width: 100%;
-	background: $background-color-transp;
-	padding-bottom: 1rem;
-	border-top: 1px solid #e8e8e8;
+@include media-query($on-palm) {
+	.site-nav {
+		background: (0, 0, 0, 0);
+		border-radius: 0;
+
+		& .trigger .page-link {
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+	}
 }
+
