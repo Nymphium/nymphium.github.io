@@ -15,13 +15,4 @@ layout: default
           <div class="post-content" itemprop="articleBody">
 {{ content }}
           </div>
-          <div class="pagination btn-group" style="text-align: center">
-            <hr>{% if page.previous %}
-            <a class="btn prev" href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Previous</a>{% else %}
-            <span class="btn disabled prev">&larr; Previous</span>{% endif %}
-            &#47;<a class="btn" href="/">Top</a>&#47;{% if page.next %}
-            <a class="btn next" href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">Next &rarr;</a>{% else %}
-            <span class="btn next disabled">Next &rarr;</span>{% endif %}
-            <span style="padding-right: 4rem;"/>
-          </div>
         </article>
