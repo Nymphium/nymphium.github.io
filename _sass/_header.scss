@@ -1,0 +1,24 @@
+.site-header {
+	position: fixed;
+	background: $background-color-transp;
+	width: 100%;
+}
+
+.page-content {
+	// @include media-query($content-width) {
+		padding-top: 56pt;
+	// }
+	@include media-query($on-palm) {
+		padding-top: 65pt;
+	}
+}
+
+div.pagination.btn-group {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	width: 100%;
+	background: $background-color-transp;
+	padding-bottom: 1rem;
+}
