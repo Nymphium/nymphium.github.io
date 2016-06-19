@@ -1,7 +1,8 @@
-$nav-width: 70pt;
-$nav-height: 69px;
+$nav-height: 68px;
 
 .site-header {
+	border-bottom: 1px solid $grey-color-light;
+	min-height: 56px;
 	position: fixed;
 	background: $background-color-transp;
 	width: 100%;
@@ -16,14 +17,60 @@ $nav-height: 69px;
 	}
 }
 
-@include media-query($on-palm) {
-	.site-nav {
-		background: (0, 0, 0, 0);
-		border-radius: 0;
+.site-title {
+	font-size: 26px;
+	font-weight: 300;
+	line-height: 56px;
+	letter-spacing: -1px;
+	margin-bottom: 0;
+	float: left;
+	white-space: nowrap;
 
-		& .trigger .page-link {
+	&,
+	&:visited {
+		color: $grey-color-dark;
+	}
+}
+
+.site-nav {
+	float: right;
+	line-height: 56px;
+
+	.menu-icon {
+		display: none;
+	}
+
+	.page-link {
+		color: $text-color;
+		line-height: $base-line-height;
+
+		// Gaps between nav items, but not on the last one
+		&:not(:last-child) {
+			margin-right: 20px;
+		}
+	}
+
+	@include media-query($on-palm) {
+		position: absolute;
+		right: 0;
+		background: (0, 0, 0, 0);
+		border-left: 1px solid $grey-color-light;
+		text-align: right;
+
+		&:hover .trigger {
+			display: block;
+			padding-bottom: 5px;
+		}
+
+		.page-link {
+			display: block;
+			padding: 5px 10px;
 			margin-left: 10px;
 			margin-right: 10px;
+
+			&:not(:last-child) {
+				margin-right: 0;
+			}
 		}
 	}
 }
