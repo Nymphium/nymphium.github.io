@@ -17,7 +17,7 @@ USB接続すると､/dev/sdc1というものが生える｡
 # fonts
 中を見ると､*ja.font*というファイルがある｡これやな｡
 
-# cramffsやんけこれ
+# cramfsやんけこれ
 `xxd -g 1 ja.font | head`してみると**45 3d cd 28**というのが見える｡もちろん知らないのでググる｡Comressed ROMFSということが分かった｡
 これもマウントしてみる｡
 01-ja.confというfontconfigファイルとimage\_manifestというフォント情報などが書かれたjsonファイルっぽいもの､ありましたねぇttfファイルが置かれているfontsディレクトリ｡
