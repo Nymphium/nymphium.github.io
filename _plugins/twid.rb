@@ -7,7 +7,13 @@ module Jekyll
 			end
 
 			def render(context)
-				"[@#{@post}](https://twitter.com/#{@post})".gsub! "_", "\\_"
+				rendered = "[@#{@post}](https://twitter.com/#{@post})"
+
+				if rendered.match "_" then
+					rendered.gsub! "_", "\\_"
+				end
+
+				rendered
 			end
 		end
 	end
