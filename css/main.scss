@@ -29,6 +29,8 @@ $content-width:    1200px;
 $on-palm:          600px;
 $on-laptop:        800px;
 
+$widget-percent:   90%;
+
 
 
 // Use media queries like this:
@@ -52,6 +54,7 @@ table {
 	border-style: solid;
 	border-color: #ddd #ccc #ccc #ddd;
 	background-color: #fff;
+	margin: 0 auto;
 }
 
 caption {
@@ -81,6 +84,10 @@ td {
 	"base",
 	"layout",
 	"syntax",
+	// "syntax-highlighting",
 	"header",
-	"footer"
+	"footer",
+	"embeddedtweet",
+	"mathjax",
+	"github-widget"
 ;
