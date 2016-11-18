@@ -8,7 +8,7 @@ layout: default
               <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}
               <p>tag: &#123;{% for tag in page.tags %}<a href="{{BASE_PATH}}/tags.html#{{tag}}-ref">{{tag}}</a>{% unless forloop.last  %}, {% endunless %}{% endfor %}&#125;</p>
             </span>
-            <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
             <script type="text/javascript" src="https://rawgit.com/JoelSutherland/GitHub-jQuery-Repo-Widget/master/jquery.githubRepoWidget.min.js"></script>
             <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
             <script type="text/javascript">
