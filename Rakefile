@@ -45,7 +45,7 @@ desc "Begin a push static file to GitHub"
 task :deploy do
   dir = "/tmp/" + `echo $$`.chomp
   puts "Build..."
-  sh "bundle exec jekyll build"
+  sh "JEKYLL_ENV=production bundle exec jekyll build"
   sh "mkdir -p #{dir}"
   sh "mv _site/* #{dir}"
 
@@ -135,7 +135,7 @@ end # task :page
 
 desc "Launch preview environment"
 task :preview do
-  system "bundle exec jekyll serve -w --drafts"
+  system "JEKYLL_ENV=development bundle exec jekyll serve -w --drafts"
 end # task :preview
 
 # Public: Alias - Maintains backwards compatability for theme switching.
