@@ -1,0 +1,25 @@
+#!/bin/bash
+
+
+set -e
+
+filename=${1}
+articlename=${2:-${1}}
+postfilename=$(date +"%Y-%m-%d-${filename}")
+
+picdir="pictures"
+postdir="_posts"
+
+[ ! "${1}" ] && filename="temp"
+
+
+mkdir "${picdir}/${postfilename}"
+
+cat <<EOL > "${postdir}/${postfilename}.md"
+---
+layout: post
+title: ${articlename}
+tags: []
+---
+EOL
+
