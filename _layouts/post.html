@@ -14,7 +14,14 @@ layout: default
             <script type="text/javascript">
 MathJax.Hub.Config({
 	extensions: ["tex2jax.js"],
-	"HTML-CSS": { scale: 80}
+	"HTML-CSS": {
+		scale: 80,
+		availableFonts: ["TeX"],
+	},
+	tex2jax: {
+		inlinemath: [['$', '$']],
+		displaymath: [["\\[", "\\]"]]
+	}
 });
             </script>
           </header>
