@@ -55,22 +55,4 @@ module Jekyll
 			end
 		end
 	end
-
-	# for html, extend converter as a plugin
-	class SectionizeIntoHTML < Converter
-		safe true
-		priority :low
-
-		def matches(ext)
-			ext =~ /^\.html$/i
-		end
-
-		def output_ext(ext)
-			".html"
-		end
-
-		def convert(content)
-			sectionize(content)
-		end
-	end
 end

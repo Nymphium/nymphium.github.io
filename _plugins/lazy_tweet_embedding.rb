@@ -1,3 +1,4 @@
+# https://github.com/takuti/jekyll-lazy-tweet-embedding
 require "open-uri"
 require "json"
 
@@ -42,5 +43,4 @@ module Jekyll
       embedding_tweet(content)
     end
   end
-
 end
