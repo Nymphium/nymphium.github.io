@@ -282,9 +282,8 @@ cfg = { <1>{
 これを踏まえ､Reachable Definitionの実装はこんな感じになる:
 
 ```moon
-local modified
+modified = {true}
 while foldl ((acc, mod) -> acc or mod), false, modified
-    modified = {}
     for i = 1, #cfg
       block = cfg[i]
         block.in = foldl ((acc, pred) -> union acc, pred.out), {}, block.pred
