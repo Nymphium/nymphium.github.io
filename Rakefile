@@ -1,7 +1,8 @@
-require "rubygems"
 require 'rake'
 require 'yaml'
 require 'time'
+
+BUNDLE = ENV["BUNDLE"] or "bundle"
 
 SOURCE = "."
 CONFIG = {
@@ -45,7 +46,7 @@ desc "Begin a push static file to GitHub"
 task :deploy do
   dir = "/tmp/" + `echo $$`.chomp
   puts "Build..."
-  sh "JEKYLL_ENV=production bundle exec jekyll build"
+  sh "JEKYLL_ENV=production #{BUNDLE} exec jekyll build"
   sh "mkdir -p #{dir}"
   sh "mv _site/* #{dir}"
 
@@ -65,11 +66,11 @@ task :deploy do
   begin
 	  sh "git commit -m \"#{message}\" --allow-empty "
 	  sh "git push -f origin master"
-  rescue Exception => e
+  rescue Exception => _
 	  puts "! Error - git command abort"
 	  sh "git checkout source"
 	  sh "rm -rf #{dir}"
-	  exit -1
+	  exit - 1
   end
   sh "git checkout source"
   sh "rm -rf #{dir}"
@@ -86,9 +87,9 @@ task :post do
   slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
   begin
     date = (ENV['date'] ? Time.parse(ENV['date']) : Time.now).strftime('%Y-%m-%d')
-  rescue => e
+  rescue => _
     puts "Error - date format must be YYYY-MM-DD, please check you typed it correctly!"
-    exit -1
+    exit - 1
   end
   filename = File.join(CONFIG['posts'], "#{date}-#{slug}.#{CONFIG['post_ext']}")
   if File.exist?(filename)
@@ -135,7 +136,7 @@ end # task :page
 
 desc "Launch preview environment"
 task :preview do
-  system "JEKYLL_ENV=development bundle exec jekyll serve -w --drafts"
+  system "JEKYLL_ENV=development #{BUNDLE} exec jekyll serve -w --drafts"
 end # task :preview
 
 # Public: Alias - Maintains backwards compatability for theme switching.
