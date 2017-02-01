@@ -1,7 +1,9 @@
 title: lilyum ensemble
+author: Satoru Kawahara
 description: lily, Aikatsu, Linux, Lua/MoonScript, and more
-url: "http://nymphium.github.io"
 keywords: lily,百合,Aikatsu,アイカツ,Linux,Lua,MoonScript
+image: pictures/github_icon.png
+url: "https://nymphium.github.io"
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "vendor", "Gemfile", "Gemfile.lock"]
 gems:
   - jemoji
