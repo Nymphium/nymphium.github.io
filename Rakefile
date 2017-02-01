@@ -139,6 +139,11 @@ task :preview do
   system "JEKYLL_ENV=development #{BUNDLE} exec jekyll serve -w --drafts"
 end # task :preview
 
+desc "build oneshot"
+task :build do
+  system "JEKYLL_ENV=development #{BUNDLE} exec jekyll build --drafts"
+end # task :build
+
 # Public: Alias - Maintains backwards compatability for theme switching.
 task :switch_theme => "theme:switch"
 
