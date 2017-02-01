@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Satoru Kawahara">
     <meta name="twitter:card" content="summary">
-	<meta name="twitter:site" content="{{ site.title }}">
+    <meta name="twitter:site" content="{{ site.title }}">
     <meta name="twitter:creator" content="Satoru Kawahara"> {% if page.title %}
     <meta name="twitter:title" content="{{ page.title }}"> {% else %}
     <meta name="twitter:title" content="{{ site.title }}"> {% endif %}{% if page.url %}
     <meta name="twitter:url" content="{{ site.url }}{{ page.url }}"> {% endif %}{% if page.description %}
     <meta name="twitter:description" content="{{ page.description }}"> {% else %}
-    <meta name="twitter:description" content="{{ site.description }}"> {% endif %}
+    <meta name="twitter:description" content="{{ site.description }}"> {% endif %}{% if page.image %}
+    <meta name="twitter:image:src" content="{{ site.url }}/pictures/{{ page.image }}">{% else %}
+    <meta name="twitter:image:src" content="{{ site.url }}/pictures/github_icon.png">{% endif %}
     <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
