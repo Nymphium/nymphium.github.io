@@ -13,17 +13,22 @@ mv _site/* "${dir}"
 git add -A
 
 git commit -m "${message}"
+wait
 git push origin source:source
 
+wait
 : on master branch
 : ====
 git checkout master
-rm -rf $(ls | grep -v .git)
+rm -rf $(ls -a | grep -v .git)
 cp -r "${dir}/"* .
+wait
 
-git add *
+git add -A
 git commit -m "${message}" --allow-empty
+wait
 git push -f origin master
+wait
 : ====
 
 git checkout source
