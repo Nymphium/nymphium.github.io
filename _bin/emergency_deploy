@@ -1,0 +1,26 @@
+#!/usr/bin/bash
+
+id=$$
+dir="/tmp/${id}"
+message="deploy at $(date)"
+
+JEKYLL_ENV=production bundle exec jekyll build
+mkdir -p "${dir}"
+mv _site "${dir}"
+
+git add -A
+
+git commit -m "${message}"
+git push origin source:source
+
+git checkout master
+rm -rf $(ls | grep -v .git)
+cp -r "${dir}"/* .
+
+git add *
+git commit -m "${message}" --allow-empty
+git push -f origin master
+
+git checkout source
+git rm -rf "${dir}"
+

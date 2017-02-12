@@ -1,0 +1,27 @@
+#!/usr/bin/ruby
+# exec "./_bin/build_slides"
+
+require'./slides.rb'
+require'cgi'
+
+slide = slides
+slides_item = ""
+
+slide.each {|i|
+	slides_item += "              <li><a href=\"/pdf/#{i[:href]}.html\">#{i[:date]} #{CGI.escapeHTML i[:institute]}</a></li>\n"
+}
+
+slides_html = <<HTML
+---
+layout: page
+title: Slides
+header: Slides
+group: navigation
+---
+            <ul>
+#{slides_item.chomp}
+            </ul>
+HTML
+
+File.write("slide.html", slides_html)
+
