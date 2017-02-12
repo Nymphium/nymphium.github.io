@@ -1,12 +1,14 @@
 #!/usr/bin/bash
 
+set -eu
+
 id=$$
 dir="/tmp/${id}"
 message="deploy at $(date)"
 
 JEKYLL_ENV=production bundle exec jekyll build
 mkdir -p "${dir}"
-mv _site "${dir}"
+mv _site/* "${dir}"
 
 git add -A
 
@@ -15,7 +17,7 @@ git push origin source:source
 
 git checkout master
 rm -rf $(ls | grep -v .git)
-cp -r "${dir}"/* .
+cp -r "${dir}/*" .
 
 git add *
 git commit -m "${message}" --allow-empty
