@@ -1,31 +1,8 @@
-#!/bin/bash
-
-slide=${1%.*}
-slide_base=$(basename ${slide})
-slide_uuid="${slide}-$(uuidgen)"
-# gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default -dNOPAUSE -dQUIET -dBATCH -sOutputFile="${slide_uuid}.pdf" "${slide}.pdf"
-# mv "${slide_uuid}.pdf" "${slide}.pdf"
-# pdf-slide-html --pdf-url "http://nymphium.github.io/pdf/${slide}.pdf" --base-url http://azu.github.io/slide-pdf.js/ -o "${slide}.html"
-# sed -i"" -e 's/\(width="\)100\(%"\)/\190\2/' "${slide}.html"
-# sed -i"" -e 's/\(height="\)100\(%"\)/\1103\2/' "${slide}.html"
-
-if [[ ! "${2}" = "" ]]; then
-	title=$(echo "${2}" | ruby -rcgi -e "puts CGI.escapeHTML ARGF.read")
-	# sed -i"" -e "s/<title>.\+<\/title>/<title>${title} - lilyum ensemble<\/title>/" "${slide}.html"
-else
-	title=$(pdfinfo "${slide}.pdf" | awk '$1=="Title:"{print $0}' | sed -e 's/^Title:\s*//' | ruby -rcgi -e "puts CGI.escapeHTML ARGF.read")
-
-	# if [[ ! "${title}" = "" ]]; then
-		# sed -i"" -e "s/<title>.\+<\/title>/<title>${title} - lilyum ensemble<\/title>/" "${slide}.html"
-	# fi
-fi
-
-cat <<HTML > pdf/${slide_base}.html
 <!DOCTYPE html>
 <html>
 <head lang="ja">
     <meta charset="UTF-8">
-    <title>${title} - lilyum ensemble</title>
+    <title>Opeth, Lua VM Bytecode Optimizer - lilyum ensemble</title>
     <style>.main-content .svg-icon, .markdown-body h1 img, .markdown-body h2 img, .markdown-body h3 img, .markdown-body h4 img, .markdown-body h5 img, .markdown-body h6 img,
     .markdown-body li img {
         height: 1em;
@@ -78,14 +55,14 @@ cat <<HTML > pdf/${slide_base}.html
 <body>
 <div class="main-content">
     <iframe id="main-slide"
-            src="http://azu.github.io/slide-pdf.js/?slide=http://nymphium.github.io/pdf/${slide_base}.pdf"
+            src="http://azu.github.io/slide-pdf.js/?slide=http://nymphium.github.io/pdf/tsukubalua"
             scrolling="no"
             allowtransparency="true"
             width="90%"
             height="103%"
             style="border:0;">
     </iframe>
-    <aside class="slide-controller"><a href="http://nymphium.github.io/pdf/${slide_base}.pdf" title="${title}">
+    <aside class="slide-controller"><a href="http://nymphium.github.io/pdf/tsukubalua" title="Opeth, Lua VM Bytecode Optimizer">
         <svg xmlns="http://www.w3.org/2000/svg"
              version="1.1"
              class="svg-icon"
@@ -112,4 +89,3 @@ cat <<HTML > pdf/${slide_base}.html
 <article class="markdown-body"></article>
 </body>
 </html>
-HTML
