@@ -15,13 +15,16 @@ git add -A
 git commit -m "${message}"
 git push origin source:source
 
+: on master branch
+: ====
 git checkout master
 rm -rf $(ls | grep -v .git)
-cp -r "${dir}/*" .
+cp -r "${dir}/"* .
 
 git add *
 git commit -m "${message}" --allow-empty
 git push -f origin master
+: ====
 
 git checkout source
 git rm -rf "${dir}"
