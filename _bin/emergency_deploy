@@ -2,10 +2,10 @@
 
 set -eu
 
-id=$$
-dir="/tmp/${id}"
+dir=$(mktemp -d)
 message="deploy at $(date)"
 
+bundle install
 JEKYLL_ENV=production bundle exec jekyll build
 mkdir -p "${dir}"
 mv _site/* "${dir}"
