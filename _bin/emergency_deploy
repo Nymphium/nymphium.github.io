@@ -40,7 +40,7 @@ wait
 : ====
 
 git checkout source
-git rm -rf "${dir}"
+rm -rf "${dir}"
 git rm -rf vendor
 git rm Gemfile.lock
 
