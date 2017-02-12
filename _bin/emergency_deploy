@@ -5,7 +5,15 @@ set -eu
 dir=$(mktemp -d)
 message="deploy at $(date)"
 
-bundle install
+if [ -e "Gemfile.lock" ]; then
+	rm Gemfile.lock
+fi
+
+if [ -e "vendor" ]; then
+	rm -rf vendor 
+fi
+
+bundle install --path vendor
 JEKYLL_ENV=production bundle exec jekyll build
 mkdir -p "${dir}"
 mv _site/* "${dir}"
@@ -33,4 +41,6 @@ wait
 
 git checkout source
 git rm -rf "${dir}"
+git rm -rf vendor
+git rm Gemfile.lock
 
