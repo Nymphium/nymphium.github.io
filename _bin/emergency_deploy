@@ -20,7 +20,7 @@ mv _site/* "${dir}"
 
 git add -A
 
-git commit -m "${message}"
+git commit -m "${message}" --allow-empty
 wait
 git push origin source:source
 
