@@ -2,6 +2,8 @@
 
 set -eu
 
+_bin/build_slides
+
 dir=$(mktemp -d)
 message="deploy at $(date)"
 
