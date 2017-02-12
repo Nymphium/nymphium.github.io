@@ -28,7 +28,7 @@ wait
 : on master branch
 : ====
 git checkout master
-rm -rf $(ls -a | grep -v .git)
+rm -rf $(ls | grep -v .git)
 cp -r "${dir}/"* .
 wait
 
