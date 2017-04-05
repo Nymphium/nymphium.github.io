@@ -46,6 +46,7 @@ desc "Begin a push static file to GitHub"
 task :deploy do
   dir = "/tmp/" + `echo $$`.chomp
   puts "Build..."
+  sh "_bin/twicardpic_update"
   sh "JEKYLL_ENV=production #{BUNDLE} exec jekyll build"
   sh "mkdir -p #{dir}"
   sh "mv _site/* #{dir}"
