@@ -106,6 +106,12 @@ article {
 		border-width: 2px;
 		border-radius: 5px;
 		padding: 5px 20px 30px 20px;
+
+		@include media-query($on-palm) {
+			padding: 5px 12px 30px 12px;
+			border-style: none;;
+		}
+
 		margin-top: -10px;
 
 		h1:not(:first-child) {
