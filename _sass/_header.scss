@@ -1,8 +1,8 @@
-$nav-height: 68px;
+$nav-height: 56px;
 
 .site-header {
 	border-bottom: 1px solid $grey-color-light;
-	min-height: 56px;
+	min-height: $nav-height;
 	position: fixed;
 	background: $background-color-transp;
 	width: 100%;
@@ -10,10 +10,6 @@ $nav-height: 68px;
 
 	@include media-query($on-palm) {
 		height: $nav-height;
-
-		.site-title {
-			margin-top: 8px;
-		}
 	}
 }
 
@@ -22,24 +18,24 @@ $nav-height: 68px;
 
 	@include media-query($on-palm) {
 		font-size: 23px;
+		margin-top: 4px;
 	}
 
 	font-weight: 300;
-	line-height: 56px;
+	line-height: $nav-height;
 	letter-spacing: -1px;
 	margin-bottom: 0;
 	float: left;
 	white-space: nowrap;
 
-	&,
-	&:visited {
+	&, &:visited {
 		color: $grey-color-dark;
 	}
 }
 
 .site-nav {
 	float: right;
-	line-height: 56px;
+	line-height: $nav-height;
 
 	.menu-icon {
 		display: none;
