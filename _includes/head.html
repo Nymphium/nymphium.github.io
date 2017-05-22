@@ -1,7 +1,6 @@
   <head>
     <title>{% if page.title %}{{ page.title | escape }} &#47; {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-    <meta content="text/html;charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="text/html;charset=UTF-8" http-equiv="content-type">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Satoru Kawahara">
     <meta name="twitter:card" content="summary">
@@ -17,5 +16,5 @@
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300|Droid+Sans+Mono|Crimson+Text:400,400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono&7CCrimson+Text:400,400i" rel="stylesheet">
   </head>

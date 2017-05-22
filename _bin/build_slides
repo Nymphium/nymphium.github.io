@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/bin/ruby
 # exec "./_bin/build_slides"
 
 require'./slides.rb'
