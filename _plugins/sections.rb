@@ -1,10 +1,9 @@
-def sectionize content
-	section = content
+def sectionize section
 	has_section = false
 	codeflag = false
 	secnum, subsecnum, subsubsecnum = 0, 0, 0
 
-	content.each_line{|txt|
+	section.each_line{|txt|
 		next unless has_section = (txt.match(/<!--+\s*sectionize on\s*--+>/) != nil) || has_section
 		next if codeflag = (txt.match(/^\s*```(?!`)/) != nil) ^ codeflag
 
