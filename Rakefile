@@ -137,7 +137,11 @@ end # task :page
 
 desc "Launch preview environment"
 task :preview do
-  system "JEKYLL_ENV=development #{BUNDLE} exec jekyll serve -w --drafts"
+	begin
+	  system "JEKYLL_ENV=development #{BUNDLE} exec jekyll serve -w --drafts"
+	rescue => e
+		abort(e)
+	end
 end # task :preview
 
 desc "build oneshot"

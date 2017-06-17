@@ -18,10 +18,10 @@ body {
 	color: $text-color;
 	background-color: $background-color;
 	-webkit-text-size-adjust: 100%;
-	-webkit-font-feature-settings: "kern" 1;
-	-moz-font-feature-settings: "kern" 1;
-	-o-font-feature-settings: "kern" 1;
-	font-feature-settings: "kern" 1;
+	-webkit-font-feature-settings: "palt" 1;
+	-moz-font-feature-settings: "palt" 1;
+	-o-font-feature-settings: "palt" 1;
+	font-feature-settings: "palt" 1;
 	font-kerning: normal;
 }
 
@@ -31,7 +31,7 @@ body {
  * Set `margin-bottom` to maintain vertical rhythm
  */
 h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
+p, blockquote,
 ul, ol, dl, figure,
 %vertical-rhythm {
 	margin-bottom: $spacing-unit / 2;
@@ -173,11 +173,21 @@ blockquote {
 /**
  * Code formatting
  */
+
+.highlight {
+  background: #eef;
+}
+
+.listing-name {
+  background: rgba(179, 220, 232, 0.79);
+  color: #38747f;
+  padding: 0 0.3rem 0.3rem 0.1rem;
+}
+
 pre, code {
-	font-size: 15px;
-	border: 1px solid $grey-color-light;
-	border-radius: 3px;
-	background-color: #eef;
+  font-size: 15px;
+  border-radius: 3px;
+  background: #eef;
 }
 
 code {
