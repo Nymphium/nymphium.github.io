@@ -181,8 +181,8 @@ blockquote {
 .listing-name {
   background: rgba(179, 220, 232, 0.79);
   color: #38747f;
-  padding: 0 0.3rem 0.3rem 0.1rem;
-  overflow-x: auto;
+  padding: 0.1rem 0.4rem 0.3rem 0.3rem;
+  display: inline-block;
 }
 
 pre, code {
