@@ -38,7 +38,6 @@ end
 module Jekyll
 	module Converters
 		class Markdown < Converter
-			priority :lowest
 			alias plain_convert convert
 
 			def convert(content)

@@ -120,7 +120,8 @@ end
 module Jekyll
 	module Converters
 		class Markdown < Converter
-			priority :lowest
+			# priority :lowest
+			# lowerstにするとなんかぶち壊れたのでヤバい､適宜ほかをhigherにしていって
 			alias plain_convert convert
 
 			def convert(content)
