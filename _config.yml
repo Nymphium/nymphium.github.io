@@ -5,10 +5,10 @@ keywords: lily,百合,Aikatsu,アイカツ,Linux,Lua,MoonScript
 image: pictures/github_icon.png
 url: "https://nymphium.github.io"
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "vendor", "Gemfile", "Gemfile.lock", "_bin", "_src", "slides.rb", ".sass-cache"]
-gems:
+plugins:
   - jemoji
   - jekyll-gist
 markdown: redcarpet
 redcarpet:
-  extensions: ["tables", "autolink", "with_toc_data", "footnotes", "strikethrough", "no_intra_emphasis"]
+  extensions: ["tables", "autolink", "with_toc_data", "footnotes", "strikethrough", "no_intra_emphasis", "smart"]
 
