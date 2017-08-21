@@ -1,4 +1,4 @@
-def sectionize section
+$myfilter = lambda{|section|
 	has_section = false
 	codeflag = false
 	secnum, subsecnum, subsubsecnum = 0, 0, 0
@@ -41,17 +41,4 @@ def sectionize section
 	}
 
 	section
-end
-
-module Jekyll
-	# for markdown, extend oroginal parser's convert method
-	module Converters
-		class Markdown < Converter
-			alias notsectionize_convert convert
-
-			def convert(content)
-				notsectionize_convert(sectionize(content))
-			end
-		end
-	end
-end
+}

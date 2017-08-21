@@ -5,7 +5,7 @@ def vap s, ss, sss
 	s.to_s + ((ss == 0 and "") or ("." + ss.to_s) + (sss == 0 and "" or ("." + sss.to_s)))
 end
 
-def ref_label content
+$myfilter = lambda{|content|
 	cont = content
 	codeflag = false
 	secnum, subsecnum, subsubsecnum = 0, 0, 0
@@ -45,17 +45,4 @@ def ref_label content
 	}
 
 	cont
-end
-
-module Jekyll
-	module Converters
-		class Markdown < Converter
-			alias notref_label_convert convert
-
-			def convert content
-				notref_label_convert ref_label content
-			end
-		end
-	end
-end
-
+}

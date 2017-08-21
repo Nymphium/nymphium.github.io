@@ -1,7 +1,6 @@
 require'nokogiri'
-# this is a set of 'html_filters/99-listing_name_into_div.rb'
 
-def listing_name content
+$myfilter = lambda{|content|
 	in_listing = false
 	acc = ""
 
@@ -20,17 +19,4 @@ def listing_name content
 	}
 
 	acc
-end
-
-module Jekyll
-	module Converters
-		class Markdown < Converter
-			alias nolisting_name_convert convert
-
-			def convert(content)
-				nolisting_name_convert(listing_name content)
-			end
-		end
-	end
-end
-
+}
