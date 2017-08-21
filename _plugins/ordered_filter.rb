@@ -1,25 +1,22 @@
 $MD_FILTERS = []
 $HTML_FILTERS = []
 
-
-def ordered_filter files, content
+def ordered_filter filters, content
 	converted = content
 
-	files.map{|file|
-		load file
-		converted = $myfilter[converted]
+	filters.map{|filter|
+		converted = filter[converted]
 	}
 
 	converted
 end
 
 def init_filters path
-	ret = []
-	Dir[File.expand_path("../ordered/#{path}/", __FILE__) << '/*.rb'].each{|file|
-		ret << file
+	Dir[File.expand_path("../ordered/#{path}/", __FILE__) << '/*.rb'].sort.map{|file|
+		File.open(file){|f|
+			eval f.read
+		}
 	}
-
-	ret.sort
 end
 
 module Jekyll

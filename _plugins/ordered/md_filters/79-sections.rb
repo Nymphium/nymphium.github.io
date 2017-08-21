@@ -1,4 +1,4 @@
-$myfilter = lambda{|section|
+lambda{|section|
 	has_section = false
 	codeflag = false
 	secnum, subsecnum, subsubsecnum = 0, 0, 0
