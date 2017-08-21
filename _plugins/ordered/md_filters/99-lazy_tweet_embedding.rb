@@ -3,7 +3,7 @@ require "open-uri"
 require "json"
 
 # convert tweet url to embedding html
-$myfilter = lambda{|content|
+lambda{|content|
 	embedded_content = content
 	content.scan(/(https?:\/\/twitter\.com\/[a-zA-Z0-9_]+\/status\/([0-9]+)\/?)/).each do |url, id|
 		begin

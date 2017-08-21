@@ -1,4 +1,4 @@
-$myfilter = lambda{|content|
+lambda{|content|
 	newcontent = ""
 	srcline = 0
 	if !content.match(/@importmd|@importlisting/)
@@ -18,10 +18,11 @@ $myfilter = lambda{|content|
 		elsif mtc = txt.match(/@importlisting(\[[^\]]+\])?\((.+?)\s+([a-zA-Z0-9]+)?\)/)
 			caption, file, type = mtc[1], mtc[2], mtc[3]
 
+			newcontent += "[#{file}](/#{file})\n"
 			if caption
-				newcontent += "```#{type}:#{caption.match(/\[(.*)\]/)[1]}\n"
+				newcontent += "\n```#{type}:#{caption.match(/\[(.*)\]/)[1]}\n"
 			else
-				newcontent += "```#{type}\n"
+				newcontent += "\n```#{type}\n"
 			end
 
 			File.open(file){|txts|

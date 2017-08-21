@@ -5,7 +5,7 @@ def vap s, ss, sss
 	s.to_s + ((ss == 0 and "") or ("." + ss.to_s) + (sss == 0 and "" or ("." + sss.to_s)))
 end
 
-$myfilter = lambda{|content|
+lambda{|content|
 	cont = content
 	codeflag = false
 	secnum, subsecnum, subsubsecnum = 0, 0, 0

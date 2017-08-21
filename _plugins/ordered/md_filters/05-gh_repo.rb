@@ -1,4 +1,4 @@
-$myfilter = lambda{|content|
+lambda{|content|
 	newcontent = ""
 	content.each_line{|line|
 		if repo = line.match(/\{%\s+gh_repo%s+(.*)\s+%\}/)

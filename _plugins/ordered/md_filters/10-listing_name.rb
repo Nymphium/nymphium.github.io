@@ -1,6 +1,6 @@
 require'nokogiri'
 
-$myfilter = lambda{|content|
+lambda{|content|
 	in_listing = false
 	acc = ""
 
