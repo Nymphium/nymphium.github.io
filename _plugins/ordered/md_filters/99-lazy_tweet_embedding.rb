@@ -3,7 +3,7 @@ require "open-uri"
 require "json"
 
 # convert tweet url to embedding html
-def embedding_tweet(content)
+$myfilter = lambda{|content|
 	embedded_content = content
 	content.scan(/(https?:\/\/twitter\.com\/[a-zA-Z0-9_]+\/status\/([0-9]+)\/?)/).each do |url, id|
 		begin
@@ -16,18 +16,4 @@ def embedding_tweet(content)
 	end
 
 	embedded_content
-end
-
-module Jekyll
-
-  # for markdown, extend oroginal parser's convert method
-  module Converters
-    class Markdown < Converter
-      alias_method :parser_converter, :convert
-
-      def convert(content)
-        parser_converter(embedding_tweet(content))
-      end
-    end
-  end
-end
+}

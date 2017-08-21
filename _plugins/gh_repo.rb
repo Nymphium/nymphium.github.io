@@ -1,15 +1,16 @@
 module Jekyll
   class GHRepo < Liquid::Tag
 
-    def initialize(name, repository, tokens)
-      super
-      @repository = repository.strip
+	def initialize(name, repository, tokens)
+	  super
+	  @repository = repository.strip
 
-    end
+	end
 
-    def render(context)
-      "<div class=\"github-widget\" data-repo=\"#{@repository}\"></div>"
-    end
+	def render(context)
+		@repository
+	  # "<div class=\"github-widget\" data-repo=\"#{@repository}\"></div>"
+	end
   end
 end
 

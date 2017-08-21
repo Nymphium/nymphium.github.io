@@ -1,6 +1,9 @@
-def import content
+$myfilter = lambda{|content|
 	newcontent = ""
 	srcline = 0
+	if !content.match(/@importmd|@importlisting/)
+		return content
+	end
 
 	content.each_line{|txt|
 		srcline += 1
@@ -12,11 +15,11 @@ def import content
 			unless newcontent.match(/\n$/)
 				newcontent +=  "\n"
 			end
-		elsif mtc = txt.match(/@importlisting(\[[^\]]+\])?\((.+?)(\s+[a-zA-Z0-9]+)?\)/)
+		elsif mtc = txt.match(/@importlisting(\[[^\]]+\])?\((.+?)\s+([a-zA-Z0-9]+)?\)/)
 			caption, file, type = mtc[1], mtc[2], mtc[3]
 
 			if caption
-				newcontent += "```#{type}:#{caption}\n"
+				newcontent += "```#{type}:#{caption.match(/\[(.*)\]/)[1]}\n"
 			else
 				newcontent += "```#{type}\n"
 			end
@@ -39,18 +42,4 @@ def import content
 	}
 
 	newcontent
-end
-
-module Jekyll
-	# for markdown, extend oroginal parser's convert method
-	module Converters
-		class Markdown < Converter
-			priority :highest
-			alias notimport_convert convert
-
-			def convert(content)
-				notimport_convert(import(content))
-			end
-		end
-	end
-end
+}
