@@ -8,7 +8,7 @@ lambda{|content|
 
 	content.each_line{|line|
 		if !addlineno
-			if match = line.match(/<!--\s*linenumber(:(?<startline>\d+))?\s*-->/)
+			if match = line.match(/^\s*<!--\s*linenumber(:(?<startline>\d+))?\s*-->/)
 				addlineno = true
 				startwith = (match['startline'] or startwith).to_i
 			else
