@@ -22,14 +22,15 @@ div.codeline {
 		text-align: right;
 		line-height: normal;
 		background: $listing-attach-background;
+		border-radius: unset;
 }}
 
 .with_caption {
-	padding-top: 2rem;
+	padding-top: 2.4rem;
 
 	> pre {
-		padding-top: 2rem;
-		margin-top: -2rem;
+		padding-top: 2.4rem;
+		margin-top: -2.4rem;
 	}
 }
 
