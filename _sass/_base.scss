@@ -105,10 +105,10 @@ article {
 		border-color: rgba(138, 138, 138, 0.35);
 		border-width: 2px;
 		border-radius: 5px;
-		padding: 5px 20px 30px 20px;
+		padding: 5px $article-margin 30px $article-margin;
 
 		@include media-query($on-palm) {
-			padding: 5px 12px 30px 12px;
+			padding: 5px $mini-article-margin 30px $mini-article-margin;
 			border-style: none;;
 		}
 
@@ -179,8 +179,8 @@ blockquote {
 }
 
 .listing-name {
-  background: rgba(179, 220, 232, 0.79);
-  color: #38747f;
+  color: $listing-attach-color;
+  background: $listing-attach-background;
   padding: 0.1rem 0.4rem 0.3rem 0.3rem;
   display: inline-block;
 }
@@ -188,7 +188,7 @@ blockquote {
 pre, code {
   font-size: 15px;
   border-radius: 3px;
-  background: #eef;
+  background: $pre-background;
 }
 
 code {

@@ -1,6 +1,6 @@
 require'nokogiri'
 
-$myfilter = lambda {|content|
+lambda {|content|
 	html = Nokogiri::HTML content
 	fnrefs = html.xpath('//sup[starts-with(@id, "fnref")]')
 

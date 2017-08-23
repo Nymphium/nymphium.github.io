@@ -15,8 +15,8 @@ lambda{|content|
 			unless newcontent.match(/\n$/)
 				newcontent +=  "\n"
 			end
-		elsif mtc = txt.match(/@importlisting(\[[^\]]+\])?\((.+?)\s+([a-zA-Z0-9]+)?\)/)
-			caption, file, type = mtc[1], mtc[2], mtc[3]
+		elsif mtc = txt.match(/@importlisting(?<caption>\[[^\]]+\])?\((?<file>.+?)\s+(?<type>[a-zA-Z0-9]+)?\)/)
+			caption, file, type = mtc['caption'], mtc['file'], mtc['type']
 
 			newcontent += "[#{file}](/#{file})\n"
 			if caption
