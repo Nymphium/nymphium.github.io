@@ -26,13 +26,22 @@ div.codeline {
 }}
 
 .with_caption {
-	padding-top: 2.4rem;
+	margin-top: 5px !important;
 
 	> pre {
-		padding-top: 2.4rem;
-		margin-top: -2.4rem;
+		padding-top: calc(#{$listing-name-height} + 8px/*pre padding-top*/);
+		padding-bottom: 8px/*pre padding-top*/;
 	}
 }
+
+.listing-name {
+	color: $listing-attach-color;
+	background: $listing-attach-background;
+	padding-right: 0.3rem;
+	height: $listing-name-height;
+	display: inline-block;
+}
+
 
 .highlight {
 	line-height: normal;
