@@ -1,6 +1,6 @@
 require'nokogiri'
 
-$myfilter = lambda {|content|
+lambda {|content|
 	html = Nokogiri::HTML content
 
 	pspans = html.xpath('//div[@class="highlight"]/preceding-sibling::p[span[@class="listing-name"]]')

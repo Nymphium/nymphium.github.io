@@ -1,9 +1,40 @@
+$codeline-width: 2.4rem;
+
 code {
 	margin: 0px 5px 0px 5px;
 	font-family: 'Droid Sans Mono', 'Bitstream Vera Sans Mono','Courier', monospace;
 }
 
+.codeline+.highlight {
+	margin-left: 0;
+}
+
+div.codeline {
+	float: left;
+	margin-left: -webkit-calc((100% - #{$widget-percent}) / 2 - #{$codeline-width});
+	margin-left:         calc((100% - #{$widget-percent}) / 2 - #{$codeline-width});
+	margin-top: .3rem;
+	background: $pre-background;
+	color: $listing-attach-color;
+	width: $codeline-width;
+
+	> pre {
+		text-align: right;
+		line-height: normal;
+		background: $listing-attach-background;
+}}
+
+.with_caption {
+	padding-top: 2rem;
+
+	> pre {
+		padding-top: 2rem;
+		margin-top: -2rem;
+	}
+}
+
 .highlight {
+	line-height: normal;
 	margin: 0 auto;
 	margin-top: 20px;
 	margin-bottom: 20px;
