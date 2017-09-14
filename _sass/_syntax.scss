@@ -56,6 +56,10 @@ div.codeline {
 	overflow: hidden;
 	max-width: $widget-percent;
 
+	@include media-query($on-palm) {
+		max-width: none;
+	}
+
 	/* http://mattn.kaoriya.net/software/20160215110235.htm */
 	.c { color: #586E75 } /* Comment */
 	.err { color: #93A1A1 } /* Error */
