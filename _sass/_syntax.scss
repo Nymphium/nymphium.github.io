@@ -23,7 +23,13 @@ div.codeline {
 		line-height: normal;
 		background: $listing-attach-background;
 		border-radius: unset;
-}}
+	}
+
+	@include media-query($on-palm) {
+		margin-left: -webkit-calc((100% - #{$widget-percent}) / 2 - #{$codeline-width} + 10px);
+		margin-left:         calc((100% - #{$widget-percent}) / 2 - #{$codeline-width} + 10px);
+	}
+}
 
 .with_caption {
 	margin-top: 5px !important;
