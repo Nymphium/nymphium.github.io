@@ -108,7 +108,7 @@ article {
 		padding: 5px $article-margin 30px $article-margin;
 
 		@include media-query($on-palm) {
-			padding: 5px $mini-article-margin 30px $mini-article-margin;
+			padding: 5px $article-margin / 2 30px $article-margin / 2;
 			border-style: none;;
 		}
 
@@ -217,8 +217,8 @@ pre {
 	@include media-query($on-laptop) {
 		max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
 		max-width:         calc(#{$content-width} - (#{$spacing-unit}));
-		padding-right: $spacing-unit / 2;
-		padding-left: $spacing-unit / 2;
+		padding-right: $spacing-unit / 4;
+		padding-left: $spacing-unit / 4;
 	}
 }
 

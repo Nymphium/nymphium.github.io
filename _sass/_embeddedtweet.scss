@@ -6,3 +6,19 @@ twitterwidget {
 	color: rgba(0, 0, 0, 0.4);
 }
 
+blockquote.twitter-tweet {
+	font-size: $base-font-size;
+	color: $text-color;
+	background: white;
+	width: 60%;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	border: none;
+	margin-top: 5px;
+	text-align: left;
+
+	@include media-query($on-laptop) {
+		width: 80%;
+	}
+}

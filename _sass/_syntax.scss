@@ -32,6 +32,10 @@ div.codeline {
 		padding-top: calc(#{$listing-name-height} + 8px/*pre padding-top*/);
 		padding-bottom: 8px/*pre padding-top*/;
 	}
+
+	@include media-query($on-palm) {
+		margin-top: 2px !important;
+	}
 }
 
 .listing-name {
