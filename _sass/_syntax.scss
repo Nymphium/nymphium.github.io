@@ -23,6 +23,10 @@ div.codeline {
 		line-height: normal;
 		background: $listing-attach-background;
 		border-radius: unset;
+
+		@include media-query($on-palm) {
+			padding-right: 5px;
+		}
 	}
 
 	@include media-query($on-palm) {
