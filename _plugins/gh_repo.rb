@@ -8,8 +8,7 @@ module Jekyll
 	end
 
 	def render(context)
-		@repository
-	  # "<div class=\"github-widget\" data-repo=\"#{@repository}\"></div>"
+	  "<div class=\"github-widget\" data-repo=\"#{@repository}\"></div>"
 	end
   end
 end

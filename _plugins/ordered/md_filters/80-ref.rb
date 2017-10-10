@@ -32,15 +32,19 @@ lambda{|content|
 			subsubsecnum += 1
 		end
 
-		if label = txt.match(/\[label\s*:\s*([a-zA-Z][a-zA-Z_:]*)\s*\]/)
-			esc = Regexp.escape label[1]
-			cont.sub!(/\[label\s*:\s*[a-zA-Z][a-zA-Z_:]*\]/, "<label id=\"ref-#{esc}\"/>")
+		if label = txt.match(/\[label\s*:\s*([a-zA-Z][^\]]*)\s*\]/)
+			esc = label[1]
+			cont.sub!(/\[label\s*:\s*[a-zA-Z][^\]]*\]/, "<label id=\"#{esc}\"/>")
 			ref_val[esc] = vap secnum, subsecnum, subsubsecnum
 		end
 
-		if ref = txt.match(/\[ref\s*:\s*([a-zA-Z][a-zA-Z_:]*)\s*\]/)
-			esc = Regexp.escape ref[1]
-			cont.sub!(/\[ref\s*:\s*[a-zA-Z][a-zA-Z_:]*\s*\]/, "<a href=\"#ref-#{esc}\">#{ref_val[esc]}</a>")
+		if ref = txt.match(/<(?<disp>[^>]+)>\s*\[ref\s*:\s*(?<refl>[a-zA-Z][^\]]*)\s*\]/)
+			esc = ref[:refl]
+			disp = ref[:disp]
+			cont.sub!(/<[^>]+>\s*\[ref\s*:\s*[a-zA-Z][^\]]*\s*\]/, "<a href=\"##{esc}\">#{disp}</a>")
+		elsif ref = txt.match(/\[ref\s*:\s*([a-zA-Z][^\]]*)\s*\]/)
+			esc = ref[1]
+			cont.sub!(/\[ref\s*:\s*[a-zA-Z][^\]]*\s*\]/, "<a href=\"##{esc}\">#{ref_val[esc]}</a>")
 		end
 	}
 

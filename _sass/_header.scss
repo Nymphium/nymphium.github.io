@@ -3,7 +3,7 @@ $nav-height: 56px;
 .site-header {
 	border-bottom: 1px solid $grey-color-light;
 	min-height: $nav-height;
-	position: fixed;
+	// position: fixed;
 	background: $background-color-transp;
 	width: 100%;
 	z-index: 10;
@@ -17,7 +17,7 @@ $nav-height: 56px;
 	font-size: 26px;
 
 	@include media-query($on-palm) {
-		font-size: 23px;
+		font-size: 20px;
 		margin-top: 4px;
 	}
 
