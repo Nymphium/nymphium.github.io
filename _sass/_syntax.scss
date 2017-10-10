@@ -24,7 +24,19 @@ div.codeline {
 		background: $listing-attach-background;
 		border-radius: unset;
 		padding-left: 5px;
-}}
+
+		@include media-query($on-palm) {
+			padding-right: 5px;
+		}
+	}
+
+	@include media-query($on-palm) {
+		margin-left: -webkit-calc((100% - #{$widget-percent}) / 2 - #{$codeline-width} + 10px);
+		margin-left:         calc((100% - #{$widget-percent}) / 2 - #{$codeline-width} + 10px);
+	}
+}
+
+// comment
 
 .listing-name {
   color: $listing-attach-color;
@@ -34,11 +46,15 @@ div.codeline {
 }
 
 .with_caption {
-	padding-top: 2.4rem;
+	margin-top: 5px !important;
 
 	> pre {
-		padding-top: 2.4rem;
-		margin-top: -2.4rem;
+		padding-top: calc(#{$listing-name-height} + 8px/*pre padding-top*/);
+		padding-bottom: 8px/*pre padding-top*/;
+	}
+
+	@include media-query($on-palm) {
+		margin-top: 2px !important;
 	}
 }
 
@@ -49,6 +65,10 @@ div.codeline {
 	margin-bottom: 20px;
 	overflow: hidden;
 	max-width: $widget-percent;
+
+	@include media-query($on-palm) {
+		max-width: none;
+	}
 
 	/* http://mattn.kaoriya.net/software/20160215110235.htm */
 	.c { color: #586E75 } /* Comment */
