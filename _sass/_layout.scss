@@ -3,9 +3,6 @@
  */
 .page-content {
     padding: $spacing-unit 0;
-	@include media-query($on-palm) {
-		padding-top: 65pt;
-	}
 }
 
 .page-heading {
