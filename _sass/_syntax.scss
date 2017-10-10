@@ -1,4 +1,4 @@
-$codeline-width: 2.4rem;
+$codeline-width: 2rem;
 
 code {
 	margin: 0px 5px 0px 5px;
@@ -23,7 +23,15 @@ div.codeline {
 		line-height: normal;
 		background: $listing-attach-background;
 		border-radius: unset;
+		padding-left: 5px;
 }}
+
+.listing-name {
+  color: $listing-attach-color;
+  background: $listing-attach-background;
+  padding: 0.3rem 0.3rem 0rem 0.3rem;
+  line-height: 1.3;
+}
 
 .with_caption {
 	padding-top: 2.4rem;
