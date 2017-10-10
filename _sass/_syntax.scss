@@ -49,7 +49,7 @@ div.codeline {
 	margin-top: 5px !important;
 
 	> pre {
-		padding-top: calc(#{$listing-name-height} + 8px/*pre padding-top*/);
+		padding-top: calc(1.3rem + 8px/*pre padding-top*/);
 		padding-bottom: 8px/*pre padding-top*/;
 	}
 
