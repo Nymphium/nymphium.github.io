@@ -36,8 +36,6 @@ div.codeline {
 	}
 }
 
-// comment
-
 .listing-name {
   color: $listing-attach-color;
   background: $listing-attach-background;
@@ -49,12 +47,8 @@ div.codeline {
 	margin-top: 5px !important;
 
 	> pre {
-		padding-top: calc(1.3rem + 8px/*pre padding-top*/);
+		padding-top: 2.1rem/* from top of caption to line number */;
 		padding-bottom: 8px/*pre padding-top*/;
-	}
-
-	@include media-query($on-palm) {
-		margin-top: 2px !important;
 	}
 }
 
