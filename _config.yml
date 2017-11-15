@@ -8,6 +8,8 @@ exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "
 plugins:
   - jemoji
   - jekyll-gist
+sass:
+  style: compressed
 markdown: redcarpet
 redcarpet:
   extensions: ["tables", "autolink", "with_toc_data", "footnotes", "strikethrough", "no_intra_emphasis", "smart"]
