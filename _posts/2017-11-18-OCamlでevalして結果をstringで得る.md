@@ -17,8 +17,7 @@ tags: [OCaml]
 
 以下引用(upop上で動くよ)｡
 
-[label:fig-origeval]
-```ocaml:eval
+```ocaml:eval[label:fig-origeval]
 #require "compiler-libs" (* Assuming you're using utop, if compiling then this is the package you need *)
 let eval code =
   let as_buf = Lexing.from_string code in
