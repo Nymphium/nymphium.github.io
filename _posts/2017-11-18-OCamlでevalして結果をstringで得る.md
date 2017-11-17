@@ -55,7 +55,7 @@ evaってるのは`Toploop.execute_phrase`で､戻り値はランタイムエ�
 [stdlib/format.ml#L1038](https://github.com/ocaml/ocaml/blob/trunk/stdlib/format.ml#L1038)で定義されている｡
 `formatter_of_out_channel`が何者か辿ってみると､
 
-```ocaml:formatter_of_out_channel(stdlib/format.ml#1018)
+```ocaml:formatter_of_out_channel(stdlib/format.ml#L1018)
 let formatter_of_out_channel oc =
   make_formatter (output_substring oc) (fun () -> flush oc)
 ```
@@ -65,7 +65,7 @@ let formatter_of_out_channel oc =
 この`make_formatter`って使えそうだなと思って定義を見てみるが全くわからない｡
 幸運にも､`formatter_of_out_channel`の真下にわかりやすい例がある｡
 
-```ocaml:formatter_of_buffer(stdlib/format.ml#1023)
+```ocaml:formatter_of_buffer(stdlib/format.ml#L1023)
 let formatter_of_buffer b =
   make_formatter (Buffer.add_substring b) ignore
 ```
