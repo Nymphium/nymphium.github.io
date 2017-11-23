@@ -108,6 +108,9 @@ utop # eval "int_of_char 'a';;";;
 
 その前に`Toploop.execute_phrase`に渡している`bool`は､実行結果をフォーマッターに渡すか否かですはい解散
 
+#! 追記20171118
+こんなことしなくても`Format.str_formatter`と`Format.flush_str_formatter`という便利なものがあってじゃな…｡
+
 ---
 
 『ブレードランナー 2049』観に行きましたが全部最高でした｡
