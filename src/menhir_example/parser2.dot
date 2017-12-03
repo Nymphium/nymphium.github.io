@@ -1,0 +1,26 @@
+digraph G {
+orientation = landscape;
+rankdir = LR;
+ratio = compress;
+nt0 [ label="parse'" ] ;
+nt1 [ label="term" ] ;
+nt2 [ label="separated_nonempty_list(COMMA,term)" ] ;
+nt3 [ label="parse" ] ;
+nt4 [ label="lst" ] ;
+nt5 [ label="loption(separated_nonempty_list(COMMA,term))" ] ;
+nt6 [ label="lamb" ] ;
+nt7 [ label="app" ] ;
+nt0 -> nt3 [ label="" ] ;
+nt1 -> nt1 [ label="" ] ;
+nt1 -> nt4 [ label="" ] ;
+nt1 -> nt6 [ label="" ] ;
+nt1 -> nt7 [ label="" ] ;
+nt2 -> nt1 [ label="" ] ;
+nt2 -> nt2 [ label="" ] ;
+nt3 -> nt1 [ label="" ] ;
+nt4 -> nt5 [ label="" ] ;
+nt5 -> nt2 [ label="" ] ;
+nt6 -> nt1 [ label="" ] ;
+nt7 -> nt1 [ label="" ] ;
+
+}

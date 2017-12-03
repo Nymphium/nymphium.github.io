@@ -1,5 +1,6 @@
 title: lilyum ensemble
 author: Satoru Kawahara
+timezone: Asia/Tokyo
 description: lily, Aikatsu, Linux, Lua/MoonScript, and more
 keywords: lily,百合,Aikatsu,アイカツ,Linux,Lua,MoonScript
 image: pictures/github_icon.png
@@ -11,6 +12,8 @@ plugins:
 sass:
   style: compressed
 markdown: redcarpet
+mathjax: true
 redcarpet:
-  extensions: ["tables", "autolink", "with_toc_data", "footnotes", "strikethrough", "no_intra_emphasis", "smart"]
+  extensions: ["tables", "autolink", "with_toc_data", "footnotes", "strikethrough", "no_intra_emphasis", "smart", "mathjax"]
 
+future: true
