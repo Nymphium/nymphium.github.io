@@ -47,7 +47,6 @@ lambda{|content|
 			end
 
 			if ref = txt.match(/<(?<disp>[^>]+)>\s*\[ref\s*:\s*(?<refl>[a-zA-Z][^\]]*)\s*\]/)
-				puts ref
 				esc = ref[:refl]
 				disp = ref[:disp]
 				txt.sub!(/<[^>]+>\s*\[ref\s*:\s*[a-zA-Z][^\]]*\s*\]/, "<a href=\"##{esc}\">#{disp}</a>")
