@@ -1,5 +1,3 @@
-require'nokogiri'
-
 lambda{|content|
 	in_listing = false
 	acc = ""

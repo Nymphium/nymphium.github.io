@@ -1,38 +1,27 @@
 # foo[label: hoge] (in section x.y.z) --> foo<label id="ref-hoge"/>
 # refer to [ref: hoge]  --> refer to <a href="ref-hoge">x.y.z</a>
 
-def vap s, ss, sss
-	s.to_s + ((ss == 0 and "") or ("." + ss.to_s) + (sss == 0 and "" or ("." + sss.to_s)))
+def vap s, num
+	sprintf "%d.%d", s, num
 end
 
 lambda{|content|
-	cont = ""
+	cont0, cont = "", ""
 	codeflag = false
-	secnum, subsecnum, subsubsecnum = 0, 0, 0
+	secnum, num = 0, 0
 
 	ref_val = {}
 
+	# phase 1: look labels
 	content.each_line {|txt|
 		if codeflag = (txt.match(/^\s*```(?!`)/) != nil) ^ codeflag
-			cont += txt
+			cont0 += txt
 			next
 		end
 
 		if txt.match(/^#\s*[^!#].*$/)
 			secnum += 1
-			subsecnum = 0
-			subsubsecnum = 0
-		end
-
-		## subsection
-		if txt.match(/^##\s*[^!#].*$/)
-			subsecnum += 1
-			subsubsecnum = 0
-		end
-
-		### subsubsection
-		if txt.match(/^###\s*[^!#].*$/)
-			subsubsecnum += 1
+			num = 0
 		end
 
 		convd = true
@@ -42,9 +31,29 @@ lambda{|content|
 			if label = txt.match(/\[label\s*:\s*([a-zA-Z][^\]]*)\s*\]/)
 				esc = label[1]
 				txt.sub!(/\[label\s*:\s*[a-zA-Z][^\]]*\]/, "<label id=\"#{esc}\"/>")
-				ref_val[esc] = vap secnum, subsecnum, subsubsecnum
+				num += 1
+				ref_val[esc] = vap secnum, num
 				convd = true
 			end
+		end
+
+		cont0 += txt
+	}
+
+
+	convd = false
+
+	# phase 2: look and replace ref
+	cont0.each_line {|txt|
+		if codeflag = (txt.match(/^\s*```(?!`)/) != nil) ^ codeflag
+			cont += txt
+			next
+		end
+
+		convd = true
+
+		while convd do
+			convd = false
 
 			if ref = txt.match(/<(?<disp>[^>]+)>\s*\[ref\s*:\s*(?<refl>[a-zA-Z][^\]]*)\s*\]/)
 				esc = ref[:refl]
