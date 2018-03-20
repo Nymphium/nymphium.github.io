@@ -2,7 +2,7 @@ require 'rake'
 require 'yaml'
 require 'time'
 
-BUNDLE = ENV["BUNDLE"] or "bundle"
+BUNDLE = ENV["BUNDLE"]&.length &.> 0 ? ENV["BUNDLE"] : "bundle"
 
 SOURCE = "."
 CONFIG = {
