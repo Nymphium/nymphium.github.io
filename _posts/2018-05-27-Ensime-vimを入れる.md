@@ -49,5 +49,16 @@ addSbtPlugin("org.ensime" % "sbt-ensime" % "2.6.0")
 
 sbtで`ensimeConfig`を実行すると､プロジェクトルートに`.ensime`が生成される｡
 
+## [neoformat](https://github.com/sbdchd/neoformat)
+フォーマッター｡ScalaもscalafmtがあればOK｡
+ただ何もしないとフォーマット時にファイル先頭にゴミが入るので以下をvimrcに追加
+
+```vim
+let g:neoformat_scala_scalafmt = {
+  \ 'exe': 'scalafmt',
+  \ 'replace': 1,
+  \ }
+```
+
 # おわりに
 人生おわった
