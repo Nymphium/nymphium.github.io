@@ -21,6 +21,7 @@ Vimでやろうとしたのは当然手元に(Neo)Vimがあるからだ｡
 シンタックスハイライトが寂しいので入れる｡
 
 ## [ensime-vim](https://github.com/ensime/ensime-vim)
+Scalaも補完がされてほしい｡
 VimでJava/Scalaというと､EclimというEclipseの情報をVimから引っ張ってグニャグニャするやつがありますが､俺達VimmerとしてはエディタのためにIDEを使うのはなんとなくはばかられる｡
 
 (中略)
