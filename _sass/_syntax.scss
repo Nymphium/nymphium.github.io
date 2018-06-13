@@ -26,6 +26,7 @@ div.codeline {
     background: $listing-attach-background;
     border-radius: unset;
     padding-left: 5px;
+    font-family: inherit;
 
     @include media-query($on-palm) {
       padding-right: 5px;
