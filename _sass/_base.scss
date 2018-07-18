@@ -159,6 +159,8 @@ article {
  * Links
  */
 a {
+  overflow: auto;
+
   color: $brand-color;
   text-decoration: none;
 

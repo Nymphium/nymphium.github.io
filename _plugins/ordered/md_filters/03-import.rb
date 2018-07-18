@@ -9,7 +9,7 @@ lambda{|content|
 		srcline += 1
 		if mtc = txt.match(/@importmd\((.+)\)/)
 			File.open(mtc[1]){|f|
-				newcontent += import f.read
+				newcontent += f.read
 			}
 
 			unless newcontent.match(/\n$/)
