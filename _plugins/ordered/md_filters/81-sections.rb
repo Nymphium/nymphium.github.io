@@ -1,3 +1,5 @@
+# switch with <!--sectionize on-->
+
 lambda{|section|
 	has_section = false
 	codeflag = false

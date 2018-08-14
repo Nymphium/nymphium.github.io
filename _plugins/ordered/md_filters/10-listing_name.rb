@@ -1,3 +1,7 @@
+# ```LANGUAGE:CAPTION
+# ...
+# ```
+
 lambda{|content|
 	in_listing = false
 	acc = ""

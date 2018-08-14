@@ -1,10 +1,6 @@
 # foo[label: hoge] (in section x.y.z) --> foo<label id="ref-hoge"/>
 # refer to [ref: hoge]  --> refer to <a href="ref-hoge">x.y.z</a>
-# [fnref n] --> <a href="#fn[n]">[n]</a>
-
-def vap s, num
-	sprintf "%d.%d", s, num
-end
+# [fnref: n] --> <a href="#fn[n]">[n]</a>
 
 lambda{|content|
 	cont0, cont = "", ""
@@ -33,7 +29,7 @@ lambda{|content|
 				esc = label[1]
 				txt.sub!(/\[label\s*:\s*[a-zA-Z][^\]]*\]/, "<label id=\"#{esc}\"/>")
 				num += 1
-				ref_val[esc] = vap secnum, num
+				ref_val[esc] = sprintf "%d.%d", secnum, num
 				convd = true
 			end
 		end
@@ -63,9 +59,9 @@ lambda{|content|
 				esc = ref[1]
 				txt.sub!(/\[ref\s*:\s*[a-zA-Z][^\]]*\s*\]/, "<a href=\"##{esc}\">#{ref_val[esc]}</a>")
 			# [fnref: n]
-			elsif ref = txt.match(/\[fnref\s*:\s+(\d+)\]/)
+			elsif ref = txt.match(/\[fnref\s*:\s*(\d+)\]/)
 				nth = ref[1]
-				txt.sub!(/\[fnref\s*:\s+(\d+)\]/, "[<a href=\"#fn#{nth}\">#{nth}</a>]")
+				txt.sub!(/\[fnref\s*:\s*(\d+)\]/, "[<a href=\"#fn#{nth}\">#{nth}</a>]")
 			else
 				convd = false
 			end

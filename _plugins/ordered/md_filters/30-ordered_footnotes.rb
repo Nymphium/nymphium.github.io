@@ -1,3 +1,5 @@
+# switch with <!--orderedfn--> pragma
+
 lambda{|content|
 	mcom = (/<!--+\s*orderedfn\s*--+>/)
 	in_code = false

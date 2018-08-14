@@ -1,21 +1,21 @@
-$mathjax-font: $base-font-weight $base-font-size 'Crimson Text', serif;
-$mathjax-color: #eee;
+$katex-font: 'Crimson Text', serif;
+$katex-color: #eee;
 
-.MathJax_Preview + .MathJax_Display {
+.katex {
+	padding: 2px 3px 2px 2px;
+	margin-left: 5px;
+	margin-right: 5px;
+	background: $katex-color !important;
+	font: $katex-font !important;
+}
+
+.katex-display {
 	padding-bottom: 5px !important;
 	padding-top: 5px !important;
 	margin: 0 auto !important;
 	max-width: $widget-percent !important;
-	background: $mathjax-color !important;
+	background: $katex-color !important;
 	overflow-x: auto !important;
-	font: $mathjax-font !important;
-	font-size: 125% !important;
-}
-
-.MathJax_Preview + .MathJax {
-	padding: 2px 3px 2px 2px;
-	margin-left: 5px;
-	margin-right: 5px;
-	background: $mathjax-color !important;
-	font: $mathjax-font !important;
+	font: $katex-font !important;
+	font-size: 110% !important;
 }

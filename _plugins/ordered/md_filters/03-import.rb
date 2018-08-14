@@ -1,3 +1,6 @@
+# @importmd(PATH/TO/MARKDOWN)
+# @importlisting[CAPTION](PATH/TO/CODE)
+
 lambda{|content|
 	newcontent = ""
 	srcline = 0
