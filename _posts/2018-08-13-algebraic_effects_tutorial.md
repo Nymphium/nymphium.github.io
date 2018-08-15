@@ -24,7 +24,7 @@ Plotkin氏(またお前か)が代数学的アプローチによる基盤を作�
 - [Eff](http://www.eff-lang.org/)
 
     algebraic effectsを言語機能として初めて設計された言語｡
-    MLスタイルのシンタックスでHinder-Milner型推論がある｡
+    MLスタイルのシンタックスでHindley-Milner型推論がある｡
 
     + impls
         * [matijapretnar/eff](https://github.com/matijapretnar/eff)[label: effinterp]
