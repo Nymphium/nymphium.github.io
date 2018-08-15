@@ -69,7 +69,7 @@ let _ =
 どういうことなんや｡
 素直な心を使うと､`(+)`は`int -> int -> int`､`3 + perform (Eff 4)`は`int`､`perform (Eff 4)`も`int`ということが考えられる｡
 なるほど`Eff`のシグネチャ`int -> int`は､矢印の左辺がeffectの引数､右辺はcontextのholeの型か｡
-`perform`は何??? ……じゃあ`Eff`は`(int -> int) eff`ということにして`perform`は`('a -> 'b) eff -> 'b`でどうだ､これでいいだろう!!!
+`perform`は何??? ……じゃあ`Eff`は`int -> int eff`ということにして`perform`は`'a eff -> 'a`でどうだ､これでいいだろう!!!
 という感じで推理していくと`4`という表示は`effect (Eff x) k -> print_int x; k x`という箇所で発射されたんじゃないかという感じがある｡
 `7`は`x -> print_int x`ですね｡
 [前回の記事](/2018/07/19/delimited-continuation%E3%81%AE%E5%A4%8F.html)を読んでもらえると分かるが､`handle e with (handlers)`がdelimiterで
