@@ -136,4 +136,4 @@ syntacticにきれいに､バグらず簡単に書ける､というありが�
 [^4]: Oleg Kiselyov, Amr Sabry, Cameron Swords. "Extensible Effeects: An Alternative to Monad Transformers." ACM SIGPLAN Notices. Vol. 48. No. 12. ACM, 2013.
 [^5]: Anderj Bauer, Matija Prentar. "Programming with algebraic effects and handlers." Journal of Logical and Algebraic Methods in Programming, 84(1), pp.108-123.
 [^6]: Dolan, Stephen, Spiros Eliopoulos, Daniel Hillerström, Anil Madhavapeddy, K. C. Sivaramakrishnan, Leo White. "Concurrent system programming with effect handlers." International Symposium on Trends in Functional Programming, pp. 98-117. Springer, Cham, 2017.
-[^7]: Kiselyov, Oleg, K. C. Sivaramakrishnan. "Eff directly in OCaml." ML Workshop. 2016.
+[^7]: Oleg Kiselyov, K. C. Sivaramakrishnan. "Eff directly in OCaml." ML Workshop. 2016.
