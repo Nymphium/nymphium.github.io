@@ -1,0 +1,39 @@
+\documentclass{ltjsarticle}
+\usepackage{subfiles}
+
+\usepackage[%
+  pdfencoding=auto
+, hypertexnames=false% (0)を入れるとこの行を追加しないとbookmarksが壊れる
+, luatex]{hyperref}
+
+\makeatletter
+\renewcommand{\maketitle}{ %
+  \clearpage
+  \phantomsection% (1)を入れるとこの行を追加しないとbookmarksが壊れる
+  \addcontentsline{toc}{part}{{\large \@title}}% (1) tocとしおりに記事タイトルを追加
+  \newpage\null
+  \vskip 2em
+  \begin{center}%
+    \let\footnote\thanks
+    {\LARGE \textbf{\@title} \par}%
+    \vskip 1.5em
+    {\large
+      \lineskip .5em
+        \begin{flushright}
+          \@author
+        \end{flushright}
+      \par}%
+  \end{center}%
+  \par\vskip 1.5em
+  \ifvoid\@abstractbox\else\centerline{\box\@abstractbox}\vskip1.5em\fi
+  \setcounter{section}{0}% (0) カウンタを初期化
+  \setcounter{subsection}{0}
+  \setcounter{subsubsection}{0}
+  \setcounter{footnote}{0}
+}
+\makeatother
+
+\begin{document}
+\subfile{authors/ore/main.tex}
+\subfile{authors/other/main.tex}
+\end{document}

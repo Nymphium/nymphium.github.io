@@ -5,7 +5,10 @@ set -e
 
 filename=${1}
 articlename=${2:-${1}}
-postfilename=$(date +"%Y-%m-%d-${filename}")
+year=$(date +%Y)
+month=$(date +%m)
+date=$(date +%d)
+postfilename="${year}-${month}-${date}-${filename}"
 
 picdir="pictures"
 postdir="_posts"
@@ -13,7 +16,7 @@ postdir="_posts"
 [ ! "${1}" ] && filename="temp"
 
 
-mkdir "${picdir}/${postfilename}"
+mkdir -p "${picdir}/${year}/${month}/${date}/${filename}"
 
 cat <<EOL > "${postdir}/${postfilename}.md"
 ---
