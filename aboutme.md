@@ -9,7 +9,7 @@ tags: {}
 - GitHub: https://github.com/Nymphium
 
 # Summary
-I'm a graduate student at University of Tsukuba, belonging to [Program Logic Group](http://logic.cs.tsukuba.ac.jp).
+I'm a graduate student at University of Tsukuba, belonging to [Programming Logic Group](http://logic.cs.tsukuba.ac.jp).
 My research target is functional programming language and that mechanisms, especially program conversion, control operators and algebraic effects.
 
 # Main works
