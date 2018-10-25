@@ -10,7 +10,7 @@ tags: {}
 
 # Summary
 I'm a graduate student at University of Tsukuba, belonging to [Programming Logic Group](http://logic.cs.tsukuba.ac.jp).
-My research target is functional programming language and that mechanisms, especially program conversion, control operators and algebraic effects.
+My research target is functional programming language and that mechanisms, especially program conversion, control operators, delimited continuation and algebraic effects.
 
 # Main works
 ## llix
@@ -48,6 +48,12 @@ We taclke to the relationship about asymmetric coroutines and algebraic effects.
 
 Poster session at [JSSST2018](https://jssst2018.wordpress.com/): [ワンショットの限定継続に着目した代数的効果から非対称コルーチンへの変換](http://logic.cs.tsukuba.ac.jp/~sat/pdf/jssst2018.pdf)
 
+# Work carrer
+- National Institute of Advanced Industrial Science and Technology, 09/2014 ~ 02/2015
+- AgilePoint Japan, 05/2015 ~ 11/2018
+- HERP, inc. 11/2018 ~
+- Linux Development head office, Fujitsu, as an internship, 09/2015 ~ 10/2015
+
 # Publication
 ## 『つくってかんたんVM-Based Interpreter』 from 『Dragon University 技術書典5』
 This column focuses on how to design virtual machine-based interpreter and implement it.
@@ -55,12 +61,6 @@ You can learn the formalization of the VM state and the compilation rules from t
 
 The book gives an implementation of toy language and you can see [the source code](https://github.com/Nymphium/techbookfest5-toylang).
 You can purchase [here](https://dragonuniversity.booth.pm/items/1055860).
-
-# Work carrer
-- National Institute of Advanced Industrial Science and Technology, 09/2014 ~ 02/2015
-- AgilePoint Japan, 05/2015 ~ 11/2018
-- HERP, inc. 11/2018 ~
-- Linux Development head office, Fujitsu, as an internship, 09/2015 ~ 10/2015
 
 # IT Engineering Skills
 ## Languages
