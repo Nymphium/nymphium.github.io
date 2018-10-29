@@ -55,9 +55,8 @@ task :deploy do
 
 	puts "# commit & push submodule"
 	sh "git submodule foreach git add -A"
-	sh "git submodule foreach git commit -m \"#{message}\" || :"
+	sh "git submodule foreach git commit -m \"#{message}\" --allow-empty"
 	sh "git submodule foreach git push origin master"
-	sh "git submodule update"
 
 	puts "# Push to source branch of GitHub"
 	sh "git add -A"
