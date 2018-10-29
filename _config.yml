@@ -6,7 +6,7 @@ keywords: lily,百合,Aikatsu,アイカツ,Linux,Lua,MoonScript,言語処理系,
 encoding: utf-8
 image: pictures/github_icon.png
 url: "https://nymphium.github.io"
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "vendor", "Gemfile", "Gemfile.lock", "_bin", "slides.rb", ".sass-cache", "twicache"]
+exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "vendor", "Gemfile", "Gemfile.lock", "_bin", "slides.rb", ".sass-cache", "twicache", "about/"]
 plugins:
   - jemoji
   - jekyll-gist
