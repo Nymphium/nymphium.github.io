@@ -60,7 +60,7 @@ task :deploy do
 	puts "# Push to source branch of GitHub"
 	sh "git add -A"
 	sh "git commit -m \"#{message}\" --allow-empty"
-	sh "git push origin --recurse-submodules=on-demand"
+	sh "git push origin --recurse-submodules=on-demand source"
 	sh "rm about/*"
 
 	sh "git checkout master"
