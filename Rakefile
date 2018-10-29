@@ -63,6 +63,7 @@ task :deploy do
 	sh "git add -A"
 	sh "git commit -m \"#{message}\" --allow-empty"
 	sh "git push origin source:source"
+	sh "rm about/*"
 
 	sh "git checkout master"
 	sh "rm -rf $(ls | grep -v .git)"
