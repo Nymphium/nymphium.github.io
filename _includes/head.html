@@ -2,7 +2,6 @@
     <title>{% if page.title %}{{ page.title | escape }} &#47; {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
     <meta content="text/html;charset=UTF-8" http-equiv="content-type">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Satoru Kawahara">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="{{ site.title }}">
     <meta name="twitter:creator" content="Satoru Kawahara"> {% if page.title %}
@@ -14,9 +13,7 @@
     <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">{% if page.image %}
     <meta name="twitter:image:src" content="{{ site.url }}/pictures/{{ page.image }}">{% else %}
     <meta name="twitter:image:src" content="{{ site.url }}/pictures/github_icon.png">{% endif %}
-    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet">
     {% seo %}{% if page.tags %}
