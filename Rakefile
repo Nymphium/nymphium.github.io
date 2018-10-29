@@ -56,11 +56,13 @@ task :deploy do
 	puts "# commit & push submodule"
 	sh "git submodule foreach git add -A"
 	sh "git submodule foreach git commit -m \"#{message}\" --allow-empty"
+	sh "cd about/ && git push origin master && cd .."
+	sh "git submodule update"
 
 	puts "# Push to source branch of GitHub"
 	sh "git add -A"
 	sh "git commit -m \"#{message}\" --allow-empty"
-	sh "git push origin --recurse-submodules=on-demand source"
+	sh "git push origin source:source"
 	sh "rm about/*"
 
 	sh "git checkout master"
