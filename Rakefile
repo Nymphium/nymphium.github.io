@@ -51,11 +51,16 @@ task :deploy do
 	sh "mkdir -p #{dir}"
 	sh "mv _site/* #{dir}"
 
-	# push source branch (source file)
+	message = "deploy at #{Time.now}"
+
+	puts "commit & push submodule"
+	sh "git submodule foreach git add -A"
+	sh "git submodule foreach git commit -m \"#{message}\""
+	sh "git submodule foreach git push origin master"
+
 	puts "Push to source branch of GitHub"
 	sh "git add -A"
-	message = "deploy at #{Time.now}"
-	sh "git commit -m \"#{message}\" --allow-empty"
+	sh "git commit -m \"#{message}\""
 	sh "git push origin source:source"
 
 	sh "git checkout master"
@@ -63,7 +68,6 @@ task :deploy do
 	sh "cp -r #{dir}/* ."
 	puts "Push to master branch of GitHub"
 	sh "git add *"
-	message = "deploy at #{Time.now}"
 	begin
 		sh "git commit -m \"#{message}\" --allow-empty "
 		sh "git push -f origin master"
