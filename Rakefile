@@ -45,7 +45,7 @@ end #JB
 desc "Begin a push static file to GitHub"
 task :deploy do
 	dir = "/tmp/" + `echo $$`.chomp
-	puts "Build..."
+	puts "# Build..."
 	sh "_bin/twicardpic_update"
 	sh "JEKYLL_ENV=production #{BUNDLE} exec jekyll build"
 	sh "mkdir -p #{dir}"
@@ -53,26 +53,27 @@ task :deploy do
 
 	message = "deploy at #{Time.now}"
 
-	puts "commit & push submodule"
+	puts "# commit & push submodule"
 	sh "git submodule foreach git add -A"
-	sh "git submodule foreach git commit -m \"#{message}\""
+	sh "git submodule foreach git commit -m \"#{message}\" || :"
 	sh "git submodule foreach git push origin master"
+	sh "git submodule update"
 
-	puts "Push to source branch of GitHub"
+	puts "# Push to source branch of GitHub"
 	sh "git add -A"
-	sh "git commit -m \"#{message}\""
+	sh "git commit -m \"#{message}\" --allow-empty"
 	sh "git push origin source:source"
 
 	sh "git checkout master"
 	sh "rm -rf $(ls | grep -v .git)"
 	sh "cp -r #{dir}/* ."
-	puts "Push to master branch of GitHub"
+	puts "# Push to master branch of GitHub"
 	sh "git add *"
 	begin
 		sh "git commit -m \"#{message}\" --allow-empty "
 		sh "git push -f origin master"
 	rescue Exception => _
-		puts "! Error - git command abort"
+		puts "# ! Error - git command abort"
 		sh "git checkout source"
 		sh "rm -rf #{dir}"
 		exit - 1
