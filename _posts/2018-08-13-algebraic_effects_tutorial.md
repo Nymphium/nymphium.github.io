@@ -128,6 +128,14 @@ syntacticにきれいに､バグらず簡単に書ける､というありが�
 # おわりに
 また情報量が0になってしまった……!!!
 
+#! 追記20181030
+ReactにHooksという機能が追加されたがこれはまさにAlgebraic Effectsということで､ReactはさておきAlgebraic Effectsに関してもう少し実例を交えて詳しいものをQiitaに発射した｡
+
+[Algebraic Effectsとは? 出身は? 使い方は? その特徴とは? 調べてみました! - Qiita](https://qiita.com/Nymphium/items/e6ce580da8b87ded912b)
+
+追記おわり
+
+---
 
 
 [^1]: Matija Prentar. "An Introduction to Algebraic Effects and Handlers." Electronic Notes in Theoretical Computer Science 319. 2015.
