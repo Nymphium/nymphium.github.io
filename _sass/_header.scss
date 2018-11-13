@@ -56,13 +56,24 @@ $nav-height: 56px;
 
 		position: absolute;
 		right: 0;
-		background: (0, 0, 0, 0);
+		background: $background-color-transp;
 		border-left: 1px solid $grey-color-light;
+		border-bottom: 1px solid $grey-color-light;
 		text-align: right;
+		transition: all 0s ease;
 
-		&:hover .trigger {
+		top: -84px;
+
+		&:hover {
+			top: 0px;
+		}
+
+		&:after {
+			font-size: $base-font-size * 1.2;
+			text-align: center;
+			content: "≡";
 			display: block;
-			padding-bottom: 5px;
+			top: 0;
 		}
 
 		.page-link {
