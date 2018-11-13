@@ -60,12 +60,11 @@ $nav-height: 56px;
 		border-left: 1px solid $grey-color-light;
 		border-bottom: 1px solid $grey-color-light;
 		text-align: right;
-		transition: all 0s ease;
+		transition: .3s ease-in-out;
+		transform: translateY(-84px);
 
-		top: -84px;
-
-		&:hover {
-			top: 0px;
+		&:active, &:hover {
+			transform: translateY(0px);
 		}
 
 		&:after {
