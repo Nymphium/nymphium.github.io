@@ -53,12 +53,6 @@ task :deploy do
 
 	message = "deploy at #{Time.now}"
 
-	puts "# commit & push submodule"
-	sh "git submodule foreach git add -A"
-	sh "git submodule foreach git commit -m \"#{message}\" --allow-empty"
-	sh "cd about/ && git push origin master && cd .."
-	sh "git submodule update"
-
 	puts "# Push to source branch of GitHub"
 	sh "git add -A"
 	sh "git commit -m \"#{message}\" --allow-empty"
@@ -80,7 +74,6 @@ task :deploy do
 		exit - 1
 	end
 	sh "git checkout source"
-	sh "git submodule update"
 	sh "rm -rf #{dir}"
 end
 
