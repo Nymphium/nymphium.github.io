@@ -74,6 +74,7 @@ task :deploy do
 		exit - 1
 	end
 	sh "git checkout source"
+	sh "git submodule update"
 	sh "rm -rf #{dir}"
 end
 
