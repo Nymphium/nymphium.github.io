@@ -1,22 +1,50 @@
 #!/bin/bash
 
-
 set -e
 
-filename=${1}
-articlename=${2:-${1}}
 year=$(date +%Y)
 month=$(date +%m)
 date=$(date +%d)
-postfilename="${year}-${month}-${date}-${filename}"
+timestamp=${year}-${month}-${date}
+postdir="_posts"
+
+while getopts ":d::D" OPT; do
+  case "${OPT}" in
+    D) # as draft
+      postdir="_drafts"
+      ;;
+    d)
+      sdate=${OPTARG/Y/${year}}
+      sdate=${sdate/M/${month}}
+
+      if [[ ! "${sdate}" =~ \d{4}-\d{2}-\d{2} ]]; then
+        timestamp=$sdate
+        arr=($(echo ${timestamp//-/ }))
+        year=${arr[0]}
+        month=${arr[1]}
+        date=${arr[2]}
+      else
+        echo "invalid date expression: '${OPTARG}'"
+        exit 1
+      fi
+      ;;
+  esac
+done
+
+shift $(($OPTIND - 1))
+
+filename=${1}
+articlename=${2:-${1}}
+postfilename="${timestamp}-${filename}"
 
 picdir="pictures"
-postdir="_posts"
 
 [ ! "${1}" ] && filename="temp"
 
 
-mkdir -p "${picdir}/${year}/${month}/${date}/${filename}"
+mkdir -p \
+  "${postdir}" \
+  "${picdir}/${year}/${month}/${date}/${filename}"
 
 cat <<EOL > "${postdir}/${postfilename}.md"
 ---
