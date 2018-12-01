@@ -75,7 +75,7 @@ lambda{|content|
 			# [fnref: n]
 			elsif ref = txt.match(/\[fnref\s*:\s*(\d+)\]/)
 				nth = ref[1]
-				txt.sub!(/\[fnref\s*:\s*(\d+)\]/, "[<a href=\"#fn#{nth}\">#{nth}</a>]")
+				txt.sub!(/\[fnref\s*:\s*(\d+)\]/, "[<a id=\"fnref#{nth}\" href=\"#fn#{nth}\">#{nth}</a>]")
 			else
 				convd = false
 			end
