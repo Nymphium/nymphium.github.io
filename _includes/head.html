@@ -5,7 +5,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="{{ site.title }}">
     <meta name="twitter:creator" content="Satoru Kawahara"> {% if page.title %}
-    <meta name="twitter:title" content="{{ page.title }}"> {% else %}
+    <meta name="twitter:title" content="{{ page.title }} - {{ site.title }}"> {% else %}
     <meta name="twitter:title" content="{{ site.title }}"> {% endif %}{% if page.url %}
     <meta name="twitter:url" content="{{ site.url }}{{ page.url }}"> {% endif %}
     <meta name="twitter:text:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">{% if page.thumb %}
