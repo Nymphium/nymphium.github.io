@@ -5,7 +5,24 @@
 lambda{|content|
 	cont0, cont = "", ""
 	codeflag = false
-	secnum, num = 0, 0
+	@secnum, @num = 0, 0
+
+	@isSectionized = !!content.match(/<!--+\s*sectionize on\s*--+>/)
+
+	def secIncr line
+		if @isSectionized and line.match(/^#\s*[^!#].*$/)
+			@secnum += 1
+			@num = 0
+		end
+	end
+
+	def render
+		if @isSectionized
+			sprintf "%d.%d", @secnum, @num
+		else
+			@num.to_s
+		end
+	end
 
 	ref_val = {}
 
@@ -16,10 +33,7 @@ lambda{|content|
 			next
 		end
 
-		if txt.match(/^#\s*[^!#].*$/)
-			secnum += 1
-			num = 0
-		end
+		secIncr txt
 
 		convd = true
 
@@ -28,8 +42,8 @@ lambda{|content|
 			if label = txt.match(/\[label\s*:\s*([a-zA-Z][^\]]*)\s*\]/)
 				esc = label[1]
 				txt.sub!(/\[label\s*:\s*[a-zA-Z][^\]]*\]/, "<label id=\"#{esc}\"/>")
-				num += 1
-				ref_val[esc] = sprintf "%d.%d", secnum, num
+				@num += 1
+				ref_val[esc] = render
 				convd = true
 			end
 		end
