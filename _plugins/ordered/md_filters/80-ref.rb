@@ -3,6 +3,10 @@
 # [fnref: n] --> <a href="#fn[n]">[n]</a>
 
 lambda{|content|
+	if ! content.match(/\[fnref\s*:\s*\d+\]|\[(ref|label)\s*:\s*[^\]\s]+\]/)
+		return content
+	end
+
 	cont0, cont = "", ""
 	codeflag = false
 	@secnum, @num = 0, 0
