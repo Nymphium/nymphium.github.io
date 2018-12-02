@@ -5,7 +5,8 @@
     <meta name="format-detection" content="telephone=no">
 
     <title>{% if page.title %}{{ page.title | escape }} - {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>{% if page.tags %}
-    <meta name="keywords" content="{{ page.tags | join: "," }}">{% endif %}
+    <meta name="keywords" content="{{ page.tags | join: "," }}">{% endif %}{% if page.thumb %}
+    <meta name="thumbnail" content="{{ site.url }}/pictures{{ page.id }}/thumb.png">{% endif %}
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="{{ site.title }}">
