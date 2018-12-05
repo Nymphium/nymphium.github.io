@@ -8,8 +8,14 @@ date=$(date +%d)
 timestamp=${year}-${month}-${date}
 postdir="_posts"
 
-while getopts ":d::D" OPT; do
+while getopts ":d::D:h" OPT; do
   case "${OPT}" in
+    h)
+      cat <<EOL
+articlegen [ -D ][ -d YYYY-MM-DD ] title
+EOL
+      exit 1
+      ;;
     D) # as draft
       postdir="_drafts"
       ;;
@@ -38,13 +44,15 @@ articlename=${2:-${1}}
 postfilename="${timestamp}-${filename}"
 
 picdir="pictures"
+srcdir="src"
 
 [ ! "${1}" ] && filename="temp"
 
 
 mkdir -p \
   "${postdir}" \
-  "${picdir}/${year}/${month}/${date}/${filename}"
+  "${picdir}/${year}/${month}/${date}/${filename}" \
+  "${srcdir}/${year}/${month}/${date}/${filename}"
 
 cat <<EOL > "${postdir}/${postfilename}.md"
 ---

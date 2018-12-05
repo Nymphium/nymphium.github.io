@@ -10,4 +10,4 @@ gem 'jekyll'
 gem 'jekyll-gist'
 gem 'redcarpet'
 gem 'jekyll-seo-tag'
-
+gem 'jekyll-target-blank'
