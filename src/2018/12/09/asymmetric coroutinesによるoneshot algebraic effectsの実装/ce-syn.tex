@@ -1,10 +1,9 @@
 \begin{array}{rrl}
 x & \in & \mathit{Variables}\\\\
 c & \in & \mathit{Constants}\\\\
-E & \in & \mathit{Effets}\\\\
 v & ::= & x \mid c \mid h \mid \lambda x. e\\\\
 e & ::= & v \mid v\ v \mid \mathtt{let}\ x=e\ \mathtt{in}\ e\\\\
-  &     & \mid \mathtt{inst}\ E \mid \mathtt{op}\ e \mid \mathtt{perform}\ e \mid \mathtt{with}\ h\ \mathtt{handle}\ e \\\\
+  &     & \mid \mathtt{inst}\ \left(\right) \mid \mathtt{perform}\ e \mid \mathtt{with}\ h\ \mathtt{handle}\ e \\\\
 h & ::= & \mathtt{handler}\ v\ \left(\mathtt{val}\ x \rightarrow e\right)\ \left(\left(x, k\right)\rightarrow e\right)
 \end{array}
 

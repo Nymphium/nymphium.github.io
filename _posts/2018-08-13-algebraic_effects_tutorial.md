@@ -4,7 +4,6 @@ title: Algebraic Effectsであそぼう
 tags: [OCaml, Algebraic Effects]
 ---
 
-<!--orderedfn-->
 <!--sectionize on-->
 
 こんにちは､びしょ〜じょです｡

@@ -1,6 +1,6 @@
 # foo[label: hoge] (in section x.y.z) --> foo<label id="ref-hoge"/>
 # refer to [ref: hoge]  --> refer to <a href="ref-hoge">x.y.z</a>
-# [fnref: n] --> <a href="#fn[n]">[n]</a>
+# [fnref: n] --> [<a href="#fn[n]">n</a>]
 
 lambda{|content|
 	if ! content.match(/\[fnref\s*:\s*\d+\]|\[(ref|label)\s*:\s*[^\]\s]+\]/)
@@ -79,7 +79,7 @@ lambda{|content|
 			# [fnref: n]
 			elsif ref = txt.match(/\[fnref\s*:\s*(\d+)\]/)
 				nth = ref[1]
-				txt.sub!(/\[fnref\s*:\s*(\d+)\]/, "[<a id=\"fnref#{nth}\" href=\"#fn#{nth}\">#{nth}</a>]")
+				txt.sub!(/\[fnref\s*:\s*(\d+)\]/, "<span class=\"cite\">[<fnref>[^#{nth}]</fnref>]</span>")
 			else
 				convd = false
 			end
