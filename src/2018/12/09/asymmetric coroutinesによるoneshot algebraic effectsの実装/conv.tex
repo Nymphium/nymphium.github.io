@@ -1,21 +1,21 @@
 \begin{array}{c}
-  \left[\left[e_{ce}\right]\right] = e_{\lambda \textit{cor}}\\\\
+  \left[\left[e_{ce}\right]\right]\eta = e_{\lambda \textit{cor}}\\\\
   \ \\\\
   \text{  // $c$ is anything to run coroutine at first, like \textit{nil}, $\left(\right)$, etc.}\\\\
   \begin{aligned}
-    \left[\left[x\right]\right] &= x \\\\
-    \left[\left[\textit{eff}\right]\right] &= \textit{eff}\\\\
-    \left[\left[\lambda x. e\right]\right] &= \lambda \left[\left[x\right]\right]. \left[\left[e\right]\right]\\\\
-    \left[\left[\mathtt{let}\ x = e\ \mathtt{in}\ e'\right]\right] &= \mathtt{let}\ \left[\left[x\right]\right] = \left[\left[e\right]\right]\ \mathtt{in}\ \left[\left[e'\right]\right]\\\\
-    \left[\left[v_1\ v_2\right]\right] &= \left[\left[v_1\right]\right]\ \left[\left[v_2\right]\right] \\\\
-    \left[\left[\mathtt{inst}\ \left(\right)\right]\right] &= \mathtt{inst}\ \left(\right)\\\\
-    \left[\left[\mathtt{perform}\ \text{\textit{eff}}\ v\right]\right] &= \mathtt{yield}\ \left(\text{\textit{Eff}}\left(\left[\left[\textit{eff}\right]\right], \left[\left[v\right]\right]\right)\right)\\\\
-    \left[\left[\mathtt{with}\ h\ \mathtt{handle}\ e\right]\right] &= \left[\left[h\right]\right]\ \left(\lambda c. \left[\left[e\right]\right]\right)\\\\
-    \left[\left[\mathtt{handler}\ \textit{eff}\ (\mathtt{val}\ x\rightarrow e_v) \ \left(\left(x, k\right) \rightarrow e_{\textit{eff}}\right) \right]\right]%
+    \left[\left[x\right]\right]\eta &= \eta(x) \\\\
+    \left[\left[\textit{eff}\right]\right]\eta &= \textit{eff}\\\\
+    \left[\left[\lambda x. e\right]\right]\eta &= \lambda x'. \left[\left[e\right]\right]\eta\left[x\mapsto x'\right] \\\\
+    \left[\left[\mathtt{let}\ x = e\ \mathtt{in}\ e'\right]\right]\eta &= \mathtt{let}\ x' = \left[\left[e\right]\right]\eta\ \mathtt{in}\ \left[\left[e'\right]\right]\eta\left[x\mapsto x'\right]\\\\
+    \left[\left[v_1\ v_2\right]\right]\eta &= \left(\left[\left[v_1\right]\right]\eta\right) \ \left(\left[\left[v_2\right]\right]\eta\right) \\\\
+    \left[\left[\mathtt{inst}\ \left(\right)\right]\right]\eta &= \mathtt{inst}\ \left(\right)\\\\
+    \left[\left[\mathtt{perform}\ \text{\textit{eff}}\ v\right]\right]\eta &= \mathtt{yield}\ \left(\text{\textit{Eff}}\left(\left[\left[\textit{eff}\right]\right]\eta, \left[\left[v\right]\right]\eta\right)\right)\\\\
+    \left[\left[\mathtt{with}\ h\ \mathtt{handle}\ e\right]\right]\eta &= \left[\left[h\right]\right]\eta\ \left(\lambda c. \left[\left[e\right]\right]\eta\right)\\\\
+    \left[\left[\mathtt{handler}\ \textit{eff}\ (\mathtt{val}\ x\rightarrow e_v) \ \left(\left(x, k\right) \rightarrow e_{\textit{eff}}\right) \right]\right]\eta%
                                                                    &= \\\\
-                                                                   & \mathtt{let}\ \textit{eff} = \left[\left[\textit{eff}\right]\right]\ \mathtt{in}\\\\
-                                                                   & \mathtt{let}\ \textit{vh} = \lambda \left[\left[x\right]\right]. \left[\left[e_v\right]\right] \ \mathtt{in}\\\\
-                                                                   & \mathtt{let}\ \textit{effh} = \lambda \left(\left(\left[\left[x\right]\right], \left[\left[k\right]\right]\right)\right). \left[\left[e_{\textit{eff}}\right]\right]\ \mathtt{in}\\\\
+                                                                   & \mathtt{let}\ \textit{eff} = \left[\left[\textit{eff}\right]\right]\eta\ \mathtt{in}\\\\
+                                                                   & \mathtt{let}\ \textit{vh} = \lambda x'. \left[\left[e_v\right]\right]\eta\left[x \mapsto x'\right] \ \mathtt{in}\\\\
+                                                                   & \mathtt{let}\ \textit{effh} = \lambda x'\ k'. \left[\left[e_{\textit{eff}}\right]\right]\eta\left[x \mapsto x', k \mapsto k'\right]\ \mathtt{in}\\\\
                                                                    & \lambda \textit{th}.\\\\
                                                                    & \quad \mathtt{let}\ \textit{co} = \mathtt{create}\ \textit{th}\ \mathtt{in} \\\\
                                                                    & \quad \quad  \mathtt{let\ rec}\ \textit{handle}\ r =\\\\

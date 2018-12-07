@@ -2,6 +2,7 @@
 layout: post
 title: Asymmetric CoroutinesによるOneshot Algebraic Effectsの実装
 tags: [Lua, Coroutines, Algebraic Effects, Advent Calendar]
+thumb: true
 ---
 
 <!--sectionize on-->
@@ -323,6 +324,7 @@ thunkを受け取ってコルーチンを作り､`resume`のラッパーとな�
 つまりこれは継続をネストさせている｡
 ますますCPSで実装したくなりますね｡
 実装に自信ニキはよろしくお願いします｡
+脳が発光しますね｡
 
 最後に`Val`が来た場合､中身を剥がしてvalue handlerに突っ込んでいる｡
 型がない世界でよかったですね｡
@@ -349,6 +351,125 @@ OCamlのように代数的な例外がないのも相まって散々な目にあ
 例外のハンドリングは一般にコストフル[^8]であり､Luaもご多分に漏れず遅い｡
 コントロールを全てコルーチンの操作だけでおこなった場合と例外でぴょんぴょんする場合のパフォーマンスを比較してみたいが､まぁ半分ナンセンスだし半分は筆者のやる気不足なので､多分速くなってるだろうということで終わる｡
 
+## デモ
+皆さん大好き[multiprompt shift/resetが実装できる](https://github.com/Nymphium/eff.lua/blob/master/example/shiftreset.lua)｡
+ただしエフェクトハンドラの継続をそのままつかっているので､継続の使用は高々1回に制限されている｡
+
+```lua
+local eff = require("eff")
+local Eff, perform, handler = eff.Eff, eff.perform, eff.handler
+
+local sr0
+do
+  local new_prompt = function()
+    local Shift0 = Eff("Shift0")
+
+    return {
+      take = function(f) return perform(Shift0(f)) end,
+      push = handler(Shift0,
+        function(v) return v end,
+        function(k, f)
+          return f(k)
+        end)
+    }
+  end
+
+  local reset_at = function(p, th)
+    return p.push(th)
+  end
+
+  local shift0_at = function(p, f)
+    return p.take(function(k) return f(k) end)
+  end
+
+  sr0 = {
+    new_prompt = new_prompt,
+    reset_at = reset_at,
+    shift0_at = shift0_at
+  }
+end
+```
+
+プロンプトごとに`Shift0`エフェクトインスタンスを作っている｡
+`handler`がそのまんまdelimiterになってるのがいいよね｡
+
+```lua
+local p = sr0.new_prompt()
+
+sr0.reset_at(p, function()
+  print(sr0.shift0_at(p, function(k)
+     k("Hello")
+     print("?")
+  end))
+
+  io.write("World")
+end)
+
+--[[ prints
+Hello
+World?
+--]]
+```
+
+だいぶ自然に書けているんじゃないでしょうか｡
+
+エフェクトの抽象化､実装の分離…[型クラス](https://github.com/Nymphium/eff.lua/blob/master/example/typeclass.lua)か?
+
+```lua
+local Map = Eff("Map")
+
+local map = function(f, fa)
+  return perform(Map(f, fa))
+end
+
+-- list map
+local lmaph = handler(Map,
+  function(v) return v end,
+  function(k, f, fa)
+    local newt = {}
+
+    for i, x in ipairs(fa) do
+      newt[i] = f(x)
+    end
+
+    return k(newt)
+  end)
+
+lmaph(function()
+  local t = map(function(x) return x * x end, {1, 2, 3, 4, 5})
+
+  for i = 1, #t do
+    print(t[i])
+  end
+end)
+
+-- string map
+local smaph = handler(Map,
+  function(v) return v end,
+  function(k, f, s)
+    local news = ""
+
+    for c in s:gmatch(".") do
+      news = news .. f(c)
+    end
+
+    return k(news)
+  end)
+
+smaph(function()
+  print(map(function(c) return c .. c end, "hello"))
+end)
+```
+
+Functorっぽいものを書いてるなと思ったが`smaph`をみると全然そんなことなく､自分でも困惑した｡
+Luaは残念ながら型のない世界なのでなんでもアリである｡
+
+# 関連研究
+Koka言語などをやっていってるLeijenによりC言語によるalgebraic effectsの実装[fnref:9]kがおこなわれている｡
+本稿と比較すると1ハンドラ1エフェクトや継続がワンショットなどの制限ががない一方､非常にユーザーアンフレンドリーな構文となっている｡
+そのためP言語などのコンパイラのターゲットという位置づけがなされている｡
+本稿では式指向の言語での変換をおこなっており､\\(\lambda_{\textit{cor}}\\)相当をサブセットとして持つ言語ならばsyntacticな辛さはない､と思う｡
+
 # おわりに
 本稿ではoneshot algebraic effectsからasymmetric coroutinesへの変換を提示した｡
 この変換を用いることで､asymmetric coroutinesを持つ言語でoneshot algebraic effectsを使用することが可能になる｡
@@ -367,3 +488,4 @@ OCamlのように代数的な例外がないのも相まって散々な目にあ
 [^6]: Dolan, Stephen, et al. "Effective concurrency through algebraic effects." OCaml Workshop. 2015.
 [^7]: Moura, Ana Lúcia De, and Roberto Ierusalimschy. "Revisiting coroutines." ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6.
 [^8]: 例外処理のある言語は概ねモダンであり､モダンな言語は比較的親切であり､親切な言語はエラーを吐くとスタックトレースを出してくれる｡ この新設のためにスタックトレースを記録するので遅くなる｡gotoとしての例外おおいに結構しかしパフォーマンスとしっかり勘案すること｡
+[^9]: Leijen, Daan. "Implementing Algebraic Effects in C." Asian Symposium on Programming Languages and Systems. Springer, Cham, 2017.
