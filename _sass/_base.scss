@@ -177,6 +177,19 @@ a {
   }
 }
 
+.headerlink {
+  &, &:link, &:visited, &:hover {
+    color: $text-color;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:before {
+    content: '📎 ';
+    font-size: 0.8em;
+  }
+}
 
 
 /**

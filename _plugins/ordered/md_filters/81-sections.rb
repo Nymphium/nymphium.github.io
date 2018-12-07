@@ -5,6 +5,10 @@ lambda{|section|
 	codeflag = false
 	secnum, subsecnum, subsubsecnum = 0, 0, 0
 
+	if !section.match(/<!--+\s*sectionize on\s*--+>/) then
+		return section
+	end
+
 	section.each_line{|txt|
 		next unless has_section = (txt.match(/<!--+\s*sectionize on\s*--+>/) != nil) || has_section
 		next if codeflag = (txt.match(/^\s*```(?!`)/) != nil) ^ codeflag
