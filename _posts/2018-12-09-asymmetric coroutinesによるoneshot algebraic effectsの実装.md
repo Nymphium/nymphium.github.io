@@ -492,7 +492,7 @@ Functorっぽいものを書いてるなと思ったが`smaph`をみると全然
 Luaは残念ながら型のない世界なのでなんでもアリである｡
 
 # 関連研究
-Koka言語などをやっていってるLeijenによりC言語によるalgebraic effectsの実装[fnref:9]kがおこなわれている｡
+Koka言語などをやっていってるLeijenによりC言語によるalgebraic effectsの実装[fnref:9]がおこなわれている｡
 本稿と比較すると1ハンドラ1エフェクトや継続がワンショットなどの制限ががない一方､非常にユーザーアンフレンドリーな構文となっている｡
 そのためP言語などのコンパイラのターゲットという位置づけがなされている｡
 本稿では式指向の言語での変換をおこなっており､\\(\lambda_{\textit{cor}}\\)相当をサブセットとして持つ言語ならばsyntacticな辛さはない､と思う｡
@@ -503,7 +503,7 @@ Koka言語などをやっていってるLeijenによりC言語によるalgebraic
 本稿ではすでにLuaによる実装を与えており､Luaはalgebraic effects-readyな状態となっている｡
 
 ただし本稿の変換の正しさについては証明されていない｡
-いまのところ "なんとなくうごいてる" 状態であり､とりあえずテストに[Multicore OCamlのチュートリアル](https://github.com/ocamllabs/ocaml-effects-tutorial)を実装することで正しく動いてそうなことを確認している｡
+いまのところ "なんとなくうごいてる" 状態であり､とりあえずテストに[Multicore OCamlのチュートリアル](https://github.com/ocamllabs/ocaml-effects-tutorial)[を実装する](https://github.com/Nymphium/eff.lua/tree/master/test)ことで正しく動いてそうなことを確認している｡
 未来のボクや､読者のみなさんに託されています｡
 2019年には本稿の変換の証明､あるいは間違った部分の指摘などが湧き出ることを願っている｡
 
