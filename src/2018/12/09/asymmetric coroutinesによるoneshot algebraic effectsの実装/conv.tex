@@ -18,36 +18,37 @@
                                                                    & \mathtt{let}\ \textit{effh} = \lambda x'\ k'. \left[\left[e_{\textit{eff}}\right]\right]\eta\left[x \mapsto x', k \mapsto k'\right]\ \mathtt{in}\\\\
                                                                    & \lambda \textit{th}.\\\\
                                                                    & \quad \mathtt{let}\ \textit{co} = \mathtt{create}\ \textit{th}\ \mathtt{in} \\\\
-                                                                   & \quad \quad  \mathtt{let\ rec}\ \textit{handle}\ r =\\\\
-                                                                   & \quad \qquad \mathtt{match}\ r\ \mathtt{with}\\\\
-                                                                   & \quad \qquad \mid \textit{Eff}\ \left(\textit{eff'}, v\right)\ \textit{when}\ \textit{eff'} = \textit{eff} \rightarrow\\\\
-                                                                   & \quad \qquad \quad \textit{effh}\ v\ (\lambda \textit{arg}.\\\\
-                                                                   & \quad \qquad \quad \mathtt{let}\ \textit{ret} =\textit{continue}\ \textit{arg}\ \mathtt{in}\\\\
-                                                                   & \quad \qquad \quad (\mathtt{match}\ \textit{ret}\ \mathtt{with}\\\\
-                                                                   & \quad \qquad \quad \mid \textit{Val}\ \text{\textunderscore} \rightarrow \textit{ret}\\\\
-                                                                   & \quad \qquad \quad \mid \text{\textunderscore} \rightarrow \textit{Val}\ \textit{ret}))\\\\
-                                                                   & \quad \qquad \mid \textit{Eff}\ \left(\text{\textunderscore}, \text{\textunderscore}\right)\rightarrow \mathtt{yield}\ \left(\textit{UncaughtEff}\ \left(r, \textit{continue}\right)\right)\\\\
-                                                                   & \quad \qquad \mid \textit{UncaughtEff}\ \left(\textit{Eff}\ \left(\textit{eff'}, v\right) , k\right) \ \textit{when}\ \textit{eff'} = \textit{eff} \rightarrow \\\\
-                                                                   & \quad \qquad \quad \textit{effh}\ v\ (\lambda \textit{arg}.\\\\
-                                                                   & \quad \qquad \qquad \mathtt{let}\ \textit{ret} = k\ \textit{arg} \ \mathtt{in}\\\\
-                                                                   & \quad \qquad \qquad \textit{continue}\ (\mathtt{match}\ \textit{ret} \ \mathtt{with}\\\\
-                                                                   & \quad \qquad \qquad \mid \textit{Val}\ \text{\textunderscore} \rightarrow \textit{ret}\\\\
-                                                                   & \quad \qquad \qquad \mid \text{\textunderscore} \rightarrow \textit{Val}\ \textit{ret}))\\\\
-                                                                   & \quad \qquad \mid \textit{UncaughtEff}\ (\textit{effv'}, k') \rightarrow\\\\ 
-                                                                   & \quad \qquad \qquad \mathtt{yield}\ (\textit{UncaughtEff}\ (\textit{effv'}, \lambda \textit{arg}.\\\\
-                                                                   & \quad \qquad \qquad \quad \mathtt{let}\ \textit{ret} = k'\ \textit{arg} \ \mathtt{in}\\\\
-                                                                   & \quad \qquad \qquad \quad \textit{continue}\ (\mathtt{match}\ \textit{ret} \ \mathtt{with}\\\\
-                                                                   & \quad \qquad \qquad \quad \mid \textit{Val}\ \text{\textunderscore} \rightarrow \textit{ret}\\\\
-                                                                   & \quad \qquad \qquad \quad \mid \text{\textunderscore} \rightarrow \textit{Val}\ \textit{ret}))) \\\\
-                                                                   & \quad \qquad \mid \text{\textunderscore} \rightarrow \textit{Val}\ \left(\textit{vh}\ r\right)\\\\
-                                                                   & \quad \quad  \mathtt{and}\ \textit{continue}\ \textit{arg} =\\\\
-                                                                   & \quad \qquad \mathtt{let}\ r = \mathtt{resume}\ \textit{arg}\ \mathtt{in}\\\\
-                                                                   & \quad \qquad \mathtt{match}\ r\ \mathtt{with}\\\\
-                                                                   & \quad \qquad \mid \textit{Val}\ v \rightarrow v\\\\
-                                                                   & \quad \qquad \mid \text{\textunderscore} \rightarrow \textit{handle}\ r\\\\
-                                                                   & \quad \quad  \mathtt{in}\\\\
-                                                                   & \quad \quad  \mathtt{match}\ \textit{continue}\ c\ \mathtt{with} \\\\
-                                                                   & \quad \quad  \mid \textit{Val}\ v \rightarrow v\\\\
-                                                                   & \quad \quad  \mid r \rightarrow r\\\\
+                                                                   & \quad  \mathtt{let\ rec}\ \textit{handle}\ r =\\\\
+                                                                   & \qquad \mathtt{match}\ r\ \mathtt{with}\\\\
+                                                                   & \qquad \mid \textit{Eff}\ \left(\textit{eff'}, v\right)\ \textit{when}\ \textit{eff'} = \textit{eff} \rightarrow\\\\
+                                                                   & \qquad \quad \textit{effh}\ v\ (\lambda \textit{arg}.\\\\
+                                                                   & \qquad \quad \mathtt{let}\ \textit{ret} =\textit{continue}\ \textit{arg}\ \mathtt{in}\\\\
+                                                                   & \qquad \quad (\mathtt{match}\ \textit{ret}\ \mathtt{with}\\\\
+                                                                   & \qquad \quad \mid \textit{Val}\ \text{\textunderscore} \rightarrow \textit{ret}\\\\
+                                                                   & \qquad \quad \mid \text{\textunderscore} \rightarrow \textit{Val}\ \textit{ret}))\\\\
+                                                                   & \qquad \mid \textit{Eff}\ \left(\text{\textunderscore}, \text{\textunderscore}\right)\rightarrow \mathtt{yield}\ \left(\textit{UncaughtEff}\ \left(r, \textit{continue}\right)\right)\\\\
+                                                                   & \qquad \mid \textit{UncaughtEff}\ \left(\textit{Eff}\ \left(\textit{eff'}, v\right) , k\right) \ \textit{when}\ \textit{eff'} = \textit{eff} \rightarrow \\\\
+                                                                   & \qquad \quad \textit{effh}\ v\ (\lambda \textit{arg}.\\\\
+                                                                   & \qquad \qquad \mathtt{let}\ \textit{ret} = k\ \textit{arg} \ \mathtt{in}\\\\
+                                                                   & \qquad \qquad \textit{continue}\ (\mathtt{match}\ \textit{ret} \ \mathtt{with}\\\\
+                                                                   & \qquad \qquad \mid \textit{Val}\ \text{\textunderscore} \rightarrow \textit{ret}\\\\
+                                                                   & \qquad \qquad \mid \text{\textunderscore} \rightarrow \textit{Val}\ \textit{ret}))\\\\
+                                                                   & \qquad \mid \textit{UncaughtEff}\ (\textit{effv'}, k') \rightarrow\\\\ 
+                                                                   & \qquad \qquad \mathtt{yield}\ (\textit{UncaughtEff}\ (\textit{effv'}, \lambda \textit{arg}.\\\\
+                                                                   & \qquad \qquad \quad \mathtt{let}\ \textit{ret} = k'\ \textit{arg} \ \mathtt{in}\\\\
+                                                                   & \qquad \qquad \quad \textit{continue}\ (\mathtt{match}\ \textit{ret} \ \mathtt{with}\\\\
+                                                                   & \qquad \qquad \quad \mid \textit{Val}\ \text{\textunderscore} \rightarrow \textit{ret}\\\\
+                                                                   & \qquad \qquad \quad \mid \text{\textunderscore} \rightarrow \textit{Val}\ \textit{ret}))) \\\\
+                                                                   & \qquad \mid \text{\textunderscore} \rightarrow \textit{Val}\ \left(\textit{vh}\ r\right)\\\\
+                                                                   & \quad  \mathtt{and}\ \textit{continue}\ \textit{arg} =\\\\
+                                                                   & \qquad \text{ // 追記20181209 resumeにcoを渡し忘れてたのを修正 } \\\\
+                                                                   & \qquad \mathtt{let}\ r = \mathtt{resume}\ \textit{co}\ \textit{arg}\ \mathtt{in}\\\\
+                                                                   & \qquad \mathtt{match}\ r\ \mathtt{with}\\\\
+                                                                   & \qquad \mid \textit{Val}\ v \rightarrow v\\\\
+                                                                   & \qquad \mid \text{\textunderscore} \rightarrow \textit{handle}\ r\\\\
+                                                                   & \quad  \mathtt{in}\\\\
+                                                                   & \quad  \mathtt{match}\ \textit{continue}\ c\ \mathtt{with} \\\\
+                                                                   & \quad  \mid \textit{Val}\ v \rightarrow v\\\\
+                                                                   & \quad  \mid r \rightarrow r\\\\
   \end{aligned}
 \end{array}

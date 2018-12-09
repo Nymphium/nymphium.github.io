@@ -280,6 +280,10 @@ thunk内でエフェクトを発生(`yield`)すると一時停止してハンド
 なのでとりあえず`create` & `resume`としてある｡
 
 ## 変換
+##! 追記20181209
+投稿即バグが見つかり泣きました｡
+まずは修正前をご覧ください｡
+追記suspend
 
 <div>
 <center>
@@ -328,6 +332,29 @@ thunkを受け取ってコルーチンを作り､`resume`のラッパーとな�
 
 最後に`Val`が来た場合､中身を剥がしてvalue handlerに突っ込んでいる｡
 型がない世界でよかったですね｡
+
+##! 追記20181209 resume
+多分これが一番正しいと思います｡
+
+<div>
+<center>
+[label:conv2]
+\\[
+@importmd(src{{page.id}}/conv2.tex)
+\\]
+図[ref:conv2]. the revision of the conversion
+</center>
+</div>
+
+`handler`だけの変更だが､だいぶダイエットに成功した｡
+`Val`タグはそもそも不要だったことがわかった｡
+`UncaughtEff`をハンドルしてる部分も様子が変わっている｡
+`UncaughtEff`が持ってきた継続をコルーチンでencapsulateして即走らせ､その値を`handle`に渡す､という関数を`effh`に継続として渡している｡
+`continue`を見るとだいたい同じことをやっており､encapsulateしない場合コルーチンを突き抜けて`yield`してしまうパターンがあった｡
+また現在の継続は`handle`が内部で`continue`を呼んでくれるため､わざわざ`continue`を引っ張る必要はなく､走らせる継続の戻り値は`handle`でハンドルするという元からの考えを使えばいいだけだった｡
+操作を継続の中に押し込んでいく感じが､なんとなく`Functor Free`を思わせる｡
+
+追記おわり
 
 #実装
 それでは改めて<リポジトリ>[ref:repo]の方を見てみよう｡
