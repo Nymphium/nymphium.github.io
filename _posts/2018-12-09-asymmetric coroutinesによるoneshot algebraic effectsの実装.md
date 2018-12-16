@@ -356,6 +356,25 @@ thunkを受け取ってコルーチンを作り､`resume`のラッパーとな�
 
 追記おわり
 
+#! 追記20181216
+さらに大学のゼミ発表などを経てコンパクトになりました｡
+
+<div>
+<center>
+[label:conv3]
+\\[
+@importmd(src{{page.id}}/conv3.tex)
+\\]
+図[ref:conv3]. the conversion v3.
+</center>
+</div>
+
+[ref:conv2]とは本質的に何も変わってません｡
+`continue`を汎用的なものにした｡
+これにより､処理がどうなってるかがより簡潔になったんじゃないでしょうか｡
+`handle`を連れ回すことで現在のハンドラによるハンドル処理を続けることができる｡
+`UncaughtEff`に渡す継続をコルーチンでencapsulateするのは､エフェクトの発生(`yield`)を再びキャッチするためである｡
+
 #実装
 それでは改めて<リポジトリ>[ref:repo]の方を見てみよう｡
 Asymmetric coroutinesと非常に縁の深いLuaにより実装した｡
