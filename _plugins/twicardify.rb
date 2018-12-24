@@ -32,7 +32,7 @@ def resizing base_size, txt
 end
 
 def render_twicard h
-  desc = resizing 130, h[:description]
+  desc = resizing 125, h[:description]
   title = h[:title]
 
   <<-HTML
