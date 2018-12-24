@@ -79,7 +79,7 @@ div.twicard {
   border: solid 0px;
   border-radius: 5px 5px 5px 5px / 5px 5px 5px 5px;
   width: 500px;
-  height: 130px;
+  height: 135px;
   background: white;
   margin-left: auto;
   margin-right: auto;
@@ -117,10 +117,14 @@ div.twicard {
       margin-bottom: 5px;
     }
 
+    & > .description {
+      font-size: smaller;
+    }
+
     vertical-align: top;
     width: 350px;
     margin-left: 5px;
-    max-height: 120px;
+    max-height: 125px;
   }
 
   & > span {

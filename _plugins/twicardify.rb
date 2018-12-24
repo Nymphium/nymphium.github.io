@@ -17,8 +17,8 @@ end
 
 def render_twicard h
   desc = h[:description]
-  if desc.length > 96
-    desc = desc.match(/^.{94}/)[0] + "..."
+  if desc.length > 130
+    desc = desc.match(/^.{125}/)[0] + "..."
   end
 
   title = h[:title]
