@@ -15,16 +15,25 @@ def head_extract head, attr, start_prop
   return Hash[*ret.flatten(1)]
 end
 
-def render_twicard h
-  desc = h[:description]
-  if desc.length > 130
-    desc = desc.match(/^.{125}/)[0] + "..."
-  end
+def resizing base_size, txt
+  if txt.bytesize > base_size*3
+    head = txt.match(Regexp.new "^.{#{base_size}}")[0]
+    difflen = head.bytesize - base_size*3
 
-  title = h[:title]
-  if title.length > 35
-    title = title.match(/^.{30}/)[0] + "..."
+    len = base_size
+    if difflen > 0
+      len -= (difflen / 3)
+    end
+
+    txt.match(Regexp.new "^.{#{len}}")[0] + "..."
+  else
+    txt
   end
+end
+
+def render_twicard h
+  desc = resizing 140, h[:description]
+  title = h[:title]
 
   <<-HTML
 <div class="twicard">

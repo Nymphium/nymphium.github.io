@@ -113,6 +113,11 @@ div.twicard {
 
   & > .txt {
     & > .title {
+      width: 350px;
+      white-space: nowrap;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
+
       font-weight: bold;
       margin-bottom: 5px;
     }
