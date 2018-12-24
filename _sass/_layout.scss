@@ -89,7 +89,7 @@ div.twicard {
   padding-bottom: 3px;
 
   & > .image {
-    & > div {
+    & > a > div {
       position:relative;
 
       & > img {
@@ -123,6 +123,10 @@ div.twicard {
     }
 
     & > .description {
+      width: 350px;
+      max-height: 100px;
+      overflow: hidden !important;
+
       font-size: smaller;
     }
 

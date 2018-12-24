@@ -32,12 +32,12 @@ def resizing base_size, txt
 end
 
 def render_twicard h
-  desc = resizing 125, h[:description]
+  desc = h[:description]
   title = h[:title]
 
   <<-HTML
 <div class="twicard">
-  <span class="image"><div><img src=#{h[:image]}></div></span>
+  <span class="image"><a href="#{h[:url]}" target="_blank" rel="noopener noreferrer"><div><img src=#{h[:image]}></div></a></span>
   <span class="txt">
     <div class="title"><a href="#{h[:url]}" target="_blank" rel="noopener noreferrer">#{title}</a></div>
     <div class="description">#{desc}</div>
