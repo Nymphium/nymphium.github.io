@@ -21,6 +21,6 @@
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}"/>
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
-{% seo title=false %}
+{% seo title=false,description=false %}
     <meta property="og:image" content="{% if page.thumb%}{{ site.url }}/pictures{{ page.id }}/thumb.png{% else %}{{site.url}}/pictures/github_icon.png{% endif %}"/>
   </head>
