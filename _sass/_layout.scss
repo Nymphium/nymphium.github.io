@@ -94,6 +94,7 @@ div.twicard {
 
       & > img {
         position: absolute;
+        overflow: hidden !important;
         top: 50%;
         left: 25%;
         -ms-transform: translate(-25%);
@@ -103,24 +104,17 @@ div.twicard {
         margin-bottom: 0px;
         max-width: 120px;
         max-height: 120px;
-
-        // @include media-query($on-palm) {
-        // }
       }
     }
 
     width: 120px;
     display: inline-block;
     vertical-align: middle;
-
-    @include media-query($on-palm) {
-
-    }
   }
 
   & > .txt {
     & > .title {
-      width: 350px;
+      width: 100%;
       white-space: nowrap;
       overflow: hidden !important;
       text-overflow: ellipsis;
@@ -130,7 +124,7 @@ div.twicard {
     }
 
     & > .description {
-      width: 350px;
+      width: 100%;
       max-height: 100px;
       overflow: hidden !important;
 
@@ -141,7 +135,6 @@ div.twicard {
     width: 350px;
     margin-left: 5px;
     max-height: 125px;
-
   }
 
   & > span {
@@ -150,22 +143,22 @@ div.twicard {
 
 
   @include media-query($on-palm) {
-    width: 480px;
+    width: 100%;
+    height: 100px;
 
     & > .image {
-      width: 100px;
+      width: 20%;
 
       & > a > div > img {
-        max-width: 100px;
-        max-height: 100px;
+        max-width: 100%;
       }
     }
 
     & > .txt {
-      width: 320px;
+      width: 75%;
 
-      & > .title, & > .description {
-        width: 320px;
+      & > .description {
+        max-height: 70px;
       }
     }
   }
