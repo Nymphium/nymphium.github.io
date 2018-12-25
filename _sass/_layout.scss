@@ -103,12 +103,19 @@ div.twicard {
         margin-bottom: 0px;
         max-width: 120px;
         max-height: 120px;
+
+        // @include media-query($on-palm) {
+        // }
       }
     }
 
     width: 120px;
     display: inline-block;
     vertical-align: middle;
+
+    @include media-query($on-palm) {
+
+    }
   }
 
   & > .txt {
@@ -134,9 +141,32 @@ div.twicard {
     width: 350px;
     margin-left: 5px;
     max-height: 125px;
+
   }
 
   & > span {
     display: inline-block;
+  }
+
+
+  @include media-query($on-palm) {
+    width: 480px;
+
+    & > .image {
+      width: 100px;
+
+      & > a > div > img {
+        max-width: 100px;
+        max-height: 100px;
+      }
+    }
+
+    & > .txt {
+      width: 320px;
+
+      & > .title, & > .description {
+        width: 320px;
+      }
+    }
   }
 }
