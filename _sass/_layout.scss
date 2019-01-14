@@ -76,7 +76,7 @@
 }
 
 div.twicard {
-  $twicard-txt: 335px;
+  $twicard-txt: 340px;
   $twicard-img: 135px;
   $twicard-height: 135px;
 
@@ -144,7 +144,6 @@ div.twicard {
     display: inline-block;
   }
 
-
   @include media-query($on-palm) {
     $twicard-mini-height: 100px;
 
@@ -155,13 +154,16 @@ div.twicard {
       width: 20%;
 
       & > a > div > img {
-        max-width: 100%;
         max-height: $twicard-mini-height;
       }
     }
 
     & > .txt {
       width: 75%;
+
+      & > .title {
+        margin-bottom: 3px;
+      }
 
       & > .description {
         max-height: 70px;
