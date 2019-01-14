@@ -1,5 +1,6 @@
 require'nokogiri'
 require'open-uri'
+require'open_uri_redirections'
 
 def head_extract head, attr, start_prop
   ret = []
@@ -47,7 +48,14 @@ def render_twicard h
 end
 
 def extract alt, url
-  html = open(URI.encode(url)){|f|
+  hash = ""
+
+  if h = url.match(/^([^#]*)(#.*)$/)
+    url = h[1]
+    hash = h[2]
+  end
+
+  html = open(URI.encode(url), :allow_redirections => :all){|f|
     f.read
   }
 
@@ -64,11 +72,13 @@ def extract alt, url
   if h.key?(:image) and h.key?(:description) then
     h[:description].gsub!(/[\n\r]/i, '')
     h[:title] = (h[:title] or title)
-    h[:url] = url
+    h[:url] = "#{url}#{hash}"
     render_twicard h
   else
     <<-HTML
-<a href="#{url}" target="_blank" rel="noopener noreferrer">#{alt}</a>
+<center>
+  <a href="#{url}#{hash}" target="_blank" rel="noopener noreferrer">#{alt}</a>
+</center>
     HTML
   end
 end

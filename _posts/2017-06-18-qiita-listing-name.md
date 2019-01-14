@@ -89,7 +89,7 @@ end
 
 Jekyllではメソッドをいくつかのタイミングでフックすることができる｡
 
-[Plugins#Hooks | Jekyll](https://jekyllrb.com/docs/plugins/#hooks)
+{% twicard "Plugins#Hooks | Jekyll" https://jekyllrb.com/docs/plugins/hooks %}
 
 が~~~しかし､markdownから生成されたHTMLをさらに操作する方法がよくわからなかった｡
 ので筋肉やっていき

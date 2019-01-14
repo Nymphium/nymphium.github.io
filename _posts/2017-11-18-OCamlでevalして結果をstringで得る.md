@@ -13,7 +13,7 @@ tags: [OCaml]
 # OCamlでも`eval`がしたい!
 ではこちらをどうぞ｡
 
-[“Eval” a string in OCaml - stackoverflow](https://stackoverflow.com/questions/33291754/eval-a-string-in-ocaml)
+{% twicard "“Eval” a string in OCaml - stackoverflow" https://stackoverflow.com/questions/33291754/eval-a-string-in-ocaml %}
 
 以下引用(upop上で動くよ)｡
 
