@@ -9,6 +9,7 @@ layout: default
               <p class="tags" >tag: &#123;{% for tag in page.tags %}<a href="{{BASE_PATH}}/tags.html#{{tag}}-ref">{{tag}}</a>{% unless forloop.last  %}, {% endunless %}{% endfor %}&#125;</p>
               <a class="twitter-share-button" href="https://twitter.com/intent/tweet">Tweet</a>
             </span>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             <script type="text/javascript" src="/js/GithubRepoWidget.min.js"></script>
             <script type="text/javascript">setTimeout(GithubRepoWidget.init, 3000);</script>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css" integrity="sha384-9tPv11A+glH/on/wEu99NVwDPwkMQESOocs/ZGXPoIiLE8MU/qkqUcZ3zzL+6DuH" crossorigin="anonymous">
