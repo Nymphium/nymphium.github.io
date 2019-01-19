@@ -49,15 +49,23 @@ end
 
 def extract alt, url
   hash = ""
+  dir = "twicard_cache"
 
   if h = url.match(/^([^#]*)(#.*)$/)
     url = h[1]
     hash = h[2]
   end
 
-  html = open(URI.encode(url), :allow_redirections => :all){|f|
-    f.read
-  }
+  html = nil
+
+  path = "#{dir}/#{url.gsub(/\//i, '')}"
+
+  if File.exist? path then
+    File.open(path, "r"){|f| html = f.read}
+  else
+    html = open(URI.encode(url), :allow_redirections => :all){|f| f.read}
+    File.open(path, "w"){|f| f.write(html)}
+  end
 
   doc = Nokogiri::HTML.parse(html)
   head = doc.xpath('/html/head')

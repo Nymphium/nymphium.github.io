@@ -5,7 +5,21 @@ description: lily, Aikatsu, Programming language, and more
 keywords: lily,百合,Aikatsu,アイカツ,Linux,Lua,MoonScript,言語処理系,プログラム言語
 image: pictures/github_icon.png
 url: "https://nymphium.github.io"
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "vendor", "Gemfile", "Gemfile.lock", "_bin", "slides.rb", ".sass-cache", "twicache", "about/"]
+exclude:
+  - .rvmrc
+  - .rbenv-version
+  - README.md
+  - Rakefile
+  - changelog.md
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - _bin
+  - slides.rb
+  - .sass-cache
+  - twicache
+  - about/
+
 plugins:
   - jekyll-seo-tag
   - jekyll-target-blank
@@ -14,10 +28,14 @@ plugins:
 sass:
   style: compressed
 markdown: redcarpet
-mathjax: true
 redcarpet:
-  extensions: ["tables", "autolink", "with_toc_data", "footnotes", "strikethrough", "no_intra_emphasis", "smart", "mathjax"]
+  extensions:
+    - smart
+    - tables
+    - autolink
+    - footnotes
+    - strikethrough
+    - no_intra_emphasis
 
 encoding: "utf-8"
 
-future: true

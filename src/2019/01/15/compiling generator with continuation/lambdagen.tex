@@ -1,0 +1,7 @@
+\begin{array}{rrl}
+  x   & \in & \text{\textit{Variables}}\\\\
+  l   & \in & \text{\textit{Labels}}\\\\
+  e_0 & ::= & x \mid \lambda x. e^-\\\\
+  e^- & ::= & e_0\mid \mathtt{let}\ x = e^-\ \mathtt{in}\ e^- \mid \mathtt{let}_\mathit{gen}\ l = e \ \mathtt{in}\ e^- \mid e^-\ e^- \mid \mathtt{resume}\ l\ e^-  \\\\
+  e   & ::= & e_0 \mid \mathtt{let}\ x = e\ \mathtt{in}\ e \mid \mathtt{let}_\mathtt{gen}\ l\ x = e \ \mathtt{in}\ e \mid e\ e \mid \mathtt{resume}\ l\ e \mid \mathtt{yield}\ e
+\end{array}

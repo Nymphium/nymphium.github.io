@@ -1,0 +1,31 @@
+\begin{array}{c}
+  \left\lceil \left\lceil e_{\lambda_\mathit{gen}} \right\rceil \right\rceil = e_\lambda\\\\
+  \  \\\\
+  \begin{array}{rcl}
+    \left\lceil \left\lceil x \right\rceil \right\rceil & = & \lambda k. \lambda r. k\ x \\\\
+    \left\lceil \left\lceil \lambda x. e\right\rceil \right\rceil & = & \lambda k. \lambda r. k \left(\lambda x. \lambda k^\prime. \lambda r^\prime. \lceil\lceil e\rceil\rceil\ k^\prime\ r^\prime\right)\\\\
+    \left\lceil \left\lceil e_1\ e_2 \right\rceil \right\rceil & = &%
+      \lambda k. \lambda r. \left\lceil\left\lceil e_1 \right\rceil \right\rceil \left(\lambda e_1^\prime. \left\lceil\left\lceil e_2 \right\rceil \right\rceil \left(\lambda e_2^\prime. e_1^\prime\ e_2^\prime\ k\ r\right)\ r \right)\ r\\\\
+    \left\lceil \left\lceil \mathtt{let}\ x = e_1\ \mathtt{in}\ e_2 \right\rceil \right\rceil & = &%
+      \lambda k. \lambda r. \left\lceil \left\lceil e_1 \right\rceil \right\rceil \left(\lambda x. \left\lceil \left\lceil e_2 \right\rceil \right\rceil\ k\ r\right)\ r\\\\
+    \left\lceil\left\lceil \mathtt{let}_\mathit{gen}\ l = e_1\ \mathtt{in}\ e_2 \right\rceil\right\rceil & = &%
+      \lambda k. \lambda r. \left\lceil \left\lceil \lambda c. e_1\right\rceil\right\rceil_l \left(\lambda l. \left\lceil\left\lceil e_2\right\rceil\right\rceil\ k\ r \right)\ r\\\\
+    \left\lceil\left\lceil \mathtt{resume}\ l\ e\right\rceil\right\rceil & = & \lambda k. \lambda r. \left\lceil\left\lceil e\right\rceil\right\rceil\ l \ k\\\\
+  \end{array}%
+  \\\\
+  \ \\\\
+  \left\lceil \left\lceil e_{\lambda_\mathit{gen}} \right\rceil \right\rceil_l = e_\lambda\\\\
+  \  \\\\
+  \begin{array}{rcl}
+    \left\lceil \left\lceil x \right\rceil \right\rceil_l & = & \lambda k. \lambda r. k\ x \\\\
+    \left\lceil \left\lceil \lambda x. e\right\rceil \right\rceil_l & = & \lambda k. \lambda r. k \left(\lambda x. \lambda k^\prime. \lambda r^\prime. \lceil\lceil e\rceil\rceil_l\ k^\prime\ r^\prime\right)\\\\
+    \left\lceil \left\lceil e_1\ e_2 \right\rceil \right\rceil_l & = &%
+      \lambda k. \lambda r. \left\lceil\left\lceil e_1 \right\rceil \right\rceil_l \left(\lambda e_1^\prime. \left\lceil\left\lceil e_2 \right\rceil \right\rceil_l \left(\lambda e_2^\prime. e_1^\prime\ e_2^\prime\ k\ r\right)\ r \right)\ r\\\\
+    \left\lceil \left\lceil \mathtt{let}\ x = e_1\ \mathtt{in}\ e_2 \right\rceil \right\rceil_l & = &%
+      \lambda k. \lambda r. \left\lceil \left\lceil e_1 \right\rceil \right\rceil_l \left(\lambda x. \left\lceil \left\lceil e_2 \right\rceil \right\rceil_l\ k\ r\right)\ r\\\\
+    \left\lceil\left\lceil \mathtt{let}_\mathit{gen}\ l^\prime = e_1\ \mathtt{in}\ e_2 \right\rceil\right\rceil_l & = &%
+      \lambda k. \lambda r. \left\lceil \left\lceil \lambda c. e_1\right\rceil\right\rceil_l \left(\lambda l^\prime. \left\lceil\left\lceil e_2\right\rceil\right\rceil_l\ k\ r \right)\ r\\\\
+    \left\lceil\left\lceil \mathtt{resume}\ l^\prime\ e\right\rceil\right\rceil_l & = & \lambda k. \lambda r. \lceil\lceil e\rceil\rceil_{l^\prime} \ l^\prime \ k\\\\
+    \lceil\lceil \mathtt{yield}\ e\rceil\rceil_l & = & \lambda k. \lambda r. \lceil\lceil e\rceil\rceil_l\ r \ r
+  \end{array}
+\end{array}
