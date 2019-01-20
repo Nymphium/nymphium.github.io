@@ -18,6 +18,7 @@ exclude:
   - slides.rb
   - .sass-cache
   - twicache
+  - twicard_cache
   - about/
 
 plugins:
