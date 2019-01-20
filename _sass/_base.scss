@@ -183,11 +183,11 @@ a {
   }
   &:hover {
     text-decoration: none;
-  }
 
-  &:before {
-    content: '📎 ';
-    font-size: 0.8em;
+    &:before {
+      content: '📎 ';
+      font-size: 0.8em;
+    }
   }
 }
 
