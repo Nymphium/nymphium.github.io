@@ -21,6 +21,11 @@
 .post-meta {
     font-size: $small-font-size;
     color: $grey-color;
+
+    & .src {
+      margin-left: 3px;
+      margin-bottom: 3px;
+    }
 }
 
 .post-link {
