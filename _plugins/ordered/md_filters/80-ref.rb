@@ -69,13 +69,13 @@ lambda{|content|
 
 		while convd do
 			# [ref: LABEL]
-			if ref = txt.match(/<(?<disp>[^>]+)>\s*\[ref\s*:\s*(?<refl>[a-zA-Z][^\]]*)\s*\]/)
+			if ref = txt.match(/<(?<disp>[^>]+)>\s*\[ref\s*:\s*(?<refl>[^\]]+)\s*\]/)
 				esc = ref[:refl]
 				disp = ref[:disp]
-				txt.sub!(/<[^>]+>\s*\[ref\s*:\s*[a-zA-Z][^\]]*\s*\]/, "<a href=\"##{esc}\">#{disp}</a>")
-			elsif ref = txt.match(/\[ref\s*:\s*([a-zA-Z][^\]]*)\s*\]/)
+				txt.sub!(/<[^>]+>\s*\[ref\s*:\s*[^\]]+\s*\]/, "<a href=\"##{esc}\">#{disp}</a>")
+			elsif ref = txt.match(/\[ref\s*:\s*([^\]]+)\s*\]/)
 				esc = ref[1]
-				txt.sub!(/\[ref\s*:\s*[a-zA-Z][^\]]*\s*\]/, "<a href=\"##{esc}\">#{ref_val[esc]}</a>")
+				txt.sub!(/\[ref\s*:\s*[^\]]+\s*\]/, "<a href=\"##{esc}\">#{ref_val[esc]}</a>")
 			# [fnref: n]
 			elsif ref = txt.match(/\[fnref\s*:\s*(\d+)\]/)
 				nth = ref[1]

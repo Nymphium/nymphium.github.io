@@ -1,0 +1,18 @@
+\begin{aligned}
+  &\left[\left[\mathrm{handler}\ \textit{eff}\ \left(\mathtt{val}\ x \rightarrow e_v\right)\ \left(\left(x, k\right) \rightarrow e_\textit{eff}\right)\right]\right]\eta = \\\\
+  & \qquad \mathtt{let}\ \textit{eff} = \left[\left[\textit{eff}\right]\right]\eta\ \mathtt{in}\\\\
+  & \qquad \mathtt{let}\ \textit{vh} = \lambda x'. \left[\left[e_v\right]\right]\eta \left[x \mapsto x'\right]\ \mathtt{in}\\\\
+  & \qquad \mathtt{let}\ \textit{effh} = \lambda x'\, k'. \left[\left[e_\textit{eff}\right]\right]\eta \left[x\mapsto x', k \mapsto k'\right] \mathtt{in}\\\\
+  & \qquad \lambda \textit{th}.\\\\
+  & \qquad \quad \mathtt{let}\ \textit{co} = \mathtt{create}\ \textit{th}\ \mathtt{in}\\\\
+  & \qquad \quad \mathtt{let}\ \mathtt{rec}\ \textit{handle}\ r =\\\\
+  & \qquad \qquad \mathtt{match}\ r\ \mathtt{with}\\\\
+  & \qquad \qquad \mid \textit{Eff}\left(\textit{eff'}, v\right)\ \mathtt{when}\ \textit{eff'} = \textit{eff} \rightarrow \textit{effh}\ v\ \left(\textit{continue}\ \textit{co}\right)\\\\
+  & \qquad \qquad \mid \textit{Eff}\left(\text{\textunderscore}, \text{\textunderscore}\right) \rightarrow \mathtt{yield}\ \left(\textit{UncaughtEff}\left(r, \left(\textit{continue}\ \textit{co}\right)\right)\right)\\\\
+  & \qquad \qquad \mid \textit{UncaughtEff}\left(\textit{Eff}\left(\textit{eff'}, v\right), k\right)\ \mathtt{when}\ \textit{eff'} = \textit{eff} \rightarrow \textit{effh}\ v\ \left(\textit{rehandle}\ k \right)\\\\
+  & \qquad \qquad \mid \textit{UncaughtEff}(\textit{effv}, k) \rightarrow \mathtt{yield}\ \left(\textit{UncaughtEff}\left(\textit{effv}, \textit{rehandle}\ k \right)\right)\\\\
+  & \qquad \qquad \mid \text{\textunderscore} \rightarrow \textit{vh}\ r\\\\
+  & \qquad \quad \mathtt{and}\ \textit{conrtinue}\ \textit{co}\ \textit{arg} = \textit{handle}\ \left(\mathtt{resume}\ \textit{co}\ \textit{arg}\right)\\\\
+  & \qquad \quad \mathtt{and}\ \textit{rehhandle}\ \textit{k}\ \textit{arg} = \textit{handler}\ \textit{eff}\ \left(\textit{continue}\ \textit{co}\right)\ \textit{effh}\ \left(\lambda c. k\ \textit{arg}\right) \\\\
+  & \qquad \quad \mathtt{in}\ \textit{continue}\ \textit{co}\ \textit{c}
+\end{aligned}

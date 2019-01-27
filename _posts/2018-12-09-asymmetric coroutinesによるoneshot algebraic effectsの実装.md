@@ -283,6 +283,8 @@ thunk内でエフェクトを発生(`yield`)すると一時停止してハンド
 ##! 追記20181209
 投稿即バグが見つかり泣きました｡
 まずは修正前をご覧ください｡
+
+最新は<こちら>[ref:追記20190127]
 追記suspend
 
 <div>
@@ -374,6 +376,55 @@ thunkを受け取ってコルーチンを作り､`resume`のラッパーとな�
 これにより､処理がどうなってるかがより簡潔になったんじゃないでしょうか｡
 `handle`を連れ回すことで現在のハンドラによるハンドル処理を続けることができる｡
 `UncaughtEff`に渡す継続をコルーチンでencapsulateするのは､エフェクトの発生(`yield`)を再びキャッチするためである｡
+
+#! 追記20190127
+バグってました｡
+
+<div>
+<center>
+[label:conv4]
+$$
+@importmd(src{{page.id}}/conv4.tex)
+$$
+図[ref:conv4]. the conversion v4.
+</center>
+</div>
+
+$\textit{Eff}$のハンドルは<v2>[ref:conv2]や<v3>[ref:conv3]と変わりない｡
+$\textit{rehandle}$という関数が追加され､$\textit{UncaughtEff}$に渡す､あるいは使う継続を$\textit{reandle}$に渡している｡
+では$\textit{rehandle}$は何をしてるんですか? 新しくハンドラを作り､2つの引数を実行するサンクを作ってハンドラに渡すことで､サンクの中身をハンドルして実行する｡
+
+我々の実現したいdeep handlerを考えれば確かにこのような実装になる｡
+deep handlerとは､ハンドラの取り出した継続も同じハンドラによってハンドルされる｡
+逆となる概念はshallow handlerであり､取り出された継続は同ハンドラからのハンドルを逃れる｡
+
+ハンドルされる$\textit{UncaughtEff}$を見てみる｡
+
+<div>
+<center>
+$\mid \textit{UncaughtEff}\left(\textit{Eff}\left(\textit{eff'}, v\right), k\right)\ \mathtt{when}\ \textit{eff'} = \textit{eff} \rightarrow \textit{effh}\ v\ \left(\textit{rehandle}\ k \right)$
+</center>
+</div>
+
+この矢印の右辺を展開すると､
+
+<div>
+<center>
+$$
+\begin{array}{l}
+\textit{effh}\ v \left(\lambda \textit{arg}.\right.\\\\
+\quad  \textit{handler}\ \textit{eff}\ \left(\textit{continue}\ \textit{co}\right)\ \textit{effh}\ \left( \lambda c. k\ \textit{arg} \right)\left.\right)
+\end{array}
+$$
+</center>
+</div>
+
+特にポイントとなるのが､新しく作るハンドラのvalue handlerが､現在のハンドラが持ってるencapsulateしたサンクを$\textit{continue}$する､いわばハンドラが持ってる継続にハンドルの結果を渡しているCPSのような構造になる｡
+ハンドラによって$\textit{UncaughtEff}$が持ってきた$k$をハンドラによってハンドルすることで､晴れて現在のハンドラでもeffectをハンドルできるようになる｡
+
+これまでの変換では､渡ってきた継続のeffectをハンドルできてるようでできてなかった｡
+今回の変換により､なんとか解決したんじゃないでしょうか｡
+実装も更新しているので､よかったら使ってみてバグを発見してください｡
 
 #実装
 それでは改めて<リポジトリ>[ref:repo]の方を見てみよう｡
