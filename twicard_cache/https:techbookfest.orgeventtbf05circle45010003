@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>技術書典</title>
+
+    
+    <meta property="og:title" content="技術書典5：Dragon University 詳細">
+    <meta property="og:description" content="Generative Adversarial Networkを始めとした生成モデルや言語処理系などに関しての多岐にわたる技術記事を編纂した冊子を発行する">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://techbookfest.org/event/tbf05/circle/45010003">
+    <meta property="og:image" content="https://lh3.googleusercontent.com/voApKPBa6L6VLLyuQEqRtxPfTn_n2ys-LmN1Ne2jhpXNkSguE06M_epkFHM6FgctpASou9w6VmFY0FgKiTU">
+    <meta property="og:site_name" content="技術書典：技術書オンリーイベント">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@TechBooster">
+    
+    <meta name="theme-color" content="#4CAF54">
+
+    <base href="/">
+    <link rel="shortcut icon" href="/assets/images/icon_2x.png">
+    <link rel="manifest" href="/manifest.json">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-75502922-2', 'auto');
+    </script>
+<link rel="stylesheet" href="styles.769434ddb8d029e1ec32.css"></head>
+
+<body>
+    <noscript>
+        <p>このページはJavaScriptを使用しています。ご使用中のブラウザはJavaScriptが無効になっているか、JavaScriptに対応していません。</p>
+        <p>お手数ですがJavaScriptを有効にするか、JavaScriptが使用可能なブラウザでアクセスしてください。</p>
+    </noscript>
+
+    <techbookfest-app>
+        <style>
+        html, body {
+            height: 100%;
+        }
+        .init-loading {
+            text-align: center;
+            font-family: sans-serif;
+            display: inline-flex;
+            width: 100%;
+            height: 100%;
+        }
+        .init-loading svg {
+            max-width: 100px;
+        }
+        .init-loading > div {
+            margin: auto;
+        }
+        </style>
+        <div class="init-loading">
+            <div>
+                <svg viewBox="0 0 300 300"><style type="text/css">.st0{fill:#53C269;}</style>
+                    <path id="XMLID_2569_" class="st0" d="M150,0C67.157,0,0,67.157,0,150c0,82.843,67.157,150,150,150c82.843,0,150-67.157,150-150
+                        C300,67.157,232.843,0,150,0z M179.374,244.932c-16.856,16.856-44.185,16.856-61.041,0l-64.412-64.412
+                        c-16.856-16.856-16.856-44.185,0-61.041l64.412-64.412c16.856-16.856,44.185-16.856,61.041,0l86.28,86.28h-91.01
+                        c-3.718-11.085-14.373-18.988-26.812-18.533c-14.37,0.526-25.96,12.382-26.179,26.76c-0.232,15.219,12.035,27.629,27.201,27.629
+                        c11.998,0,22.175-7.771,25.791-18.552h91.01L179.374,244.932z"/>
+                </svg>
+                <br>
+                <span>Loading...</span>
+            </div>
+        </div>
+    </techbookfest-app>
+    <script src="https://www.paypalobjects.com/api/checkout.js" async></script>
+    <script src="https://js.stripe.com/v3/" async></script>
+<script type="text/javascript" src="runtime.4d8526f00c37df5147b6.js"></script><script type="text/javascript" src="polyfills.faf12a0d12f092bfa4d9.js"></script><script type="text/javascript" src="main.5fc77ad6f67bae1ade29.js"></script></body>
+</html>

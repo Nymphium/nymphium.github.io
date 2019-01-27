@@ -1,0 +1,1024 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="generator" content="Jekyll v3.7.4">
+  <link type="application/atom+xml" rel="alternate" href="https://jekyllrb.com/feed.xml" title="Jekyll • Simple, blog-aware, static sites" />
+  <link rel="alternate" type="application/atom+xml" title="Recent commits to Jekyll’s master branch" href="https://github.com/jekyll/jekyll/commits/master.atom">
+  <link rel="preload" href="/fonts/lato-v14-latin-300.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/lato-v14-latin-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/css/screen.css" as="style">
+  <link rel="stylesheet" href="/css/screen.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Hooks | Jekyll • Simple, blog-aware, static sites</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="Hooks" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Using hooks, your plugin can exercise fine-grained control over various aspects of the build process. If your plugin defines any hooks, Jekyll will call them at pre-defined points." />
+<meta property="og:description" content="Using hooks, your plugin can exercise fine-grained control over various aspects of the build process. If your plugin defines any hooks, Jekyll will call them at pre-defined points." />
+<link rel="canonical" href="https://jekyllrb.com/docs/plugins/hooks/" />
+<meta property="og:url" content="https://jekyllrb.com/docs/plugins/hooks/" />
+<meta property="og:site_name" content="Jekyll • Simple, blog-aware, static sites" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@jekyllrb" />
+<meta name="google-site-verification" content="onQcXpAvtHBrUI5LlroHNE_FP0b2qvFyPq7VZw36iEY" />
+<script type="application/ld+json">
+{"description":"Using hooks, your plugin can exercise fine-grained control over various aspects of the build process. If your plugin defines any hooks, Jekyll will call them at pre-defined points.","@type":"WebPage","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jekyllrb.com/img/logo-2x.png"}},"url":"https://jekyllrb.com/docs/plugins/hooks/","headline":"Hooks","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!--[if lt IE 9]>
+  <script src="/js/html5shiv.min.js"></script>
+  <script src="/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+
+<body class="wrap">
+  <header>
+  <div class="flexbox">
+    <div class="center-on-mobiles">
+      <h1>
+        <a href="/" class="logo">
+          <span class="sr-only">Jekyll</span>
+          <img src="/img/logo-2x.png" width="140" height="65" alt="Jekyll Logo">
+        </a>
+      </h1>
+    </div>
+    <nav class="main-nav hide-on-mobiles">
+      <ul>
+  
+  <li class="
+    
+      
+    ">
+    <a href="/">Home</a>
+  </li>
+  
+  <li class="
+    
+      current
+    ">
+    <a href="/docs/">Docs</a>
+  </li>
+  
+  <li class="
+    
+      
+    ">
+    <a href="/resources/">Resources</a>
+  </li>
+  
+  <li class="
+    
+      
+    ">
+    <a href="/showcase/">Showcase</a>
+  </li>
+  
+  <li class="
+    
+      
+    ">
+    <a href="/news/">News</a>
+  </li>
+  
+</ul>
+
+    </nav>
+    <div class="search hide-on-mobiles">
+      <input type="text" id="docsearch-input" placeholder="Search the docs…">
+
+    </div>
+    <div class="meta hide-on-mobiles">
+      <ul>
+        <li>
+          <a href="https://github.com/jekyll/jekyll/releases/tag/v3.8.5">v3.8.5</a>
+        </li>
+        <li>
+          <a href="https://github.com/jekyll/jekyll">GitHub</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <nav class="mobile-nav show-on-mobiles">
+    <ul>
+  
+    
+    <li class="
+      
+        
+      ">
+      <a href="/">Home</a>
+    </li>
+  
+  
+    
+    <li class="
+      
+        current
+      ">
+      <a href="/docs/">Docs</a>
+    </li>
+  
+  
+    
+    <li class="
+      
+        
+      ">
+      <a href="/resources/">Resources</a>
+    </li>
+  
+  
+    
+  
+    
+    <li class="
+      
+        
+      ">
+      <a href="/news/">News</a>
+    </li>
+  
+  
+  <li>
+    <a href="https://github.com/jekyll/jekyll">GitHub</a>
+  </li>
+</ul>
+
+  </nav>
+</header>
+
+
+    <section class="docs">
+    <div class="grid">
+
+      <div class="docs-nav-mobile unit whole show-on-mobiles">
+  <select onchange="if (this.value) window.location.href=this.value">
+    <option value="">Navigate the docs…</option>
+    
+    <optgroup label="Getting Started">
+      
+        
+        <option value="/docs/">
+          
+            Quickstart
+          
+        </option>
+      
+        
+        <option value="/docs/ruby-101/">
+          
+            Ruby 101
+          
+        </option>
+      
+        
+        <option value="/docs/installation/">
+          
+            Installation
+          
+        </option>
+      
+        
+        <option value="/docs/community/">
+          
+            Community
+          
+        </option>
+      
+        
+        <option value="/docs/step-by-step/01-setup/">
+          
+            Step by Step Tutorial
+          
+        </option>
+      
+    </optgroup>
+    
+    <optgroup label="Build">
+      
+        
+        <option value="/docs/usage/">
+          
+            Command Line Usage
+          
+        </option>
+      
+        
+        <option value="/docs/configuration/">
+          
+            Configuration
+          
+        </option>
+      
+    </optgroup>
+    
+    <optgroup label="Content">
+      
+        
+        <option value="/docs/pages/">
+          
+            Pages
+          
+        </option>
+      
+        
+        <option value="/docs/posts/">
+          
+            Posts
+          
+        </option>
+      
+        
+        <option value="/docs/front-matter/">
+          
+            Front Matter
+          
+        </option>
+      
+        
+        <option value="/docs/collections/">
+          
+            Collections
+          
+        </option>
+      
+        
+        <option value="/docs/datafiles/">
+          
+            Data Files
+          
+        </option>
+      
+        
+        <option value="/docs/assets/">
+          
+            Assets
+          
+        </option>
+      
+        
+        <option value="/docs/static-files/">
+          
+            Static Files
+          
+        </option>
+      
+    </optgroup>
+    
+    <optgroup label="Site Structure">
+      
+        
+        <option value="/docs/structure/">
+          
+            Directory Structure
+          
+        </option>
+      
+        
+        <option value="/docs/liquid/">
+          
+            Liquid
+          
+        </option>
+      
+        
+        <option value="/docs/variables/">
+          
+            Variables
+          
+        </option>
+      
+        
+        <option value="/docs/includes/">
+          
+            Includes
+          
+        </option>
+      
+        
+        <option value="/docs/layouts/">
+          
+            Layouts
+          
+        </option>
+      
+        
+        <option value="/docs/permalinks/">
+          
+            Permalinks
+          
+        </option>
+      
+        
+        <option value="/docs/themes/">
+          
+            Themes
+          
+        </option>
+      
+        
+        <option value="/docs/pagination/">
+          
+            Pagination
+          
+        </option>
+      
+    </optgroup>
+    
+    <optgroup label="Guides">
+      
+        
+        <option value="/docs/plugins/">
+          
+            Plugins
+          
+        </option>
+      
+        
+        <option value="/docs/migrations/">
+          
+            Blog Migrations
+          
+        </option>
+      
+        
+        <option value="/docs/upgrading/">
+          
+            Upgrading
+          
+        </option>
+      
+        
+        <option value="/docs/deployment/">
+          
+            Deployment
+          
+        </option>
+      
+    </optgroup>
+    
+  </select>
+</div>
+
+
+      <div class="unit four-fifths">
+        <article>
+          <div class="improve right hide-on-mobiles">
+            <a data-proofer-ignore href="https://github.com/jekyll/jekyll/edit/master/docs/_docs/plugins/hooks.md"><i class="fa fa-pencil"></i> &nbsp;Improve this page</a>
+          </div>
+          <h1>Hooks</h1>
+          <p>Using hooks, your plugin can exercise fine-grained control over various aspects
+of the build process. If your plugin defines any hooks, Jekyll will call them
+at pre-defined points.</p>
+
+<p>Hooks are registered to a container and an event name. To register one, you
+call Jekyll::Hooks.register, and pass the container, event name, and code to
+call whenever the hook is triggered. For example, if you want to execute some
+custom functionality every time Jekyll renders a post, you could register a
+hook like this:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="ss">:posts</span><span class="p">,</span> <span class="ss">:post_render</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
+  <span class="c1"># code to call after Jekyll renders a post</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Jekyll provides hooks for <code>:site</code>, <code>:pages</code>,
+<code>:posts</code>, and <code>:documents</code>. In all cases, Jekyll calls
+your hooks with the container object as the first callback parameter.
+All <code class="highlighter-rouge">:pre_render</code> hooks and the<code class="highlighter-rouge">:site, :post_render</code> hook will also provide a
+payload hash as a second parameter. In the case of <code class="highlighter-rouge">:pre_render</code>, the payload
+gives you full control over the variables that are available while rendering.
+In the case of <code class="highlighter-rouge">:site, :post_render</code>, the payload contains final values after
+rendering all the site (useful for sitemaps, feeds, etc).</p>
+
+<p>The complete list of available hooks is below:</p>
+
+<div class="mobile-side-scroller">
+<table>
+  <thead>
+    <tr>
+      <th>Container</th>
+      <th>Event</th>
+      <th>Called</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <p><code>:site</code></p>
+      </td>
+      <td>
+        <p><code>:after_init</code></p>
+      </td>
+      <td>
+        <p>Just after the site initializes, but before setup &amp; render. Good
+        for modifying the configuration of the site.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><code>:site</code></p>
+      </td>
+      <td>
+        <p><code>:after_reset</code></p>
+      </td>
+      <td>
+        <p>Just after site reset</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><code>:site</code></p>
+      </td>
+      <td>
+        <p><code>:post_read</code></p>
+      </td>
+      <td>
+        <p>After site data has been read and loaded from disk</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><code>:site</code></p>
+      </td>
+      <td>
+        <p><code>:pre_render</code></p>
+      </td>
+      <td>
+        <p>Just before rendering the whole site</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><code>:site</code></p>
+      </td>
+      <td>
+        <p><code>:post_render</code></p>
+      </td>
+      <td>
+        <p>After rendering the whole site, but before writing any files</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><code>:site</code></p>
+      </td>
+      <td>
+        <p><code>:post_write</code></p>
+      </td>
+      <td>
+        <p>After writing the whole site to disk</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><code>:pages</code></p>
+      </td>
+      <td>
+        <p><code>:post_init</code></p>
+      </td>
+      <td>
+        <p>Whenever a page is initialized</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><code>:pages</code></p>
+      </td>
+      <td>
+        <p><code>:pre_render</code></p>
+      </td>
+      <td>
+        <p>Just before rendering a page</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><code>:pages</code></p>
+      </td>
+      <td>
+        <p><code>:post_render</code></p>
+      </td>
+      <td>
+        <p>After rendering a page, but before writing it to disk</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><code>:pages</code></p>
+      </td>
+      <td>
+        <p><code>:post_write</code></p>
+      </td>
+      <td>
+        <p>After writing a page to disk</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><code>:posts</code></p>
+      </td>
+      <td>
+        <p><code>:post_init</code></p>
+      </td>
+      <td>
+        <p>Whenever a post is initialized</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><code>:posts</code></p>
+      </td>
+      <td>
+        <p><code>:pre_render</code></p>
+      </td>
+      <td>
+        <p>Just before rendering a post</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><code>:posts</code></p>
+      </td>
+      <td>
+        <p><code>:post_render</code></p>
+      </td>
+      <td>
+        <p>After rendering a post, but before writing it to disk</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><code>:posts</code></p>
+      </td>
+      <td>
+        <p><code>:post_write</code></p>
+      </td>
+      <td>
+        <p>After writing a post to disk</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><code>:documents</code></p>
+      </td>
+      <td>
+        <p><code>:post_init</code></p>
+      </td>
+      <td>
+        <p>Whenever a document is initialized</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><code>:documents</code></p>
+      </td>
+      <td>
+        <p><code>:pre_render</code></p>
+      </td>
+      <td>
+        <p>Just before rendering a document</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><code>:documents</code></p>
+      </td>
+      <td>
+        <p><code>:post_render</code></p>
+      </td>
+      <td>
+        <p>After rendering a document, but before writing it to disk</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><code>:documents</code></p>
+      </td>
+      <td>
+        <p><code>:post_write</code></p>
+      </td>
+      <td>
+        <p>After writing a document to disk</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+        </article>
+      </div>
+
+      <div class="unit one-fifth hide-on-mobiles">
+  <aside>
+    
+      <h4>Getting Started</h4>
+      <ul>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/">
+              
+                Quickstart
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/ruby-101/">
+              
+                Ruby 101
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/installation/">
+              
+                Installation
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/community/">
+              
+                Community
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/step-by-step/01-setup/">
+              
+                Step by Step Tutorial
+              
+            </a>
+          </li>
+        
+      </ul>
+    
+      <h4>Build</h4>
+      <ul>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/usage/">
+              
+                Command Line Usage
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/configuration/">
+              
+                Configuration
+              
+            </a>
+          </li>
+        
+      </ul>
+    
+      <h4>Content</h4>
+      <ul>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/pages/">
+              
+                Pages
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/posts/">
+              
+                Posts
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/front-matter/">
+              
+                Front Matter
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/collections/">
+              
+                Collections
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/datafiles/">
+              
+                Data Files
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/assets/">
+              
+                Assets
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/static-files/">
+              
+                Static Files
+              
+            </a>
+          </li>
+        
+      </ul>
+    
+      <h4>Site Structure</h4>
+      <ul>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/structure/">
+              
+                Directory Structure
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/liquid/">
+              
+                Liquid
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/variables/">
+              
+                Variables
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/includes/">
+              
+                Includes
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/layouts/">
+              
+                Layouts
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/permalinks/">
+              
+                Permalinks
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/themes/">
+              
+                Themes
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/pagination/">
+              
+                Pagination
+              
+            </a>
+          </li>
+        
+      </ul>
+    
+      <h4>Guides</h4>
+      <ul>
+        
+          
+          <li class="
+            current
+          ">
+            <a href="/docs/plugins/">
+              
+                Plugins
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/migrations/">
+              
+                Blog Migrations
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/upgrading/">
+              
+                Upgrading
+              
+            </a>
+          </li>
+        
+          
+          <li class="
+            
+          ">
+            <a href="/docs/deployment/">
+              
+                Deployment
+              
+            </a>
+          </li>
+        
+      </ul>
+    
+  </aside>
+</div>
+
+
+      <div class="clear"></div>
+
+    </div>
+  </section>
+
+
+  <footer>
+  <div class="grid">
+    <div class="unit one-third center-on-mobiles">
+      <p>Jekyll is lovingly maintained by the <a href="/team/">core team</a> of volunteers. </p>
+      <p>The contents of this website are <br />&copy;&nbsp;2019 under the terms of the <a href="https://github.com/jekyll/jekyll/blob/master/LICENSE">MIT&nbsp;License</a>.</p>
+    </div>
+    <div class="unit two-thirds align-right center-on-mobiles">
+      <p>
+        Proudly hosted by
+        <a href="https://github.com">
+          <img src="/img/footer-logo.png" width="100" height="30" alt="GitHub • Social coding">
+        </a>
+      </p>
+    </div>
+    <div class="unit two-thirds align-right center-on-mobiles">
+      <p>
+        Jekyll is funded thanks to its
+        <a href="https://github.com/jekyll/jekyll#sponsors">
+          sponsors!
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+  <script>
+  var anchorForId = function (id) {
+    var anchor = document.createElement("a");
+    anchor.className = "header-link";
+    anchor.href      = "#" + id;
+    anchor.innerHTML = "<span class=\"sr-only\">Permalink</span><i class=\"fa fa-link\"></i>";
+    anchor.title = "Permalink";
+    return anchor;
+  };
+
+  var linkifyAnchors = function (level, containingElement) {
+    var headers = containingElement.getElementsByTagName("h" + level);
+    for (var h = 0; h < headers.length; h++) {
+      var header = headers[h];
+
+      if (typeof header.id !== "undefined" && header.id !== "") {
+        header.appendChild(anchorForId(header.id));
+      }
+    }
+  };
+
+  document.onreadystatechange = function () {
+    if (this.readyState === "complete") {
+      var contentBlock = document.getElementsByClassName("docs")[0] || document.getElementsByClassName("news")[0];
+      if (!contentBlock) {
+        return;
+      }
+      for (var level = 1; level <= 6; level++) {
+        linkifyAnchors(level, contentBlock);
+      }
+    }
+  };
+</script>
+
+  
+  <!-- Google Analytics (https://www.google.com/analytics) -->
+  <script>
+    !function(j,e,k,y,l,L){j.GoogleAnalyticsObject=y,j[y]||(j[y]=function(){
+    (j[y].q=j[y].q||[]).push(arguments)}),j[y].l=+new Date,l=e.createElement(k),
+    L=e.getElementsByTagName(k)[0],l.src='https://www.google-analytics.com/analytics.js',
+    L.parentNode.insertBefore(l,L)}(window,document,'script','ga');
+
+    ga('create', 'UA-50755011-1', 'jekyllrb.com');
+    ga('send', 'pageview');
+
+  </script>
+
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: '50fe39c839958dfad797000f33e2ec17',
+indexName: 'jekyllrb',
+inputSelector: '#docsearch-input',
+enhancedSearchInput: true,
+debug: false // Set debug to true if you want to inspect the dropdown
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WORDIAN Advent Calendar 2018 - Adventar</title>
+  <link rel="stylesheet" media="all" href="/assets/application-a6d81aec9e09691f85381467b077d171370e0efa0eed76352585e61ae469824f.css" />
+  <script src="/assets/application-baf8682ab8f99e2d577b7f43241b66c7e2fcca6e231e5623166417a754a3cf9f.js"></script>
+  <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="NuAZ9dRDzlnzEUZqq8ETrhNbkLaQGwQrbii9sw7Ssa0DufxQPMbGz0rnZn5IIqEF367VSdDEmeB1QbopCgJyKg==" />
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1474271-8']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+  <meta name="viewport" content="width=1024">
+  <meta name="description" content="昨年大好評を博したWORDIAN Advent Calendarが今年もやってきました。
+
+編集部員、OBOG、または自分を編集部員だと思っている人などが記事を書きます。
+記事の内容はいつも通り自由。
+ただし、いつも通り学類長チェックは通るように努力しましょう。
+
+WORD編集部のサイト: https://www.word-ac.net/">
+  <meta property="og:image" content="https://adventar.org/assets/icon200-7c9a9308860c3a9cc64fa22b75f92d1401579db156cb9eb3ac39173c31e10282.png">
+  <meta property="fb:admins" content="1331583726">
+
+  <link rel="alternate" type="application/rss+xml" href="/calendars/3536.rss">
+</head>
+<body>
+
+<header class="mod-header"><div>
+  <h1><a href="/"><img alt="ADVENTAR" src="/assets/logo-f2ad28433b3b9bf94d4995328ae9bea63877c5c93a590bd4b6edd90112e50ae9.png" /></a></h1>
+    <a href="/signin" class="mod-header-signin">ログイン</a>
+</header></div>
+
+<div class="mod-content">
+
+
+
+<div class="mod-calendarHeader" style="background: #FFA000"><div>
+  <h2>WORDIAN Advent Calendar 2018</h2>
+
+  <div class="mod-calendarHeader-meta">
+    <p>作成者：<a href="/users/6261" class="mod-userLink"><img src="https://pbs.twimg.com/profile_images/2589977979/flfxu2r7hlk703sag0oc_normal.png" width="23" height="23" class="mod-userIcon" /><span>xrekkusu</span></a></p>
+    <p>登録状況：11/25人</p>
+  </div>
+
+<!-- /div.mod-content-header --></div></div>
+
+<div class="mod-socials"><div>
+  <div class="mod-socials-rss">
+    <a href="/calendars/3536.rss"><i class="fa fa-rss-square"></i></a>
+  </div>
+
+  <div class="mod-socials-hatebu">
+    <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  </div>
+
+  <div class="mod-socials-twitter">
+        
+<script src="//platform.twitter.com/widgets.js"></script>
+  
+<a href="https://twitter.com/share" class="twitter-share-button"
+  data-url="http://adventar.org/calendars/3536" data-count="horizontal" data-lang="en" data-size="medium"
+>Tweet</a>
+
+  </div>
+
+  <div class="mod-socials-fb">
+    <div id="fb-root"></div>
+  
+<div class="fb-like" data-href='http://adventar.org/calendars/3536'
+     data-send='false'
+     data-layout='button_count'
+     data-show-faces=''
+     data-width='80'
+     data-action=''
+     data-font=''
+     data-colorscheme=''
+     data-ref=''
+     data-share=''
+     data-kid-directed-site='' >
+</div>
+    
+<script>
+  if (typeof window.facebookLoaded == 'undefined') {
+    var facebookLoaded = false;
+  }
+  var __loadFacebook = function() {
+    if (facebookLoaded !== true) {
+      $('head').append("<script>var bindFacebookEvents, fb_events_bound, fb_root, initializeFacebookSDK, loadFacebookSDK, restoreFacebookRoot, saveFacebookRoot; \
+fb_root = null; \
+fb_events_bound = false; \
+$(function() { \
+  loadFacebookSDK(); \
+  if (!fb_events_bound) { \
+    return bindFacebookEvents(); \
+  } \
+}); \
+bindFacebookEvents = function() { \
+  $(document).on('page:fetch', saveFacebookRoot).on('page:change', restoreFacebookRoot).on('page:load', function() { \
+    return typeof FB !== 'undefined' && FB !== null ? FB.XFBML.parse() : void 0; \
+  }); \
+  return fb_events_bound = true; \
+}; \
+saveFacebookRoot = function() { \
+  return fb_root = $('#fb-root').detach(); \
+}; \
+restoreFacebookRoot = function() { \
+  if ($('#fb-root').length > 0) { \
+    return $('#fb-root').replaceWith(fb_root); \
+  } else { \
+    return $('body').append(fb_root); \
+  } \
+}; \
+loadFacebookSDK = function() { \
+  window.fbAsyncInit = initializeFacebookSDK; \
+  return $.getScript('//connect.facebook.net/en_US/sdk.js', function() { facebookLoaded = true; }); \
+}; \
+initializeFacebookSDK = function() { \
+  return FB.init({ \
+    appId: '', \
+    status: true, \
+    cookie: true, \
+    version: 'v2.0', \
+    xfbml: true \
+  }); \
+};<\/script>");
+    }
+  };
+  if (typeof $.turbo == 'undefined') {
+    $(function() {
+      return __loadFacebook();
+    });
+  }
+  //for jquery.turbolinks
+  else {
+    __loadFacebook();  
+  }
+</script>
+
+  </div>
+</div></div>
+
+
+<div class="mod-main"><div>
+
+  <div class="mod-calendarDescription">
+    <p>昨年大好評を博したWORDIAN Advent Calendarが今年もやってきました。</p>
+
+<p>編集部員、OBOG、または自分を編集部員だと思っている人などが記事を書きます。<br>
+記事の内容はいつも通り自由。<br>
+ただし、いつも通り学類長チェックは通るように努力しましょう。</p>
+
+<p>WORD編集部のサイト: <a href="https://www.word-ac.net/">https://www.word-ac.net/</a></p>
+
+  </div>
+
+  <div data-react-class="CalendarContainer" data-react-props="{&quot;calendar&quot;:{&quot;id&quot;:3536,&quot;year&quot;:2018},&quot;entries&quot;:[{&quot;id&quot;:60346,&quot;date&quot;:&quot;2018-12-24&quot;,&quot;comment&quot;:&quot;12月は忙しいのを思い出した&quot;,&quot;url&quot;:&quot;https://www.dropbox.com/s/yf5uj0sk8mcazt4/WORDIAN_Advent_Calendar_2018_24.pdf?dl=0&quot;,&quot;title&quot;:&quot;Dropbox - WORDIAN_Advent_Calendar_2018_24.pdf&quot;,&quot;image_url&quot;:&quot;https://www.dropbox.com/static/images/spectrum-icons/generated/content/content-pdf-large.png&quot;,&quot;user&quot;:{&quot;id&quot;:16901,&quot;name&quot;:&quot;inlsea&quot;,&quot;image&quot;:&quot;https://pbs.twimg.com/profile_images/603088893160722433/Wq4ovWHu_normal.jpg&quot;},&quot;cancelable&quot;:false},{&quot;id&quot;:69792,&quot;date&quot;:&quot;2018-12-23&quot;,&quot;comment&quot;:&quot;PCでお絵描きがしたい、けど…&quot;,&quot;url&quot;:&quot;http://akkkix.hatenablog.com/entry/2018/12/24/021908&quot;,&quot;title&quot;:&quot;OSが書けなくても画面にお絵描きがしたい - あきーのブログ&quot;,&quot;image_url&quot;:&quot;https://cdn-ak.f.st-hatena.com/images/fotolife/a/akkkix/20181224/20181224021228.png&quot;,&quot;user&quot;:{&quot;id&quot;:16846,&quot;name&quot;:&quot;akkkix&quot;,&quot;image&quot;:&quot;https://pbs.twimg.com/profile_images/453902926373605376/tcFQ7-8i_normal.png&quot;},&quot;cancelable&quot;:false},{&quot;id&quot;:67136,&quot;date&quot;:&quot;2018-12-08&quot;,&quot;comment&quot;:&quot;アンサーソングです&quot;,&quot;url&quot;:&quot;http://laughingandgrief.hatenablog.com/entry/2018/12/08/234030?_ga=2.132817806.1481482546.1544198204-829137412.1540408850&quot;,&quot;title&quot;:&quot;WORDとLaTeXと私 - 自己顕示欲の開放治療所&quot;,&quot;image_url&quot;:&quot;https://images-fe.ssl-images-amazon.com/images/I/51xg3V2+HDL._SL160_.jpg&quot;,&quot;user&quot;:{&quot;id&quot;:12343,&quot;name&quot;:&quot;hid_alma1026&quot;,&quot;image&quot;:&quot;https://pbs.twimg.com/profile_images/1005087872356007938/Hftjs9jn_normal.jpg&quot;},&quot;cancelable&quot;:false},{&quot;id&quot;:60524,&quot;date&quot;:&quot;2018-12-04&quot;,&quot;comment&quot;:&quot;学類長には見せられないょ……&quot;,&quot;url&quot;:&quot;https://phi-san.hatenablog.com/entry/2018/12/04/223530&quot;,&quot;title&quot;:&quot;地下鉄で行く東京の旅 - ふぁい日記&quot;,&quot;image_url&quot;:&quot;https://cdn-ak.f.st-hatena.com/images/fotolife/P/Phi-san/20181130/20181130232121.jpg&quot;,&quot;user&quot;:{&quot;id&quot;:22688,&quot;name&quot;:&quot;Phi_san&quot;,&quot;image&quot;:&quot;https://pbs.twimg.com/profile_images/1068088787777933312/XL3UVIgR_normal.jpg&quot;},&quot;cancelable&quot;:false},{&quot;id&quot;:64831,&quot;date&quot;:&quot;2018-12-02&quot;,&quot;comment&quot;:&quot;記憶が風化しないうちにキーボード制作の話をする&quot;,&quot;url&quot;:&quot;https://nymphium.github.io/2018/12/02/Lily58%E3%81%AB%E3%82%88%E3%82%8B.xmodmap%E3%81%AE%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2%E5%AE%9F%E8%A3%85.html&quot;,&quot;title&quot;:&quot;Lily58による.xmodmapのハードウェア実装 - lilyum ensemble&quot;,&quot;image_url&quot;:&quot;https://nymphium.github.io/pictures/2018/12/02/Lily58%E3%81%AB%E3%82%88%E3%82%8B.xmodmap%E3%81%AE%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2%E5%AE%9F%E8%A3%85/thumb.png&quot;,&quot;user&quot;:{&quot;id&quot;:16759,&quot;name&quot;:&quot;びしょ〜じょ&quot;,&quot;image&quot;:&quot;https://avatars0.githubusercontent.com/u/5901180?v=4&quot;},&quot;cancelable&quot;:false},{&quot;id&quot;:60451,&quot;date&quot;:&quot;2018-12-01&quot;,&quot;comment&quot;:&quot;冬と言えば〜〜〜？&quot;,&quot;url&quot;:&quot;http://karasu.hatenadiary.jp/entry/2018/12/01/034714&quot;,&quot;title&quot;:&quot;増える飯屋 - the blog&quot;,&quot;image_url&quot;:&quot;https://cdn.blog.st-hatena.com/images/theme/og-image-1500.png&quot;,&quot;user&quot;:{&quot;id&quot;:9226,&quot;name&quot;:&quot;karasuTX&quot;,&quot;image&quot;:&quot;https://pbs.twimg.com/profile_images/1032845606664822785/RNmg2hgs_normal.jpg&quot;},&quot;cancelable&quot;:false},{&quot;id&quot;:60223,&quot;date&quot;:&quot;2018-12-09&quot;,&quot;comment&quot;:&quot;WORD Minecraft 観光ガイドブック2018&quot;,&quot;url&quot;:&quot;https://x86-64.jp/blog/wordian-advent-calendar-2018&quot;,&quot;title&quot;:&quot;\n      Blog: たびにっき 2018-12 in WORD Minecraft – x86-64.jp - くりす研\n    &quot;,&quot;image_url&quot;:&quot;https://x86-64.jp/chrome/site/X86-64.png&quot;,&quot;user&quot;:{&quot;id&quot;:5978,&quot;name&quot;:&quot;x86_64&quot;,&quot;image&quot;:&quot;https://pbs.twimg.com/profile_images/922152512810971137/BDNSSxvi_normal.jpg&quot;},&quot;cancelable&quot;:false},{&quot;id&quot;:60174,&quot;date&quot;:&quot;2018-12-07&quot;,&quot;comment&quot;:&quot;WORDを支える技術&quot;,&quot;url&quot;:&quot;https://xrekkusu.hatenablog.jp/entry/2018/12/08/004840&quot;,&quot;title&quot;:&quot;WORDを支える技術 - バランスを取りたい&quot;,&quot;image_url&quot;:&quot;https://cdn-ak.f.st-hatena.com/images/fotolife/x/xrekkusu/20181206/20181206233731.png&quot;,&quot;user&quot;:{&quot;id&quot;:6261,&quot;name&quot;:&quot;xrekkusu&quot;,&quot;image&quot;:&quot;https://pbs.twimg.com/profile_images/2589977979/flfxu2r7hlk703sag0oc_normal.png&quot;},&quot;cancelable&quot;:false},{&quot;id&quot;:60171,&quot;date&quot;:&quot;2018-12-15&quot;,&quot;comment&quot;:&quot;今年は書いた！去年のもまた今度！&quot;,&quot;url&quot;:&quot;http://wakarin111.hatenablog.com/entry/2018/12/15/223114&quot;,&quot;title&quot;:&quot;脱獄アプリの作り方 - wakarin111の日記&quot;,&quot;image_url&quot;:&quot;https://cdn-ak.f.st-hatena.com/images/fotolife/w/wakarin111/20181215/20181215185105.jpg&quot;,&quot;user&quot;:{&quot;id&quot;:17341,&quot;name&quot;:&quot;wakarin111&quot;,&quot;image&quot;:&quot;https://pbs.twimg.com/profile_images/1052955910753071105/K3sw5WIb_normal.jpg&quot;},&quot;cancelable&quot;:false},{&quot;id&quot;:60168,&quot;date&quot;:&quot;2018-12-06&quot;,&quot;comment&quot;:&quot;ジョン！&quot;,&quot;url&quot;:&quot;https://ntsc-j.mooo.com/blog/contents/ps2-2018.xhtml&quot;,&quot;title&quot;:null,&quot;image_url&quot;:null,&quot;user&quot;:{&quot;id&quot;:12963,&quot;name&quot;:&quot;NTSC_J&quot;,&quot;image&quot;:&quot;https://pbs.twimg.com/profile_images/440713342735245312/tOgm-nc-_normal.png&quot;},&quot;cancelable&quot;:false},{&quot;id&quot;:60164,&quot;date&quot;:&quot;2018-12-05&quot;,&quot;comment&quot;:&quot;コンピュータ分野の中国語を紹介します&quot;,&quot;url&quot;:&quot;http://blog.51cto.com/13853768/2326222&quot;,&quot;title&quot;:&quot;[日文]中国語のコンピュータ用語を紹介する記事-hwajeon的博客-51CTO博客&quot;,&quot;image_url&quot;:&quot;https://static1.51cto.com/edu/blog/mobile/images/left-qr.jpg&quot;,&quot;user&quot;:{&quot;id&quot;:22529,&quot;name&quot;:&quot;buyaoandukahara&quot;,&quot;image&quot;:&quot;https://pbs.twimg.com/profile_images/1064423120159727616/Y05AlD9y_normal.jpg&quot;},&quot;cancelable&quot;:false}],&quot;current_user&quot;:null}"></div>
+</div></div>
+
+</div>
+
+<footer class="mod-footer"><div>
+  <p class="mod-footer-archive">
+    <a href="/calendars/archive"><i class="fa fa-calendar"></i>過去のAdvent Calendarを見る</a>
+  </p>
+  <p class="mod-footer-createBy">created by
+    <a href="https://twitter.com/hokaccha">@hokaccha</a>,
+    <a href="https://twitter.com/june29">@june29</a>,
+    <a href="https://twitter.com/ayumiko">@ayumiko</a>
+  </p>
+  <p class="mod-footer-privacy">
+    <a href="/privacy">プライバシーポリシー</a>
+  </p>
+</div></footer>
+
+</body>
+</html>
