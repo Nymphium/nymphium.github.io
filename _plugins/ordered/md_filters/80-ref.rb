@@ -45,7 +45,7 @@ lambda{|content|
 			convd = false
 			if label = txt.match(/\[label\s*:\s*([a-zA-Z][^\]]*)\s*\]/)
 				esc = label[1]
-				txt.sub!(/\[label\s*:\s*[a-zA-Z][^\]]*\]/, "<label id=\"#{esc}\"/>")
+				txt.sub!(/\[label\s*:\s*[a-zA-Z][^\]]*\]/, "<label id=\"#{esc}\"/>\n")
 				@num += 1
 				ref_val[esc] = render
 				convd = true
@@ -72,14 +72,14 @@ lambda{|content|
 			if ref = txt.match(/<(?<disp>[^>]+)>\s*\[ref\s*:\s*(?<refl>[^\]]+)\s*\]/)
 				esc = ref[:refl]
 				disp = ref[:disp]
-				txt.sub!(/<[^>]+>\s*\[ref\s*:\s*[^\]]+\s*\]/, "<a href=\"##{esc}\">#{disp}</a>")
+				txt.sub!(/<[^>]+>\s*\[ref\s*:\s*[^\]]+\s*\]/, "<a href=\"##{esc}\">#{disp}</a>\n")
 			elsif ref = txt.match(/\[ref\s*:\s*([^\]]+)\s*\]/)
 				esc = ref[1]
-				txt.sub!(/\[ref\s*:\s*[^\]]+\s*\]/, "<a href=\"##{esc}\">#{ref_val[esc]}</a>")
+				txt.sub!(/\[ref\s*:\s*[^\]]+\s*\]/, "<a href=\"##{esc}\">#{ref_val[esc]}</a>\n")
 			# [fnref: n]
 			elsif ref = txt.match(/\[fnref\s*:\s*(\d+)\]/)
 				nth = ref[1]
-				txt.sub!(/\[fnref\s*:\s*(\d+)\]/, "<span class=\"cite\">[<fnref>[^#{nth}]</fnref>]</span>")
+				txt.sub!(/\[fnref\s*:\s*(\d+)\]/, "<span class=\"cite\">[<fnref>[^#{nth}]</fnref>]</span>\n")
 			else
 				convd = false
 			end
