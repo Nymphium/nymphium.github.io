@@ -63,7 +63,7 @@ stackless coroutinesは "generator" と称される傾向にある｡
 次の例を見てみる(プログラム[ref:lst:stackfulexample], プログラム[ref:lst:stacklessexample])｡
 
 [label:lst:stackfulexample]
-```lua:プログラム[ref:lst:stackfulexample]. stackfull example in Lua
+```lua:プログラム[ref:lst:stackfulexample]. stackful example in Lua
 local send = function(x)
   local y = yield(x)
   return y + 3
