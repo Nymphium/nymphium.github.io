@@ -12,7 +12,7 @@ while getopts ":d::D:h" OPT; do
   case "${OPT}" in
     h)
       cat <<EOL
-articlegen [ -D ][ -d YYYY-MM-DD ] title
+articlegen [ -D /* means draft */ ][ -d YYYY-MM-DD /* contorl publish date */ ] title
 EOL
       exit 1
       ;;
