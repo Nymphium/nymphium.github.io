@@ -7,9 +7,14 @@ def head_extract head, attr, start_prop
 
   head.xpath("meta[starts-with(@#{attr}, \"#{start_prop}\")]").each{|d|
     sort = d.attribute(attr).to_s
+    content =d.attribute('content')
 
-    if sort_ = sort.match(/description|image|title/)
-      ret.push [sort_[0].to_sym,  d.attribute('content').text]
+    if content
+      content = content.text
+
+      if sort_ = sort.match(/description|image|title/)
+        ret.push [sort_[0].to_sym,  content]
+      end
     end
   }
 
@@ -70,7 +75,11 @@ def extract alt, url
   doc = Nokogiri::HTML.parse(html)
   head = doc.xpath('/html/head')
 
-  title = head.xpath('title').text
+  title = head.xpath('title')
+
+  if title
+    title = title.text
+  end
 
   h = (head_extract head, "name", "")
     .merge(head_extract head, "property", "og:")
@@ -79,8 +88,9 @@ def extract alt, url
 
   if h.key?(:image) and h.key?(:description) then
     h[:description].gsub!(/[\n\r]/i, '')
-    h[:title] = (h[:title] or title)
+    h[:title] = (h[:title] or title) or ""
     h[:url] = "#{url}#{hash}"
+    h[:image] = h[:image] or "/picture/no_image.png"
     render_twicard h
   else
     <<-HTML
@@ -100,10 +110,18 @@ module Jekyll
         sp = nil
 
         if args.match(/^\s*"/)
-          sp = args.match(/^\s*"([^"]+)"\s*(.*?)\s*$/)
+          sp = args.match(/^\s*"([^"]*)"\s*(.*?)\s*$/)
         else
           sp = args.match(/^\s*(\S+)\s+(.*?)\s*$/)
         end
+
+        # pp sp
+
+        # if sp == nil
+          # pp args
+          # pp tokens
+          # return
+        # end
 
         @alt = sp[1]
         @post = sp[2]
