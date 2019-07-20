@@ -12,7 +12,7 @@ def head_extract head, attr, start_prop
     if content
       content = content.text
 
-      if sort_ = sort.match(/description|image|title/)
+      if sort_ = sort.match(/(description|image|title)$/)
         ret.push [sort_[0].to_sym,  content]
       end
     end
@@ -81,9 +81,13 @@ def extract alt, url
     title = title.text
   end
 
-  h = (head_extract head, "name", "")
+  h = (head_extract head, "property", "")
+    .merge(head_extract head, "name", "")
     .merge(head_extract head, "property", "og:")
+    .merge(head_extract head, "name", "og:")
+    .merge(head_extract head, "property", "twitter:")
     .merge(head_extract head, "name", "twitter:")
+    .merge(head_extract head, "property", "twitter:text:")
     .merge(head_extract head, "name", "twitter:text:")
 
   if h.key?(:image) and h.key?(:description) then
