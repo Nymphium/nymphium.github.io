@@ -2,7 +2,7 @@
 layout: post
 title: エフェクト､do､ANF､継続､継続
 tags: [continuation, ANF, effects, OCaml, Haskell]
-date: 2019-07-15
+date: 2019-07-21
 ---
 
 <!--sectionize on-->
@@ -171,7 +171,7 @@ return (x + 10)
 =&lt; 4.07までは[ppxによる拡張](https://github.com/janestreet/ppx_let)もあり､非常に期待されていた機能である｡
 
 ## `ContT`
-継続があれば計算エフェクトを手続き的に書けるのか! ということでcontinuationモナドになんでも突っ込みたい｡
+継続があれば計算エフェクトを手続き的に書けるのか! ということでcontinuationモナドになんでも突っ込めばいいんじゃないか｡
 そこで`ContT` monad transformerです｡
 という話を読みました!!!
 
@@ -185,6 +185,13 @@ return (x + 10)
 エフェクトフルコンピュテーションはおもしろい
 
 DSLの組み立てにも継続がめっちゃ使えるやんみたいな話を書こうと思ったけど別の機会に｡
+
+---
+
+この記事はHERP労働時間に書かれた｡
+HERPは本物のcontinuationプログラマーも募集しています｡
+
+{% twicard "" https://www.wantedly.com/projects/334093 %}
 
 <!-- -->
 [^1]: 変数の参照もエフェクトとして考えることができるがここでは割愛
