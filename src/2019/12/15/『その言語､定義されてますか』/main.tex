@@ -1,0 +1,336 @@
+\RequirePackage{ifluatex}
+
+\ifluatex
+  \documentclass{ltjsarticle}
+  \usepackage[top=7\zw,bottom=7\zw,left=2cm,right=2cm]{geometry}
+
+  \usepackage[sourcehan-jp]{luatexja-preset}
+  \setmainfont[Ligatures=TeX,ItalicFont=TeXGyreTermes-italic,BoldFont=TeXGyreTermes-bold,Kerning=On]{GenShinGothicPNormal}
+  % \setmainfont[Ligatures=TeX,ItalicFont=*-italic,Kerning=On]{TeXGyreTermes}
+  \setmainjfont[Ligatures=TeX,BoldFont=GenShinGothicPBold,ItalicFont=GenShinGothicPBold,YokoFeatures={JFM=prop},Kerning=On]{GenShinGothicPNormal}
+  % \setmainfont[Ligatures=TeX,ItalicFont=*-italic,Kerning=On]{TeXGyreTermes}
+  % \setmainfont[Ligatures=TeX,ItalicFont=*-Bold,BoldFont=*-Bold,Kerning=On]{GenShinGothic}
+  % \setmainjfont[Ligatures=TeX,ItalicFont=*-Bold,BoldFont=*-Bold,YokoFeatures={JFM=prop},Kerning=On]{GenShinGothic}
+  % \setserifjfont[Ligatures=TeX,ItalicFont=*-Bold,BoldFont=*-Bold,YokoFeatures={JFM=prop},Kerning=On]{SourceHanSerifJP}
+  \setsansjfont[Ligatures=TeX,ItalicFont=*-Bold,BoldFont=*-Bold,YokoFeatures={JFM=prop},Kerning=On]{GenShinGothicP}
+\else
+  \documentclass[uplatex,dvipdfmx]{jsarticle}
+  \usepackage[top=7zw,bottom=7zw,left=2cm,right=2cm]{geometry}
+  \usepackage{graphicx}
+\fi
+
+\usepackage{ifluatex}
+\usepackage{xcolor}
+\usepackage{hyperref,url}
+\usepackage{amsmath,amssymb,stmaryrd,bcprules}
+\usepackage{xspace}
+\usepackage{tcolorbox}
+
+\usepackage{pagecolor}
+\usepackage[explicit]{titlesec}
+\usepackage{ulem}
+
+\definecolor{background}{HTML}{CDDEE3}
+\newpagecolor{background}
+
+\definecolor{linecolor}{HTML}{eeeeee}
+
+\titleformat{\section}{\normalfont\Large}{\thesection.}{0.3em}{#1{\color{linecolor}\hrule height 1.5pt}\vskip-1.3em}
+\titleformat{\subsection}{\normalfont\large}{\thesubsection.}{0.3em}{#1{\color{linecolor}\hrule height 1.5pt}\vskip-1.3em}
+
+\usepackage{listings}
+\input{listing.tex}
+\input{lambdaeff_macro.tex}
+\lstset{language={[Objective]Caml},backgroundcolor=\color{cream}}
+
+\usepackage{fancyhdr}
+
+\def\itemautorefname~#1\null{~#1.\null}
+\def\equationautorefname~#1\null{\textrm{~(#1)式\;}\null}
+\def\figureautorefname~#1\null{図~#1\null}
+\def\tableautorefname~#1\null{表~#1\null}
+\def\chapterautorefname~#1\null{第~#1章\null}
+\def\sectionautorefname~#1\null{#1節\null}
+\def\subsectionautorefname~#1\null{#1項\null}
+\def\subsubsectionautorefname~#1\null{#1目\null}
+\def\paragraphautorefname~#1\null{第~#1パラグラフ\null}
+\def\subparagraphautorefname~#1\null{第~#1小パラグラフ\null}
+\def\pageautorefname~#1\null{#1ページ\null}
+\def\appendixautorefname~#1\null{#1\null}
+
+\makeatletter
+\Hy@AtBeginDocument{%
+  \def\@pdfborder{0 0 1}
+  \def\@pdfborderstyle{/S/U/W 0.5}
+}
+\makeatother
+
+\hypersetup{
+  colorlinks      = true,
+  linkcolor       = blue,
+  urlcolor        = blue,
+  citecolor       = blue,
+  linkbordercolor = blue,
+  urlbordercolor  = blue,
+}
+
+\pagestyle{empty}
+
+\author{びしょ〜じょ}
+\title{その言語、定義されてますか}
+\date{Dec 15, 2019 \ \  {\small \href{https://github.com/nymphium/nymphium.github.io/tree/source/src/2019/12/15/『その言語、定義されてますか』/main.tex}{src}}}
+
+\begin{document}
+\maketitle
+
+\section{はじめに}
+こんにちは、びしょ〜じょです。
+この記事は\href{https://qiita.com/advent-calendar/2019/lang_dev}{言語実装 Advent Calendar 2019}の15日目の記事です。
+
+皆さん、言語実装してますか。
+ある人はCコンパイラ、またある人はJSのエンジン……。
+そしてある人は自作言語の実装。
+しかしその言語は実装が仕様になってませんか?
+``実装が仕様''の危うさは今更言うまでもないですが、プログラム言語においては、型システムなどを考えるためには仕様がカチッと定まっていないとナンセンスですね。
+
+本記事では、以前作った言語\href{https://github.com/nymphium/lambdaeff}{\lambdaeff}を題材に、実装前夜として言語の定義について簡単に述べます。
+言語\textbf{実装}アドベントカレンダーなので恐縮ですが、ほとんど仕様の話になります。
+
+\subsection{言語実装手順、または本記事の進み方}
+言語が何に先立つかは議論の余地がありますが、筆者のおこなう言語実装プロセスは次のようになります。
+
+\begin{enumerate}
+  \item\label{enum:proc1}
+    まずはじめに、作りたい言語をイメージする。
+    general purposeな言語を実装しようと思ったことがないので、とりあえず一番実装したい機能を考え、その機能を持つ言語(だいたいいつもML(ラムダ計算+ \lstinline{let}くらい))をイメージする。
+
+  \item\label{enum:proc2}
+    次に構文と意味論、型システムなどを考える。
+    この辺は前のフェーズでイメージした言語をコンクリートにしていく。
+
+  \item\label{enum:proc3}
+    最後に実装を与える。
+    パーザの実装が面倒くさかったり意味論のバグが発覚したりすると、1つ前のフェーズに戻る。
+    このイテレーションを複数回繰り返すことがある。
+
+    フロントエンドの実装なんて面倒だしええわになるとパーザを実装せずASTをそのまま渡しちゃう。
+\end{enumerate}
+
+特に筆者が定義する程度の小さな言語なら、ちゃんと\autoref{enum:proc2}でカチッと定義できていれば\autoref{enum:proc3}から戻ってまた実装してのイテレーションは回さなくて良いのですが、筆者程度に適当な人間だと雑に定義して雑に実装してNGな部分を直すのを繰り返すことになります。
+
+本記事は、実際に上記のプロセスに沿って実装していった\lambdaeff{}を見ていきます。
+
+\section{作りたい言語をイメージしよう}
+では早速作りたい言語を考えます。
+
+とにかく代数的効果をもつ言語を実装したかったのでそういう言語を考えました\footnotemark{}。
+\footnotetext{この言語に関してはこれは嘘で、ほぼ完全にEff言語と同じものを考えた。}
+とりあえずハンドラとエフェクトの発生の構文を考えた。
+プログラムの最大単位が文のリストなのはサクッと言語作るには微妙だな〜ということでエフェクトの定義も式として定義する。
+ベースとなる言語はとりあえずラムダ計算+\,\lstinline{let}、つまりMLでいいでしょう。
+
+具体的な構文は次の手順で考えますが、このフェーズでも多少は構文のことを念頭に置いてイメージする必要があります。
+遅延評価で代数的効果はワカランので正格評価で良いか〜などもふんわりと決めています。
+
+\begin{lstlisting}[caption={こんな感じに……},label={lst:konnakanji}]
+let double = inst() in
+with 2 + perform double 10 handle
+| double x k -> k (x * x)
+(* ==> (2 + [ ])(10*10) = 102 *)
+\end{lstlisting}
+
+このフェーズはふわっとしてるので適当にイマジンしていただいて結構ですが、最初から大きな言語を作ろうとしてここで巨大構想を練るとおそらく次の段階で頓挫するので、ベースになる言語+1、2機能くらいで考えておきましょう。
+
+べつにいつ決めても良いし決めなくてもいいんですが、とりあえず今作ろうとしている言語の名前を決めておきましょう。
+うーん、ラムダ計算に代数的効果だから``\lambdaeff{}''で!w \footnote{effectful computationを扱う論文のcore calculusの名前とだいたいかぶってる}
+
+\section{イメージの具体化(1): 構文}
+統語論が意味論に先立つのか、意味論が統語論に先立つのかは議論の余地がありますが、多くの論文がそうであるように、議論したいプログラム言語の形をハッキリさせるために構文から定義します。
+はいこちら。
+
+\begin{figure}[ht]
+  \begin{tcolorbox}
+    \[
+      \begin{array}{rrl}
+        x & \in & \variable{Variables}\\
+        \variable{eff} & \in & \variable{Effects}\\
+                       &&\\
+        v & ::= & x \mid h \mid \lambda x. e \mid \variable{eff}\\
+        e & ::= & v \mid e\ e \mid \letT{x}{e}{e}\\
+          &\mid & \instT \mid \withhandle{v\ }{e} \\
+          &\mid & \perform{\variable{e\ }{e}}\\
+        h & ::= & \handlerK v\ \left(\keyword{val} x \rightarrow e\right) \left(\left(x, k\right)\rightarrow e\right)\\
+          % &&\\
+        % F & ::= & e\ \square \mid \square\ v \mid \letT{x}{\square}{e} \\
+          % &\mid & \withhandle{v\ }{\square} \mid \perform{\square\ }{e} \mid \perform{\variable{v\ }}{\square}\\
+        % s &::= & \left[\right] \mid F :: s
+      \end{array}
+    \]
+  \end{tcolorbox}
+
+  \caption{\lambdaeff{}の構文}
+  \label{fig:lambdaeff}
+\end{figure}
+
+BNFっぽい定義方法ですね。
+筆者独自のものではなく、多少の違いはありますが、多くの論文などで用いられる定義方法です。
+
+``$x \in \mathit{Variables}$''は、``$x$は変数集合$\mathit{Variables}$に含まれる変数名を表すメタ変数''と読みます。
+\textbf{メタ変数}って何やねんですが、これは今定義せんとしている\lambdaeff{}の変数ではなく、\lambdaeff{}の要素を指すために付けた名前です。
+なので``メタ''。
+記述(実装)言語をメタ言語と呼ぶのと同じですね。
+ちなみに記述する対象は対象言語です。
+だいたいメタ言語の要素と対象言語の要素は書体で書き分けられ、前者は\textit{italic}、後者は\texttt{typewriter}がち。
+
+話が長くなりましたが、3行目から続く実際の構文定義を見ましょう。
+主に3つの要素$v$、$e$、$h$で構成されていることが分かるでしょうか。
+そしてこれらは相互再帰的な構造になっています。
+だいたい$e$と$v$は頻出のメタ変数で、それぞれ\textit{expression}と\textit{value}を指します。
+そして、明示されてませんが、トップレベルはexpressionです。
+$h$は\textit{handler}の略です。
+\autoref{lst:konnakanji}には整数や二項演算が出てきますが、自明そうなのでomitしときます。
+
+構文をちゃんと定義しておくことで、(実装もちゃんとしてれば)いちいちパーザの実装を見なくてもどういった文字列をプログラムとして受理してくれるのかが分かります。
+
+\newpage
+\section{イメージの具体化(2): 意味論}
+皆さんお待ちかねの意味論を定義します。
+意味論には色々なスタイルがありますが、目的や好みに応じて適当に選んでください。
+一番メジャーなパターンが\textbf{操作的意味論}だと思います。
+対象言語の項自体や、言語の実行モデルとしての抽象機械の状態遷移で表すやつです(雑)。
+\lambdaeff{}は代数的効果を持つ言語なので、コントロールフローをシュッとやる定義にする必要があります。
+ともすれば\textit{CEKマシン}あたりが定石でしょうか。
+コントロールフローをガンガン扱うような機能(例外とか、ifやパターンマッチも)は評価コンテキストをガッと取ってワーッとやると楽に定義できます。
+
+意味論の定義のための抽象機械で使う構文を追加します(\autoref{fig:syntax_ext})。
+
+\begin{figure}[ht]
+  \centering
+
+  \begin{tcolorbox}
+    \[
+      \begin{array}{rrl}
+        F & ::= & e\ \square \mid \square\ v \mid \letT{x}{\square}{e} \\
+          &\mid & \withhandle{v\ }{\square} \mid \perform{\square\ }{e} \mid \perform{\variable{v\ }}{\square}\\
+        s &::= & \left[\right] \mid F :: s
+      \end{array}
+    \]
+  \end{tcolorbox}
+
+  \caption{構文(続)}
+  \label{fig:syntax_ext}
+\end{figure}
+$F$は``\textit{Frame}''を表します。スタックフレームの1要素ですね。
+穴$\square$があいており、$F\left[e\right]$と書くことで穴に$e$が放り込まれる、と考えてください。
+$s$はスタックです。
+
+では早速意味論を……といきたいところですが、補助関数を定義します(\autoref{fig:flatfn})。
+\newcommand{\flatfn}[1]{%
+  \variable{flatfn}\ #1
+}
+
+\begin{figure}[ht]
+  \begin{tcolorbox}
+    \vskip-1zw\begin{flalign*}
+      \flatfn{\left[\right]} &= \lambda x. x\\
+      \flatfn{\B{F :: s}} &= \lambda x. \flatfn{s}\ \B{F\left[x\right]}
+    \end{flalign*}
+  \end{tcolorbox}
+
+  \caption{補助関数\variable{flatfn}}
+  \label{fig:flatfn}
+\end{figure}
+スタックフレームから継続を生成したいのですが、その処理を再帰的に定義するために補助関数として切り出します。
+
+補助関数も揃ったので、いよいよ本丸にいきます。
+$\model{e}{s}{\mathit{es}}$という三組(\textit{es}はスタックを表すメタ変数)で表される抽象機械の状態遷移による操作的意味論を示します(\autoref{fig:semantics})。
+%% [[[
+\begin{figure}[ht]
+    \newcommand{\defspace}{\vskip.5\baselineskip}
+    \centering
+    \begin{tcolorbox}
+      \infax[Push]{\model{F\left[e\right]}{s}{es} \mapsto \model{e}{F :: s}{es}}%
+      \defspace
+
+      \infax[Pop]{\model{v}{F :: s}{es} \mapsto \model{F\left[v\right]}{s}{es}}%
+      \defspace
+
+      \infax[Apply]{\model{\lambda x. e}{\left(\square\ v\right) :: s}{es} \mapsto \model{e\left[x = v\right]}{s}{es}}%
+      \defspace
+
+      \infax[Instanciate]{\model{\instT}{s}{es} \mapsto \model{\variable{eff}}{s}{es}}%
+      \defspace
+
+      \infax[Rethrow]{%
+        \model{\perform{\variable{eff}}{v}}{F :: s}{es}%
+        \mapsto%
+      \model{\perform{\variable{eff}{v}}}{s}{F :: es}}%
+      \defspace
+
+      \infax[Handle\textsubscript{eff}]{%
+        \begin{array}{l}
+          \model{\perform{\variable{eff}}{v}}{F :: s}{es}%
+          \mapsto%
+          \model{e_\variable{eff}\left[x = v, k = \flatfn{es}\right]}{F :: s}{\left[\right]}\\%
+          \begin{array}{ll}
+            \mathrm{where} & F = \withhandle{h\ }{\square} \\
+                           & h = \handlerK \variable{eff} \left(\valK x \rightarrow e_v\right) \left(\left(x, k\right) \rightarrow e_\variable{eff}\right)
+          \end{array}
+      \end{array}}%
+      \defspace
+
+      \infax[Handle\textsubscript{v}]{%
+        \model{v}{F :: s}{es}%
+        \mapsto%
+        \model{e_v[x = v]}{s}{es}\\
+        \begin{array}{ll}
+          \mathrm{where} & F = \withhandle{h\ }{\square} \\
+                         & h = \handlerK \variable{eff} \left(\valK x \rightarrow e_v\right) \left(\left(x, k\right) \rightarrow e_\variable{eff}\right)
+        \end{array}
+      }
+    \end{tcolorbox}    % \defspace
+
+    \caption{\lambdaeff{}の意味論}
+    \label{fig:semantics}
+\end{figure}
+%% ]]]
+\lambdaeff{}を作っていたときは知恵がやや足りてなかったので、謎の抽象機械の状態遷移による操作的意味論を与えています。
+\texttt{let}式などの操作が無いのは、\texttt{let}式がフレームによって表され、フレームの操作が\textsc{Push}規則で定義されてるためです。
+そういえば思い出したけどスコープあたりがバグってます。
+しっかり考えて作られたCEKマシンなどを使いましょう。
+
+ここに書かれてないような状態になるとランタイムエラーになります。
+未定義動作というのは、処理系実装者が勝手に忖度した場合と、自明なので各位適当に実装してくれという言語デザイナの意図を汲んだ場合の2通りがあると思います。
+前者は主にCで、後者は例えばOCamlのタプルの評価順序などが挙げられそうです。
+
+なにはともあれ、意味論を定義することで、実装のバグなのか仕様のバグなのかがはっきりします。
+この場合、変数のスコープがおかしいのは仕様のバグであることが分かります。
+
+\subsection{型システムとの連携}
+型は素人なのですみませんがsubsectionで簡潔に述べる程度にとどめておきます。
+
+意味論の定義は型システムを考える場合も重要です。
+型システムがやりたいのは、変な計算をするプログラムを事前にはじくことです。
+変な計算とは?
+それは評価が進むとランタイムエラーになるような計算です。
+計算がエラーになるということを定義するために、意味論は必要になります。
+逆に、型が付く項はエラーにならないということも言えると嬉しそうです。
+
+\section{実装}
+あとはやるだけ。
+……といいたいところですが、コンパイラを実装したろ〜という場合はまだ定義すべきものがあります。
+それは今定義した対象言語から、コンパイル先の言語への変換です。
+これもちゃんと定義することで、コンパイラの実装がバグってるのか、変換がバグってるのかが明らかとなり、デバッグが比較的容易になります。
+
+とりあえず\lambdaeff{}はインタプリタを実装しました。
+小ステップ意味論で定義しても、インタプリタの実装はだいたい大ステップ意味論での実装になりがちです。
+なんといってもそのほうが簡単なので。
+しかし今回は素直に定義に沿って実装したい気持ちがなんとなくあったので、小ステップ意味論で実装していきました。
+
+\subsection{最適化}
+\href{https://nymphium.github.io/2018/01/31/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9%E4%B8%AD%E9%96%93%E8%A8%80%E8%AA%9E%E3%81%8A%E3%82%88%E3%81%B3%E3%81%9D%E3%81%AE%E6%9C%80%E9%81%A9%E5%8C%96%E3%81%AE%E5%AE%9F%E8%A3%85.html}{ウッ頭が……}
+
+\section{おわりに}
+TaPLなどで言語の定義に用いられる記号とかそういったものの解説とかをしようと思ったのですが、なんかとりとめのない謎の記事になりました。
+そのうえ時間がギリギリアウトです(この文は23時59分に書かれた)。
+\end{document}

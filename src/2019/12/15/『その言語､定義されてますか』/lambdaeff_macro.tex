@@ -1,0 +1,83 @@
+\newcommand{\lambdaeff}{%
+    \ifmmode%
+        \lambda_\mathit{eff}\xspace%
+    \else%
+        $\lambda_\mathit{eff}$%
+\fi}
+
+\newcommand{\lambdaac}{%
+    \ifmmode%
+        \lambda_\mathit{ac}\xspace%
+    \else%
+        $\lambda_\mathit{ac}$%
+\fi}
+
+\newcommand{\keyword}[1]{%
+    \ifmmode%
+        \mathtt{#1}\ %
+    \else%
+        \texttt{#1}\xspace%
+\fi}
+
+\newcommand{\keywordx}[1]{%
+    \ifmmode%
+        \mathtt{#1}%
+    \else%
+        \texttt{#1}\xspace%
+\fi}
+
+\newcommand{\variable}[1]{%
+    \ifmmode%
+        \mathit{#1} %
+    \else%
+        \textit{#1}\xspace%
+\fi}
+
+% no spaced
+\newcommand{\variablex}[1]{%
+    \ifmmode%
+        \mathit{#1}%
+    \else%
+        \textit{#1}%
+\fi}
+
+\newcommand{\B}[1]{%
+    \ifmmode%
+        \left(#1\right)%
+    \else%
+        (#1)%
+\fi}
+
+\newcommand{\conv}[1]{%
+    \ifmmode%
+        \llceil #1\rrceil%
+    \else%
+        $\llceil #1\rrceil$%
+\fi}
+
+\newcommand{\valK}{{\keyword{val}}}
+\newcommand{\letK}{{\keyword{let}}}
+\newcommand{\recK}{{\keyword{rec}}}
+\newcommand{\andK}{{\keyword{and}}}
+\newcommand{\inK}{{\keyword{in}}}
+\newcommand{\instK}{{\keyword{inst}}}
+\newcommand{\createK}{{\keyword{create}}}
+\newcommand{\resumeK}{{\keyword{resume}}}
+\newcommand{\yieldK}{{\keyword{yield}}}
+\newcommand{\performK}{{\keyword{perform}}}
+\newcommand{\withK}{{\keyword{with}}}
+\newcommand{\matchK}{{\keyword{match}}}
+\newcommand{\whenK}{{\keyword{when}}}
+\newcommand{\handlerK}{{\keyword{handler}}}
+
+\newcommand{\letT}[3]{\letK #1 = #2\ \keyword{in} #3}
+\newcommand{\instT}{\instK \B{}}
+\newcommand{\perform}[2]{\performK #1 #2}
+\newcommand{\resume}[2]{{\keyword{resume}} #1 #2}
+\newcommand{\yield}[1]{{\keyword{yield}} #1}
+\newcommand{\create}[1]{{\keyword{create}} #1}
+\newcommand{\matchwith}[1]{\matchK #1 \withK}
+\newcommand{\withhandle}[2]{\withK #1 \keyword{handle} #2}
+
+\newcommand{\model}[3]{\left\langle #1;\, #2;\, #3 \right\rangle}
+

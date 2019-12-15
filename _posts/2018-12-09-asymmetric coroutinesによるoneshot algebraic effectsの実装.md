@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Asymmetric CoroutinesによるOneshot Algebraic Effectsの実装
-tags: [Lua, Coroutines, Algebraic Effects, Advent Calendar]
+tags: [Lua, Coroutines, Algebraic Effects, 言語実装, Advent Calendar]
 thumb: true
 ---
 
