@@ -1,0 +1,546 @@
+\RequirePackage{ifluatex}
+
+\ifluatex
+  \documentclass{ltjsarticle}
+
+  \usepackage[no-math]{luatexja-fontspec}
+  \usepackage[sourcehan-jp]{luatexja-preset}
+
+  \setmainfont[Ligatures=TeX,ItalicFont=*-italic,Kerning=On]{TeXGyreTermes}
+  \setmainjfont[Ligatures=TeX,ItalicFont=*-Bold,BoldFont=*-Bold,YokoFeatures={JFM=prop},Kerning=On]{SourceHanSerifJP}
+  \setsansjfont[Ligatures=TeX,ItalicFont=*-Bold,BoldFont=*-Bold,YokoFeatures={JFM=prop},Kerning=On]{GenShinGothicP}
+
+  %\setmonofont[BoldFont=*-Bold,Kerning=On]{SourceCodePro}
+\else
+  \documentclass[uplatex,dvipdfmx]{jsarticle}
+  \usepackage{graphicx}
+\fi
+
+\usepackage{amsmath,amssymb,bcprules,mathtools,bcprules,xspace,tcolorbox,framed,stmaryrd}
+\usepackage{hyperref}
+
+\usepackage{multicol}
+
+\usepackage[backend=biber]{biblatex}
+\bibliography{main.bib}
+
+\def\effsub{
+  \ifmmode
+    \lambda_{\sigma_{<:}}
+  \else
+    $\lambda_{\sigma_{<:}}$
+  \fi
+}
+
+\usepackage{xcolor,listings}
+
+\definecolor{cream}{HTML}{ededd9}
+\definecolor{gray}{HTML}{626262}
+\definecolor{green}{HTML}{006400}
+\definecolor{highgreen}{HTML}{00e34b}
+\definecolor{str}{HTML}{FF1493}
+\definecolor{gold}{HTML}{FFA500}
+\definecolor{waterblue}{HTML}{4169E1}
+\definecolor{text}{HTML}{2a9900}
+\definecolor{stdout}{HTML}{DC143C}
+\definecolor{yellow}{HTML}{B58900}
+\definecolor{orange}{HTML}{CB4B16}
+\definecolor{blue}{HTML}{268bd2}
+
+\lstset%
+{basicstyle=\ttfamily
+,numberstyle=\small\ttfamily
+,frame=Tlb
+,breaklines=true
+,keywordstyle=\color{waterblue}
+,keywordstyle=[2]\color{black}
+,stringstyle=\color{str}
+,commentstyle=\color{gray}
+,columns=flexible
+,tabsize=2
+,extendedchars=true
+,inputencoding=utf8x
+,showspaces=false
+,showstringspaces=false
+,breaklines=true
+,breakautoindent=true
+,captionpos=t
+,escapechar={!}
+,language=ruby
+}
+
+\input{lambdaeff_macro.tex}
+
+\author{びしょ〜じょ}
+\title{エフェクトに部分型のある代数的効果}
+
+\hypersetup{
+  pdftitle={エフェクトに部分型のある代数的効果},
+  pdfauthor={びしょ〜じょ}
+}
+
+\begin{document}
+\maketitle
+
+\section{はじめに}
+
+例えば、代数的効果で例外を定義するときは\texttt{Exception}エフェクトのようなものを定義する。
+より細かい粒度の例外を定義したい場合、新たに\texttt{ZeroDivisionException}、\texttt{IndexOutOfBoundsException}などを定義する。
+しかし、一般に例外は、例えばイベントループを内側で回す例外ハンドラなど、粗い粒度でハンドルしたい場合がある。
+OCamlなどの代数的な例外を持つ言語ではワイルドカードであらゆる例外を捕捉することができる。
+しかし代数的効果による例外のエミュレーションでワイルドカードを使ってしまうと、例外でない他のエフェクトも捕捉してしまい、うまく例外として動作させることが難しい。
+
+本記事ではエフェクトが部分型を持つ代数的効果のある言語\effsub{}について述べる。
+エフェクトに部分型関係($<:$)を導入することで、上記で述べた問題を、あらゆる例外の親となるエフェクト型を定義することで、%
+  例外としてのエフェクトを全て捕捉し、なおかつ他のエフェクトと干渉しないハンドラを定義することができる。
+
+\effsub{}の定義に基づき、代数的効果を提供するRuby言語上のライブラリのエフェクトに部分型を導入した。
+
+\section{examples} \label{sec:examples}
+エフェクトに部分型のある代数的効果を用いた例を、Ruby言語上に実装したライブラリ\textit{Ruff}\footnotemark{}を用いて書く。
+\footnotetext{2019/12/22現在、masterにまだマージしてない。 \url{https://github.com/Nymphium/ruff/tree/subtyping}}
+
+例外を考える。
+Javaのような継承のあるオブジェクト指向言語では、例外もオブジェクトであり、継承関係を持つ。
+例えばJavaでは、\texttt{Exception}が主な例外のsupertypeとなる。
+例外を表すエフェクト\texttt{Exception}を定義する。
+\begin{lstlisting}
+Exception = Ruff::Effect.new
+\end{lstlisting}
+Ruffは\lstinline{Ruff}モジュールを提供し、そこにぶら下がるクラス等にアクセスできる。
+エフェクトオブジェクト\lstinline{Ruff::Effect}のインスタンスを生成することで、エフェクトが作られる。
+Javaの例外の階層に倣い、実行時エラーを表す\texttt{RuntimeException}は次のように定義できる。
+\begin{lstlisting}
+RunTimeException = Ruff::Effect.new Exception
+\end{lstlisting}
+\lstinline{Ruff::Effect}のコンストラクタにエフェクトインスタンスを渡すことで、渡されたエフェクトの部分型となるエフェクトを生成することができる。
+つまり、ここでは$\mathtt{RunTimeException} <: \mathtt{Exception}$という部分型の関係が成り立つ。
+
+あるエフェクトの部分型となるエフェクトから、さらに派生させることができる。
+\begin{lstlisting}
+ZeroDivisionException = Ruff::Effect.new RunTimeException
+IndexOutOfBoundsException = Ruff::Effect.new RunTimeException
+\end{lstlisting}
+\lstinline{RunTimeException}同様に、$\mathtt{ZeroDivisionException} <: \mathtt{RunTimeException}$、%
+  さらにtransitiveに$\mathtt{ZeroDivisionException} <: \mathtt{Exception}$という関係が成り立つ。
+
+本章に続く例のため、2つのメソッド、\lstinline{div}と\lstinline{access}を定義する。
+\lstinline{div}は2つの引数から商を計算するメソッドである。
+第2引数が分母となり、\lstinline{0}の場合は\lstinline{ZeroDivisionException}を発生させる。
+\begin{lstlisting}
+def div(x, y)
+  if y.zero?
+    ZeroDivisionException.perform
+  else
+    x / y
+  end
+end
+\end{lstlisting}
+\textit{Ruff}におけるエフェクトの発生は、発生するエフェクトのオブジェクトのメソッド\lstinline{perform}を呼ぶことで表される。
+\lstinline{access}は配列へのアクセスのラッパーメソッドであり配列外のインデックスへアクセスしようとすると\lstinline{IndexOutOfBoundsException}が発生する。
+\begin{lstlisting}
+def access(arr, idx)
+  if arr.length <= idx || idx.negative?
+    IndexOutOfBoundsException.perform idx
+  else
+    arr[idx]
+  end
+end
+\end{lstlisting}
+
+閑話休題、あるエフェクトから派生したエフェクトは、元のエフェクトをハンドルするハンドラによって捕捉することができる。
+いま、``例外''を粗い粒度で捕捉する\lstinline{rough_handler}を次のように定義する。
+\begin{lstlisting}
+rough_handler = Ruff::Handler.new
+  .on(RunTimeException) {
+     puts 'RTE'
+  }
+\end{lstlisting}
+\textit{Ruff}は\lstinline{Ruff::Handler}がハンドラを表すクラスとなっており、\lstinline{on}メソッドでハンドラオブジェクトにエフェクトハンドラを設定できる。
+このハンドラは\lstinline{RunTimeException}エフェクトおよびそれから派生したエフェクトを捕捉できる。
+``例外''が捕捉されると、継続および引数は破棄され、\lstinline{RTE}を出力してハンドラのコントロールを抜ける。
+\begin{lstlisting}
+rough_handler.run {
+  div(10, 0) + 3
+}
+# ==> prints `RTE`
+\end{lstlisting}
+
+次は``例外''を細かい粒度でキャッチする\lstinline{acc_handler}を定義する。
+\begin{lstlisting}
+acc_handler = Ruff::Handler.new
+  .on(ZeroDivisionException) {
+    puts 'ZeroDivisionException'
+  }
+  .on(IndexOutOfBoundsException) {|_k, x|
+    puts "IndexOutOfBoundsException(#{x})"
+  }
+\end{lstlisting}
+\lstinline{ZeroDivisionException}を捕捉した場合は\lstinline{ZeroDivisionExceipt}と出力して終了し、\ifluatex\par\noindent\fi%
+  \lstinline{IndexOutOfBoundsException}を捕捉した場合は、ハンドラの第1引数の継続を無視し、第2引数\texttt{x}を文字列補間中に使い\lstinline[language=]|IndexOutOfException#{x}|を出力して終了する。
+\begin{lstlisting}
+acc_handler.run do
+  div(10, 0)
+end
+# ==> prints `ZeroDivisionException`
+
+acc_handler.run do
+  arr = [1, 2]
+
+  puts access(arr, 2)
+end
+# ==> prints `IndexOutOfException(2)`
+\end{lstlisting}
+
+\section{\effsub}
+%%% [[[
+\newcommand{\clos}[3]{%
+  \texttt{clos}\left(\lambda #1. #2, #3\right)
+}
+\newcommand{\closh}[2]{%
+  \texttt{closh}\left(#1, #2\right)
+}
+\newcommand{\letS}[3]{
+  \left(\letK x = \square\ \inK #2, #3\right)
+}
+\newcommand{\termKeyword}[1]{%
+  \ifmmode%
+    \mathtt{#1}\ %
+  \else%
+    \texttt{#1}\xspace%
+  \fi}
+\newcommand{\handleK}{\termKeyword{handle}}
+\newcommand{\withhandleS}[2]{\left(\withK \square\ \handleK #1, #2\right)}
+\newcommand{\withhandleF}[3]{\left(\withK #2\ \handleK #3\right)^#1}
+%%% ]]]
+
+本章ではエフェクトに部分型のある代数的効果を持つ言語\effsub{}について説明する。
+\effsub{}はラムダ計算に加え、\letK{}式および代数的効果に関する構文を持つ言語である。
+構文および型システムは主にEffy言語\cite{pretnar2017efficient}を参考にた。
+
+\subsection{構文}
+\effsub{}の構文を\autoref{fig:effsub}に示す。
+\begin{figure}[ht]
+  \begin{framed}
+    \[
+      \begin{array}{rrl}
+        x & \in & \variable{Variables}\\
+        \Sigma&::=& \left\{\sigma_1: \tau_1\hookrightarrow\tau_1', \sigma_2: \tau_2\hookrightarrow\tau_2', \cdots\cdots\sigma_l:\tau_l\hookrightarrow\tau_l'\right\}\\
+        \sigma & \in & \Sigma\\
+                       &&\\
+        v & ::= & x \mid h \mid \lambda x. e \mid \sigma\\
+        e & ::= & v \mid v\ v \mid \letT{x}{e}{e}\\
+          &\mid & \withhandle{v\ }{e} \\
+          &\mid & \performK v\ v\\
+        h & ::= & \handlerK v\ \left(\keyword{val} x \rightarrow e\right) \left(\left(x, x\right)\rightarrow e\right)\\
+          &&\\
+        \tau&::=& \tau\rightarrow \underline{\tau} \mid \underline{\tau} \Rightarrow \underline{\tau} \\
+        \underline{\tau}&::=& \tau!\Delta \\
+        \Delta &::=& \emptyset \mid \Delta, \sigma \\
+        \Gamma &::=& \emptyset \mid \Gamma, \left(x : \tau\right)
+      \end{array}
+    \]
+  \end{framed}
+
+  \caption{\effsub{}の構文}
+  \label{fig:effsub}
+\end{figure}
+エフェクトの集合$\Sigma$は前もって、エフェクト間の部分型関係も含めて定義されているものと仮定する。
+これはモデルを簡単にするためで、実際の実装では、エフェクトの生成および部分型関係の定義はユーザによって動的におこなうことができる。
+エフェクトの型は$\tau\hookrightarrow\tau'$で表され、エフェクト発生時に$\tau$型の引数を受け取り、限定継続に$\tau'$を渡す。
+
+代数的効果のコンポーネントは他に、ハンドラを生成する構文、ハンドル式、エフェクトの発生の3つがある。
+$\handlerK \sigma\ \left(\valK x \rightarrow e\right) \left(\left(y, k\right) \rightarrow e'\right)$はエフェクト$\sigma$に対するハンドラを作る。
+$\left(y, k\right)\rightarrow e'$は$\sigma$に対するエフェクトハンドラである。
+$\sigma$を捕捉したとき、エフェクトの引数を$y$に、エフェクト発生位置からハンドラで区切らられた部分までの限定継続を$k$に束縛し、$e'$を評価する。
+$\valK x \rightarrow e$はハンドルされている式全体に対する値ハンドラ(value handler)である。
+ハンドルされている式が値を返した場合、その値を$x$に束縛して$e$を評価する。
+\effsub{}では、エフェクトの生成と同様に簡単のため、1つのハンドラは1つのエフェクトしかハンドルできない。
+この制約は、やはり同様に実装の段階では取り払われている。
+$\withK h\ \handleK e$はハンドル式であり、ハンドラ$h$のもとで$e$を評価する。
+エフェクトの発生は$\performK \sigma\ v$で表され、エフェクト$\sigma$を発生し、引数に$v$が渡される。
+
+型は関数型$\tau\rightarrow\underline{\tau}'$、ハンドラ型$\underline{\tau}\Rightarrow\underline{\tau'}$から成る。
+$\underline{\tau}$は$\tau!\Delta$のエイリアスであり、エフェクト(の集合)$\Delta$が発生しうる$\tau$を返す。
+ハンドラ型$\tau!\Delta \Rightarrow\tau'!\Delta'$は、$\tau!\Delta$型の式をハンドルし、$\Delta'$がハンドル式から計算中に発生しうる$\tau'$型の値を返す。
+
+\subsection{型システム}
+\subsubsection{部分型}
+\effsub{}には2種類のsubtypingがある。
+はじめに、本記事で導入するエフェクト上の部分型関係($<:$)を\autoref{fig:effsubsub1}に示す。
+\begin{figure}[ht]
+  \centering
+  \begin{framed}
+      \infax[S-Refl]{
+        \sigma <: \sigma
+      }
+
+      \infrule[S-Trans]{
+        \left(\sigma_1 : \tau \hookrightarrow \tau'\right) <: \left(\sigma_2 : \tau \hookrightarrow \tau'\right)
+        \andalso
+        \left(\sigma_2 : \tau \hookrightarrow \tau'\right) <: \left(\sigma_3: \tau \hookrightarrow \tau'\right)
+        }{
+        \left(\sigma_1 : \tau \hookrightarrow \tau'\right) <: \left(\sigma_3 : \tau \hookrightarrow \tau'\right)
+      }
+  \end{framed}
+  \caption{\effsub{}の部分型(1): エフェク上の部分型関係}
+  \label{fig:effsubsub1}
+\end{figure}
+改めて、\effsub{}においてこの部分型関係は予め定義されているものとする。
+また、注意したいのはエフェクト自体に対する部分型関係であり、エフェクトの引数は部分型関係を持たないことである(\textsc{S-Refl}は自明なので型を省略した)。
+\autoref{sec:examples}で述べた\texttt{Exception}とその部分型に関する関係は、これら規則により満たされていることが確認できる。
+
+もう1つの部分型関係($\leqslant$)は、代数的効果を持つ言語に多く見られる、エフェクトの集合に対する関係である(\autoref{fig:effsubsub2})。
+\begin{figure}[ht]
+  \centering
+  \begin{framed}
+    \begin{multicols}{3}
+      \infrule[S-Fun]{
+        \tau_1' \leqslant \tau_1
+        \andalso
+        \tau_2 \leqslant \tau_2'
+        }{
+        \tau_1 \rightarrow \tau_2 \leqslant \tau_1' \rightarrow \tau_2'
+      }
+
+      \infrule[S-Handler]{
+        \underline{\tau_1'} \leqslant \underline{\tau_1}
+        \andalso
+        \underline{\tau_2} \leqslant \underline{\tau_2'}
+        }{
+        \underline{\tau_1}\Rightarrow\underline{\tau_2}\leqslant\underline{\tau_1'}\Rightarrow\underline{\tau_2'}
+      }
+
+      \infax[S-Pure]{
+        \overline{\tau!\emptyset \leqslant \tau}
+      }
+    \end{multicols} 
+    \vspace{0.4\baselineskip}
+
+      \infrule[S-Dirt]{
+        \tau \leqslant \tau'
+        \andalso
+        \forall \sigma\in \Delta. \exists \sigma' \in \Delta'. \sigma <:\sigma'
+      }{
+        \tau!\Delta \leqslant \tau'!\Delta'
+      }
+  \end{framed}
+  \caption{\effsub{}の部分型(2): エフェクトの集合に対するsubtyping}
+  \label{fig:effsubsub2}
+\end{figure}
+% Dirt$\Delta$に関して部分型が述べられている。
+\textsc{S-Handler}は、ハンドルされる式が発生しうるエフェクトを課題近似し($\tau_1'\leqslant\tau_1$)、ハンドラによって取り除かれる型を過小近似する($\tau_2\leqslant\tau_2'$)。
+\textsc{S-Pure}は、純粋な型$\tau$は空のDirtの付いた型$\tau!\emptyset$の基本型であることを示している。
+Effy言語などでは$\valK : \forall \tau. \tau \rightarrow \tau!\emptyset$演算子などが提供されているが、\effsub{}では部分型関係による暗示的なダウンキャストをおこなう。
+\textsc{S-Dirt}は、エフェクトの部分型関係を考慮した、発生しうるエフェクトの集合のサイズに着目した部分型関係である。
+Effy言語では\autoref{fig:effysubtyping}のような定義となっている。
+\begin{figure}[ht]
+  \centering
+  \framed
+    \infrule[S-!]{
+      \tau \leqslant \tau'
+      \andalso
+      \Delta \subseteq \Delta'
+    }{
+      \tau!\Delta \subseteq \tau'!\Delta'
+    }
+  \endframed
+  \caption{Effyの部分型関係の一部 (\cite{pretnar2017efficient}より引用、一部改変)}
+  \label{fig:effysubtyping}
+\end{figure}
+我々は、$\Delta$の全ての要素$\sigma$が、$\Delta'$のある要素$\sigma'$の部分型になっていることを以て、$\Delta$が$\Delta'$の部分集合であることを示している。
+
+\subsubsection{型システム全体}
+\effsub{}の型システムを\autoref{fig:effsubtypes}に示す。
+\begin{figure}[ht]
+  \centering
+  \begin{framed}
+    \begin{multicols}{2}
+      \infrule[T-Var]{
+        \left(x : \tau\right) \in \Gamma
+        }{
+        \Gamma \vdash x : \tau
+      }
+
+      \infrule[T-Let]{
+        \Gamma \vdash e : \tau!\Delta
+        \andalso
+        \Gamma, \left(x : \tau\right) \vdash e' : \tau'!\Delta'
+        }{
+        \Gamma \vdash \letK x = e\ \inK e' : \tau'!\left(\Delta \cup \Delta'\right)
+      }
+    \end{multicols}
+
+    \begin{multicols}{2}
+      \infrule[T-Fun]{
+        \Gamma, \left(x : \tau\right) \vdash e : \underline{\tau'}
+        }{
+        \Gamma \vdash \lambda x. e : \tau\rightarrow \underline{\tau'}
+      }
+
+      \infrule[T-App]{
+        \Gamma \vdash v_1 : \tau \rightarrow \underline{\tau'}
+        \andalso
+        \Gamma \vdash v_2 : \tau
+        }{
+        \Gamma \vdash v_1\ v_2 : \underline{\tau'}
+      }
+    \end{multicols}
+
+    \begin{multicols}{2}
+      \infrule[T-SubPure]{
+        \Gamma \vdash v : \tau
+        }{
+        \Gamma \vdash v : \tau!\Delta
+      }
+
+      \infrule[T-SubComp]{
+        \Gamma \vdash e : \underline{\tau}
+        \andalso
+        \underline{\tau'} \leqslant \underline{\tau}
+        }{
+        \Gamma \vdash e : \underline{\tau'}
+      }
+    \end{multicols}
+
+    \infrule[T-Handler]{
+      \sigma = \left(\sigma : \tau_1 \hookrightarrow \tau_2\right)
+      \andalso
+      \sigma \in \Sigma
+      \andalso
+      \\
+      \Gamma, \left(x : \tau\right) \vdash e : \tau'!\Delta
+      \andalso
+      \Gamma, \left(y : \tau_1, k : \tau_2 \rightarrow \tau'!\Delta\right)%
+        \vdash
+        e' : \tau!\Delta
+    }{
+      \Gamma \vdash \handlerK \left(\valK x \rightarrow e\right)\ \left(\left(y,k\right) \rightarrow e'\right) : \tau!\Delta\cup\left\{\sigma\right\} \Rightarrow \tau'!\Delta
+    }
+
+    \infrule[T-Perform]{
+      \sigma = \left(\sigma : \tau_1 \hookrightarrow \tau_2\right)
+      \andalso
+      \sigma \in \Sigma
+      \andalso
+      \Gamma \vdash v : \tau_1
+    }{
+      \Gamma \vdash \performK \sigma\ v : \tau_2!\left\{\sigma\right\}
+    }
+
+    \infrule[T-With]{
+      \Gamma \vdash h : \tau!\Delta \Rightarrow \tau'!\Delta'
+      \andalso
+      \Gamma \vdash e : \tau!\Delta
+    }{
+      \Gamma \vdash \withK h\ \handleK e : \tau'!\Delta'
+    }
+  \end{framed}
+  \caption{\effsub{}の型システム}
+  \label{fig:effsubtypes}
+\end{figure}
+\textsc{T-Let}は、束縛される項で発生しうるエフェクト$\Delta$とボディで発生しうるエフェクト$\Delta'$の和$\Delta\cup\Delta'$を、\letK{}式全体で発生しうるエフェクトと考える。
+\textsc{T-SubPure}および\textsc{T-SubComp}は発生しうるエフェクトに関するダウンキャストをおこなう。
+\textsc{T-Handler}はハンドラに関する規則である。
+値ハンドラとエフェクトハンドラの戻り値の型は同じ$\tau'!\Delta$である。
+継続のanswer typeはハンドル式の戻り値の型と同じになるので、値ハンドラの戻り値の型同様に$\tau'!\Delta$である。
+\textsc{T-Perform}は、エフェクト$\sigma : \tau_1\hookrightarrow \tau_2$に引数$v:\tau_1$を渡して発生させたとき、継続のholeが、エフェクト$\sigma$が発生しうる$\tau_2$型になることを示す。
+\textsc{T-With}は、$\tau!\Delta$型の式をハンドルし、$\tau'!\Delta'$を返す。
+このとき$e$の型は適宜部分型により小さくなる。
+
+\subsection{意味論}
+%%% [[[
+\newcommand{\concat}{+\kern-.5em+}
+% \newcommand{\model}[3]{\left\langle #1;\, #2;\, #3\right\rangle}
+\newcommand{\linedmodel}[3]{\left\langle\begin{array}{c}#1;\\#2;\\#3\end{array}\right\rangle}
+\newcommand{\goesTo}{\longrightarrow_{\mathrm{eff}}}
+\newcommand{\flatfn}[1]{%
+  \llparenthesis #1 \rrparenthesis
+}
+\newcommand{\splitt}[2]{
+  #1\, /\kern-2pt/\, #2
+}
+
+\newcommand{\genfun}[2]{
+  #1 * #2
+}
+%%%]]]
+
+意味論は代数的効果を持つ値呼びの体系として、素直に与えられていると仮定する。
+CEKマシンに基づいた抽象機械の状態遷移による小ステップ意味論の一部を\autoref{fig:effsubsem}に示す。
+\begin{figure}[ht]
+  \centering
+  \begin{framed}
+    \infrule[E-Handle\,$\sigma$]{
+      \sigma <: \sigma'
+      \andalso
+      \splitt K \sigma = \left(K', \withhandleF{{\sigma'}}{w_h}{\square}, K''\right)
+      \andalso
+      \\
+      \mathrm{where}\ w_h = \closh{\handlerK {\sigma'}\ \left(\valK x \rightarrow e\right)\ \left(\left(y, k\right) \rightarrow e'\right)}{E'}
+    }{
+      \model{w}{E}{\left(\perform{\sigma\ }{\square}\right) :: K }
+      \longrightarrow
+      \linedmodel{e'}{\left(y = w\right) :: \left(k = \genfun{K'}{E}\right) :: E'}{\withhandleF{{\sigma'}}{w_h}{\square} :: K''}
+    }
+  \end{framed}
+  \caption{\effsub{}の意味論(一部)}
+  \label{fig:effsubsem}
+\end{figure}
+$\splitt{K}{\sigma}$はスタックフレーム$K$からエフェクト$\sigma$に対応するハンドラでハンドルするフレームと、その前後のスタックフレームから成る3つ組を返す補助関数である。
+$\closh{h}{E}$は環境$E$をcloseしたハンドラ$h$のランタイム表現である。
+$\withhandleF{{\sigma}}{w}{\square}$はエフェクト$\sigma$に対応するハンドラ$w$で式をハンドルするフレームである。
+
+\textsc{E-Handle\,$\sigma$}は発生したエフェクト$\sigma$に対し、$\sigma$の基本型となる$\sigma'$のハンドラによりハンドルされる。
+\textsc{E-Handle\,$\sigma$}規則中の$\sigma <: \sigma'$は補助関数($\splitt{}{}$)の結果に対するアサーションである。
+補助関数($\splitt{}{}$)の定義を\autoref{fig:splitt}に示す。
+
+\begin{figure}[ht]
+  \centering
+  \begin{framed}
+    \begin{flalign*}
+      \splitt{\left(\withhandleF{{\sigma'}}{w}{\square}:: K\right)}{\sigma} &=  \left(\left[\right], \withhandleF{{\sigma'}}{w}{\square}, K\right)\quad \mathrm{iff}\ \sigma <: \sigma' \\
+      \splitt{\left(F :: K\right)}{\sigma} &= \left(F :: K', F', K''\right) \\
+      \mathrm{where}~ F~&\not=\withhandleF{\sigma}{w}{\square} \\
+      \mathrm{and}~ \left(K', F', K''\right) &= \splitt{K}{\sigma}
+    \end{flalign*}
+  \end{framed}
+
+  \caption{補助関数($\splitt{}{}$)}
+  \label{fig:splitt}
+\end{figure}
+スタックフレーム$K$のトップを先頭から走査し、$\sigma$の基本型となる$\sigma'$に対応するハンドラを用いたハンドル式を取得する。
+ここで、\textsc{S-Refl}規則より$\sigma$に対応するハンドラも取得されうることを改めて述べておく。
+
+\subsection{健全性とか}
+読者の課題とするで
+
+\section{実装}
+\autoref{fig:effsubsem}に基づき、Ruby言語上の代数的効果ライブラリ\textit{Ruff}に対し、エフェクトに関する部分型を実装した。
+\effsub{}は1つのハンドラは1つのエフェクトしかハンドルできなかったが、実装ではその制約は取り除かれている。
+1つのハンドラが部分型関係にある複数のエフェクトハンドラは、ハンドルできるエフェクトが発生した場合、ハンドラに登録されているもののうち\textbf{最小}のエフェクトとそれに対応するハンドラが選択される。
+\autoref{sec:examples}の\texttt{Exception}の階層を用いて例を示す。
+\lstinline{ZeroDivisionExceiption}と\lstinline{Exception}をハンドルする\lstinline{partacc_handler}を定義する。
+\begin{lstlisting}
+partacc_handler = Ruff::Handler.new
+  .on(ZeroDivisionExceipt) {
+    puts 'ZeroDivisionExceiption'
+  }
+  .on(Exception) {
+    puts 'Exception'
+  }
+\end{lstlisting}
+このハンドラのもとで\lstinline{ZeroDivisionExceiption}を発生させた場合、\lstinline{partacc_handler}は\lstinline{ZeroDivisonException}の基本型である\lstinline{ZeroDivisionException}($\because$ \textsc{S-Refl})もしくは\lstinline{Exception}($\because$\textsc{S-Trans})によってハンドルできる。
+この2つのうち\textbf{最小}のエフェクトとは、部分型における親子関係のターミノロジーを用いれば、\textbf{最も若い世代}のエフェクトである。
+したがって、\lstinline{ZeroDivisionException}のハンドラが使われ、\lstinline{ZeroDivisonException}を出力する。
+
+\section{おわりに}
+本記事では、エフェクトに部分型のある代数的効果を持つ言語\effsub{}を定義した。
+また、\effsub{}に基づき、Ruby言語上の代数的効果ライブラリに部分型を追加した。
+エフェクトに部分型を導入することで、例外のような階層のある計算エフェクトを代数的効果で自然にエンコードすることができる。
+代数的効果がさらに実用的な言語機能として発展していくことを望む。
+
+\printbibliography
+
+\end{document}
+
