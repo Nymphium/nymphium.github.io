@@ -100,21 +100,21 @@ OCamlなどの代数的な例外を持つ言語ではワイルドカードであ
 エフェクトに部分型のある代数的効果を用いた例を、Ruby言語上に実装したライブラリ\textit{Ruff}\footnotemark{}を用いて書く。
 \footnotetext{2019/12/22現在、masterにまだマージしてない。 \url{https://github.com/Nymphium/ruff/tree/subtyping}}
 
-例外を考える。
 Javaのような継承のあるオブジェクト指向言語では、例外もオブジェクトであり、継承関係を持つ。
-例えばJavaでは、\texttt{Exception}が主な例外のsupertypeとなる。
-例外を表すエフェクト\texttt{Exception}を定義する。
+例えばJavaでは、\texttt{Exception}が主な例外の基本型となり、それを継承する詳細な例外が作られ、階層を成していく。
+いま、部分型のある代数的効果を用いて階層のある例外を定義していく。
+はじめに、例外を表すエフェクト\texttt{Exception}を定義する。
 \begin{lstlisting}
 Exception = Ruff::Effect.new
 \end{lstlisting}
 Ruffは\lstinline{Ruff}モジュールを提供し、そこにぶら下がるクラス等にアクセスできる。
 エフェクトオブジェクト\lstinline{Ruff::Effect}のインスタンスを生成することで、エフェクトが作られる。
-Javaの例外の階層に倣い、実行時エラーを表す\texttt{RuntimeException}は次のように定義できる。
+次に、Javaの例外の階層に倣い、実行時例外を表す\texttt{RuntimeException}を以下に定義する。
 \begin{lstlisting}
 RunTimeException = Ruff::Effect.new Exception
 \end{lstlisting}
 \lstinline{Ruff::Effect}のコンストラクタにエフェクトインスタンスを渡すことで、渡されたエフェクトの部分型となるエフェクトを生成することができる。
-つまり、ここでは$\mathtt{RunTimeException} <: \mathtt{Exception}$という部分型の関係が成り立つ。
+つまり、Javaのクラス階層同様に、$\mathtt{RunTimeException} <: \mathtt{Exception}$という部分型関係がここで定義された。
 
 あるエフェクトの部分型となるエフェクトから、さらに派生させることができる。
 \begin{lstlisting}
@@ -122,7 +122,7 @@ ZeroDivisionException = Ruff::Effect.new RunTimeException
 IndexOutOfBoundsException = Ruff::Effect.new RunTimeException
 \end{lstlisting}
 \lstinline{RunTimeException}同様に、$\mathtt{ZeroDivisionException} <: \mathtt{RunTimeException}$、%
-  さらにtransitiveに$\mathtt{ZeroDivisionException} <: \mathtt{Exception}$という関係が成り立つ。
+  さらに部分型関係の遷移律に基づき、$\mathtt{ZeroDivisionException} <: \mathtt{Exception}$という関係が成り立つ。
 
 本章に続く例のため、2つのメソッド、\lstinline{div}と\lstinline{access}を定義する。
 \lstinline{div}は2つの引数から商を計算するメソッドである。
@@ -266,7 +266,7 @@ $\underline{\tau}$は$\tau!\Delta$のエイリアスであり、エフェクト(
 
 \subsection{型システム}
 \subsubsection{部分型}
-\effsub{}には2種類のsubtypingがある。
+\effsub{}には2種類の部分型がある。
 はじめに、本記事で導入するエフェクト上の部分型関係($<:$)を\autoref{fig:effsubsub1}に示す。
 \begin{figure}[ht]
   \centering
@@ -290,7 +290,7 @@ $\underline{\tau}$は$\tau!\Delta$のエイリアスであり、エフェクト(
 また、注意したいのはエフェクト自体に対する部分型関係であり、エフェクトの引数は部分型関係を持たないことである(\textsc{S-Refl}は自明なので型を省略した)。
 \autoref{sec:examples}で述べた\texttt{Exception}とその部分型に関する関係は、これら規則により満たされていることが確認できる。
 
-もう1つの部分型関係($\leqslant$)は、代数的効果を持つ言語に多く見られる、エフェクトの集合に対する関係である(\autoref{fig:effsubsub2})。
+もう1つの部分型関係($\leqslant$)は、代数的効果を持つ言語に多く見られる、エフェクトの集合に着目した型上の関係である(\autoref{fig:effsubsub2})。
 \begin{figure}[ht]
   \centering
   \begin{framed}
@@ -298,9 +298,9 @@ $\underline{\tau}$は$\tau!\Delta$のエイリアスであり、エフェクト(
       \infrule[S-Fun]{
         \tau_1' \leqslant \tau_1
         \andalso
-        \tau_2 \leqslant \tau_2'
+        \underline{\tau_2} \leqslant \underline{\tau_2'}
         }{
-        \tau_1 \rightarrow \tau_2 \leqslant \tau_1' \rightarrow \tau_2'
+        \tau_1 \rightarrow \underline{\tau_2} \leqslant \tau_1' \rightarrow \underline{\tau_2'}
       }
 
       \infrule[S-Handler]{
@@ -329,7 +329,7 @@ $\underline{\tau}$は$\tau!\Delta$のエイリアスであり、エフェクト(
   \label{fig:effsubsub2}
 \end{figure}
 % Dirt$\Delta$に関して部分型が述べられている。
-\textsc{S-Handler}は、ハンドルされる式が発生しうるエフェクトを課題近似し($\tau_1'\leqslant\tau_1$)、ハンドラによって取り除かれる型を過小近似する($\tau_2\leqslant\tau_2'$)。
+\textsc{S-Handler}は、ハンドルされる式が発生しうるエフェクトを過大近似し($\underline{\tau_1'}\leqslant\underline{\tau_1}$)、ハンドラによって取り除かれる型を過小近似する($\underline{\tau_2}\leqslant\underline{\tau_2'}$)。
 \textsc{S-Pure}は、純粋な型$\tau$は空のDirtの付いた型$\tau!\emptyset$の基本型であることを示している。
 Effy言語などでは$\valK : \forall \tau. \tau \rightarrow \tau!\emptyset$演算子などが提供されているが、\effsub{}では部分型関係による暗示的なダウンキャストをおこなう。
 \textsc{S-Dirt}は、エフェクトの部分型関係を考慮した、発生しうるエフェクトの集合のサイズに着目した部分型関係である。
@@ -342,7 +342,7 @@ Effy言語では\autoref{fig:effysubtyping}のような定義となっている�
       \andalso
       \Delta \subseteq \Delta'
     }{
-      \tau!\Delta \subseteq \tau'!\Delta'
+      \tau!\Delta \leqslant \tau'!\Delta'
     }
   \endframed
   \caption{Effyの部分型関係の一部 (\cite{pretnar2017efficient}より引用、一部改変)}
@@ -391,7 +391,7 @@ Effy言語では\autoref{fig:effysubtyping}のような定義となっている�
       \infrule[T-SubPure]{
         \Gamma \vdash v : \tau
         }{
-        \Gamma \vdash v : \tau!\Delta
+        \Gamma \vdash v : \tau!\emptyset
       }
 
       \infrule[T-SubComp]{
@@ -499,7 +499,7 @@ $\withhandleF{{\sigma}}{w}{\square}$はエフェクト$\sigma$に対応するハ
   \centering
   \begin{framed}
     \begin{flalign*}
-      \splitt{\left(\withhandleF{{\sigma'}}{w}{\square}:: K\right)}{\sigma} &=  \left(\left[\right], \withhandleF{{\sigma'}}{w}{\square}, K\right)\quad \mathrm{iff}\ \sigma <: \sigma' \\
+      \splitt{\left(\withhandleF{{\sigma}}{w}{\square}:: K\right)}{{\sigma'}} &=  \left(\left[\right], \withhandleF{{\sigma}}{w}{\square}, K\right)\quad \mathrm{iff}\ \sigma' <: \sigma \\
       \splitt{\left(F :: K\right)}{\sigma} &= \left(F :: K', F', K''\right) \\
       \mathrm{where}~ F~&\not=\withhandleF{\sigma}{w}{\square} \\
       \mathrm{and}~ \left(K', F', K''\right) &= \splitt{K}{\sigma}
@@ -509,8 +509,8 @@ $\withhandleF{{\sigma}}{w}{\square}$はエフェクト$\sigma$に対応するハ
   \caption{補助関数($\splitt{}{}$)}
   \label{fig:splitt}
 \end{figure}
-スタックフレーム$K$のトップを先頭から走査し、$\sigma$の基本型となる$\sigma'$に対応するハンドラを用いたハンドル式を取得する。
-ここで、\textsc{S-Refl}規則より$\sigma$に対応するハンドラも取得されうることを改めて述べておく。
+スタックフレーム$K$のトップを先頭から走査し、$\sigma'$の基本型となる$\sigma$に対応するハンドラを用いたハンドル式を取得する。
+ここで、\textsc{S-Refl}規則より$\sigma'$に対応するハンドラも取得されうることを改めて述べておく。
 
 \subsection{健全性とか}
 読者の課題とするで
