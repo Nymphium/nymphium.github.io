@@ -119,6 +119,23 @@ $$
 よし! では実装しましたはいこちら
 
 ```racket
+#lang racket
+
+(require racket/control)
+
+(define (fcontrol f #:tag [prompt-tag (default-continuation-prompt-tag)])
+  (call-with-composable-continuation
+   (lambda (k)
+     (abort-current-continuation
+      prompt-tag
+      f
+      k))
+   prompt-tag))
+```
+Racket v7.6以前は`fcontrol/run`をプロンプトタグを指定して使う場合にバグがあったので､最新の環境でない場合は上記のように`fcontrol`を上書きします｡
+次こそ本題です｡
+
+```racket
 (define (perform eff v)
   (fcontrol v #:tag eff))
 
