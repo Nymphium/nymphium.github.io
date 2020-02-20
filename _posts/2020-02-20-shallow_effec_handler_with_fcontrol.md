@@ -2,6 +2,7 @@
 layout: post
 title: fcontrol/runでshallow effect handler
 tags: [Algebraic Effects, Delimited Continuation, Racket]
+thumb: yes
 ---
 
 <!--sectionize on-->
