@@ -7,20 +7,20 @@
     <title>{% if page.title %}{{ page.title | escape }} - {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
     <meta itemprop="name" content="{% if page.title %}{{ page.title | escape }} - {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}"/>{% if page.tags %}
     <meta name="keywords" content="{{ page.tags | join: "," }}"/>{% endif %}
-    <meta name="thumbnail" content="{% if page.thumb%}{{ site.url }}/pictures{{ page.id }}/thumb.png{% else %}{{site.url}}/pictures/github_icon.png{% endif %}"/>
-    <meta itemprop="image" content="{% if page.thumb%}{{ site.url }}/pictures{{ page.id }}/thumb.png{% else %}{{site.url}}/pictures/github_icon.png{% endif %}"/>
+    <meta name="thumbnail" content="{% if page.thumb%}{{ BASE_PATH }}/pictures{{ page.id }}/thumb.png{% else %}{{BASE_PATH}}/pictures/github_icon.png{% endif %}"/>
+    <meta itemprop="image" content="{% if page.thumb%}{{ BASE_PATH }}/pictures{{ page.id }}/thumb.png{% else %}{{BASE_PATH}}/pictures/github_icon.png{% endif %}"/>
 
     <meta name="twitter:card" content="summary"/>
     <meta name="twitter:site" content="{{ site.title }}"/>
     <meta name="twitter:title" content="{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}"/>{% if page.url %}
-    <meta name="twitter:url" content="{{ site.url }}{{ page.url }}"/> {% endif %}
+    <meta name="twitter:url" content="{{ BASE_PATH }}{{ page.url }}"/> {% endif %}
     <meta name="twitter:text:description" content="{% if page.excerpt %}{{ page.content | strip_html | strip_newlines | truncate: 100 }}{% else %}{{ site.description }}{% endif %}"/>
-    <meta name="twitter:image:src" content="{{ site.url }}/pictures{% if page.thumb %}{{ page.id }}/thumb{% else %}/github_icon{% endif %}.png"/>
+    <meta name="twitter:image:src" content="{{ BASE_PATH }}/pictures{% if page.thumb %}{{ page.id }}/thumb{% else %}/github_icon{% endif %}.png"/>
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}"/>
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}"/>
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: BASE_PATH }}"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 {% seo title=false,description=false %}
-    <meta property="og:image" content="{% if page.thumb%}{{ site.url }}/pictures{{ page.id }}/thumb.png{% else %}{{site.url}}/pictures/github_icon.png{% endif %}"/>
+    <meta property="og:image" content="{% if page.thumb%}{{ BASE_PATH }}/pictures{{ page.id }}/thumb.png{% else %}{{BASE_PATH}}/pictures/github_icon.png{% endif %}"/>
   </head>

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: stackfulness of coroutines
-tags: [coroutines]
+tags: [Coroutines]
 ---
 
 <!--sectionize on-->

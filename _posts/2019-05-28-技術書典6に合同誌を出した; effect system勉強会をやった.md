@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 技術書典6に合同誌を出した; effect system勉強会をやった
-tags: [技術書典, effect system, 勉強会, algebraic effects]
+tags: [技術書典, effect system, 勉強会, Algebraic Effects]
 ---
 
 こんにちは､びしょ〜じょです｡

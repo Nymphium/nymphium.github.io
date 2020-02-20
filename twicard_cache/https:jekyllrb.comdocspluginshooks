@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="generator" content="Jekyll v3.7.4">
   <link type="application/atom+xml" rel="alternate" href="https://jekyllrb.com/feed.xml" title="Jekyll • Simple, blog-aware, static sites" />
+  <link type="application/atom+xml" rel="alternate" href="/feed/release.xml" title="Jekyll releases posts" />
   <link rel="alternate" type="application/atom+xml" title="Recent commits to Jekyll’s master branch" href="https://github.com/jekyll/jekyll/commits/master.atom">
   <link rel="preload" href="/fonts/lato-v14-latin-300.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/lato-v14-latin-700.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/css/screen.css" as="style">
   <link rel="stylesheet" href="/css/screen.css">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <!-- Begin Jekyll SEO tag v2.5.0 -->
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Hooks | Jekyll • Simple, blog-aware, static sites</title>
-<meta name="generator" content="Jekyll v3.7.4" />
+<meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Hooks" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Using hooks, your plugin can exercise fine-grained control over various aspects of the build process. If your plugin defines any hooks, Jekyll will call them at pre-defined points." />
@@ -21,11 +21,14 @@
 <link rel="canonical" href="https://jekyllrb.com/docs/plugins/hooks/" />
 <meta property="og:url" content="https://jekyllrb.com/docs/plugins/hooks/" />
 <meta property="og:site_name" content="Jekyll • Simple, blog-aware, static sites" />
-<meta name="twitter:card" content="summary" />
+<meta property="og:image" content="https://jekyllrb.com/img/jekyll-og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://jekyllrb.com/img/jekyll-og.png" />
+<meta property="twitter:title" content="Hooks" />
 <meta name="twitter:site" content="@jekyllrb" />
 <meta name="google-site-verification" content="onQcXpAvtHBrUI5LlroHNE_FP0b2qvFyPq7VZw36iEY" />
 <script type="application/ld+json">
-{"description":"Using hooks, your plugin can exercise fine-grained control over various aspects of the build process. If your plugin defines any hooks, Jekyll will call them at pre-defined points.","@type":"WebPage","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jekyllrb.com/img/logo-2x.png"}},"url":"https://jekyllrb.com/docs/plugins/hooks/","headline":"Hooks","@context":"http://schema.org"}</script>
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://jekyllrb.com/img/logo-2x.png"}},"@type":"WebPage","headline":"Hooks","url":"https://jekyllrb.com/docs/plugins/hooks/","image":"https://jekyllrb.com/img/jekyll-og.png","description":"Using hooks, your plugin can exercise fine-grained control over various aspects of the build process. If your plugin defines any hooks, Jekyll will call them at pre-defined points.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <!--[if lt IE 9]>
@@ -49,38 +52,23 @@
     <nav class="main-nav hide-on-mobiles">
       <ul>
   
-  <li class="
-    
-      
-    ">
+  <li>
     <a href="/">Home</a>
   </li>
   
-  <li class="
-    
-      current
-    ">
+  <li class="current">
     <a href="/docs/">Docs</a>
   </li>
   
-  <li class="
-    
-      
-    ">
+  <li>
     <a href="/resources/">Resources</a>
   </li>
   
-  <li class="
-    
-      
-    ">
+  <li>
     <a href="/showcase/">Showcase</a>
   </li>
   
-  <li class="
-    
-      
-    ">
+  <li>
     <a href="/news/">News</a>
   </li>
   
@@ -94,7 +82,7 @@
     <div class="meta hide-on-mobiles">
       <ul>
         <li>
-          <a href="https://github.com/jekyll/jekyll/releases/tag/v3.8.5">v3.8.5</a>
+          <a href="https://github.com/jekyll/jekyll/releases/tag/v4.0.0">v4.0.0</a>
         </li>
         <li>
           <a href="https://github.com/jekyll/jekyll">GitHub</a>
@@ -105,43 +93,22 @@
   <nav class="mobile-nav show-on-mobiles">
     <ul>
   
-    
-    <li class="
-      
-        
-      ">
+    <li>
       <a href="/">Home</a>
     </li>
   
-  
-    
-    <li class="
-      
-        current
-      ">
+    <li class="current">
       <a href="/docs/">Docs</a>
     </li>
   
-  
-    
-    <li class="
-      
-        
-      ">
+    <li>
       <a href="/resources/">Resources</a>
     </li>
   
   
-    
-  
-    
-    <li class="
-      
-        
-      ">
+    <li>
       <a href="/news/">News</a>
     </li>
-  
   
   <li>
     <a href="https://github.com/jekyll/jekyll">GitHub</a>
@@ -163,37 +130,27 @@
       
         
         <option value="/docs/">
-          
-            Quickstart
-          
+          Quickstart
         </option>
       
         
         <option value="/docs/ruby-101/">
-          
-            Ruby 101
-          
+          Ruby 101
         </option>
       
         
         <option value="/docs/installation/">
-          
-            Installation
-          
+          Installation
         </option>
       
         
         <option value="/docs/community/">
-          
-            Community
-          
+          Community
         </option>
       
         
         <option value="/docs/step-by-step/01-setup/">
-          
-            Step by Step Tutorial
-          
+          Step by Step Tutorial
         </option>
       
     </optgroup>
@@ -202,16 +159,12 @@
       
         
         <option value="/docs/usage/">
-          
-            Command Line Usage
-          
+          Command Line Usage
         </option>
       
         
         <option value="/docs/configuration/">
-          
-            Configuration
-          
+          Configuration
         </option>
       
     </optgroup>
@@ -220,51 +173,37 @@
       
         
         <option value="/docs/pages/">
-          
-            Pages
-          
+          Pages
         </option>
       
         
         <option value="/docs/posts/">
-          
-            Posts
-          
+          Posts
         </option>
       
         
         <option value="/docs/front-matter/">
-          
-            Front Matter
-          
+          Front Matter
         </option>
       
         
         <option value="/docs/collections/">
-          
-            Collections
-          
+          Collections
         </option>
       
         
         <option value="/docs/datafiles/">
-          
-            Data Files
-          
+          Data Files
         </option>
       
         
         <option value="/docs/assets/">
-          
-            Assets
-          
+          Assets
         </option>
       
         
         <option value="/docs/static-files/">
-          
-            Static Files
-          
+          Static Files
         </option>
       
     </optgroup>
@@ -273,58 +212,42 @@
       
         
         <option value="/docs/structure/">
-          
-            Directory Structure
-          
+          Directory Structure
         </option>
       
         
         <option value="/docs/liquid/">
-          
-            Liquid
-          
+          Liquid
         </option>
       
         
         <option value="/docs/variables/">
-          
-            Variables
-          
+          Variables
         </option>
       
         
         <option value="/docs/includes/">
-          
-            Includes
-          
+          Includes
         </option>
       
         
         <option value="/docs/layouts/">
-          
-            Layouts
-          
+          Layouts
         </option>
       
         
         <option value="/docs/permalinks/">
-          
-            Permalinks
-          
+          Permalinks
         </option>
       
         
         <option value="/docs/themes/">
-          
-            Themes
-          
+          Themes
         </option>
       
         
         <option value="/docs/pagination/">
-          
-            Pagination
-          
+          Pagination
         </option>
       
     </optgroup>
@@ -333,30 +256,22 @@
       
         
         <option value="/docs/plugins/">
-          
-            Plugins
-          
+          Plugins
         </option>
       
         
         <option value="/docs/migrations/">
-          
-            Blog Migrations
-          
+          Blog Migrations
         </option>
       
         
         <option value="/docs/upgrading/">
-          
-            Upgrading
-          
+          Upgrading
         </option>
       
         
         <option value="/docs/deployment/">
-          
-            Deployment
-          
+          Deployment
         </option>
       
     </optgroup>
@@ -387,13 +302,13 @@ hook like this:</p>
 </code></pre></div></div>
 
 <p>Jekyll provides hooks for <code>:site</code>, <code>:pages</code>,
-<code>:posts</code>, and <code>:documents</code>. In all cases, Jekyll calls
-your hooks with the container object as the first callback parameter.
-All <code class="highlighter-rouge">:pre_render</code> hooks and the<code class="highlighter-rouge">:site, :post_render</code> hook will also provide a
-payload hash as a second parameter. In the case of <code class="highlighter-rouge">:pre_render</code>, the payload
-gives you full control over the variables that are available while rendering.
-In the case of <code class="highlighter-rouge">:site, :post_render</code>, the payload contains final values after
-rendering all the site (useful for sitemaps, feeds, etc).</p>
+<code>:posts</code>, <code>:documents</code> and <code>:clean</code>. In all
+cases, Jekyll calls your hooks with the container object as the first callback
+parameter. All <code class="language-plaintext highlighter-rouge">:pre_render</code> hooks and the<code class="language-plaintext highlighter-rouge">:site, :post_render</code> hook will also
+provide a payload hash as a second parameter. In the case of <code class="language-plaintext highlighter-rouge">:pre_render</code>, the
+payload gives you full control over the variables that are available while
+rendering. In the case of <code class="language-plaintext highlighter-rouge">:site, :post_render</code>, the payload contains final
+values after rendering all the site (useful for sitemaps, feeds, etc).</p>
 
 <p>The complete list of available hooks is below:</p>
 
@@ -606,6 +521,17 @@ rendering all the site (useful for sitemaps, feeds, etc).</p>
         <p>After writing a document to disk</p>
       </td>
     </tr>
+    <tr>
+      <td>
+        <p><code>:clean</code></p>
+      </td>
+      <td>
+        <p><code>:on_obsolete</code></p>
+      </td>
+      <td>
+        <p>During the cleanup of a site's destination before it is built</p>
+      </td>
+    </tr>
   </tbody>
 </table>
 </div>
@@ -620,57 +546,37 @@ rendering all the site (useful for sitemaps, feeds, etc).</p>
       <ul>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/">
-              
-                Quickstart
-              
+              Quickstart
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/ruby-101/">
-              
-                Ruby 101
-              
+              Ruby 101
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/installation/">
-              
-                Installation
-              
+              Installation
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/community/">
-              
-                Community
-              
+              Community
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/step-by-step/01-setup/">
-              
-                Step by Step Tutorial
-              
+              Step by Step Tutorial
             </a>
           </li>
         
@@ -680,24 +586,16 @@ rendering all the site (useful for sitemaps, feeds, etc).</p>
       <ul>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/usage/">
-              
-                Command Line Usage
-              
+              Command Line Usage
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/configuration/">
-              
-                Configuration
-              
+              Configuration
             </a>
           </li>
         
@@ -707,79 +605,51 @@ rendering all the site (useful for sitemaps, feeds, etc).</p>
       <ul>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/pages/">
-              
-                Pages
-              
+              Pages
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/posts/">
-              
-                Posts
-              
+              Posts
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/front-matter/">
-              
-                Front Matter
-              
+              Front Matter
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/collections/">
-              
-                Collections
-              
+              Collections
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/datafiles/">
-              
-                Data Files
-              
+              Data Files
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/assets/">
-              
-                Assets
-              
+              Assets
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/static-files/">
-              
-                Static Files
-              
+              Static Files
             </a>
           </li>
         
@@ -789,90 +659,58 @@ rendering all the site (useful for sitemaps, feeds, etc).</p>
       <ul>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/structure/">
-              
-                Directory Structure
-              
+              Directory Structure
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/liquid/">
-              
-                Liquid
-              
+              Liquid
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/variables/">
-              
-                Variables
-              
+              Variables
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/includes/">
-              
-                Includes
-              
+              Includes
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/layouts/">
-              
-                Layouts
-              
+              Layouts
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/permalinks/">
-              
-                Permalinks
-              
+              Permalinks
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/themes/">
-              
-                Themes
-              
+              Themes
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/pagination/">
-              
-                Pagination
-              
+              Pagination
             </a>
           </li>
         
@@ -882,46 +720,30 @@ rendering all the site (useful for sitemaps, feeds, etc).</p>
       <ul>
         
           
-          <li class="
-            current
-          ">
+          <li>
             <a href="/docs/plugins/">
-              
-                Plugins
-              
+              Plugins
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/migrations/">
-              
-                Blog Migrations
-              
+              Blog Migrations
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/upgrading/">
-              
-                Upgrading
-              
+              Upgrading
             </a>
           </li>
         
           
-          <li class="
-            
-          ">
+          <li>
             <a href="/docs/deployment/">
-              
-                Deployment
-              
+              Deployment
             </a>
           </li>
         
@@ -941,7 +763,7 @@ rendering all the site (useful for sitemaps, feeds, etc).</p>
   <div class="grid">
     <div class="unit one-third center-on-mobiles">
       <p>Jekyll is lovingly maintained by the <a href="/team/">core team</a> of volunteers. </p>
-      <p>The contents of this website are <br />&copy;&nbsp;2019 under the terms of the <a href="https://github.com/jekyll/jekyll/blob/master/LICENSE">MIT&nbsp;License</a>.</p>
+      <p>The contents of this website are <br />&copy;&nbsp;2020 under the terms of the <a href="https://github.com/jekyll/jekyll/blob/master/LICENSE">MIT&nbsp;License</a>.</p>
     </div>
     <div class="unit two-thirds align-right center-on-mobiles">
       <p>

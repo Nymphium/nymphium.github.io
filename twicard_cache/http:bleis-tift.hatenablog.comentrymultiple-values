@@ -3,6 +3,7 @@
   lang="ja"
 
 data-admin-domain="//blog.hatena.ne.jp"
+data-admin-origin="https://blog.hatena.ne.jp"
 data-author="bleis-tift"
 data-avail-langs="ja en"
 data-blog="bleis-tift.hatenablog.com"
@@ -14,7 +15,7 @@ data-blog-uri="http://bleis-tift.hatenablog.com/"
 data-blog-uuid="12704346814673882987"
 data-blogs-uri-base="http://bleis-tift.hatenablog.com"
 data-brand="hatenablog"
-data-data-layer="{&quot;hatenablog&quot;:{&quot;brand_tracking_category&quot;:&quot;hatenablog&quot;,&quot;page_id&quot;:&quot;entry&quot;,&quot;brand&quot;:&quot;hatenablog&quot;,&quot;admin&quot;:{},&quot;blog&quot;:{&quot;entry_show_footer_related_entries&quot;:&quot;true&quot;,&quot;is_public&quot;:&quot;true&quot;,&quot;owner_name&quot;:&quot;bleis-tift&quot;,&quot;disable_ads&quot;:&quot;&quot;,&quot;content_seems_japanese&quot;:&quot;true&quot;,&quot;enable_keyword_link&quot;:&quot;true&quot;,&quot;is_responsive_view&quot;:&quot;false&quot;,&quot;enable_ads&quot;:&quot;true&quot;,&quot;name&quot;:&quot;\u3050\u308b\u3050\u308b\uff5e&quot;,&quot;uri&quot;:&quot;http://bleis-tift.hatenablog.com/&quot;,&quot;lang&quot;:&quot;ja&quot;,&quot;is_sleeping&quot;:&quot;false&quot;,&quot;force_pc_view&quot;:&quot;false&quot;},&quot;router_type&quot;:&quot;blogs&quot;,&quot;analytics&quot;:{&quot;brand_property_id&quot;:&quot;&quot;,&quot;property_id&quot;:&quot;UA-490809-3&quot;,&quot;non_sampling_property_id&quot;:&quot;&quot;,&quot;separated_property_id&quot;:&quot;UA-29716941-18&quot;},&quot;pro&quot;:&quot;free&quot;,&quot;permalink_entry&quot;:{&quot;author_name&quot;:&quot;bleis-tift&quot;,&quot;categories&quot;:&quot;Go\t\u5984\u60f3&quot;,&quot;uri&quot;:&quot;http://bleis-tift.hatenablog.com/entry/multiple-values&quot;,&quot;title&quot;:&quot;\u591a\u5024\u306b\u3064\u3044\u3066\u672c\u6c17\u3067\u8003\u3048\u3066\u307f\u305f&quot;,&quot;date&quot;:&quot;2018-11-12&quot;,&quot;hour&quot;:&quot;13&quot;}}}"
+data-data-layer="{&quot;hatenablog&quot;:{&quot;pro&quot;:&quot;free&quot;,&quot;page_id&quot;:&quot;entry&quot;,&quot;blog&quot;:{&quot;is_sleeping&quot;:&quot;true&quot;,&quot;name&quot;:&quot;\u3050\u308b\u3050\u308b\uff5e&quot;,&quot;force_pc_view&quot;:&quot;false&quot;,&quot;enable_ads&quot;:&quot;true&quot;,&quot;disable_ads&quot;:&quot;&quot;,&quot;uri&quot;:&quot;http://bleis-tift.hatenablog.com/&quot;,&quot;enable_keyword_link&quot;:&quot;true&quot;,&quot;owner_name&quot;:&quot;bleis-tift&quot;,&quot;content_seems_japanese&quot;:&quot;true&quot;,&quot;is_responsive_view&quot;:&quot;false&quot;,&quot;lang&quot;:&quot;ja&quot;,&quot;is_public&quot;:&quot;true&quot;,&quot;entry_show_footer_related_entries&quot;:&quot;true&quot;},&quot;permalink_entry&quot;:{&quot;hour&quot;:&quot;13&quot;,&quot;categories&quot;:&quot;Go\t\u5984\u60f3&quot;,&quot;author_name&quot;:&quot;bleis-tift&quot;,&quot;uri&quot;:&quot;http://bleis-tift.hatenablog.com/entry/multiple-values&quot;,&quot;date&quot;:&quot;2018-11-12&quot;,&quot;title&quot;:&quot;\u591a\u5024\u306b\u3064\u3044\u3066\u672c\u6c17\u3067\u8003\u3048\u3066\u307f\u305f&quot;},&quot;router_type&quot;:&quot;blogs&quot;,&quot;admin&quot;:{},&quot;analytics&quot;:{&quot;separated_property_id&quot;:&quot;UA-29716941-18&quot;,&quot;brand_property_id&quot;:&quot;&quot;,&quot;property_id&quot;:&quot;UA-490809-3&quot;,&quot;non_sampling_property_id&quot;:&quot;&quot;},&quot;brand&quot;:&quot;hatenablog&quot;,&quot;brand_tracking_category&quot;:&quot;hatenablog&quot;}}"
 data-device="pc"
 data-dont-recommend-pro="false"
 data-global-domain="https://hatenablog.com"
@@ -27,9 +28,10 @@ data-plus-available=""
 data-pro="false"
 data-router-type="blogs"
 data-sentry-dsn="https://03a33e4781a24cf2885099fed222b56d@sentry.io/1195218"
+data-sentry-environment="production"
 data-sentry-sample-rate="0.1"
 data-static-domain="https://cdn.blog.st-hatena.com"
-data-version="3af713039e1616fddee277147499aa54"
+data-version="e61401efddf0a3503643dbeb1b80f0e8"
 
 itemscope
 itemtype="http://schema.org/Article"
@@ -45,6 +47,8 @@ itemtype="http://schema.org/Article"
 
 
   
+
+  <meta name="robots" content="max-image-preview:large" />
 
 
   <meta charset="utf-8"/>
@@ -68,11 +72,9 @@ itemtype="http://schema.org/Article"
 <meta property="og:type" content="article"/>
   <meta property="og:url" content="http://bleis-tift.hatenablog.com/entry/multiple-values"/>
 
-  
-  
-  
-  <meta property="og:image" content="https://cdn.blog.st-hatena.com/images/theme/og-image-1500.png"/>
+  <meta property="og:image" content="https://ogimage.blog.st-hatena.com/12704346814673882987/10257846132667787609/1542008109"/>
 
+<meta property="og:image:alt" content="多値について本気で考えてみた - ぐるぐる～"/>
     <meta property="og:description" content="先日のエントリの反応として、多値の批判をしているように受け取られた方がいました。 実際には、多値の批判をしているのではなく、Go言語の「多値とそう見えるけど違うものがある」という仕様を批判したものでした。 また、タプルにこだわっているという受け取り方をした方もいました。 このエントリでは、「タプルにこだわっているのではない、多値にこだわっているのだ」ということを説明しようと思います。 このエントリで出てくるコードは言及がない限り妄想上のもので、実際の言語のコードではありません。 長いから3行で。 スタックマシンと多値は仲良し。継続と多値も仲良し。 多値は多値、タプルはタプル、みんなちがってみん…" />
 <meta property="og:site_name" content="ぐるぐる～"/>
 
@@ -80,7 +82,8 @@ itemtype="http://schema.org/Article"
 
     <meta property="article:tag" content="Go" />
     <meta property="article:tag" content="妄想" />
-      <meta name="twitter:card"  content="summary" />  <meta name="twitter:title" content="多値について本気で考えてみた - ぐるぐる～" />    <meta name="twitter:description" content="先日のエントリの反応として、多値の批判をしているように受け取られた方がいました。 実際には、多値の批判をしているのではなく、Go言語の「多値とそう見えるけど違うものがある」という仕様を批判したものでした。 また、タプルにこだわっているという受け取り方をした方もいました。 このエントリでは、「タプルにこだわっているのでは…" />  <meta name="twitter:app:name:iphone" content="はてなブログアプリ" />
+      <meta name="twitter:card"  content="summary_large_image" />
+    <meta name="twitter:image" content="https://ogimage.blog.st-hatena.com/12704346814673882987/10257846132667787609/1542008109" />  <meta name="twitter:title" content="多値について本気で考えてみた - ぐるぐる～" />    <meta name="twitter:description" content="先日のエントリの反応として、多値の批判をしているように受け取られた方がいました。 実際には、多値の批判をしているのではなく、Go言語の「多値とそう見えるけど違うものがある」という仕様を批判したものでした。 また、タプルにこだわっているという受け取り方をした方もいました。 このエントリでは、「タプルにこだわっているのでは…" />  <meta name="twitter:app:name:iphone" content="はてなブログアプリ" />
   <meta name="twitter:app:id:iphone" content="583299321" />
   <meta name="twitter:app:url:iphone" content="hatenablog:///open?uri=http%3A%2F%2Fbleis-tift.hatenablog.com%2Fentry%2Fmultiple-values" />  <meta name="twitter:site" content="@bleis" />
   
@@ -90,7 +93,7 @@ itemtype="http://schema.org/Article"
   
 <script
   id="embed-gtm-data-layer-loader"
-  data-data-layer-page-specific="{&quot;hatenablog&quot;:{&quot;blogs_permalink&quot;:{&quot;blog_afc_issued&quot;:&quot;false&quot;,&quot;entry_afc_issued&quot;:&quot;false&quot;,&quot;blog_struct_hide_afc&quot;:&quot;false&quot;,&quot;is_author_pro&quot;:&quot;false&quot;,&quot;is_blog_sleeping&quot;:&quot;false&quot;,&quot;has_related_entries_with_elasticsearch&quot;:&quot;true&quot;,&quot;blog_hide_afc_field&quot;:&quot;false&quot;,&quot;brand_hide_afc&quot;:&quot;false&quot;,&quot;blog_hide_afc_func&quot;:&quot;false&quot;}}}"
+  data-data-layer-page-specific="{&quot;hatenablog&quot;:{&quot;blogs_permalink&quot;:{&quot;is_author_pro&quot;:&quot;false&quot;,&quot;blog_struct_hide_afc&quot;:&quot;false&quot;,&quot;blog_hide_afc_func&quot;:&quot;false&quot;,&quot;blog_afc_issued&quot;:&quot;false&quot;,&quot;blog_hide_afc_field&quot;:&quot;false&quot;,&quot;brand_hide_afc&quot;:&quot;false&quot;,&quot;entry_afc_issued&quot;:&quot;false&quot;,&quot;has_related_entries_with_elasticsearch&quot;:&quot;true&quot;,&quot;is_blog_sleeping&quot;:&quot;true&quot;}}}"
 >
 (function() {
   function loadDataLayer(elem, attrName) {
@@ -132,7 +135,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-  <link rel="shortcut icon" href="https://cdn.blog.st-hatena.com/images/favicon.ico">
+  <link rel="shortcut icon" href="http://bleis-tift.hatenablog.com/favicon">
+<link rel="apple-touch-icon" href="https://cdn.blog.st-hatena.com/images/touch-icon-iphone-retina.png">
 <link rel="icon" sizes="192x192" href="https://cdn.blog.st-hatena.com/images/common/meta-icon-global.png">
 
   
@@ -147,10 +151,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   
-    <link rel="stylesheet" type="text/css" href="https://cdn.blog.st-hatena.com/css/blog.css?version=ef3efba74fb777cbab54718608ca20e4a896f271&amp;env=production"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.blog.st-hatena.com/css/blog.css?version=a65af632526b04f28d2dbf6bda6402b8ff2a1236&amp;env=production"/>
 
     
-  <link rel="stylesheet" type="text/css" href="//blog.hatena.ne.jp/-/blog_style/12704346814673882987/6180f8240f329b9c16ae9a5e904a9111889300ec"/>
+  <link rel="stylesheet" type="text/css" href="https://blog.hatena.ne.jp/-/blog_style/12704346814673882987/a72efc03676d59eb25ff1d0c65693077f8d4a4e8"/>
   
 
   
@@ -175,16 +179,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   var valve = window.valve || [];
 
   valve.push(function(v) {
-    v.config({ service: 'blog' });
-    
-    
-
-    
-    v.defineDFPSlot({"sizes":[[300,250],[336,280],[468,60],"fluid"],"lazy":"","unit":"/4374287/blog_user","slotId":"google_afc_user_container_0"});
-    
-
-    
-
+    v.config({
+      service: 'blog',
+      content: {
+        result: 'adtrust',
+        documentIds: ["blog:entry:10257846132667787609"]
+      }
+    });
+    v.defineDFPSlot({"sizes":[[300,250],[336,280]],"slotId":"google_afc_user_container_0","unit":"/4374287/blo_pc_com_6_3328_0_no"});    v.defineDFPSlot({"lazy":"","sizes":[[300,250],[336,280],[468,60],"fluid"],"slotId":"google_afc_user_container_1","unit":"/4374287/blog_user"});
     v.sealDFPSlots();
   });
 </script>
@@ -223,7 +225,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
 
         
-
         
 
 
@@ -237,6 +238,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div id="main">
         <div id="main-inner">
           
+  <article class="entry no-entry sleeping-ads" style="display: block !important;">
+    <div class="entry-inner">
+      <div class="entry-content">
+        
+        
+        <div id="google_afc_user_container_0" class="sleeping-ad" style="display: block !important;"></div>
+        
+
+        
+        <p class="sleeping-ads-notice" style="display: none;">この広告は、90日以上更新していないブログに表示しています。</p>
+      </div>
+    </div>
+  </article>
+
 
 
           
@@ -734,7 +749,7 @@ Go言語の多値は始まりでしかありません。
   
   
     <div class="social-button-item">
-      <a href="http://b.hatena.ne.jp/entry/http://bleis-tift.hatenablog.com/entry/multiple-values" class="hatena-bookmark-button" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="この記事をはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only.gif" alt="この記事をはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+      <a href="https://b.hatena.ne.jp/entry/bleis-tift.hatenablog.com/entry/multiple-values" class="hatena-bookmark-button" data-hatena-bookmark-url="http://bleis-tift.hatenablog.com/entry/multiple-values" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="この記事をはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only.gif" alt="この記事をはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
     </div>
   
   
@@ -748,11 +763,6 @@ Go言語の多値は始まりでしかありません。
     </div>
   
   
-    <div class="social-button-item">
-      <div class="g-plusone" data-size="tall" data-href="http://bleis-tift.hatenablog.com/entry/multiple-values"></div>
-    </div>
-  
-  
   
   
 </div>
@@ -763,7 +773,7 @@ Go言語の多値は始まりでしかありません。
     
     <div class="google-afc-image test-google-rectangle-ads">      
       
-      <div id="google_afc_user_container_0" class="google-afc-user-container google_afc_blocklink2_5 google_afc_boder" data-test-unit="/4374287/blog_user"></div>
+      <div id="google_afc_user_container_1" class="google-afc-user-container google_afc_blocklink2_5 google_afc_boder" data-test-unit="/4374287/blog_user"></div>
       
         <a href="http://blog.hatena.ne.jp/guide/pro" class="open-pro-modal" data-guide-pro-modal-ad-url="https://hatenablog.com/guide/pro/modal/ad">広告を非表示にする</a>
       
@@ -789,6 +799,28 @@ Go言語の多値は始まりでしかありません。
   <div class="hatena-module-body">
     <ul class="related-entries hatena-urllist urllist-with-thumbnails">
   
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <div class="urllist-date-link related-entries-date-link">
+  <a href="http://bleis-tift.hatenablog.com/archive/2019/03/01" rel="nofollow">
+    <time pubdate datetime="2019-03-01T14:55:33Z" title="2019-03-01T14:55:33Z">
+      2019-03-01
+    </time>
+  </a>
+</div>
+
+          <a href="http://bleis-tift.hatenablog.com/entry/kstudy1" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">第1回継続勉強会を開催しました</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">最近自分の中で継続熱が高まっているので、継続の話をできる場…</div>
+      </div>
+    </li>
   
     
     <li class="urllist-item related-entries-item">
@@ -860,31 +892,6 @@ Go言語の多値は始まりでしかありません。
     <li class="urllist-item related-entries-item">
       <div class="urllist-item-inner related-entries-item-inner">
         
-                      <a class="urllist-image-link related-entries-image-link" href="http://bleis-tift.hatenablog.com/entry/20120520/1337502276">
-  <img alt="第一回 関数型言語勉強会 大阪に行ってきた" src="https://cdn.image.st-hatena.com/image/square/ab5c2efa161c493582f0345d131fa91d6b12d66b/backend=imagemagick;height=100;version=1;width=100/http%3A%2F%2Fa0.twimg.com%2Fprofile_images%2F1674904906%2Fyoshihiro503_icon_normal.png" class="urllist-image related-entries-image" title="第一回 関数型言語勉強会 大阪に行ってきた" width="100">
-</a>
-            <div class="urllist-date-link related-entries-date-link">
-  <a href="http://bleis-tift.hatenablog.com/archive/2012/05/20" rel="nofollow">
-    <time pubdate datetime="2012-05-20T08:24:36Z" title="2012-05-20T08:24:36Z">
-      2012-05-20
-    </time>
-  </a>
-</div>
-
-          <a href="http://bleis-tift.hatenablog.com/entry/20120520/1337502276" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">第一回 関数型言語勉強会 大阪に行ってきた</a>
-
-
-          
-          
-
-                      <div class="urllist-entry-body related-entries-entry-body">44人の枠に一時期80人以上が申し込むという人気ぶりの勉強会、…</div>
-      </div>
-    </li>
-  
-    
-    <li class="urllist-item related-entries-item">
-      <div class="urllist-item-inner related-entries-item-inner">
-        
                       <a class="urllist-image-link related-entries-image-link" href="http://bleis-tift.hatenablog.com/entry/20120423/1335162974">
   <img alt="SCM Boot Camp in Nagoya に行ってきた・・・と見せかけた SML# の多相レコードの話" src="https://cdn.image.st-hatena.com/image/square/5d3149c81b8c7a1419e6f613100bc17757d0913d/backend=imagemagick;height=100;version=1;width=100/http%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fb%2Fbleis-tift%2F20120422%2F20120422230125.png" class="urllist-image related-entries-image" title="SCM Boot Camp in Nagoya に行ってきた・・・と見せかけた SML# の多相レコードの話" width="100">
 </a>
@@ -943,6 +950,14 @@ Go言語の多値は始まりでしかありません。
   
   
   <div class="pager pager-permalink permalink">
+    
+      
+      <span class="pager-prev">
+        <a href="http://bleis-tift.hatenablog.com/entry/kstudy1" rel="prev">
+          <span class="pager-arrow">&laquo; </span>
+          第1回継続勉強会を開催しました
+        </a>
+      </span>
     
     
       
@@ -1046,260 +1061,272 @@ Go言語の多値は始まりでしかありません。
     <ul class="hatena-urllist">
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/etc">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/etc" class="category-etc">
             etc (380)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/C%23">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/C%23" class="category-C#">
             C# (127)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/Program">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Program" class="category-Program">
             Program (115)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/Book">
-            Book (113)
-          </a>
-        </li>
-      
-        <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/Java">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Java" class="category-Java">
             Java (113)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/SQL">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Book" class="category-Book">
+            Book (113)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/SQL" class="category-SQL">
             SQL (89)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/PC">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/PC" class="category-PC">
             PC (87)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/F%23">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/F%23" class="category-F#">
             F# (69)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/C%2B%2B">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/C%2B%2B" class="category-C++">
             C++ (40)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/.NET">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/.NET" class="category-.NET">
             .NET (27)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/Web%20Site">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Web%20Site" class="category-Web-Site">
             Web Site (26)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/Memo">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Memo" class="category-Memo">
             Memo (25)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/Git">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Git" class="category-Git">
             Git (22)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/TDD">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/TDD" class="category-TDD">
             TDD (14)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/Scala">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Scala" class="category-Scala">
             Scala (12)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/DB">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/DB" class="category-DB">
             DB (11)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/PowerShell">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/PowerShell" class="category-PowerShell">
             PowerShell (11)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/%E5%A6%84%E6%83%B3">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/%E5%A6%84%E6%83%B3" class="category-妄想">
             妄想 (10)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/JavaScript">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/JavaScript" class="category-JavaScript">
             JavaScript (7)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/Excel">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Excel" class="category-Excel">
             Excel (6)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/Security">
-            Security (6)
-          </a>
-        </li>
-      
-        <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/XSLT">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/XSLT" class="category-XSLT">
             XSLT (6)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/OOP">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Security" class="category-Security">
+            Security (6)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/OOP" class="category-OOP">
             OOP (5)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/Python">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Python" class="category-Python">
             Python (5)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/XML">
-            XML (4)
-          </a>
-        </li>
-      
-        <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/JSX">
-            JSX (4)
-          </a>
-        </li>
-      
-        <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/Ruby">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Ruby" class="category-Ruby">
             Ruby (4)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/%E8%AC%8E">
-            謎 (3)
+          <a href="http://bleis-tift.hatenablog.com/archive/category/XML" class="category-XML">
+            XML (4)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/VB.NET">
-            VB.NET (3)
+          <a href="http://bleis-tift.hatenablog.com/archive/category/JSX" class="category-JSX">
+            JSX (4)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/Test">
-            Test (3)
-          </a>
-        </li>
-      
-        <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/IL">
-            IL (3)
-          </a>
-        </li>
-      
-        <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/RDB">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/RDB" class="category-RDB">
             RDB (3)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/SML%23">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/VB.NET" class="category-VB.NET">
+            VB.NET (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/%E8%AC%8E" class="category-謎">
+            謎 (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Test" class="category-Test">
+            Test (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/IL" class="category-IL">
+            IL (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/SML%23" class="category-SML#">
             SML# (3)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/Go">
-            Go (2)
-          </a>
-        </li>
-      
-        <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/Debian">
-            Debian (2)
-          </a>
-        </li>
-      
-        <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/Hudson">
-            Hudson (2)
-          </a>
-        </li>
-      
-        <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/Vim">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Vim" class="category-Vim">
             Vim (2)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/WPF">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/%E7%B6%99%E7%B6%9A" class="category-継続">
+            継続 (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Debian" class="category-Debian">
+            Debian (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/WPF" class="category-WPF">
             WPF (2)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/VirtualBox">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Go" class="category-Go">
+            Go (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Hudson" class="category-Hudson">
+            Hudson (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/VirtualBox" class="category-VirtualBox">
             VirtualBox (1)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/nagoyarubykaigi01">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/ochacaml" class="category-ochacaml">
+            ochacaml (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/nagoyarubykaigi01" class="category-nagoyarubykaigi01">
             nagoyarubykaigi01 (1)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/Jenkins">
-            Jenkins (1)
-          </a>
-        </li>
-      
-        <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/%E3%81%A6%E3%81%99%E3%81%A8">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/%E3%81%A6%E3%81%99%E3%81%A8" class="category-てすと">
             てすと (1)
           </a>
         </li>
       
         <li>
-          <a href="http://bleis-tift.hatenablog.com/archive/category/C">
+          <a href="http://bleis-tift.hatenablog.com/archive/category/C" class="category-C">
             C (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Jenkins" class="category-Jenkins">
+            Jenkins (1)
           </a>
         </li>
       
@@ -1377,7 +1404,7 @@ Go言語の多値は始まりでしかありません。
     
 
     
-  <script src="https://s.hatena.ne.jp/js/HatenaStar.js?20180530"></script>
+  <script src="https://s.hatena.ne.jp/js/HatenaStar.js?20191001"></script>
 
 
     
@@ -1469,9 +1496,6 @@ Go言語の多値は始まりでしかありません。
     
   <script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
 
-<script src="https://apis.google.com/js/platform.js" async defer>
-  { lang: 'ja', "parsetags": "explicit" }
-</script>
 <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
 
 
@@ -1481,7 +1505,7 @@ Go言語の多値は始まりでしかありません。
 
 
 <script type="text/javascript" src="https://cdn.blog.st-hatena.com/js/external/jquery.min.js?version=1.12.3"></script>
-<script type="text/javascript" src="//cdn7.www.st-hatena.com/js/jquery/jquery-ui.1.10.0.custom.min.js"></script>
+<script type="text/javascript" src="https://cdn7.www.st-hatena.com/js/jquery/jquery-ui.1.10.0.custom.min.js"></script>
 <script type="text/javascript" src="https://cdn.blog.st-hatena.com/js/external/jquery.flot.js?version=0.8.3"></script>
 <script type="text/javascript" src="https://cdn.blog.st-hatena.com/js/external/jquery.flot.time.js?version=0.8.3"></script>
 
@@ -1489,15 +1513,17 @@ Go言語の多値は始まりでしかありません。
 
 
 
-<script type="text/javascript" src="https://cdn.blog.st-hatena.com/js/texts-ja.js?version=2d52b277ea741221b3d0780bc5bd5ddf8557c2d1&amp;env=production"></script>
+<script type="text/javascript" src="https://cdn.blog.st-hatena.com/js/texts-ja.js?version=46cc79cdc323b28933cf8b406935a836f12b219e&amp;env=production"></script>
 <script id="hatenablog-js" data-env="production"
-  type="text/javascript" src="https://cdn.blog.st-hatena.com/js/hatenablog.js?version=7536a194b6c212b3aa1a7af74d4ae82e0ae1b804&amp;env=production" crossorigin="anonymous"></script>
+  type="text/javascript" src="https://cdn.blog.st-hatena.com/js/hatenablog.js?version=7966725b76ac749792d09626e3c0399b84e0dae3&amp;env=production" crossorigin="anonymous"></script>
 
 
   <script type="text/javascript">Hatena.Diary.GlobalHeader.init()</script>
 
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
 
 
 

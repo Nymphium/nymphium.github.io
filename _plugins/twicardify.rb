@@ -1,60 +1,60 @@
+# frozen_string_literal: true
+
 require'nokogiri'
 require'open-uri'
 require'open_uri_redirections'
 
-def head_extract head, attr, start_prop
+def head_extract(head, attr, start_prop)
   ret = []
 
-  head.xpath("meta[starts-with(@#{attr}, \"#{start_prop}\")]").each{|d|
+  head.xpath("meta[starts-with(@#{attr}, \"#{start_prop}\")]").each do |d|
     sort = d.attribute(attr).to_s
-    content =d.attribute('content')
+    content = d.attribute('content')
 
-    if content
-      content = content.text
+    next unless content
 
-      if sort_ = sort.match(/(description|image|title)$/)
-        ret.push [sort_[0].to_sym,  content]
-      end
+    content = content.text
+
+    if sort_ = sort.match(/(description|image|title)$/)
+      ret.push [sort_[0].to_sym, content]
     end
-  }
+  end
 
-  return Hash[*ret.flatten(1)]
+  Hash[*ret.flatten(1)]
 end
 
-def resizing base_size, txt
-  if txt.bytesize > base_size*3
-    head = txt.match(Regexp.new "^.{#{base_size}}")[0]
-    difflen = head.bytesize - base_size*3
+def resizing(base_size, txt)
+  if txt.bytesize > base_size * 3
+    head = txt.match(Regexp.new("^.{#{base_size}}"))[0]
+    difflen = head.bytesize - base_size * 3
 
     len = base_size
-    if difflen > 0
-      len -= (difflen / 3)
-    end
+    len -= (difflen / 3) if difflen > 0
 
-    txt.match(Regexp.new "^.{#{len}}")[0] + "..."
+    txt.match(Regexp.new("^.{#{len}}"))[0] + '...'
   else
     txt
   end
 end
 
-def render_twicard h
+def render_twicard(h)
   desc = h[:description]
   title = h[:title]
 
-  <<-HTML
-<div class="twicard">
-  <span class="image"><a href="#{h[:url]}" target="_blank" rel="noopener noreferrer"><div><img src=#{h[:image]}></div></a></span>
-  <span class="txt">
-    <div class="title"><a href="#{h[:url]}" target="_blank" rel="noopener noreferrer">#{title}</a></div>
-    <div class="description">#{desc}</div>
-  </span>
-</div>
+  <<~HTML
+    <div class="twicard">
+      <span class="image"><a href="#{h[:url]}" target="_blank" rel="noopener noreferrer"><div><img src=#{h[:image]}></div></a></span>
+      <span class="txt">
+        <div class="title"><a href="#{h[:url]}" target="_blank" rel="noopener noreferrer">#{title}</a></div>
+        <div class="description">#{desc}</div>
+      </span>
+    </div>
   HTML
 end
 
-def extract alt, url
-  hash = ""
-  dir = "twicard_cache"
+def extract(alt, url)
+  hash = ''
+  dir = 'twicard_cache'
 
   if h = url.match(/^([^#]*)(#.*)$/)
     url = h[1]
@@ -63,13 +63,14 @@ def extract alt, url
 
   html = nil
 
-  path = "#{dir}/#{url.gsub(/\//i, '')}"
+  path = "#{dir}/#{url.gsub(%r{/}i, '')}"
 
-  if File.exist? path then
-    File.open(path, "r"){|f| html = f.read}
+  if File.exist? path
+    File.open(path, 'r') { |f| html = f.read }
   else
-    html = open(URI.encode(url), :allow_redirections => :all){|f| f.read}
-    File.open(path, "w"){|f| f.write(html)}
+    puts URI.encode(url)
+    html = open(URI.encode(url), allow_redirections: :all, &:read)
+    File.open(path, 'w') { |f| f.write(html) }
   end
 
   doc = Nokogiri::HTML.parse(html)
@@ -77,30 +78,28 @@ def extract alt, url
 
   title = head.xpath('title')
 
-  if title
-    title = title.text
-  end
+  title = title.text if title
 
-  h = (head_extract head, "property", "")
-    .merge(head_extract head, "name", "")
-    .merge(head_extract head, "property", "og:")
-    .merge(head_extract head, "name", "og:")
-    .merge(head_extract head, "property", "twitter:")
-    .merge(head_extract head, "name", "twitter:")
-    .merge(head_extract head, "property", "twitter:text:")
-    .merge(head_extract head, "name", "twitter:text:")
+  h = (head_extract head, 'property', '')
+      .merge(head_extract(head, 'name', ''))
+      .merge(head_extract(head, 'property', 'og:'))
+      .merge(head_extract(head, 'name', 'og:'))
+      .merge(head_extract(head, 'property', 'twitter:'))
+      .merge(head_extract(head, 'name', 'twitter:'))
+      .merge(head_extract(head, 'property', 'twitter:text:'))
+      .merge(head_extract(head, 'name', 'twitter:text:'))
 
-  if h.key?(:image) and h.key?(:description) then
+  if h.key?(:image) && h.key?(:description)
     h[:description].gsub!(/[\n\r]/i, '')
-    h[:title] = (h[:title] or title) or ""
+    (h[:title] = (h[:title] || title)) || ''
     h[:url] = "#{url}#{hash}"
-    h[:image] = h[:image] or "/picture/no_image.png"
+    (h[:image] = h[:image]) || '/picture/no_image.png'
     render_twicard h
   else
-    <<-HTML
-<center>
-  <a href="#{url}#{hash}" target="_blank" rel="noopener noreferrer">#{alt}</a>
-</center>
+    <<~HTML
+      <center>
+        <a href="#{url}#{hash}" target="_blank" rel="noopener noreferrer">#{alt}</a>
+      </center>
     HTML
   end
 end
@@ -113,25 +112,25 @@ module Jekyll
 
         sp = nil
 
-        if args.match(/^\s*"/)
-          sp = args.match(/^\s*"([^"]*)"\s*(.*?)\s*$/)
-        else
-          sp = args.match(/^\s*(\S+)\s+(.*?)\s*$/)
-        end
+        sp = if args.match(/^\s*"/)
+               args.match(/^\s*"([^"]*)"\s*(.*?)\s*$/)
+             else
+               args.match(/^\s*(\S+)\s+(.*?)\s*$/)
+             end
 
         # pp sp
 
         # if sp == nil
-          # pp args
-          # pp tokens
-          # return
+        # pp args
+        # pp tokens
+        # return
         # end
 
         @alt = sp[1]
         @post = sp[2]
       end
 
-      def render(context)
+      def render(_context)
         extract @alt, @post
       end
     end
