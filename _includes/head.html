@@ -15,6 +15,7 @@
     <meta name="twitter:title" content="{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}"/>{% if page.url %}
     <meta name="twitter:url" content="{{ BASE_PATH }}{{ page.url }}"/> {% endif %}
     <meta name="twitter:text:description" content="{% if page.excerpt %}{{ page.content | strip_html | strip_newlines | truncate: 100 }}{% else %}{{ site.description }}{% endif %}"/>
+    <meta name="twitter:image" content="{{ BASE_PATH }}/pictures{% if page.thumb %}{{ page.id }}/thumb{% else %}/github_icon{% endif %}.png"/>
     <meta name="twitter:image:src" content="{{ BASE_PATH }}/pictures{% if page.thumb %}{{ page.id }}/thumb{% else %}/github_icon{% endif %}.png"/>
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
