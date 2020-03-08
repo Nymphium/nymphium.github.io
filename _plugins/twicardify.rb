@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require'nokogiri'
-require'open-uri'
-require'open_uri_redirections'
+require 'nokogiri'
+require 'open-uri'
+require 'open_uri_redirections'
 
 def head_extract(head, attr, start_prop)
   ret = []
@@ -68,9 +68,9 @@ def extract(alt, url)
   if File.exist? path
     File.open(path, 'r') { |f| html = f.read }
   else
-    puts URI.encode(url)
     html = open(URI.encode(url), allow_redirections: :all, &:read)
     File.open(path, 'w') { |f| f.write(html) }
+    puts File.exist? path
   end
 
   doc = Nokogiri::HTML.parse(html)
