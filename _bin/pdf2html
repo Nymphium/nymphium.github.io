@@ -1,8 +1,10 @@
-#!/bin/bash -eu
+#!/bin/bash -e
 
 slide=${1%.*}
 slide_base=$(basename ${slide})
 slide_uuid="${slide}-$(uuidgen)"
+thumbnail="${slide_base}.png"
+
 # gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default -dNOPAUSE -dQUIET -dBATCH -sOutputFile="${slide_uuid}.pdf" "${slide}.pdf"
 # mv "${slide_uuid}.pdf" "${slide}.pdf"
 # pdf-slide-html --pdf-url "http://nymphium.github.io/pdf/${slide}.pdf" --base-url http://azu.github.io/slide-pdf.js/ -o "${slide}.html"
@@ -20,12 +22,31 @@ else
 	# fi
 fi
 
+pdftoppm -f 1 -singlefile "${slide}.pdf" -png -scale-to 1200 pdf/"${slide_base}"
+
 cat <<HTML > pdf/${slide_base}.html
 <!DOCTYPE html>
 <html>
 <head lang="ja">
-    <meta charset="UTF-8">
     <title>${title} - lilyum ensemble</title>
+    <meta content="text/html;charset=UTF-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta itemprop="name" content="${title} - lilyum ensemble"/>
+    <meta name="thumbnail" content="https://nymphium.github.io/pdf/${slide_base}.png"/>
+    <meta name="image" content="https://nymphium.github.io/pdf/${slide_base}.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:site" content="lilyum ensemble"/>
+    <meta name="twitter:title" content="${title} - lilyum ensemble"/>
+    <meta name="twitter:url" content="https://nymphium.github.io/pdf/${slide_base}.html"/>
+    <meta name="twitter:text:description" content="${slide_base}"/>
+    <meta name="twitter:image" content="https://nymphium.github.io/pdf/${slide_base}.png"/>
+
+    <meta property="og:image" content="https://nymphium.github.io/pdf/${slide_base}.png"/>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
     <style type="text/css">
     .main-content .svg-icon {
         height: 1em;
