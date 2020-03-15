@@ -88,3 +88,10 @@ $nav-height: 56px;
 	}
 }
 
+.tags > .tag {
+	font-size: $base-font-size - 5;
+	border-radius: 2px;
+	padding: 2px 1px 0 1px;
+	background: #aaaaaa5e;
+}
+

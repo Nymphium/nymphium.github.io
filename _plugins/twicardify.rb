@@ -29,7 +29,7 @@ def resizing(base_size, txt)
     difflen = head.bytesize - base_size * 3
 
     len = base_size
-    len -= (difflen / 3) if difflen > 0
+    len -= (difflen / 3) if difflen.positive?
 
     txt.match(Regexp.new("^.{#{len}}"))[0] + '...'
   else
@@ -52,7 +52,7 @@ def render_twicard(h)
   HTML
 end
 
-def extract(alt, url)
+def extract(_alt, url)
   hash = ''
   dir = 'twicard_cache'
 
@@ -61,47 +61,44 @@ def extract(alt, url)
     hash = h[2]
   end
 
-  html = nil
+  html, title = nil
+  h = {}
 
   path = "#{dir}/#{url.gsub(%r{/}i, '')}"
 
-  if File.exist? path
-    File.open(path, 'r') { |f| html = f.read }
-  else
-    html = open(URI.encode(url), allow_redirections: :all, &:read)
-    File.open(path, 'w') { |f| f.write(html) }
-    puts File.exist? path
+  begin
+    if File.exist? path
+      File.open(path, 'r') { |f| html = f.read }
+    else
+      html = URI.open(Addressable::URI.encode(url), allow_redirections: :all, &:read)
+      File.open(path, 'w') { |f| f.write(html) }
+      puts File.exist? path
+    end
+
+    doc = Nokogiri::HTML.parse(html)
+    head = doc.xpath('/html/head')
+
+    title = head.xpath('title')
+
+    title = title.text if title
+
+    h = (head_extract head, 'property', '')
+        .merge(head_extract(head, 'name', ''))
+        .merge(head_extract(head, 'property', 'og:'))
+        .merge(head_extract(head, 'name', 'og:'))
+        .merge(head_extract(head, 'property', 'twitter:'))
+        .merge(head_extract(head, 'name', 'twitter:'))
+        .merge(head_extract(head, 'property', 'twitter:text:'))
+        .merge(head_extract(head, 'name', 'twitter:text:'))
+  rescue StandardError => e
+    puts e
   end
 
-  doc = Nokogiri::HTML.parse(html)
-  head = doc.xpath('/html/head')
-
-  title = head.xpath('title')
-
-  title = title.text if title
-
-  h = (head_extract head, 'property', '')
-      .merge(head_extract(head, 'name', ''))
-      .merge(head_extract(head, 'property', 'og:'))
-      .merge(head_extract(head, 'name', 'og:'))
-      .merge(head_extract(head, 'property', 'twitter:'))
-      .merge(head_extract(head, 'name', 'twitter:'))
-      .merge(head_extract(head, 'property', 'twitter:text:'))
-      .merge(head_extract(head, 'name', 'twitter:text:'))
-
-  if h.key?(:image) && h.key?(:description)
-    h[:description].gsub!(/[\n\r]/i, '')
-    (h[:title] = (h[:title] || title)) || ''
-    h[:url] = "#{url}#{hash}"
-    (h[:image] = h[:image]) || '/picture/no_image.png'
-    render_twicard h
-  else
-    <<~HTML
-      <center>
-        <a href="#{url}#{hash}" target="_blank" rel="noopener noreferrer">#{alt}</a>
-      </center>
-    HTML
-  end
+  h[:description]&.gsub!(/[\n\r]/i, '')
+  h[:title] = (h[:title] || title) || ''
+  h[:url] = "#{url}#{hash}"
+  h[:image] = h[:image] || '/picture/no_image.png'
+  render_twicard h
 end
 
 module Jekyll
