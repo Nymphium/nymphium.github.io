@@ -52,7 +52,7 @@ def render_twicard(h)
   HTML
 end
 
-def extract(_alt, url)
+def extract(alt, url)
   hash = ''
   dir = 'twicard_cache'
 
@@ -81,6 +81,7 @@ def extract(_alt, url)
     title = head.xpath('title')
 
     title = title.text if title
+    title = alt if !title.nil? && title.length.zero?
 
     h = (head_extract head, 'property', '')
         .merge(head_extract(head, 'name', ''))
@@ -97,7 +98,7 @@ def extract(_alt, url)
   h[:description]&.gsub!(/[\n\r]/i, '')
   h[:title] = (h[:title] || title) || ''
   h[:url] = "#{url}#{hash}"
-  h[:image] = h[:image] || '/picture/no_image.png'
+  h[:image] = h[:image] || '/pictures/no_image.png'
   render_twicard h
 end
 
@@ -107,21 +108,11 @@ module Jekyll
       def initialize(tag_name, args, tokens)
         super
 
-        sp = nil
-
         sp = if args.match(/^\s*"/)
                args.match(/^\s*"([^"]*)"\s*(.*?)\s*$/)
              else
                args.match(/^\s*(\S+)\s+(.*?)\s*$/)
              end
-
-        # pp sp
-
-        # if sp == nil
-        # pp args
-        # pp tokens
-        # return
-        # end
 
         @alt = sp[1]
         @post = sp[2]

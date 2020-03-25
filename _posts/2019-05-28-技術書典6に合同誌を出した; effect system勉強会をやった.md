@@ -68,13 +68,11 @@ https://twitter.com/dico_leque/status/1132503577019133953
 
 open unionをdictionaryにするのはなかなかおもしろいですね｡
 
-<div style="font-size: 34pt;">
-<p>今すぐダウンロー</p>
+<p style="font-size: 34pt;">今すぐダウンロー</p>
 
 {% twicard "http://hackage.haskell.org/package/extensible" http://hackage.haskell.org/package/extensible %}
 
-<p>ド</p>
-</div>
+<p style="font-size: 34pt;">ド</p>
 
 {% twicard "fumieval/extensible - GitHub" https://github.com/fumieval/extensible %}
 
