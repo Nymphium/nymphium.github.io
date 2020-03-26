@@ -1,5 +1,5 @@
 ---
-latouy: post
+layout: post
 title: Neovimへのhaskell-ide-engineの導入
 tags: [Haskell, Neovim, LSP]
 ---

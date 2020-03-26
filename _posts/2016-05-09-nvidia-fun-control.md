@@ -1,5 +1,5 @@
 ---
-latouy: post
+layout: post
 title: NVIDIAのGPUのファン速度を動的に変更する
 tags: [ArchLinux, NVIDIA]
 ---

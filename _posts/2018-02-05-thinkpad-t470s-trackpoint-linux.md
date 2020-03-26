@@ -1,5 +1,5 @@
 ---
-latouy: post
+layout: post
 title: ThinkPad T470sのトラックポイントの感度をLinux上でも良くする
 tags: [Linux, ThinkPad]
 ---

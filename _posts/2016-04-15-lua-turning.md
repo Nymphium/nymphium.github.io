@@ -1,5 +1,5 @@
 ---
-latouy: post
+layout: post
 title: Luaちょっとしたコードチューニング
 tags: [Lua]
 ---
