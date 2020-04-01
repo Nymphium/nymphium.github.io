@@ -47,7 +47,7 @@ let () = print_int (rand_with native_random) (* prints RANDOM number *)
 
 いいですね｡`Random`エフェクトが発生したときにどんな値が返ってくるのかがハンドラによって切り替えられるのがとにかく重要です｡
 
-もう少し丁寧な解説は[こちら](https://qiita.com/Nymphium/items/e6ce580da8b87ded912b)を参照されたし｡
+もう少し丁寧な解説は[こちら](https://nymphium.github.io/2018/10/30/what-is-algebraic-effects.html)を参照されたし｡
 
 # エフェクトの型
 ところで`Random`エフェクトが発生すると必ずハンドラに捕捉されるという保証はあるのでしょうか? Javaの`throws HogeException`みたいになってると嬉しいんですが…｡
@@ -219,7 +219,7 @@ env_with (with_fresh_hash ()) : ???
 気が向いたら多相エフェクトの話も書きたいですが､今すぐ知りたいという方は[^4] [^5]あたりを読んで私にご教授お願いします｡
 
 ## 追記
-続編: [Algebraic Effectsの型システム入門(2) 多相エフェクト - Qiita](https://qiita.com/Nymphium/items/7ec2512fe85fe7aaebf4)
+続編: [Algebraic Effectsの型システム入門(2) 多相エフェクト - Qiita](https://nymphium.github.io/2019/12/09/ae-poly.html)
 
 [^1]: Bauer, Andrej, and Matija Pretnar. "An effect system for algebraic effects and handlers." International Conference on Algebra and Coalgebra in Computer Science. Springer, Berlin, Heidelberg, 2013.
 [^2]: Pretnar, Matija, et al. "Efficient compilation of algebraic effects and handlers." CW Reports (2017).

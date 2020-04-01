@@ -145,7 +145,7 @@ Haskellにおける型クラスのようにimplicitに実装が与えられる�
 OCaml4.08で新たな構文拡張が生まれました｡
 詳細はこちらに書いた｡
 
-{% twicard "qiita" https://qiita.com/Nymphium/items/a13ed0fe3461708fe306 %}
+{% twicard "" https://nymphium.github.io/2019/06/22/ocaml408-binding-operator.html %}
 
 簡単にいうと､ただならぬ`let`が定義できる(プログラム[ref:lst:ocamlbinding])｡
 

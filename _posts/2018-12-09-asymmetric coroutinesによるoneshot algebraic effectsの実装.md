@@ -37,7 +37,7 @@ Lua､Rubyなどの言語機能またはライブラリとして提供されて�
 {%gh_repo Nymphium/eff.lua%}
 
 # algebraic effects
-これについては直近でそこそこ話したので､[あれ]({{ base.url }}/2018/08/13/algebraic_effects_tutorial.html)とか[これ]({{ base.url }}/pdf/mlday2.html)とか[それ](https://qiita.com/Nymphium/items/e6ce580da8b87ded912b)とかをご参照ください｡
+これについては直近でそこそこ話したので､[あれ]({{ base.url }}/2018/08/13/algebraic_effects_tutorial.html)とか[これ]({{ base.url }}/pdf/mlday2.html)とか[それ](https://nymphium.github.io/2018/10/30/what-is-algebraic-effects.html)とかをご参照ください｡
 
 ## Core Eff
 今回は1つのハンドラでハンドルできるエフェクトは1つというCore Effという言語を考える(図[ref:ce-syn])｡

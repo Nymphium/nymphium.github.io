@@ -130,7 +130,7 @@ syntacticにきれいに､バグらず簡単に書ける､というありが�
 #! 追記20181030
 ReactにHooksという機能が追加されたがこれはまさにAlgebraic Effectsということで､ReactはさておきAlgebraic Effectsに関してもう少し実例を交えて詳しいものをQiitaに発射した｡
 
-{% twicard "Algebraic Effectsとは? 出身は? 使い方は? その特徴とは? 調べてみました! - Qiita" https://qiita.com/Nymphium/items/e6ce580da8b87ded912b %}
+{% twicard "Algebraic Effectsとは? 出身は? 使い方は? その特徴とは? 調べてみました!" https://nymphium.github.io/2018/10/30/what-is-algebraic-effects.html %}
 
 追記おわり
 
