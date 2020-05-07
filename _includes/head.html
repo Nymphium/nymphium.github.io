@@ -7,8 +7,8 @@
     <title>{% if page.title %}{{ page.title | escape }} - {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
     <meta itemprop="name" content="{% if page.title %}{{ page.title | escape }} - {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}"/>{% if page.tags %}
     <meta name="keywords" content="{{ page.tags | join: "," }}"/>{% endif %}
-    <meta name="thumbnail" content="{% if page.thumb%}{{ BASE_PATH }}/pictures{{ page.id }}/thumb.png{% else %}{{BASE_PATH}}/pictures/github_icon.png{% endif %}"/>
-    <meta itemprop="image" content="{% if page.thumb%}{{ BASE_PATH }}/pictures{{ page.id }}/thumb.png{% else %}{{BASE_PATH}}/pictures/github_icon.png{% endif %}"/>
+    <meta name="thumbnail" content="{% if page.thumb %}{{ BASE_PATH }}/pictures{{ page.id }}/thumb.png{% else %}{{BASE_PATH}}/pictures/github_icon.png{% endif %}"/>
+    <meta itemprop="image" content="{% if page.thumb %}{{ BASE_PATH }}/pictures{{ page.id }}/thumb.png{% else %}{{BASE_PATH}}/pictures/github_icon.png{% endif %}"/>
 
     <meta name="twitter:card" content="summary{% if page.thumb %}_large_image{% endif %}"/>
     <meta name="twitter:site" content="{{ site.title }}"/>
@@ -23,5 +23,5 @@
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: BASE_PATH }}"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 {% seo title=false,description=false %}
-    <meta property="og:image" content="{% if page.thumb%}{{ BASE_PATH }}/pictures{{ page.id }}/thumb.png{% else %}{{BASE_PATH}}/pictures/github_icon.png{% endif %}"/>
+    <meta property="og:image" content="{% if page.thumb %}{{ BASE_PATH }}/pictures{{ page.id }}/thumb.png{% else %}{{BASE_PATH}}/pictures/github_icon.png{% endif %}"/>
   </head>
