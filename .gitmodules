@@ -1,3 +1,4 @@
 [submodule "about"]
 	path = about
 	url = git@github.com:nymphium/about
+	ignore = dirty
