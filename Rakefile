@@ -39,8 +39,8 @@ module JB
       path.compact!
       File.__send__ :join, path
     end
-  end # Path
-end # JB
+  end
+end
 
 # Usage: rake deploy
 desc 'Begin a push static file to GitHub'
@@ -58,7 +58,7 @@ task :deploy do
   sh 'git add -A'
   sh "git commit -m \"#{message}\" --allow-empty"
   sh 'git push origin source:source'
-  sh 'rm about/*'
+  sh 'rm about/LICENSE'
 
   sh 'git checkout master'
   sh 'rm -rf $(ls | grep -v .git)'
@@ -82,9 +82,7 @@ end
 # Usage: rake post title="A Title" [date="2012-02-09"] [tags=[tag1,tag2]] [category="category"]
 desc "Begin a new post in #{CONFIG['posts']}"
 task :post do
-  unless FileTest.directory?(CONFIG['posts'])
-    abort("rake aborted: '#{CONFIG['posts']}' directory not found.")
-end
+  abort("rake aborted: '#{CONFIG['posts']}' directory not found.") unless FileTest.directory?(CONFIG['posts'])
   title = ENV['title'] || 'new-post'
   tags = ENV['tags'] || '[]'
   category = ENV['category'] || ''
@@ -98,9 +96,7 @@ end
   end
   filename = File.join(CONFIG['posts'], "#{date}-#{slug}.#{CONFIG['post_ext']}")
   if File.exist?(filename)
-    if ask("#{filename} already exists. Do you want to overwrite?", %w[y n]) == 'n'
-      abort('rake aborted!')
- end
+    abort('rake aborted!') if ask("#{filename} already exists. Do you want to overwrite?", %w[y n]) == 'n'
   end
 
   puts "Creating new post: #{filename}"
@@ -114,7 +110,7 @@ end
     post.puts '---'
     post.puts '{% include JB/setup %}'
   end
-end # task :post
+end
 
 # Usage: rake page name="about.html"
 # You can also specify a sub-directory path.
@@ -126,9 +122,7 @@ task :page do
   filename = File.join(filename, 'index.html') if File.extname(filename) == ''
   title = File.basename(filename, File.extname(filename)).gsub(/[\W\_]/, ' ').gsub(/\b\w/) { $&.upcase }
   if File.exist?(filename)
-    if ask("#{filename} already exists. Do you want to overwrite?", %w[y n]) == 'n'
-      abort('rake aborted!')
- end
+    abort('rake aborted!') if ask("#{filename} already exists. Do you want to overwrite?", %w[y n]) == 'n'
   end
 
   mkdir_p File.dirname(filename)
@@ -141,7 +135,7 @@ task :page do
     post.puts '---'
     post.puts '{% include JB/setup %}'
   end
-end # task :page
+end
 
 desc 'Launch preview environment'
 task :preview do
@@ -154,12 +148,12 @@ task :preview do
   rescue StandardError => e
     abort(e)
     end
-end # task :preview
+end
 
 desc 'build oneshot'
 task :build do
   system "JEKYLL_ENV=development #{BUNDLE} exec jekyll build --drafts"
-end # task :build
+end
 
 # Public: Alias - Maintains backwards compatability for theme switching.
 task switch_theme: 'theme:switch'
@@ -183,12 +177,8 @@ namespace :theme do
     non_layout_files = ['settings.yml']
 
     abort('rake aborted: name cannot be blank') if theme_name.empty?
-    unless FileTest.directory?(theme_path)
-      abort("rake aborted: '#{theme_path}' directory not found.")
- end
-    unless FileTest.directory?(CONFIG['layouts'])
-      abort("rake aborted: '#{CONFIG['layouts']}' directory not found.")
- end
+    abort("rake aborted: '#{theme_path}' directory not found.") unless FileTest.directory?(theme_path)
+    abort("rake aborted: '#{CONFIG['layouts']}' directory not found.") unless FileTest.directory?(CONFIG['layouts'])
 
     Dir.glob("#{theme_path}/*") do |filename|
       next if non_layout_files.include?(File.basename(filename).downcase)
@@ -196,15 +186,13 @@ namespace :theme do
       puts "Generating '#{theme_name}' layout: #{File.basename(filename)}"
 
       open(File.join(CONFIG['layouts'], File.basename(filename)), 'w') do |page|
+        page.puts '---'
         if File.basename(filename, '.html').downcase == 'default'
-          page.puts '---'
           page.puts File.read(settings_file) if File.exist?(settings_file)
-          page.puts '---'
         else
-          page.puts '---'
           page.puts 'layout: default'
-          page.puts '---'
         end
+        page.puts '---'
         page.puts '{% include JB/setup %}'
         page.puts "{% include themes/#{theme_name}/#{File.basename(filename)} %}"
       end
@@ -212,7 +200,7 @@ namespace :theme do
 
     puts '=> Theme successfully switched!'
     puts '=> Reload your web-page to check it out =)'
-  end # task :switch
+  end
 
   # Public: Install a theme using the theme packager.
   # Version 0.1.0 simple 1:1 file matching.
@@ -277,9 +265,7 @@ namespace :theme do
 
     puts "=> #{name} theme has been installed!"
     puts '=> ---'
-    if ask('=> Want to switch themes now?', %w[y n]) == 'y'
-      system("rake switch_theme name='#{name}'")
-    end
+    system("rake switch_theme name='#{name}'") if ask('=> Want to switch themes now?', %w[y n]) == 'y'
   end
 
   # Public: Package a theme using the theme packager.
@@ -300,12 +286,8 @@ namespace :theme do
     asset_path = JB::Path.build(:theme_assets, node: name)
 
     abort('rake aborted: name cannot be blank') if name.empty?
-    unless FileTest.directory?(theme_path)
-      abort("rake aborted: '#{theme_path}' directory not found.")
- end
-    unless FileTest.directory?(asset_path)
-      abort("rake aborted: '#{asset_path}' directory not found.")
- end
+    abort("rake aborted: '#{theme_path}' directory not found.") unless FileTest.directory?(theme_path)
+    abort("rake aborted: '#{asset_path}' directory not found.") unless FileTest.directory?(asset_path)
 
     ## Mirror theme's template directory (_includes)
     packaged_theme_path = JB::Path.build(:themes, root: JB::Path.build(:theme_packages, node: name))
@@ -336,9 +318,7 @@ end # end namespace :theme
 # Returns theme manifest hash
 def theme_from_git_url(url)
   tmp_path = JB::Path.build(:theme_packages, node: '_tmp')
-  unless system("git clone #{url} #{tmp_path}")
-    abort('rake aborted: system call to git clone failed')
-end
+  abort('rake aborted: system call to git clone failed') unless system("git clone #{url} #{tmp_path}")
   manifest = verify_manifest(tmp_path)
   new_path = JB::Path.build(:theme_packages, node: manifest['name'])
   if File.exist?(new_path) && ask("=> #{new_path} theme package already exists. Override?", %w[y n]) == 'n'
@@ -349,7 +329,7 @@ end
   remove_dir(new_path) if File.exist?(new_path)
   mv(tmp_path, new_path)
   manifest
-  end
+end
 
 # Internal: Process theme package manifest file.
 #
@@ -359,13 +339,11 @@ end
 def verify_manifest(theme_path)
   manifest_path = File.join(theme_path, 'manifest.yml')
   manifest_file = File.open(manifest_path)
-  unless File.exist? manifest_file
-    abort('rake aborted: repo must contain valid manifest.yml')
-end
+  abort('rake aborted: repo must contain valid manifest.yml') unless File.exist? manifest_file
   manifest = YAML.safe_load(manifest_file)
   manifest_file.close
   manifest
-  end
+end
 
 def ask(message, valid_options)
   if valid_options
@@ -374,12 +352,12 @@ def ask(message, valid_options)
     answer = get_stdin(message)
   end
   answer
-  end
+end
 
 def get_stdin(message)
   print message
   STDIN.gets.chomp
-  end
+end
 
 # Load custom rake scripts
 Dir['_rake/*.rake'].each { |r| load r }
