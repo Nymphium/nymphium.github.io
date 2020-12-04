@@ -160,7 +160,7 @@ const to123 = (num: number): Option<number> =>
   num >= 0 && num <= 2 ? Some(num) : None();
 ```
 
-# 網羅性判定のジレンマ
+# Scala-like ADT definition
 上記でワーワーやったアホアホ推論をおこなわず､注釈にしたがいます｡
 **けど!** 俺たち \\(\lambda_\rightarrow\\) 生まれ OCaml 育ち型推論はだいたい決定可能としても注釈なんて書かずにもっと直感的で使いやすい推論結果を出してほしい｡
 
