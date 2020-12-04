@@ -108,7 +108,7 @@ Typed Racket も同様に control-flow based type analysis を組み込んだ Oc
 あと本記事では省略した `readonly` とかをちゃんとしているが､ `_tag` には optimistic に string literal type を利用している｡
 {% gh_repo gcanti/fp-ts %}
 
-# 苦難の型推論と網羅性判定のジレンマ
+# 苦難の型推論
 さて! 帰って飯食って寝よう～といきたいところですが､ちょっと待ってよ｡
 `Some<_>` と `None<_>` の型を作るために毎度 object リテラルに `_tag` をえっさほいさするのは面倒です｡
 それにこれを乱用して野良 `Option<_>` 型を作ってほしくないので smart constructors を定義してそれだけユーザに見せるようにしましょう｡
@@ -160,7 +160,7 @@ const to123 = (num: number): Option<number> =>
   num >= 0 && num <= 2 ? Some(num) : None();
 ```
 
-# Scala-like ADTs emulation
+# 網羅性判定のジレンマ
 上記でワーワーやったアホアホ推論をおこなわず､注釈にしたがいます｡
 **けど!** 俺たち \\(\lambda_\rightarrow\\) 生まれ OCaml 育ち型推論はだいたい決定可能としても注釈なんて書かずにもっと直感的で使いやすい推論結果を出してほしい｡
 
