@@ -340,6 +340,7 @@ TypeScript で ADTs を定義するには2通りあるけど2通りのつらさ�
 突然 CM なんですが､こういった面白い議論ができる TypeScript を用いて株式会社 HERP でなんかいろいろやっています｡
 面白いね!🤬 とかゴミ!🤡 みたいな議論やその他プログラム言語に関する面白い話をしつつ TypeScript の罠を回避したり向き合いたい方はぜひいらしてください｡
 ちなみに弊社新サービスなどの実装言語には *Haskell が採用されがちです*｡
+この記事の大半は労働時間中に書かれました｡
 
 {% twicard "求人一覧" https://herp.careers/v1/herpinc %}
 
@@ -352,7 +353,7 @@ TypeScript で ADTs を定義するには2通りあるけど2通りのつらさ�
 let hd = function
   | Some(hd  :: _) -> hd
   (* いつもなら _ -> failwith ... と書くが明示 *)
-	| Some(_) | None -> failwith "hoge"
+  | Some(_) | None -> failwith "hoge"
 ```
 
 のように `Some(_)` の中のリストをさらに分解しています｡
