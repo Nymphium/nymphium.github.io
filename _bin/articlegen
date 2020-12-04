@@ -2,6 +2,13 @@
 
 set -e
 
+help='articlegen [ -D /* means draft */ ][ -d YYYY-MM-DD /* contorl publish date */ ] title'
+
+if [[ -z "${1}" ]]; then
+  echo "${help}"
+  exit 1
+fi
+
 year=$(date +%Y)
 month=$(date +%m)
 date=$(date +%d)
@@ -11,9 +18,7 @@ postdir="_posts"
 while getopts ":d::D:h" OPT; do
   case "${OPT}" in
     h)
-      cat <<EOL
-articlegen [ -D /* means draft */ ][ -d YYYY-MM-DD /* contorl publish date */ ] title
-EOL
+      echo "${help}"
       exit 1
       ;;
     D) # as draft
