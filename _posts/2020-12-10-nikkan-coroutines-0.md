@@ -47,7 +47,7 @@ tags: [日刊Coroutines]
 {% twicard "" https://nymphium.github.io/2019/01/27/stackfulness-of-coroutines.html %}
 
 # その他
-対称性に関する分類はLuaの作者であるIerusalimschyらによる[^1]に拠る｡
+対称性に関する分類はLuaの作者であるde Mouraらによる[^1]に拠る｡
 
 最近の研究としては､コルーチンにスナップショット機能をつけるというものがある[^2]｡
 かんたんに述べると､コルーチンを`resume`すると*ある状態にある*コルーチンが実行されるわけですが､この*ある状態*をコピーする機能である｡
