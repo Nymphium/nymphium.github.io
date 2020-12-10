@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 日刊Coroutines(0) ｢コルーチン｣とは何だったのか?
+title: 日刊Coroutines(0) コルーチンのおさらいと近年の動向(若干)
 tags: [日刊Coroutines]
 ---
 
