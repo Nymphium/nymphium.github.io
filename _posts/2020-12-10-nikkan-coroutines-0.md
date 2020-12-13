@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 日刊Coroutines(0) コルーチンのおさらいと近年の動向(若干)
-tags: [日刊Coroutines]
+tags: [日刊Coroutines, coroutines]
 ---
 
 <!--sectionize on-->
@@ -47,16 +47,16 @@ tags: [日刊Coroutines]
 {% twicard "" https://nymphium.github.io/2019/01/27/stackfulness-of-coroutines.html %}
 
 # その他
-対称性に関する分類はLuaの作者であるde Mouraらによる[^1]に拠る｡
+対称性に関する分類はLuaの作者であるde Mouraらによる[fnref:1]に拠る｡
 
-最近の研究としては､コルーチンにスナップショット機能をつけるというものがある[^2]｡
+最近の研究としては､コルーチンにスナップショット機能をつけるというものがある[fnref:2]｡
 かんたんに述べると､コルーチンを`resume`すると*ある状態にある*コルーチンが実行されるわけですが､この*ある状態*をコピーする機能である｡
 分かってる人にとっては､つまるところmulti-shot continuationということ｡
 
-また､`yield`オペレータ自体に着目した研究もある[^3]｡
+また､`yield`オペレータ自体に着目した研究もある[fnref:3]｡
 
 # おわりに
-さーて予習したし明日[^4]にでも[^1]で定式化されているコルーチンをもつ小さな計算体系のインタプリタでも実装してみようかな｡
+さーて予習したし明日[^4]にでも[fnref:1]で定式化されているコルーチンをもつ小さな計算体系のインタプリタでも実装してみようかな｡
 
 [^1]: Moura, Ana Lúcia De, and Roberto Ierusalimschy. "Revisiting coroutines." ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6.
 [^2]: Prokopec, Aleksandar, and Fengyun Liu. "Theory and Practice of Coroutines with Snapshots." European Conference on Object-Oriented Programming (ECOOP) 109. (2018): 3.

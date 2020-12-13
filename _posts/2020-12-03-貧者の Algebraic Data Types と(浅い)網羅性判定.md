@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 貧者の Algebraic Data Types と(浅い)網羅性判定
-tags: [TypeScript, Scala, Advent Calendar]
+tags: [TypeScript, Scala, Advent Calendar, pattern matching]
 ---
 
 <!--sectionize on-->
