@@ -6,7 +6,10 @@ p, blockquote, pre,
 dl, dd, ol, ul, figure {
   margin: 0;
   padding: 0;
-  word-break: break-all;
+  word-break: break-word;
+  line-break: strict;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 hr {
@@ -232,7 +235,7 @@ pre, code {
   background: $pre-background;
 
   @include media-query($on-palm) {
-  font-size: $base-font-size * 0.8;
+    font-size: $base-font-size * 0.8;
   }
 }
 
