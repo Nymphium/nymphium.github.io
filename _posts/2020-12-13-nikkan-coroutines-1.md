@@ -4,7 +4,7 @@ title: 日刊Coroutines(1) 初回は嬉しいASTの定義付き
 tags: [日刊Coroutines, coroutines]
 ---
 
-<!--sectionize: on-->
+<!--sectionize on-->
 
 # はじめに
 こんにちは､びしょ～じょです｡
