@@ -159,7 +159,7 @@ ppx などで自動生成される変数をうまく隠すだとか(2.6)､
 
 # extending `open` in signatures
 ところで signature 内でも`open`は使える｡
-sginature は深掘ってこなかったので､知らないことが書いてあって面白かった｡
+signature は深掘ってこなかったので､知らないことが書いてあって面白かった｡
 
 > The OCaml compiler has a feature that is often useful during development: passing the -i flag
 > when compiling a module causes OCaml to display the inferred signature of the module. However,
