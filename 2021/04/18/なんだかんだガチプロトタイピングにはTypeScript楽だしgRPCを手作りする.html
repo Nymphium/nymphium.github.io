@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html;charset=UTF-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="format-detection" content="telephone=no"/>
+
+    <title>なんだかんだガチプロトタイピングにはTypeScript楽だしgRPCを手作りする - lilyum ensemble</title>
+    <meta itemprop="name" content="なんだかんだガチプロトタイピングにはTypeScript楽だしgRPCを手作りする - lilyum ensemble"/>
+    <meta name="keywords" content="TypeScript,gRPC"/>
+    <meta name="thumbnail" content="/pictures/github_icon.png"/>
+    <meta itemprop="image" content="/pictures/github_icon.png"/>
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="lilyum ensemble"/>
+    <meta name="twitter:title" content="なんだかんだガチプロトタイピングにはTypeScript楽だしgRPCを手作りする - lilyum ensemble"/>
+    <meta name="twitter:url" content="/2021/04/18/%E3%81%AA%E3%82%93%E3%81%A0%E3%81%8B%E3%82%93%E3%81%A0%E3%82%AC%E3%83%81%E3%83%97%E3%83%AD%E3%83%88%E3%82%BF%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%AFTypeScript%E6%A5%BD%E3%81%A0%E3%81%97gRPC%E3%82%92%E6%89%8B%E4%BD%9C%E3%82%8A%E3%81%99%E3%82%8B.html"/> 
+    <meta name="twitter:text:description" content="こんにちは､びしょ～じょです｡労働に手を染めて1年経ったんですが､特に深い話はないです｡しかし金で殴る力が強くなったので､沖縄行きの飛行機に乗り遅れても翌日の航空券を買うという技ができました｡美..."/>
+    <meta name="twitter:image" content="https://nymphium.github.io/pictures/github_icon.png"/>
+    <meta name="twitter:image:src" content="https://nymphium.github.io/pictures/github_icon.png"/>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="なんだかんだガチプロトタイピングにはTypeScript楽だしgRPCを手作りする" />
+<meta name="author" content="Satoru Kawahara" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="lily, Aikatsu, Programming language, and more" />
+<meta property="og:description" content="lily, Aikatsu, Programming language, and more" />
+<link rel="canonical" href="https://nymphium.github.io/2021/04/18/%E3%81%AA%E3%82%93%E3%81%A0%E3%81%8B%E3%82%93%E3%81%A0%E3%82%AC%E3%83%81%E3%83%97%E3%83%AD%E3%83%88%E3%82%BF%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%AFTypeScript%E6%A5%BD%E3%81%A0%E3%81%97gRPC%E3%82%92%E6%89%8B%E4%BD%9C%E3%82%8A%E3%81%99%E3%82%8B.html" />
+<meta property="og:url" content="https://nymphium.github.io/2021/04/18/%E3%81%AA%E3%82%93%E3%81%A0%E3%81%8B%E3%82%93%E3%81%A0%E3%82%AC%E3%83%81%E3%83%97%E3%83%AD%E3%83%88%E3%82%BF%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%AFTypeScript%E6%A5%BD%E3%81%A0%E3%81%97gRPC%E3%82%92%E6%89%8B%E4%BD%9C%E3%82%8A%E3%81%99%E3%82%8B.html" />
+<meta property="og:site_name" content="lilyum ensemble" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-18T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="なんだかんだガチプロトタイピングにはTypeScript楽だしgRPCを手作りする" />
+<script type="application/ld+json">
+{"url":"https://nymphium.github.io/2021/04/18/%E3%81%AA%E3%82%93%E3%81%A0%E3%81%8B%E3%82%93%E3%81%A0%E3%82%AC%E3%83%81%E3%83%97%E3%83%AD%E3%83%88%E3%82%BF%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%AFTypeScript%E6%A5%BD%E3%81%A0%E3%81%97gRPC%E3%82%92%E6%89%8B%E4%BD%9C%E3%82%8A%E3%81%99%E3%82%8B.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"なんだかんだガチプロトタイピングにはTypeScript楽だしgRPCを手作りする","dateModified":"2021-04-18T00:00:00+09:00","datePublished":"2021-04-18T00:00:00+09:00","description":"lily, Aikatsu, Programming language, and more","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2021/04/18/%E3%81%AA%E3%82%93%E3%81%A0%E3%81%8B%E3%82%93%E3%81%A0%E3%82%AC%E3%83%81%E3%83%97%E3%83%AD%E3%83%88%E3%82%BF%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%AFTypeScript%E6%A5%BD%E3%81%A0%E3%81%97gRPC%E3%82%92%E6%89%8B%E4%BD%9C%E3%82%8A%E3%81%99%E3%82%8B.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta property="og:image" content="/pictures/github_icon.png"/>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="wrapper" style="font-family: 'Comfortaa';">
+        <a class="site-title" href="/">lilyum ensemble</a>
+        <nav class="site-nav">
+          <div class="trigger">
+            <a class="page-link" href="/aboutme.html">About</a>
+            <a class="page-link" href="/slide.html">Slides</a>
+            <a class="page-link" href="/tags.html">Tags</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-content">
+      <div class="wrapper" lang="ja">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <h1 class="post-title" itemprop="name headline">なんだかんだガチプロトタイピングにはTypeScript楽だしgRPCを手作りする</h1>
+            <span class="post-meta">
+              <time datetime="2021-04-18T00:00:00+09:00" itemprop="datePublished">Apr 18, 2021</time>
+              <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2021-04-18-%E3%81%AA%E3%82%93%E3%81%A0%E3%81%8B%E3%82%93%E3%81%A0%E3%82%AC%E3%83%81%E3%83%97%E3%83%AD%E3%83%88%E3%82%BF%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%AFTypeScript%E6%A5%BD%E3%81%A0%E3%81%97gRPC%E3%82%92%E6%89%8B%E4%BD%9C%E3%82%8A%E3%81%99%E3%82%8B.md" target="_blank" rel="noopener noreferrer">src</a>
+              <p class="tags">tag: {<span class="tag"><a href="/tags.html#TypeScript-ref">TypeScript</a></span><span></span> <span class="tag"><a href="/tags.html#gRPC-ref">gRPC</a></span>}</p>
+              <a class="twitter-share-button" href="https://twitter.com/intent/tweet" target="_blank" rel="noopener noreferrer">Tweet</a> 
+
+              <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja" title="なんだかんだガチプロトタイピングにはTypeScript楽だしgRPCを手作りする" target="_blank" rel="noopener noreferrer">
+                <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマークに追加" width="20" height="20" style="border: none;">
+              </a>
+              <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+
+            </span>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <script type="text/javascript" src="/js/GithubRepoWidget.min.js"></script>
+            <script type="text/javascript">setTimeout(GithubRepoWidget.init, 3000);</script>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css" integrity="sha384-9tPv11A+glH/on/wEu99NVwDPwkMQESOocs/ZGXPoIiLE8MU/qkqUcZ3zzL+6DuH" crossorigin="anonymous">
+            <!-- The loading of KaTeX is deferred to speed up page rendering -->
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.js" integrity="sha384-U8Vrjwb8fuHMt6ewaCy8uqeUXv4oitYACKdB0VziCerzt011iQ/0TqlSlv8MReCm" crossorigin="anonymous"></script>
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/contrib/auto-render.min.js" integrity="sha384-aGfk5kvhIq5x1x5YdvCp4upKZYnA8ckafviDpmWEKp4afOZEqOli7gqSnh8I6enH" crossorigin="anonymous"></script>
+            <script>
+document.addEventListener("DOMContentLoaded", function(){
+  renderMathInElement
+    ( document.body
+    , { delimiters: [ {left: "$$",  right: "$$",  display: true}
+                    , {left: "\\(", right: "\\)", display: false}
+                    , {left: "\\[", right: "\\]", display: true}
+                    , {left: "[[",  right: "]]",  display: true}
+                    , {left: "$",   right: "$",   display: false} ]
+    , })});
+            </script>
+          </header>
+          <div class="post-content" itemprop="articleBody">
+<p>こんにちは､びしょ～じょです｡
+労働に手を染めて1年経ったんですが､特に深い話はないです｡
+しかし金で殴る力が強くなったので､沖縄行きの飛行機に乗り遅れても翌日の航空券を買うという技ができました｡
+美ら海水族館の往復で乗ったバスの中で読んだ『帰りたくない―少女沖縄連れ去り事件―』が1､2番目に印象に残っています｡
+いい話ですね｡</p>
+<h1 id="1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><a class="headerlink" href="#1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">1. はじめに</a></h1>
+<p>今回はHTTP/2を喋るgRPCサーバを実装する｡
+特に､gRPCプロトコルの理解のためにHTTP/2から上はgRPCのライブラリは使わずに手でやっていく｡
+protobufのシリアライズ/デシリアライズはライブラリでやってもらう｡</p>
+<p>なんと今回はTypeScriptで実装する｡
+型システムとか意味論とか言語設計には言いたいことがいっぱいあるが､コミュニティがメチャクソデカいんでライブラリがいっぱいあるし脳死で書いて動かすまでは極めて楽ではある｡</p>
+<p>今回使うライブラリは､新しめのNodeの標準ライブラリの<a href="https://nodejs.org/api/http2.html" target="_blank" rel="noopener noreferrer">http2</a>と<a href="https://github.com/improbable-eng/ts-protoc-gen" target="_blank" rel="noopener noreferrer">ts-protoc-gen</a>｡
+クライアントはダルいんで<a href="https://github.com/fullstorydev/grpcurl" target="_blank" rel="noopener noreferrer">grpcurl</a>を使う｡
+便利｡</p>
+<p>gRPC over HTTP/2はとりあえず公式のspec<span class="cite">[<a href="#fn1" title="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md " id="fnref1">1</a>]</span>
+を読めば全部OK!!
+どいうったものを送ればいいのかABNFで書かれており追いやすい｡</p>
+<p>では､いきます｡</p>
+<h1 id="2.+proto"><a class="headerlink" href="#2.+proto">2. proto</a></h1>
+<p>こんな感じのprotoを用意する｡</p>
+<div class="highlight">
+<span class="listing-name">echo.proto</span><pre><code class="language-proto" data-lang="proto"><span class="na">syntax</span> <span class="o">=</span> <span class="s">"proto3"</span><span class="p">;</span>
+
+<span class="kn">package</span> <span class="nn">services</span><span class="p">;</span>
+
+<span class="kd">service</span> <span class="n">Echo</span> <span class="p">{</span>
+  <span class="k">rpc</span> <span class="n">Call</span> <span class="p">(</span><span class="n">EchoRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">EchoResponse</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">EchoRequest</span> <span class="p">{</span>
+  <span class="kt">string</span> <span class="kd">message</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">EchoResponse</span> <span class="p">{</span>
+  <span class="kt">string</span> <span class="kd">message</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>これを実装しているサーバの<code>services.Echo/Call</code>に<code>EchoRequest</code>をPOSTすると<code>EchoResponse</code>が返ってくる｡
+サービス名は<a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#appendix-a---grpc-for-protobuf" target="_blank" rel="noopener noreferrer">こちら</a>に規則が書かれている｡</p>
+<h1 id="3.+%E3%81%BE%E3%81%9A%E3%81%AF%E5%8F%97%E3%81%91%E3%82%8B"><a class="headerlink" href="#3.+%E3%81%BE%E3%81%9A%E3%81%AF%E5%8F%97%E3%81%91%E3%82%8B">3. まずは受ける</a></h1>
+<h2 id="3-1.+%E4%BB%95%E6%A7%98%E3%82%92%E3%82%88%E3%82%80"><a class="headerlink" href="#3-1.+%E4%BB%95%E6%A7%98%E3%82%92%E3%82%88%E3%82%80">3-1. 仕様をよむ</a></h2>
+<p>とりあえずどういったリクエストがやってくるか見る｡
+<span class="cite">[<a href="#fn1" title="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md " id="fnref1">1</a>]</span>
+曰く､</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right">rule</th>
+<th style="text-align: left">op</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right">Request</td>
+<td style="text-align: left">Request-Headers *Length-Prefixed-Message EOS</td>
+</tr>
+</tbody>
+</table>
+<p>とのこと｡
+さらに定義を展開すると､</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right">rule</th>
+<th style="text-align: left">op</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right">Length-Prefixed-Message</td>
+<td style="text-align: left">Compressed-Flag Message-Length Message</td>
+</tr>
+<tr>
+<td style="text-align: right">Compressed-Flag</td>
+<td style="text-align: left">0 / 1 # encoded as 1 byte unsigned integer</td>
+</tr>
+<tr>
+<td style="text-align: right">Message-Length</td>
+<td style="text-align: left">{length of Message} # encoded as 4 byte unsigned integer (big endian)</td>
+</tr>
+<tr>
+<td style="text-align: right">Message</td>
+<td style="text-align: left">*{binary octet}</td>
+</tr>
+</tbody>
+</table>
+<p>おk <strong><em>完全に理解した</em></strong></p>
+<h2 id="3-2.+%E5%AE%9F%E8%A3%85"><a class="headerlink" href="#3-2.+%E5%AE%9F%E8%A3%85">3-2. 実装</a></h2>
+<p>やるだけ｡</p>
+<div class="highlight">
+<span class="listing-name">echo-service.ts</span><pre><code class="language-typescript" data-lang="typescript"><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">H2</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">http2</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">call</span> <span class="o">=</span> <span class="p">(</span><span class="nx">request</span><span class="p">:</span> <span class="nx">H2</span><span class="p">.</span><span class="nx">Http2ServerRequest</span><span class="p">,</span> <span class="nx">response</span><span class="p">:</span> <span class="nx">H2</span><span class="p">.</span><span class="nx">Http2ServerResponse</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="na">chunks</span><span class="p">:</span> <span class="nx">Buffer</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="nx">request</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="na">chunk</span><span class="p">:</span> <span class="nx">Buffer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">chunks</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">chunk</span><span class="p">));</span>
+    <span class="nx">request</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">chunks</span><span class="p">);</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+<div class="highlight">
+<span class="listing-name">index.ts</span><pre><code class="language-typescript" data-lang="typescript"><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">H2</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">http2</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">EchoService</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./echo-service</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">H2</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="dl">'</span><span class="s1">:method</span><span class="dl">'</span><span class="p">]}${</span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="dl">'</span><span class="s1">:path</span><span class="dl">'</span><span class="p">]}</span><span class="s2">`</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">POST/services.Echo/Call</span><span class="dl">'</span><span class="p">:</span>
+            <span class="nx">EchoService</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">50051</span><span class="p">;</span>
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`listen on localhost:</span><span class="p">${</span><span class="nx">port</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+<p>50051番ポートでとりえあず受ける｡
+<a href="https://github.com/TypeStrong/ts-node" target="_blank" rel="noopener noreferrer">ts-node</a>で適当に動かす｡</p>
+<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>npx ts-node index.ts
+<span class="go">listen on localhost:50051
+</span></code></pre></div>
+<p>叩く｡</p>
+<div class="highlight">
+<span class="listing-name">クライアント</span><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>grpcurl <span class="nt">-vv</span> <span class="nt">-plaintext</span> <span class="nt">-proto</span> echo.proto <span class="nt">-d</span> <span class="s1">'{"message": "hello"}'</span> localhost:50051 services.Echo/Call
+<span class="go">
+Resolved method descriptor:
+</span><span class="gp">rpc Call ( .services.EchoRequest ) returns ( .services.EchoResponse );</span><span class="w">
+</span><span class="go">
+Request metadata to send:
+(empty)
+
+Response headers received:
+(empty)
+
+Response trailers received:
+(empty)
+Sent 1 request and received 0 responses
+ERROR:
+  Code: Unknown
+</span><span class="gp">  Message: OK: HTTP status code 200;</span><span class="w"> </span>transport: missing content-type field <span class="o">)</span>
+</code></pre>
+</div>
+<p>正しく怒られが発生している｡</p>
+<div class="highlight">
+<span class="listing-name">サバログ</span><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">[ &lt;Buffer 00 00 00 00 07 0a 05 68 65 6c 6c 6f&gt;</span><span class="w"> </span><span class="o">]</span>
+</code></pre>
+</div>
+<p>長さ1の<code>Array&lt;Buffer&gt;</code>が<code>console.log</code>されたことがわかる｡
+JavaScriptはそうなっている｡
+先頭5バイトをまず読むと､</p>
+<ul>
+<li>先頭の<code>\x00</code>はCompressed-Flag(uncompressed)</li>
+<li>
+<code>\x00 \x00 \x00 \x07</code>はメッセージの長さ(7)</li>
+</ul>
+<p>となる｡
+そして､続く7バイト<code>\x0a \x05 \x68 \x65 \x6c x6c \x6f</code>がメッセージである｡</p>
+<p>今回は深堀りしないが､<a href="https://developers.google.com/protocol-buffers/docs/encoding" target="_blank" rel="noopener noreferrer">この辺</a>を読むと､1番目のフィールド(<code>EchoRequest</code>の<code>message</code>)のlength-delimited type(<code>message</code>の型､<code>string</code>)が5バイト連なっており(<code>"hello".length</code>)､<code>\x68 ...</code>(<code>"hello"</code>)というバイト列がやってきていることが読める｡</p>
+<p>いい感じだ｡</p>
+<h1 id="4.+%E3%83%87%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%99%E3%82%8B"><a class="headerlink" href="#4.+%E3%83%87%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%99%E3%82%8B">4. デシリアライズする</a></h1>
+<p>さてprotobufのデータがやってきたので､ここで初めてprotobufを気にかける｡
+ts-protoc-genをしてこの通り</p>
+<div class="highlight">
+<span class="listing-name">bin/protogen.sh</span><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/bash</span>
+
+<span class="nb">set</span> <span class="nt">-eu</span>
+
+protoc <span class="se">\</span>
+  <span class="nt">--plugin</span><span class="o">=</span><span class="s2">"protoc-plugin-ts=</span><span class="si">$(</span>npx which protoc-gen-ts<span class="si">)</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nt">--js_out</span><span class="o">=</span><span class="s2">"import_style=commonjs,binary:</span><span class="nv">$2</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nt">--ts_out</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nv">$1</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span><span class="nb">mkdir </span>pb
+<span class="gp">$</span><span class="w"> </span>./bin/protogen.sh echo.proto pb
+<span class="gp">$</span><span class="w"> </span><span class="nb">ls </span>pb
+<span class="go">echo_pb.d.ts  echo_pb.js
+</span></code></pre></div>
+<p>よし｡
+こいつらを引っ張ってなんかいい感じにやる｡</p>
+<div class="highlight">
+<span class="listing-name">echo-service.ts</span><pre><code class="language-typescript" data-lang="typescript"><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">H2</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">http2</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">Echo</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./pb/echo_pb</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="p">...</span>
+</code></pre>
+</div>
+<p>とりあえず<code>Echo.EchoRequest.deserializeBinary</code>すれば<code>EchoRequest</code>が手に入るようだ｡
+<code>Uint8Array</code>を渡す必要がある｡
+<code>Uint8Array</code>は<code>Uint8</code>､つまり1要素が<code>1</code>～<code>255</code>の<code>number</code>から成る<code>Array</code>である｡
+型は無いんでランタイムに値を詰め込むだけ｡
+確かにバイト列がやってくるんで<code>Uint8Array</code>なのね｡</p>
+<p>いい感じのライブラリが標準に無いし知らんのでこの辺を実装する｡</p>
+<div class="highlight">
+<span class="listing-name">hexdata.ts</span><pre><code class="language-typescript" data-lang="typescript"><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">Assert</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">assert</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">type</span> <span class="nx">T</span> <span class="o">=</span> <span class="nb">Uint8Array</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">encoder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TextEncoder</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">decoder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TextDecoder</span><span class="p">();</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">fromString</span> <span class="o">=</span> <span class="p">(</span><span class="nx">v</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nx">T</span> <span class="o">=&gt;</span> <span class="nx">encoder</span><span class="p">.</span><span class="nx">encode</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">fromBit</span> <span class="o">=</span> <span class="p">(</span><span class="nx">i</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">):</span> <span class="nx">T</span> <span class="o">=&gt;</span> <span class="nb">Uint8Array</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="nx">i</span> <span class="p">?</span> <span class="mi">1</span> <span class="p">:</span> <span class="mi">0</span><span class="p">);</span>
+<span class="c1">// uint32をいい感じにuint8 arrayに敷き詰める</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">fromByte</span> <span class="o">=</span> <span class="p">(</span><span class="nx">i</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="nx">T</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// がんばる</span>
+    <span class="nx">Assert</span><span class="p">.</span><span class="nx">ok</span><span class="p">(</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">32</span><span class="p">);</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Uint8Array</span><span class="p">(</span><span class="nb">Uint32Array</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">buffer</span><span class="p">).</span><span class="nx">reverse</span><span class="p">();</span>
+<span class="p">};</span>
+<span class="c1">// ビャッとやる</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">toString</span> <span class="o">=</span> <span class="p">(...</span><span class="nx">ts</span><span class="p">:</span> <span class="nx">T</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">tmp</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Uint8Array</span><span class="p">(</span><span class="nx">ts</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">acc</span> <span class="o">+</span> <span class="nx">t</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+
+    <span class="nx">ts</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">offset</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">tmp</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">offset</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">t</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="nx">offset</span><span class="p">;</span>
+    <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nx">decoder</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="nx">tmp</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+<p>まあ真面目にやらんでいいのでこんなもんでしょう｡</p>
+<p>ではこれを使って<code>EchoService.call</code>を変更する｡
+先述のとおり､request bodyを構成する<code>Array&lt;Buffer&gt;</code>が来るのでこれを合体して<code>Buffer</code>にする｡
+request bodyには先頭5byteにmessageの情報が入っているが､今回は雑に捨てる｡</p>
+<div class="highlight">
+<span class="listing-name">echo-service.ts</span><pre><code class="language-typescript" data-lang="typescript"><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">H2</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">http2</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">Echo</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./pb/echo_pb</span><span class="dl">'</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">HexData</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./hexdata</span><span class="dl">'</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">call</span> <span class="o">=</span> <span class="p">(</span><span class="nx">request</span><span class="p">:</span> <span class="nx">H2</span><span class="p">.</span><span class="nx">Http2ServerRequest</span><span class="p">,</span> <span class="nx">response</span><span class="p">:</span> <span class="nx">H2</span><span class="p">.</span><span class="nx">Http2ServerResponse</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="na">chunks</span><span class="p">:</span> <span class="nx">Buffer</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="nx">request</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="na">chunk</span><span class="p">:</span> <span class="nx">Buffer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">chunks</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">chunk</span><span class="p">));</span>
+    <span class="nx">request</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="c1">// Array&lt;Buffer&gt;を合体して雑に5byte捨てる</span>
+        <span class="kd">const</span> <span class="nx">echoRequest</span> <span class="o">=</span> <span class="nx">Echo</span><span class="p">.</span><span class="nx">EchoRequest</span><span class="p">.</span><span class="nx">deserializeBinary</span><span class="p">(</span><span class="nx">HexData</span><span class="p">.</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">chunks</span><span class="p">.</span><span class="nx">join</span><span class="p">().</span><span class="nx">substring</span><span class="p">(</span><span class="mi">5</span><span class="p">)));</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">echoRequest</span><span class="p">.</span><span class="nx">toObject</span><span class="p">()));</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+<p>では同様に動かすと</p>
+<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>npx ts-node index.ts
+<span class="go">listen on localhost:50051
+{"message":"hello"}
+</span></code></pre></div>
+<p>イージャン｡</p>
+<h1 id="5.+%E3%81%9D%E3%81%97%E3%81%A6%E8%BF%94%E3%81%99%E2%80%A6%E2%80%A6%E3%81%8C%E3%81%97%E3%81%8B%E3%81%97"><a class="headerlink" href="#5.+%E3%81%9D%E3%81%97%E3%81%A6%E8%BF%94%E3%81%99%E2%80%A6%E2%80%A6%E3%81%8C%E3%81%97%E3%81%8B%E3%81%97">5. そして返す……がしかし</a></h1>
+<p>いい感じなったんでこれを返す｡</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right">rule</th>
+<th style="text-align: left">op</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right">Response</td>
+<td style="text-align: left">(Response-Headers *Length-Prefixed-Message Trailers) / Trailers-Only</td>
+</tr>
+</tbody>
+</table>
+<p>これを返す｡
+<code>Trailers-Only</code>は今回無視する<sup id="fnref2" title="エラーを返す場合に使う｡voidを返すrpcがあるならその場合もあるかもしれんけどprotobufの仕様上ない? "><a href="#fn2">2</a></sup>｡</p>
+<p><code>Response-Headers</code>は</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right">rule</th>
+<th style="text-align: left">op</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right">Response-Headers</td>
+<td style="text-align: left">HTTP-Status [Message-Encoding] [Message-Accept-Encoding] Content-Type *Custom-Metadata</td>
+</tr>
+<tr>
+<td style="text-align: right">HTTP-Status</td>
+<td style="text-align: left">“:status 200”</td>
+</tr>
+<tr>
+<td style="text-align: right">Message-Encoding</td>
+<td style="text-align: left">“grpc-encoding” Content-Coding</td>
+</tr>
+<tr>
+<td style="text-align: right">Message-Accept-Encoding</td>
+<td style="text-align: left">“grpc-accept-encoding” Content-Coding *(“,” Content-Coding)</td>
+</tr>
+<tr>
+<td style="text-align: right">Content-Type</td>
+<td style="text-align: left">“content-type” “application/grpc” [(“+proto” / “+json” / {custom})]</td>
+</tr>
+<tr>
+<td style="text-align: right">Custom-Metadata</td>
+<td style="text-align: left">(省略)<sup id="fnref3" title="key-value形式で色々メタデータを送れる｡今回は使わないので省略した｡ "><a href="#fn3">3</a></sup>
+</td>
+</tr>
+</tbody>
+</table>
+<p><code>Trailers</code>は</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right">rule</th>
+<th style="text-align: left">op</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right">Trailers</td>
+<td style="text-align: left">Status [Status-Message] *Custom-Metadata</td>
+</tr>
+<tr>
+<td style="text-align: right">Status</td>
+<td style="text-align: left">“grpc-status” 1*DIGIT ; 0-9</td>
+</tr>
+<tr>
+<td style="text-align: right">Status-Message</td>
+<td style="text-align: left">“grpc-message” Percent-Encoded</td>
+</tr>
+<tr>
+<td style="text-align: right">Percent-Encoded</td>
+<td style="text-align: left">1*(Percent-Byte-Unencoded / Percent-Byte-Encoded)</td>
+</tr>
+<tr>
+<td style="text-align: right">Percent-Byte-Unencoded</td>
+<td style="text-align: left">1*( %x20-%x24 / %x26-%x7E ) ; space and VCHAR, except %</td>
+</tr>
+<tr>
+<td style="text-align: right">Percent-Byte-Encoded</td>
+<td style="text-align: left">“%” 2HEXDIGIT ; 0-9 A-F</td>
+</tr>
+</tbody>
+</table>
+<p>サーバは常にHTTP status200を返し､gRPCのstatusとして<code>grpc-status</code>を利用するようだ｡</p>
+<p>今回は異常系も考えんでいいか｡</p>
+<div class="highlight">
+<span class="listing-name">echo-service.ts</span><pre><code class="language-ts" data-lang="ts"><span class="p">...</span>
+    <span class="nx">request</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">chunk</span><span class="p">:</span> <span class="nx">Buffer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">chunks</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">chunk</span><span class="p">));</span>
+    <span class="nx">request</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">echoRequest</span> <span class="o">=</span> <span class="nx">decodeEchoRequest</span><span class="p">(</span><span class="nx">chunks</span><span class="p">.</span><span class="nx">join</span><span class="p">().</span><span class="nx">substring</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
+        <span class="kd">const</span> <span class="nx">echoResponse</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Echo</span><span class="p">.</span><span class="nx">EchoResponse</span><span class="p">();</span>
+        <span class="nx">echoResponse</span><span class="p">.</span><span class="nx">setMessage</span><span class="p">(</span><span class="nx">echoRequest</span><span class="p">.</span><span class="nx">getMessage</span><span class="p">());</span>
+        <span class="kd">const</span> <span class="nx">msg</span> <span class="o">=</span> <span class="nx">echoResponse</span><span class="p">.</span><span class="nx">serializeBinary</span><span class="p">();</span>
+        <span class="kd">const</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">HexData</span><span class="p">.</span><span class="nx">fromByte</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+        <span class="c1">// compressしない</span>
+        <span class="kd">const</span> <span class="nx">compression</span> <span class="o">=</span> <span class="nx">HexData</span><span class="p">.</span><span class="nx">fromBit</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+        <span class="kd">const</span> <span class="nx">responseBody</span> <span class="o">=</span> <span class="nx">HexData</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">compression</span><span class="p">,</span> <span class="nx">len</span><span class="p">,</span> <span class="nx">msg</span><span class="p">);</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">content-type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/grpc+proto</span><span class="dl">'</span> <span class="p">});</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">responseBody</span><span class="p">);</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">grpc-status: 0</span><span class="dl">'</span><span class="p">);</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">...</span>
+</code></pre>
+</div>
+<p>よし｡
+サーバを再起動して<code>grpcurl</code>をさっきと同じ引数で叩く｡</p>
+<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>grpcurl ...
+<span class="go">
+Resolved method descriptor:
+</span><span class="gp">rpc Call ( .services.EchoRequest ) returns ( .services.EchoResponse );</span><span class="w">
+</span><span class="go">
+Request metadata to send:
+(empty)
+
+Response headers received:
+content-type: application/grpc+proto
+date: Sat, 17 Apr 2021 19:43:51 GMT
+
+Response trailers received:
+(empty)
+Sent 1 request and received 0 responses
+ERROR:
+  Code: ResourceExhausted
+  Message: grpc: received message larger than max (1919968045 vs. 4194304)
+</span></code></pre></div>
+<p>は?</p>
+<h2 id="5-1.+HTTP%2F2%E3%81%AE%3Ccode%3Etrailers%3C%2Fcode%3E%0A"><a class="headerlink" href="#5-1.+HTTP%2F2%E3%81%AE%3Ccode%3Etrailers%3C%2Fcode%3E%0A">5-1. HTTP/2の<code>trailers</code>
+</a></h2>
+<p><span class="cite">[<a href="#fn1" title="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md " id="fnref1">1</a>]</span>
+をガッコリ読むと</p>
+<blockquote>
+<p>For responses end-of-stream is indicated by the presence of the END_STREAM flag on the last received HEADERS frame that carries Trailers.</p>
+</blockquote>
+<p><code>END_STREAM</code>と<code>HEADERS</code> 何? ^^;</p>
+<p>これはHTTP/2の話になる｡
+ちょうど↑の文のちょっと下にHTTP/2のframing sequenceの例が挙がっている｡
+レスポンスの方を見ると､</p>
+<div class="highlight"><pre><code class="language-" data-lang="">HEADERS (flags = END_HEADERS)
+:status = 200
+grpc-encoding = gzip
+content-type = application/grpc+proto
+
+DATA
+&lt;Length-Prefixed Message&gt;
+
+HEADERS (flags = END_STREAM, END_HEADERS)
+grpc-status = 0 # OK
+trace-proto-bin = jher831yy13JHy3hc
+</code></pre></div>
+<p>なんすかこれ｡
+確かに､<a href="https://tools.ietf.org/html/rfc7540#section-8.1" target="_blank" rel="noopener noreferrer">RFC</a>を見るとtrailing header fileldsというのが存在するようだ｡
+勉強不足でした｡</p>
+<p>つまりtrailing header fieldsに<code>grpc-status</code>とか<code>grpc-message</code>を突っ込めばいいらしい｡
+streaming rpcをやっていってエラーを吐くときにメッセージを返しやすいとかなのかしら｡</p>
+<h2 id="5-2.+%E3%81%82%E3%81%A8%E3%81%AF%E3%82%84%E3%82%8B%E3%81%A0%E3%81%91"><a class="headerlink" href="#5-2.+%E3%81%82%E3%81%A8%E3%81%AF%E3%82%84%E3%82%8B%E3%81%A0%E3%81%91">5-2. あとはやるだけ</a></h2>
+<div class="highlight">
+<span class="listing-name">echo-server.ts</span><pre><code class="language-ts" data-lang="ts"><span class="p">...</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">content-type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/grpc+proto</span><span class="dl">'</span> <span class="p">});</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">responseBody</span><span class="p">);</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">addTrailers</span><span class="p">({</span> <span class="dl">'</span><span class="s1">grpc-status</span><span class="dl">'</span><span class="p">:</span> <span class="mi">0</span> <span class="p">});</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+<span class="p">...</span>
+</code></pre>
+</div>
+<p>叩く｡</p>
+<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>grpcurl ...
+<span class="go">
+Resolved method descriptor:
+</span><span class="gp">rpc Call ( .services.EchoRequest ) returns ( .services.EchoResponse );</span><span class="w">
+</span><span class="go">
+Request metadata to send:
+(empty)
+
+Response headers received:
+content-type: application/grpc+proto
+date: Sat, 17 Apr 2021 21:00:57 GMT
+
+Estimated response size: 7 bytes
+
+Response contents:
+{
+  "message": "hello"
+}
+
+Response trailers received:
+(empty)
+Sent 1 request and received 1 response )
+</span></code></pre></div>
+<p>あーキタキタこれこれ</p>
+<h1 id="6.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB"><a class="headerlink" href="#6.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">6. おわりに</a></h1>
+<p>あ～～～～～～～今日もgRPCを完全に理解しちまったな……｡
+完全に理解したんですが､<span class="cite">[<a href="#fn1" title="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md " id="fnref1">1</a>]</span>
+の<code>Request</code>を見ると<code>grpc-timeout</code>とか<code>grpc-accept-encoding</code>とか<code>grpc-message-type</code>とかあるし､ステータスコードもなんか色々あるし､当然ながらgRPCのライブラリを使ったほうがよい｡
+でもgRPCは何をやってるか知ってると良いことがあるかもしれない｡gRPCライブラリのない言語でgRPCサーバをやっていきたい場合など<sup id="fnref4" title="筆者はOCamlでgRPCサーバを実装したかったが､gRPCのOCaml bindingがなかったために本稿を書ける程度にはgRPCについて調べたという経緯がある｡HTTP/2に関する部分がかなり渋いので諦めてenvoyでHTTP/2と1.1をやっていったほうが良いかなと思っている｡ "><a href="#fn4">4</a></sup>｡</p>
+<p>今回のコード全体はこちら</p>
+<div class="twicard">
+  <span class="image"><a href="https://github.com/Nymphium/grpc-over-http2-by-hand" target="_blank" rel="noopener noreferrer"><div><img src="https://avatars.githubusercontent.com/u/5901180?s=400&amp;v=4"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="https://github.com/Nymphium/grpc-over-http2-by-hand" target="_blank" rel="noopener noreferrer">Nymphium/grpc-over-http2-by-hand</a></div>
+    <div class="description">Contribute to Nymphium/grpc-over-http2-by-hand development by creating an account on GitHub.</div>
+  </span>
+</div>
+<hr>
+<div class="footnotes">
+<hr>
+<ol>
+
+<li id="fn1">
+<p><a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md" target="_blank" rel="noopener noreferrer">https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md</a> <a href="#fnref1">↩</a></p>
+</li>
+
+<li id="fn2">
+<p>エラーを返す場合に使う｡voidを返すrpcがあるならその場合もあるかもしれんけどprotobufの仕様上ない? <a href="#fnref2">↩</a></p>
+</li>
+
+<li id="fn3">
+<p>key-value形式で色々メタデータを送れる｡今回は使わないので省略した｡ <a href="#fnref3">↩</a></p>
+</li>
+
+<li id="fn4">
+<p>筆者はOCamlでgRPCサーバを実装したかったが､gRPCのOCaml bindingがなかったために本稿を書ける程度にはgRPCについて調べたという経緯がある｡HTTP/2に関する部分がかなり渋いので諦めてenvoyでHTTP/2と1.1をやっていったほうが良いかなと思っている｡ <a href="#fnref4">↩</a></p>
+</li>
+
+</ol>
+</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+    <footer>
+      <div class="pagination btn-group" style="text-align: center; font-family: 'Comfortaa';">
+        <a class="btn prev" href="/2021/04/09/PPL-2021%E3%82%92-%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B5%E3%83%BC%E6%9E%A0%E3%81%A7.html" title="PPL 2021を､スポンサー枠で｡">← Prev</a>
+        /<a class="btn" href="/">Top</a>/
+        <span class="btn next disabled">Next →</span>
+      </div>
+    </footer>
+
+  </body>
+</html>
