@@ -28,15 +28,5 @@ plugins:
   - jekyll-gist
 sass:
   style: compressed
-markdown: redcarpet
-redcarpet:
-  extensions:
-    - smart
-    - tables
-    - autolink
-    - footnotes
-    - strikethrough
-    - no_intra_emphasis
-
+markdown: MyCustomProcessor
 encoding: "utf-8"
-

@@ -6,3 +6,4 @@ Gemfile.lock
 twicache/*
 twicard_cache/*
 !**/.gitkeep
+.jekyll-cache
