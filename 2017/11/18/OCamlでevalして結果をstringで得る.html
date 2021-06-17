@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="OCamlでevalして結果をstringで得る" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="OCamlでevalして結果をstringで得る" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2017/11/18/OCaml%E3%81%A7eval%E3%81%97%E3%81%A6%E7%B5%90%E6%9E%9C%E3%82%92string%E3%81%A7%E5%BE%97%E3%82%8B.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"OCamlでevalして結果をstringで得る","dateModified":"2017-11-18T00:00:00+09:00","datePublished":"2017-11-18T00:00:00+09:00","description":"lily, Aikatsu, Programming language, and more","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2017/11/18/OCaml%E3%81%A7eval%E3%81%97%E3%81%A6%E7%B5%90%E6%9E%9C%E3%82%92string%E3%81%A7%E5%BE%97%E3%82%8B.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"lily, Aikatsu, Programming language, and more","headline":"OCamlでevalして結果をstringで得る","dateModified":"2017-11-18T00:00:00+09:00","datePublished":"2017-11-18T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2017/11/18/OCaml%E3%81%A7eval%E3%81%97%E3%81%A6%E7%B5%90%E6%9E%9C%E3%82%92string%E3%81%A7%E5%BE%97%E3%82%8B.html"},"url":"https://nymphium.github.io/2017/11/18/OCaml%E3%81%A7eval%E3%81%97%E3%81%A6%E7%B5%90%E6%9E%9C%E3%82%92string%E3%81%A7%E5%BE%97%E3%82%8B.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -103,8 +103,8 @@ document.addEventListener("DOMContentLoaded", function(){
 <div class="twicard">
   <span class="image"><a href="https://stackoverflow.com/questions/33291754/eval-a-string-in-ocaml" target="_blank" rel="noopener noreferrer"><div><img src="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://stackoverflow.com/questions/33291754/eval-a-string-in-ocaml" target="_blank" rel="noopener noreferrer">“Eval” a string in OCaml</a></div>
-    <div class="description">I’m trying to “eval” a string representing an OCaml expression in OCaml. I’m looking to do something equivalent to Python’s eval.So far I’ve not been able to find much. The Parsing module looks l…</div>
+    <div class="title"><a href="https://stackoverflow.com/questions/33291754/eval-a-string-in-ocaml" target="_blank" rel="noopener noreferrer">"Eval" a string in OCaml</a></div>
+    <div class="description">I'm trying to "eval" a string representing an OCaml expression in OCaml. I'm looking to do something equivalent to Python's eval.So far I've not been able to find much. The Parsing module looks l...</div>
   </span>
 </div>
 <p>以下引用(upop上で動くよ)｡</p>
@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function(){
 </div>
 <p>はい実行</p>
 <div class="highlight">
-<span class="listing-name">utop</span><pre><code class="language-" data-lang="">utop # eval "int_of_char 'a';;";;
+<span class="listing-name">utop</span><pre><code class="language-plaintext" data-lang="plaintext">utop # eval "int_of_char 'a';;";;
 - : string = "- : int = 97\n"
 </code></pre>
 </div>

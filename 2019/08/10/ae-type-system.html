@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Algebraic Effectsの型システム入門" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Algebraic Effectsの型システム入門" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2019/08/10/ae-type-system.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"Algebraic Effectsの型システム入門","dateModified":"2019-08-10T00:00:00+09:00","datePublished":"2019-08-10T00:00:00+09:00","description":"はじめに Algebraic Effectsは計算エフェクトを扱う言語機能である｡エフェクトとハンドラから成り､エフェクトの発生をハンドラが捕捉し､なんらかの値を返してエフェクト発生部分からの計算を再開する｡エフェクト自体は何もせず､ハンドラが具体的な計算をおこないという部分が重要である｡例えばDependency Injectionにおいては､インターフェースで定義されたメソッドがエフェクトの定義､メソッドを呼び出すのがエフェクトの発生､インターフェースの具体的な実装がハンドラ､と対応づけることができる｡ Eff言語で実際に例をみてみる｡","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2019/08/10/ae-type-system.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"はじめに Algebraic Effectsは計算エフェクトを扱う言語機能である｡エフェクトとハンドラから成り､エフェクトの発生をハンドラが捕捉し､なんらかの値を返してエフェクト発生部分からの計算を再開する｡エフェクト自体は何もせず､ハンドラが具体的な計算をおこないという部分が重要である｡例えばDependency Injectionにおいては､インターフェースで定義されたメソッドがエフェクトの定義､メソッドを呼び出すのがエフェクトの発生､インターフェースの具体的な実装がハンドラ､と対応づけることができる｡ Eff言語で実際に例をみてみる｡","headline":"Algebraic Effectsの型システム入門","dateModified":"2019-08-10T00:00:00+09:00","datePublished":"2019-08-10T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2019/08/10/ae-type-system.html"},"url":"https://nymphium.github.io/2019/08/10/ae-type-system.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -243,8 +243,8 @@ document.addEventListener("DOMContentLoaded", function(){
 したがって<code>env_with (with_fresh_hash ())</code>は<code>((string, int) either)!{}</code>になりました｡いい感じですね｡</p>
 <h1 id="%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB%28%E6%9C%AA%E5%AE%8C%29"><a class="headerlink" href="#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB%28%E6%9C%AA%E5%AE%8C%29">おわりに(未完)</a></h1>
 <p>だいぶ大雑把な説明になりました｡また筆者の知識不足により多相エフェクトの詳細には踏み込めなかったので悲しい｡ハンドルされないエフェクト､ハンドラ内で発生するエフェクトやエフェクト集合に関するサブタイピングなど､抑えておきたいトピックはまだあります｡
-もっとまともな説明が欲しい方はこちら<sup id="fnref1" title="Bauer, Andrej, and Matija Pretnar. “An effect system for algebraic effects and handlers.” International Conference on Algebra and Coalgebra in Computer Science. Springer, Berlin, Heidelberg, 2013. "><a href="#fn1">1</a></sup> <sup id="fnref2" title="Pretnar, Matija, et al. “Efficient compilation of algebraic effects and handlers.” CW Reports (2017). "><a href="#fn2">2</a></sup>とか､今回は説明しなかったrow typesを用いた型システム<sup id="fnref3" title="Leijen, Daan. Algebraic Effects for Functional Programming. Technical Report. 15 pages. https://www.microsoft.com/en-us/research/publication/algebraic-effects-for-functional-programming, 2016. "><a href="#fn3">3</a></sup>などを参照されたし｡
-気が向いたら多相エフェクトの話も書きたいですが､今すぐ知りたいという方は<sup id="fnref4" title="Sekiyama, Taro, and Atsushi Igarashi. “Handling polymorphic algebraic effects.” European Symposium on Programming. Springer, Cham, 2019. "><a href="#fn4">4</a></sup> <sup id="fnref5" title="Kammar, Ohad, and Matija Pretnar. “No value restriction is needed for algebraic effects and handlers.” Journal of Functional Programming 27 (2017). "><a href="#fn5">5</a></sup>あたりを読んで私にご教授お願いします｡</p>
+もっとまともな説明が欲しい方はこちら<sup id="fnref1" title='Bauer, Andrej, and Matija Pretnar. "An effect system for algebraic effects and handlers." International Conference on Algebra and Coalgebra in Computer Science. Springer, Berlin, Heidelberg, 2013. '><a href="#fn1">1</a></sup> <sup id="fnref2" title='Pretnar, Matija, et al. "Efficient compilation of algebraic effects and handlers." CW Reports (2017). '><a href="#fn2">2</a></sup>とか､今回は説明しなかったrow typesを用いた型システム<sup id="fnref3" title="Leijen, Daan. Algebraic Effects for Functional Programming. Technical Report. 15 pages. https://www.microsoft.com/en-us/research/publication/algebraic-effects-for-functional-programming, 2016. "><a href="#fn3">3</a></sup>などを参照されたし｡
+気が向いたら多相エフェクトの話も書きたいですが､今すぐ知りたいという方は<sup id="fnref4" title='Sekiyama, Taro, and Atsushi Igarashi. "Handling polymorphic algebraic effects." European Symposium on Programming. Springer, Cham, 2019. '><a href="#fn4">4</a></sup> <sup id="fnref5" title='Kammar, Ohad, and Matija Pretnar. "No value restriction is needed for algebraic effects and handlers." Journal of Functional Programming 27 (2017). '><a href="#fn5">5</a></sup>あたりを読んで私にご教授お願いします｡</p>
 <h2 id="%E8%BF%BD%E8%A8%98"><a class="headerlink" href="#%E8%BF%BD%E8%A8%98">追記</a></h2>
 <p>続編: <a href="https://nymphium.github.io/2019/12/09/ae-poly.html">Algebraic Effectsの型システム入門(2) 多相エフェクト - Qiita</a></p>
 <div class="footnotes">
@@ -252,23 +252,23 @@ document.addEventListener("DOMContentLoaded", function(){
 <ol>
 
 <li id="fn1">
-<p>Bauer, Andrej, and Matija Pretnar. “An effect system for algebraic effects and handlers.” International Conference on Algebra and Coalgebra in Computer Science. Springer, Berlin, Heidelberg, 2013. <a href="#fnref1">↩</a></p>
+<p>Bauer, Andrej, and Matija Pretnar. "An effect system for algebraic effects and handlers." International Conference on Algebra and Coalgebra in Computer Science. Springer, Berlin, Heidelberg, 2013. <a href="#fnref1">↩</a></p>
 </li>
 
 <li id="fn2">
-<p>Pretnar, Matija, et al. “Efficient compilation of algebraic effects and handlers.” CW Reports (2017). <a href="#fnref2">↩</a></p>
+<p>Pretnar, Matija, et al. "Efficient compilation of algebraic effects and handlers." CW Reports (2017). <a href="#fnref2">↩</a></p>
 </li>
 
 <li id="fn3">
-<p>Leijen, Daan. Algebraic Effects for Functional Programming. Technical Report. 15 pages. <a href="https://www.microsoft.com/en-us/research/publication/algebraic-effects-for-functional-programming" target="_blank" rel="noopener noreferrer">https://www.microsoft.com/en-us/research/publication/algebraic-effects-for-functional-programming</a>, 2016. <a href="#fnref3">↩</a></p>
+<p>Leijen, Daan. Algebraic Effects for Functional Programming. Technical Report. 15 pages. https://www.microsoft.com/en-us/research/publication/algebraic-effects-for-functional-programming, 2016. <a href="#fnref3">↩</a></p>
 </li>
 
 <li id="fn4">
-<p>Sekiyama, Taro, and Atsushi Igarashi. “Handling polymorphic algebraic effects.” European Symposium on Programming. Springer, Cham, 2019. <a href="#fnref4">↩</a></p>
+<p>Sekiyama, Taro, and Atsushi Igarashi. "Handling polymorphic algebraic effects." European Symposium on Programming. Springer, Cham, 2019. <a href="#fnref4">↩</a></p>
 </li>
 
 <li id="fn5">
-<p>Kammar, Ohad, and Matija Pretnar. “No value restriction is needed for algebraic effects and handlers.” Journal of Functional Programming 27 (2017). <a href="#fnref5">↩</a></p>
+<p>Kammar, Ohad, and Matija Pretnar. "No value restriction is needed for algebraic effects and handlers." Journal of Functional Programming 27 (2017). <a href="#fnref5">↩</a></p>
 </li>
 
 </ol>

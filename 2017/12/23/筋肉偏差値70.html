@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="筋肉偏差値70" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="筋肉偏差値70" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2017/12/23/%E7%AD%8B%E8%82%89%E5%81%8F%E5%B7%AE%E5%80%A470.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"筋肉偏差値70","dateModified":"2017-12-23T00:00:00+09:00","datePublished":"2017-12-23T00:00:00+09:00","description":"lily, Aikatsu, Programming language, and more","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2017/12/23/%E7%AD%8B%E8%82%89%E5%81%8F%E5%B7%AE%E5%80%A470.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"lily, Aikatsu, Programming language, and more","headline":"筋肉偏差値70","dateModified":"2017-12-23T00:00:00+09:00","datePublished":"2017-12-23T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2017/12/23/%E7%AD%8B%E8%82%89%E5%81%8F%E5%B7%AE%E5%80%A470.html"},"url":"https://nymphium.github.io/2017/12/23/%E7%AD%8B%E8%82%89%E5%81%8F%E5%B7%AE%E5%80%A470.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -139,13 +139,13 @@ document.addEventListener("DOMContentLoaded", function(){
 <div>
 \[
 \begin{array}{rrl}
-    e  &amp; ::=  &amp; x\mid \lambda x.e \mid e\,e\\
-       &amp; \mid &amp; e\,\mathbf{handle}\,\overrightarrow{\mathit{Exn}\left(x\right)\rightarrow e}\\
+    e  &amp; ::=  &amp; x\mid \lambda x.e \mid e\,e\\\\
+       &amp; \mid &amp; e\,\mathbf{handle}\,\overrightarrow{\mathit{Exn}\left(x\right)\rightarrow e}\\\\
        &amp; \mid &amp; \mathbf{raise}\,\mathit{Exn}\left(e\right)
 \end{array}
 \]
 </div>
-<p>\(e\,\mathbf{handle}\,\overrightarrow{\mathit{Exn}(x)\rightarrow e’}\)は実質\(\mathbf{try}\,e\,\mathbf{with}\,\overrightarrow{\mathit{Exn}(x)\rightarrow e’}\)ですね｡
+<p>\(e\,\mathbf{handle}\,\overrightarrow{\mathit{Exn}(x)\rightarrow e'}\)は実質\(\mathbf{try}\,e\,\mathbf{with}\,\overrightarrow{\mathit{Exn}(x)\rightarrow e'}\)ですね｡
 操作的意味論は君の中に既にあるはずだ｡</p>
 <h1 id="8.+Double-Barreled+CPS"><a class="headerlink" href="#8.+Double-Barreled+CPS">8. Double-Barreled CPS</a></h1>
 <p>既存の手法としてDouble-Barreled CPSというものが知られています<sup id="fnref3" title="Hayo Thielecke. Comparing Control Constructs by Double-Barrelled CPS "><a href="#fn3">3</a></sup>｡
@@ -153,13 +153,13 @@ document.addEventListener("DOMContentLoaded", function(){
 <div>
 \[
 \begin{array}{c}
-    \fbox{\lceil e\rceil = e_{cps}}\\
+    \fbox{\lceil e\rceil = e_{cps}}\\\\
     \begin{array}{rcl}
-        \lceil \lambda x. e \rceil &amp; = &amp; \lambda k. \lambda h. \lambda x. \lambda k’. \lambda h’. \lceil e \rceil\, k’\, h’\\
-        \lceil x \rceil &amp; = &amp; \lambda k. \lambda h. k\, x\\
-        \lceil e_1\, e_2\rceil &amp; = &amp; \lambda k. \lambda h. \lceil e_1\rceil\,\left(\lambda f. \lceil e_2\rceil \left(\lambda a. f\,a\,k\,h\right)\,h\right)\,h\\
-        \lceil e_1\,\mathbf{handle}\,\mathit{Exn}\left(x\right)\rightarrow e_2\rceil &amp; = &amp; \lambda k. \lambda h. \lceil e_1\rceil\, k\, \left(\lambda x. \lceil e_2\rceil\, k\,h\right) \\
-        \lceil \mathbf{raise}\,\mathit{Exn}\left(e\right)\rceil &amp; = &amp; \lambda k.\lambda h.\lceil e\rceil \,h\,h\\
+        \lceil \lambda x. e \rceil &amp; = &amp; \lambda k. \lambda h. \lambda x. \lambda k'. \lambda h'. \lceil e \rceil\, k'\, h'\\\\
+        \lceil x \rceil &amp; = &amp; \lambda k. \lambda h. k\, x\\\\
+        \lceil e_1\, e_2\rceil &amp; = &amp; \lambda k. \lambda h. \lceil e_1\rceil\,\left(\lambda f. \lceil e_2\rceil \left(\lambda a. f\,a\,k\,h\right)\,h\right)\,h\\\\
+        \lceil e_1\,\mathbf{handle}\,\mathit{Exn}\left(x\right)\rightarrow e_2\rceil &amp; = &amp; \lambda k. \lambda h. \lceil e_1\rceil\, k\, \left(\lambda x. \lceil e_2\rceil\, k\,h\right) \\\\
+        \lceil \mathbf{raise}\,\mathit{Exn}\left(e\right)\rceil &amp; = &amp; \lambda k.\lambda h.\lceil e\rceil \,h\,h\\\\
     \end{array}
 \end{array}
 \]
@@ -177,15 +177,15 @@ document.addEventListener("DOMContentLoaded", function(){
 
 \[
 \begin{array}{rcl}
-    \lceil \lambda x.e\rceil_h &amp; = &amp; \lambda k. \lambda x.\lambda k’. \lceil e\rceil_h\, k’\\
-    \lceil x\rceil_h &amp; = &amp; \lambda k. k\,x\\
-    \lceil e_1\,e_2\rceil_h &amp; = &amp; \lambda k.\lceil e_1\rceil_h \left(\lambda f.\lceil e_2\rceil \left(\lambda a. f\,a\,k\right)\right)\\
-    \left\lceil e\,\mathbf{handle}\,\overrightarrow{\mathit{Exn}\left(x\right)\rightarrow e’} \right\rceil_h &amp; = &amp; \lambda k.\lceil e\rceil_{h’}\,k\ %
-        \mathit{where}\ h’ = \overrightarrow{\left(Exn,\lambda k’.\lambda x.\lceil e’\rceil\,k’\right)}\, @\, h\\
+    \lceil \lambda x.e\rceil_h &amp; = &amp; \lambda k. \lambda x.\lambda k'. \lceil e\rceil_h\, k'\\\\
+    \lceil x\rceil_h &amp; = &amp; \lambda k. k\,x\\\\
+    \lceil e_1\,e_2\rceil_h &amp; = &amp; \lambda k.\lceil e_1\rceil_h \left(\lambda f.\lceil e_2\rceil \left(\lambda a. f\,a\,k\right)\right)\\\\
+    \left\lceil e\,\mathbf{handle}\,\overrightarrow{\mathit{Exn}\left(x\right)\rightarrow e'} \right\rceil_h &amp; = &amp; \lambda k.\lceil e\rceil_{h'}\,k\ %
+        \mathit{where}\ h' = \overrightarrow{\left(Exn,\lambda k'.\lambda x.\lceil e'\rceil\,k'\right)}\, @\, h\\\\
     %
     \left\lceil \mathbf{raise}\,\mathit{Exn}\left(e\right) \right\rceil_h &amp; = &amp;\left(%
         \begin{array}{ll}
-            \lambda k.\lceil e\rceil_h f_\mathit{Exn}  &amp; \mathrm{if}\,h=h’\,@\,\left(\left(\mathit{Exn}, f_\mathit{Exn}\right) :: \mathit{tl}\right)\\
+            \lambda k.\lceil e\rceil_h f_\mathit{Exn}  &amp; \mathrm{if}\,h=h'\,@\,\left(\left(\mathit{Exn}, f_\mathit{Exn}\right) :: \mathit{tl}\right)\\\\
             \mathrm{undefined} &amp; \mathit{otherwise}
         \end{array}\right.
 \end{array}
@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function(){
 \[
 \begin{array}{rcl}
 \begin{array}{l}
-\mathbf{let}\,f\,x=\mathbf{raise}\,\mathit{Exn}\left(x\right)\,\mathbf{in}\\
+\mathbf{let}\,f\,x=\mathbf{raise}\,\mathit{Exn}\left(x\right)\,\mathbf{in}\\\\
 f\,m\,\mathbf{handle}\,\mathit{Exn}\left(x\right)\rightarrow x
 \end{array} &amp;=&amp;%
 \left(\lambda f. f\,m\,\mathbf{handle}\,\mathit{Exn}\left(x\right)\rightarrow x\right)\,%
@@ -226,11 +226,11 @@ f\,m\,\mathbf{handle}\,\mathit{Exn}\left(x\right)\rightarrow x
 
 \[
 \begin{array}{rrl}
-e_{cps} &amp; ::= &amp; x \mid \lambda x. e_{cps} \mid e_{cps}\, e_{cps}\\
-        &amp; \mid&amp; \left[\right] \\
-        &amp; \mid&amp; e_{cps} :: e_{cps} \mid e_{cps} @ e_{cps} \\
-        &amp; \mid&amp; \left(\mathit{Exn}, e_{cps} \right)\\
-        &amp; \mid&amp; \mathbf{lookup}(\mathit{Exn}, e_{cps})\\
+e_{cps} &amp; ::= &amp; x \mid \lambda x. e_{cps} \mid e_{cps}\, e_{cps}\\\\
+        &amp; \mid&amp; \left[\right] \\\\
+        &amp; \mid&amp; e_{cps} :: e_{cps} \mid e_{cps} @ e_{cps} \\\\
+        &amp; \mid&amp; \left(\mathit{Exn}, e_{cps} \right)\\\\
+        &amp; \mid&amp; \mathbf{lookup}(\mathit{Exn}, e_{cps})\\\\
 \end{array}
 \]
 </div>
@@ -239,15 +239,15 @@ e_{cps} &amp; ::= &amp; x \mid \lambda x. e_{cps} \mid e_{cps}\, e_{cps}\\
 <div>
 \[
 \begin{array}{c}
-    \fbox{\lceil e\rceil=e_{cps}}\\
+    \fbox{\lceil e\rceil=e_{cps}}\\\\
     \begin{array}{rcl}
         \lceil \lambda x.e\rceil &amp; = &amp;%
-            \lambda k. \lambda h. \lambda x.\lambda k’. \lambda h’.  \lceil e\rceil\, k’\, h’\\
-        \lceil x\rceil &amp; = &amp; \lambda k. \lambda h. k\,x\\
+            \lambda k. \lambda h. \lambda x.\lambda k'. \lambda h'.  \lceil e\rceil\, k'\, h'\\\\
+        \lceil x\rceil &amp; = &amp; \lambda k. \lambda h. k\,x\\\\
         \lceil e_1\,e_2\rceil &amp; = &amp;%
-            \lambda k. \lambda h. \lceil e_1\rceil \left(\lambda f.\lceil e_2\rceil \left(\lambda a. f\,a\,k\,h\right)\, h\right)\, h\\
-        \left\lceil e\,\mathbf{handle}\,\overrightarrow{\mathit{Exn}\left(x\right)\rightarrow e’} \right\rceil &amp; = &amp;%
-            \lambda k.\lambda h. \lceil e\rceil\,k\, \left(\overrightarrow{\left(\mathit{Exn},\lambda k’.\lambda h’. \lceil e’ \rceil\, k’\,h’\right)} \,@\, h\right)\\
+            \lambda k. \lambda h. \lceil e_1\rceil \left(\lambda f.\lceil e_2\rceil \left(\lambda a. f\,a\,k\,h\right)\, h\right)\, h\\\\
+        \left\lceil e\,\mathbf{handle}\,\overrightarrow{\mathit{Exn}\left(x\right)\rightarrow e'} \right\rceil &amp; = &amp;%
+            \lambda k.\lambda h. \lceil e\rceil\,k\, \left(\overrightarrow{\left(\mathit{Exn},\lambda k'.\lambda h'. \lceil e' \rceil\, k'\,h'\right)} \,@\, h\right)\\\\
         \left\lceil \mathbf{raise}\,\mathit{Exn}\left(e\right) \right\rceil &amp; = &amp; \lambda k.\lambda h. \left(\lambda f_\mathit{Exn}. \lceil e \rceil\, f_\mathit{Exn}\,f_\mathit{Exn} \right) \mathbf{lookup}\left(\mathit{Exn},h\right)
     \end{array}
 \end{array}
@@ -259,8 +259,8 @@ e_{cps} &amp; ::= &amp; x \mid \lambda x. e_{cps} \mid e_{cps}\, e_{cps}\\
 \[
 \begin{array}{rcl}
     \lceil e\rceil &amp; = &amp; \lambda k. \lambda h. \left\lceil \lambda f. f\,m\,\mathbf{handle}\,\mathit{Exn}\left(x\right)\rightarrow x \right\rceil%
-        \left(\lambda f. \left\lceil \lambda x.\mathbf{raise}\,\mathit{Exn}\left(x\right) \right\rceil \left( \lambda a. f\,a\,k\,h\right)\,h\right)\,h\\
-      &amp;=&amp; \lambda k.\lambda h. \left(\lambda k_0.\lambda h_0. \lambda f. \lambda k_0’. \lambda h_0’.  \left(\left(\lambda k_2.\lambda h_2. \left(\lambda k_3.\lambda h_3. k_3\,f\right) \left(\lambda f’.  \left(\lambda k_4.\lambda h_4. k_4\,m\right) \left(\lambda m’. f’\,m’\,k_2\,h_2 \right)\,h_2 \right)\,h_2\right)\, k_1\, \left(\left(\mathit{Exn}, \lambda k_5.\lambda h_5.\lambda x. \lambda k_6. \lambda h_6. k_6\,x\right) \,::\, h_1\right)\right) \, k_0’\,h_0’\right) \left(\lambda f. (\lambda k_7. \lambda h_7. \lambda x. \lambda k_7’. \lambda h_7’. \left(\lambda k_8. \lambda h_8. \left(\lambda f_\mathit{Exn}.  \left(\lambda k_9. \lambda h_9. k_9 x\right) f_\mathit{Exn} f_\mathit{Exn}\right) \mathbf{lookup}\left(\mathit{Exn}, h_8\right)\right) k_7’\,h_7’)\, \left(\lambda a. f\,a\,k\,h\right)\, h \right)\,h
+        \left(\lambda f. \left\lceil \lambda x.\mathbf{raise}\,\mathit{Exn}\left(x\right) \right\rceil \left( \lambda a. f\,a\,k\,h\right)\,h\right)\,h\\\\
+      &amp;=&amp; \lambda k.\lambda h. \left(\lambda k_0.\lambda h_0. \lambda f. \lambda k_0'. \lambda h_0'.  \left(\left(\lambda k_2.\lambda h_2. \left(\lambda k_3.\lambda h_3. k_3\,f\right) \left(\lambda f'.  \left(\lambda k_4.\lambda h_4. k_4\,m\right) \left(\lambda m'. f'\,m'\,k_2\,h_2 \right)\,h_2 \right)\,h_2\right)\, k_1\, \left(\left(\mathit{Exn}, \lambda k_5.\lambda h_5.\lambda x. \lambda k_6. \lambda h_6. k_6\,x\right) \,::\, h_1\right)\right) \, k_0'\,h_0'\right) \left(\lambda f. (\lambda k_7. \lambda h_7. \lambda x. \lambda k_7'. \lambda h_7'. \left(\lambda k_8. \lambda h_8. \left(\lambda f_\mathit{Exn}.  \left(\lambda k_9. \lambda h_9. k_9 x\right) f_\mathit{Exn} f_\mathit{Exn}\right) \mathbf{lookup}\left(\mathit{Exn}, h_8\right)\right) k_7'\,h_7')\, \left(\lambda a. f\,a\,k\,h\right)\, h \right)\,h
 \end{array}
 \]
 </div>
@@ -278,12 +278,12 @@ e_{cps} &amp; ::= &amp; x \mid \lambda x. e_{cps} \mid e_{cps}\, e_{cps}\\
 \[
 \begin{array}{rcl}
     \lceil \lambda x.e\rceil &amp; =&amp;%
-        \lambda k. \lambda h. k \left(\lambda x.\lambda k’. \lambda h’.  \lceil e\rceil\, k’\, h’\right)\\
-    \lceil x\rceil &amp; = &amp; \lambda k. \lambda h. k\,x\\
+        \lambda k. \lambda h. k \left(\lambda x.\lambda k'. \lambda h'.  \lceil e\rceil\, k'\, h'\right)\\\\
+    \lceil x\rceil &amp; = &amp; \lambda k. \lambda h. k\,x\\\\
     \lceil e_1\,e_2\rceil &amp; = &amp;%
-        \lambda k. \lambda h. \lceil e_1\rceil \left(\lambda f.\lceil e_2\rceil \left(\lambda a. f\,a\,k\,h\right)\, h\right)\, h\\
-    \lceil e\,\mathbf{handle}\,\overrightarrow{\mathit{Exn}\left(x\right)\rightarrow e’} \rceil &amp; = &amp;%
-        \lambda k.\lambda h. \lceil e\rceil\,k\, \left(\overrightarrow{\left(\mathit{Exn},\lambda x. \lceil e’ \rceil\, k\,h\right)} \,@\, h\right) \ \\
+        \lambda k. \lambda h. \lceil e_1\rceil \left(\lambda f.\lceil e_2\rceil \left(\lambda a. f\,a\,k\,h\right)\, h\right)\, h\\\\
+    \lceil e\,\mathbf{handle}\,\overrightarrow{\mathit{Exn}\left(x\right)\rightarrow e'} \rceil &amp; = &amp;%
+        \lambda k.\lambda h. \lceil e\rceil\,k\, \left(\overrightarrow{\left(\mathit{Exn},\lambda x. \lceil e' \rceil\, k\,h\right)} \,@\, h\right) \ \\\\
     \lceil \mathbf{raise}\,\mathit{Exn}\left(e\right) \rceil &amp; =&amp; \lambda k.\lambda h. \lceil e\rceil \left(\lambda v. \left(\mathbf{lookup}\left(\mathit{Exn}, h\right)\right)\, v\right)\, h
 \end{array}
 \]
@@ -302,7 +302,7 @@ e_{cps} &amp; ::= &amp; x \mid \lambda x. e_{cps} \mid e_{cps}\, e_{cps}\\
 </li>
 
 <li id="fn2">
-<p><a href="http://valkyriedrive.jp/anime/" target="_blank" rel="noopener noreferrer">http://valkyriedrive.jp/anime/</a> <a href="#fnref2">↩</a></p>
+<p>http://valkyriedrive.jp/anime/ <a href="#fnref2">↩</a></p>
 </li>
 
 <li id="fn3">

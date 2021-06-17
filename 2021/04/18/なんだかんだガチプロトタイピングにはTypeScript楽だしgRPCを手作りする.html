@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="なんだかんだガチプロトタイピングにはTypeScript楽だしgRPCを手作りする" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="なんだかんだガチプロトタイピングにはTypeScript楽だしgRPCを手作りする" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2021/04/18/%E3%81%AA%E3%82%93%E3%81%A0%E3%81%8B%E3%82%93%E3%81%A0%E3%82%AC%E3%83%81%E3%83%97%E3%83%AD%E3%83%88%E3%82%BF%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%AFTypeScript%E6%A5%BD%E3%81%A0%E3%81%97gRPC%E3%82%92%E6%89%8B%E4%BD%9C%E3%82%8A%E3%81%99%E3%82%8B.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"なんだかんだガチプロトタイピングにはTypeScript楽だしgRPCを手作りする","dateModified":"2021-04-18T00:00:00+09:00","datePublished":"2021-04-18T00:00:00+09:00","description":"lily, Aikatsu, Programming language, and more","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2021/04/18/%E3%81%AA%E3%82%93%E3%81%A0%E3%81%8B%E3%82%93%E3%81%A0%E3%82%AC%E3%83%81%E3%83%97%E3%83%AD%E3%83%88%E3%82%BF%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%AFTypeScript%E6%A5%BD%E3%81%A0%E3%81%97gRPC%E3%82%92%E6%89%8B%E4%BD%9C%E3%82%8A%E3%81%99%E3%82%8B.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"lily, Aikatsu, Programming language, and more","headline":"なんだかんだガチプロトタイピングにはTypeScript楽だしgRPCを手作りする","dateModified":"2021-04-18T00:00:00+09:00","datePublished":"2021-04-18T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2021/04/18/%E3%81%AA%E3%82%93%E3%81%A0%E3%81%8B%E3%82%93%E3%81%A0%E3%82%AC%E3%83%81%E3%83%97%E3%83%AD%E3%83%88%E3%82%BF%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%AFTypeScript%E6%A5%BD%E3%81%A0%E3%81%97gRPC%E3%82%92%E6%89%8B%E4%BD%9C%E3%82%8A%E3%81%99%E3%82%8B.html"},"url":"https://nymphium.github.io/2021/04/18/%E3%81%AA%E3%82%93%E3%81%A0%E3%81%8B%E3%82%93%E3%81%A0%E3%82%AC%E3%83%81%E3%83%97%E3%83%AD%E3%83%88%E3%82%BF%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%AFTypeScript%E6%A5%BD%E3%81%A0%E3%81%97gRPC%E3%82%92%E6%89%8B%E4%BD%9C%E3%82%8A%E3%81%99%E3%82%8B.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -117,7 +117,7 @@ protobufのシリアライズ/デシリアライズはライブラリでやっ�
 <h1 id="2.+proto"><a class="headerlink" href="#2.+proto">2. proto</a></h1>
 <p>こんな感じのprotoを用意する｡</p>
 <div class="highlight">
-<span class="listing-name">echo.proto</span><pre><code class="language-proto" data-lang="proto"><span class="na">syntax</span> <span class="o">=</span> <span class="s">"proto3"</span><span class="p">;</span>
+<span class="listing-name">echo.proto</span><pre><code class="language-protobuf" data-lang="protobuf"><span class="na">syntax</span> <span class="o">=</span> <span class="s">"proto3"</span><span class="p">;</span>
 
 <span class="kn">package</span> <span class="nn">services</span><span class="p">;</span>
 
@@ -219,12 +219,12 @@ protobufのシリアライズ/デシリアライズはライブラリでやっ�
 </div>
 <p>50051番ポートでとりえあず受ける｡
 <a href="https://github.com/TypeStrong/ts-node" target="_blank" rel="noopener noreferrer">ts-node</a>で適当に動かす｡</p>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>npx ts-node index.ts
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>npx ts-node index.ts
 <span class="go">listen on localhost:50051
 </span></code></pre></div>
 <p>叩く｡</p>
 <div class="highlight">
-<span class="listing-name">クライアント</span><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>grpcurl <span class="nt">-vv</span> <span class="nt">-plaintext</span> <span class="nt">-proto</span> echo.proto <span class="nt">-d</span> <span class="s1">'{"message": "hello"}'</span> localhost:50051 services.Echo/Call
+<span class="listing-name">クライアント</span><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>grpcurl <span class="nt">-vv</span> <span class="nt">-plaintext</span> <span class="nt">-proto</span> echo.proto <span class="nt">-d</span> <span class="s1">'{"message": "hello"}'</span> localhost:50051 services.Echo/Call
 <span class="go">
 Resolved method descriptor:
 </span><span class="gp">rpc Call ( .services.EchoRequest ) returns ( .services.EchoResponse );</span><span class="w">
@@ -245,7 +245,7 @@ ERROR:
 </div>
 <p>正しく怒られが発生している｡</p>
 <div class="highlight">
-<span class="listing-name">サバログ</span><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">[ &lt;Buffer 00 00 00 00 07 0a 05 68 65 6c 6c 6f&gt;</span><span class="w"> </span><span class="o">]</span>
+<span class="listing-name">サバログ</span><pre><code class="language-console" data-lang="console"><span class="gp">[ &lt;Buffer 00 00 00 00 07 0a 05 68 65 6c 6c 6f&gt;</span><span class="w"> </span><span class="o">]</span>
 </code></pre>
 </div>
 <p>長さ1の<code>Array&lt;Buffer&gt;</code>が<code>console.log</code>されたことがわかる｡
@@ -264,7 +264,7 @@ JavaScriptはそうなっている｡
 <p>さてprotobufのデータがやってきたので､ここで初めてprotobufを気にかける｡
 ts-protoc-genをしてこの通り</p>
 <div class="highlight">
-<span class="listing-name">bin/protogen.sh</span><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/bash</span>
+<span class="listing-name">bin/protogen.sh</span><pre><code class="language-shell" data-lang="shell"><span class="c">#!/usr/bin/bash</span>
 
 <span class="nb">set</span> <span class="nt">-eu</span>
 
@@ -275,7 +275,7 @@ protoc <span class="se">\</span>
   <span class="nv">$1</span>
 </code></pre>
 </div>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span><span class="nb">mkdir </span>pb
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span><span class="nb">mkdir </span>pb
 <span class="gp">$</span><span class="w"> </span>./bin/protogen.sh echo.proto pb
 <span class="gp">$</span><span class="w"> </span><span class="nb">ls </span>pb
 <span class="go">echo_pb.d.ts  echo_pb.js
@@ -347,7 +347,7 @@ request bodyには先頭5byteにmessageの情報が入っているが､今回�
 </code></pre>
 </div>
 <p>では同様に動かすと</p>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>npx ts-node index.ts
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>npx ts-node index.ts
 <span class="go">listen on localhost:50051
 {"message":"hello"}
 </span></code></pre></div>
@@ -385,19 +385,19 @@ request bodyには先頭5byteにmessageの情報が入っているが､今回�
 </tr>
 <tr>
 <td style="text-align: right">HTTP-Status</td>
-<td style="text-align: left">“:status 200”</td>
+<td style="text-align: left">":status 200"</td>
 </tr>
 <tr>
 <td style="text-align: right">Message-Encoding</td>
-<td style="text-align: left">“grpc-encoding” Content-Coding</td>
+<td style="text-align: left">"grpc-encoding" Content-Coding</td>
 </tr>
 <tr>
 <td style="text-align: right">Message-Accept-Encoding</td>
-<td style="text-align: left">“grpc-accept-encoding” Content-Coding *(“,” Content-Coding)</td>
+<td style="text-align: left">"grpc-accept-encoding" Content-Coding *("," Content-Coding)</td>
 </tr>
 <tr>
 <td style="text-align: right">Content-Type</td>
-<td style="text-align: left">“content-type” “application/grpc” [(“+proto” / “+json” / {custom})]</td>
+<td style="text-align: left">"content-type" "application/grpc" [("+proto" / "+json" / {custom})]</td>
 </tr>
 <tr>
 <td style="text-align: right">Custom-Metadata</td>
@@ -421,11 +421,11 @@ request bodyには先頭5byteにmessageの情報が入っているが､今回�
 </tr>
 <tr>
 <td style="text-align: right">Status</td>
-<td style="text-align: left">“grpc-status” 1*DIGIT ; 0-9</td>
+<td style="text-align: left">"grpc-status" 1*DIGIT ; 0-9</td>
 </tr>
 <tr>
 <td style="text-align: right">Status-Message</td>
-<td style="text-align: left">“grpc-message” Percent-Encoded</td>
+<td style="text-align: left">"grpc-message" Percent-Encoded</td>
 </tr>
 <tr>
 <td style="text-align: right">Percent-Encoded</td>
@@ -437,14 +437,14 @@ request bodyには先頭5byteにmessageの情報が入っているが､今回�
 </tr>
 <tr>
 <td style="text-align: right">Percent-Byte-Encoded</td>
-<td style="text-align: left">“%” 2HEXDIGIT ; 0-9 A-F</td>
+<td style="text-align: left">"%" 2HEXDIGIT ; 0-9 A-F</td>
 </tr>
 </tbody>
 </table>
 <p>サーバは常にHTTP status200を返し､gRPCのstatusとして<code>grpc-status</code>を利用するようだ｡</p>
 <p>今回は異常系も考えんでいいか｡</p>
 <div class="highlight">
-<span class="listing-name">echo-service.ts</span><pre><code class="language-ts" data-lang="ts"><span class="p">...</span>
+<span class="listing-name">echo-service.ts</span><pre><code class="language-typescript" data-lang="typescript"><span class="p">...</span>
     <span class="nx">request</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">chunk</span><span class="p">:</span> <span class="nx">Buffer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">chunks</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">chunk</span><span class="p">));</span>
     <span class="nx">request</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="kd">const</span> <span class="nx">echoRequest</span> <span class="o">=</span> <span class="nx">decodeEchoRequest</span><span class="p">(</span><span class="nx">chunks</span><span class="p">.</span><span class="nx">join</span><span class="p">().</span><span class="nx">substring</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
@@ -465,7 +465,7 @@ request bodyには先頭5byteにmessageの情報が入っているが､今回�
 </div>
 <p>よし｡
 サーバを再起動して<code>grpcurl</code>をさっきと同じ引数で叩く｡</p>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>grpcurl ...
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>grpcurl ...
 <span class="go">
 Resolved method descriptor:
 </span><span class="gp">rpc Call ( .services.EchoRequest ) returns ( .services.EchoResponse );</span><span class="w">
@@ -496,7 +496,7 @@ ERROR:
 <p>これはHTTP/2の話になる｡
 ちょうど↑の文のちょっと下にHTTP/2のframing sequenceの例が挙がっている｡
 レスポンスの方を見ると､</p>
-<div class="highlight"><pre><code class="language-" data-lang="">HEADERS (flags = END_HEADERS)
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">HEADERS (flags = END_HEADERS)
 :status = 200
 grpc-encoding = gzip
 content-type = application/grpc+proto
@@ -515,7 +515,7 @@ trace-proto-bin = jher831yy13JHy3hc
 streaming rpcをやっていってエラーを吐くときにメッセージを返しやすいとかなのかしら｡</p>
 <h2 id="5-2.+%E3%81%82%E3%81%A8%E3%81%AF%E3%82%84%E3%82%8B%E3%81%A0%E3%81%91"><a class="headerlink" href="#5-2.+%E3%81%82%E3%81%A8%E3%81%AF%E3%82%84%E3%82%8B%E3%81%A0%E3%81%91">5-2. あとはやるだけ</a></h2>
 <div class="highlight">
-<span class="listing-name">echo-server.ts</span><pre><code class="language-ts" data-lang="ts"><span class="p">...</span>
+<span class="listing-name">echo-server.ts</span><pre><code class="language-typescript" data-lang="typescript"><span class="p">...</span>
         <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">content-type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/grpc+proto</span><span class="dl">'</span> <span class="p">});</span>
         <span class="nx">response</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">responseBody</span><span class="p">);</span>
         <span class="nx">response</span><span class="p">.</span><span class="nx">addTrailers</span><span class="p">({</span> <span class="dl">'</span><span class="s1">grpc-status</span><span class="dl">'</span><span class="p">:</span> <span class="mi">0</span> <span class="p">});</span>
@@ -524,7 +524,7 @@ streaming rpcをやっていってエラーを吐くときにメッセージを�
 </code></pre>
 </div>
 <p>叩く｡</p>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>grpcurl ...
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>grpcurl ...
 <span class="go">
 Resolved method descriptor:
 </span><span class="gp">rpc Call ( .services.EchoRequest ) returns ( .services.EchoResponse );</span><span class="w">
@@ -555,7 +555,7 @@ Sent 1 request and received 1 response )
 でもgRPCは何をやってるか知ってると良いことがあるかもしれない｡gRPCライブラリのない言語でgRPCサーバをやっていきたい場合など<sup id="fnref4" title="筆者はOCamlでgRPCサーバを実装したかったが､gRPCのOCaml bindingがなかったために本稿を書ける程度にはgRPCについて調べたという経緯がある｡HTTP/2に関する部分がかなり渋いので諦めてenvoyでHTTP/2と1.1をやっていったほうが良いかなと思っている｡ "><a href="#fn4">4</a></sup>｡</p>
 <p>今回のコード全体はこちら</p>
 <div class="twicard">
-  <span class="image"><a href="https://github.com/Nymphium/grpc-over-http2-by-hand" target="_blank" rel="noopener noreferrer"><div><img src="https://avatars.githubusercontent.com/u/5901180?s=400&amp;v=4"></div></a></span>
+  <span class="image"><a href="https://github.com/Nymphium/grpc-over-http2-by-hand" target="_blank" rel="noopener noreferrer"><div><img src="https://opengraph.githubassets.com/8d32afc89eff3fb6b220c41b12e83a69bd214017fc48e8f4ffb60630854f4318/Nymphium/grpc-over-http2-by-hand"></div></a></span>
   <span class="txt">
     <div class="title"><a href="https://github.com/Nymphium/grpc-over-http2-by-hand" target="_blank" rel="noopener noreferrer">Nymphium/grpc-over-http2-by-hand</a></div>
     <div class="description">Contribute to Nymphium/grpc-over-http2-by-hand development by creating an account on GitHub.</div>
@@ -567,7 +567,7 @@ Sent 1 request and received 1 response )
 <ol>
 
 <li id="fn1">
-<p><a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md" target="_blank" rel="noopener noreferrer">https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md</a> <a href="#fnref1">↩</a></p>
+<p>https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md <a href="#fnref1">↩</a></p>
 </li>
 
 <li id="fn2">

@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="日刊Coroutines(0) コルーチンのおさらいと近年の動向(若干)" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="日刊Coroutines(0) コルーチンのおさらいと近年の動向(若干)" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2020/12/10/nikkan-coroutines-0.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"日刊Coroutines(0) コルーチンのおさらいと近年の動向(若干)","dateModified":"2020-12-10T00:00:00+09:00","datePublished":"2020-12-10T00:00:00+09:00","description":"1. はじめに こんにちは､びしょ～じょです｡ コルーチンの話したい発作が出たんで､やらせてください｡","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2020/12/10/nikkan-coroutines-0.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"1. はじめに こんにちは､びしょ～じょです｡ コルーチンの話したい発作が出たんで､やらせてください｡","headline":"日刊Coroutines(0) コルーチンのおさらいと近年の動向(若干)","dateModified":"2020-12-10T00:00:00+09:00","datePublished":"2020-12-10T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2020/12/10/nikkan-coroutines-0.html"},"url":"https://nymphium.github.io/2020/12/10/nikkan-coroutines-0.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -136,35 +136,35 @@ document.addEventListener("DOMContentLoaded", function(){
   <span class="image"><a href="https://nymphium.github.io/2019/01/27/stackfulness-of-coroutines.html" target="_blank" rel="noopener noreferrer"><div><img src="https://nymphium.github.io/pictures/github_icon.png"></div></a></span>
   <span class="txt">
     <div class="title"><a href="https://nymphium.github.io/2019/01/27/stackfulness-of-coroutines.html" target="_blank" rel="noopener noreferrer">stackfulness of coroutines - lilyum ensemble</a></div>
-    <div class="description">こんにちは､びしょ〜じょです｡気づいたら1月も終わりますね｡お前も俺も､もう終わりだ｡1. はじめに研究ではコルーチンを使っている｡ここでひとつコルーチンについてまとめておきたい｡特にstack…</div>
+    <div class="description">こんにちは､びしょ〜じょです｡気づいたら1月も終わりますね｡お前も俺も､もう終わりだ｡1. はじめに研究ではコルーチンを使っている｡ここでひとつコルーチンについてまとめておきたい｡特にstack...</div>
   </span>
 </div>
 <h1 id="5.+%E3%81%9D%E3%81%AE%E4%BB%96"><a class="headerlink" href="#5.+%E3%81%9D%E3%81%AE%E4%BB%96">5. その他</a></h1>
-<p>対称性に関する分類はLuaの作者であるde Mouraらによる<span class="cite">[<a href="#fn1" title="Moura, Ana Lúcia De, and Roberto Ierusalimschy. “Revisiting coroutines.” ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. " id="fnref1">1</a>]</span>
+<p>対称性に関する分類はLuaの作者であるde Mouraらによる<span class="cite">[<a href="#fn1" title='Moura, Ana Lúcia De, and Roberto Ierusalimschy. "Revisiting coroutines." ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. ' id="fnref1">1</a>]</span>
 に拠る｡</p>
-<p>最近の研究としては､コルーチンにスナップショット機能をつけるというものがある<span class="cite">[<a href="#fn2" title="Prokopec, Aleksandar, and Fengyun Liu. “Theory and Practice of Coroutines with Snapshots.” European Conference on Object-Oriented Programming (ECOOP) 109. (2018): 3. " id="fnref2">2</a>]</span>
+<p>最近の研究としては､コルーチンにスナップショット機能をつけるというものがある<span class="cite">[<a href="#fn2" title='Prokopec, Aleksandar, and Fengyun Liu. "Theory and Practice of Coroutines with Snapshots." European Conference on Object-Oriented Programming (ECOOP) 109. (2018): 3. ' id="fnref2">2</a>]</span>
 ｡
 かんたんに述べると､コルーチンを<code>resume</code>すると<em>ある状態にある</em>コルーチンが実行されるわけですが､この<em>ある状態</em>をコピーする機能である｡
 分かってる人にとっては､つまるところmulti-shot continuationということ｡</p>
-<p>また､<code>yield</code>オペレータ自体に着目した研究もある<span class="cite">[<a href="#fn3" title="James, Roshan P., and Amr Saby. “Yield: Mainstream Delimited Continuations.” The Workshop on the Theory and Practice of Delimited Continuations (TDPC) 2011. " id="fnref3">3</a>]</span>
+<p>また､<code>yield</code>オペレータ自体に着目した研究もある<span class="cite">[<a href="#fn3" title='James, Roshan P., and Amr Saby. "Yield: Mainstream Delimited Continuations." The Workshop on the Theory and Practice of Delimited Continuations (TDPC) 2011. ' id="fnref3">3</a>]</span>
 ｡</p>
 <h1 id="6.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB"><a class="headerlink" href="#6.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">6. おわりに</a></h1>
-<p>さーて予習したし明日<sup id="fnref4" title="明日はこの記事の公開日の翌日､とは限らない｡ "><a href="#fn4">4</a></sup>にでも<span class="cite">[<a href="#fn1" title="Moura, Ana Lúcia De, and Roberto Ierusalimschy. “Revisiting coroutines.” ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. " id="fnref1">1</a>]</span>
+<p>さーて予習したし明日<sup id="fnref4" title="明日はこの記事の公開日の翌日､とは限らない｡ "><a href="#fn4">4</a></sup>にでも<span class="cite">[<a href="#fn1" title='Moura, Ana Lúcia De, and Roberto Ierusalimschy. "Revisiting coroutines." ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. ' id="fnref1">1</a>]</span>
 で定式化されているコルーチンをもつ小さな計算体系のインタプリタでも実装してみようかな｡</p>
 <div class="footnotes">
 <hr>
 <ol>
 
 <li id="fn1">
-<p>Moura, Ana Lúcia De, and Roberto Ierusalimschy. “Revisiting coroutines.” ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. <a href="#fnref1">↩</a></p>
+<p>Moura, Ana Lúcia De, and Roberto Ierusalimschy. "Revisiting coroutines." ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. <a href="#fnref1">↩</a></p>
 </li>
 
 <li id="fn2">
-<p>Prokopec, Aleksandar, and Fengyun Liu. “Theory and Practice of Coroutines with Snapshots.” European Conference on Object-Oriented Programming (ECOOP) 109. (2018): 3. <a href="#fnref2">↩</a></p>
+<p>Prokopec, Aleksandar, and Fengyun Liu. "Theory and Practice of Coroutines with Snapshots." European Conference on Object-Oriented Programming (ECOOP) 109. (2018): 3. <a href="#fnref2">↩</a></p>
 </li>
 
 <li id="fn3">
-<p>James, Roshan P., and Amr Saby. “Yield: Mainstream Delimited Continuations.” The Workshop on the Theory and Practice of Delimited Continuations (TDPC) 2011. <a href="#fnref3">↩</a></p>
+<p>James, Roshan P., and Amr Saby. "Yield: Mainstream Delimited Continuations." The Workshop on the Theory and Practice of Delimited Continuations (TDPC) 2011. <a href="#fnref3">↩</a></p>
 </li>
 
 <li id="fn4">

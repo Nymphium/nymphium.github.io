@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="delimited continuationの夏" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="delimited continuationの夏" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2018/07/19/delimited-continuation%E3%81%AE%E5%A4%8F.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"delimited continuationの夏","dateModified":"2018-07-19T00:00:00+09:00","datePublished":"2018-07-19T00:00:00+09:00","description":"lily, Aikatsu, Programming language, and more","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2018/07/19/delimited-continuation%E3%81%AE%E5%A4%8F.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"lily, Aikatsu, Programming language, and more","headline":"delimited continuationの夏","dateModified":"2018-07-19T00:00:00+09:00","datePublished":"2018-07-19T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2018/07/19/delimited-continuation%E3%81%AE%E5%A4%8F.html"},"url":"https://nymphium.github.io/2018/07/19/delimited-continuation%E3%81%AE%E5%A4%8F.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>こんにちは､びしょ〜じょです｡
 control/promptとprompt tagへの理解が必要になったため､やっていきましょう｡</p>
 <h1 id="1.+continuation%3F%3F%3F+%E7%B6%99%E7%B6%9A%3F%3F%3F+is+power+%3F%3F%3F"><a class="headerlink" href="#1.+continuation%3F%3F%3F+%E7%B6%99%E7%B6%9A%3F%3F%3F+is+power+%3F%3F%3F">1. continuation??? 継続??? is power ???</a></h1>
-<p>継続とは <em>“残りの計算”</em> などと言われます｡
+<p>継続とは <em>"残りの計算"</em> などと言われます｡
 \(e_1+e_2\)という式があって､左辺から計算がおこなわれていくとする｡
 \(e_1 \Downarrow v_1\)となると､残りの計算は\(\lambda x. x + e_2 \)となります｡
 \(\lambda x. x + e_2 \)はよく\([\ ]+e_2\)と表現され､この\([\ ]\)はholeと呼ばれたりする｡
@@ -132,21 +132,21 @@ Guileだと<code>(use-modules (ice-9 control))</code>やね｡</p>
 </div>
 <p>雑な説明でしたが､<code>call/cc</code>は中のコンテキスト<code>(+ 3 [])</code>も継続の呼び出し時に捨ててますね｡
 あとRacketの<code>shift</code>は<code>reset</code>が見つからなかったらエラーにならずに最外のコンテキストを持ってくるんですねぇ｡</p>
-<p>shift/resetの詳細は文献<sup id="fnref2" title="浅井健一. “shift/reset プログラミング入門.” ACM SIGPLAN Continuation Workshop 2011. 2011. http://pllab.is.ocha.ac.jp/~asai/cw2011tutorial/main-j.pdf "><a href="#fn2">2</a></sup>をご覧ください｡
-…ちょっと待って! <code>shift0</code>が無いやん! ということで文献<sup id="fnref3" title="Shan, Chung-chieh. “Shift to control.” Proceedings of the 5th workshop on Scheme and Functional Programming. 2004. ftp://cs.indiana.edu/pub/techreports/TR600.pdf#page=103 "><a href="#fn3">3</a></sup>を見る｡</p>
+<p>shift/resetの詳細は文献<sup id="fnref2" title='浅井健一. "shift/reset プログラミング入門." ACM SIGPLAN Continuation Workshop 2011. 2011. http://pllab.is.ocha.ac.jp/~asai/cw2011tutorial/main-j.pdf '><a href="#fn2">2</a></sup>をご覧ください｡
+…ちょっと待って! <code>shift0</code>が無いやん! ということで文献<sup id="fnref3" title='Shan, Chung-chieh. "Shift to control." Proceedings of the 5th workshop on Scheme and Functional Programming. 2004. ftp://cs.indiana.edu/pub/techreports/TR600.pdf#page=103 '><a href="#fn3">3</a></sup>を見る｡</p>
 <p>まず<code>shift</code>の定義を見ます｡</p>
 <p>\[
 \begin{array}{r}
-    M\left[\left(\mathtt{reset}\ C\left[\left(\mathtt{shift\ f}\ E\right)\right]\right)\right] \triangleright M\left[\left(\mathtt{reset}\ E’\right)\right]\\
-    \mathrm{where}\ E’=E \{\mathtt{f}\mapsto \left(\mathtt{lambda}\ \left(\mathtt{x}\right)\ \left(\mathtt{reset}\ C[\mathtt{x}]\right)\right)\}
+    M\left[\left(\mathtt{reset}\ C\left[\left(\mathtt{shift\ f}\ E\right)\right]\right)\right] \triangleright M\left[\left(\mathtt{reset}\ E'\right)\right]\\\
+    \mathrm{where}\ E'=E \{\mathtt{f}\mapsto \left(\mathtt{lambda}\ \left(\mathtt{x}\right)\ \left(\mathtt{reset}\ C[\mathtt{x}]\right)\right)\}
 \end{array}
 \]</p>
 <p>おk｡</p>
 <p>では<code>shift0</code>はどうかな?</p>
 <p>\[
 \begin{array}{r}
-    M\left[\left(\mathtt{reset}\ C\left[\left(\mathtt{shift0\ f}\ E\right)\right]\right)\right] \triangleright M\left[E’\right]\\
-    \mathrm{where}\ E’=E \{\mathtt{f}\mapsto \left(\mathtt{lambda}\ \left(\mathtt{x}\right)\ \left(\mathtt{reset}\ C[\mathtt{x}]\right)\right)\}
+    M\left[\left(\mathtt{reset}\ C\left[\left(\mathtt{shift0\ f}\ E\right)\right]\right)\right] \triangleright M\left[E'\right]\\\
+    \mathrm{where}\ E'=E \{\mathtt{f}\mapsto \left(\mathtt{lambda}\ \left(\mathtt{x}\right)\ \left(\mathtt{reset}\ C[\mathtt{x}]\right)\right)\}
 \end{array}
 \]</p>
 <p>えっ何が違うん? と一瞬困るわけですが､<code>shift0</code>では一発評価が進むと<code>M</code>の中から<code>reset</code>が消えてますね｡
@@ -168,7 +168,7 @@ Guileだと<code>(use-modules (ice-9 control))</code>やね｡</p>
 </code></pre></div>
 <p>あとは同様にやっていく｡内側の<code>reset</code>をやっていくので<code>(reset (cons 'a (reset '())))</code>で､あとはアーナンダビッグステップに行くぞということで<code>'(a)</code>が得られる｡</p>
 <p>続いて<code>shift0</code>について見よう｡
-文献<sup id="fnref3" title="Shan, Chung-chieh. “Shift to control.” Proceedings of the 5th workshop on Scheme and Functional Programming. 2004. ftp://cs.indiana.edu/pub/techreports/TR600.pdf#page=103 "><a href="#fn3">3</a></sup>ではdelimiterは<code>reset</code>のみだったが､racket/controlの<code>shift0</code>に対応するdelimiterは<code>reset0</code>となる｡</p>
+文献<sup id="fnref3" title='Shan, Chung-chieh. "Shift to control." Proceedings of the 5th workshop on Scheme and Functional Programming. 2004. ftp://cs.indiana.edu/pub/techreports/TR600.pdf#page=103 '><a href="#fn3">3</a></sup>ではdelimiterは<code>reset</code>のみだったが､racket/controlの<code>shift0</code>に対応するdelimiterは<code>reset0</code>となる｡</p>
 <div class="highlight">
 <span class="listing-name">with-shift0</span><pre><code class="language-scheme" data-lang="scheme"><span class="p">(</span><span class="nf">reset0</span> <span class="p">(</span><span class="nb">cons</span> <span class="ss">'a</span>
   <span class="p">(</span><span class="nf">reset0</span> <span class="p">(</span><span class="nf">shift0</span> <span class="nv">f</span> <span class="p">(</span><span class="nf">shift0</span> <span class="nv">g</span> <span class="o">'</span><span class="p">())))))</span>
@@ -184,17 +184,17 @@ Guileだと<code>(use-modules (ice-9 control))</code>やね｡</p>
 </code></pre></div>
 <p>で<code>reset0</code>と<code>shift0</code>の間のコンテキストは拾われずに<code>shift0</code>内のexpressionが生き残るので､<code>'()</code>を返す｡</p>
 <p>あ〜〜 <strong><em>完全に理解した</em></strong> ｡
-この <em>“resetは1度しか使えない”</em> という回数制限はlinear logicの影が潜んでいそうだ｡
+この <em>"resetは1度しか使えない"</em> という回数制限はlinear logicの影が潜んでいそうだ｡
 実際この回数制限nessを型で表そうとするとそんな雰囲気になるはずだ｡</p>
 <h2 id="2-2.+control%2Fprompt"><a class="headerlink" href="#2-2.+control%2Fprompt">2-2. control/prompt</a></h2>
 <p>だいたいshift/resetというと語弊があるが､だいたいそんな感じという認識がある(間違ってると思うのでご教授願います｡)｡
 <code>prompt</code>は<code>control</code>と対応するdelimiterに過ぎず､動きとしては<code>reset</code>同様に継続を区切るだけだ｡
-“control prompt"で検索するときは､”-command"を付けないとコマンドプロンプトに関する話が大量に出てきて血管ブチ切れそうになる｡</p>
-<p><code>control</code>は文献<sup id="fnref3" title="Shan, Chung-chieh. “Shift to control.” Proceedings of the 5th workshop on Scheme and Functional Programming. 2004. ftp://cs.indiana.edu/pub/techreports/TR600.pdf#page=103 "><a href="#fn3">3</a></sup>より､
+"control prompt"で検索するときは､"-command"を付けないとコマンドプロンプトに関する話が大量に出てきて血管ブチ切れそうになる｡</p>
+<p><code>control</code>は文献<sup id="fnref3" title='Shan, Chung-chieh. "Shift to control." Proceedings of the 5th workshop on Scheme and Functional Programming. 2004. ftp://cs.indiana.edu/pub/techreports/TR600.pdf#page=103 '><a href="#fn3">3</a></sup>より､
 \[
 \begin{array}{r}
-    M\left[\left(\mathtt{reset}\ C\left[\left(\mathtt{control\ f}\ E\right)\right]\right)\right] \triangleright M\left[\left(\mathtt{reset}\ E’\right)\right]\\
-    \mathrm{where}\ E’=E \{\mathtt{f}\mapsto \left(\mathtt{lambda}\ \left(\mathtt{x}\right)\ \left(C[\mathtt{x}]\right)\right)\}
+    M\left[\left(\mathtt{reset}\ C\left[\left(\mathtt{control\ f}\ E\right)\right]\right)\right] \triangleright M\left[\left(\mathtt{reset}\ E'\right)\right]\\\
+    \mathrm{where}\ E'=E \{\mathtt{f}\mapsto \left(\mathtt{lambda}\ \left(\mathtt{x}\right)\ \left(C[\mathtt{x}]\right)\right)\}
 \end{array}
 \]</p>
 <p>この論文ではdelimiterが<code>reset</code>だがとりあえずOKとしたい｡
@@ -287,7 +287,7 @@ Guileだと<code>(use-modules (ice-9 control))</code>やね｡</p>
 <span class="c">(* returns [] *)</span>
 </code></pre></div>
 <p>これは何故か｡多分answer-type polymorphismをOCamlではサポートしてないからじゃないかな｡
-詳細はdelimccに関する文献<sup id="fnref5" title="Oleg Kiselyov. “Delimited Control in OCaml, Abstractly and Concretely: System Description.” FLOPS 2010. 2010. https://link.springer.com/chapter/10.1007/978-3-642-12251-4_22 "><a href="#fn5">5</a></sup>を読めって話ですよ｡読んでへん｡</p>
+詳細はdelimccに関する文献<sup id="fnref5" title='Oleg Kiselyov. "Delimited Control in OCaml, Abstractly and Concretely: System Description." FLOPS 2010. 2010. https://link.springer.com/chapter/10.1007/978-3-642-12251-4_22 '><a href="#fn5">5</a></sup>を読めって話ですよ｡読んでへん｡</p>
 <p>とりあえずここは <strong><em>完全に理解した</em></strong> ということで､よろしいでしょうか｡</p>
 <h1 id="4.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB"><a class="headerlink" href="#4.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">4. おわりに</a></h1>
 <p>なんとなくつかめてきた気がします｡
@@ -301,11 +301,11 @@ Guileだと<code>(use-modules (ice-9 control))</code>やね｡</p>
 </li>
 
 <li id="fn2">
-<p>浅井健一. “shift/reset プログラミング入門.” ACM SIGPLAN Continuation Workshop 2011. 2011. <a href="http://pllab.is.ocha.ac.jp/%7Easai/cw2011tutorial/main-j.pdf" target="_blank" rel="noopener noreferrer">http://pllab.is.ocha.ac.jp/~asai/cw2011tutorial/main-j.pdf</a> <a href="#fnref2">↩</a></p>
+<p>浅井健一. "shift/reset プログラミング入門." ACM SIGPLAN Continuation Workshop 2011. 2011. http://pllab.is.ocha.ac.jp/~asai/cw2011tutorial/main-j.pdf <a href="#fnref2">↩</a></p>
 </li>
 
 <li id="fn3">
-<p>Shan, Chung-chieh. “Shift to control.” Proceedings of the 5th workshop on Scheme and Functional Programming. 2004. <a href="ftp://cs.indiana.edu/pub/techreports/TR600.pdf#page=103">ftp://cs.indiana.edu/pub/techreports/TR600.pdf#page=103</a> <a href="#fnref3">↩</a></p>
+<p>Shan, Chung-chieh. "Shift to control." Proceedings of the 5th workshop on Scheme and Functional Programming. 2004. ftp://cs.indiana.edu/pub/techreports/TR600.pdf#page=103 <a href="#fnref3">↩</a></p>
 </li>
 
 <li id="fn4">
@@ -313,7 +313,7 @@ Guileだと<code>(use-modules (ice-9 control))</code>やね｡</p>
 </li>
 
 <li id="fn5">
-<p>Oleg Kiselyov. “Delimited Control in OCaml, Abstractly and Concretely: System Description.” FLOPS 2010. 2010. <a href="https://link.springer.com/chapter/10.1007/978-3-642-12251-4_22" target="_blank" rel="noopener noreferrer">https://link.springer.com/chapter/10.1007/978-3-642-12251-4_22</a> <a href="#fnref5">↩</a></p>
+<p>Oleg Kiselyov. "Delimited Control in OCaml, Abstractly and Concretely: System Description." FLOPS 2010. 2010. https://link.springer.com/chapter/10.1007/978-3-642-12251-4_22 <a href="#fnref5">↩</a></p>
 </li>
 
 </ol>

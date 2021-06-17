@@ -16,7 +16,7 @@
     <meta name="twitter:site" content="lilyum ensemble"/>
     <meta name="twitter:title" content="日刊Promise(3) スレッドプールっぽいものを作ってsetTimeoutを改修 - lilyum ensemble"/>
     <meta name="twitter:url" content="/2020/05/06/nikkan-promise3.html"/> 
-    <meta name="twitter:text:description" content="1. はじめにこんにちは､びしょ〜じょです｡“日刊"ですが昨日は神絵師活動のためお休みをいただいたため､ほぼ日になってしまいました｡今回は､前回の課題であったsetTimeoutがなんかおかしい..."/>
+    <meta name="twitter:text:description" content="1. はじめにこんにちは､びしょ〜じょです｡"日刊"ですが昨日は神絵師活動のためお休みをいただいたため､ほぼ日になってしまいました｡今回は､前回の課題であったsetTimeoutがなんかおかしい..."/>
     <meta name="twitter:image" content="https://nymphium.github.io/pictures/2020/05/06/nikkan-promise3/thumb.png"/>
     <meta name="twitter:image:src" content="https://nymphium.github.io/pictures/2020/05/06/nikkan-promise3/thumb.png"/>
 
@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="日刊Promise(3) スレッドプールっぽいものを作ってsetTimeoutを改修" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="日刊Promise(3) スレッドプールっぽいものを作ってsetTimeoutを改修" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2020/05/06/nikkan-promise3.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"日刊Promise(3) スレッドプールっぽいものを作ってsetTimeoutを改修","dateModified":"2020-05-06T00:00:00+09:00","datePublished":"2020-05-06T00:00:00+09:00","description":"lily, Aikatsu, Programming language, and more","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2020/05/06/nikkan-promise3.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"lily, Aikatsu, Programming language, and more","headline":"日刊Promise(3) スレッドプールっぽいものを作ってsetTimeoutを改修","dateModified":"2020-05-06T00:00:00+09:00","datePublished":"2020-05-06T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2020/05/06/nikkan-promise3.html"},"url":"https://nymphium.github.io/2020/05/06/nikkan-promise3.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/2020/05/06/nikkan-promise3/thumb.png"/>
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function(){
           <div class="post-content" itemprop="articleBody">
 <h1 id="1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><a class="headerlink" href="#1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">1. はじめに</a></h1>
 <p>こんにちは､びしょ〜じょです｡
-“日刊"ですが昨日は神絵師活動のためお休みをいただいたため､ほぼ日になってしまいました｡</p>
+"日刊"ですが昨日は神絵師活動のためお休みをいただいたため､ほぼ日になってしまいました｡</p>
 <p>今回は､前回の課題であった<code>setTimeout</code>がなんかおかしいのを直しました｡
 本当は<code>Promise</code>までイッキにいきたかったが､もう一発大改修が必要そうだったので今回は諦めました｡</p>
 <p>今回も放映した</p>
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>クロージャ実装してなくてﾜﾛﾀなので実装した｡
 クロージャというのはですねえ変数環境をclosingしている関数のことです｡</p>
 <div class="highlight">
-<span class="listing-name">fが環境[{name: "x”; value: 3}]をclosingしている</span><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="listing-name">fが環境[{name: "x"; value: 3}]をclosingしている</span><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">f</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">x</span><span class="p">;</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">f</span><span class="p">());</span> <span class="c1">// ==&gt; 3</span>
 </code></pre>

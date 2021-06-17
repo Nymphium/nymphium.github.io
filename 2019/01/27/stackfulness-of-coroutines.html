@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="stackfulness of coroutines" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="stackfulness of coroutines" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2019/01/27/stackfulness-of-coroutines.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"stackfulness of coroutines","dateModified":"2019-01-27T00:00:00+09:00","datePublished":"2019-01-27T00:00:00+09:00","description":"lily, Aikatsu, Programming language, and more","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2019/01/27/stackfulness-of-coroutines.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"lily, Aikatsu, Programming language, and more","headline":"stackfulness of coroutines","dateModified":"2019-01-27T00:00:00+09:00","datePublished":"2019-01-27T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2019/01/27/stackfulness-of-coroutines.html"},"url":"https://nymphium.github.io/2019/01/27/stackfulness-of-coroutines.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>研究ではコルーチンを使っている｡
 ここでひとつコルーチンについてまとめておきたい｡
 特にstackfulnessについての考察をこれまでおこなっていなかったため､そこに重点を置く｡
-本稿では文献<span class="cite">[<a href="#fn1" title="Moura, Ana Lúcia De, and Roberto Ierusalimschy. “Revisiting coroutines.” ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. " id="fnref1">1</a>]</span>
+本稿では文献<span class="cite">[<a href="#fn1" title='Moura, Ana Lúcia De, and Roberto Ierusalimschy. "Revisiting coroutines." ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. ' id="fnref1">1</a>]</span>
 を参考にする｡</p>
 <h1 id="2.+%E5%AF%BE%E7%A7%B0%E6%80%A7%E3%81%AB%E3%82%88%E3%82%8B%E5%88%86%E9%A1%9E"><a class="headerlink" href="#2.+%E5%AF%BE%E7%A7%B0%E6%80%A7%E3%81%AB%E3%82%88%E3%82%8B%E5%88%86%E9%A1%9E">2. 対称性による分類</a></h1>
 <p>コルーチンとは､一時停止､再開のできるサブルーチンを指す｡
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function(){
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left">“戻る” 操作</td>
+<td style="text-align: left">"戻る" 操作</td>
 <td style="text-align: center">ない</td>
 <td style="text-align: center">ある</td>
 </tr>
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function(){
 </table>
 <p>対称コルーチンを持つプログラム言語は筆者は知らない｡
 非対称コルーチンはわりとメジャーな機能で､コルーチンやFiberと言われる言語機能は概ね非対称コルーチンと思われる｡
-“戻る” 操作とは､多くの非対称コルーチンを持つプログラム言語では<code>yield</code>というキーワードや関数名として使うことができる｡</p>
+"戻る" 操作とは､多くの非対称コルーチンを持つプログラム言語では<code>yield</code>というキーワードや関数名として使うことができる｡</p>
 <div class="highlight">
 <span class="listing-name">yield example</span><pre><code class="language-lua" data-lang="lua"><span class="nb">coroutine.create</span><span class="p">(</span><span class="k">function</span><span class="p">()</span>
   <span class="c1">-- callerに"戻る"</span>
@@ -177,9 +177,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
 <p></p>
 </center>
-<p>stackful coroutinesは単に “coroutine” ､ あるいは “fiber” と呼ばれ､
-stackless coroutinesは “generator” と称される傾向にある｡</p>
-<p>では､ “コールスタックをまたげる” とはどういうことか?
+<p>stackful coroutinesは単に "coroutine" ､ あるいは "fiber" と呼ばれ､
+stackless coroutinesは "generator" と称される傾向にある｡</p>
+<p>では､ "コールスタックをまたげる" とはどういうことか?
 これはyieldがネストした関数呼出しから一気にコルーチンの呼び出し元まで戻れる､またyieldした位置にコントロールを戻せるということである｡
 次の例を見てみる(プログラム<a href="#lst:stackfulexample">3.2</a>
 , プログラム<a href="#lst:stacklessexample">3.3</a>
@@ -262,7 +262,7 @@ function send(x) {
 </table>
 <p>stackful coroutinesの利点･欠点が､逆にstackless coroutinesの欠点･利点と､一長一短となっている｡</p>
 <h1 id="5.+%E7%A0%94%E7%A9%B6%E3%81%A8%E3%81%AE%E9%96%A2%E9%80%A3%E6%80%A7"><a class="headerlink" href="#5.+%E7%A0%94%E7%A9%B6%E3%81%A8%E3%81%AE%E9%96%A2%E9%80%A3%E6%80%A7">5. 研究との関連性</a></h1>
-<p>筆者の研究では “ネストした関数呼出しから一気に飛び出せる” というstackful coroutinesの特性を利用している｡
+<p>筆者の研究では "ネストした関数呼出しから一気に飛び出せる" というstackful coroutinesの特性を利用している｡
 そのためstackless coroutinesではすぐには代替できない｡
 stackful coroutines → stackless coroutinesの変換がある場合はなんとかなるかもしれないので､教えてください｡</p>
 <h1 id="6.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB"><a class="headerlink" href="#6.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">6. おわりに</a></h1>
@@ -274,7 +274,7 @@ stackful coroutines → stackless coroutinesの変換がある場合はなんと
   <span class="image"><a href="https://stackoverflow.com/questions/28977302/how-do-stackless-coroutines-differ-from-stackful-coroutines" target="_blank" rel="noopener noreferrer"><div><img src="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon@2.png?v=73d79a89bded"></div></a></span>
   <span class="txt">
     <div class="title"><a href="https://stackoverflow.com/questions/28977302/how-do-stackless-coroutines-differ-from-stackful-coroutines" target="_blank" rel="noopener noreferrer">How do stackless coroutines differ from stackful coroutines?</a></div>
-    <div class="description">Background:I’m asking this because I currently have an application with many (hundreds to thousands) of threads. Most of those threads are idle a great portion of the time, waiting on work items …</div>
+    <div class="description">Background:I'm asking this because I currently have an application with many (hundreds to thousands) of threads. Most of those threads are idle a great portion of the time, waiting on work items ...</div>
   </span>
 </div>
 <hr>
@@ -283,7 +283,7 @@ stackful coroutines → stackless coroutinesの変換がある場合はなんと
 <ol>
 
 <li id="fn1">
-<p>Moura, Ana Lúcia De, and Roberto Ierusalimschy. “Revisiting coroutines.” ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. <a href="#fnref1">↩</a></p>
+<p>Moura, Ana Lúcia De, and Roberto Ierusalimschy. "Revisiting coroutines." ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. <a href="#fnref1">↩</a></p>
 </li>
 
 </ol>

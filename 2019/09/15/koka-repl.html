@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="koka-lang/koka REPL超入門" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="koka-lang/koka REPL超入門" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2019/09/15/koka-repl.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"koka-lang/koka REPL超入門","dateModified":"2019-09-15T00:00:00+09:00","datePublished":"2019-09-15T00:00:00+09:00","description":"こんにちは､びしょ〜じょです｡","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2019/09/15/koka-repl.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"こんにちは､びしょ〜じょです｡","headline":"koka-lang/koka REPL超入門","dateModified":"2019-09-15T00:00:00+09:00","datePublished":"2019-09-15T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2019/09/15/koka-repl.html"},"url":"https://nymphium.github.io/2019/09/15/koka-repl.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -101,20 +101,20 @@ document.addEventListener("DOMContentLoaded", function(){
 kokaは主にHaskellで書かれており､REPLはJSが使われている｡
 この記事はKoka言語ではなくkoka-lang/kokaのREPLの入門記事である｡Kokaを知りたい方は<a href="https://koka-lang.github.io/koka/doc/kokaspec.html" target="_blank" rel="noopener noreferrer">The Koka Book</a>を参照のこと｡</p>
 <h1 id="%E5%87%A6%E7%90%86%E7%B3%BB%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89"><a class="headerlink" href="#%E5%87%A6%E7%90%86%E7%B3%BB%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89">処理系のビルド</a></h1>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>git clone https://github.com/koka-lang/koka.git
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>git clone https://github.com/koka-lang/koka.git
 <span class="gp">$</span><span class="w"> </span><span class="nb">cd </span>koka
 <span class="gp">$</span><span class="w"> </span>yarn <span class="c"># REPLを使うために必要</span>
 </code></pre></div>
 <p>ここからHaskell関連のものをビルドする､特にalexをインストールしたりする｡cabalとstackの2通りがある｡
 いずれかでalexをインストールする｡</p>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>cabal <span class="nb">install </span>alex
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>cabal <span class="nb">install </span>alex
 <span class="gp">#</span><span class="w"> </span>または
 <span class="gp">$</span><span class="w"> </span>stack <span class="nb">install </span>alex
 </code></pre></div>
 <p>これでOK｡
 <code>jake</code>でKoka REPLが起動する､が､stackを利用した場合には<code>build_with_stack=true</code>を毎度渡す必要がある｡めんどいね｡
 またreadlineやlinenoiseなどをREPL内部で利用してないのでrlwrapを利用したほうが良いだろう｡</p>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>rlwrap jake <span class="c"># ビルド時にstackを利用してたら`jake build_with_stack=true`</span>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>rlwrap jake <span class="c"># ビルド時にstackを利用してたら`jake build_with_stack=true`</span>
 <span class="go">check for packages: text parsec
 build: koka 0.9.0-dev (debug version)
 build ok.
@@ -132,7 +132,7 @@ loading: std/core
 </span><span class="gp">&gt;</span><span class="w">
 </span></code></pre></div>
 <p>あるいはビルドで生成されたkokaバイナリを叩けばいい｡この場合謎の引数を渡す必要はない｡</p>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>out/debug/koka-0.9.0-dev
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>out/debug/koka-0.9.0-dev
 <span class="go"> _          _
 | |        | |
 | | __ ___ | | __ __ _
@@ -149,7 +149,7 @@ loading: std/core
 <h1 id="%E3%82%A8%E3%83%95%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E5%AE%9A%E7%BE%A9"><a class="headerlink" href="#%E3%82%A8%E3%83%95%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E5%AE%9A%E7%BE%A9">エフェクトの定義</a></h1>
 <p>Koka言語といえばAlgebraic Effects and Handlersが特筆すべき機能だが､実はREPLではエフェクトの定義ができない｡ここはかなりのハマりポイントなので書いておく｡</p>
 <div class="highlight">
-<span class="listing-name">なんでやねん</span><pre><code class="language-" data-lang="">&gt; effect foo { fun foo(v : int): int } // REPLでは複数行にまたがる定義ができない…
+<span class="listing-name">なんでやねん</span><pre><code class="language-plaintext" data-lang="plaintext">&gt; effect foo { fun foo(v : int): int } // REPLでは複数行にまたがる定義ができない…
 interactive(1, 1): error: invalid syntax
  unexpected keyword effect
  expecting expression
@@ -160,14 +160,14 @@ interactive(1, 1): error: invalid syntax
 モジュールは <code>path/to/mod</code> という､ライブラリディレクトリから相対パスのファイル名から拡張子 <code>.kk</code> を除いたものを識別子とする｡
 <code>lib/path/to/mod.kk</code> というファイルの先頭に <code>module path/to/mod</code> と書けばよい｡
 とりあえず <code>lib/mod.kk</code> というファイルに書いてみる｡</p>
-<div class="highlight"><pre><code class="language-lib/mod.kk" data-lang="lib/mod.kk">module mod
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">module mod
 
 public effect foo { // Kokaにはアクセス制御もあるよ
   fun foo(v : int) : int
 }
 </code></pre></div>
 <p>そしてkoka REPLでモジュールを読み込む｡</p>
-<div class="highlight"><pre><code class="language-" data-lang="">&gt; :l mod
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">&gt; :l mod
 compile: lib/mod.kk
 loading: std/core
 check  : mod
@@ -180,7 +180,7 @@ modules:
 &gt;
 </code></pre></div>
 <p>OK｡ハンドラはもちろんfirst-class valueなので特に問題なく定義できる｡</p>
-<div class="highlight"><pre><code class="language-" data-lang="">&gt; val h = handler { foo(v) -&gt; { println(v) ; resume(v + 1) } }
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">&gt; val h = handler { foo(v) -&gt; { println(v) ; resume(v + 1) } }
 operator branch (h) foo: resume tail
 h : forall&lt;a,e&gt; (action : () -&gt; &lt;foo,console|e&gt; a) -&gt; &lt;console|e&gt; a
 
@@ -198,7 +198,7 @@ operator branch (h) foo: resume tail
 しかしモジュールで演算子を定義､利用すると怒られが発生する場合がある｡
 多分バグなので<a href="https://github.com/koka-lang/koka/issues/83" target="_blank" rel="noopener noreferrer">報告した</a>｡インターフェースファイルのパーザが記号に対応してないっぽい｡
 この怒られはインターフェースファイルを消去することで回避できる｡</p>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span><span class="nb">rm </span>out/op.kki
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span><span class="nb">rm </span>out/op.kki
 </code></pre></div>
 <p>コントリビューションチャンスです｡</p>
 <hr>

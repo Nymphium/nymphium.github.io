@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="振り返り2015" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="振り返り2015" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2015/12/24/hurikaeri2015.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"振り返り2015","dateModified":"2015-12-24T00:00:00+09:00","datePublished":"2015-12-24T00:00:00+09:00","description":"こんにちは､びしょ〜じょです｡ クレカ使いすぎて上限にあたったので久しぶりにアマゾンギフト券を買って百合漫画を入手しているため､発売日に手元に来ない不具合に見舞われています｡みなさんも気をつけましょう｡","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2015/12/24/hurikaeri2015.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"こんにちは､びしょ〜じょです｡ クレカ使いすぎて上限にあたったので久しぶりにアマゾンギフト券を買って百合漫画を入手しているため､発売日に手元に来ない不具合に見舞われています｡みなさんも気をつけましょう｡","headline":"振り返り2015","dateModified":"2015-12-24T00:00:00+09:00","datePublished":"2015-12-24T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2015/12/24/hurikaeri2015.html"},"url":"https://nymphium.github.io/2015/12/24/hurikaeri2015.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -101,13 +101,13 @@ document.addEventListener("DOMContentLoaded", function(){
 <hr>
 <p>そろそろ2015年も終わるが､うっかり解約し忘れて契約更新してしまったバンダイチャンネルにてゆるゆり3期を観ていたら､ふと今年一番多く使ったコマンドは何か気になった｡
 というわけでレッツゴルフ</p>
-<div class="highlight"><pre><code class="language-Bash" data-lang="Bash">history | sed -e "s/^\s*\S*\s\+//" | awk '{a[$1]++}END{for(k in a){print a[k], k}}' | sort -n
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">history | sed -e "s/^\s*\S*\s\+//" | awk '{a[$1]++}END{for(k in a){print a[k], k}}' | sort -n
 </code></pre></div>
 <p><code>history</code>と打つと<code>index コマンド</code>と出るタイプのものを<code>sed</code>で頭の数字と空白を削って､<code>awk</code>でコマンド名を連想配列に突っ込んでforeachでkey(コマンド名)､value(コマンドの使用回数)を出す､<code>sort</code>で使用回数が多い順に並べる｡
 そんなものは見れば分かる｡何が出たかが重要だ｡</p>
 <hr>
 <p>まずは専らネッツサーヒンと指の運動などに使っている､アパートに据え置き状態のノートpcでやってみる｡</p>
-<div class="highlight"><pre><code class="language-" data-lang="">84 g
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">84 g
 211 V
 263 S
 </code></pre></div>
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <p><code>alias S='sudo'</code>｡ArchLinuxを管理するというのはつまりそういうことである｡力には責任が云々</p>
 <hr>
 <p>メインで使っているX1では</p>
-<div class="highlight"><pre><code class="language-" data-lang="">345 S
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">345 S
 348 ag
 1135 V
 </code></pre></div>
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>いっぱいコードかいたりするかもしれないのでやっぱりね､そうよね｡ダントツですね｡<code>alias -g L='nvim - -R'</code>とすると出力をパイプしてNeovimで開けるというさいつよなので､さいつよ｡</p>
 <hr>
 <p>ついでに<code>history</code>以降をMoonScriptで書いてみる｡</p>
-<div class="highlight"><pre><code class="language-MoonScript" data-lang="MoonScript">-- sedawksort.moon
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">-- sedawksort.moon
 a = {}
 l = io.read!
 
@@ -155,7 +155,7 @@ with sa = [{k, v} for k, v in pairs a]
     for k, v in pairs sa
         print v[2], v[1]
 </code></pre></div>
-<div class="highlight"><pre><code class="language-Bash" data-lang="Bash">$ history | moon sedawksort.moon | tail -n3
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">$ history | moon sedawksort.moon | tail -n3
 84      g
 213     V
 263     S

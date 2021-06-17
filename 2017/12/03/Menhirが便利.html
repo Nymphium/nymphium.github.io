@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Menhirが便利" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Menhirが便利" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2017/12/03/Menhir%E3%81%8C%E4%BE%BF%E5%88%A9.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"Menhirが便利","dateModified":"2017-12-03T00:00:00+09:00","datePublished":"2017-12-03T00:00:00+09:00","description":"lily, Aikatsu, Programming language, and more","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2017/12/03/Menhir%E3%81%8C%E4%BE%BF%E5%88%A9.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"lily, Aikatsu, Programming language, and more","headline":"Menhirが便利","dateModified":"2017-12-03T00:00:00+09:00","datePublished":"2017-12-03T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2017/12/03/Menhir%E3%81%8C%E4%BE%BF%E5%88%A9.html"},"url":"https://nymphium.github.io/2017/12/03/Menhir%E3%81%8C%E4%BE%BF%E5%88%A9.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <center>
 <span style="font-size: XX-LARGE">!!!以下に詳細が!!!</span>
 
-<p><a href="https://www.word-ac.net/about/" target="_blank" rel="noopener noreferrer">https://www.word-ac.net/about/</a>
+<p>https://www.word-ac.net/about/
 </p>
 </center>
 <h1 id="1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><a class="headerlink" href="#1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">1. はじめに</a></h1>
@@ -121,7 +121,7 @@ syntax.mlみたいなファイルにデータタイプを定義して､その�
 ocamlyaccよりも高機能で､menhirコマンドにも多くの便利オプションがあります｡</p>
 <h2 id="3-1.+%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3"><a class="headerlink" href="#3-1.+%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3">3-1. セッション</a></h2>
 <p>まずMenhirをインストールしてください｡OPAMやOSのパッケージマネージャーを使ってください｡</p>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>opam <span class="nb">install </span>menhir
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>opam <span class="nb">install </span>menhir
 <span class="gp">#</span><span class="w"> </span>とか
 <span class="gp">$</span><span class="w"> </span>yaourt <span class="nt">-S</span> ocaml-menhir <span class="c"># Archには公式リポジトリーに入ってない! 残念</span>
 </code></pre></div>
@@ -129,11 +129,11 @@ ocamlyaccよりも高機能で､menhirコマンドにも多くの便利オプ�
 <div>
 $$
 \begin{array}{rcl}
-S    &amp; \leftarrow &amp; Term\\
-Term &amp; \leftarrow &amp; Lamb\ /\ Var\ /\ List\ /\ App\\
-Lamb &amp; \leftarrow &amp; “\backslash”\ Var\ “.”\ Term\\
-Var  &amp; \leftarrow &amp; \left[a\text{-}zA\text{-}Z\right]\left[a\text{-}zA\text{-}Z0\text{-}9\right]*\\
-List &amp; \leftarrow &amp; “\left[” \left(\left(Term\ “,”\right)*\ Term\right)? “\right]”\\
+S    &amp; \leftarrow &amp; Term\\\\
+Term &amp; \leftarrow &amp; Lamb\ /\ Var\ /\ List\ /\ App\\\\
+Lamb &amp; \leftarrow &amp; ``\backslash''\ Var\ ``.''\ Term\\\\
+Var  &amp; \leftarrow &amp; \left[a\text{-}zA\text{-}Z\right]\left[a\text{-}zA\text{-}Z0\text{-}9\right]*\\\\
+List &amp; \leftarrow &amp; ``\left['' \left(\left(Term\ ``,''\right)*\ Term\right)? ``\right]''\\\\
 App  &amp; \leftarrow &amp; Term\ Term
 \end{array}
 $$
@@ -266,7 +266,7 @@ $$
 </div>
 <p>[<a href="#fn1">1</a>
 ]によるとocamlyaccと90%の互換性があるということで､ocamlyaccが受理できるmlyファイルはmenhirも受理します｡</p>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span><span class="nb">ls</span>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span><span class="nb">ls</span>
 <span class="go">lexer.mll  parser.mly  syntax.ml
 </span><span class="gp">$</span><span class="w"> </span>ocamlyacc parser.mly
 <span class="go">8 shift/reduce conflicts.
@@ -317,7 +317,7 @@ Warning: 8 shift/reduce conflicts were arbitrarily resolved.
 </ul>
 <h3 id="3-3-3.+user+defined+parameterized+rule"><a class="headerlink" href="#3-3-3.+user+defined+parameterized+rule">3-3-3. user defined parameterized rule</a></h3>
 <p><code>separated_list</code>みたいなものをユーザーも定義できる｡最高｡</p>
-<div class="highlight"><pre><code class="language-" data-lang="">%public xlist(X):
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">%public xlist(X):
    | LBRAC lst = separated_list(COMMA, X) RBRAC { lst }
 </code></pre></div>
 <p>何かを詰め込んだリストがホラこんな簡単に! 作れるわけだ｡</p>
@@ -377,7 +377,7 @@ Warning: 8 shift/reduce conflicts were arbitrarily resolved.
 <p>menhirはパーザーをジェネレートするだけでなく､デバッグ機能などもいい感じです｡
 詳細はヘルプなどを見ていただくとして､数点ピッカップします｡</p>
 <h4>interactive mode</h4>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>menhir <span class="nt">--interpret</span> <span class="nt">--interpret-show-cst</span> <span class="nt">--interpret-error</span> parser2.mly
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>menhir <span class="nt">--interpret</span> <span class="nt">--interpret-show-cst</span> <span class="nt">--interpret-error</span> parser2.mly
 <span class="go">Warning: 2 states have shift/reduce conflicts.
 Warning: 8 shift/reduce conflicts were arbitrarily resolved.
 LPAREN BACKSLASH VAR DOT LBRAC VAR COMMA VAR RBRAC RPAREN LPAREN BACKSLASH VAR DOT VAR RPAREN
@@ -427,7 +427,7 @@ Error: "INVALIDTOKEN" is not a known terminal symbol.
 </span></code></pre></div>
 <p>すげぇ! 対話的にトークン列を渡すと解析木を出してくれる､偉い｡</p>
 <h4>graph</h4>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>menhir <span class="nt">--graph</span> parser2.mly
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>menhir <span class="nt">--graph</span> parser2.mly
 <span class="gp">$</span><span class="w"> </span>dot <span class="nt">-Tpng</span> parser2.dot <span class="o">&gt;</span> parser2.png
 </code></pre></div>
 <p><img src="/pictures/2017-12-03-Menhir%E3%81%8C%E4%BE%BF%E5%88%A9/menhir.png" alt="menhir.png"></p>
@@ -441,7 +441,7 @@ Error: "INVALIDTOKEN" is not a known terminal symbol.
 <ol>
 
 <li id="fn1">
-<p><a href="http://gallium.inria.fr/%7Efpottier/menhir/" target="_blank" rel="noopener noreferrer">http://gallium.inria.fr/~fpottier/menhir/</a> <a href="#fnref1">↩</a></p>
+<p>http://gallium.inria.fr/~fpottier/menhir/ <a href="#fnref1">↩</a></p>
 </li>
 
 </ol>

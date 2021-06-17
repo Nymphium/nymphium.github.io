@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="texluaとtex.print" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="texluaとtex.print" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2015/05/19/lualatex_asluastring.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"texluaとtex.print","dateModified":"2015-05-19T00:00:00+09:00","datePublished":"2015-05-19T00:00:00+09:00","description":"こんにちは､びしょ〜じょです｡アイカツ劇場版のBD発売ももうすぐですね｡もちろん予約注文してあります｡ソウルマリオネットコーデがあとブーツだけなので皆さんよろしくお願いします｡当方トップスが被っております｡","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2015/05/19/lualatex_asluastring.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"こんにちは､びしょ〜じょです｡アイカツ劇場版のBD発売ももうすぐですね｡もちろん予約注文してあります｡ソウルマリオネットコーデがあとブーツだけなので皆さんよろしくお願いします｡当方トップスが被っております｡","headline":"texluaとtex.print","dateModified":"2015-05-19T00:00:00+09:00","datePublished":"2015-05-19T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2015/05/19/lualatex_asluastring.html"},"url":"https://nymphium.github.io/2015/05/19/lualatex_asluastring.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -120,7 +120,7 @@ end
 <p></p>
 <center><img src="/pictures/2015-05-19-lualatex1.png" alt="hello" title="tekitou.pdf"></center>
 <p><code>tex.print</code>は受け取った文字列を<em>LaTeXの入力として</em>受け取り､コンパイル(実行)時に出力先に吐き出す｡<code>tex.write</code>は受け取った文字列をただの文字列として受け取る｡</p>
-<p>画像を見ると､<code>tex.print</code>で出力した\(2^i\)は意図通りに出力されており<sup id="fnref1" title="(jekyll + redcarpetでは意図通り2^iが出ませんね💢) (追記2015/06/04:と思ったけどMatJax使えるじゃねーか｡ごめんなさい｡) "><a href="#fn1">1</a></sup>､<code>tex.write</code>を用いた部分では"$2^-1$“とかよく分からない感じになっている｡</p>
+<p>画像を見ると､<code>tex.print</code>で出力した\(2^i\)は意図通りに出力されており<sup id="fnref1" title="(jekyll + redcarpetでは意図通り2^iが出ませんね💢) (追記2015/06/04:と思ったけどMatJax使えるじゃねーか｡ごめんなさい｡) "><a href="#fn1">1</a></sup>､<code>tex.write</code>を用いた部分では"$2^-1$"とかよく分からない感じになっている｡</p>
 <p>ここで､｢おっこれはLaTeXコマンドもいけるんちゃうか〜｣と思った好奇心旺盛な少年が多いことは間違いない｡しかし､texluaはちょっとここで少年たちを嘲笑う｡</p>
 <hr>
 <p><code>tex.print("\LaTeX")</code>などとすると､まぁLuaを学んだ人間はわかるがバックスラッシュのところで怒られる｡正しい｡</p>
@@ -136,7 +136,7 @@ tex.print([[Hello, <span class="k">\LaTeX</span>]])
 </code></pre></div>
 <p><code>! Undefined control seq</code> <strong><em>ファーーーック</em></strong> 慈悲はない｡</p>
 <h3 id="%E8%A7%A3%E6%B1%BA%E6%B3%95"><a class="headerlink" href="#%E8%A7%A3%E6%B1%BA%E6%B3%95">解決法</a></h3>
-<div class="highlight"><pre><code class="language-" data-lang="">...
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">...
 tex.print(\asluastring{Hello, \LaTeX})
 ...
 </code></pre></div>
@@ -156,7 +156,7 @@ tex.print(\asluastring{Hello, \LaTeX})
 <center> <img src="/pictures/2015-05-19-lualatex.png" alt="LuaLaTeX" title="こんなものを書くな.pdf"> </center>
 <p>プレアンブルでも<code>\directlua</code>は使うことができ､こういった悲劇を編み出すことも可能<em>(全然良い感じじゃないんだよなぁ…)</em>｡</p>
 <p>しかし<code>tex.print</code>を2個使って<code>\begin{document}</code>と<code>\end{document}</code>を､環境を分けることができない｡うーん､<code>tex.print</code>で環境をネストさせたい時は滅茶苦茶にキモくなるので､
-<del>こういうことはやめておこう</del>環境の中身は適当な変数に突っ込むべきだろう｡</p>
+~~こういうことはやめておこう~~環境の中身は適当な変数に突っ込むべきだろう｡</p>
 <p>一気に話が飛んでしまった｡<code>{\texttt hoge}</code>みたいなことをしたいときはどうするか｡</p>
 <div class="highlight"><pre><code class="language-tex" data-lang="tex">...
 tex.print("<span class="p">{</span>" .. <span class="k">\asluastring</span><span class="p">{</span><span class="k">\texttt</span><span class="p">}</span> .. "fuck<span class="p">}</span>")

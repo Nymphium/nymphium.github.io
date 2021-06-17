@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="X1 Carbon 2015にArchをインストールした後におこなう儀式" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="X1 Carbon 2015にArchをインストールした後におこなう儀式" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2015/07/11/x1_carbon.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"X1 Carbon 2015にArchをインストールした後におこなう儀式","dateModified":"2015-07-11T00:00:00+09:00","datePublished":"2015-07-11T00:00:00+09:00","description":"こんにちは､びしょ〜じょです｡LPegが分かりません｡","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2015/07/11/x1_carbon.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"こんにちは､びしょ〜じょです｡LPegが分かりません｡","headline":"X1 Carbon 2015にArchをインストールした後におこなう儀式","dateModified":"2015-07-11T00:00:00+09:00","datePublished":"2015-07-11T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2015/07/11/x1_carbon.html"},"url":"https://nymphium.github.io/2015/07/11/x1_carbon.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>で､Archをまたインストールバトルでな､はい｡インストール記事はインターネットの海にいっぱいあるのでそちらにアウトソーシングし､インストール直後の設定について書きたい｡インストーラでブートローダなどを設定した後のあたりから｡yaourtくらいは入れておいてほしい｡</p>
 <h2 id="F2FS"><a class="headerlink" href="#F2FS">F2FS</a></h2>
 <p>推しFS｡Linux4.1でmisellaneousから昇格した｡4.2ではencryptionが入る｡</p>
-<div class="highlight"><pre><code class="language-" data-lang="">$ sudo pacman -S f2fs-tools
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">$ sudo pacman -S f2fs-tools
 $ sudo modprove f2fs
 $ sudo vim /etc/mkinitcpio.conf
 ...
@@ -120,7 +120,7 @@ $ mkinitcpio -p linux
 </code></pre></div>
 <h2 id="Network"><a class="headerlink" href="#Network">Network</a></h2>
 <p>なんでもかんでも<a href="https://wiki.archlinux.org/index.php/Systemd-networkd" target="_blank" rel="noopener noreferrer">systemd</a>に飲み込まれろ｡</p>
-<div class="highlight"><pre><code class="language-" data-lang="">% pacman -S vim wpa_supplicant
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">% pacman -S vim wpa_supplicant
 % cat /etc/systemd/network/eth0.network
 [Match]
 Name=eth0
@@ -151,13 +151,13 @@ options cfg80211 ieee80211_regdom=JP
 <p><code>network/hoge.network</code>は名前なんでも良さそう｡</p>
 <h2 id="powertop"><a class="headerlink" href="#powertop">powertop</a></h2>
 <p>バッテリーのみでも最大12hくらい動くようになる｡</p>
-<div class="highlight"><pre><code class="language-" data-lang="">$ yaourt -S powertop-autotune-systemd
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">$ yaourt -S powertop-autotune-systemd
 $ sudo powertop --calibrate
 $ sudo systemctl enable powertop-autotune.service
 </code></pre></div>
 <h2 id="TrackPoint"><a class="headerlink" href="#TrackPoint">TrackPoint</a></h2>
 <p>BIOSでTrackpadを抹殺してください｡</p>
-<div class="highlight"><pre><code class="language-" data-lang="">% pacman -S xf86-input-synaptics
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">% pacman -S xf86-input-synaptics
 % modprobe -rv psmouse &amp;&amp; modprobe -v psmouse
 % cat /etc/X11/xorg.conf.d/20-thinkpad.conf
 # ThinkPad trackpoint wheel emulation
@@ -177,12 +177,12 @@ EndSection
 <p>全然ダメだった｡なんでX死んでしまうん…｡</p>
 <p>(追記終わり)</p>
 <p>蓋を閉じたりサスペンドから戻ったりしてXアプリケーションなどを動かすと</p>
-<div class="highlight"><pre><code class="language-" data-lang="">$ xbacklight
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">$ xbacklight
 No protocol specified
 </code></pre></div>
 <p>など抜かして動かない｡<code>dmesg</code>を見てみるとxf86-video-intelが悪い気もするが真偽は不明｡</p>
 <p>Ctrl+Alt+F1とかでコンソールに移動すると文字が反復横飛びを繰り返している(語彙の欠如)｡</p>
-<div class="highlight"><pre><code class="language-" data-lang=""># echo "thinkpad_acpi" &gt; /etc/modules-load.d/thinkpad_acpi.conf
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext"># echo "thinkpad_acpi" &gt; /etc/modules-load.d/thinkpad_acpi.conf
 # echo "options thinkpad_acpi force_load=1" &gt; /etc/modprobe.d/thinkpad.conf
 # reboot
 </code></pre></div>

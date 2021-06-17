@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Algebraic Effectsの型システム入門(2) 多相エフェクト" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Algebraic Effectsの型システム入門(2) 多相エフェクト" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2019/12/09/ae-poly.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"Algebraic Effectsの型システム入門(2) 多相エフェクト","dateModified":"2019-12-09T00:00:00+09:00","datePublished":"2019-12-09T00:00:00+09:00","description":"はじめに これは前回の続きであり､型 Advent Calendar 2019の8日目の記事で､触れられなかった多相なエフェクトについてです｡","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2019/12/09/ae-poly.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"はじめに これは前回の続きであり､型 Advent Calendar 2019の8日目の記事で､触れられなかった多相なエフェクトについてです｡","headline":"Algebraic Effectsの型システム入門(2) 多相エフェクト","dateModified":"2019-12-09T00:00:00+09:00","datePublished":"2019-12-09T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2019/12/09/ae-poly.html"},"url":"https://nymphium.github.io/2019/12/09/ae-poly.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <div class="highlight"><pre><code class="language-ocaml" data-lang="ocaml"><span class="k">val</span> <span class="n">with_add5_option</span> <span class="o">:</span> <span class="k">'</span><span class="n">a</span><span class="o">!</span><span class="p">{</span><span class="kt">int</span> <span class="nc">Option</span><span class="p">}</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="k">'</span><span class="n">a</span> <span class="n">option</span><span class="p">)</span><span class="o">!</span><span class="p">{}</span>
 </code></pre></div>
 <p>たとえばparameterized effectsを採用しているKoka言語ならOK</p>
-<div class="highlight"><pre><code class="language-" data-lang="">effect option&lt;a&gt; {
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">effect option&lt;a&gt; {
   fun option(v : maybe&lt;a&gt;): a
 }
 
@@ -174,19 +174,17 @@ val with_add5_option : forall &lt;a&gt; (() -&gt; &lt;option&lt;int&gt;&gt; mayb
 </code></pre></div>
 <p>他にも､continuation monadのエミュレーションはparameterized effectsではできますがpolymorphic effectsではできません｡</p>
 <ul>
-<li>Multicore OCamlによる実装(RTEする) <a href="https://gist.github.com/Nymphium/01619c1c63595afef20ae35984680358" target="_blank" rel="noopener noreferrer">https://gist.github.com/Nymphium/01619c1c63595afef20ae35984680358</a>
-</li>
-<li>Kokaによる実装(well-typed) <a href="https://gist.github.com/Nymphium/3632858aa979d97a07f113ec0a7f629f" target="_blank" rel="noopener noreferrer">https://gist.github.com/Nymphium/3632858aa979d97a07f113ec0a7f629f</a>
-</li>
+<li>Multicore OCamlによる実装(RTEする) https://gist.github.com/Nymphium/01619c1c63595afef20ae35984680358</li>
+<li>Kokaによる実装(well-typed) https://gist.github.com/Nymphium/3632858aa979d97a07f113ec0a7f629f</li>
 </ul>
 <h1 id="%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB%28%E6%9C%AA%E5%AE%8C%29"><a class="headerlink" href="#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB%28%E6%9C%AA%E5%AE%8C%29">おわりに(未完)</a></h1>
 <p>row-based effect systemとかに話をつなげていきたかったが筆者の認識が間違いまくってたので文献を見直す必要があるのでまた今度…｡</p>
 <h1 id="%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><a class="headerlink" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE">参考文献</a></h1>
 <p>このあたりを読むと本記事で本来書かれるはずだった内容が分かります｡</p>
 <ul>
-<li>Sekiyama, Taro, and Atsushi Igarashi. “Handling polymorphic algebraic effects.” European Symposium on Programming. Springer, Cham, 2019.</li>
-<li>Kammar, Ohad, and Matija Pretnar. “No value restriction is needed for algebraic effects and handlers.” Journal of Functional Programming 27 (2017).</li>
-<li>Leijen, Daan. Algebraic Effects for Functional Programming. Technical Report. 15 pages. <a href="https://www.microsoft.com/en-us/research/publication/algebraic-effects-for-functional-programming" target="_blank" rel="noopener noreferrer">https://www.microsoft.com/en-us/research/publication/algebraic-effects-for-functional-programming</a>, 2016.</li>
+<li>Sekiyama, Taro, and Atsushi Igarashi. "Handling polymorphic algebraic effects." European Symposium on Programming. Springer, Cham, 2019.</li>
+<li>Kammar, Ohad, and Matija Pretnar. "No value restriction is needed for algebraic effects and handlers." Journal of Functional Programming 27 (2017).</li>
+<li>Leijen, Daan. Algebraic Effects for Functional Programming. Technical Report. 15 pages. https://www.microsoft.com/en-us/research/publication/algebraic-effects-for-functional-programming, 2016.</li>
 </ul>
           </div>
         </article>

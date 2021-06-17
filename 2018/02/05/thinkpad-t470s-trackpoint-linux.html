@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="ThinkPad T470sのトラックポイントの感度をLinux上でも良くする" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="ThinkPad T470sのトラックポイントの感度をLinux上でも良くする" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2018/02/05/thinkpad-t470s-trackpoint-linux.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"ThinkPad T470sのトラックポイントの感度をLinux上でも良くする","dateModified":"2018-02-05T00:00:00+09:00","datePublished":"2018-02-05T00:00:00+09:00","description":"はじめに ThinkPadは何台か持っており､いずれもArchLinuxを突っ込んで遊んでいた｡ トラックポイントの調節もxsetとかでなんとかなったんだけどT470sだけ全然設定できなくない? しかも愛用していたソフトリムキャップと非互換にしやがってお前Lenovoふざけんなよ…｡ ということでなんとかしたる!","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2018/02/05/thinkpad-t470s-trackpoint-linux.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"はじめに ThinkPadは何台か持っており､いずれもArchLinuxを突っ込んで遊んでいた｡ トラックポイントの調節もxsetとかでなんとかなったんだけどT470sだけ全然設定できなくない? しかも愛用していたソフトリムキャップと非互換にしやがってお前Lenovoふざけんなよ…｡ ということでなんとかしたる!","headline":"ThinkPad T470sのトラックポイントの感度をLinux上でも良くする","dateModified":"2018-02-05T00:00:00+09:00","datePublished":"2018-02-05T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2018/02/05/thinkpad-t470s-trackpoint-linux.html"},"url":"https://nymphium.github.io/2018/02/05/thinkpad-t470s-trackpoint-linux.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -102,12 +102,12 @@ document.addEventListener("DOMContentLoaded", function(){
 しかも愛用していたソフトリムキャップと非互換にしやがってお前Lenovoふざけんなよ…｡
 ということでなんとかしたる!</p>
 <h1 id="%E8%A7%A3"><a class="headerlink" href="#%E8%A7%A3">解</a></h1>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span><span class="nb">id</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span>xinput | perl <span class="nt">-ne</span> <span class="s1">'if ($_=~/Mouse/) {s/.*id=(\d+).*/$1/; print $_}'</span><span class="si">)</span><span class="s2">"</span>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span><span class="nb">id</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span>xinput | perl <span class="nt">-ne</span> <span class="s1">'if ($_=~/Mouse/) {s/.*id=(\d+).*/$1/; print $_}'</span><span class="si">)</span><span class="s2">"</span>
 <span class="gp">$</span><span class="w"> </span>xinput set-prop <span class="s2">"</span><span class="k">${</span><span class="nv">id</span><span class="k">}</span><span class="s2">"</span> <span class="s2">"</span><span class="si">$(</span>xinput list-props <span class="s2">"</span><span class="k">${</span><span class="nv">id</span><span class="k">}</span><span class="s2">"</span> | perl <span class="nt">-ne</span> <span class="s1">'if ($_ =~ /^\s*Coordinate/) { s/.*\((\d+)\).*/$1/; print $_}'</span><span class="si">)</span><span class="s2">"</span> 1 0 0 0 1 0 0 0 0.2
 </code></pre></div>
 <h2 id="%E3%81%A9%E3%82%86%E3%81%93%E3%81%A8"><a class="headerlink" href="#%E3%81%A9%E3%82%86%E3%81%93%E3%81%A8">どゆこと</a></h2>
 <p><code>xinput</code>コマンドでトラックポイントのidを取得します｡</p>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>xinput
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>xinput
 <span class="go">⎡ Virtual core pointer                          id=2    [master pointer  (3)]
 ⎜   ↳ Virtual core XTEST pointer                id=4    [slave  pointer  (2)]
 ⎜   ↳ PS/2 Generic Mouse                        id=10   [slave  pointer  (2)]
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>で､id=10のデバイスのCTM(Coordinate Transformation Matrix)の値を変更します｡
 ちゃんとはわかってないですが､トラックポイントへの入力に対する割合(?)を表しており､そのうち入力をn倍にして受け付ける的な値を変更することで感度を爆上げします｡</p>
 <p>デフォルト値は以下のように取得できます｡</p>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>xinput list-props <span class="s2">"</span><span class="k">${</span><span class="nv">id</span><span class="k">}</span><span class="s2">"</span>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>xinput list-props <span class="s2">"</span><span class="k">${</span><span class="nv">id</span><span class="k">}</span><span class="s2">"</span>
 <span class="go">Device 'PS/2 Generic Mouse':
         Device Enabled (140):   1
         Coordinate Transformation Matrix (142): 1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 1.000000
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>出力3行目の<code>Coordinate Transformation Matrix (142): 1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 1.00000</code>ですな｡</p>
 <p>変更は<code>xinput set-prop (dev-id) (prop-id) (value)</code>でおこないます｡
 プロパティIDは､CTMの横に書いてある<code>142</code>がそれですね｡</p>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>xinput set-prop <span class="s2">"</span><span class="k">${</span><span class="nv">id</span><span class="k">}</span><span class="s2">"</span> 142 1 0 0 0 1 0 0 0 0.2
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>xinput set-prop <span class="s2">"</span><span class="k">${</span><span class="nv">id</span><span class="k">}</span><span class="s2">"</span> 142 1 0 0 0 1 0 0 0 0.2
 </code></pre></div>
 <p>こちらもプロパティIDが固定なのかよく分からんのでPerlでスッと取りました｡</p>
 <p>各パラメータをいじっていくとトラックポイントがメチャメチャな動きになって面白いんですが､そういった地道な努力の末に最後の<code>1.00000</code>がトラックポイント感度に関係していることがわかります｡

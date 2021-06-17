@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="貧者の Algebraic Data Types と(浅い)網羅性判定" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="貧者の Algebraic Data Types と(浅い)網羅性判定" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2020/12/03/%E8%B2%A7%E8%80%85%E3%81%AE-Algebraic-Data-Types-%E3%81%A8(%E6%B5%85%E3%81%84)%E7%B6%B2%E7%BE%85%E6%80%A7%E5%88%A4%E5%AE%9A.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"貧者の Algebraic Data Types と(浅い)網羅性判定","dateModified":"2020-12-03T00:00:00+09:00","datePublished":"2020-12-03T00:00:00+09:00","description":"lily, Aikatsu, Programming language, and more","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2020/12/03/%E8%B2%A7%E8%80%85%E3%81%AE-Algebraic-Data-Types-%E3%81%A8(%E6%B5%85%E3%81%84)%E7%B6%B2%E7%BE%85%E6%80%A7%E5%88%A4%E5%AE%9A.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"lily, Aikatsu, Programming language, and more","headline":"貧者の Algebraic Data Types と(浅い)網羅性判定","dateModified":"2020-12-03T00:00:00+09:00","datePublished":"2020-12-03T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2020/12/03/%E8%B2%A7%E8%80%85%E3%81%AE-Algebraic-Data-Types-%E3%81%A8(%E6%B5%85%E3%81%84)%E7%B6%B2%E7%BE%85%E6%80%A7%E5%88%A4%E5%AE%9A.html"},"url":"https://nymphium.github.io/2020/12/03/%E8%B2%A7%E8%80%85%E3%81%AE-Algebraic-Data-Types-%E3%81%A8(%E6%B5%85%E3%81%84)%E7%B6%B2%E7%BE%85%E6%80%A7%E5%88%A4%E5%AE%9A.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -306,7 +306,7 @@ return type は <code>Option&lt;T&gt;</code> ですが､この <code>T</code> �
 <div class="highlight">
 <span class="listing-name"><label id="match2'"></label>
  listing <a href="#match2'">5.2</a>
-. match その2’</span><pre><code class="language-typescript" data-lang="typescript"><span class="kd">const</span> <span class="nx">match</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">A</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">o</span><span class="p">:</span> <span class="nx">Option</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">onSome</span><span class="p">:</span> <span class="p">(</span><span class="nx">_</span><span class="p">:</span> <span class="nx">T</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">A</span><span class="p">,</span> <span class="nx">onNone</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">A</span><span class="p">):</span> <span class="nx">A</span> <span class="o">=&gt;</span>
+. match その2'</span><pre><code class="language-typescript" data-lang="typescript"><span class="kd">const</span> <span class="nx">match</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">A</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">o</span><span class="p">:</span> <span class="nx">Option</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">onSome</span><span class="p">:</span> <span class="p">(</span><span class="nx">_</span><span class="p">:</span> <span class="nx">T</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">A</span><span class="p">,</span> <span class="nx">onNone</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">A</span><span class="p">):</span> <span class="nx">A</span> <span class="o">=&gt;</span>
   <span class="nx">isNone</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">?</span> <span class="nx">onNone</span><span class="p">()</span> <span class="p">:</span> <span class="nx">onSome</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
 <span class="c1">// 🤬 Property 'value' does not exist on type 'Option&lt;T&gt;'.</span>
 </code></pre>
@@ -407,8 +407,8 @@ must include a wild card pattern in order to be exhaustive.
 <div class="twicard">
   <span class="image"><a href="https://herp.careers/v1/herpinc" target="_blank" rel="noopener noreferrer"><div><img src="https://v1.herp.cloud/resources/company_logos/C-464R6"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://herp.careers/v1/herpinc" target="_blank" rel="noopener noreferrer">株式会社HERP 求人一覧</a></div>
-    <div class="description">株式会社HERPの求人一覧です。</div>
+    <div class="title"><a href="https://herp.careers/v1/herpinc" target="_blank" rel="noopener noreferrer">株式会社HERP の全ての求人一覧</a></div>
+    <div class="description">株式会社HERP の全ての求人一覧です。</div>
   </span>
 </div>
 <hr>

@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="うわ〜ん変わっちゃった〜〜! kindleのフォントが変わっちゃった〜! どうか､しましたか? kindleのフォントが変わってしまったのですが…｡" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="うわ〜ん変わっちゃった〜〜! kindleのフォントが変わっちゃった〜! どうか､しましたか? kindleのフォントが変わってしまったのですが…｡" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2016/07/21/kindle_font.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"うわ〜ん変わっちゃった〜〜! kindleのフォントが変わっちゃった〜! どうか､しましたか? kindleのフォントが変わってしまったのですが…｡","dateModified":"2016-07-21T00:00:00+09:00","datePublished":"2016-07-21T00:00:00+09:00","description":"はじめに Kindleの最安モデルがホコリをかぶっていたのですがなんとなくマウントしてみたところフォントの変更に成功した｡ こんなんググればいっぱい出てくると思うので今更書くまでもない話ですが､体験として面白かったので書いておく｡","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2016/07/21/kindle_font.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"はじめに Kindleの最安モデルがホコリをかぶっていたのですがなんとなくマウントしてみたところフォントの変更に成功した｡ こんなんググればいっぱい出てくると思うので今更書くまでもない話ですが､体験として面白かったので書いておく｡","headline":"うわ〜ん変わっちゃった〜〜! kindleのフォントが変わっちゃった〜! どうか､しましたか? kindleのフォントが変わってしまったのですが…｡","dateModified":"2016-07-21T00:00:00+09:00","datePublished":"2016-07-21T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2016/07/21/kindle_font.html"},"url":"https://nymphium.github.io/2016/07/21/kindle_font.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>JSONに書かれた情報を更新する｡<code>"FONTFILE.ttf.md5"</code>というパラメーターがあるので､<code>md5sum FONTFILE.ttf</code>で得た値を差し込む｡
 <code>"fonts.ja"</code>には明朝体をローマ字で書く(のか?)｡<code>"font.MINCHOROMAN.display"</code>パラメーターにはUTF-8でフォント名を埋め込みたい｡
 ここでLua5.3の<code>utf8</code>モジュールが役に立つわけですね! MoonScriptのリスト内包表記も便利だ!!</p>
-<div class="highlight"><pre><code class="language-moon" data-lang="moon"><span class="nb">print</span><span class="w"> </span><span class="nb">table.concat</span><span class="w"> </span><span class="p">[</span><span class="s2">"\\u%x"</span><span class="o">\</span><span class="n">format</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nb">utf8.codes</span><span class="w"> </span><span class="s2">"FONT-NAME"</span><span class="p">]</span><span class="w">
+<div class="highlight"><pre><code class="language-moonscript" data-lang="moonscript"><span class="nb">print</span><span class="w"> </span><span class="nb">table.concat</span><span class="w"> </span><span class="p">[</span><span class="s2">"\\u%x"</span><span class="o">\</span><span class="n">format</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nb">utf8.codes</span><span class="w"> </span><span class="s2">"FONT-NAME"</span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <h1 id="mkfs.cramfs"><a class="headerlink" href="#mkfs.cramfs">mkfs.cramfs</a></h1>
 <p>コピーおよび変更したディレクトリをComressed ROMFSにもどす｡</p>

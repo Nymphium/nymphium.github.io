@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Luaちょっとしたコードチューニング" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Luaちょっとしたコードチューニング" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2016/04/15/lua-turning.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"Luaちょっとしたコードチューニング","dateModified":"2016-04-15T00:00:00+09:00","datePublished":"2016-04-15T00:00:00+09:00","description":"1. はじめに こんにちは､びしょ〜じょです｡Luaに速度を求めるならもっと別の言語で書いたほうが良いんですが､そうはいってもLuaが書きたい! という人は多い｡ボクも書きたい｡まずはちょっとしたところから速度向上を図ろうということです｡","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2016/04/15/lua-turning.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"1. はじめに こんにちは､びしょ〜じょです｡Luaに速度を求めるならもっと別の言語で書いたほうが良いんですが､そうはいってもLuaが書きたい! という人は多い｡ボクも書きたい｡まずはちょっとしたところから速度向上を図ろうということです｡","headline":"Luaちょっとしたコードチューニング","dateModified":"2016-04-15T00:00:00+09:00","datePublished":"2016-04-15T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2016/04/15/lua-turning.html"},"url":"https://nymphium.github.io/2016/04/15/lua-turning.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function(){
           <div class="post-content" itemprop="articleBody">
 <h1 id="1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><a class="headerlink" href="#1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">1. はじめに</a></h1>
 <p>こんにちは､びしょ〜じょです｡Luaに速度を求めるならもっと別の言語で書いたほうが良いんですが､そうはいってもLuaが書きたい! という人は多い｡ボクも書きたい｡まずはちょっとしたところから速度向上を図ろうということです｡</p>
-<p>今回は<em>PUC Lua</em>(<a href="https://www.lua.org" target="_blank" rel="noopener noreferrer">https://www.lua.org</a> が提供する､もっともなじみのある本家Luaインタプリタ) についてみていきます｡</p>
+<p>今回は<em>PUC Lua</em>(https://www.lua.org が提供する､もっともなじみのある本家Luaインタプリタ) についてみていきます｡</p>
 <h2 id="1.1+%E7%92%B0%E5%A2%83"><a class="headerlink" href="#1.1+%E7%92%B0%E5%A2%83">1.1 環境</a></h2>
 <p>以下の環境でテストしました｡</p>
 <table>
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <tbody>
 <tr>
 <td style="text-align: right">CPU</td>
-<td>Intel® Core™ i5-5200U CPU @ 2.20GHz</td>
+<td>Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz</td>
 </tr>
 <tr>
 <td style="text-align: right">OS</td>

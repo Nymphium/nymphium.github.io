@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Algebraic EffectsとExtensible Effectsの違いってなんや? 関係あんの?" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Algebraic EffectsとExtensible Effectsの違いってなんや? 関係あんの?" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2020/03/15/ae-ee.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"Algebraic EffectsとExtensible Effectsの違いってなんや? 関係あんの?","dateModified":"2020-03-15T00:00:00+09:00","datePublished":"2020-03-15T00:00:00+09:00","description":"lily, Aikatsu, Programming language, and more","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2020/03/15/ae-ee.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"lily, Aikatsu, Programming language, and more","headline":"Algebraic EffectsとExtensible Effectsの違いってなんや? 関係あんの?","dateModified":"2020-03-15T00:00:00+09:00","datePublished":"2020-03-15T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2020/03/15/ae-ee.html"},"url":"https://nymphium.github.io/2020/03/15/ae-ee.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/2020/03/15/ae-ee/thumb.png"/>
@@ -107,8 +107,8 @@ document.addEventListener("DOMContentLoaded", function(){
 . 雑な比較</center>
 <label id="fig:compare"></label><p>本当かしら</p>
 <h1 id="2.+Algebraic+Effects+and+Handlers"><a class="headerlink" href="#2.+Algebraic+Effects+and+Handlers">2. Algebraic Effects and Handlers</a></h1>
-<p>PlotkinとPowerによりもたらされた､計算エフェクトを代数的に表現するという考え方<span class="cite">[<a href="#fn1" title="Plotkin, Gordon, and John Power. “Adequacy for algebraic effects.” International Conference on Foundations of Software Science and Computation Structures. Springer, Berlin, Heidelberg, 2001. " id="fnref1">1</a>]</span>
-に､PlotkinとPretnarがハンドラを追加したもの<span class="cite">[<a href="#fn2" title="Plotkin, Gordon, and Matija Pretnar. “Handlers of algebraic effects.” European Symposium on Programming. Springer, Berlin, Heidelberg, 2009. " id="fnref2">2</a>]</span>
+<p>PlotkinとPowerによりもたらされた､計算エフェクトを代数的に表現するという考え方<span class="cite">[<a href="#fn1" title='Plotkin, Gordon, and John Power. "Adequacy for algebraic effects." International Conference on Foundations of Software Science and Computation Structures. Springer, Berlin, Heidelberg, 2001. ' id="fnref1">1</a>]</span>
+に､PlotkinとPretnarがハンドラを追加したもの<span class="cite">[<a href="#fn2" title='Plotkin, Gordon, and Matija Pretnar. "Handlers of algebraic effects." European Symposium on Programming. Springer, Berlin, Heidelberg, 2009. ' id="fnref2">2</a>]</span>
 である｡</p>
 <p>詳細はカツアイしますんで､本ブログをご巡回ください｡
 簡単にまとめると､</p>
@@ -133,7 +133,7 @@ computationの結果の型を調整したりするための重要なclauseなの
 </li>
 </ul>
 <div class="highlight">
-<span class="listing-name">Kokaの例</span><pre><code class="language-" data-lang="">effect reader&lt;a&gt; {
+<span class="listing-name">Kokaの例</span><pre><code class="language-plaintext" data-lang="plaintext">effect reader&lt;a&gt; {
   fun ask() : a
 }
 
@@ -155,7 +155,7 @@ fun main() : console () {
 </code></pre>
 </div>
 <h1 id="3.+Extensible+Effects"><a class="headerlink" href="#3.+Extensible+Effects">3. Extensible Effects</a></h1>
-<p>Kiselyovらにより考案された､Monad Transformerに代わるエフェクトをガチャガチャやる方法である<span class="cite">[<a href="#fn3" title="Kiselyov, Oleg, Amr Sabry, and Cameron Swords. “Extensible effects: an alternative to monad transformers.” ACM SIGPLAN Notices 48.12 (2013): 59-70. " id="fnref3">3</a>]</span>
+<p>Kiselyovらにより考案された､Monad Transformerに代わるエフェクトをガチャガチャやる方法である<span class="cite">[<a href="#fn3" title='Kiselyov, Oleg, Amr Sabry, and Cameron Swords. "Extensible effects: an alternative to monad transformers." ACM SIGPLAN Notices 48.12 (2013): 59-70. ' id="fnref3">3</a>]</span>
 ｡
 論文を読むと分かるとおり､こちらは計算体系のようなコンセプトではなく､いい感じのライブラリの実装手法である｡</p>
 <p>耳タコだと思いますが､簡単に言うと､Freeモナドのお手軽monadic interpreter作成機能にOpen Unionで型安全に拡張性をゲット(のちにFreerとかTASeqが盛られて早くなったり)という感じです｡</p>
@@ -295,15 +295,15 @@ Iが違う 星が違う 違うだろ すべてが</p>
 <ol>
 
 <li id="fn1">
-<p>Plotkin, Gordon, and John Power. “Adequacy for algebraic effects.” International Conference on Foundations of Software Science and Computation Structures. Springer, Berlin, Heidelberg, 2001. <a href="#fnref1">↩</a></p>
+<p>Plotkin, Gordon, and John Power. "Adequacy for algebraic effects." International Conference on Foundations of Software Science and Computation Structures. Springer, Berlin, Heidelberg, 2001. <a href="#fnref1">↩</a></p>
 </li>
 
 <li id="fn2">
-<p>Plotkin, Gordon, and Matija Pretnar. “Handlers of algebraic effects.” European Symposium on Programming. Springer, Berlin, Heidelberg, 2009. <a href="#fnref2">↩</a></p>
+<p>Plotkin, Gordon, and Matija Pretnar. "Handlers of algebraic effects." European Symposium on Programming. Springer, Berlin, Heidelberg, 2009. <a href="#fnref2">↩</a></p>
 </li>
 
 <li id="fn3">
-<p>Kiselyov, Oleg, Amr Sabry, and Cameron Swords. “Extensible effects: an alternative to monad transformers.” ACM SIGPLAN Notices 48.12 (2013): 59-70. <a href="#fnref3">↩</a></p>
+<p>Kiselyov, Oleg, Amr Sabry, and Cameron Swords. "Extensible effects: an alternative to monad transformers." ACM SIGPLAN Notices 48.12 (2013): 59-70. <a href="#fnref3">↩</a></p>
 </li>
 
 <li id="fn4">

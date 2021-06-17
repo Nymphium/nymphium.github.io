@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Luaの無名再帰" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Luaの無名再帰" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2016/10/20/Lua%E3%81%AE%E7%84%A1%E5%90%8D%E5%86%8D%E5%B8%B0.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"Luaの無名再帰","dateModified":"2016-10-20T00:00:00+09:00","datePublished":"2016-10-20T00:00:00+09:00","description":"こんにちは､びしょ〜じょです｡","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2016/10/20/Lua%E3%81%AE%E7%84%A1%E5%90%8D%E5%86%8D%E5%B8%B0.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"こんにちは､びしょ〜じょです｡","headline":"Luaの無名再帰","dateModified":"2016-10-20T00:00:00+09:00","datePublished":"2016-10-20T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2016/10/20/Lua%E3%81%AE%E7%84%A1%E5%90%8D%E5%86%8D%E5%B8%B0.html"},"url":"https://nymphium.github.io/2016/10/20/Lua%E3%81%AE%E7%84%A1%E5%90%8D%E5%86%8D%E5%B8%B0.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -117,13 +117,13 @@ JavaScriptなら<code>arguments.callee()</code>という関数があるし､関
         <span class="k">end</span><span class="p">)(</span><span class="mi">5</span><span class="p">))</span>
 </code></pre></div>
 <p>MoonScriptで書いても良い｡</p>
-<div class="highlight"><pre><code class="language-moon" data-lang="moon"><span class="nb">print</span><span class="w"> </span><span class="p">((</span><span class="w">
+<div class="highlight"><pre><code class="language-moonscript" data-lang="moonscript"><span class="nb">print</span><span class="w"> </span><span class="p">((</span><span class="w">
         </span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
             </span><span class="p">((</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="p">)((</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w">
     </span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="mi">5</span><span class="w">
 </span></code></pre></div>
 <p>ところで<code>debug.getinfo()</code> という関数がある｡知らなかった｡</p>
-<div class="highlight"><pre><code class="language-" data-lang="">&gt; debug.getinfo debug.getinfo
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">&gt; debug.getinfo debug.getinfo
 {
     currentline = -1,
     func = &lt;function 1&gt;,
@@ -141,7 +141,7 @@ JavaScriptなら<code>arguments.callee()</code>という関数があるし､関
 </code></pre></div>
 <p>また､第1引数を関数ではなく<strong>callerのレベル</strong>を渡すことで､そのレベルのcallerの情報を得ることができる｡
 レベルは､<code>debug.getinfo()</code>自身を0として､その外側のクロージャーからだんだん大きくなっていく｡</p>
-<div class="highlight"><pre><code class="language-" data-lang="">&gt; (-&gt; debug.getinfo 1)!
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">&gt; (-&gt; debug.getinfo 1)!
 {
     currentline = 2,
     func = &lt;function 1&gt;,
@@ -159,13 +159,13 @@ JavaScriptなら<code>arguments.callee()</code>という関数があるし､関
 </code></pre></div>
 <p>返ってくるtableの<code>func</code>は指している関数そのものだ｡</p>
 <p>もうなにがやりたいかわかりますね｡</p>
-<div class="highlight"><pre><code class="language-moon" data-lang="moon"><span class="nb">print</span><span class="w"> </span><span class="p">((</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nb">debug.getinfo</span><span class="w"> </span><span class="mi">1</span><span class="p">).</span><span class="n">func</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="mi">5</span><span class="w">
+<div class="highlight"><pre><code class="language-moonscript" data-lang="moonscript"><span class="nb">print</span><span class="w"> </span><span class="p">((</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nb">debug.getinfo</span><span class="w"> </span><span class="mi">1</span><span class="p">).</span><span class="n">func</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="mi">5</span><span class="w">
 </span></code></pre></div>
 <p><a href="https://www.lua.org/manual/5.3/manual.html#pdf-debug" target="_blank" rel="noopener noreferrer">公式</a>にもあるように､</p>
 <blockquote>
 <p>You should exert care when using this library.</p>
 
-<p>Several of its functions violate basic assumptions about Lua code …</p>
+<p>Several of its functions violate basic assumptions about Lua code ...</p>
 </blockquote>
 <p>なのでご利用は計画的に｡</p>
 <hr>

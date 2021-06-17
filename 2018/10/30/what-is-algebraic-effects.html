@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Algebraic Effectsとは? 出身は? 使い方は? その特徴とは? 調べてみました!" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Algebraic Effectsとは? 出身は? 使い方は? その特徴とは? 調べてみました!" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2018/10/30/what-is-algebraic-effects.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"Algebraic Effectsとは? 出身は? 使い方は? その特徴とは? 調べてみました!","dateModified":"2018-10-30T00:00:00+09:00","datePublished":"2018-10-30T00:00:00+09:00","description":"ReactのHooksが実質algebraic effectsなんじゃないかということでalgebraic effectsに関する怪文書が流布して鼻白んでしまう､そんな未来を阻止するため､曲がりなりにもalgebraic effectsを研究している者としてalgebraic effectsについて書こうと思います｡","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2018/10/30/what-is-algebraic-effects.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"ReactのHooksが実質algebraic effectsなんじゃないかということでalgebraic effectsに関する怪文書が流布して鼻白んでしまう､そんな未来を阻止するため､曲がりなりにもalgebraic effectsを研究している者としてalgebraic effectsについて書こうと思います｡","headline":"Algebraic Effectsとは? 出身は? 使い方は? その特徴とは? 調べてみました!","dateModified":"2018-10-30T00:00:00+09:00","datePublished":"2018-10-30T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2018/10/30/what-is-algebraic-effects.html"},"url":"https://nymphium.github.io/2018/10/30/what-is-algebraic-effects.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -100,9 +100,9 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>当方React全く知らないしJSにも明るくない侍ですが､プログラム片にはJSっぽいシンタックスを使っていこうと思います｡</p>
 <h1 id="%E3%82%A4%E3%83%B3%E3%83%88%E3%83%AD"><a class="headerlink" href="#%E3%82%A4%E3%83%B3%E3%83%88%E3%83%AD">イントロ</a></h1>
 <p>Algebraic Effectsとは､Plotkinらによって提唱された､computational effectsを代数的に扱おうという試みである｡それにeffect handlerが後付けされ､現在はalgebraic effects <em>and handlers</em> を略してalgebraic effectsと呼んでいることが多い｡非常に直感的な説明としては､<em>継続を取ってこれる例外</em>である｡
-チュートリアルとしては､こちらの論文<sup id="fnref1" title='Pretnar, Matija. "An introduction to algebraic effects and handlers. invited tutorial paper.” Electronic Notes in Theoretical Computer Science 319 (2015): 19-35. '><a href="#fn1">1</a></sup>の内容に尽きるわけですが……｡</p>
+チュートリアルとしては､こちらの論文<sup id="fnref1" title='Pretnar, Matija. "An introduction to algebraic effects and handlers. invited tutorial paper." Electronic Notes in Theoretical Computer Science 319 (2015): 19-35. '><a href="#fn1">1</a></sup>の内容に尽きるわけですが……｡</p>
 <p>algebraic effectsは､エフェクトの定義､発生､そしてハンドラに分かれる｡</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// effect definition</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// effect definition</span>
 <span class="nx">effect</span> <span class="nx">Foo</span> <span class="cm">/* : int -&gt; int */</span><span class="p">;</span>
 
 <span class="c1">// handler</span>
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>エフェクトの発生は<code>perform エフェクト(引数...)</code>というシンタックスです｡エフェクトの引数の型は､シグネチャの矢印<code>-&gt;</code>の左辺に対応します｡ここでは<code>int</code>の引数に<code>3</code>を渡してるので､確かに型は一致します｡</p>
 <p>ハンドラは<code>handle(exp){ case エフェクト(仮引数), 継続: {...}... }</code>という感じ｡<code>exp</code>内で発生したエフェクトをハンドルします｡
 例では<code>Foo</code>エフェクトが発生したので､<code>case Foo(x), k: ...</code>という部分でキャッチされます｡<code>x</code>に<code>3</code>が渡されそうですが､<code>k</code>とは一体…?
-ここがalgebraic effectsのミソで､<code>k</code>には<strong><em>継続</em></strong>が渡されます｡出､出〜www継続奴という感じですがJSerの皆さんにはおなじみのはずです｡継続とは"<em>残りの計算</em> “であり､Promiseで<code>then</code>に渡してる関数はまさに継続といって差し支えありません｡具体的に<code>k</code>に入るものは､この場合<code>(h) =&gt; console.log(h + 10)</code>となります｡なるほど確かに残りの計算だ｡
+ここがalgebraic effectsのミソで､<code>k</code>には<strong><em>継続</em></strong>が渡されます｡出､出〜www継続奴という感じですがJSerの皆さんにはおなじみのはずです｡継続とは"<em>残りの計算</em> "であり､Promiseで<code>then</code>に渡してる関数はまさに継続といって差し支えありません｡具体的に<code>k</code>に入るものは､この場合<code>(h) =&gt; console.log(h + 10)</code>となります｡なるほど確かに残りの計算だ｡
 したがって､このハンドラによって<code>console.log(perform Foo(3) + 10)</code>は<code>console.log(3 * 3 + 10)</code>となります｡
 限定継続が分かる方は､この<code>handle(exp){...}</code>が継続のdelimiterといえばイメージが湧くかと思います｡限定継続に関して一筆したためているので､詳細は<a href="https://nymphium.github.io/2018/07/19/delimited-continuation%E3%81%AE%E5%A4%8F.html">こちら</a>をご覧ください｡</p>
 <p><code>case x: x;</code>は何やねんということですが､これはvalue handlerと呼ばれる部分です｡今回は<code>console.log</code>の戻り値が<code>void</code>なので雰囲気出ませんが､<code>exp</code>部分が値になるまで評価されきったあとに､その値をハンドルする部分です｡value handlerはエフェクトのハンドル部分と異なり継続を取りません｡</p>
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>が挙げられる｡</p>
 <h2 id="%E3%82%A8%E3%83%95%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E6%8A%BD%E8%B1%A1%E5%8C%96%EF%BD%A4%E5%AE%9F%E8%A3%85%E3%81%AE%E5%88%86%E9%9B%A2"><a class="headerlink" href="#%E3%82%A8%E3%83%95%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E6%8A%BD%E8%B1%A1%E5%8C%96%EF%BD%A4%E5%AE%9F%E8%A3%85%E3%81%AE%E5%88%86%E9%9B%A2">エフェクトの抽象化､実装の分離</a></h2>
 <p>エフェクトの抽象化はまさにalgebraic effectsのやりたいことである｡エフェクトの抽象化は即ちインタフェースと実装を分離することになる｡</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">effect</span> <span class="nx">Write</span> <span class="cm">/* : string -&gt; void */</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">effect</span> <span class="nx">Write</span> <span class="cm">/* : string -&gt; void */</span><span class="p">;</span>
 
 <span class="c1">// 標準出力に書き込む</span>
 <span class="kd">const</span> <span class="nx">print_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>なるほどね｡</p>
 <p>ハンドラの変更がそのまま実装の差し替えになる｡例えばDI注入にも使えるのではないだろうか｡
 例えばなにかの顧客DBを取ってくるエフェクト<code>GetAccountList</code>を考えてみる｡<code>filter</code>は述語<code>p</code>を取ってDBをフィルタする関数であり､内部で<code>GetAccountList</code>エフェクトを発生している｡</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">effect</span> <span class="nx">GetAccountList</span> <span class="cm">/* : void -&gt; DB */</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">effect</span> <span class="nx">GetAccountList</span> <span class="cm">/* : void -&gt; DB */</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">filter</span> <span class="o">=</span> <span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">perform</span> <span class="nx">GetAccountList</span><span class="p">();</span>
@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <span class="p">}</span>
 </code></pre></div>
 <p>例えばテスト用DBのためのハンドラは</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">test_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">test_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">handle</span><span class="p">(</span><span class="nx">th</span><span class="p">()){</span>
         <span class="k">case</span> <span class="na">x</span><span class="p">:</span> <span class="nx">x</span><span class="p">;</span>
         <span class="k">case</span> <span class="nx">GetAccountList</span><span class="p">(),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <span class="p">}</span>
 </code></pre></div>
 <p>また本番のDBを返すハンドラは</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">production_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">production_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">handle</span><span class="p">(</span><span class="nx">th</span><span class="p">()){</span>
         <span class="k">case</span> <span class="na">x</span><span class="p">:</span> <span class="nx">x</span><span class="p">;</span>
         <span class="k">case</span> <span class="nx">GetAccountList</span><span class="p">(),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <span class="p">}</span>
 </code></pre></div>
 <p>あとは実際に<code>filter</code>関数を使うシチュエーションごとにハンドラを変えればいい｡</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">test_main</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">test_main</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="p">......</span>
     <span class="kd">const</span> <span class="nx">filtered_accounts</span> <span class="o">=</span> <span class="nx">filter</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
     <span class="p">......</span>
@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <h2 id="%E3%83%8F%E3%83%B3%E3%83%89%E3%83%A9%E3%81%AE%E5%90%88%E6%88%90"><a class="headerlink" href="#%E3%83%8F%E3%83%B3%E3%83%89%E3%83%A9%E3%81%AE%E5%90%88%E6%88%90">ハンドラの合成</a></h2>
 <p>エフェクトハンドラは例外ハンドラと同様に､unhandledなエフェクトはより上位のハンドラに捕捉されます(あるいはされずにランタイムエラー)｡この性質を利用することでハンドラを合成することができます｡
 先程の<code>Write</code>を引っ張ってみます｡</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">effect</span> <span class="nx">Write</span> <span class="cm">/* : string -&gt; void */</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">effect</span> <span class="nx">Write</span> <span class="cm">/* : string -&gt; void */</span><span class="p">;</span>
 
 <span class="c1">// 標準出力に書き込む</span>
 <span class="kd">const</span> <span class="nx">print_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -237,10 +237,10 @@ document.addEventListener("DOMContentLoaded", function(){
 <span class="p">}</span>
 </code></pre></div>
 <p><code>Write</code>があるなら<code>Read</code>もしたいのが人間の性です｡</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">effect</span> <span class="nx">Read</span> <span class="cm">/* : void -&gt; string */</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">effect</span> <span class="nx">Read</span> <span class="cm">/* : void -&gt; string */</span><span class="p">;</span>
 </code></pre></div>
 <p>そしてやるだけ｡</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">scan_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">scan_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">handle</span><span class="p">(</span><span class="nx">th</span><span class="p">()){</span>
         <span class="k">case</span> <span class="na">x</span><span class="p">:</span> <span class="nx">x</span><span class="p">;</span>
         <span class="k">case</span> <span class="nx">Read</span><span class="p">(),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <span class="p">}</span>
 </code></pre></div>
 <p>標準入出力とファイルの入出力をごっちゃにするシーンはあまり多くないので1つのハンドラにしたいと思います｡せっかくハンドラをそれぞれ書いたのでこれを使ってみます｡</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">stdio_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">stdio_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">print_handler</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">scan_handler</span><span class="p">(</span><span class="nx">th</span><span class="p">));</span>
 <span class="p">}</span>
 
@@ -269,7 +269,7 @@ document.addEventListener("DOMContentLoaded", function(){
 </code></pre></div>
 <p>オッええやん｡<code>stdio_handler</code>の受け取るサンクの中で<code>Write</code>が発生した場合､<code>scan_handler</code>を突き抜けて<code>print_handler</code>によりハンドルされます｡これが合成だ､花京院｡
 もちろんいちどきに一つのハンドラも実装できます｡</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">stdio</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">stdio</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">handle</span><span class="p">(</span><span class="nx">th</span><span class="p">()){</span>
         <span class="k">case</span> <span class="na">x</span><span class="p">:</span> <span class="nx">x</span><span class="p">;</span>
 
@@ -286,7 +286,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <span class="c1">// fileも同様に(略)</span>
 </code></pre></div>
 <p>また､同じエフェクトのハンドラをネストすることで､<em>部分的に実装を変える</em>ことができる｡</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">fileio_handler</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">fileio_handler</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">perform</span> <span class="nx">Write</span><span class="p">(</span><span class="dl">"</span><span class="s2">hoge</span><span class="dl">"</span><span class="p">);</span>  <span class="c1">// fileに"hoge"を書き込む</span>
     <span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">perform</span> <span class="nx">Read</span><span class="p">();</span>  <span class="c1">// fileから読む</span>
     <span class="nx">print_handler</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">perform</span> <span class="nx">Write</span><span class="p">(</span><span class="nx">str</span><span class="p">));</span>  <span class="c1">// *標準出力に*書き込む</span>
@@ -295,10 +295,10 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>同じ<code>Write</code>を<code>fileio_handler</code>内で発生させているが､2つ目の<code>Write</code>はさらに<code>print_handler</code>に包んで発生させている｡このエフェクトの発生を最初に捕捉するハンドラは<code>print_handler</code>になるため､<code>str</code>はファイルではなく標準出力に書き込まれる｡</p>
 <p>ちなみに､サンク1行目の<code>Write</code>がハンドラによって捕捉されるので､2行目以降はハンドラ内の継続として実行されます｡2行目の<code>Read</code>もしっかり<code>fileio_handler</code>により捕捉されるが､これはつまり継続も<code>fileio_handler</code>によりハンドルされていることになる｡このように継続も追随してハンドルしてくれるハンドラをdeep handler､明示的に継続をハンドルしないといけないハンドラはshallow handlerと呼ばれる｡deep handlerのほうが一般的だが､shallow handlerのほうが動作が軽量(のはず)である｡</p>
 <h2 id="%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%AB%E6%93%8D%E4%BD%9C"><a class="headerlink" href="#%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%AB%E6%93%8D%E4%BD%9C">コントロール操作</a></h2>
-<p>継続を取ってこれるのが例外処理と決定的に異なる｡このおかげで例外の発生から復帰することができる<sup id="fnref2" title="Dolan, Stephen, et al. “Concurrent system programming with effect handlers.” International Symposium on Trends in Functional Programming. Springer, Cham, 2017. "><a href="#fn2">2</a></sup>｡
+<p>継続を取ってこれるのが例外処理と決定的に異なる｡このおかげで例外の発生から復帰することができる<sup id="fnref2" title='Dolan, Stephen, et al. "Concurrent system programming with effect handlers." International Symposium on Trends in Functional Programming. Springer, Cham, 2017. '><a href="#fn2">2</a></sup>｡
 また継続はハンドラ側でよしなにしてくれるので､記述自体は直接形式で記述できる｡このためcallback hellが解消される｡例えば<code>scan_file_handler</code>関数はまさにコールバックを取る関数をラップすることで直接形式にしている｡</p>
 <p>簡単のため､ファイル名と文字列を受け取るエフェクト<code>WriteToFile</code>を定義して様子を見る｡</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">effect</span> <span class="nx">WriteToFile</span> <span class="cm">/* : (string, string) -&gt; void */</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">effect</span> <span class="nx">WriteToFile</span> <span class="cm">/* : (string, string) -&gt; void */</span><span class="p">;</span>
 
 <span class="nx">handle</span><span class="p">((()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="p">......</span>
@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <span class="p">}</span>
 </code></pre></div>
 <p>なるほど確かに､ファイルに書き込んで残りの処理はコールバックにやらせる<code>writeFile</code>をラップして､見かけ上は直接形式で記述することに成功している｡</p>
-<p>継続が取ってこれるので､<sup id="fnref2" title="Dolan, Stephen, et al. “Concurrent system programming with effect handlers.” International Symposium on Trends in Functional Programming. Springer, Cham, 2017. "><a href="#fn2">2</a></sup>にあるように､<strong><em>async/awaitをalgebraic effectsで実装することができる</em></strong>!!
+<p>継続が取ってこれるので､<sup id="fnref2" title='Dolan, Stephen, et al. "Concurrent system programming with effect handlers." International Symposium on Trends in Functional Programming. Springer, Cham, 2017. '><a href="#fn2">2</a></sup>にあるように､<strong><em>async/awaitをalgebraic effectsで実装することができる</em></strong>!!
 これはコントロールオペレータのヒエラルキーとしてalgebraic effectsがasync/awaitと等価､またはそれ以上の表現力であることを示唆しています｡
 実際algebraic effectsはあるがasync/awaitのない言語ではうれしい…のかもしれません｡</p>
 <h1 id="Algebraic+Effects%E3%81%AE%E3%81%82%E3%82%8B%E8%A8%80%E8%AA%9E%E3%82%84%E5%AE%9F%E8%A3%85"><a class="headerlink" href="#Algebraic+Effects%E3%81%AE%E3%81%82%E3%82%8B%E8%A8%80%E8%AA%9E%E3%82%84%E5%AE%9F%E8%A3%85">Algebraic Effectsのある言語や実装</a></h1>
@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>ScalaのDSL実装</p>
 </li>
 <li>
-<p>『Eff Directly in OCaml』<sup id="fnref3" title="Oleg Kiselyov, K. C. Sivaramakrishnan. “Eff directly in OCaml.” ML Workshop. 2016. "><a href="#fn3">3</a></sup></p>
+<p>『Eff Directly in OCaml』<sup id="fnref3" title='Oleg Kiselyov, K. C. Sivaramakrishnan. "Eff directly in OCaml." ML Workshop. 2016. '><a href="#fn3">3</a></sup></p>
 
 <p>OCaml+delimccライブラリによるEffの実装｡shift/resetとalgebraic effectsの関係が分かる｡
 この論文を元に､<a href="https://gist.github.com/Nymphium/60d4e2b5888f3e04b9b98c562854f143" target="_blank" rel="noopener noreferrer">Racketによる実装</a>をおこなってみた｡</p>
@@ -343,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function(){
 </ul>
 </li>
 <li>
-<p>Koka<sup id="fnref4" title="Leijen, Daan. “Algebraic Effects for Functional Programming. Technical Report.” 15 pages. https://www.microsoft.com/en-us/research/publication/algebraic-effects-for-functional-programming, 2016. "><a href="#fn4">4</a></sup></p>
+<p>Koka<sup id="fnref4" title='Leijen, Daan. "Algebraic Effects for Functional Programming. Technical Report." 15 pages. https://www.microsoft.com/en-us/research/publication/algebraic-effects-for-functional-programming, 2016. '><a href="#fn4">4</a></sup></p>
 
 <p>Microsoft Researchが作っている言語｡エフェクトの型が明示されておりモナドみがある｡</p>
 
@@ -370,29 +370,29 @@ stackによるビルドをできるようにしたのでぜひ使ってくださ
 </ul>
 </li>
 </ul>
-<p>他にもC言語による実装<sup id="fnref5" title="Leijen, Daan. “Implementing Algebraic Effects in C.” Asian Symposium on Programming Languages and Systems. Springer, Cham, 2017. "><a href="#fn5">5</a></sup>などがあり､確かにコールスタックなどをバコッといければなんとかなりそう｡</p>
+<p>他にもC言語による実装<sup id="fnref5" title='Leijen, Daan. "Implementing Algebraic Effects in C." Asian Symposium on Programming Languages and Systems. Springer, Cham, 2017. '><a href="#fn5">5</a></sup>などがあり､確かにコールスタックなどをバコッといければなんとかなりそう｡</p>
 <div class="footnotes">
 <hr>
 <ol>
 
 <li id="fn1">
-<p>Pretnar, Matija. "An introduction to algebraic effects and handlers. invited tutorial paper.” Electronic Notes in Theoretical Computer Science 319 (2015): 19-35. <a href="#fnref1">↩</a></p>
+<p>Pretnar, Matija. "An introduction to algebraic effects and handlers. invited tutorial paper." Electronic Notes in Theoretical Computer Science 319 (2015): 19-35. <a href="#fnref1">↩</a></p>
 </li>
 
 <li id="fn2">
-<p>Dolan, Stephen, et al. “Concurrent system programming with effect handlers.” International Symposium on Trends in Functional Programming. Springer, Cham, 2017. <a href="#fnref2">↩</a></p>
+<p>Dolan, Stephen, et al. "Concurrent system programming with effect handlers." International Symposium on Trends in Functional Programming. Springer, Cham, 2017. <a href="#fnref2">↩</a></p>
 </li>
 
 <li id="fn3">
-<p>Oleg Kiselyov, K. C. Sivaramakrishnan. “Eff directly in OCaml.” ML Workshop. 2016. <a href="#fnref3">↩</a></p>
+<p>Oleg Kiselyov, K. C. Sivaramakrishnan. "Eff directly in OCaml." ML Workshop. 2016. <a href="#fnref3">↩</a></p>
 </li>
 
 <li id="fn4">
-<p>Leijen, Daan. “Algebraic Effects for Functional Programming. Technical Report.” 15 pages. <a href="https://www.microsoft.com/en-us/research/publication/algebraic-effects-for-functional-programming" target="_blank" rel="noopener noreferrer">https://www.microsoft.com/en-us/research/publication/algebraic-effects-for-functional-programming</a>, 2016. <a href="#fnref4">↩</a></p>
+<p>Leijen, Daan. "Algebraic Effects for Functional Programming. Technical Report." 15 pages. https://www.microsoft.com/en-us/research/publication/algebraic-effects-for-functional-programming, 2016. <a href="#fnref4">↩</a></p>
 </li>
 
 <li id="fn5">
-<p>Leijen, Daan. “Implementing Algebraic Effects in C.” Asian Symposium on Programming Languages and Systems. Springer, Cham, 2017. <a href="#fnref5">↩</a></p>
+<p>Leijen, Daan. "Implementing Algebraic Effects in C." Asian Symposium on Programming Languages and Systems. Springer, Cham, 2017. <a href="#fnref5">↩</a></p>
 </li>
 
 </ol>

@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Luaのtableについて" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Luaのtableについて" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2016/05/16/luatable.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"Luaのtableについて","dateModified":"2016-05-16T00:00:00+09:00","datePublished":"2016-05-16T00:00:00+09:00","description":"lily, Aikatsu, Programming language, and more","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2016/05/16/luatable.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"lily, Aikatsu, Programming language, and more","headline":"Luaのtableについて","dateModified":"2016-05-16T00:00:00+09:00","datePublished":"2016-05-16T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2016/05/16/luatable.html"},"url":"https://nymphium.github.io/2016/05/16/luatable.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -147,7 +147,7 @@ array partに関しては､以下のタイミングでメモリの確保が行�
 </ul>
 <p>メモリの確保というのは､つまりより長いtableを作って突っ込んでいくということ｡ここで<em>keyが<code>n ≧ k</code>となるnumber <code>k</code>の場合､indexとして変換される</em>｡</p>
 <p>せっかくなのでmoorを使ってみまつ｡</p>
-<div class="highlight"><pre><code class="language-" data-lang="">$ moor
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">$ moor
 moor on MoonScript version 0.4.0 on Lua 5.3
 &gt; t = {1, 2, 3}
 &gt; t[8] = 8
@@ -220,7 +220,7 @@ moor on MoonScript version 0.4.0 on Lua 5.3
 <span class="n">printrangetime</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="mi">22</span><span class="o">+</span><span class="mi">2</span><span class="o">^</span><span class="mi">22</span><span class="o">+</span><span class="mi">2</span><span class="o">^</span><span class="mi">22</span><span class="p">,</span> <span class="mi">2</span><span class="o">^</span><span class="mi">22</span><span class="o">+</span><span class="mi">2</span><span class="o">^</span><span class="mi">22</span><span class="o">+</span><span class="mi">2</span><span class="o">^</span><span class="mi">22</span><span class="o">+</span><span class="mi">4999</span><span class="p">)</span>
 </code></pre></div>
 <p>以下の実行結果が得られる｡</p>
-<div class="highlight"><pre><code class="language-" data-lang="">$ lua test.lua
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">$ lua test.lua
        from    to         (      div )         sec
 ------------------------------------------------------------
           0 〜 4999       (+    4999 )  0.00021195411682129

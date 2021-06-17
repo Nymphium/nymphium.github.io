@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Neovimへのhaskell-ide-engineの導入" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Neovimへのhaskell-ide-engineの導入" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2018/10/23/neovim-intro-hie.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"Neovimへのhaskell-ide-engineの導入","dateModified":"2018-10-23T00:00:00+09:00","datePublished":"2018-10-23T00:00:00+09:00","description":"様々なエディタ､IDEをまたいで言語ごとの補完や定義へのジャンプなどの機能を提供してくれる仕組みとして､Language Server Protocol (LSP) というものが盛り上がっています｡ 現在はエディタによるプログラミングの支援が､エディタの数×言語の数となっていますが､LSPによって､Language Server = プログラム言語の数となり､エディタはLSPのクライアント機能だけもっていればよくなります｡ エディタ自作勢にとっても､LSPを喋れるようになればモダンなIDEの機能が使えるようになるので嬉しいですね｡","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2018/10/23/neovim-intro-hie.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"様々なエディタ､IDEをまたいで言語ごとの補完や定義へのジャンプなどの機能を提供してくれる仕組みとして､Language Server Protocol (LSP) というものが盛り上がっています｡ 現在はエディタによるプログラミングの支援が､エディタの数×言語の数となっていますが､LSPによって､Language Server = プログラム言語の数となり､エディタはLSPのクライアント機能だけもっていればよくなります｡ エディタ自作勢にとっても､LSPを喋れるようになればモダンなIDEの機能が使えるようになるので嬉しいですね｡","headline":"Neovimへのhaskell-ide-engineの導入","dateModified":"2018-10-23T00:00:00+09:00","datePublished":"2018-10-23T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2018/10/23/neovim-intro-hie.html"},"url":"https://nymphium.github.io/2018/10/23/neovim-intro-hie.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -107,14 +107,14 @@ document.addEventListener("DOMContentLoaded", function(){
 そして<code>plugin/LanguageClient.vim</code>を呼べばOK｡
 もはやプラグインはプラグインマネージャに任せてるのでそんな感じのことを彼らに任せる｡</p>
 <p>neobundleなら</p>
-<div class="highlight"><pre><code class="language-vim" data-lang="vim"><span class="c">" NeoBundleLazyだと動かなかったので注意</span>
+<div class="highlight"><pre><code class="language-viml" data-lang="viml"><span class="c">" NeoBundleLazyだと動かなかったので注意</span>
 NeoBundle <span class="s1">'autozimu/LanguageClient-neovim'</span><span class="p">,</span> <span class="p">{</span>
 <span class="se">  \</span> <span class="s1">'branch'</span><span class="p">:</span> <span class="s1">'next'</span><span class="p">,</span>
 <span class="se">  \</span> <span class="s1">'build'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'linux'</span><span class="p">:</span> <span class="s1">'bash install.sh'</span><span class="p">},</span>
 <span class="se">  \</span> <span class="p">}</span>
 </code></pre></div>
 <p>deinなら</p>
-<div class="highlight"><pre><code class="language-vim" data-lang="vim"><span class="k">call</span> dein#<span class="nb">add</span><span class="p">(</span><span class="s1">'autozimu/LanguageClient-neovim'</span><span class="p">,</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-viml" data-lang="viml"><span class="k">call</span> dein#<span class="nb">add</span><span class="p">(</span><span class="s1">'autozimu/LanguageClient-neovim'</span><span class="p">,</span> <span class="p">{</span>
 <span class="se">  \</span> <span class="s1">'rev'</span><span class="p">:</span> <span class="s1">'next'</span><span class="p">,</span>
 <span class="se">  \</span> <span class="s1">'build'</span><span class="p">:</span> <span class="s1">'bash install.sh'</span><span class="p">,</span>
 <span class="se">  \</span> <span class="p">})</span>
@@ -126,7 +126,7 @@ NeoBundle <span class="s1">'autozimu/LanguageClient-neovim'</span><span class="p
 <span class="py">build</span> <span class="p">=</span> <span class="s">"bash install.sh"</span>
 </code></pre></div>
 <p>そして以下を書く</p>
-<div class="highlight"><pre><code class="language-vim" data-lang="vim"><span class="k">let</span> <span class="nv">g:LanguageClient_rootMakers</span> <span class="p">=</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-viml" data-lang="viml"><span class="k">let</span> <span class="nv">g:LanguageClient_rootMakers</span> <span class="p">=</span> <span class="p">{</span>
 <span class="se">  \</span> <span class="s1">'haskell'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'*.cabal'</span><span class="p">,</span> <span class="s1">'stack.yaml'</span><span class="p">],</span>
 <span class="se">  \</span> <span class="p">}</span> 
 <span class="k">let</span> <span class="nv">g:LanguageClient_serverCommands</span> <span class="p">=</span> <span class="p">{</span>
@@ -154,11 +154,11 @@ augroup END
 </code></pre></div>
 <h1 id="Haskell-IDE-Engine%E3%81%AE%E5%B0%8E%E5%85%A5"><a class="headerlink" href="#Haskell-IDE-Engine%E3%81%AE%E5%B0%8E%E5%85%A5">Haskell-IDE-Engineの導入</a></h1>
 <p>stackをまず用意します｡</p>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>pacman <span class="nt">-S</span> stack
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>pacman <span class="nt">-S</span> stack
 </code></pre></div>
 <p>引っ張ってインストールする｡
 stack ghcのバージョンによるので詳細はREADMEよんで</p>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span>git clone https://github.com/haskell/haskell-ide-engine <span class="nt">--recursive</span>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>git clone https://github.com/haskell/haskell-ide-engine <span class="nt">--recursive</span>
 <span class="gp">$</span><span class="w"> </span><span class="nb">cd </span>haskell-ide-engine
 <span class="gp">$</span><span class="w"> </span>git submodule update <span class="nt">--init</span>
 <span class="gp">$</span><span class="w"> </span>stack <span class="nb">install </span>cabal-install
@@ -168,11 +168,11 @@ stack ghcのバージョンによるので詳細はREADMEよんで</p>
 </code></pre></div>
 <p>完了だ!!
 しかし実際に使う前にプロジェクトで以下を実行</p>
-<div class="highlight"><pre><code class="language-shell-session" data-lang="shell-session"><span class="gp">$</span><span class="w"> </span><span class="nb">cd </span>path/to/your/project
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span><span class="nb">cd </span>path/to/your/project
 <span class="gp">$</span><span class="w"> </span>stack haddock <span class="nt">--keep-going</span> <span class="c"># プロジェクトの補完/ドキュメント用DBを作る</span>
 </code></pre></div>
 <p>適当な場所でF5を押す(<code>call LanguageClient_contextMenu()</code>)と</p>
-<div class="highlight"><pre><code class="language-" data-lang="">1) Type Definition
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">1) Type Definition
 2) Code Action
 3) Workspace Symbol
 4) Rename

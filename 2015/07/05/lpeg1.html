@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="LPegの使い方 patternその1" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="LPegの使い方 patternその1" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2015/07/05/lpeg1.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"LPegの使い方 patternその1","dateModified":"2015-07-05T00:00:00+09:00","datePublished":"2015-07-05T00:00:00+09:00","description":"こんにちは､びしょ〜じょです｡無事『FLOWERS』夏篇を終わったことにより脳内が百合まみれっちゅ〜わけ｡","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2015/07/05/lpeg1.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"こんにちは､びしょ〜じょです｡無事『FLOWERS』夏篇を終わったことにより脳内が百合まみれっちゅ〜わけ｡","headline":"LPegの使い方 patternその1","dateModified":"2015-07-05T00:00:00+09:00","datePublished":"2015-07-05T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2015/07/05/lpeg1.html"},"url":"https://nymphium.github.io/2015/07/05/lpeg1.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -108,11 +108,11 @@ document.addEventListener("DOMContentLoaded", function(){
 <center>
 <img src="/pictures/2015-07-05-lpeg_logo.gif" alt="LPeg">
 
-<p><a href="http://www.inf.puc-rio.br/%7Eroberto/lpeg/" target="_blank" rel="noopener noreferrer">http://www.inf.puc-rio.br/~roberto/lpeg/</a></p>
+<p>http://www.inf.puc-rio.br/~roberto/lpeg/</p>
 </center>
 <p>全く関係ないこというけど有名なLuaモジュールの一部のロゴってこんな感じでちんまりしてるよね｡LuaTeXのロゴとかもアレだし｡はい｡</p>
 <p>PEGのLua版｡PEGは文脈自由文法の知り合いで曖昧性がない｡詳しくは調べてください｡</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># LuaRocksにあるので簡単インストール</span>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="c"># LuaRocksにあるので簡単インストール</span>
 luarocks <span class="nt">--local</span> <span class="nb">install </span>lpeg
 </code></pre></div>
 <p>Luaの(サブセットの)処理系をMoonScriptで書くことになったので､本稿は使い方の備忘録となる｡</p>
@@ -152,7 +152,7 @@ luarocks <span class="nt">--local</span> <span class="nb">install </span>lpeg
 <p>いつものグルーピング｡</p>
 <h1 id="Grammer"><a class="headerlink" href="#Grammer">Grammer</a></h1>
 <p><code>lpeg.P</code>にtableを渡すことでPEGを定義できる｡四則演算はこんな感じかしら｡</p>
-<div class="highlight"><pre><code class="language-MoonScript" data-lang="MoonScript">space = lpeg.S' \t\n'
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">space = lpeg.S' \t\n'
 grammer = lpeg.P{
     'Term'
     Term: lpeg.V'Fact' * (space^0 * lpeg.S'+-' * space^0 * lpeg.V'Fact')^0
@@ -164,28 +164,28 @@ grammer = lpeg.P{
 <div>
 $$
 \begin{array}{l}
-Term\leftarrow{}Fact\cdot(Space^*\cdot(‘+’/‘-’)\cdot{}Space^*\cdot{}Fact)^*\\
-Fact\leftarrow{}Prm\cdot{}(Space^*\cdot{}(‘*’/‘/’/‘\%’)\cdot{}Prm)^*\\
-Prm\leftarrow{}‘(’\cdot{}Term^*\cdot{}Space^*{‘)’}/[0-9]^+
+Term\leftarrow{}Fact\cdot(Space^*\cdot('+'/'-')\cdot{}Space^*\cdot{}Fact)^*\\\\
+Fact\leftarrow{}Prm\cdot{}(Space^*\cdot{}('*'/'/'/'\%')\cdot{}Prm)^*\\\\
+Prm\leftarrow{}'('\cdot{}Term^*\cdot{}Space^*{')'}/[0-9]^+
 \end{array}
 $$
 </div>
 <p>渡すtableの1番目には開始記号を明示していする｡</p>
 <h1 id="Tips"><a class="headerlink" href="#Tips">Tips</a></h1>
 <p>MoonScriptでLPegを使う際､想いがMoonScript処理系に伝わらないことがある｡例えば\([0-9][a-z][A-Z]\)というものを書きたい時､</p>
-<div class="highlight"><pre><code class="language-MoonScript" data-lang="MoonScript">-- MoonScript
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">-- MoonScript
 R '09' * R 'az' * R 'AZ'
 </code></pre></div>
 <p>とすると､Luaに落ちる時､曲解される｡</p>
-<div class="highlight"><pre><code class="language-Lua" data-lang="Lua">-- Lua
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">-- Lua
 R('09' * R('az' * R('AZ')))
 </code></pre></div>
 <p>フニ〜</p>
-<div class="highlight"><pre><code class="language-MoonScript" data-lang="MoonScript">-- MoonScript
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">-- MoonScript
 R'09' * R'az' * R'AZ'
 </code></pre></div>
 <p>といった具合に<em>関数と引数の間にスペースを入れない</em>ことで</p>
-<div class="highlight"><pre><code class="language-Lua" data-lang="Lua">-- Lua
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">-- Lua
 R('09') * R('az') * R('AZ')
 </code></pre></div>
 <p>落ちたな(確信)｡</p>

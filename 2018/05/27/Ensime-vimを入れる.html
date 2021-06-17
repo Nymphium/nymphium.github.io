@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Ensime-vimを入れる" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Ensime-vimを入れる" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2018/05/27/Ensime-vim%E3%82%92%E5%85%A5%E3%82%8C%E3%82%8B.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"Ensime-vimを入れる","dateModified":"2018-05-27T00:00:00+09:00","datePublished":"2018-05-27T00:00:00+09:00","description":"lily, Aikatsu, Programming language, and more","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2018/05/27/Ensime-vim%E3%82%92%E5%85%A5%E3%82%8C%E3%82%8B.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"lily, Aikatsu, Programming language, and more","headline":"Ensime-vimを入れる","dateModified":"2018-05-27T00:00:00+09:00","datePublished":"2018-05-27T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2018/05/27/Ensime-vim%E3%82%92%E5%85%A5%E3%82%8C%E3%82%8B.html"},"url":"https://nymphium.github.io/2018/05/27/Ensime-vim%E3%82%92%E5%85%A5%E3%82%8C%E3%82%8B.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -134,7 +134,7 @@ pipでなくpacman/yourtに任せたいので､公式リポジトリから<em>p
 </h2>
 <p>フォーマッター｡ScalaもscalafmtがあればOK｡
 ただ何もしないとフォーマット時にファイル先頭にゴミが入るので以下をvimrcに追加</p>
-<div class="highlight"><pre><code class="language-vim" data-lang="vim"><span class="k">let</span> <span class="nv">g:neoformat_scala_scalafmt</span> <span class="p">=</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-viml" data-lang="viml"><span class="k">let</span> <span class="nv">g:neoformat_scala_scalafmt</span> <span class="p">=</span> <span class="p">{</span>
 <span class="se">  \</span> <span class="s1">'exe'</span><span class="p">:</span> <span class="s1">'scalafmt'</span><span class="p">,</span>
 <span class="se">  \</span> <span class="s1">'replace'</span><span class="p">:</span> <span class="m">1</span><span class="p">,</span>
 <span class="se">  \</span> <span class="p">}</span>

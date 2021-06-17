@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="LPegの使い方 patternその2" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="LPegの使い方 patternその2" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2015/07/23/lpeg2.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"LPegの使い方 patternその2","dateModified":"2015-07-23T00:00:00+09:00","datePublished":"2015-07-23T00:00:00+09:00","description":"その2です｡LPegの日本語解説が世界的に少ないので多少の需要があると信じて書いていきたい｡","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2015/07/23/lpeg2.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"その2です｡LPegの日本語解説が世界的に少ないので多少の需要があると信じて書いていきたい｡","headline":"LPegの使い方 patternその2","dateModified":"2015-07-23T00:00:00+09:00","datePublished":"2015-07-23T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2015/07/23/lpeg2.html"},"url":"https://nymphium.github.io/2015/07/23/lpeg2.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function(){
 実は省略が可能</p>
 </li>
 </ul>
-<div class="highlight"><pre><code class="language-MoonScript" data-lang="MoonScript">&gt; import P, C, S, R, match from require "lpeg"
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">&gt; import P, C, S, R, match from require "lpeg"
 &gt; P(2)\match "aiueo"
 3 -- マッチ後の位置
 &gt; C(2)\match "aiueo"
@@ -118,9 +118,9 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>lpeg.Cはpatternを取りキャプチャを返します｡そのうち書きます｡lpeg.matchはマッチです(雑)｡</p>
 <h1 id="%E6%BC%94%E7%AE%97%E5%AD%90"><a class="headerlink" href="#%E6%BC%94%E7%AE%97%E5%AD%90">演算子</a></h1>
 <h2 id="pat1+-+pat2"><a class="headerlink" href="#pat1+-+pat2">pat1 - pat2</a></h2>
-<p>“pat2を含まないpat2にマッチするパターン"を還す｡\(!pat2 pat1\)</p>
+<p>"pat2を含まないpat2にマッチするパターン"を還す｡\(!pat2 pat1\)</p>
 <p>上記のlpeg.P(number)と合わせてみる｡</p>
-<div class="highlight"><pre><code class="language-MoonScript" data-lang="MoonScript">&gt; C(2 - P("ae"))\match "ai"
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">&gt; C(2 - P("ae"))\match "ai"
 "ai"
 &gt; C(2 - P("ae"))\match "ao"
 "ao"
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>ただどうしてもこのマイナスを四則演算として処理され､エラーなどになることがあるので省略できないこともある｡う〜ん動的型付け</p>
 <h2 id="pat+%2F+func"><a class="headerlink" href="#pat+%2F+func">pat / func</a></h2>
 <p>patにマッチしたとき､マッチした文字列をfuncに渡し､マッチ時にfuncが即実行される｡</p>
-<div class="highlight"><pre><code class="language-MoonScript" data-lang="MoonScript">&gt; p = P("aiueo") / (...) -&gt; print "match: #{...}"
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">&gt; p = P("aiueo") / (...) -&gt; print "match: #{...}"
 &gt; p2 = P"kakikukeko"
 &gt; p2 = P"kakikukeko" / (...) -&gt; print "match2: #{...}"
 &gt; C(p * p2)\match "aiueokakikukeko"

@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Luaで無限リスト" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Luaで無限リスト" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2018/06/20/lua-infinite-list.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"Luaで無限リスト","dateModified":"2018-06-20T00:00:00+09:00","datePublished":"2018-06-20T00:00:00+09:00","description":"こんにちは､びしょ〜じょです｡ さて､Luaでも無限リストを作っていきます｡","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2018/06/20/lua-infinite-list.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"こんにちは､びしょ〜じょです｡ さて､Luaでも無限リストを作っていきます｡","headline":"Luaで無限リスト","dateModified":"2018-06-20T00:00:00+09:00","datePublished":"2018-06-20T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2018/06/20/lua-infinite-list.html"},"url":"https://nymphium.github.io/2018/06/20/lua-infinite-list.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -136,13 +136,13 @@ tableは長さが動的な､<em>成長する</em> arrayのように使えます
 <span class="kd">local</span> <span class="n">_</span> <span class="o">=</span> <span class="n">t2</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="c1">-- do NOTHING</span>
 </code></pre></div>
 <p><code>self</code>というのは予約語でもなんでもなく､<code>__index</code>メタメソッドの第1引数にはオリジナルのtableが入るので､わかりやすい変数名として<code>self</code>がよく用いられています｡</p>
-<p>“<strong>未定義の</strong> keyにアクセスした場合の挙動を変更できる"というのが重要で､ オリジナルのtableに計算済みの値をメモできる｡
+<p>"<strong>未定義の</strong> keyにアクセスした場合の挙動を変更できる"というのが重要で､ オリジナルのtableに計算済みの値をメモできる｡
 もうなんとなく分かってくるんじゃないでしょうか｡</p>
 <h1 id="%E5%AE%9F%E8%A3%85%E3%81%99%E3%81%A3%E3%81%BA"><a class="headerlink" href="#%E5%AE%9F%E8%A3%85%E3%81%99%E3%81%A3%E3%81%BA">実装すっぺ</a></h1>
 <p>例として次のような漸化式の無限リストを考える｡
 $$
 \begin{array}{l}
-e_1 = 1\
+e_1 = 1\\
 e_n=e_{n - 1} + n 
 \end{array}
 $$</p>

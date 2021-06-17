@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="ArchLinuxをインストールしました｡" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="ArchLinuxをインストールしました｡" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2015/07/25/arch_install.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"ArchLinuxをインストールしました｡","dateModified":"2015-07-25T00:00:00+09:00","datePublished":"2015-07-25T00:00:00+09:00","description":"どうもX1 Carbonのグラフィックドライバ調子が悪いように見える｡あるいは適切なドライバがインストールされていない｡","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2015/07/25/arch_install.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"どうもX1 Carbonのグラフィックドライバ調子が悪いように見える｡あるいは適切なドライバがインストールされていない｡","headline":"ArchLinuxをインストールしました｡","dateModified":"2015-07-25T00:00:00+09:00","datePublished":"2015-07-25T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2015/07/25/arch_install.html"},"url":"https://nymphium.github.io/2015/07/25/arch_install.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>仕方がないのでArchに戻った｡せっかくだし､T芝を見習って個人的にチャレンジングなことをした｡</p>
 <h2 id="rEFInd"><a class="headerlink" href="#rEFInd">rEFInd</a></h2>
 <p>GRUBよりもモダンな感じがするので入れた｡</p>
-<div class="highlight"><pre><code class="language-" data-lang=""># pacman -S refind-efi
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext"># pacman -S refind-efi
 # refind-install
 </code></pre></div>
 <p>なんて簡単な導入なんだ｡</p>
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>確認したところ､たしかにSLiMはアレだった｡でも他のDMもなんか微妙だしなぁオイ…｡と探していたところ､ちょうどいい物体が見つかった｡</p>
 <p><a href="https://aur.archlinux.org/packages/xlogin-git/" target="_blank" rel="noopener noreferrer">xlogin</a></p>
 <p>これでミニマリズムをね､</p>
-<div class="highlight"><pre><code class="language-" data-lang=""># yaourt -S xlogin-git
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext"># yaourt -S xlogin-git
 # systemctl enable xlogin@username
 </code></pre></div>
 <p>~/.xinitrcを読んでくれるだけなので､これといった設定は要らず｡</p>

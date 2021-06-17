@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="qmk_firmwareで日本語配列 / マウスエミュレーションを頑張る" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="qmk_firmwareで日本語配列 / マウスエミュレーションを頑張る" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2019/02/17/qmk-jp-mouse.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"qmk_firmwareで日本語配列 / マウスエミュレーションを頑張る","dateModified":"2019-02-17T00:00:00+09:00","datePublished":"2019-02-17T00:00:00+09:00","description":"1. はじめに qmk_firmware(以降qmkと省略)といえば最近の自作キーボードにおけるファームウェアの主流ですね｡ ちょっとしたことなら簡単にできますが､少し踏み込んだことをやろうとするとテクが必要となる印象です｡","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2019/02/17/qmk-jp-mouse.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"1. はじめに qmk_firmware(以降qmkと省略)といえば最近の自作キーボードにおけるファームウェアの主流ですね｡ ちょっとしたことなら簡単にできますが､少し踏み込んだことをやろうとするとテクが必要となる印象です｡","headline":"qmk_firmwareで日本語配列 / マウスエミュレーションを頑張る","dateModified":"2019-02-17T00:00:00+09:00","datePublished":"2019-02-17T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2019/02/17/qmk-jp-mouse.html"},"url":"https://nymphium.github.io/2019/02/17/qmk-jp-mouse.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>ちなみに軸はKailh Goldにしました｡
 丁度いいカチカチとしたクリック感が良いです｡</p>
 <p>筆者の設定は､以下のURLから参照できます｡
-<a href="https://github.com/Nymphium/qmk_firmware/tree/nymphium/keyboards/ergodox_ez/keymaps/nymphium" target="_blank" rel="noopener noreferrer">https://github.com/Nymphium/qmk_firmware/tree/nymphium/keyboards/ergodox_ez/keymaps/nymphium</a></p>
+https://github.com/Nymphium/qmk_firmware/tree/nymphium/keyboards/ergodox_ez/keymaps/nymphium</p>
 <h1 id="2.+%E6%97%A5%E6%9C%AC%E8%AA%9E%E9%85%8D%E5%88%97"><a class="headerlink" href="#2.+%E6%97%A5%E6%9C%AC%E8%AA%9E%E9%85%8D%E5%88%97">2. 日本語配列</a></h1>
 <p>ErgoDox EZでも日本語配列にしたくなります｡
 今回は､Shift+数字を日本語配列にすることを考えます｡</p>
@@ -418,7 +418,7 @@ ErgoDox EZはデフォルトで<code>yes</code>になってます｡</p>
 <p>実装だけになったのであまりおもしろくないですね｡
 <code>while</code>で空のループを回してるのはすこしドキッとします｡
 <code>timer_elapsed</code>関数で､押下されてからの秒数を取得してます｡</p>
-<p>これなら先述の､ “qmkは何秒キーを押下したかのような情報” を取得していろいろできるような気が一瞬します｡
+<p>これなら先述の､ "qmkは何秒キーを押下したかのような情報" を取得していろいろできるような気が一瞬します｡
 しかし残念ながらそうではなく､これは押下イベントのタイムスタンプが入ったレコードであり､何秒押下しているかではありません｡
 また､<code>record-&gt;event.pressed</code>も動的に変わるわけではなく､押下/離したというイベントが降ってくるので､どちらかという情報が格納されているだけです｡</p>
 <p>よもやま話が挟まりましたが､これで全てです｡

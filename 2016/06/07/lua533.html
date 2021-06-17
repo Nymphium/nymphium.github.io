@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Lua 5.3.3 release - 変更に&quot;python rule&quot;とありますが -" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Lua 5.3.3 release - 変更に&quot;python rule&quot;とありますが -" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2016/06/07/lua533.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"Lua 5.3.3 release - 変更に&quot;python rule&quot;とありますが -","dateModified":"2016-06-07T00:00:00+09:00","datePublished":"2016-06-07T00:00:00+09:00","description":"こんにちは､びしょ〜じょです｡イベントに複数行ったらお金がなくなりました｡","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2016/06/07/lua533.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"こんにちは､びしょ〜じょです｡イベントに複数行ったらお金がなくなりました｡","headline":"Lua 5.3.3 release - 変更に&quot;python rule&quot;とありますが -","dateModified":"2016-06-07T00:00:00+09:00","datePublished":"2016-06-07T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2016/06/07/lua533.html"},"url":"https://nymphium.github.io/2016/06/07/lua533.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/github_icon.png"/>
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function(){
   </span>
 </div>
 <p>5.3.2からのアップデートなのでbug fix <em>だけ</em> かと思いきや…｡</p>
-<h1 id="2.+new+semantics+for+empty+matches+%28%E2%80%9Cpython+rule%E2%80%9D%29"><a class="headerlink" href="#2.+new+semantics+for+empty+matches+%28%E2%80%9Cpython+rule%E2%80%9D%29">2. new semantics for empty matches (“python rule”)</a></h1>
+<h1 id="2.+new+semantics+for+empty+matches+%28%22python+rule%22%29"><a class="headerlink" href="#2.+new+semantics+for+empty+matches+%28%22python+rule%22%29">2. new semantics for empty matches ("python rule")</a></h1>
 <p>Lua 5.3.3-rc1のリリースではこんな感じのことが書かれてました｡</p>
 <div class="twicard">
   <span class="image"><a href="http://lua-users.org/lists/lua-l/2016-05/msg00068.html" target="_blank" rel="noopener noreferrer"><div><img src="/pictures/no_image.png"></div></a></span>
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function(){
 </div>
 <blockquote>
 <ul>
-<li>new semantics for empty matches (“Python rule”)</li>
+<li>new semantics for empty matches ("Python rule")</li>
 </ul>
 </blockquote>
 <p>なるほど｡ところで以下のようなコードを考える｡</p>
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <span class="k">end</span>
 </code></pre></div>
 <p>Lua5.3.2までは以下のようになる｡</p>
-<div class="highlight"><pre><code class="language-" data-lang="">$ lua
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">$ lua
 Lua 5.3.2  Copyright (C) 1994-2015 Lua.org, PUC-Rio
 &gt; for k in ("a,,b,c"):gmatch"[^,]*" do
 &gt;   print(k)
@@ -142,7 +142,7 @@ c
 
 </code></pre></div>
 <p>さて､"python rule"なLua 5.3.3では｡</p>
-<div class="highlight"><pre><code class="language-" data-lang="">$ lua533
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">$ lua533
 Lua 5.3.3  Copyright (C) 1994-2016 Lua.org, PUC-Rio
 &gt; for k in ("a,,b,c"):gmatch"[^,]*" do
 &gt;   print(k)
@@ -201,13 +201,13 @@ c
 </code></pre></div>
 <h3 id="3-2-1.+before+533"><a class="headerlink" href="#3-2-1.+before+533">3-2-1. before 533</a></h3>
 <p>まず､以下の結果が得られる｡</p>
-<div class="highlight"><pre><code class="language-" data-lang="">$ lua
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">$ lua
 Lua 5.3.2  Copyright (C) 1994-2015 Lua.org, PUC-Rio
 &gt; print(("a12b3c"):gsub("[^0-9]*", "X"))
 XX1X2XX3XX      7
 </code></pre></div>
 <h3 id="3-2-2.+after+533"><a class="headerlink" href="#3-2-2.+after+533">3-2-2. after 533</a></h3>
-<div class="highlight"><pre><code class="language-" data-lang="">$ lua533
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">$ lua533
 Lua 5.3.3  Copyright (C) 1994-2016 Lua.org, PUC-Rio
 &gt; print(("a12b3c"):gsub("[^0-9]*", "X"))
 X1X2X3X 4

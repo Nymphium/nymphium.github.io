@@ -16,7 +16,7 @@
     <meta name="twitter:site" content="lilyum ensemble"/>
     <meta name="twitter:title" content="Asymmetric CoroutinesによるOneshot Algebraic Effectsの実装 - lilyum ensemble"/>
     <meta name="twitter:url" content="/2018/12/09/asymmetric-coroutines%E3%81%AB%E3%82%88%E3%82%8Boneshot-algebraic-effects%E3%81%AE%E5%AE%9F%E8%A3%85.html"/> 
-    <meta name="twitter:text:description" content="こんにちは､びしょ〜じょです｡これは言語実装Advent Calendar 2018の9日目の記事です｡最初は “変数が全部箱の言語の設計と実装” と題して全部optionにくるまれてる参照とか..."/>
+    <meta name="twitter:text:description" content="こんにちは､びしょ〜じょです｡これは言語実装Advent Calendar 2018の9日目の記事です｡最初は "変数が全部箱の言語の設計と実装" と題して全部optionにくるまれてる参照とか..."/>
     <meta name="twitter:image" content="https://nymphium.github.io/pictures/2018/12/09/asymmetric coroutinesによるoneshot algebraic effectsの実装/thumb.png"/>
     <meta name="twitter:image:src" content="https://nymphium.github.io/pictures/2018/12/09/asymmetric coroutinesによるoneshot algebraic effectsの実装/thumb.png"/>
 
@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<meta name="generator" content="Jekyll v3.8.7" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Asymmetric CoroutinesによるOneshot Algebraic Effectsの実装" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Asymmetric CoroutinesによるOneshot Algebraic Effectsの実装" />
 <script type="application/ld+json">
-{"url":"https://nymphium.github.io/2018/12/09/asymmetric-coroutines%E3%81%AB%E3%82%88%E3%82%8Boneshot-algebraic-effects%E3%81%AE%E5%AE%9F%E8%A3%85.html","author":{"@type":"Person","name":"Satoru Kawahara"},"headline":"Asymmetric CoroutinesによるOneshot Algebraic Effectsの実装","dateModified":"2018-12-09T00:00:00+09:00","datePublished":"2018-12-09T00:00:00+09:00","description":"lily, Aikatsu, Programming language, and more","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2018/12/09/asymmetric-coroutines%E3%81%AB%E3%82%88%E3%82%8Boneshot-algebraic-effects%E3%81%AE%E5%AE%9F%E8%A3%85.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","description":"lily, Aikatsu, Programming language, and more","headline":"Asymmetric CoroutinesによるOneshot Algebraic Effectsの実装","dateModified":"2018-12-09T00:00:00+09:00","datePublished":"2018-12-09T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2018/12/09/asymmetric-coroutines%E3%81%AB%E3%82%88%E3%82%8Boneshot-algebraic-effects%E3%81%AE%E5%AE%9F%E8%A3%85.html"},"url":"https://nymphium.github.io/2018/12/09/asymmetric-coroutines%E3%81%AB%E3%82%88%E3%82%8Boneshot-algebraic-effects%E3%81%AE%E5%AE%9F%E8%A3%85.html","author":{"@type":"Person","name":"Satoru Kawahara"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta property="og:image" content="/pictures/2018/12/09/asymmetric coroutinesによるoneshot algebraic effectsの実装/thumb.png"/>
@@ -98,11 +98,11 @@ document.addEventListener("DOMContentLoaded", function(){
           <div class="post-content" itemprop="articleBody">
 <p>こんにちは､びしょ〜じょです｡
 これは<a href="https://qiita.com/advent-calendar/2018/lang_dev" target="_blank" rel="noopener noreferrer">言語実装Advent Calendar 2018</a>の9日目の記事です｡
-最初は “変数が全部箱の言語の設計と実装” と題して全部optionにくるまれてる参照とかそういう感じの何かを作ろうとしたけど多分面白くなくなって筆者の熱も醒めると思ったのでやめた｡
+最初は "変数が全部箱の言語の設計と実装" と題して全部optionにくるまれてる参照とかそういう感じの何かを作ろうとしたけど多分面白くなくなって筆者の熱も醒めると思ったのでやめた｡
 またそうこうしてるうちに良い感じのものが作れたので､論理的背景を整理するためにも内容を再考して今回のような内容となりました｡
 ほならね早速いってみましょう｡</p>
 <h1 id="1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><a class="headerlink" href="#1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">1. はじめに</a></h1>
-<p>Algebraic effects and handlers(以降 “algebraic effects” と省略)は､いわば限定継続を取れる例外である｡
+<p>Algebraic effects and handlers(以降 "algebraic effects" と省略)は､いわば限定継続を取れる例外である｡
 try節をdelimiterとし､例外発生位置から残りの計算を限定継続として受け取り､継続をもちいて例外から復帰したり､単に継続を捨てて例外として扱うこともできる｡
 最近各所で注目されており､組み込みの言語機能やライブラリとしていくつか提供されている｡
 しかし､強力なコントロールオペレータとしての様々な使用が期待される一方､実装はそれほど多くないのが難点である｡</p>
@@ -123,23 +123,23 @@ Lua､Rubyなどの言語機能またはライブラリとして提供されて�
 <h2 id="2-1.+Core+Eff"><a class="headerlink" href="#2-1.+Core+Eff">2-1. Core Eff</a></h2>
 <p>今回は1つのハンドラでハンドルできるエフェクトは1つというCore Effという言語を考える(図<a href="#ce-syn">2.1</a>
 )｡
-<span class="cite">[<a href="#fn1" title="Kiselyov, Oleg, and Kc Sivaramakrishnan. “Eff directly in OCaml.(2016).” ACM SIGPLAN Workshop on ML. 2016. " id="fnref1">1</a>]</span>
+<span class="cite">[<a href="#fn1" title='Kiselyov, Oleg, and Kc Sivaramakrishnan. "Eff directly in OCaml.(2016)." ACM SIGPLAN Workshop on ML. 2016. ' id="fnref1">1</a>]</span>
 を参考にした｡</p>
 <div>
 <center>
 <label id="ce-syn"></label>
 
-\[
+\\[
 \begin{array}{rrl}
-  x &amp; \in &amp; \text{\textit{Variables}}\\
-  \text{\textit{eff}} &amp; \in &amp; \text{\textit{Effects}}\\
-  v &amp; ::= &amp; x \mid h \mid \lambda x. e \mid \mathtt{perform}\ \text{\textit{eff}}\ v \\
-  e &amp; ::= &amp; v \mid v\ v \mid \mathtt{let}\ x=e\ \mathtt{in}\ e\\
-    &amp;\mid &amp; \mathtt{inst}\ \left(\right) \mid \mathtt{with}\ h\ \mathtt{handle}\ e \\
+  x &amp; \in &amp; \text{\textit{Variables}}\\\\
+  \text{\textit{eff}} &amp; \in &amp; \text{\textit{Effects}}\\\\
+  v &amp; ::= &amp; x \mid h \mid \lambda x. e \mid \mathtt{perform}\ \text{\textit{eff}}\ v \\\\
+  e &amp; ::= &amp; v \mid v\ v \mid \mathtt{let}\ x=e\ \mathtt{in}\ e\\\\
+    &amp;\mid &amp; \mathtt{inst}\ \left(\right) \mid \mathtt{with}\ h\ \mathtt{handle}\ e \\\\
   h &amp; ::= &amp; \mathtt{handler}\ v\ \left(\mathtt{val}\ x \rightarrow e\right)\ \left(\left(x, k\right)\rightarrow e\right)
 \end{array}
 
-\]
+\\]
 図<a href="#ce-syn">2.1</a>
 . the syntax of Core Eff
 </center>
@@ -153,10 +153,10 @@ Lua､Rubyなどの言語機能またはライブラリとして提供されて�
 <code>vh</code>はvalue handlerとなり､ハンドラがエフェクトをハンドルしきって値を返すときにvalue handlerによりハンドルした値を返す｡
 <code>effh</code>はエフェクトの引数と継続を取る｡</p>
 <p>ハンドルできるエフェクトが少ないため一見して弱くなったか? と思うがそんなことはない｡
-<span class="cite">[<a href="#fn1" title="Kiselyov, Oleg, and Kc Sivaramakrishnan. “Eff directly in OCaml.(2016).” ACM SIGPLAN Workshop on ML. 2016. " id="fnref1">1</a>]</span>
+<span class="cite">[<a href="#fn1" title='Kiselyov, Oleg, and Kc Sivaramakrishnan. "Eff directly in OCaml.(2016)." ACM SIGPLAN Workshop on ML. 2016. ' id="fnref1">1</a>]</span>
 ではエフェクトにADTを渡してハンドラ内でさらにパターンマッチする方法で事実上n個のエフェクトをハンルするようにしている｡</p>
 <p>意味論に関してはっきりと示せる自信がない(面倒くさいとも言う)のと､後述のように継続の使用回数を制限するので省略します｡
-<span class="cite">[<a href="#fn2" title="Bauer, Andrej, and Matija Pretnar. “Programming with algebraic effects and handlers.” Journal of Logical and Algebraic Methods in Programming 84.1 (2015): 108-123. " id="fnref2">2</a>]</span>
+<span class="cite">[<a href="#fn2" title='Bauer, Andrej, and Matija Pretnar. "Programming with algebraic effects and handlers." Journal of Logical and Algebraic Methods in Programming 84.1 (2015): 108-123. ' id="fnref2">2</a>]</span>
 にあるような､よくあるcall by valueの体系を想定している｡
 次の例題で雰囲気を掴んでもらいたい｡</p>
 <h2 id="2-2.+%E4%BE%8B%E9%A1%8C"><a class="headerlink" href="#2-2.+%E4%BE%8B%E9%A1%8C">2-2. 例題</a></h2>
@@ -192,9 +192,9 @@ continuationを2回使ってはいけない(戒め)｡</p>
 <p>今回は継続を2回以上使ってはいけない<em>お約束</em>しかないので誰も注意してくれない｡
 そのため我々が注意するしかない｡</p>
 <p>継続が1回しか使えないのはmultishot(ノーマルな) algebraic effectsと比較すると真にパワーが弱くなっている｡
-とはいえ継続を2回も使う必要のない場面<span class="cite">[<a href="#fn4" title="Dolan, Stephen, et al. “Concurrent system programming with effect handlers.” International Symposium on Trends in Functional Programming. Springer, Cham, 2017. " id="fnref4">4</a>]</span>
-が多く､継続がワンショットであることを前提にするとパフォーマンスの良い実装ができる<span class="cite">[<a href="#fn5" title="Bruggeman, Carl, Oscar Waddell, and R. Kent Dybvig. “Representing control in the presence of one-shot continuations.” ACM SIGPLAN Notices. Vol. 31. No. 5. ACM, 1996. " id="fnref5">5</a>]</span>
-<span class="cite">[<a href="#fn6" title="Dolan, Stephen, et al. “Effective concurrency through algebraic effects.” OCaml Workshop. 2015. " id="fnref6">6</a>]</span>
+とはいえ継続を2回も使う必要のない場面<span class="cite">[<a href="#fn4" title='Dolan, Stephen, et al. "Concurrent system programming with effect handlers." International Symposium on Trends in Functional Programming. Springer, Cham, 2017. ' id="fnref4">4</a>]</span>
+が多く､継続がワンショットであることを前提にするとパフォーマンスの良い実装ができる<span class="cite">[<a href="#fn5" title='Bruggeman, Carl, Oscar Waddell, and R. Kent Dybvig. "Representing control in the presence of one-shot continuations." ACM SIGPLAN Notices. Vol. 31. No. 5. ACM, 1996. ' id="fnref5">5</a>]</span>
+<span class="cite">[<a href="#fn6" title='Dolan, Stephen, et al. "Effective concurrency through algebraic effects." OCaml Workshop. 2015. ' id="fnref6">6</a>]</span>
 ｡</p>
 <h1 id="3.+asymmetric+coroutines"><a class="headerlink" href="#3.+asymmetric+coroutines">3. asymmetric coroutines</a></h1>
 <h2 id="3-1.+asymmetric%3F"><a class="headerlink" href="#3-1.+asymmetric%3F">3-1. asymmetric?</a></h2>
@@ -273,42 +273,36 @@ d
 <center>
 <label id="lcor-syn"></label>
 
-\[
+\\[
 \begin{array}{rrl}
-  x &amp; \in &amp; \text{\textit{Variables}}\\
-  K &amp; \in &amp; \{\text{\textit{Eff}}, \text{\textit{Val}}, \text{\textit{UncaughtEff}}\} \text{ // constructors} \\
-  \text{\textit{eff}} &amp; \in &amp; \text{\textit{Effects}}\\
-  v &amp; ::= &amp; x \mid \lambda x. e\\
-  e &amp; ::= &amp; v \mid e\ e \mid \mathtt{let}\ x = e\ \mathtt{in}\ e \mid \mathtt{inst}\ \left(\right) \\
-    &amp; \mid&amp; \mathtt{match}\ e\ \mathtt{with}\ \overrightarrow{case} \\
-    &amp; \mid&amp; \mathtt{create}\ e \mid \mathtt{resume}\ e\ e \mid \mathtt{yield}\ e \text{ // coroutine manipurations} \\
-  case    &amp; ::= &amp; K\ x \rightarrow e \mid K\ x\ \textit{when}\ e = e \rightarrow e \\
-  letrec &amp; ::= &amp; \mathtt{let}\ \mathtt{rec}\ f\ x = e\ mutrec\\
+  x &amp; \in &amp; \text{\textit{Variables}}\\\\
+  K &amp; \in &amp; \{\text{\textit{Eff}}, \text{\textit{Val}}, \text{\textit{UncaughtEff}}\} \text{ // constructors} \\\\
+  \text{\textit{eff}} &amp; \in &amp; \text{\textit{Effects}}\\\\
+  v &amp; ::= &amp; x \mid \lambda x. e\\\\
+  e &amp; ::= &amp; v \mid e\ e \mid \mathtt{let}\ x = e\ \mathtt{in}\ e \mid \mathtt{inst}\ \left(\right) \\\\
+    &amp; \mid&amp; \mathtt{match}\ e\ \mathtt{with}\ \overrightarrow{case} \\\\
+    &amp; \mid&amp; \mathtt{create}\ e \mid \mathtt{resume}\ e\ e \mid \mathtt{yield}\ e \text{ // coroutine manipurations} \\\\
+  case    &amp; ::= &amp; K\ x \rightarrow e \mid K\ x\ \textit{when}\ e = e \rightarrow e \\\\
+  letrec &amp; ::= &amp; \mathtt{let}\ \mathtt{rec}\ f\ x = e\ mutrec\\\\
   mutrec &amp; ::= &amp; \mathtt{and}\ f\ x = e \mid \mathtt{in}\ e
 \end{array}
-\]
+\\]
 図<a href="#lcor-syn">3.2</a>
-. the syntax of \(\lambda_{\text{\textit{cor}}}\)
+. the syntax of \\(\lambda_{\text{\textit{cor}}}\\)
 </center>
 </div>
 <p>こちらも筆者が疲れたので意味論はフィーリングで行く｡
-すまんが<span class="cite">[<a href="#fn7" title="Moura, Ana Lúcia De, and Roberto Ierusalimschy. “Revisiting coroutines.” ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. " id="fnref7">7</a>]</span>
+すまんが<span class="cite">[<a href="#fn7" title='Moura, Ana Lúcia De, and Roberto Ierusalimschy. "Revisiting coroutines." ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. ' id="fnref7">7</a>]</span>
 を参照されたし｡
 ランタイムにラベルストアなどを用意してがちゃがちゃやっていく感じ｡</p>
 <p>構成員としては､ラムダ計算にくわえ､<code>let</code>式､(相互)再帰､ADTとパターンマッチに加え､コルーチンの操作<code>create</code> <code>resume</code> <code>yield</code>がある｡
 各エフェクトを一意にするために<code>inst ()</code>もそのまま持ってきている｡
 小さくなるよう努力したものの､依然としてゴタゴタしているのはひとえに筆者の力不足である｡</p>
 <p>ところで上記のプログラムは書けるのだろうか?
-</p>
-<div class="enclosed-tweet" align="center">
-<blockquote class="twitter-tweet">
-<p lang="ja" dir="ltr">mutual referring(なんて言うのか?) objectをmutual recursionでなんとかできる? できない? 今の脳の稼働率ではわからん｡</p>— びしょ〜じょ (@Nymphium) <a href="https://twitter.com/Nymphium/status/1070882855582986241?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">December 7, 2018</a>
-</blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div>
+<span class="twitter-not-found">this tweet not found: https://twitter.com/Nymphium/status/1070882855582986241</span></p>
 <p>変換のターゲットとしてコルーチンが出てくるため､上記のようなプログラムは\(\lambda_{\text{\textit{cor}}}\)では書けなくても問題はないので問題ない｡</p>
 <h2 id="3-3.+asymmetric+coroutines+and+oneshot+continuation"><a class="headerlink" href="#3-3.+asymmetric+coroutines+and+oneshot+continuation">3-3. asymmetric coroutines and oneshot continuation</a></h2>
-<p>Asymmetric coroutinesは強力なコントロールオペレータであり､まずsymmetric coroutinesを模倣することができ､のみならずcall/1ccもasymmetric coroutinesにより実装することができる<span class="cite">[<a href="#fn7" title="Moura, Ana Lúcia De, and Roberto Ierusalimschy. “Revisiting coroutines.” ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. " id="fnref7">7</a>]</span>
+<p>Asymmetric coroutinesは強力なコントロールオペレータであり､まずsymmetric coroutinesを模倣することができ､のみならずcall/1ccもasymmetric coroutinesにより実装することができる<span class="cite">[<a href="#fn7" title='Moura, Ana Lúcia De, and Roberto Ierusalimschy. "Revisiting coroutines." ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. ' id="fnref7">7</a>]</span>
 ｡
 call/1ccとは､継続の実行が高々1回に制限されているcall/ccである｡</p>
 <p>オッoneshotnessが出てきた｡
@@ -385,12 +379,7 @@ SyntaxError: Unexpected identifier
 </code></pre></div>
 <p>筆者の推理としては､(おそらく)asymmetric coroutinesをCPSで表現するのは難しいが､
 JSのgeneratorなら多分CPS変換できるので､babelなどによるES2015以前のJSへのコンパイルが可能になるからではないかと考えられる｡</p>
-<div class="enclosed-tweet" align="center">
-<blockquote class="twitter-tweet">
-<p lang="ja" dir="ltr">JSのgeneratorってそうかyieldをgnerator関数の直下にしかかけないから継続の実行がワンショットのCPSに変換できるんだな。babel的な理由でcoroutineにしなかったんだろうか。</p>— びしょ〜じょ (@Nymphium) <a href="https://twitter.com/Nymphium/status/1069176528032849923?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">December 2, 2018</a>
-</blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div>
+<p><span class="twitter-not-found">this tweet not found: https://twitter.com/Nymphium/status/1069176528032849923</span></p>
 <p>ところで､generatorも(おそらく)状態を複製する操作が用意されてないので､変換先のCPSの継続はワンショットになるはずである｡</p>
 <h1 id="4.+oneshot+algebraic+effects+%E2%86%92+asymmetric+coroutines"><a class="headerlink" href="#4.+oneshot+algebraic+effects+%E2%86%92+asymmetric+coroutines">4. oneshot algebraic effects → asymmetric coroutines</a></h1>
 <p>Core Effから\(\lambda_{\text{\textit{cor}}}\)への変換､つまり言語Aから言語Bへの変換なのでコンパイルですね｡本稿の変換の実装はすなわちコンパイラになります｡
@@ -451,64 +440,64 @@ thunk内でエフェクトを発生(<code>yield</code>)すると一時停止し�
 <center>
 <label id="conv"></label>
 
-\[
+\\[
 \begin{array}{c}
-  \left[\left[e_{ce}\right]\right]\eta = e_{\lambda \textit{cor}}\\
-  \ \\
-  \text{  // $c$ is anything to run coroutine at first, like \textit{nil}, $\left(\right)$, etc.}\\
+  \left[\left[e_{ce}\right]\right]\eta = e_{\lambda \textit{cor}}\\\\
+  \ \\\\
+  \text{  // $c$ is anything to run coroutine at first, like \textit{nil}, $\left(\right)$, etc.}\\\\
   \begin{aligned}
-    \left[\left[x\right]\right]\eta &amp;= \eta(x) \\
-    \left[\left[\textit{eff}\right]\right]\eta &amp;= \textit{eff}\\
-    \left[\left[\lambda x. e\right]\right]\eta &amp;= \lambda x’. \left[\left[e\right]\right]\eta\left[x\mapsto x’\right] \\
-    \left[\left[\mathtt{let}\ x = e\ \mathtt{in}\ e’\right]\right]\eta &amp;= \mathtt{let}\ x’ = \left[\left[e\right]\right]\eta\ \mathtt{in}\ \left[\left[e’\right]\right]\eta\left[x\mapsto x’\right]\\
-    \left[\left[v_1\ v_2\right]\right]\eta &amp;= \left(\left[\left[v_1\right]\right]\eta\right) \ \left(\left[\left[v_2\right]\right]\eta\right) \\
-    \left[\left[\mathtt{inst}\ \left(\right)\right]\right]\eta &amp;= \mathtt{inst}\ \left(\right)\\
-    \left[\left[\mathtt{perform}\ \text{\textit{eff}}\ v\right]\right]\eta &amp;= \mathtt{yield}\ \left(\text{\textit{Eff}}\left(\left[\left[\textit{eff}\right]\right]\eta, \left[\left[v\right]\right]\eta\right)\right)\\
-    \left[\left[\mathtt{with}\ h\ \mathtt{handle}\ e\right]\right]\eta &amp;= \left[\left[h\right]\right]\eta\ \left(\lambda c. \left[\left[e\right]\right]\eta\right)\\
+    \left[\left[x\right]\right]\eta &amp;= \eta(x) \\\\
+    \left[\left[\textit{eff}\right]\right]\eta &amp;= \textit{eff}\\\\
+    \left[\left[\lambda x. e\right]\right]\eta &amp;= \lambda x'. \left[\left[e\right]\right]\eta\left[x\mapsto x'\right] \\\\
+    \left[\left[\mathtt{let}\ x = e\ \mathtt{in}\ e'\right]\right]\eta &amp;= \mathtt{let}\ x' = \left[\left[e\right]\right]\eta\ \mathtt{in}\ \left[\left[e'\right]\right]\eta\left[x\mapsto x'\right]\\\\
+    \left[\left[v_1\ v_2\right]\right]\eta &amp;= \left(\left[\left[v_1\right]\right]\eta\right) \ \left(\left[\left[v_2\right]\right]\eta\right) \\\\
+    \left[\left[\mathtt{inst}\ \left(\right)\right]\right]\eta &amp;= \mathtt{inst}\ \left(\right)\\\\
+    \left[\left[\mathtt{perform}\ \text{\textit{eff}}\ v\right]\right]\eta &amp;= \mathtt{yield}\ \left(\text{\textit{Eff}}\left(\left[\left[\textit{eff}\right]\right]\eta, \left[\left[v\right]\right]\eta\right)\right)\\\\
+    \left[\left[\mathtt{with}\ h\ \mathtt{handle}\ e\right]\right]\eta &amp;= \left[\left[h\right]\right]\eta\ \left(\lambda c. \left[\left[e\right]\right]\eta\right)\\\\
     \left[\left[\mathtt{handler}\ \textit{eff}\ (\mathtt{val}\ x\rightarrow e_v) \ \left(\left(x, k\right) \rightarrow e_{\textit{eff}}\right) \right]\right]\eta%
-                                                                   &amp;= \\
-                                                                   &amp; \mathtt{let}\ \textit{eff} = \left[\left[\textit{eff}\right]\right]\eta\ \mathtt{in}\\
-                                                                   &amp; \mathtt{let}\ \textit{vh} = \lambda x’. \left[\left[e_v\right]\right]\eta\left[x \mapsto x’\right] \ \mathtt{in}\\
-                                                                   &amp; \mathtt{let}\ \textit{effh} = \lambda x’\ k’. \left[\left[e_{\textit{eff}}\right]\right]\eta\left[x \mapsto x’, k \mapsto k’\right]\ \mathtt{in}\\
-                                                                   &amp; \lambda \textit{th}.\\
-                                                                   &amp; \quad \mathtt{let}\ \textit{co} = \mathtt{create}\ \textit{th}\ \mathtt{in} \\
-                                                                   &amp; \quad  \mathtt{let\ rec}\ \textit{handle}\ r =\\
-                                                                   &amp; \qquad \mathtt{match}\ r\ \mathtt{with}\\
-                                                                   &amp; \qquad \mid \textit{Eff}\ \left(\textit{eff’}, v\right)\ \textit{when}\ \textit{eff’} = \textit{eff} \rightarrow\\
-                                                                   &amp; \qquad \quad \textit{effh}\ v\ (\lambda \textit{arg}.\\
-                                                                   &amp; \qquad \quad \mathtt{let}\ \textit{ret} =\textit{continue}\ \textit{arg}\ \mathtt{in}\\
-                                                                   &amp; \qquad \quad (\mathtt{match}\ \textit{ret}\ \mathtt{with}\\
-                                                                   &amp; \qquad \quad \mid \textit{Val}\ \text{\textunderscore} \rightarrow \textit{ret}\\
-                                                                   &amp; \qquad \quad \mid \text{\textunderscore} \rightarrow \textit{Val}\ \textit{ret}))\\
-                                                                   &amp; \qquad \mid \textit{Eff}\ \left(\text{\textunderscore}, \text{\textunderscore}\right)\rightarrow \mathtt{yield}\ \left(\textit{UncaughtEff}\ \left(r, \textit{continue}\right)\right)\\
-                                                                   &amp; \qquad \mid \textit{UncaughtEff}\ \left(\textit{Eff}\ \left(\textit{eff’}, v\right) , k\right) \ \textit{when}\ \textit{eff’} = \textit{eff} \rightarrow \\
-                                                                   &amp; \qquad \quad \textit{effh}\ v\ (\lambda \textit{arg}.\\
-                                                                   &amp; \qquad \qquad \mathtt{let}\ \textit{ret} = k\ \textit{arg} \ \mathtt{in}\\
-                                                                   &amp; \qquad \qquad \textit{continue}\ (\mathtt{match}\ \textit{ret} \ \mathtt{with}\\
-                                                                   &amp; \qquad \qquad \mid \textit{Val}\ \text{\textunderscore} \rightarrow \textit{ret}\\
-                                                                   &amp; \qquad \qquad \mid \text{\textunderscore} \rightarrow \textit{Val}\ \textit{ret}))\\
-                                                                   &amp; \qquad \mid \textit{UncaughtEff}\ (\textit{effv’}, k’) \rightarrow\\ 
-                                                                   &amp; \qquad \qquad \mathtt{yield}\ (\textit{UncaughtEff}\ (\textit{effv’}, \lambda \textit{arg}.\\
-                                                                   &amp; \qquad \qquad \quad \mathtt{let}\ \textit{ret} = k’\ \textit{arg} \ \mathtt{in}\\
-                                                                   &amp; \qquad \qquad \quad \textit{continue}\ (\mathtt{match}\ \textit{ret} \ \mathtt{with}\\
-                                                                   &amp; \qquad \qquad \quad \mid \textit{Val}\ \text{\textunderscore} \rightarrow \textit{ret}\\
-                                                                   &amp; \qquad \qquad \quad \mid \text{\textunderscore} \rightarrow \textit{Val}\ \textit{ret}))) \\
-                                                                   &amp; \qquad \mid \text{\textunderscore} \rightarrow \textit{Val}\ \left(\textit{vh}\ r\right)\\
-                                                                   &amp; \quad  \mathtt{and}\ \textit{continue}\ \textit{arg} =\\
-                                                                   &amp; \qquad \text{ // 追記20181209 resumeにcoを渡し忘れてたのを修正 } \\
-                                                                   &amp; \qquad \mathtt{let}\ r = \mathtt{resume}\ \textit{co}\ \textit{arg}\ \mathtt{in}\\
-                                                                   &amp; \qquad \mathtt{match}\ r\ \mathtt{with}\\
-                                                                   &amp; \qquad \mid \textit{Val}\ v \rightarrow v\\
-                                                                   &amp; \qquad \mid \text{\textunderscore} \rightarrow \textit{handle}\ r\\
-                                                                   &amp; \quad  \mathtt{in}\\
-                                                                   &amp; \quad  \mathtt{match}\ \textit{continue}\ c\ \mathtt{with} \\
-                                                                   &amp; \quad  \mid \textit{Val}\ v \rightarrow v\\
-                                                                   &amp; \quad  \mid r \rightarrow r\\
+                                                                   &amp;= \\\\
+                                                                   &amp; \mathtt{let}\ \textit{eff} = \left[\left[\textit{eff}\right]\right]\eta\ \mathtt{in}\\\\
+                                                                   &amp; \mathtt{let}\ \textit{vh} = \lambda x'. \left[\left[e_v\right]\right]\eta\left[x \mapsto x'\right] \ \mathtt{in}\\\\
+                                                                   &amp; \mathtt{let}\ \textit{effh} = \lambda x'\ k'. \left[\left[e_{\textit{eff}}\right]\right]\eta\left[x \mapsto x', k \mapsto k'\right]\ \mathtt{in}\\\\
+                                                                   &amp; \lambda \textit{th}.\\\\
+                                                                   &amp; \quad \mathtt{let}\ \textit{co} = \mathtt{create}\ \textit{th}\ \mathtt{in} \\\\
+                                                                   &amp; \quad  \mathtt{let\ rec}\ \textit{handle}\ r =\\\\
+                                                                   &amp; \qquad \mathtt{match}\ r\ \mathtt{with}\\\\
+                                                                   &amp; \qquad \mid \textit{Eff}\ \left(\textit{eff'}, v\right)\ \textit{when}\ \textit{eff'} = \textit{eff} \rightarrow\\\\
+                                                                   &amp; \qquad \quad \textit{effh}\ v\ (\lambda \textit{arg}.\\\\
+                                                                   &amp; \qquad \quad \mathtt{let}\ \textit{ret} =\textit{continue}\ \textit{arg}\ \mathtt{in}\\\\
+                                                                   &amp; \qquad \quad (\mathtt{match}\ \textit{ret}\ \mathtt{with}\\\\
+                                                                   &amp; \qquad \quad \mid \textit{Val}\ \text{\textunderscore} \rightarrow \textit{ret}\\\\
+                                                                   &amp; \qquad \quad \mid \text{\textunderscore} \rightarrow \textit{Val}\ \textit{ret}))\\\\
+                                                                   &amp; \qquad \mid \textit{Eff}\ \left(\text{\textunderscore}, \text{\textunderscore}\right)\rightarrow \mathtt{yield}\ \left(\textit{UncaughtEff}\ \left(r, \textit{continue}\right)\right)\\\\
+                                                                   &amp; \qquad \mid \textit{UncaughtEff}\ \left(\textit{Eff}\ \left(\textit{eff'}, v\right) , k\right) \ \textit{when}\ \textit{eff'} = \textit{eff} \rightarrow \\\\
+                                                                   &amp; \qquad \quad \textit{effh}\ v\ (\lambda \textit{arg}.\\\\
+                                                                   &amp; \qquad \qquad \mathtt{let}\ \textit{ret} = k\ \textit{arg} \ \mathtt{in}\\\\
+                                                                   &amp; \qquad \qquad \textit{continue}\ (\mathtt{match}\ \textit{ret} \ \mathtt{with}\\\\
+                                                                   &amp; \qquad \qquad \mid \textit{Val}\ \text{\textunderscore} \rightarrow \textit{ret}\\\\
+                                                                   &amp; \qquad \qquad \mid \text{\textunderscore} \rightarrow \textit{Val}\ \textit{ret}))\\\\
+                                                                   &amp; \qquad \mid \textit{UncaughtEff}\ (\textit{effv'}, k') \rightarrow\\\\ 
+                                                                   &amp; \qquad \qquad \mathtt{yield}\ (\textit{UncaughtEff}\ (\textit{effv'}, \lambda \textit{arg}.\\\\
+                                                                   &amp; \qquad \qquad \quad \mathtt{let}\ \textit{ret} = k'\ \textit{arg} \ \mathtt{in}\\\\
+                                                                   &amp; \qquad \qquad \quad \textit{continue}\ (\mathtt{match}\ \textit{ret} \ \mathtt{with}\\\\
+                                                                   &amp; \qquad \qquad \quad \mid \textit{Val}\ \text{\textunderscore} \rightarrow \textit{ret}\\\\
+                                                                   &amp; \qquad \qquad \quad \mid \text{\textunderscore} \rightarrow \textit{Val}\ \textit{ret}))) \\\\
+                                                                   &amp; \qquad \mid \text{\textunderscore} \rightarrow \textit{Val}\ \left(\textit{vh}\ r\right)\\\\
+                                                                   &amp; \quad  \mathtt{and}\ \textit{continue}\ \textit{arg} =\\\\
+                                                                   &amp; \qquad \text{ // 追記20181209 resumeにcoを渡し忘れてたのを修正 } \\\\
+                                                                   &amp; \qquad \mathtt{let}\ r = \mathtt{resume}\ \textit{co}\ \textit{arg}\ \mathtt{in}\\\\
+                                                                   &amp; \qquad \mathtt{match}\ r\ \mathtt{with}\\\\
+                                                                   &amp; \qquad \mid \textit{Val}\ v \rightarrow v\\\\
+                                                                   &amp; \qquad \mid \text{\textunderscore} \rightarrow \textit{handle}\ r\\\\
+                                                                   &amp; \quad  \mathtt{in}\\\\
+                                                                   &amp; \quad  \mathtt{match}\ \textit{continue}\ c\ \mathtt{with} \\\\
+                                                                   &amp; \quad  \mid \textit{Val}\ v \rightarrow v\\\\
+                                                                   &amp; \quad  \mid r \rightarrow r\\\\
   \end{aligned}
 \end{array}
-\]
+\\]
 図<a href="#conv">4.2</a>
-. the conversion \(\left[\left[e_{ce}\right]\right] = e_{\lambda_{\textit{cor}}}\)
+. the conversion \\(\left[\left[e_{ce}\right]\right] = e_{\lambda_{\textit{cor}}}\\)
 </center>
 </div>
 <p><strong><em><code>handler</code>長すぎんじゃボケー!!!</em></strong>
@@ -549,33 +538,33 @@ thunkを受け取ってコルーチンを作り､<code>resume</code>のラッ�
 <center>
 <label id="conv2"></label>
 
-\[
+\\[
 \begin{array}{c}
-  \left[\left[e_{ce}\right]\right]\eta = e_{\lambda \textit{cor}}\\
-  \ \\
+  \left[\left[e_{ce}\right]\right]\eta = e_{\lambda \textit{cor}}\\\\
+  \ \\\\
   \begin{aligned}
       &amp;\left[\left[\mathtt{handler}\ \textit{eff}\ (\mathtt{val}\ x\rightarrow e_v) \ \left(\left(x, k\right) \rightarrow e_{\textit{eff}}\right) \right]\right]\eta%
-      = \\
-      &amp;\qquad \mathtt{let}\ \textit{eff} = \left[\left[\textit{eff}\right]\right]\eta\ \mathtt{in}\\
-      &amp;\qquad \mathtt{let}\ \textit{vh} = \lambda x’. \left[\left[e_v\right]\right]\eta\left[x \mapsto x’\right] \ \mathtt{in}\\
-      &amp;\qquad \mathtt{let}\ \textit{effh} = \lambda x’\ k’. \left[\left[e_{\textit{eff}}\right]\right]\eta\left[x \mapsto x’, k \mapsto k’\right]\ \mathtt{in}\\
-      &amp;\qquad \lambda \textit{th}.\\
-      &amp;\qquad \quad \mathtt{let}\ \textit{co} = \mathtt{create}\ \textit{th}\ \mathtt{in} \\
-      &amp;\qquad \quad  \mathtt{let\ rec}\ \textit{handle}\ r =\\
-      &amp;\qquad \qquad \mathtt{match}\ r\ \mathtt{with}\\
-      &amp;\qquad \qquad \mid \textit{Eff}\ \left(\textit{eff’}, v\right)\ \textit{when}\ \textit{eff’} = \textit{eff} \rightarrow \textit{effh}\ v\ \textit{continue}\\
-      &amp;\qquad \qquad \mid \textit{Eff}\ \left(\text{\textunderscore}, \text{\textunderscore}\right)\rightarrow \mathtt{yield}\ \left(\textit{UncaughtEff}\ \left(r, \textit{continue}\right)\right)\\
-      &amp;\qquad \qquad \mid \textit{UncaughtEff}\ \left(\textit{Eff}\ \left(\textit{eff’}, v\right) , k\right) \ \textit{when}\ \textit{eff’} = \textit{eff} \rightarrow \\
-      &amp;\qquad \qquad \quad \textit{effh}\ v\ \left(\lambda \textit{arg}. \textit{handle}\ \left(\mathtt{resume}\ \left(\mathtt{create}\ k\right)\ \mathtt{arg}\right)\right)\\
-      &amp;\qquad \qquad \mid \textit{UncaughtEff}\ \left(\textit{effv’}, k\right) \rightarrow\\ 
-      &amp;\qquad \qquad \qquad \mathtt{yield}\ \left(\textit{UncaughtEff}\ \left(\textit{effv’}, \lambda \textit{arg}. \textit{handle}\ \left(\mathtt{resume}\ \left(\mathtt{create}\ k\right)\ \mathtt{arg}\right)\right)\right)\\
-      &amp;\qquad \qquad \mid \text{\textunderscore\ /* ANY value */} \rightarrow \textit{vh}\ r\\
-      &amp;\qquad \quad  \mathtt{and}\ \textit{continue}\ \textit{arg} = \textit{handle}\ \left(\mathtt{resume}\ \textit{co}\ \textit{arg}\right)\\
-      &amp;\qquad \quad  \mathtt{in}\\
+      = \\\\
+      &amp;\qquad \mathtt{let}\ \textit{eff} = \left[\left[\textit{eff}\right]\right]\eta\ \mathtt{in}\\\\
+      &amp;\qquad \mathtt{let}\ \textit{vh} = \lambda x'. \left[\left[e_v\right]\right]\eta\left[x \mapsto x'\right] \ \mathtt{in}\\\\
+      &amp;\qquad \mathtt{let}\ \textit{effh} = \lambda x'\ k'. \left[\left[e_{\textit{eff}}\right]\right]\eta\left[x \mapsto x', k \mapsto k'\right]\ \mathtt{in}\\\\
+      &amp;\qquad \lambda \textit{th}.\\\\
+      &amp;\qquad \quad \mathtt{let}\ \textit{co} = \mathtt{create}\ \textit{th}\ \mathtt{in} \\\\
+      &amp;\qquad \quad  \mathtt{let\ rec}\ \textit{handle}\ r =\\\\
+      &amp;\qquad \qquad \mathtt{match}\ r\ \mathtt{with}\\\\
+      &amp;\qquad \qquad \mid \textit{Eff}\ \left(\textit{eff'}, v\right)\ \textit{when}\ \textit{eff'} = \textit{eff} \rightarrow \textit{effh}\ v\ \textit{continue}\\\\
+      &amp;\qquad \qquad \mid \textit{Eff}\ \left(\text{\textunderscore}, \text{\textunderscore}\right)\rightarrow \mathtt{yield}\ \left(\textit{UncaughtEff}\ \left(r, \textit{continue}\right)\right)\\\\
+      &amp;\qquad \qquad \mid \textit{UncaughtEff}\ \left(\textit{Eff}\ \left(\textit{eff'}, v\right) , k\right) \ \textit{when}\ \textit{eff'} = \textit{eff} \rightarrow \\\\
+      &amp;\qquad \qquad \quad \textit{effh}\ v\ \left(\lambda \textit{arg}. \textit{handle}\ \left(\mathtt{resume}\ \left(\mathtt{create}\ k\right)\ \mathtt{arg}\right)\right)\\\\
+      &amp;\qquad \qquad \mid \textit{UncaughtEff}\ \left(\textit{effv'}, k\right) \rightarrow\\\\ 
+      &amp;\qquad \qquad \qquad \mathtt{yield}\ \left(\textit{UncaughtEff}\ \left(\textit{effv'}, \lambda \textit{arg}. \textit{handle}\ \left(\mathtt{resume}\ \left(\mathtt{create}\ k\right)\ \mathtt{arg}\right)\right)\right)\\\\
+      &amp;\qquad \qquad \mid \text{\textunderscore\ /* ANY value */} \rightarrow \textit{vh}\ r\\\\
+      &amp;\qquad \quad  \mathtt{and}\ \textit{continue}\ \textit{arg} = \textit{handle}\ \left(\mathtt{resume}\ \textit{co}\ \textit{arg}\right)\\\\
+      &amp;\qquad \quad  \mathtt{in}\\\\
       &amp;\qquad \quad  \textit{continue}\ c
   \end{aligned}
 \end{array}
-\]
+\\]
 図<a href="#conv2">4.3</a>
 . the revision of the conversion
 </center>
@@ -594,25 +583,25 @@ thunkを受け取ってコルーチンを作り､<code>resume</code>のラッ�
 <center>
 <label id="conv3"></label>
 
-\[
+\\[
 \begin{aligned}
-  &amp;\left[\left[\mathrm{handler}\ \textit{eff}\ \left(\mathtt{val}\ x \rightarrow e_v\right)\ \left(\left(x, k\right) \rightarrow e_\textit{eff}\right)\right]\right]\eta = \\
-  &amp; \qquad \mathtt{let}\ \textit{eff} = \left[\left[\textit{eff}\right]\right]\eta\ \mathtt{in}\\
-  &amp; \qquad \mathtt{let}\ \textit{vh} = \lambda x’. \left[\left[e_v\right]\right]\eta \left[x \mapsto x’\right]\ \mathtt{in}\\
-  &amp; \qquad \mathtt{let}\ \textit{effh} = \lambda x’\, k’. \left[\left[e_\textit{eff}\right]\right]\eta \left[x\mapsto x’, k \mapsto k’\right] \mathtt{in}\\
-  &amp; \qquad \lambda \textit{th}.\\
-  &amp; \qquad \quad \mathtt{let}\ \textit{co} = \mathtt{create}\ \textit{th}\ \mathtt{in}\\
-  &amp; \qquad \quad \mathtt{let}\ \mathtt{rec}\ \textit{handle}\ r =\\
-  &amp; \qquad \qquad \mathtt{match}\ r\ \mathtt{with}\\
-  &amp; \qquad \qquad \mid \textit{Eff}\left(\textit{eff’}, v\right)\ \mathtt{when}\ \textit{eff’} = \textit{eff} \rightarrow \textit{effh}\ v\ \left(\textit{continue}\ \textit{co}\right)\\
-  &amp; \qquad \qquad \mid \textit{Eff}\left(\text{\textunderscore}, \text{\textunderscore}\right) \rightarrow \mathtt{yield}\ \left(\textit{UncaughtEff}\left(r, \left(\textit{continue}\ \textit{co}\right)\right)\right)\\
-  &amp; \qquad \qquad \mid \textit{UncaughtEff}\left(\textit{Eff}\left(\textit{eff’}, v\right), k\right)\ \mathtt{when}\ \textit{eff’} = \textit{eff} \rightarrow \textit{effh}\ v\ \left(\textit{continue}\ \left(\mathtt{create}\ k\right)\right)\\
-  &amp; \qquad \qquad \mid \textit{UncaughtEff}(\textit{effv}, k) \rightarrow \mathtt{yield}\ (\textit{UncaughtEff}\left(\textit{effv}, \left(\textit{continue}\ \left(\mathtt{create}\ k\right)\right)\right))\\
-  &amp; \qquad \qquad \mid \text{\textunderscore} \rightarrow \textit{vh}\ r\\
-  &amp; \qquad \quad \mathtt{and}\ \textit{conrtinue}\ \textit{co}\ \textit{arg} = \textit{handle}\ \left(\mathtt{resume}\ \textit{co}\ \textit{arg}\right)\\
+  &amp;\left[\left[\mathrm{handler}\ \textit{eff}\ \left(\mathtt{val}\ x \rightarrow e_v\right)\ \left(\left(x, k\right) \rightarrow e_\textit{eff}\right)\right]\right]\eta = \\\\
+  &amp; \qquad \mathtt{let}\ \textit{eff} = \left[\left[\textit{eff}\right]\right]\eta\ \mathtt{in}\\\\
+  &amp; \qquad \mathtt{let}\ \textit{vh} = \lambda x'. \left[\left[e_v\right]\right]\eta \left[x \mapsto x'\right]\ \mathtt{in}\\\\
+  &amp; \qquad \mathtt{let}\ \textit{effh} = \lambda x'\, k'. \left[\left[e_\textit{eff}\right]\right]\eta \left[x\mapsto x', k \mapsto k'\right] \mathtt{in}\\\\
+  &amp; \qquad \lambda \textit{th}.\\\\
+  &amp; \qquad \quad \mathtt{let}\ \textit{co} = \mathtt{create}\ \textit{th}\ \mathtt{in}\\\\
+  &amp; \qquad \quad \mathtt{let}\ \mathtt{rec}\ \textit{handle}\ r =\\\\
+  &amp; \qquad \qquad \mathtt{match}\ r\ \mathtt{with}\\\\
+  &amp; \qquad \qquad \mid \textit{Eff}\left(\textit{eff'}, v\right)\ \mathtt{when}\ \textit{eff'} = \textit{eff} \rightarrow \textit{effh}\ v\ \left(\textit{continue}\ \textit{co}\right)\\\\
+  &amp; \qquad \qquad \mid \textit{Eff}\left(\text{\textunderscore}, \text{\textunderscore}\right) \rightarrow \mathtt{yield}\ \left(\textit{UncaughtEff}\left(r, \left(\textit{continue}\ \textit{co}\right)\right)\right)\\\\
+  &amp; \qquad \qquad \mid \textit{UncaughtEff}\left(\textit{Eff}\left(\textit{eff'}, v\right), k\right)\ \mathtt{when}\ \textit{eff'} = \textit{eff} \rightarrow \textit{effh}\ v\ \left(\textit{continue}\ \left(\mathtt{create}\ k\right)\right)\\\\
+  &amp; \qquad \qquad \mid \textit{UncaughtEff}(\textit{effv}, k) \rightarrow \mathtt{yield}\ (\textit{UncaughtEff}\left(\textit{effv}, \left(\textit{continue}\ \left(\mathtt{create}\ k\right)\right)\right))\\\\
+  &amp; \qquad \qquad \mid \text{\textunderscore} \rightarrow \textit{vh}\ r\\\\
+  &amp; \qquad \quad \mathtt{and}\ \textit{conrtinue}\ \textit{co}\ \textit{arg} = \textit{handle}\ \left(\mathtt{resume}\ \textit{co}\ \textit{arg}\right)\\\\
   &amp; \qquad \quad \mathtt{in}\ \textit{continue}\ \textit{co}\ \textit{c}
 \end{aligned}
-\]
+\\]
 図<a href="#conv3">4.4</a>
 . the conversion v3.
 </center>
@@ -631,21 +620,21 @@ thunkを受け取ってコルーチンを作り､<code>resume</code>のラッ�
 
 $$
 \begin{aligned}
-  &amp;\left[\left[\mathrm{handler}\ \textit{eff}\ \left(\mathtt{val}\ x \rightarrow e_v\right)\ \left(\left(x, k\right) \rightarrow e_\textit{eff}\right)\right]\right]\eta = \\
-  &amp; \qquad \mathtt{let}\ \textit{eff} = \left[\left[\textit{eff}\right]\right]\eta\ \mathtt{in}\\
-  &amp; \qquad \mathtt{let}\ \textit{vh} = \lambda x’. \left[\left[e_v\right]\right]\eta \left[x \mapsto x’\right]\ \mathtt{in}\\
-  &amp; \qquad \mathtt{let}\ \textit{effh} = \lambda x’\, k’. \left[\left[e_\textit{eff}\right]\right]\eta \left[x\mapsto x’, k \mapsto k’\right] \mathtt{in}\\
-  &amp; \qquad \lambda \textit{th}.\\
-  &amp; \qquad \quad \mathtt{let}\ \textit{co} = \mathtt{create}\ \textit{th}\ \mathtt{in}\\
-  &amp; \qquad \quad \mathtt{let}\ \mathtt{rec}\ \textit{handle}\ r =\\
-  &amp; \qquad \qquad \mathtt{match}\ r\ \mathtt{with}\\
-  &amp; \qquad \qquad \mid \textit{Eff}\left(\textit{eff’}, v\right)\ \mathtt{when}\ \textit{eff’} = \textit{eff} \rightarrow \textit{effh}\ v\ \left(\textit{continue}\ \textit{co}\right)\\
-  &amp; \qquad \qquad \mid \textit{Eff}\left(\text{\textunderscore}, \text{\textunderscore}\right) \rightarrow \mathtt{yield}\ \left(\textit{UncaughtEff}\left(r, \left(\textit{continue}\ \textit{co}\right)\right)\right)\\
-  &amp; \qquad \qquad \mid \textit{UncaughtEff}\left(\textit{Eff}\left(\textit{eff’}, v\right), k\right)\ \mathtt{when}\ \textit{eff’} = \textit{eff} \rightarrow \textit{effh}\ v\ \left(\textit{rehandle}\ k \right)\\
-  &amp; \qquad \qquad \mid \textit{UncaughtEff}(\textit{effv}, k) \rightarrow \mathtt{yield}\ \left(\textit{UncaughtEff}\left(\textit{effv}, \textit{rehandle}\ k \right)\right)\\
-  &amp; \qquad \qquad \mid \text{\textunderscore} \rightarrow \textit{vh}\ r\\
-  &amp; \qquad \quad \mathtt{and}\ \textit{conrtinue}\ \textit{co}\ \textit{arg} = \textit{handle}\ \left(\mathtt{resume}\ \textit{co}\ \textit{arg}\right)\\
-  &amp; \qquad \quad \mathtt{and}\ \textit{rehhandle}\ \textit{k}\ \textit{arg} = \textit{handler}\ \textit{eff}\ \left(\textit{continue}\ \textit{co}\right)\ \textit{effh}\ \left(\lambda c. k\ \textit{arg}\right) \\
+  &amp;\left[\left[\mathrm{handler}\ \textit{eff}\ \left(\mathtt{val}\ x \rightarrow e_v\right)\ \left(\left(x, k\right) \rightarrow e_\textit{eff}\right)\right]\right]\eta = \\\\
+  &amp; \qquad \mathtt{let}\ \textit{eff} = \left[\left[\textit{eff}\right]\right]\eta\ \mathtt{in}\\\\
+  &amp; \qquad \mathtt{let}\ \textit{vh} = \lambda x'. \left[\left[e_v\right]\right]\eta \left[x \mapsto x'\right]\ \mathtt{in}\\\\
+  &amp; \qquad \mathtt{let}\ \textit{effh} = \lambda x'\, k'. \left[\left[e_\textit{eff}\right]\right]\eta \left[x\mapsto x', k \mapsto k'\right] \mathtt{in}\\\\
+  &amp; \qquad \lambda \textit{th}.\\\\
+  &amp; \qquad \quad \mathtt{let}\ \textit{co} = \mathtt{create}\ \textit{th}\ \mathtt{in}\\\\
+  &amp; \qquad \quad \mathtt{let}\ \mathtt{rec}\ \textit{handle}\ r =\\\\
+  &amp; \qquad \qquad \mathtt{match}\ r\ \mathtt{with}\\\\
+  &amp; \qquad \qquad \mid \textit{Eff}\left(\textit{eff'}, v\right)\ \mathtt{when}\ \textit{eff'} = \textit{eff} \rightarrow \textit{effh}\ v\ \left(\textit{continue}\ \textit{co}\right)\\\\
+  &amp; \qquad \qquad \mid \textit{Eff}\left(\text{\textunderscore}, \text{\textunderscore}\right) \rightarrow \mathtt{yield}\ \left(\textit{UncaughtEff}\left(r, \left(\textit{continue}\ \textit{co}\right)\right)\right)\\\\
+  &amp; \qquad \qquad \mid \textit{UncaughtEff}\left(\textit{Eff}\left(\textit{eff'}, v\right), k\right)\ \mathtt{when}\ \textit{eff'} = \textit{eff} \rightarrow \textit{effh}\ v\ \left(\textit{rehandle}\ k \right)\\\\
+  &amp; \qquad \qquad \mid \textit{UncaughtEff}(\textit{effv}, k) \rightarrow \mathtt{yield}\ \left(\textit{UncaughtEff}\left(\textit{effv}, \textit{rehandle}\ k \right)\right)\\\\
+  &amp; \qquad \qquad \mid \text{\textunderscore} \rightarrow \textit{vh}\ r\\\\
+  &amp; \qquad \quad \mathtt{and}\ \textit{conrtinue}\ \textit{co}\ \textit{arg} = \textit{handle}\ \left(\mathtt{resume}\ \textit{co}\ \textit{arg}\right)\\\\
+  &amp; \qquad \quad \mathtt{and}\ \textit{rehhandle}\ \textit{k}\ \textit{arg} = \textit{handler}\ \textit{eff}\ \left(\textit{continue}\ \textit{co}\right)\ \textit{effh}\ \left(\lambda c. k\ \textit{arg}\right) \\\\
   &amp; \qquad \quad \mathtt{in}\ \textit{continue}\ \textit{co}\ \textit{c}
 \end{aligned}
 $$
@@ -664,7 +653,7 @@ deep handlerとは､ハンドラの取り出した継続も同じハンドラ�
 <p>ハンドルされる$\textit{UncaughtEff}$を見てみる｡</p>
 <div>
 <center>
-$\mid \textit{UncaughtEff}\left(\textit{Eff}\left(\textit{eff’}, v\right), k\right)\ \mathtt{when}\ \textit{eff’} = \textit{eff} \rightarrow \textit{effh}\ v\ \left(\textit{rehandle}\ k \right)$
+$\mid \textit{UncaughtEff}\left(\textit{Eff}\left(\textit{eff'}, v\right), k\right)\ \mathtt{when}\ \textit{eff'} = \textit{eff} \rightarrow \textit{effh}\ v\ \left(\textit{rehandle}\ k \right)$
 </center>
 </div>
 <p>この矢印の右辺を展開すると､</p>
@@ -672,7 +661,7 @@ $\mid \textit{UncaughtEff}\left(\textit{Eff}\left(\textit{eff’}, v\right), k\r
 <center>
 $$
 \begin{array}{l}
-\textit{effh}\ v \left(\lambda \textit{arg}.\right.\\
+\textit{effh}\ v \left(\lambda \textit{arg}.\right.\\\\
 \quad  \textit{handler}\ \textit{eff}\ \left(\textit{continue}\ \textit{co}\right)\ \textit{effh}\ \left( \lambda c. k\ \textit{arg} \right)\left.\right)
 \end{array}
 $$
@@ -807,7 +796,7 @@ World?
 <p>Functorっぽいものを書いてるなと思ったが<code>smaph</code>をみると全然そんなことなく､自分でも困惑した｡
 Luaは残念ながら型のない世界なのでなんでもアリである｡</p>
 <h1 id="6.+%E9%96%A2%E9%80%A3%E7%A0%94%E7%A9%B6"><a class="headerlink" href="#6.+%E9%96%A2%E9%80%A3%E7%A0%94%E7%A9%B6">6. 関連研究</a></h1>
-<p>Koka言語などをやっていってるDaan氏によりC言語によるalgebraic effectsの実装<span class="cite">[<a href="#fn9" title="Leijen, Daan. “Implementing Algebraic Effects in C.” Asian Symposium on Programming Languages and Systems. Springer, Cham, 2017. " id="fnref9">9</a>]</span>
+<p>Koka言語などをやっていってるDaan氏によりC言語によるalgebraic effectsの実装<span class="cite">[<a href="#fn9" title='Leijen, Daan. "Implementing Algebraic Effects in C." Asian Symposium on Programming Languages and Systems. Springer, Cham, 2017. ' id="fnref9">9</a>]</span>
 がおこなわれている｡
 本稿と比較すると1ハンドラ1エフェクトや継続がワンショットなどの制限ががない一方､非常にユーザーアンフレンドリーな構文となっている｡
 そのためP言語などのコンパイラのターゲットという位置づけがなされている｡
@@ -817,7 +806,7 @@ Luaは残念ながら型のない世界なのでなんでもアリである｡</
 この変換を用いることで､asymmetric coroutinesを持つ言語でoneshot algebraic effectsを使用することが可能になる｡
 本稿ではすでにLuaによる実装を与えており､Luaはalgebraic effects-readyな状態となっている｡</p>
 <p>ただし本稿の変換の正しさについては証明されていない｡
-いまのところ “なんとなくうごいてる” 状態であり､とりあえずテストに<a href="https://github.com/ocamllabs/ocaml-effects-tutorial" target="_blank" rel="noopener noreferrer">Multicore OCamlのチュートリアル</a><a href="https://github.com/Nymphium/eff.lua/tree/master/test" target="_blank" rel="noopener noreferrer">を実装する</a>ことで正しく動いてそうなことを確認している｡
+いまのところ "なんとなくうごいてる" 状態であり､とりあえずテストに<a href="https://github.com/ocamllabs/ocaml-effects-tutorial" target="_blank" rel="noopener noreferrer">Multicore OCamlのチュートリアル</a><a href="https://github.com/Nymphium/eff.lua/tree/master/test" target="_blank" rel="noopener noreferrer">を実装する</a>ことで正しく動いてそうなことを確認している｡
 未来のボクや､読者のみなさんに託されています｡
 2019年には本稿の変換の証明､あるいは間違った部分の指摘などが湧き出ることを願っている｡</p>
 <div class="footnotes">
@@ -825,11 +814,11 @@ Luaは残念ながら型のない世界なのでなんでもアリである｡</
 <ol>
 
 <li id="fn1">
-<p>Kiselyov, Oleg, and Kc Sivaramakrishnan. “Eff directly in OCaml.(2016).” ACM SIGPLAN Workshop on ML. 2016. <a href="#fnref1">↩</a></p>
+<p>Kiselyov, Oleg, and Kc Sivaramakrishnan. "Eff directly in OCaml.(2016)." ACM SIGPLAN Workshop on ML. 2016. <a href="#fnref1">↩</a></p>
 </li>
 
 <li id="fn2">
-<p>Bauer, Andrej, and Matija Pretnar. “Programming with algebraic effects and handlers.” Journal of Logical and Algebraic Methods in Programming 84.1 (2015): 108-123. <a href="#fnref2">↩</a></p>
+<p>Bauer, Andrej, and Matija Pretnar. "Programming with algebraic effects and handlers." Journal of Logical and Algebraic Methods in Programming 84.1 (2015): 108-123. <a href="#fnref2">↩</a></p>
 </li>
 
 <li id="fn3">
@@ -837,19 +826,19 @@ Luaは残念ながら型のない世界なのでなんでもアリである｡</
 </li>
 
 <li id="fn4">
-<p>Dolan, Stephen, et al. “Concurrent system programming with effect handlers.” International Symposium on Trends in Functional Programming. Springer, Cham, 2017. <a href="#fnref4">↩</a></p>
+<p>Dolan, Stephen, et al. "Concurrent system programming with effect handlers." International Symposium on Trends in Functional Programming. Springer, Cham, 2017. <a href="#fnref4">↩</a></p>
 </li>
 
 <li id="fn5">
-<p>Bruggeman, Carl, Oscar Waddell, and R. Kent Dybvig. “Representing control in the presence of one-shot continuations.” ACM SIGPLAN Notices. Vol. 31. No. 5. ACM, 1996. <a href="#fnref5">↩</a></p>
+<p>Bruggeman, Carl, Oscar Waddell, and R. Kent Dybvig. "Representing control in the presence of one-shot continuations." ACM SIGPLAN Notices. Vol. 31. No. 5. ACM, 1996. <a href="#fnref5">↩</a></p>
 </li>
 
 <li id="fn6">
-<p>Dolan, Stephen, et al. “Effective concurrency through algebraic effects.” OCaml Workshop. 2015. <a href="#fnref6">↩</a></p>
+<p>Dolan, Stephen, et al. "Effective concurrency through algebraic effects." OCaml Workshop. 2015. <a href="#fnref6">↩</a></p>
 </li>
 
 <li id="fn7">
-<p>Moura, Ana Lúcia De, and Roberto Ierusalimschy. “Revisiting coroutines.” ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. <a href="#fnref7">↩</a></p>
+<p>Moura, Ana Lúcia De, and Roberto Ierusalimschy. "Revisiting coroutines." ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. <a href="#fnref7">↩</a></p>
 </li>
 
 <li id="fn8">
@@ -857,7 +846,7 @@ Luaは残念ながら型のない世界なのでなんでもアリである｡</
 </li>
 
 <li id="fn9">
-<p>Leijen, Daan. “Implementing Algebraic Effects in C.” Asian Symposium on Programming Languages and Systems. Springer, Cham, 2017. <a href="#fnref9">↩</a></p>
+<p>Leijen, Daan. "Implementing Algebraic Effects in C." Asian Symposium on Programming Languages and Systems. Springer, Cham, 2017. <a href="#fnref9">↩</a></p>
 </li>
 
 </ol>
