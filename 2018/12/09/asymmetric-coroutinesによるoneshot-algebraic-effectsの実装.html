@@ -299,7 +299,13 @@ d
 各エフェクトを一意にするために<code>inst ()</code>もそのまま持ってきている｡
 小さくなるよう努力したものの､依然としてゴタゴタしているのはひとえに筆者の力不足である｡</p>
 <p>ところで上記のプログラムは書けるのだろうか?
-<span class="twitter-not-found">this tweet not found: https://twitter.com/Nymphium/status/1070882855582986241</span></p>
+</p>
+<div class="enclosed-tweet" align="center">
+<blockquote class="twitter-tweet">
+<p lang="ja" dir="ltr">mutual referring(なんて言うのか?) objectをmutual recursionでなんとかできる? できない? 今の脳の稼働率ではわからん｡</p>— びしょ〜じょ (@Nymphium) <a href="https://twitter.com/Nymphium/status/1070882855582986241?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">December 7, 2018</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
 <p>変換のターゲットとしてコルーチンが出てくるため､上記のようなプログラムは\(\lambda_{\text{\textit{cor}}}\)では書けなくても問題はないので問題ない｡</p>
 <h2 id="3-3.+asymmetric+coroutines+and+oneshot+continuation"><a class="headerlink" href="#3-3.+asymmetric+coroutines+and+oneshot+continuation">3-3. asymmetric coroutines and oneshot continuation</a></h2>
 <p>Asymmetric coroutinesは強力なコントロールオペレータであり､まずsymmetric coroutinesを模倣することができ､のみならずcall/1ccもasymmetric coroutinesにより実装することができる<span class="cite">[<a href="#fn7" title='Moura, Ana Lúcia De, and Roberto Ierusalimschy. "Revisiting coroutines." ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. ' id="fnref7">7</a>]</span>
@@ -379,7 +385,12 @@ SyntaxError: Unexpected identifier
 </code></pre></div>
 <p>筆者の推理としては､(おそらく)asymmetric coroutinesをCPSで表現するのは難しいが､
 JSのgeneratorなら多分CPS変換できるので､babelなどによるES2015以前のJSへのコンパイルが可能になるからではないかと考えられる｡</p>
-<p><span class="twitter-not-found">this tweet not found: https://twitter.com/Nymphium/status/1069176528032849923</span></p>
+<div class="enclosed-tweet" align="center">
+<blockquote class="twitter-tweet">
+<p lang="ja" dir="ltr">JSのgeneratorってそうかyieldをgnerator関数の直下にしかかけないから継続の実行がワンショットのCPSに変換できるんだな。babel的な理由でcoroutineにしなかったんだろうか。</p>— びしょ〜じょ (@Nymphium) <a href="https://twitter.com/Nymphium/status/1069176528032849923?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">December 2, 2018</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
 <p>ところで､generatorも(おそらく)状態を複製する操作が用意されてないので､変換先のCPSの継続はワンショットになるはずである｡</p>
 <h1 id="4.+oneshot+algebraic+effects+%E2%86%92+asymmetric+coroutines"><a class="headerlink" href="#4.+oneshot+algebraic+effects+%E2%86%92+asymmetric+coroutines">4. oneshot algebraic effects → asymmetric coroutines</a></h1>
 <p>Core Effから\(\lambda_{\text{\textit{cor}}}\)への変換､つまり言語Aから言語Bへの変換なのでコンパイルですね｡本稿の変換の実装はすなわちコンパイラになります｡
