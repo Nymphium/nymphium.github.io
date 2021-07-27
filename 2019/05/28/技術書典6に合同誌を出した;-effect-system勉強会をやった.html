@@ -79,21 +79,29 @@
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             <script type="text/javascript" src="/js/GithubRepoWidget.min.js"></script>
             <script type="text/javascript">setTimeout(GithubRepoWidget.init, 3000);</script>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css" integrity="sha384-9tPv11A+glH/on/wEu99NVwDPwkMQESOocs/ZGXPoIiLE8MU/qkqUcZ3zzL+6DuH" crossorigin="anonymous">
-            <!-- The loading of KaTeX is deferred to speed up page rendering -->
-            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.js" integrity="sha384-U8Vrjwb8fuHMt6ewaCy8uqeUXv4oitYACKdB0VziCerzt011iQ/0TqlSlv8MReCm" crossorigin="anonymous"></script>
-            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/contrib/auto-render.min.js" integrity="sha384-aGfk5kvhIq5x1x5YdvCp4upKZYnA8ckafviDpmWEKp4afOZEqOli7gqSnh8I6enH" crossorigin="anonymous"></script>
+
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
             <script>
-document.addEventListener("DOMContentLoaded", function(){
-  renderMathInElement
-    ( document.body
-    , { delimiters: [ {left: "$$",  right: "$$",  display: true}
-                    , {left: "\\(", right: "\\)", display: false}
-                    , {left: "\\[", right: "\\]", display: true}
-                    , {left: "[[",  right: "]]",  display: true}
-                    , {left: "$",   right: "$",   display: false} ]
-    , })});
+              document.addEventListener("DOMContentLoaded", function() {
+                renderMathInElement(document.body, {
+                  // customised options
+                  // • auto-render specific keys, e.g.:
+                  delimiters: [
+                                  {left: '$$', right: '$$', display: true},
+                                  {left: '$', right: '$', display: false},
+                                  {left: '\\(', right: '\\)', display: false},
+                                  {left: '\\[', right: '\\]', display: true},
+                                  {left: '\\\\(', right: '\\\\)', display: false},
+                                  {left: '\\\\[', right: '\\\\]', display: true}
+                                ],
+                  // • rendering keys, e.g.:
+                  throwOnError : false
+                });
+              });
             </script>
+
           </header>
           <div class="post-content" itemprop="articleBody">
 <p>こんにちは､びしょ〜じょです｡
@@ -197,8 +205,8 @@ document.addEventListener("DOMContentLoaded", function(){
 <div class="twicard">
   <span class="image"><a href="https://github.com/fumieval/extensible" target="_blank" rel="noopener noreferrer"><div><img src="https://repository-images.githubusercontent.com/28671219/0ce84a80-cb6b-11e9-8882-b3e82c2f327d"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://github.com/fumieval/extensible" target="_blank" rel="noopener noreferrer">fumieval/extensible</a></div>
-    <div class="description">Extensible records, variants, structs, effects, tangles - fumieval/extensible</div>
+    <div class="title"><a href="https://github.com/fumieval/extensible" target="_blank" rel="noopener noreferrer">GitHub - fumieval/extensible: Extensible records, variants, structs, effects, tangles</a></div>
+    <div class="description">Extensible records, variants, structs, effects, tangles - GitHub - fumieval/extensible: Extensible records, variants, structs, effects, tangles</div>
   </span>
 </div>
 <div class="enclosed-tweet" align="center">
@@ -240,7 +248,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <h2 id="Effect%7Bive%2Cful%7D+Cycle.js"><a class="headerlink" href="#Effect%7Bive%2Cful%7D+Cycle.js">Effect{ive,ful} Cycle.js</a></h2>
 <p>3番手は<a href="https://twitter.com/ryotakameoka" target="_blank" rel="noopener noreferrer">@ryotakameoka </a>さんの発表でした｡</p>
 <div class="twicard">
-  <span class="image"><a href="https://qiita.com/ryota-ka/items/b46f43dc18a9229feb03" target="_blank" rel="noopener noreferrer"><div><img src="https://qiita-user-contents.imgix.net/https%3A%2F%2Fcdn.qiita.com%2Fassets%2Fpublic%2Farticle-ogp-background-1150d8b18a7c15795b701a55ae908f94.png?ixlib=rb-4.0.0&amp;w=1200&amp;mark=https%3A%2F%2Fqiita-user-contents.imgix.net%2F~text%3Fixlib%3Drb-4.0.0%26w%3D840%26h%3D380%26txt%3DEffect%257Bive%252Cful%257D%2520Cycle.js%26txt-color%3D%2523333%26txt-font%3DHiragino%2520Sans%2520W6%26txt-size%3D54%26txt-clip%3Dellipsis%26txt-align%3Dcenter%252Cmiddle%26s%3D34584c2660fb663af9b177652df18cfc&amp;mark-align=center%2Cmiddle&amp;blend=https%3A%2F%2Fqiita-user-contents.imgix.net%2F~text%3Fixlib%3Drb-4.0.0%26w%3D840%26h%3D500%26txt%3D%2540ryota-ka%26txt-color%3D%2523333%26txt-font%3DHiragino%2520Sans%2520W6%26txt-size%3D45%26txt-align%3Dright%252Cbottom%26s%3D7400746cf9da7ed1c6b6f5b41ee1c08c&amp;blend-align=center%2Cmiddle&amp;blend-mode=normal&amp;s=d785bd836dcf4b695188adacd2fe711e"></div></a></span>
+  <span class="image"><a href="https://qiita.com/ryota-ka/items/b46f43dc18a9229feb03" target="_blank" rel="noopener noreferrer"><div><img src="https://qiita-user-contents.imgix.net/https%3A%2F%2Fcdn.qiita.com%2Fassets%2Fpublic%2Farticle-ogp-background-1150d8b18a7c15795b701a55ae908f94.png?ixlib=rb-4.0.0&amp;w=1200&amp;mark64=aHR0cHM6Ly9xaWl0YS11c2VyLWNvbnRlbnRzLmltZ2l4Lm5ldC9-dGV4dD9peGxpYj1yYi00LjAuMCZ3PTg0MCZoPTM4MCZ0eHQ2ND1SV1ptWldOMGUybDJaU3htZFd4OUlFTjVZMnhsTG1weiZ0eHQtY29sb3I9JTIzMzMzJnR4dC1mb250PUhpcmFnaW5vJTIwU2FucyUyMFc2JnR4dC1zaXplPTU0JnR4dC1jbGlwPWVsbGlwc2lzJnR4dC1hbGlnbj1jZW50ZXIlMkNtaWRkbGUmcz0zMzg4OWJmZTRmZjU5ZTFmZGQ4N2QxZGE5NzljOWZlOQ&amp;mark-align=center%2Cmiddle&amp;blend64=aHR0cHM6Ly9xaWl0YS11c2VyLWNvbnRlbnRzLmltZ2l4Lm5ldC9-dGV4dD9peGxpYj1yYi00LjAuMCZ3PTg0MCZoPTUwMCZ0eHQ2ND1RSEo1YjNSaExXdGgmdHh0LWNvbG9yPSUyMzMzMyZ0eHQtZm9udD1IaXJhZ2lubyUyMFNhbnMlMjBXNiZ0eHQtc2l6ZT00NSZ0eHQtYWxpZ249cmlnaHQlMkNib3R0b20mcz1kOWY1M2ZhMTA0NDZkMmM2ZGM3ZDYwNjEzNjY3ODQyNw&amp;blend-align=center%2Cmiddle&amp;blend-mode=normal&amp;s=990a0b17385da034c0dea9aa4b72d0c8"></div></a></span>
   <span class="txt">
     <div class="title"><a href="https://qiita.com/ryota-ka/items/b46f43dc18a9229feb03" target="_blank" rel="noopener noreferrer">Effect{ive,ful} Cycle.js - Qiita</a></div>
     <div class="description">おことわりこの発表はかなりお気持ちです他の発表とは異なり(？)なんら学術的裏付けがあるものではありませんなんと(？)まったく数式が出てきません自己紹介亀岡 亮太株式会社HERP リードエンジニアT...</div>

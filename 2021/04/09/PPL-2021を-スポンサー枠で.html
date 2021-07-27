@@ -79,21 +79,29 @@
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             <script type="text/javascript" src="/js/GithubRepoWidget.min.js"></script>
             <script type="text/javascript">setTimeout(GithubRepoWidget.init, 3000);</script>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css" integrity="sha384-9tPv11A+glH/on/wEu99NVwDPwkMQESOocs/ZGXPoIiLE8MU/qkqUcZ3zzL+6DuH" crossorigin="anonymous">
-            <!-- The loading of KaTeX is deferred to speed up page rendering -->
-            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.js" integrity="sha384-U8Vrjwb8fuHMt6ewaCy8uqeUXv4oitYACKdB0VziCerzt011iQ/0TqlSlv8MReCm" crossorigin="anonymous"></script>
-            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/contrib/auto-render.min.js" integrity="sha384-aGfk5kvhIq5x1x5YdvCp4upKZYnA8ckafviDpmWEKp4afOZEqOli7gqSnh8I6enH" crossorigin="anonymous"></script>
+
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
             <script>
-document.addEventListener("DOMContentLoaded", function(){
-  renderMathInElement
-    ( document.body
-    , { delimiters: [ {left: "$$",  right: "$$",  display: true}
-                    , {left: "\\(", right: "\\)", display: false}
-                    , {left: "\\[", right: "\\]", display: true}
-                    , {left: "[[",  right: "]]",  display: true}
-                    , {left: "$",   right: "$",   display: false} ]
-    , })});
+              document.addEventListener("DOMContentLoaded", function() {
+                renderMathInElement(document.body, {
+                  // customised options
+                  // • auto-render specific keys, e.g.:
+                  delimiters: [
+                                  {left: '$$', right: '$$', display: true},
+                                  {left: '$', right: '$', display: false},
+                                  {left: '\\(', right: '\\)', display: false},
+                                  {left: '\\[', right: '\\]', display: true},
+                                  {left: '\\\\(', right: '\\\\)', display: false},
+                                  {left: '\\\\[', right: '\\\\]', display: true}
+                                ],
+                  // • rendering keys, e.g.:
+                  throwOnError : false
+                });
+              });
             </script>
+
           </header>
           <div class="post-content" itemprop="articleBody">
 <p>こんにちは､びしょ～じょです｡
@@ -156,7 +164,7 @@ PPL2021のゴールドスポンサーである株式会社HERPはプログラミ
 <div class="twicard">
   <span class="image"><a href="https://github.com/herp-inc/engineering-careers" target="_blank" rel="noopener noreferrer"><div><img src="https://repository-images.githubusercontent.com/292805383/d8af6800-0734-11eb-9a6c-4e7479334131"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://github.com/herp-inc/engineering-careers" target="_blank" rel="noopener noreferrer">herp-inc/engineering-careers</a></div>
+    <div class="title"><a href="https://github.com/herp-inc/engineering-careers" target="_blank" rel="noopener noreferrer">GitHub - herp-inc/engineering-careers: 株式会社HERPのエンジニア向け採用資料</a></div>
     <div class="description">株式会社HERPのエンジニア向け採用資料. Contribute to herp-inc/engineering-careers development by creating an account on GitHub.</div>
   </span>
 </div>
