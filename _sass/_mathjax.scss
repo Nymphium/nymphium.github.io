@@ -7,6 +7,7 @@ $katex-color: #eee;
 	margin-right: 5px;
 	background: $katex-color !important;
 	font: $katex-font !important;
+	font-size: $base-font-size * 0.8;
 }
 
 .katex-display {
@@ -17,5 +18,5 @@ $katex-color: #eee;
 	background: $katex-color !important;
 	overflow-x: auto !important;
 	font: $katex-font !important;
-	font-size: 110% !important;
+	// font-size: 110% !important;
 }
