@@ -5,9 +5,233 @@
     <description>lily, Aikatsu, Programming language, and more</description>
     <link>https://nymphium.github.io/</link>
     <atom:link href="https://nymphium.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 28 Jul 2021 06:13:32 +0900</pubDate>
-    <lastBuildDate>Wed, 28 Jul 2021 06:13:32 +0900</lastBuildDate>
+    <pubDate>Wed, 28 Jul 2021 20:10:05 +0900</pubDate>
+    <lastBuildDate>Wed, 28 Jul 2021 20:10:05 +0900</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title>ポケモンユナイトで今気持ちよくなりたいならゴルサポクッキーからやぶポイントゲッター蟹一択</title>
+        <enclosure type="image/png" length="0" url="https://nymphium.github.io/pictures/github_icon.png"></enclosure>
+        <description>&lt;p&gt;こんにちは､びしょ～じょです｡
+さて､2021年も半分終わってゴリンゴリンしてるんですが､私はプログラムも書かず&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;center&gt;&lt;span style=&quot;font-size:48px;&quot;&gt;ポケモンユナイトをしています!!&lt;/span&gt;&lt;/center&gt;
+&lt;p&gt;芹沢あさひ君のパチモンでやらしていただいてます&lt;sup id=&quot;fnref1&quot; title=&quot;シャニマスは未プレイかつ誰のCVもどの曲も聴いたことがない｡ちなみにポケモンのゲームも実家にあったボードゲーム(初代の黒いやつ)と人んちでやったスマブラでしか触れてない｡ &quot;&gt;&lt;a href=&quot;#fn1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;sup id=&quot;fnref2&quot; title=&apos;変換候補に&quot;びしょ～じょ&quot;が出たのでそれを入力したら&quot;～&quot;がomitされていることに気づかず&quot;びしょじょ&quot;というユーザ名になってしまった｡課金で名前を変えられるがこのままでいいや｡ &apos;&gt;&lt;a href=&quot;#fn2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;｡&lt;/p&gt;
+&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
+&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;芹沢あさひ君のパチモン &lt;a href=&quot;https://twitter.com/hashtag/%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%88?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#ポケモンユナイト&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/NintendoSwitch?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#NintendoSwitch&lt;/a&gt; &lt;a href=&quot;https://t.co/ogNSWAbYQf&quot;&gt;pic.twitter.com/ogNSWAbYQf&lt;/a&gt;&lt;/p&gt;— びしょ〜じょ (@Nymphium) &lt;a href=&quot;https://twitter.com/Nymphium/status/1418033188631244800?ref_src=twsrc%5Etfw&quot;&gt;July 22, 2021&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
+&lt;p&gt;以降ポケモンユナイトをやっておりイワパレスを触ったことがある(技を知ってる程度でよい)人向けの話をする｡
+また､筆者はMOBA初心者なので､ただ以下のイワパレスビルドが気持ちよすぎるだけで強さなどはあまり保証しない｡
+ランクマ(エリート帯)でMVPも取れるしポイントゲッター蟹&lt;sup id=&quot;fnref3&quot; title=&quot;プロゴルファー猿のニュアンスで読む &quot;&gt;&lt;a href=&quot;#fn3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;にもなるが､勝率は50%くらい｡
+多分味方のDPS職に依存してるかも｡
+なお以下に出てくるもちものはすべてLv30です｡&lt;/p&gt;
+&lt;h1 id=&quot;TL%3B+DR&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#TL%3B+DR&quot;&gt;TL; DR&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;以下のビルドで最序盤から一桁ゴールでいいのでキメまくる｡
+たまにシザーカッターでスタンさせたりタンクをなめてる相手との1v1を制する｡
+上レーンが壊れて相手は死ぬ｡&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;わざ
+
+&lt;ul&gt;
+&lt;li&gt;からやぶ&lt;/li&gt;
+&lt;li&gt;シザーカッター&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;もちもの
+
+&lt;ul&gt;
+&lt;li&gt;ゴールサポーター&lt;/li&gt;
+&lt;li&gt;ビスケット&lt;/li&gt;
+&lt;li&gt;きあいのハチマキ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;バトルアイテム
+
+&lt;ul&gt;
+&lt;li&gt;だっしゅつボタン&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;%E3%81%93%E3%81%A8%E3%81%AE%E7%99%BA%E7%AB%AF&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E3%81%93%E3%81%A8%E3%81%AE%E7%99%BA%E7%AB%AF&quot;&gt;ことの発端&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;エリートいけたしゼラオラ･エースバーンなどDPS厨に飽きつつあるし､新たな道を開拓したくなった｡&lt;/p&gt;
+&lt;p&gt;ポケモン単体でのわざ構成はだいたい決まってそうなので､アイテム方面から攻めていく｡
+ゴールを決めたときに恩恵が得られるアイテムが地味に使えるんじゃないかと思い､これを活かしたい｡
+ゴールしまくるのでゴールサポーターがあるといいだろう｡
+ということで&lt;strong&gt;ゴールサポーター+ゴール後バフのかかるアイテム&lt;/strong&gt;でクソガキをブチしばく｡&lt;/p&gt;
+&lt;p&gt;恩恵が得られるようになる映えあるアイテム達は､&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;strong&gt;ダンベル(攻撃)&lt;/strong&gt;､&lt;/li&gt;
+&lt;li&gt;
+&lt;strong&gt;しんげきメガネ(a.k.a. グラサン)(特攻)&lt;/strong&gt;､&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ビスケット(a.k.a. クッキー)(最大HP)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;の3つで､最大5積みできる｡&lt;/p&gt;
+&lt;h2 id=&quot;%E5%BE%AE%E5%A6%99%E3%81%AA%E3%82%B4%E3%83%BC%E3%83%AB%E7%A9%8D%E3%81%BF%E3%82%A2%E3%82%A4%E3%83%86%E3%83%A0%E3%81%9F%E3%81%A1&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E5%BE%AE%E5%A6%99%E3%81%AA%E3%82%B4%E3%83%BC%E3%83%AB%E7%A9%8D%E3%81%BF%E3%82%A2%E3%82%A4%E3%83%86%E3%83%A0%E3%81%9F%E3%81%A1&quot;&gt;微妙なゴール積みアイテムたち&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;ゴールしまくるために移動技がほしい｡
+しかし移動技持ちの特殊アタッカーがシーズン1では居ない(!)ので､ここで&lt;strong&gt;グラサンが脱落する&lt;/strong&gt;｡&lt;/p&gt;
+&lt;p&gt;なので次に物理DPSに目を向け､サッカー少年､鳥､アブソルくんなどにダンベルを持たせようとした｡
+これは失敗した｡
+ゴルサポ+ダンベルで2枠使うが､ちからのハチマキとピントレンズ+αのほうが総合火力が圧倒的にある｡
+ステを育てるためにゴールするリスクもいらない｡
+&lt;strong&gt;ダンベルも持っていく意味が薄い&lt;/strong&gt;｡
++αで積むならいいかもしれない…?&lt;/p&gt;
+&lt;h2 id=&quot;%E5%94%AF%E4%B8%80%E7%84%A1%E4%BA%8C%E3%81%AE%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E5%94%AF%E4%B8%80%E7%84%A1%E4%BA%8C%E3%81%AE%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC&quot;&gt;唯一無二のクッキー&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;クッキーは5積みすると&lt;strong&gt;最大HPが+1000のバフ&lt;/strong&gt;がかかる｡
+かつクッキー自体がHP+240持ち､つまり&lt;strong&gt;合計で最大+1240&lt;/strong&gt;となる｡
+これは比類なきHP上昇アイテムであるといえる｡&lt;/p&gt;
+&lt;h2 id=&quot;%E3%82%B4%E3%83%AB%E3%82%B5%E3%83%9D%E3%81%AE%E7%89%B9%E6%80%A7%E3%81%8B%E3%82%89%E3%83%9D%E3%82%B1%E3%82%92%E8%A6%8B%E3%81%A6%E3%81%BF%E3%82%8B&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E3%82%B4%E3%83%AB%E3%82%B5%E3%83%9D%E3%81%AE%E7%89%B9%E6%80%A7%E3%81%8B%E3%82%89%E3%83%9D%E3%82%B1%E3%82%92%E8%A6%8B%E3%81%A6%E3%81%BF%E3%82%8B&quot;&gt;ゴルサポの特性からポケを見てみる&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;構成の要は､ゴール積みアイテム､そしてゴルサポである｡
+ゴルサポはシュートを決めるときにバリアがはられる｡
+カジリガメのボーナスで得られるあれと同じですね｡
+そして､&lt;strong&gt;バリアの耐久は､ポケのHPの10%&lt;/strong&gt;である｡
+このバリアが破壊されると､通常のシュート時に攻撃を受けたときと同様シュートがキャンセルされる｡
+つまりHPのたかいポケのほうがシュート時に妨害されにくい｡
+また､このバリアは&lt;strong&gt;CCも無効&lt;/strong&gt;となる｡&lt;/p&gt;
+&lt;p&gt;ところでこのバリア耐久計算ってクッキーやゴルサポ自身の追加分も計算に含まれるのか?
+素点 * 0.1?
+実は分かっない｡
+なんにせよ､ここで分かってくるのは､&lt;strong&gt;HPの高いポケほどゴルサポの恩恵が得られ､シュートを決めやすく､クッキーを積みやすい&lt;/strong&gt;｡&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;つまりこうだ｡&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;center&gt;&lt;span style=&quot;font-size:36px;&quot;&gt;HP があるのは壁､壁で移動系があるのは蟹､つまり蟹最強!!!!!!&lt;/span&gt;&lt;/center&gt;
+&lt;p&gt;これがワイのゴルサポクッキーからやぶポイントゲッター蟹や｡
+蟹がレーンで敵を無視してシュートして相手をイライラさせるしポイントゲッター蟹の名前をほしいままにする｡&lt;/p&gt;
+&lt;h1 id=&quot;%E6%A7%8B%E6%88%90&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E6%A7%8B%E6%88%90&quot;&gt;構成&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;蟹単体の構成は､ゴールを決めるためにアイシールド21(と自陣への帰宅)をするので､からやぶは必須である｡&lt;/p&gt;
+&lt;p&gt;ステロ･シザーカッター択は､ファーミングに有利な点で後者を選択する｡
+てかシザーカッターのモーション値は結構高いのか､からやぶ込みだとなんかしらんけど敵をしばいてることがままある｡
+しかし､瞬間火力は結構高いがクールタイムが7秒くらいある｡
+基本的にノックバック+スタンのCCと思って運用したほうが事故らない｡
+このノックバックによって､ロトムが自陣にやってくる場合も押し出して遅延させることができる｡
+また敵陣にロトムが行く場合も､ゴール前で構えてる敵をノックバックでどかしてロトムを着地させることもできる｡
+これが決まるとかなり気持ちがｲｯとなる｡&lt;/p&gt;
+&lt;p&gt;つまり､以下のような感じ｡&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;わざ
+
+&lt;ul&gt;
+&lt;li&gt;からやぶ&lt;/li&gt;
+&lt;li&gt;シザーカッター&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;もちもの
+
+&lt;ul&gt;
+&lt;li&gt;ゴルサポ&lt;/li&gt;
+&lt;li&gt;クッキー&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;きあいのハチマキ&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;バトルアイテム
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;だっしゅつボタン&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;太文字の出自は次節にて｡&lt;/p&gt;
+&lt;h1 id=&quot;%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E8%80%83%E3%81%88%EF%BD%A5%E8%80%83%E6%85%AE%E3%81%99%E3%81%B9%E3%81%8D%E3%81%93%E3%81%A8&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E8%80%83%E3%81%88%EF%BD%A5%E8%80%83%E6%85%AE%E3%81%99%E3%81%B9%E3%81%8D%E3%81%93%E3%81%A8&quot;&gt;基本的な考え･考慮すべきこと&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id=&quot;%E5%9F%BA%E6%9C%AC%E3%82%B3%E3%83%B3%E3%82%BB%E3%83%97%E3%83%88&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E5%9F%BA%E6%9C%AC%E3%82%B3%E3%83%B3%E3%82%BB%E3%83%97%E3%83%88&quot;&gt;基本コンセプト&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;めっちゃ硬い蟹が高速移動して攻撃無視してシュートを(しかもあんまり点数が高くない)決めまくる精神攻撃構築｡&lt;/p&gt;
+&lt;p&gt;クッキーを5積みすることを意識して序盤からとにかくシュートしていく｡
+持ち物が火力上げるものではないので､シザーカッターのモーション値を過信せず､&quot;やや火力のある妨害&quot;程度にシザーカッターで敵を押していく｡
+押した隙きにシュートする､そんなイメージ｡
+わざの主役は&lt;strong&gt;現環境最速の移動スキル&lt;/strong&gt;であるからやぶであり､タッチダウンとその後のガン逃げをこれによって実現する｡&lt;/p&gt;
+&lt;p&gt;ゴルサポがCC無効なのと､シュート時の無敵時間で敵の攻撃をスカせることができるので､常に若干量のポイントを持って相手ゴールに特攻すると相手をイライラさせられる｡
+完成するとサポート職対面なら敵ゴールに異様な時間居座りができ､目の前で猿などを狩って5点シュートを目の前で入れまくる&lt;strong&gt;ｷﾓｽｷﾞプレイ&lt;/strong&gt;ができて最高に楽しい｡
+また､終盤の完成形はとてもHPが高く､蟹本来の硬さも相まってゲンガー4パンとかをかなり耐えられるし､1v3もシザーカッターのスタンとノックバックで長時間耐久&amp;amp;妨害ができる｡
+相手が甘えた行動を取ってる場合三タテすることもある｡&lt;/p&gt;
+&lt;p&gt;火力は大して無いがポイントゲッター蟹なので､負けたときも｢俺は点数入れたんだから点数入れてくる敵をしばけなかったDPSが悪い｣と割り切れるので&lt;strong&gt;精神にもよく､楽しくゲームが続けられる&lt;/strong&gt;｡&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ランクマ(エリート帯)でMVPも取れるしポイントゲッター蟹にもなるが､勝率は50%くらい｡
+多分味方のDPS職に依存してるかも｡&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;%E3%82%B4%E3%83%AB%E3%82%B5%E3%83%9D%E3%81%AE%E3%83%90%E3%83%AA%E3%82%A2&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E3%82%B4%E3%83%AB%E3%82%B5%E3%83%9D%E3%81%AE%E3%83%90%E3%83%AA%E3%82%A2&quot;&gt;ゴルサポのバリア&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;ただ､ゴルサポによるバリアもHPの10%なので､持ってるポイントとシュートにかかる時間を考慮しなければならない｡
+蟹の赤ちゃん(～Lv3)はバリアも赤ちゃんなので､15ptくらいシュートする場合はDPSと1v2になるとシュートするまでにバリアが剥がされてしまいほぼ不可能｡
+このバランスを知っておいたほうがよい｡
+Lv15でクッキー5積みするとDPS対面でも2､30ptくらい目の前で打ち込めて超エキサイティンになる｡&lt;/p&gt;
+&lt;h2 id=&quot;%E9%80%83%E3%81%92%EF%BD%A5%E8%80%90%E4%B9%85%EF%BD%A5%E3%81%8B%E3%82%89%E3%82%84%E3%81%B6%E3%81%AE%E6%94%BB%E9%98%B2%E5%A4%89%E6%8F%9B&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E9%80%83%E3%81%92%EF%BD%A5%E8%80%90%E4%B9%85%EF%BD%A5%E3%81%8B%E3%82%89%E3%82%84%E3%81%B6%E3%81%AE%E6%94%BB%E9%98%B2%E5%A4%89%E6%8F%9B&quot;&gt;逃げ･耐久･からやぶの攻防変換&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;敵がいる場合､シュートを決めるときの往路､決めたあとの復路で攻撃を食らう｡
+シュートを決めると1000～2000くらい回復する(シュートしたポイント依存か?)ので､この回復を考慮してタッチダウンをキメる｡&lt;/p&gt;
+&lt;p&gt;遠距離DPSがいると復路でだいぶダメージを食らうので､&lt;strong&gt;ここできあいのハチマキですよ&lt;/strong&gt;｡
+チョッキもやってみたが､通常攻撃がさいつよのエスバンなどはこれで躱せない場面があったので､きあいハチマキに落ち着いた｡
+HP管理うまければゴツメでゴール前居座りリアクティブアーマーみたいなのもあるかな～うまい人やってみてください｡&lt;/p&gt;
+&lt;p&gt;そして&lt;strong&gt;だっしゅつボタン&lt;/strong&gt;で事故を減らす｡
+煙幕もやってみたが､からやぶについてこれるやつがult切って移動バフかかったやつとか掴み技のポーズのカイリキーくらいしか居ないのと､うまく当てるのが難しいので見送った｡
+ゴール倍速は…クールタイム2分て…&lt;/p&gt;
+&lt;p&gt;シュートを決めたら基本的に居座っても何もないので自陣に戻るわけだが､このときも当然ながらからやぶで自陣まで駆け抜ける｡
+ただ､からやぶの特性として防御が攻撃､特攻が特防に割合で変換されるため､足は速いが耐久は下がる｡
+なので､敵の攻撃を伺ってから殻を破らないと結構食らってしまうので､切るタイミングには注意がいる｡&lt;/p&gt;
+&lt;h1 id=&quot;%E7%AB%8B%E3%81%A1%E5%9B%9E%E3%82%8A&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E7%AB%8B%E3%81%A1%E5%9B%9E%E3%82%8A&quot;&gt;立ち回り&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;上レーンに行く｡
+カメ大好きキッズが集合して下レーンはもうメチャクチャです｡
+また､先述のとおりロトムをしばいたあとに活躍の場面があるので､それも考慮して上が良さそう｡&lt;/p&gt;
+&lt;h2 id=&quot;%E5%BA%8F%E7%9B%A4&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E5%BA%8F%E7%9B%A4&quot;&gt;序盤&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;ひとまずパレスに進化するようにがんばる｡
+上レーンのフロントに行くまでに猿のKOを何回か取るとチマチマしたポイントが入っているので､これをシュートするのもアリ｡&lt;/p&gt;
+&lt;p&gt;Lv3の赤ちゃんはか弱いが､相手も3かよくてLv4なので､遮蔽でいい感じに弾を避けながら行けばそんなに痛くないで相手ゴールに行ける｡
+ここで敵がDPSの赤ちゃんx2だとゴルサポが破壊されてシュートできない可能性がある｡
+経験からすると､3～5ptが安全圏｡&lt;/p&gt;
+&lt;p&gt;無事パレスに進化したらだいたい蜂が沸くので､強くなった耐久で敵陣側に立って蜂を殴ってタンクしながらファームする｡
+メイン技のからやぶを覚えたので､すきあらばシュートしてクッキーを積む｡
+積み終わってもちまちまシュートしていってロトムで最低フロントを落とせるくらいになってるとかなり気持ちがｲ&lt;/p&gt;
+&lt;h2 id=&quot;%E3%82%AB%E3%83%A1%EF%BD%A5%E3%83%AD%E3%83%88%E3%83%A0&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E3%82%AB%E3%83%A1%EF%BD%A5%E3%83%AD%E3%83%88%E3%83%A0&quot;&gt;カメ･ロトム&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;脳死でカメに行くやつは脳が死んでるのでいますぐお手元のスイッチを破棄して病院に行ったほうがいい｡&lt;/p&gt;
+&lt;p&gt;敵のレーナーが脳死じゃない(かつ味方が脳死)の場合､自陣居座りシザーカッターで守りを固めましょう｡
+回復奴隷･タンクの対面だったら敵陣前の猿を目の前でしばいて5点入れるのを繰り返すｷﾓｽｷﾞプレイングで気持ちよくなるのもいい｡&lt;/p&gt;
+&lt;p&gt;敵も脳死でがら空きの場合は､不意の来客を警戒しつつファーミングしつつシュートを決めていく｡
+カメが沼ってるとロトムをソロで落とす時間もあるっちゃあるがあんまりおいしくないと思う｡&lt;/p&gt;
+&lt;p&gt;うまくいってると敵の上レーンフロントが壊れている｡&lt;/p&gt;
+&lt;h2 id=&quot;%E3%81%9D%E3%81%AE%E5%BE%8C%EF%BD%A5%E3%82%AB%E3%83%A1%E3%83%AD%E3%83%88%E3%83%A02%E5%9B%9E%E7%9B%AE&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E3%81%9D%E3%81%AE%E5%BE%8C%EF%BD%A5%E3%82%AB%E3%83%A1%E3%83%AD%E3%83%88%E3%83%A02%E5%9B%9E%E7%9B%AE&quot;&gt;その後･カメロトム2回目&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;あとはファーム･味方支援･妨害･ポイントゲッター蟹をやる｡&lt;/p&gt;
+&lt;p&gt;味方もポイントを結構抱えてるころなので､ある程度一緒にゴールまで近づいていって､からやぶで先陣切って相手の技を吐かせる(ついでにシュートする)ことでゴール前小競り合いを優位にさせる｡
+シザーカッターで敵をレーンから外に出すことで定時回復を剥がして味方がしばき倒すのをサポートする｡&lt;/p&gt;
+&lt;p&gt;まあまあ育っているとロトムソロが30秒弱でできる｡
+サンダーの湧き時間を見つつワンチャンやるのもあるか｡&lt;/p&gt;
+&lt;h2 id=&quot;%E3%83%A9%E3%82%B9%E3%83%88%E3%82%B9%E3%83%91%E3%83%BC%E3%83%88%EF%BD%A5%E3%82%B5%E3%83%B3%E3%83%80%E3%83%BC%E3%83%95%E3%82%A1%E3%82%A4%E3%83%88&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E3%83%A9%E3%82%B9%E3%83%88%E3%82%B9%E3%83%91%E3%83%BC%E3%83%88%EF%BD%A5%E3%82%B5%E3%83%B3%E3%83%80%E3%83%BC%E3%83%95%E3%82%A1%E3%82%A4%E3%83%88&quot;&gt;ラストスパート･サンダーファイト&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;ここで持ってるポイントがちょうど30ptくらいなら､バリア耐久的に敵を完全無視シュートができる場合がある｡
+このあたりだとだいぶ硬くなっており､4人からフォーカスを受けても即溶けしないし､ultを切ると体感20秒くらい耐える｡
+人は一般に1v4だと的が倒れるまで殴ってしまう傾向にあり､敵4人を(体感)20秒引きつけられるのでぅゎヵ=っょぃ｡&lt;/p&gt;
+&lt;p&gt;火力はないのでサンダーファイトはCCに徹する｡
+終わったらシュートに行くなり防人するなり1人に粘着して妨害するなり｡&lt;/p&gt;
+&lt;h1 id=&quot;%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB&quot;&gt;おわりに&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;以上がぼくのかんがえたさいきょうの蟹でした｡
+筆者はソロランクマ勢なので､他ポケとの連携は難しく感じたため､もちものを掘り下げてみた｡
+DPSでガキを轢くのもいいが､自分で考えたロマンプレイがそれなりにでも実用に耐えるというのはゲームにうまく乗れた感じがしてかなり楽しい｡&lt;/p&gt;
+&lt;p&gt;グラサンやダンベルは二軍三軍といった具合で悲しいので､強化されたりうまく適合するポケがアップデートで来てほしいな～と思った｡
+せっかく本家よりももちものが多く持てるので､もっといっぱいアイテムが出て面白い組み合わせができたら…とも思ったがレベ上げが大変そう｡&lt;/p&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+
+&lt;li id=&quot;fn1&quot;&gt;
+&lt;p&gt;シャニマスは未プレイかつ誰のCVもどの曲も聴いたことがない｡ちなみにポケモンのゲームも実家にあったボードゲーム(初代の黒いやつ)と人んちでやったスマブラでしか触れてない｡ &lt;a href=&quot;#fnref1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li id=&quot;fn2&quot;&gt;
+&lt;p&gt;変換候補に&quot;びしょ～じょ&quot;が出たのでそれを入力したら&quot;～&quot;がomitされていることに気づかず&quot;びしょじょ&quot;というユーザ名になってしまった｡課金で名前を変えられるがこのままでいいや｡ &lt;a href=&quot;#fnref2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li id=&quot;fn3&quot;&gt;
+&lt;p&gt;プロゴルファー猿のニュアンスで読む &lt;a href=&quot;#fnref3&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;/ol&gt;
+&lt;/div&gt;</description>
+        <pubDate>Wed, 28 Jul 2021 00:00:00 +0900</pubDate>
+        <link>https://nymphium.github.io/2021/07/28/pokeuni.html</link>
+        <guid isPermaLink="true">https://nymphium.github.io/2021/07/28/pokeuni.html</guid>
+        
+        <category>雑感</category>
+        
+        
+      </item>
     
       <item>
         <title>なんだかんだガチプロトタイピングにはTypeScript楽だしgRPCを手作りする</title>
@@ -1967,350 +2191,6 @@ GADTsやrecord以外でOCamlのプログラムに型注釈を付けたくなる�
         <guid isPermaLink="true">https://nymphium.github.io/2020/05/08/nikkan-promise4.html</guid>
         
         <category>日刊Promise</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>日刊Promise(3) スレッドプールっぽいものを作ってsetTimeoutを改修</title>
-        <enclosure type="image/png" length="0" url="https://nymphium.github.io/pictures//2020/05/06/nikkan-promise3/thumb.png"></enclosure>
-        <description>&lt;h1 id=&quot;1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot;&gt;1. はじめに&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;こんにちは､びしょ〜じょです｡
-&quot;日刊&quot;ですが昨日は神絵師活動のためお休みをいただいたため､ほぼ日になってしまいました｡&lt;/p&gt;
-&lt;p&gt;今回は､前回の課題であった&lt;code&gt;setTimeout&lt;/code&gt;がなんかおかしいのを直しました｡
-本当は&lt;code&gt;Promise&lt;/code&gt;までイッキにいきたかったが､もう一発大改修が必要そうだったので今回は諦めました｡&lt;/p&gt;
-&lt;p&gt;今回も放映した&lt;/p&gt;
-&lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=D5ZkCvEomm4&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://i.ytimg.com/vi/D5ZkCvEomm4/maxresdefault.jpg&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
-  &lt;span class=&quot;txt&quot;&gt;
-    &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=D5ZkCvEomm4&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;おたくがボソボソ喋りながら言語実装する written in OCaml 2&lt;/a&gt;&lt;/div&gt;
-    &lt;div class=&quot;description&quot;&gt;これの実装続き サムネも1つ前のやつhttps://nymphium.github.io/2020/05/03/nikkan-promise2.html&lt;/div&gt;
-  &lt;/span&gt;
-&lt;/div&gt;
-&lt;p&gt;ところで中途半端に&lt;code&gt;Base&lt;/code&gt;を使っていたが､いよいよ&lt;code&gt;open Base&lt;/code&gt;した｡&lt;/p&gt;
-&lt;h1 id=&quot;2.+closure&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#2.+closure&quot;&gt;2. closure&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;クロージャ実装してなくてﾜﾛﾀなので実装した｡
-クロージャというのはですねえ変数環境をclosingしている関数のことです｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;
-&lt;span class=&quot;listing-name&quot;&gt;fが環境[{name: &quot;x&quot;; value: 3}]をclosingしている&lt;/span&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// ==&amp;gt; 3&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;let&lt;/code&gt;にした場合(内部的に)reference cellになるので外側から書き換えができますが､今回の実装はJSのサブセットになっており&lt;code&gt;let&lt;/code&gt;はomitしているので考えません｡&lt;/p&gt;
-&lt;p&gt;クロージャを実装するために､まず&lt;em&gt;実行時の値&lt;/em&gt;を定義する｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;c&quot;&gt;(* 確かに環境は束縛されている変数と 実行時の値 のペアのリストですね *)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;variable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;runtime_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;list&lt;/span&gt;
-
-&lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;runtime_value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RNull&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RUnit&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RNum&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RBuiltin&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;builtin&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Closure&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;variable&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stmts&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;Closure&lt;/code&gt; 以外はかなり作者都合によるものですね｡キツい｡
-そしてそれらと&lt;code&gt;value&lt;/code&gt;を相互に変換するための&lt;code&gt;value_of_rtv&lt;/code&gt;と&lt;code&gt;rtv_of_value&lt;/code&gt;を定義した｡
-後者は関数からクロージャを作るときに環境を注入したいので&lt;code&gt;env&lt;/code&gt;を同時に受け取る｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;eval_exp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt;
-  &lt;span class=&quot;c&quot;&gt;(* Value(Var(x)) -&amp;gt; lookup x env が要らなくなったんでｳﾚｼ *)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rtv_of_value&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;......&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Call&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;eval_exp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;eval_exp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e2&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Closure&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&apos;&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bind_args&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xs&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&apos;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;eval_stmts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&apos;&apos;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rtv_of_value&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&apos;&apos;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;......&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;closingした環境だけでやっていくので､現在の評価環境は使いません｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;fun&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;c&quot;&gt;(**
-   * const x = 5;
-   * const f = (y) =&amp;gt; x + y;
-   * const x = 10; // そもそもsyntax errorだが念のため
-   * return f(12)
-   *)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stmts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;nn&quot;&gt;Nlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_list&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Def&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;x&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Num&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Def&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;f&quot;&lt;/span&gt;
-          &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Fun&lt;/span&gt;
-                 &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;y&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-                 &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Nlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_list&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Op&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Var&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;x&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Var&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;y&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-                 &lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Def&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;x&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Num&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Call&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Var&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;f&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Num&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_program&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stmts&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;equal_value&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@@&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Num&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;ヨシ!
-……そういえば再帰関数が定義できない｡&lt;/p&gt;
-&lt;p&gt;closingしている環境に関数自身を参照できるようにしなければならない｡
-自身が束縛される変数名を持っておく必要もある｡&lt;/p&gt;
-&lt;p&gt;ま､まあ今回はJSのサブセットなんで再帰関数は実装しないという逃げの一手でいきます｡&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;let-rec in&lt;/code&gt;のように環境を作る変数束縛だったらシュッといけたのに……｡&lt;/p&gt;
-&lt;h1 id=&quot;3.+%3Ccode%3EsetTimeout%3C%2Fcode%3E+%E3%82%92%E3%82%84%E3%82%8A%E3%81%AA%E3%81%8A%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%83%BC%EF%BD%BD%EF%BE%9A%EF%BE%8C%EF%BE%9F%E3%81%A3%E3%81%BD%E3%81%84%E3%82%84%E3%81%A4&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#3.+%3Ccode%3EsetTimeout%3C%2Fcode%3E+%E3%82%92%E3%82%84%E3%82%8A%E3%81%AA%E3%81%8A%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%83%BC%EF%BD%BD%EF%BE%9A%EF%BE%8C%EF%BE%9F%E3%81%A3%E3%81%BD%E3%81%84%E3%82%84%E3%81%A4&quot;&gt;3. &lt;code&gt;setTimeout&lt;/code&gt; をやりなおしましょうーｽﾚﾌﾟっぽいやつ&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;前回問題として残ったものは&lt;code&gt;setTimeout&lt;/code&gt;が同期的にsleepするためになんもいいことがない､ということであった｡&lt;/p&gt;
-&lt;p&gt;では､こうしましょう｡&lt;/p&gt;
-&lt;p&gt;まずスレッドプールを作る｡
-&lt;code&gt;setTimeout&lt;/code&gt;に渡された関数をスレプに突っ込む｡
-nマイクロ秒ずつsleepしてからpending､nマイクロ秒ずつsleepしてからpendingを繰り返す｡
-pendingしたらもとの実行に戻る｡
-合計して&lt;code&gt;setTimeout&lt;/code&gt;に渡された時間だけsleepしたら､渡された関数を実行し､終了｡&lt;/p&gt;
-&lt;p&gt;スレプにツッコまれる&quot;スレッド&quot;は以下の値を返すthunkである｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;thread_status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pending&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;unit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;thread_status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Done&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;runtime_value&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;Pending&lt;/code&gt;にOCamlレベルの関数を渡すことで､いい感じにsleepを走らせられるようにする｡
-スレプはこのthunkがツッコまれたキューになっている｡
-&lt;code&gt;Thread_pool&lt;/code&gt;がスレプを実装したモジュールである｡
-キュー自体は隠蔽されている｡&lt;/p&gt;
-&lt;p&gt;前回定義した&lt;code&gt;builtin&lt;/code&gt;を拡張し､以下のように関数をキューイングする｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;c&quot;&gt;(* 睡眠時間の最小単位 20ms *)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wait_unit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/.&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;rec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;builtin&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bin&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rtvs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bin&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SetTimeout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nth_exn&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rtvs&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value_of_rtv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number_of_value&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;(* やはりカリー化をやめた｡第2引数に関数を受け取る｡ *)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nth_exn&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rtvs&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;(* クロージャが役に立った😃 とりあえず引数は捨てる｡ *)&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Closure&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stmts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;c&quot;&gt;(* refにつっこむ *)&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@@&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;of_int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/.&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;ignore&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;@@&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Thread_pool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enqueue&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;@@&lt;/span&gt;
-        &lt;span class=&quot;c&quot;&gt;(* トランポリン化のような形になって面白い｡この関数をスレプに突っ込む｡ *)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;rec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-          &lt;span class=&quot;c&quot;&gt;(* wait_unit秒sleepする *)&lt;/span&gt;
-          &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Unix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleepf&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wait_unit&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-          &lt;span class=&quot;c&quot;&gt;(* 最悪19ms余計にsleepするが､精度はそんなに精密である必要はない *)&lt;/span&gt;
-          &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wait_unit&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-          &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-          &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;eval_stmts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stmts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ignore&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-            &lt;span class=&quot;nc&quot;&gt;Done&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RUnit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-          &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;nc&quot;&gt;Pending&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-      &lt;span class=&quot;nc&quot;&gt;RUnit&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;failwith&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;second value of setTimeout should be a function&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;......&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;スレプからスレッドを1つ取り出して実行し､pendingしたらまたスレプに戻す､という操作を&lt;code&gt;eval_exp&lt;/code&gt;1回ごとにおこなう｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;eval_exp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Thread_pool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ignore&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;......&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;eval_exp&lt;/code&gt;1回あたりの評価時間を無視しているが､無視している実行時間によりsleepがどんどんズレていくことになるが､まあこの方法では仕方ない｡&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Thread_pool.run&lt;/code&gt;はこんな感じにoptionalに&lt;code&gt;Done&lt;/code&gt;の持つ値を返す｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;c&quot;&gt;(* キューの先頭を取り出し､ *)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;top&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dequeue&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;top&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;None&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;None&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Some&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ts&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Done&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rtv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Some&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rtv&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;(* pendingしていたらそのスレッドを走らせて結果をキューイングする｡ *)&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pending&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;thread&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;None&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@@&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enqueue&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@@&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;thread&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;しかしこれだけだと､&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;world&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;というプログラムを実行したときに､(500/20=)25回も式を評価しないため､&lt;code&gt;setTimeout&lt;/code&gt;に渡さされた関数が実行されない｡
-ではどうするか?&lt;/p&gt;
-&lt;p&gt;プログラムを実行してから､スレッドプールに入っているスレッドが全て&lt;code&gt;Done&lt;/code&gt;になるまで走らせれば良いでしょう｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_program&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stmts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;eval_stmts&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stmts&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Thread_pool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run_all&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-  &lt;span class=&quot;c&quot;&gt;(* 実行世界から帰るのでとりあえず変換しているが…… *)&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;value_of_rtv&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;Thread_pool.run_all&lt;/code&gt;はこんなかんじ&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;rec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_all&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_empty&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ignore&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_all&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;テストしますよーテスト&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expect_test&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;c&quot;&gt;(**
-   * const x = 100;
-   * setTimeout(() =&amp;gt; console.log(x), 2000);
-   * console.log(500);
-   * setTimeout(() =&amp;gt; console.log(40), 500);
-   *)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stmts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;nn&quot;&gt;Nlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_list&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Def&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;x&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Num&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Expression&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Call&lt;/span&gt;
-             &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Builtin&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SetTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-             &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Num&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-               &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt;
-                   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Fun&lt;/span&gt;
-                      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;[]&lt;/span&gt;
-                      &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Nlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_list&lt;/span&gt;
-                          &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Expression&lt;/span&gt;
-                              &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Call&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Builtin&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ConsoleLog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Var&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;x&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
-                          &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-               &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Expression&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Call&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Builtin&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ConsoleLog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Num&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Expression&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Call&lt;/span&gt;
-             &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Builtin&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SetTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-             &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Num&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-               &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt;
-                   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Fun&lt;/span&gt;
-                      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;[]&lt;/span&gt;
-                      &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Nlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_list&lt;/span&gt;
-                          &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Expression&lt;/span&gt;
-                              &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Call&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Builtin&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ConsoleLog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Num&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
-                          &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-               &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_program&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stmts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ignore&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expect&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-    &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;
-    &lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;
-    &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;標準出力のテストのために&lt;a href=&quot;https://github.com/janestreet/ppx_expect&quot;&gt;&lt;code&gt;ppx_expect&lt;/code&gt;&lt;/a&gt;を使った｡
-こいつぁすげえや｡&lt;/p&gt;
-&lt;h1 id=&quot;4.+Promise%EF%BD%A4%E3%82%86%EF%BD%A4%E5%8F%8B%E3%81%98%E3%82%87%E2%80%A6%E2%80%A6&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#4.+Promise%EF%BD%A4%E3%82%86%EF%BD%A4%E5%8F%8B%E3%81%98%E3%82%87%E2%80%A6%E2%80%A6&quot;&gt;4. Promise､ゆ､友じょ……&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;スレプできたしもう勢いで&lt;code&gt;Promise&lt;/code&gt;実装やっちゃうかー!!
-と思ったんですがダメそうなことが分かりました｡&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;new Promise&lt;/code&gt;が返す実行時の値として&lt;code&gt;RPromise&lt;/code&gt;を追加します｡
-&lt;code&gt;Promise&lt;/code&gt;がスレプにツッコまれるので､スレッドに対応するUUIDを返す｡
-ところでUUIDは内部で&lt;code&gt;core_kernel&lt;/code&gt;を使っている｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;
-&lt;span class=&quot;listing-name&quot;&gt;runtime_repr.ml&lt;/span&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;runtime_value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;......&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RPromise&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Uuid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;逆にスレプにはスレッドとそれのUUIDのtupleを突っ込む｡
-対応するUUIDを返すことで､&lt;code&gt;await&lt;/code&gt;でスレプから対応するスレッドを一気に走らせられるようにする｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;
-&lt;span class=&quot;listing-name&quot;&gt;thread_pool.ml&lt;/span&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Uuid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;thread_status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;enqueue&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;th&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uuid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Uuid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enqueue&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uuid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pending&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;th&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;uuid&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wait&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;rec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;go&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;th&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;th&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pending&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;th&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;go&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;th&apos;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Done&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o_th&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Uuid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;equal&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o_th&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Some&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ts&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Done&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rtv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rtv&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pending&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;thread&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;go&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;thread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;None&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;failwith&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;no such id&quot;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;あとはやるだけ!w
-と思ったのですが……&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;
-&lt;span class=&quot;listing-name&quot;&gt;eval_exp&lt;/span&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;  &lt;span class=&quot;o&quot;&gt;......&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Promise&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Constructor&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Fun&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Call&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Unit&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uuid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Thread_pool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enqueue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@@&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Done&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;eval_exp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;RPromise&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uuid&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;failwith&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;this is not callable object&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Wait&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rtv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;eval_exp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rtv&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RPromise&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uuid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Thread_pool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wait&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uuid&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rtv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;うまくいかない｡
-とりあえず､&lt;code&gt;Promise(Constructor(-))&lt;/code&gt;に渡されるものが関数ーさらに今回は手抜きで関数&lt;em&gt;リテラル&lt;/em&gt;に制限しているーの場合にそれをスレッドにしてスレプに突っ込み､対応するUUIDを&lt;code&gt;RPromise&lt;/code&gt;に包んで実行時の値にして返す｡
-&lt;code&gt;Wait&lt;/code&gt;はそのまま&lt;code&gt;Thread_pool.wait&lt;/code&gt;のラッパーになっている｡
-&lt;code&gt;Promise&lt;/code&gt;以外を&lt;code&gt;await&lt;/code&gt;するときはJSと同じようにサッと流す｡
-そういえばこのサブセットには配列がないので&lt;code&gt;Promise(All(-))&lt;/code&gt;はしれっと消した｡&lt;/p&gt;
-&lt;p&gt;しかしこれではうまくいかない｡
-&lt;code&gt;Wait&lt;/code&gt;がうまくproimiseを待ってくれない｡
-これはまあまあ検討がついている｡&lt;/p&gt;
-&lt;p&gt;JSの&lt;code&gt;Promise&lt;/code&gt;を思い出してみると､&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;promise&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;world&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;そういえば&lt;code&gt;resolve&lt;/code&gt;とかいうやつあったな｡
-上記のJSプログラムで&lt;code&gt;resolve&lt;/code&gt;を&lt;code&gt;setTimeout&lt;/code&gt;内で呼ばないと結構面白い結果が得られる｡
-……どうですか? 結果は500ミリ秒の沈黙ののちに&lt;code&gt;hello&lt;/code&gt;が出力されるのみである｡
-&lt;code&gt;await&lt;/code&gt;は何なのかを思い出してみると､&lt;code&gt;await&lt;/code&gt;を使わなければ上記のプログラムは以下のように変形できる｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;promise&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;world&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;まるで&lt;code&gt;call/cc&lt;/code&gt;だな｡
-実際のところは現在のscope内の限定継続を利用しているのだが｡&lt;/p&gt;
-&lt;p&gt;ふーむ､振り返るまでもなくこのような挙動にはなってない｡
-前回は｢statementの残りこそが継続である｣と言ったが､まさにこれを利用すべきで､&lt;code&gt;Promise&lt;/code&gt;内で&lt;code&gt;resolve&lt;/code&gt;のようなものを呼んだら&quot;この残りのstatement&quot;を評価すればよい｡&lt;/p&gt;
-&lt;p&gt;これは次回だな｡
-木曜は有給取ってないんですが今って木曜の午前4時……&lt;/p&gt;
-&lt;h1 id=&quot;5.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#5.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB&quot;&gt;5. おわりに&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;pending&lt;/p&gt;</description>
-        <pubDate>Wed, 06 May 2020 00:00:00 +0900</pubDate>
-        <link>https://nymphium.github.io/2020/05/06/nikkan-promise3.html</link>
-        <guid isPermaLink="true">https://nymphium.github.io/2020/05/06/nikkan-promise3.html</guid>
-        
-        <category>日刊Promise</category>
-        
-        <category>JavaScript</category>
         
         
       </item>
