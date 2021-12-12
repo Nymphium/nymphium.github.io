@@ -30,3 +30,4 @@ sass:
   style: compressed
 markdown: MyCustomProcessor
 encoding: "utf-8"
+host: 0.0.0.0
