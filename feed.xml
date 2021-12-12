@@ -5,15 +5,15 @@
     <description>lily, Aikatsu, Programming language, and more</description>
     <link>https://nymphium.github.io/</link>
     <atom:link href="https://nymphium.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 12 Dec 2021 23:46:03 +0900</pubDate>
-    <lastBuildDate>Sun, 12 Dec 2021 23:46:03 +0900</lastBuildDate>
+    <pubDate>Sun, 12 Dec 2021 23:51:05 +0900</pubDate>
+    <lastBuildDate>Sun, 12 Dec 2021 23:51:05 +0900</lastBuildDate>
     <generator>Jekyll v4.2.1</generator>
     
       <item>
         <title>並行並列OCaml5.0</title>
         <enclosure type="image/png" length="0" url="https://nymphium.github.io/pictures/github_icon.png"></enclosure>
         <description>&lt;p&gt;こんにちは､びしょ〜じょです｡
-これは&lt;a href=&quot;Meta%20Languages%20Advent%20Calendar%202021&quot;&gt;https://qiita.com/advent-calendar/2021/ml&lt;/a&gt;の3日目の記事です｡
+これは&lt;a href=&quot;https://qiita.com/advent-calendar/2021/ml&quot;&gt;Meta Languages Advent Calendar 2021&lt;/a&gt;の3日目の記事です｡
 今日は12月3日､冴草きいちゃんの誕生日です｡いいね? めでたいです｡&lt;/p&gt;
 &lt;p&gt;本日は､来るOCaml5.0のリリースに先駆けてカンタンに紹介します｡&lt;/p&gt;
 &lt;hr&gt;
