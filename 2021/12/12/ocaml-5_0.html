@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html;charset=UTF-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="format-detection" content="telephone=no"/>
+
+    <title>並行並列OCaml5.0 - lilyum ensemble</title>
+    <meta itemprop="name" content="並行並列OCaml5.0 - lilyum ensemble"/>
+    <meta name="keywords" content="OCaml,Advent Calendar,Algebraic Effects"/>
+    <meta name="thumbnail" content="/pictures/github_icon.png"/>
+    <meta itemprop="image" content="/pictures/github_icon.png"/>
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="lilyum ensemble"/>
+    <meta name="twitter:title" content="並行並列OCaml5.0 - lilyum ensemble"/>
+    <meta name="twitter:url" content="/2021/12/12/ocaml-5_0.html"/> 
+    <meta name="twitter:text:description" content="こんにちは､びしょ〜じょです｡これはhttps://qiita.com/advent-calendar/2021/mlの3日目の記事です｡今日は12月3日､冴草きいちゃんの誕生日です｡いいね? ..."/>
+    <meta name="twitter:image" content="https://nymphium.github.io/pictures/github_icon.png"/>
+    <meta name="twitter:image:src" content="https://nymphium.github.io/pictures/github_icon.png"/>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="並行並列OCaml5.0" />
+<meta name="author" content="Satoru Kawahara" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="こんにちは､びしょ〜じょです｡ これはhttps://qiita.com/advent-calendar/2021/mlの3日目の記事です｡ 今日は12月3日､冴草きいちゃんの誕生日です｡いいね? めでたいです｡" />
+<meta property="og:description" content="こんにちは､びしょ〜じょです｡ これはhttps://qiita.com/advent-calendar/2021/mlの3日目の記事です｡ 今日は12月3日､冴草きいちゃんの誕生日です｡いいね? めでたいです｡" />
+<link rel="canonical" href="https://nymphium.github.io/2021/12/12/ocaml-5_0.html" />
+<meta property="og:url" content="https://nymphium.github.io/2021/12/12/ocaml-5_0.html" />
+<meta property="og:site_name" content="lilyum ensemble" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-12T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="並行並列OCaml5.0" />
+<script type="application/ld+json">
+{"description":"こんにちは､びしょ〜じょです｡ これはhttps://qiita.com/advent-calendar/2021/mlの3日目の記事です｡ 今日は12月3日､冴草きいちゃんの誕生日です｡いいね? めでたいです｡","url":"https://nymphium.github.io/2021/12/12/ocaml-5_0.html","headline":"並行並列OCaml5.0","dateModified":"2021-12-12T00:00:00+09:00","datePublished":"2021-12-12T00:00:00+09:00","author":{"@type":"Person","name":"Satoru Kawahara"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2021/12/12/ocaml-5_0.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta property="og:image" content="/pictures/github_icon.png"/>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="wrapper" style="font-family: 'Comfortaa';">
+        <a class="site-title" href="/">lilyum ensemble</a>
+        <nav class="site-nav">
+          <div class="trigger">
+            <a class="page-link" href="/aboutme.html">About</a>
+            <a class="page-link" href="/slide.html">Slides</a>
+            <a class="page-link" href="/tags.html">Tags</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-content">
+      <div class="wrapper" lang="ja">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <h1 class="post-title" itemprop="name headline">並行並列OCaml5.0</h1>
+            <span class="post-meta">
+              <time datetime="2021-12-12T00:00:00+09:00" itemprop="datePublished">Dec 12, 2021</time>
+              <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2021-12-12-ocaml-5_0.md" target="_blank" rel="noopener noreferrer">src</a>
+              <p class="tags">tag: {<span class="tag"><a href="/tags.html#OCaml-ref">OCaml</a></span><span></span> <span class="tag"><a href="/tags.html#Advent%20Calendar-ref">Advent Calendar</a></span><span></span> <span class="tag"><a href="/tags.html#Algebraic%20Effects-ref">Algebraic Effects</a></span>}</p>
+              <a class="twitter-share-button" href="https://twitter.com/intent/tweet" target="_blank" rel="noopener noreferrer">Tweet</a> 
+
+              <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja" title="並行並列OCaml5.0" target="_blank" rel="noopener noreferrer">
+                <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマークに追加" width="20" height="20" style="border: none;">
+              </a>
+              <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+
+            </span>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <script type="text/javascript" src="/js/GithubRepoWidget.min.js"></script>
+            <script type="text/javascript">setTimeout(GithubRepoWidget.init, 3000);</script>
+
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                renderMathInElement(document.body, {
+                  // customised options
+                  // • auto-render specific keys, e.g.:
+                  delimiters: [
+                                  {left: '$$', right: '$$', display: true},
+                                  {left: '$', right: '$', display: false},
+                                  {left: '\\(', right: '\\)', display: false},
+                                  {left: '\\[', right: '\\]', display: true},
+                                  {left: '\\\\(', right: '\\\\)', display: false},
+                                  {left: '\\\\[', right: '\\\\]', display: true}
+                                ],
+                  // • rendering keys, e.g.:
+                  throwOnError : false
+                });
+              });
+            </script>
+
+          </header>
+          <div class="post-content" itemprop="articleBody">
+<p>こんにちは､びしょ〜じょです｡
+これは<a href="Meta%20Languages%20Advent%20Calendar%202021">https://qiita.com/advent-calendar/2021/ml</a>の3日目の記事です｡
+今日は12月3日､冴草きいちゃんの誕生日です｡いいね? めでたいです｡</p>
+<p>本日は､来るOCaml5.0のリリースに先駆けてカンタンに紹介します｡</p>
+<hr>
+<h1 id="%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><a class="headerlink" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">はじめに</a></h1>
+<p>OCaml 4.14が4.x系最後のマイナーバージョンとなり､2022年にメジャーアップデートして5.0がリリースされる機運がかなり高まってきました｡
+5.0ではMulticore OCamlの成果が初めてメインラインにマージされ､これにより<strong>並行</strong>と<strong>並列</strong>の2つの目玉機能が入ります｡
+並行と並列のプリミティブですよ!! モダンですねえ｡
+だいたいこの辺の話を部分的に深彫ります｡</p>
+<div class="twicard">
+  <span class="image"><a href="https://discuss.ocaml.org/t/the-road-to-ocaml-5-0/8584" target="_blank" rel="noopener noreferrer"><div><img src="https://aws1.discourse-cdn.com/standard11/uploads/ocaml/original/2X/d/d4dc9fe40b17e2bcced034f9fe103917b7999275.svg"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="https://discuss.ocaml.org/t/the-road-to-ocaml-5-0/8584" target="_blank" rel="noopener noreferrer">The road to OCaml 5.0</a></div>
+    <div class="description">With the convergence between the multicore and standard runtime across OCaml 4.10.0 to 4.13.0 [6], the development of OCaml multicore has reached a point where further integration into OCaml’s main branch requires fully committing to a switch to OCaml multicore.  The OCaml team has decided that the time has come for such a commitment.  The new major version, OCaml 5, will be a multicore version of OCaml.  Moreover, OCaml 4.14 will be the last minor release of the 4.x series of OCaml.   Multicore...</div>
+  </span>
+</div>
+<div class="twicard">
+  <span class="image"><a href="https://discuss.ocaml.org/t/multicore-ocaml-september-2021-effect-handlers-will-be-in-ocaml-5-0/8554" target="_blank" rel="noopener noreferrer"><div><img src="https://aws1.discourse-cdn.com/standard11/uploads/ocaml/optimized/2X/3/3e997a3f72cfba8da1e0ca5c561ff7dbc9a75ed8_2_1024x683.jpeg"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="https://discuss.ocaml.org/t/multicore-ocaml-september-2021-effect-handlers-will-be-in-ocaml-5-0/8554" target="_blank" rel="noopener noreferrer">Multicore OCaml: September 2021, effect handlers will be in OCaml 5.0!</a></div>
+    <div class="description">Welcome to the September 2021 Multicore OCaml monthly report! This month’s update along with the previous updates have been compiled by me, @ctk21, @kayceesrk and @shakthimaan. The team has been working over the past few months to finish the last few features necessary to reach feature parity with stock OCaml. We also worked closely with the core OCaml team to develop the timeline for upstreaming Multicore OCaml to stock OCaml, and have now agreed that:  OCaml 5.0 will support shared-memory para...</div>
+  </span>
+</div>
+<div class="twicard">
+  <span class="image"><a href="https://github.com/ocaml-multicore/parallel-programming-in-multicore-ocaml" target="_blank" rel="noopener noreferrer"><div><img src="https://opengraph.githubassets.com/36374006f88027388bca236be1e85b6c1677d54efb98e5d866d9f977463be0dd/ocaml-multicore/parallel-programming-in-multicore-ocaml"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="https://github.com/ocaml-multicore/parallel-programming-in-multicore-ocaml" target="_blank" rel="noopener noreferrer">GitHub - ocaml-multicore/parallel-programming-in-multicore-ocaml: Tutorial on Multicore OCaml parallel programming with domainslib</a></div>
+    <div class="description">Tutorial on Multicore OCaml parallel programming with domainslib - GitHub - ocaml-multicore/parallel-programming-in-multicore-ocaml: Tutorial on Multicore OCaml parallel programming with domainslib</div>
+  </span>
+</div>
+<p>ちなむと<code>opam switch</code>で並列並行プリミティブの入ったMulticore OCamlが楽しめます｡</p>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>opam switch 4.12.0+domains+effects
+</code></pre></div>
+<p>以下､このswitchで利用できるOCamlの話をベースにします｡</p>
+<h1 id="%E4%B8%A6%E5%88%97+%E2%80%95+Shared-Memory+Parallelism"><a class="headerlink" href="#%E4%B8%A6%E5%88%97+%E2%80%95+Shared-Memory+Parallelism">並列 ― Shared-Memory Parallelism</a></h1>
+<p>念願の並列プリミティブです｡
+並列性に関する処理系の内部的な変更に伴い､parallel minor GCも追加されました｡
+並列計算をおこなわないプログラムでも恩恵が得られそうですね｡すばらし｡
+<code>Domain</code>というモジュールに並列プリミティブが入っています｡
+また､<a href="https://github.com/ocaml-multicore/domainslib" target="_blank" rel="noopener noreferrer"><code>domainslib</code></a>というMutlicore OCamlチームが提供しているパッケージではこれらをラップしてより利用しやすくなっています｡
+<code>domainslib</code>は後述するalgebraic effectsを内部でバッツリ利用しており､読んでみるのも面白いです｡</p>
+<div class="highlight"><pre><code class="language-ocaml" data-lang="ocaml"><span class="k">let</span> <span class="k">open</span> <span class="nc">Domainslib</span> <span class="k">in</span>
+<span class="k">let</span> <span class="n">pool</span> <span class="o">=</span> <span class="nn">Task</span><span class="p">.</span><span class="n">setup_pool</span> <span class="o">~</span><span class="n">num_additional_domains</span><span class="o">:</span><span class="mi">3</span> <span class="bp">()</span> <span class="k">in</span>
+<span class="nn">Task</span><span class="p">.</span><span class="n">parallel_for</span> <span class="o">~</span><span class="n">start</span><span class="o">:</span><span class="mi">0</span> <span class="o">~</span><span class="n">finish</span><span class="o">:</span><span class="mi">10</span> <span class="o">~</span><span class="n">body</span><span class="o">:</span><span class="p">(</span><span class="nn">Printf</span><span class="p">.</span><span class="n">printf</span> <span class="s2">"hello, %d</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span> <span class="n">pool</span><span class="p">;;</span>
+<span class="c">(* prints:
+hello, 10
+hello, 9
+hello, 8
+hello, 7
+hello, 6
+hello, 2
+hello, 1
+hello, 5
+hello, 0
+hello, 4
+hello, 3
+*)</span>
+</code></pre></div>
+<h1 id="%E4%B8%A6%E8%A1%8C+%E2%80%95+Direct-Style+Concurrent+Programming+via+Algebraic+Effects"><a class="headerlink" href="#%E4%B8%A6%E8%A1%8C+%E2%80%95+Direct-Style+Concurrent+Programming+via+Algebraic+Effects">並行 ― Direct-Style Concurrent Programming via Algebraic Effects</a></h1>
+<p>とうとう来たぞ!!!! 2022年もAlgebraic Effects元年や!!
+Algebraic effectsについては本ブログで散々こすってきたネタなので<a href="/tags.html#Algebraic%20Effects-ref">そちら</a>をご覧ください｡
+OCamlには<a href="https://ocsigen.org/lwt/latest/manual/manual" target="_blank" rel="noopener noreferrer">Lwt</a>や<a href="https://opensource.janestreet.com/async/" target="_blank" rel="noopener noreferrer">Async</a>などhardly-usedな非同期ライブラリがすでに存在します｡
+が､algebraic effectsを導入することで､これらを<strong>direct styleで</strong>書くことができるようになります｡
+Lwtは<code>let</code> operatorを用意したりAsyncはppxを利用することでdirect-styleを実現できますが､operatorsの入ったモジュールを<code>open</code>する必要があったり複数の<code>let</code> operatorを利用したいときなどに不便です｡
+そこでalgebraic effectsを利用することで､<code>let</code>やppxなどのsyntacticなサポートなしに､direct styleでプログラムをかけます｡
+JavaScriptでいえば<code>async</code>/<code>await</code>キーワードが入ったような革命ですが､algebraic effectsの場合はcallee側にsyntacticな変更が必要ないのはもちろん､caller側もハンドラにcalleを渡すだけでよい点がsyntacticに軽量です｡</p>
+<p>こちらもalgebraic effectsを利用した<a href="https://github.com/ocaml-multicore/eio" target="_blank" rel="noopener noreferrer">eio</a>というパッケージで<code>Fiber</code>などの頻出データ構造などが使えます｡</p>
+<p>…とここまでalgebraic effectsについて色々書いたけどOCaml5.0ではsyntactic supportはありません! どいういうこと?
+エフェクトの発生は<code>perform @@ Choice (1, 3)</code>と同じですが､エフェクトの定義は<code>type _ eff = ..</code>というextensible variantで表現します｡
+つまり､Multicore OCamlで書いていた<code>effect 'a Choice = ('a * 'a) -&gt; 'a</code>のようなエフェクトは<code>type 'a eff += Choce : ('a * 'a) -&gt; 'a eff</code>と書きます｡
+ハンドラはもうすこしややこしく､<code>try_with</code>という関数を使います｡</p>
+<div class="highlight"><pre><code class="language-ocaml" data-lang="ocaml"><span class="n">try_with</span> <span class="p">(</span><span class="n">perform</span> <span class="o">@@</span> <span class="nc">Choice</span> <span class="p">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="p">))</span>
+  <span class="p">{</span> <span class="n">effc</span> <span class="o">=</span> <span class="k">fun</span> <span class="n">eff</span> <span class="o">-&gt;</span> 
+    <span class="k">match</span> <span class="n">e</span> <span class="k">with</span> 
+    <span class="o">|</span> <span class="nc">Choice</span> <span class="p">(</span><span class="n">l</span><span class="o">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nc">Some</span> <span class="p">(</span><span class="k">fun</span> <span class="n">k</span> <span class="o">-&gt;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nn">Random</span><span class="p">.</span><span class="n">int</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="k">then</span> <span class="n">continue</span> <span class="n">k</span> <span class="n">l</span>
+        <span class="k">else</span> <span class="n">continue</span> <span class="n">k</span> <span class="n">r</span>
+      <span class="p">)</span>
+    <span class="o">|</span> <span class="n">e</span> <span class="o">-&gt;</span> <span class="nc">None</span> <span class="p">}</span>
+</code></pre></div>
+<p>ハンドルされるかどうかを示すために､各エフェクトのハンドラはoptionで包む必要があります｡
+ハンドラの取る引数<code>k</code>は継続ですね｡これを<code>continue</code>に渡して実行します｡
+Syntacticな変更をほどこさなかったのは､OCamlにも将来effect-and-type systemを入れるつもりがあるため､そのときまではsyntaxを確定させたくないからのようです｡</p>
+<p>ただ､面白いのは上記で利用した<code>try_with</code>のパスです｡
+この関数は<code>EffectHandlers</code>モジュールの子モジュール<code>Deep</code>と<code>Shallow</code>にそれぞれ用意されています｡
+これは名前の通りdeep handlerとshallow handlerが用意されていることです｡
+deepとshallow2つが用意されているとたいへん便利なのですが､ハンドラのsyntaxをもうちょっと考える必要がでてきます｡
+ここにもsyntaxの追加を見送った理由がありそうです｡</p>
+<p><code>EffectHandlers</code>モジュールの中身がオモロイんで話しまくってしまいそうなので､シグネチャだけ置いておきます｡
+<code>discontinue</code>とか<code>Shallow.continue_with</code>あたりが楽しそう｡</p>
+<div class="highlight"><pre><code class="language-ocaml" data-lang="ocaml"><span class="n">utop</span><span class="o">#</span> <span class="o">#</span><span class="n">show</span> <span class="nc">EffectHandlers</span><span class="p">;;</span>
+<span class="k">module</span> <span class="nc">EffectHandlers</span> <span class="o">=</span> <span class="nc">EffectHandlers</span>
+<span class="k">module</span> <span class="nc">EffectHandlers</span> <span class="o">:</span>
+  <span class="k">sig</span>
+    <span class="k">type</span> <span class="n">_</span> <span class="n">eff</span> <span class="o">=</span> <span class="o">..</span>
+    <span class="k">external</span> <span class="n">perform</span> <span class="o">:</span> <span class="k">'</span><span class="n">a</span> <span class="n">eff</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">a</span> <span class="o">=</span> <span class="s2">"%perform"</span>
+    <span class="k">module</span> <span class="nc">Deep</span> <span class="o">:</span> <span class="k">sig</span> <span class="o">...</span> <span class="k">end</span>
+    <span class="k">module</span> <span class="nc">Shallow</span> <span class="o">:</span> <span class="k">sig</span> <span class="o">...</span> <span class="k">end</span>
+  <span class="k">end</span>
+<span class="n">utop</span><span class="o">#</span> <span class="o">#</span><span class="n">show</span> <span class="nn">EffectHandlers</span><span class="p">.</span><span class="nc">Deep</span><span class="p">;;</span>
+<span class="k">module</span> <span class="nc">Deep</span> <span class="o">=</span> <span class="nn">EffectHandlers</span><span class="p">.</span><span class="nc">Deep</span>
+<span class="k">module</span> <span class="nc">Deep</span> <span class="o">:</span>
+  <span class="k">sig</span>
+    <span class="k">type</span> <span class="p">(</span><span class="k">'</span><span class="n">a</span><span class="o">,</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="n">continuation</span>
+    <span class="k">val</span> <span class="n">continue</span> <span class="o">:</span> <span class="p">(</span><span class="k">'</span><span class="n">a</span><span class="o">,</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="n">continuation</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">b</span>
+    <span class="k">val</span> <span class="n">discontinue</span> <span class="o">:</span> <span class="p">(</span><span class="k">'</span><span class="n">a</span><span class="o">,</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="n">continuation</span> <span class="o">-&gt;</span> <span class="n">exn</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">b</span>
+    <span class="k">val</span> <span class="n">discontinue_with_backtrace</span> <span class="o">:</span>
+      <span class="p">(</span><span class="k">'</span><span class="n">a</span><span class="o">,</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="n">continuation</span> <span class="o">-&gt;</span> <span class="n">exn</span> <span class="o">-&gt;</span> <span class="nn">Printexc</span><span class="p">.</span><span class="n">raw_backtrace</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">b</span>
+    <span class="k">type</span> <span class="p">(</span><span class="k">'</span><span class="n">a</span><span class="o">,</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="n">handler</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">retc</span> <span class="o">:</span> <span class="k">'</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">b</span><span class="p">;</span>
+      <span class="n">exnc</span> <span class="o">:</span> <span class="n">exn</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">b</span><span class="p">;</span>
+      <span class="n">effc</span> <span class="o">:</span> <span class="k">'</span><span class="n">c</span><span class="o">.</span> <span class="k">'</span><span class="n">c</span> <span class="nn">EffectHandlers</span><span class="p">.</span><span class="n">eff</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="k">'</span><span class="n">c</span><span class="o">,</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="n">continuation</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="n">option</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">val</span> <span class="n">match_with</span> <span class="o">:</span> <span class="p">(</span><span class="k">'</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="k">'</span><span class="n">b</span><span class="o">,</span> <span class="k">'</span><span class="n">c</span><span class="p">)</span> <span class="n">handler</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">c</span>
+    <span class="k">type</span> <span class="k">'</span><span class="n">a</span> <span class="n">effect_handler</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">effc</span> <span class="o">:</span> <span class="k">'</span><span class="n">b</span><span class="o">.</span> <span class="k">'</span><span class="n">b</span> <span class="nn">EffectHandlers</span><span class="p">.</span><span class="n">eff</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="k">'</span><span class="n">b</span><span class="o">,</span> <span class="k">'</span><span class="n">a</span><span class="p">)</span> <span class="n">continuation</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">a</span><span class="p">)</span> <span class="n">option</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">val</span> <span class="n">try_with</span> <span class="o">:</span> <span class="p">(</span><span class="k">'</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">b</span> <span class="n">effect_handler</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">b</span>
+    <span class="k">external</span> <span class="n">get_callstack</span> <span class="o">:</span>
+      <span class="p">(</span><span class="k">'</span><span class="n">a</span><span class="o">,</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="n">continuation</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="o">-&gt;</span> <span class="nn">Printexc</span><span class="p">.</span><span class="n">raw_backtrace</span>
+      <span class="o">=</span> <span class="s2">"caml_get_continuation_callstack"</span>
+  <span class="k">end</span>
+<span class="n">utop</span> <span class="o">#</span> <span class="o">#</span><span class="n">show</span> <span class="nn">EffectHandlers</span><span class="p">.</span><span class="nc">Shallow</span><span class="p">;;</span>
+<span class="k">module</span> <span class="nc">Shallow</span> <span class="o">=</span> <span class="nn">EffectHandlers</span><span class="p">.</span><span class="nc">Shallow</span>
+<span class="k">module</span> <span class="nc">Shallow</span> <span class="o">:</span>
+  <span class="k">sig</span>
+    <span class="k">type</span> <span class="p">(</span><span class="k">'</span><span class="n">a</span><span class="o">,</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="n">continuation</span>
+    <span class="k">val</span> <span class="n">fiber</span> <span class="o">:</span> <span class="p">(</span><span class="k">'</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="k">'</span><span class="n">a</span><span class="o">,</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="n">continuation</span>
+    <span class="k">type</span> <span class="p">(</span><span class="k">'</span><span class="n">a</span><span class="o">,</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="n">handler</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">retc</span> <span class="o">:</span> <span class="k">'</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">b</span><span class="p">;</span>
+      <span class="n">exnc</span> <span class="o">:</span> <span class="n">exn</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">b</span><span class="p">;</span>
+      <span class="n">effc</span> <span class="o">:</span> <span class="k">'</span><span class="n">c</span><span class="o">.</span> <span class="k">'</span><span class="n">c</span> <span class="nn">EffectHandlers</span><span class="p">.</span><span class="n">eff</span> <span class="o">-&gt;</span> <span class="p">((</span><span class="k">'</span><span class="n">c</span><span class="o">,</span> <span class="k">'</span><span class="n">a</span><span class="p">)</span> <span class="n">continuation</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="n">option</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">val</span> <span class="n">continue_with</span> <span class="o">:</span> <span class="p">(</span><span class="k">'</span><span class="n">a</span><span class="o">,</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="n">continuation</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="k">'</span><span class="n">b</span><span class="o">,</span> <span class="k">'</span><span class="n">c</span><span class="p">)</span> <span class="n">handler</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">c</span>
+    <span class="k">val</span> <span class="n">discontinue_with</span> <span class="o">:</span>
+      <span class="p">(</span><span class="k">'</span><span class="n">a</span><span class="o">,</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="n">continuation</span> <span class="o">-&gt;</span> <span class="n">exn</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="k">'</span><span class="n">b</span><span class="o">,</span> <span class="k">'</span><span class="n">c</span><span class="p">)</span> <span class="n">handler</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">c</span>
+    <span class="k">val</span> <span class="n">discontinue_with_backtrace</span> <span class="o">:</span>
+      <span class="p">(</span><span class="k">'</span><span class="n">a</span><span class="o">,</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="n">continuation</span> <span class="o">-&gt;</span>
+      <span class="n">exn</span> <span class="o">-&gt;</span> <span class="nn">Printexc</span><span class="p">.</span><span class="n">raw_backtrace</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="k">'</span><span class="n">b</span><span class="o">,</span> <span class="k">'</span><span class="n">c</span><span class="p">)</span> <span class="n">handler</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">c</span>
+    <span class="k">external</span> <span class="n">get_callstack</span> <span class="o">:</span>
+      <span class="p">(</span><span class="k">'</span><span class="n">a</span><span class="o">,</span> <span class="k">'</span><span class="n">b</span><span class="p">)</span> <span class="n">continuation</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="o">-&gt;</span> <span class="nn">Printexc</span><span class="p">.</span><span class="n">raw_backtrace</span>
+      <span class="o">=</span> <span class="s2">"caml_get_continuation_callstack"</span>
+  <span class="k">end</span>
+</code></pre></div>
+<h1 id="%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB"><a class="headerlink" href="#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">おわりに</a></h1>
+<p>ア～～わくわくしてきました､はやくOCaml5.0こいこいこい</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+    <footer>
+      <div class="pagination btn-group" style="text-align: center; font-family: 'Comfortaa';">
+        <a class="btn prev" href="/2021/07/28/pokeuni.html" title="ポケモンユナイトで今気持ちよくなりたいならゴルサポクッキーからやぶポイントゲッター蟹一択">← Prev</a>
+        /<a class="btn" href="/">Top</a>/
+        <span class="btn next disabled">Next →</span>
+      </div>
+    </footer>
+
+  </body>
+</html>
