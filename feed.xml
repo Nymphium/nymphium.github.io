@@ -5,8 +5,8 @@
     <description>lily, Aikatsu, Programming language, and more</description>
     <link>https://nymphium.github.io/</link>
     <atom:link href="https://nymphium.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 12 Dec 2021 23:51:05 +0900</pubDate>
-    <lastBuildDate>Sun, 12 Dec 2021 23:51:05 +0900</lastBuildDate>
+    <pubDate>Sun, 12 Dec 2021 23:51:46 +0900</pubDate>
+    <lastBuildDate>Sun, 12 Dec 2021 23:51:46 +0900</lastBuildDate>
     <generator>Jekyll v4.2.1</generator>
     
       <item>
@@ -21,7 +21,7 @@
 &lt;p&gt;OCaml 4.14が4.x系最後のマイナーバージョンとなり､2022年にメジャーアップデートして5.0がリリースされる機運がかなり高まってきました｡
 5.0ではMulticore OCamlの成果が初めてメインラインにマージされ､これにより&lt;strong&gt;並行&lt;/strong&gt;と&lt;strong&gt;並列&lt;/strong&gt;の2つの目玉機能が入ります｡
 並行と並列のプリミティブですよ!! モダンですねえ｡
-だいたいこの辺の話を部分的に深彫ります｡&lt;/p&gt;
+だいたいこの辺の話を部分的に深掘ります｡&lt;/p&gt;
 &lt;div class=&quot;twicard&quot;&gt;
   &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://discuss.ocaml.org/t/the-road-to-ocaml-5-0/8584&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://aws1.discourse-cdn.com/standard11/uploads/ocaml/original/2X/d/d4dc9fe40b17e2bcced034f9fe103917b7999275.svg&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
