@@ -5,9 +5,28 @@
     <description>lily, Aikatsu, Programming language, and more</description>
     <link>https://nymphium.github.io/</link>
     <atom:link href="https://nymphium.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 12 Dec 2021 23:51:46 +0900</pubDate>
-    <lastBuildDate>Sun, 12 Dec 2021 23:51:46 +0900</lastBuildDate>
-    <generator>Jekyll v4.2.1</generator>
+    <pubDate>Sat, 17 Sep 2022 22:45:05 +0900</pubDate>
+    <lastBuildDate>Sat, 17 Sep 2022 22:45:05 +0900</lastBuildDate>
+    <generator>Jekyll v4.2.2</generator>
+    
+      <item>
+        <title>『作ってかんたんAlgebraic Effects』</title>
+        <enclosure type="image/png" length="0" url="https://nymphium.github.io/pictures/github_icon.png"></enclosure>
+        <description>&lt;p&gt;こんにちは､びしょ～じょです｡
+え～～もう9月ですが今年1本目の記事です｡&lt;/p&gt;
+&lt;p&gt;某書展に出す予定だったのですが色々あって出しそこねたのでここで供養します｡
+べ､別に脱稿遅れたわけじゃないんだからね!&lt;/p&gt;
+&lt;p&gt;実際の記事はこちら: &lt;a href=&quot;/src/2022/09/17/ae-impl/ae-impl.pdf&quot;&gt;作ってかんたんAlgebraic Effects(pdf)&lt;/a&gt;&lt;/p&gt;</description>
+        <pubDate>Sat, 17 Sep 2022 00:00:00 +0900</pubDate>
+        <link>https://nymphium.github.io/2022/09/17/%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%8B%E3%82%93%E3%81%9F%E3%82%93Algebraic-Effects.html</link>
+        <guid isPermaLink="true">https://nymphium.github.io/2022/09/17/%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%8B%E3%82%93%E3%81%9F%E3%82%93Algebraic-Effects.html</guid>
+        
+        <category>Algebraic Effects</category>
+        
+        <category>Haskell</category>
+        
+        
+      </item>
     
       <item>
         <title>並行並列OCaml5.0</title>
@@ -23,21 +42,21 @@
 並行と並列のプリミティブですよ!! モダンですねえ｡
 だいたいこの辺の話を部分的に深掘ります｡&lt;/p&gt;
 &lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://discuss.ocaml.org/t/the-road-to-ocaml-5-0/8584&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://aws1.discourse-cdn.com/standard11/uploads/ocaml/original/2X/d/d4dc9fe40b17e2bcced034f9fe103917b7999275.svg&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://discuss.ocaml.org/t/the-road-to-ocaml-5-0/8584&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://global.discourse-cdn.com/standard11/uploads/ocaml/original/2X/1/129835819c8800620611551e3b80a05c24a7898d.png&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://discuss.ocaml.org/t/the-road-to-ocaml-5-0/8584&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;The road to OCaml 5.0&lt;/a&gt;&lt;/div&gt;
     &lt;div class=&quot;description&quot;&gt;With the convergence between the multicore and standard runtime across OCaml 4.10.0 to 4.13.0 [6], the development of OCaml multicore has reached a point where further integration into OCaml’s main branch requires fully committing to a switch to OCaml multicore.  The OCaml team has decided that the time has come for such a commitment.  The new major version, OCaml 5, will be a multicore version of OCaml.  Moreover, OCaml 4.14 will be the last minor release of the 4.x series of OCaml.   Multicore...&lt;/div&gt;
   &lt;/span&gt;
 &lt;/div&gt;
 &lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://discuss.ocaml.org/t/multicore-ocaml-september-2021-effect-handlers-will-be-in-ocaml-5-0/8554&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://aws1.discourse-cdn.com/standard11/uploads/ocaml/optimized/2X/3/3e997a3f72cfba8da1e0ca5c561ff7dbc9a75ed8_2_1024x683.jpeg&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://discuss.ocaml.org/t/multicore-ocaml-september-2021-effect-handlers-will-be-in-ocaml-5-0/8554&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://global.discourse-cdn.com/standard11/uploads/ocaml/optimized/2X/3/3e997a3f72cfba8da1e0ca5c561ff7dbc9a75ed8_2_1024x683.jpeg&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://discuss.ocaml.org/t/multicore-ocaml-september-2021-effect-handlers-will-be-in-ocaml-5-0/8554&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Multicore OCaml: September 2021, effect handlers will be in OCaml 5.0!&lt;/a&gt;&lt;/div&gt;
     &lt;div class=&quot;description&quot;&gt;Welcome to the September 2021 Multicore OCaml monthly report! This month’s update along with the previous updates have been compiled by me, @ctk21, @kayceesrk and @shakthimaan. The team has been working over the past few months to finish the last few features necessary to reach feature parity with stock OCaml. We also worked closely with the core OCaml team to develop the timeline for upstreaming Multicore OCaml to stock OCaml, and have now agreed that:  OCaml 5.0 will support shared-memory para...&lt;/div&gt;
   &lt;/span&gt;
 &lt;/div&gt;
 &lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/parallel-programming-in-multicore-ocaml&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/36374006f88027388bca236be1e85b6c1677d54efb98e5d866d9f977463be0dd/ocaml-multicore/parallel-programming-in-multicore-ocaml&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/parallel-programming-in-multicore-ocaml&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/7ec027340382548dfc5e76d05cf7a27d8f80c7f3b2b97d91e1506bd9bbb03f03/ocaml-multicore/parallel-programming-in-multicore-ocaml&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/parallel-programming-in-multicore-ocaml&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;GitHub - ocaml-multicore/parallel-programming-in-multicore-ocaml: Tutorial on Multicore OCaml parallel programming with domainslib&lt;/a&gt;&lt;/div&gt;
     &lt;div class=&quot;description&quot;&gt;Tutorial on Multicore OCaml parallel programming with domainslib - GitHub - ocaml-multicore/parallel-programming-in-multicore-ocaml: Tutorial on Multicore OCaml parallel programming with domainslib&lt;/div&gt;
@@ -952,10 +971,10 @@ PPL2021のゴールドスポンサーである株式会社HERPはプログラミ
 型と値の安全性と表現力の間をかいくぐってウェブアプリケーションを開発してみませんか｡
 つくばオフィスは&lt;a href=&quot;https://tabelog.com/ibaraki/A0802/A080201/8014295/&quot;&gt;3時間並ぶラーメン屋&lt;/a&gt;まで徒歩10分弱で､閉店間際に行くとほとんど並ばずに食べられます｡&lt;/p&gt;
 &lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://herp.careers/v1/herpinc/uyczbBxJFoV1&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://herp.careers/v1/herpinc/uyczbBxJFoV1/coverimages/uyczbBxJFoV1&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://herp.careers/v1/herpinc/uyczbBxJFoV1&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;/pictures/no_image.png&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
-    &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://herp.careers/v1/herpinc/uyczbBxJFoV1&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;toB SaaSスタートアップのつくば拠点で働きたいエンジニア募集！ - 株式会社HERP&lt;/a&gt;&lt;/div&gt;
-    &lt;div class=&quot;description&quot;&gt;株式会社HERPでは現在17.Web エンジニア (つくば)を募集しています。&lt;/div&gt;
+    &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://herp.careers/v1/herpinc/uyczbBxJFoV1&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;&lt;/div&gt;
   &lt;/span&gt;
 &lt;/div&gt;
 &lt;div class=&quot;twicard&quot;&gt;
@@ -2093,118 +2112,6 @@ TypeScript で深いパターンマッチングは……未来に期待しまし
         <category>Advent Calendar</category>
         
         <category>pattern matching</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Unsound TypeScript&amp;#58; spread syntax</title>
-        <enclosure type="image/png" length="0" url="https://nymphium.github.io/pictures//2020/08/25/tswara/thumb.png"></enclosure>
-        <description>&lt;p&gt;こんにちは､びしょ〜じょです｡
-最近は脳を全く使っておらずなんたらかんたら｡&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Promise&lt;/code&gt; の話はなんかムリそうだったので､今度は勘ではなく文献等にあたって実装するかもしれません｡
-でもそれってオレやる必要ある?&lt;/p&gt;
-&lt;p&gt;とにかく今回は別の話をします｡&lt;/p&gt;
-&lt;h1 id=&quot;%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot;&gt;はじめに&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;TypeScriptの利用を積極的に避けている人､賢い｡
-TypeScriptは漸進的型付けを採用しており､よくわからない型に &lt;code&gt;any&lt;/code&gt; を付けることができます｡
-そしてTypeScriptは(gradural) subtypingを採用しており､さらに &lt;code&gt;any&lt;/code&gt; があらゆる型のtop typeとなっております｡
-このことは､文献&lt;span class=&quot;cite&quot;&gt;[&lt;a href=&quot;#fn1&quot; title=&apos;Siek, Jeremy and Taha, Walid. &quot;Gradual Typing for Objects&quot;. &apos; id=&quot;fnref1&quot;&gt;1&lt;/a&gt;]&lt;/span&gt;
-を読んでいただくと分かるとおり(読むまでもなく直感的にも分かりますが)､型システムはunsoundになります｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;hoge&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// string &amp;lt;: any&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;any&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;strip&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// T &amp;lt;: any&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// typed but raising RTE&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;strip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)());&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;any&lt;/code&gt; は嘘とかなんとかありますが､とにかく人間に気をつけさせる運用になり､typed languagesの世界に住んでいる人々が発狂して明日から職場に来なくなるので絶対にやめましょう｡&lt;/p&gt;
-&lt;p&gt;Gradual typing + subtypingでは星型をobjectのtop typeにするとどうなるかを文献&lt;span class=&quot;cite&quot;&gt;[&lt;a href=&quot;#fn1&quot; title=&apos;Siek, Jeremy and Taha, Walid. &quot;Gradual Typing for Objects&quot;. &apos; id=&quot;fnref1&quot;&gt;1&lt;/a&gt;]&lt;/span&gt;
-に基づいて解説しようと思ったのですが､上に示したとおり自明ではあり､面白い場所まで踏み込むには今は私のﾌﾟﾛｸﾞﾗﾐﾝ能力が低下してるのであきらめます｡&lt;/p&gt;
-&lt;h1 id=&quot;spread+syntax+is+unsound&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#spread+syntax+is+unsound&quot;&gt;spread syntax is unsound&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;続きましてはstructural subtypingとspread syntaxです｡
-&lt;code&gt;any&lt;/code&gt; は一旦置いておきます｡ &lt;code&gt;any&lt;/code&gt; のことは忘れましたか? OK.&lt;/p&gt;
-&lt;p&gt;ではこちらをご覧ください｡&lt;/p&gt;
-&lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/microsoft/TypeScript/issues/15454&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/2a90e1ac8546af43402db3d43b477ceecfb27b8ad1bb716965d50407b5b8118b/microsoft/TypeScript/issues/15454&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
-  &lt;span class=&quot;txt&quot;&gt;
-    &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://github.com/microsoft/TypeScript/issues/15454&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Object spread unsound w.r.t. width subtyping of object types · Issue #15454 · microsoft/TypeScript&lt;/a&gt;&lt;/div&gt;
-    &lt;div class=&quot;description&quot;&gt;TypeScript Version: Whatever is running on TypeScript Playground Code var o1: { p: string, q: number } = { p: &amp;amp;quot;&amp;amp;quot;, q: 0 }; var o2: { p: string } = o1; var o3: { p: string, q: strin...&lt;/div&gt;
-  &lt;/span&gt;
-&lt;/div&gt;
-&lt;p&gt;2017年に報告されているものですが､TSの最新バージョンの4.02でも依然再現できます｡&lt;/p&gt;
-&lt;p&gt;一般的なstructural subtypingにおいては､一度upcastすると型情報が一部失われてしまう､という問題があります｡
-例えば､あるレコード型 &lt;code&gt;T = { l1: L1, l2: L2, ..., ln: Ln }&lt;/code&gt; があって &lt;code&gt;T &amp;lt;: S where S = { l1: L1, ..., lm: Lm } (m &amp;lt; n)&lt;/code&gt; という関係があるときに､ &lt;code&gt;S&lt;/code&gt; 上の恒等関数 &lt;code&gt;idS : S -&amp;gt; S&lt;/code&gt; に &lt;code&gt;T&lt;/code&gt; を渡すと(subtyping relation により渡せる)､ &lt;code&gt;idS&lt;/code&gt; の返す値のプロパティ &lt;code&gt;l(m+1)&lt;/code&gt;､ ...､ &lt;code&gt;ln&lt;/code&gt; が参照できなくなる､または &lt;code&gt;idS&lt;/code&gt; の中で &lt;code&gt;T&lt;/code&gt; の型情報を一部損失してしまう&lt;span class=&quot;cite&quot;&gt;[&lt;a href=&quot;#fn2&quot; title=&apos;大堀淳, &quot;新装版 プログラミング言語の基礎理論&quot; ほか &apos; id=&quot;fnref2&quot;&gt;2&lt;/a&gt;]&lt;/span&gt;
-｡&lt;/p&gt;
-&lt;p&gt;しかし､いくらかの(あるいは多くの)人々は､この問題をうまいこと制約付として利用しています｡
-つまり､ある関数にオブジェクトを渡すなどすると､不要な情報を排除し､使われてほしい情報だけを持つ(参照できる)ようなオブジェクトに生まれ変わらせる､という使い方です｡&lt;/p&gt;
-&lt;p&gt;ところが､上記のissueによれば､TSは型情報の(またはruntime valueの)損失が無いようです｡
-structural subtypingの問題点を克服しました! すばらしいですね!&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;じゃあ問題点ではなく性質として利用していた人はどうなる?
-そもそも持ってない(失われた)プロパティの値が湧き出てくるのはそれこそ問題じゃないですか?&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Obj&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Secret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ObjWithSecret&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Obj&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;secret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Secret&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ObjWithSecret&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;secret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;secret&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// const u: Obj&amp;lt;number&amp;gt; = { t: o.t, secret: o.secret } //  *TS 4.0 以降は* type error&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Obj&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stealSecret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Obj&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ObjWithSecret&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;secret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stealSecret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;secret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;何か &lt;code&gt;t: T&lt;/code&gt; なるラベルを持つレコード &lt;code&gt;Obj&amp;lt;T&amp;gt;&lt;/code&gt; ､ および &lt;code&gt;type ObjWithSecret&amp;lt;T&amp;gt; = {t: T, secret: Secret}&lt;/code&gt; を定義しました｡
-&lt;code&gt;o: ObiWithSecret&amp;lt;number&amp;gt;&lt;/code&gt; を定義してから､ &lt;code&gt;u: Obj&amp;lt;number&amp;gt;&lt;/code&gt; を spread syntax で定義します｡
-このとき &lt;code&gt;u&lt;/code&gt; の &lt;strong&gt;値は&lt;/strong&gt; &lt;code&gt;{t: 3, secret: &quot;secret&quot;}&lt;/code&gt; となり､本来持っていてほしくない &lt;code&gt;secret&lt;/code&gt; も持っています｡
-まあ &lt;strong&gt;型は&lt;/strong&gt; &lt;code&gt;Obj&amp;lt;number&amp;gt;&lt;/code&gt; なので参照できなければいいでしょ､とそれなりの妥協や納得があります｡
-しかし､ &lt;code&gt;as any&lt;/code&gt; などのメチャクチャな型の操作をおこなわずとも値を参照できたら…どうする…｡&lt;/p&gt;
-&lt;p&gt;注目すべきは &lt;code&gt;stealSecret&lt;/code&gt; です｡
-&lt;code&gt;stealSecret&lt;/code&gt; が &lt;code&gt;ObjWithSecret&amp;lt;T&amp;gt;&lt;/code&gt; を返すために､戻り値のrecordに &lt;code&gt;secret: &apos;&apos;&lt;/code&gt; を渡しています｡
-spread syntaxによって &lt;code&gt;o&lt;/code&gt; の中身がぶち撒かれるのですが､ここで &lt;code&gt;o&lt;/code&gt; が &lt;code&gt;secret&lt;/code&gt; を持っていると(!) &lt;code&gt;secret&lt;/code&gt; の値を上書きします｡
-これで無事 &lt;code&gt;secret&lt;/code&gt; をリークすることに成功しました｡
-問題っぽいですねえ｡&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;というのを書いてから実際にgo wrongする例を思いついたんでぺたり｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;U&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;U&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;空のレコード &lt;code&gt;m: {}&lt;/code&gt; として &lt;code&gt;{ ...t }&lt;/code&gt; を定義してから､ &lt;code&gt;U&lt;/code&gt; 型の値に &lt;code&gt;m&lt;/code&gt; の中身をぶちまけた結果､ &lt;code&gt;y: () =&amp;gt; number&lt;/code&gt; の &lt;strong&gt;値&lt;/strong&gt;が上書きされてしまいました｡
-JSでRTEするなら､概ねの演算子はだいたい &lt;code&gt;NaN&lt;/code&gt; になるしdot accessは &lt;code&gt;undefined&lt;/code&gt; を返すので､関数呼出しが簡単でオススメです｡&lt;/p&gt;
-&lt;h1 id=&quot;%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB&quot;&gt;おわりに&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;TypeScript､というかJSやめたいけどウェブブラウザの目が黒いうちは…&lt;/p&gt;
-&lt;hr&gt;
-&lt;div class=&quot;footnotes&quot;&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-
-&lt;li id=&quot;fn1&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;https://link.springer.com/chapter/10.1007/978-3-540-73589-2_2&quot;&gt;Siek, Jeremy and Taha, Walid. &quot;Gradual Typing for Objects&quot;.&lt;/a&gt; &lt;a href=&quot;#fnref1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li id=&quot;fn2&quot;&gt;
-&lt;p&gt;大堀淳, &quot;新装版 プログラミング言語の基礎理論&quot; ほか &lt;a href=&quot;#fnref2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;/ol&gt;
-&lt;/div&gt;</description>
-        <pubDate>Tue, 25 Aug 2020 00:00:00 +0900</pubDate>
-        <link>https://nymphium.github.io/2020/08/25/tswara.html</link>
-        <guid isPermaLink="true">https://nymphium.github.io/2020/08/25/tswara.html</guid>
-        
-        <category>TypeScript</category>
-        
-        <category>型システム</category>
         
         
       </item>
