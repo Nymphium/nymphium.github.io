@@ -2,7 +2,6 @@ _site
 .sass-cache
 .bundle
 vendor
-Gemfile.lock
 twicache/*
 twicard_cache/*
 !**/.gitkeep

@@ -1,9 +1,15 @@
-{ pkgs, gems, ruby }:
-stdenv.mkDerivation {
-  name = "env";
+{ pkgs, ruby }:
+with pkgs;
+mkShell {
   buildInputs = [
-    ruby.devEnv
-    bundix
-    gems
+    libffi
+    pkgconfig
+    ruby
   ];
+  shellHook = ''
+    export LANG="en_US.UTF-8"
+    export PATH="''${PWD}/.bundle/ruby/${ruby.version.libDir}/bin":''${PATH}
+    bundle config set --local path .bundle
+    make .bundle
+  '';
 }
