@@ -10,6 +10,5 @@ mkShell {
     export LANG="en_US.UTF-8"
     export PATH="''${PWD}/.bundle/ruby/${ruby.version.libDir}/bin":''${PATH}
     bundle config set --local path .bundle
-    make .bundle
   '';
 }
