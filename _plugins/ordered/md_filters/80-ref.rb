@@ -79,7 +79,7 @@ lambda{|content|
 			# [fnref: n]
 			elsif ref = txt.match(/\[fnref\s*:\s*(\d+)\]/)
 				nth = ref[1]
-				txt.sub!(/\[fnref\s*:\s*(\d+)\]/, "<span class=\"cite\">[<fnref>[^#{nth}]</fnref>]</span>\n")
+				txt.sub!(ref.to_s, "<span class=\"cite\">[<fnref>[^#{nth}]</fnref>]</span>\n")
 			else
 				convd = false
 			end
