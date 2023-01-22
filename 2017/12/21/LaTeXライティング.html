@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<meta name="generator" content="Jekyll v4.2.2" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="LaTeXライティング" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -235,35 +235,35 @@ BibTeXやrefererence関係などをエイヤッとやってくれる偉い人で
 
 <span class="nv">SRC</span>          <span class="o">=</span> main
 
-<span class="nv">TARGET</span>       <span class="o">=</span> <span class="nf">$(</span><span class="nb">addsuffix</span> .pdf, <span class="nv">$(SRC)</span><span class="nf">)</span>
+<span class="nv">TARGET</span>       <span class="o">=</span> <span class="p">$(</span>addsuffix .pdf, <span class="p">$(</span>SRC<span class="p">))</span>
 
 <span class="nv">TEXFILES</span>     <span class="o">=</span> ../../texfiles
 
 <span class="nv">CLASS</span>        <span class="o">=</span> word
-<span class="nv">TEXDEPS</span>      <span class="o">=</span> <span class="nf">$(</span><span class="nb">foreach</span> deps, <span class="nv">$(CLASS)</span>.cls, <span class="nv">$(TEXFILES)</span>/<span class="nv">$(deps)</span><span class="nf">)</span>
+<span class="nv">TEXDEPS</span>      <span class="o">=</span> <span class="p">$(</span>foreach deps, <span class="p">$(</span>CLASS<span class="p">)</span>.cls, <span class="p">$(</span>TEXFILES<span class="p">)</span>/<span class="p">$(</span>deps<span class="p">))</span>
 
-<span class="nv">TEXDTX</span>       <span class="o">=</span> <span class="nf">$(</span><span class="nb">addsuffix</span> .dtx, <span class="nv">$(TEXFILES)</span>/<span class="nv">$(CLASS)</span><span class="nf">)</span>
-<span class="nv">TEXINS</span>       <span class="o">=</span> <span class="nf">$(</span><span class="nb">addsuffix</span> .ins, <span class="nv">$(TEXFILES)</span>/<span class="nv">$(CLASS)</span><span class="nf">)</span>
+<span class="nv">TEXDTX</span>       <span class="o">=</span> <span class="p">$(</span>addsuffix .dtx, <span class="p">$(</span>TEXFILES<span class="p">)</span>/<span class="p">$(</span>CLASS<span class="p">))</span>
+<span class="nv">TEXINS</span>       <span class="o">=</span> <span class="p">$(</span>addsuffix .ins, <span class="p">$(</span>TEXFILES<span class="p">)</span>/<span class="p">$(</span>CLASS<span class="p">))</span>
 
 <span class="nl">.PHONY</span><span class="o">:</span> <span class="nf">all continue clean</span>
 
 <span class="nl">all</span><span class="o">:</span> <span class="nf">$(SRC).pdf</span>
 
 <span class="nl">%.pdf</span><span class="o">:</span> <span class="nf">%.tex $(TEXDEPS)</span>
-	<span class="nv">$(MAKE)</span> <span class="nv">$(TEXDEPS)</span>
-	<span class="nv">$(LATEXMK)</span> <span class="nv">$(LATEXMKFLAG)</span> <span class="nv">$&lt;</span>
+	<span class="p">$(</span>MAKE<span class="p">)</span> <span class="p">$(</span>TEXDEPS<span class="p">)</span>
+	<span class="p">$(</span>LATEXMK<span class="p">)</span> <span class="p">$(</span>LATEXMKFLAG<span class="p">)</span> <span class="nv">$&lt;</span>
 
 <span class="nl">continue</span><span class="o">:</span>
-	LATEXMKFLAG +<span class="o">=</span><span class="nt">-pvc</span> <span class="nv">$(MAKE)</span>
+	LATEXMKFLAG +<span class="o">=</span><span class="nt">-pvc</span> <span class="p">$(</span>MAKE<span class="p">)</span>
 
 <span class="nl">$(TEXDEPS)</span><span class="o">:</span> <span class="nf">$(TEXDTX) $(TEXINS)</span>
-	<span class="nv">LATEXMKFLAG</span><span class="o">=</span><span class="s2">"</span><span class="nv">$(LATEXMKFLAG)</span><span class="s2">"</span> <span class="nv">$(MAKE)</span> <span class="nv">$(CLASS)</span>.cls <span class="nt">-C</span> <span class="nv">$(TEXFILES)</span>
-	<span class="nv">$(CP)</span> <span class="nt">-r</span> <span class="nf">$(</span><span class="nb">foreach</span> deps, <span class="nv">$(TEXDEPS)</span>, <span class="nv">$(deps)</span><span class="nf">)</span> ./
+	<span class="nv">LATEXMKFLAG</span><span class="o">=</span><span class="s2">"</span><span class="p">$(</span><span class="s2">LATEXMKFLAG</span><span class="p">)</span><span class="s2">"</span> <span class="p">$(</span>MAKE<span class="p">)</span> <span class="p">$(</span>CLASS<span class="p">)</span>.cls <span class="nt">-C</span> <span class="p">$(</span>TEXFILES<span class="p">)</span>
+	<span class="p">$(</span>CP<span class="p">)</span> <span class="nt">-r</span> <span class="p">$(</span>foreach deps, <span class="p">$(</span>TEXDEPS<span class="p">)</span>, <span class="p">$(</span>deps<span class="p">))</span> ./
 
 <span class="nl">clean</span><span class="o">:</span>
-	<span class="nv">$(MAKE)</span> clean <span class="nt">-C</span> <span class="nv">$(TEXFILES)</span>
-	<span class="nv">$(RM)</span> <span class="nt">-f</span> <span class="nv">$(TEXDEPS)</span>
-	<span class="nv">$(LATEXMK)</span> <span class="nt">-C</span>
+	<span class="p">$(</span>MAKE<span class="p">)</span> clean <span class="nt">-C</span> <span class="p">$(</span>TEXFILES<span class="p">)</span>
+	<span class="p">$(</span>RM<span class="p">)</span> <span class="nt">-f</span> <span class="p">$(</span>TEXDEPS<span class="p">)</span>
+	<span class="p">$(</span>LATEXMK<span class="p">)</span> <span class="nt">-C</span>
 </code></pre>
 </div>
 <p>主にlatexmkをラップする形になります｡
