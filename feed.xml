@@ -5,8 +5,8 @@
     <description>lily, Aikatsu, Programming language, and more</description>
     <link>https://nymphium.github.io/</link>
     <atom:link href="https://nymphium.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 22 Jan 2023 23:35:13 +0900</pubDate>
-    <lastBuildDate>Sun, 22 Jan 2023 23:35:13 +0900</lastBuildDate>
+    <pubDate>Mon, 23 Jan 2023 14:29:12 +0900</pubDate>
+    <lastBuildDate>Mon, 23 Jan 2023 14:29:12 +0900</lastBuildDate>
     <generator>Jekyll v4.3.1</generator>
     
       <item>
@@ -18,10 +18,10 @@
 &lt;hr&gt;
 &lt;h1 id=&quot;1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot;&gt;1. はじめに&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;OCaml 5.0が去年末に&lt;a href=&quot;https://ocaml.org/news/ocaml-5.0&quot;&gt;リリースされた&lt;/a&gt;｡
-並列処理のプリミティブに加え､Algebraic Effectsを用いた並行処理も書けるようになり､これはとても素晴らしいことですよ｡
-本日はOCaml 5.0のベースとなるMulticore OCamlにおけるAlgebraic Effectsの実装論文『Retrofitting Effect Handlers onto OCaml』&lt;span class=&quot;cite&quot;&gt;[&lt;a href=&quot;#fn1&quot; title=&quot;KC Sivaramakrishnan, Stephen Dolan, Leo White, Tom Kelly, Sadiq Jaffer, and Anil Madhavapeddy. 2021. Retrofitting effect handlers onto OCaml. In Proceedings of the 42nd ACM SIGPLAN International Conference on Programming Language Design and Implementation (PLDI 2021). Association for Computing Machinery, New York, NY, USA, 206–221. https://dl.acm.org/doi/10.1145/3453483.3454039 &quot; id=&quot;fnref1&quot;&gt;1&lt;/a&gt;]&lt;/span&gt;
+並列処理のプリミティブに加え､algebraic effectsを用いた並行処理も書けるようになり､これはとても素晴らしいことですよ｡
+本日はOCaml 5.0のベースとなるMulticore OCamlにおけるalgebraic effectsの実装論文『Retrofitting Effect Handlers onto OCaml』&lt;span class=&quot;cite&quot;&gt;[&lt;a href=&quot;#fn1&quot; title=&quot;KC Sivaramakrishnan, Stephen Dolan, Leo White, Tom Kelly, Sadiq Jaffer, and Anil Madhavapeddy. 2021. Retrofitting effect handlers onto OCaml. In Proceedings of the 42nd ACM SIGPLAN International Conference on Programming Language Design and Implementation (PLDI 2021). Association for Computing Machinery, New York, NY, USA, 206–221. https://dl.acm.org/doi/10.1145/3453483.3454039 &quot; id=&quot;fnref1&quot;&gt;1&lt;/a&gt;]&lt;/span&gt;
 について解説する｡
-該当論文ではeffect handlerの実装デザインにあたって以下の4つを考慮している:&lt;/p&gt;
+該当論文ではeffect handlersの実装デザインにあたって以下の4つを考慮している:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Backward compatibility&lt;/strong&gt;&lt;/p&gt;
@@ -44,15 +44,15 @@
 &lt;p&gt;modularityの理念に基づいて､ブロッキングI/Oのあるコードもeffect handlersを利用して&lt;em&gt;透過的に&lt;/em&gt;非同期化できること&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;互換性の重視も本論文および実装の大きなcontributionとなっているが､今回は特にAlgebraic effect handlersの実装部分に焦点を当てる｡&lt;/p&gt;
+&lt;p&gt;互換性の重視も本論文および実装の大きなcontributionとなっているが､今回は特にalgebraic effect handlersの実装部分に焦点を当てる｡&lt;/p&gt;
 &lt;h1 id=&quot;2.+OCaml%E3%81%AE%E4%BE%8B%E5%A4%96%E3%81%AF%E9%80%9F%E3%81%84&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#2.+OCaml%E3%81%AE%E4%BE%8B%E5%A4%96%E3%81%AF%E9%80%9F%E3%81%84&quot;&gt;2. OCamlの例外は速い&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;様々なプログラム言語で&lt;code&gt;try-catch&lt;/code&gt;などによる例外処理は遅いというのはよく聞くだろう｡
-その一報､OCamlの例外は速いという話は聞いたことがあるかもしれない｡
+その一方､OCamlの例外は速いという話は聞いたことがあるかもしれない｡
 まあランタイムが異なるので例外処理の速度だけ比較しようもないのでなんとも言えないが､OCamlは例外処理コストをおさえる工夫をしている｡&lt;/p&gt;
-&lt;h2 id=&quot;2-1.+OCaml%E3%81%AFC+calling+convention%E3%82%92%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#2-1.+OCaml%E3%81%AFC+calling+convention%E3%82%92%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84&quot;&gt;2-1. OCamlはC calling conventionを使わない&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;2-1.+OCaml%E3%81%AFC+calling+convention%E3%81%AB%E5%BE%93%E3%82%8F%E3%81%AA%E3%81%84&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#2-1.+OCaml%E3%81%AFC+calling+convention%E3%81%AB%E5%BE%93%E3%82%8F%E3%81%AA%E3%81%84&quot;&gt;2-1. OCamlはC calling conventionに従わない&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;OCamlはC calling conventionに従わないので&lt;code&gt;try-catch&lt;/code&gt;が速くなる｡
 どういうことだろう｡
-具体的には､OCamlはcallee-saved registersを利用せず､例えばx86-64バックエンドでは&lt;code&gt;r15&lt;/code&gt;と&lt;code&gt;r14&lt;/code&gt;を別の用途に使う｡
+具体的には､OCamlはcallee-saved registersを利用しない｡
 callee-saved registersを使わないことにより､&lt;code&gt;try&lt;/code&gt;節の中を評価する前にレジスタを保存する必要がない&lt;sup id=&quot;fnref2&quot; title=&quot;例えばJavaやGoはエラーの詳細等のためにcallee-saved registersを利用するらしい(Wiki調べ) &quot;&gt;&lt;a href=&quot;#fn2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;｡
 同様に､&lt;code&gt;try&lt;/code&gt;節から抜けるときにもレジスタを戻す操作も不要である｡
 つまり､例外ハンドラの導入はハンドラのprogram counter(&lt;code&gt;pc&lt;/code&gt;)と現在のコンテキストの例外ハンドラへのポインタ(&lt;code&gt;exn_ptr&lt;/code&gt;)をスタックにpushするだけでよいのだ(図&lt;a href=&quot;#programstack&quot;&gt;2.1&lt;/a&gt;
@@ -70,7 +70,7 @@ callee-saved registersを使わないことにより､&lt;code&gt;try&lt;/code&
 より引用､筆者メモつき)&lt;sup id=&quot;fnref3&quot; title=&quot;全く説明してないがOCamlは外部呼び出しのCも含めて単一のcall stackを使う｡またstackは下方に伸長する &quot;&gt;&lt;a href=&quot;#fn3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; 
 &lt;/p&gt;
 &lt;/center&gt;
-&lt;p&gt;それぞれ&lt;em&gt;allocation pointer&lt;/em&gt;と&lt;code&gt;Caml_state&lt;/code&gt;への参照として利用している｡
+&lt;p&gt;ちなむと､x86_64バックエンドではcallee-saved registersである&lt;code&gt;r15&lt;/code&gt;と&lt;code&gt;r14&lt;/code&gt;をそれぞれ&lt;em&gt;allocation pointer&lt;/em&gt;と&lt;code&gt;Caml_state&lt;/code&gt;への参照として利用している｡
 Allocation pointerとは､bump pointer&lt;sup id=&quot;fnref4&quot; title=&quot;この辺を参照: https://rust-hosted-langs.github.io/book/chapter-simple-bump.html &quot;&gt;&lt;a href=&quot;#fn4&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;のallocationに使われるマイナーヒープへのポインタ､&lt;code&gt;Caml_state&lt;/code&gt;はランタイムのグローバル変数を管理するテーブルである｡&lt;/p&gt;
 &lt;p&gt;なるほど確かに､例外ハンドラの導入および例外発生は軽量そうである｡
 数字で見てみると&lt;a href=&quot;https://dev.realworldocaml.org/error-handling.html&quot;&gt;こういう感じ&lt;/a&gt;&lt;sup id=&quot;fnref5&quot; title=&quot;OCamlの例外は速いため､しばしばループや再帰などを抜けるためにも使われる｡記事中にもあるとおり､backtraceを生成しないraise_notraceという関数を使うと一層速い &quot;&gt;&lt;a href=&quot;#fn5&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;｡&lt;/p&gt;
@@ -93,18 +93,18 @@ fiberは図&lt;a href=&quot;#omlayout&quot;&gt;4.1&lt;/a&gt;
 より引用､筆者メモつき)
 &lt;/p&gt;
 &lt;/center&gt;
-&lt;p&gt;OCamlのフレームが可変長となっているので､fiberのサイズも同様に可変となる｡
-Fiberのサイズは小さくしたいので､このスペースの初期値は16 wordsにしておく｡
-そして､stack pointer &lt;code&gt;rsp&lt;/code&gt;が図中のstack thresholdを下回るとoverflowとみなされ(stackは下方に伸長する)､2倍のサイズを確保した領域にfiberをコピーする｡
+&lt;p&gt;OCaml frames部分が可変長となっているので､fiberのサイズも同様に可変となる｡
+Fiberのサイズは小さくしたいので､このスペースの初期値はまず16 wordsにしておく｡
+Stack pointer &lt;code&gt;rsp&lt;/code&gt;が図中のstack thresholdを下回るときoverflow状態とみなし(stackは下方に伸長する)､2倍のサイズを確保した領域にfiberをコピーする｡
 Multicore OCamlではstack overflow checkをOCaml関数のfunction prologueに導入した｡
 ただ､overflowはあまりおきないため､CPU branch predictionでほとんど解消される｡&lt;/p&gt;
 &lt;p&gt;とはいえ毎度の関数呼び出しでチェックするのはランタイムコストがかさむ｡
 ところで､多くの実用的なOCamlプログラム&lt;sup id=&quot;fnref6&quot; title=&quot;[1]
 6章のベンチマークで利用したプログラム群 &quot;&gt;&lt;a href=&quot;#fn6&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;では多くの関数はそれ以上別の関数を呼ばないleaf functionsであることが観察されており､これはframe sizeが充分小さい｡
-つまりほとんどチェックする必要がないんじゃないか?
+つまりほとんどstack overflow のチェックをする必要はないんじゃないか?
 そこで､固定長の&lt;em&gt;red zone&lt;/em&gt;をstack topに追加する｡
-Redo zoneよりサイズを下回るframeを持つleaf functionsに対してcompilerはstack overflow checkを挟まないようにした｡
-このred zoneのサイズは16 wordsである｡&lt;/p&gt;
+Red zoneよりサイズを下回るframeを持つleaf functionsに対してcompilerはstack overflow checkを挟まないようにした｡
+このred zoneのサイズは16 wordsであり､理由については後述する｡&lt;/p&gt;
 &lt;h1 id=&quot;5.+%E3%83%99%E3%83%B3%E3%83%81%E3%83%9E%E3%83%BC%E3%82%AF&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#5.+%E3%83%99%E3%83%B3%E3%83%81%E3%83%9E%E3%83%BC%E3%82%AF&quot;&gt;5. ベンチマーク&lt;/a&gt;&lt;/h1&gt;
 &lt;h2 id=&quot;5-1.+With+no+effects&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#5-1.+With+no+effects&quot;&gt;5-1. With no effects&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Effectを利用していない既存のプログラムはどれくらい影響を受けるのか｡
@@ -246,7 +246,7 @@ Go(1.13)はnet/httpを利用し､並列実行はしない(&lt;code&gt;GOMAXPROC
   &lt;/span&gt;
 &lt;/div&gt;
 &lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/parallel-programming-in-multicore-ocaml&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/03db3fc8ae6cfe789f2b79203cb2b7585196df65853fa8ce6671e2ffabd4a85b/ocaml-multicore/parallel-programming-in-multicore-ocaml&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/parallel-programming-in-multicore-ocaml&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/6be6c6680d1aa83bbe22f8186412c4e08f0521802c3c2e7381e3f6349d234423/ocaml-multicore/parallel-programming-in-multicore-ocaml&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/parallel-programming-in-multicore-ocaml&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;GitHub - ocaml-multicore/parallel-programming-in-multicore-ocaml: Tutorial on Multicore OCaml parallel programming with domainslib&lt;/a&gt;&lt;/div&gt;
     &lt;div class=&quot;description&quot;&gt;Tutorial on Multicore OCaml parallel programming with domainslib - GitHub - ocaml-multicore/parallel-programming-in-multicore-ocaml: Tutorial on Multicore OCaml parallel programming with domainslib&lt;/div&gt;
@@ -1168,7 +1168,7 @@ PPL2021のゴールドスポンサーである株式会社HERPはプログラミ
   &lt;/span&gt;
 &lt;/div&gt;
 &lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/herp-inc/engineering-careers&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://repository-images.githubusercontent.com/292805383/d8af6800-0734-11eb-9a6c-4e7479334131&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/herp-inc/engineering-careers&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://repository-images.githubusercontent.com/292805383/d9a2cae3-0977-4f1c-970f-9e9abc6d7fa1&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://github.com/herp-inc/engineering-careers&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;GitHub - herp-inc/engineering-careers: 株式会社HERPのエンジニア向け採用資料&lt;/a&gt;&lt;/div&gt;
     &lt;div class=&quot;description&quot;&gt;株式会社HERPのエンジニア向け採用資料. Contribute to herp-inc/engineering-careers development by creating an account on GitHub.&lt;/div&gt;

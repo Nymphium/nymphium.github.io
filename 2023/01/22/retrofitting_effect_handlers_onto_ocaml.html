@@ -110,10 +110,10 @@
 <hr>
 <h1 id="1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><a class="headerlink" href="#1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">1. はじめに</a></h1>
 <p>OCaml 5.0が去年末に<a href="https://ocaml.org/news/ocaml-5.0" target="_blank" rel="noopener noreferrer">リリースされた</a>｡
-並列処理のプリミティブに加え､Algebraic Effectsを用いた並行処理も書けるようになり､これはとても素晴らしいことですよ｡
-本日はOCaml 5.0のベースとなるMulticore OCamlにおけるAlgebraic Effectsの実装論文『Retrofitting Effect Handlers onto OCaml』<span class="cite">[<a href="#fn1" title="KC Sivaramakrishnan, Stephen Dolan, Leo White, Tom Kelly, Sadiq Jaffer, and Anil Madhavapeddy. 2021. Retrofitting effect handlers onto OCaml. In Proceedings of the 42nd ACM SIGPLAN International Conference on Programming Language Design and Implementation (PLDI 2021). Association for Computing Machinery, New York, NY, USA, 206–221. https://dl.acm.org/doi/10.1145/3453483.3454039 " id="fnref1">1</a>]</span>
+並列処理のプリミティブに加え､algebraic effectsを用いた並行処理も書けるようになり､これはとても素晴らしいことですよ｡
+本日はOCaml 5.0のベースとなるMulticore OCamlにおけるalgebraic effectsの実装論文『Retrofitting Effect Handlers onto OCaml』<span class="cite">[<a href="#fn1" title="KC Sivaramakrishnan, Stephen Dolan, Leo White, Tom Kelly, Sadiq Jaffer, and Anil Madhavapeddy. 2021. Retrofitting effect handlers onto OCaml. In Proceedings of the 42nd ACM SIGPLAN International Conference on Programming Language Design and Implementation (PLDI 2021). Association for Computing Machinery, New York, NY, USA, 206–221. https://dl.acm.org/doi/10.1145/3453483.3454039 " id="fnref1">1</a>]</span>
 について解説する｡
-該当論文ではeffect handlerの実装デザインにあたって以下の4つを考慮している:</p>
+該当論文ではeffect handlersの実装デザインにあたって以下の4つを考慮している:</p>
 <ul>
 <li>
 <p><strong>Backward compatibility</strong></p>
@@ -136,15 +136,15 @@
 <p>modularityの理念に基づいて､ブロッキングI/Oのあるコードもeffect handlersを利用して<em>透過的に</em>非同期化できること</p>
 </li>
 </ul>
-<p>互換性の重視も本論文および実装の大きなcontributionとなっているが､今回は特にAlgebraic effect handlersの実装部分に焦点を当てる｡</p>
+<p>互換性の重視も本論文および実装の大きなcontributionとなっているが､今回は特にalgebraic effect handlersの実装部分に焦点を当てる｡</p>
 <h1 id="2.+OCaml%E3%81%AE%E4%BE%8B%E5%A4%96%E3%81%AF%E9%80%9F%E3%81%84"><a class="headerlink" href="#2.+OCaml%E3%81%AE%E4%BE%8B%E5%A4%96%E3%81%AF%E9%80%9F%E3%81%84">2. OCamlの例外は速い</a></h1>
 <p>様々なプログラム言語で<code>try-catch</code>などによる例外処理は遅いというのはよく聞くだろう｡
-その一報､OCamlの例外は速いという話は聞いたことがあるかもしれない｡
+その一方､OCamlの例外は速いという話は聞いたことがあるかもしれない｡
 まあランタイムが異なるので例外処理の速度だけ比較しようもないのでなんとも言えないが､OCamlは例外処理コストをおさえる工夫をしている｡</p>
-<h2 id="2-1.+OCaml%E3%81%AFC+calling+convention%E3%82%92%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84"><a class="headerlink" href="#2-1.+OCaml%E3%81%AFC+calling+convention%E3%82%92%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84">2-1. OCamlはC calling conventionを使わない</a></h2>
+<h2 id="2-1.+OCaml%E3%81%AFC+calling+convention%E3%81%AB%E5%BE%93%E3%82%8F%E3%81%AA%E3%81%84"><a class="headerlink" href="#2-1.+OCaml%E3%81%AFC+calling+convention%E3%81%AB%E5%BE%93%E3%82%8F%E3%81%AA%E3%81%84">2-1. OCamlはC calling conventionに従わない</a></h2>
 <p>OCamlはC calling conventionに従わないので<code>try-catch</code>が速くなる｡
 どういうことだろう｡
-具体的には､OCamlはcallee-saved registersを利用せず､例えばx86-64バックエンドでは<code>r15</code>と<code>r14</code>を別の用途に使う｡
+具体的には､OCamlはcallee-saved registersを利用しない｡
 callee-saved registersを使わないことにより､<code>try</code>節の中を評価する前にレジスタを保存する必要がない<sup id="fnref2" title="例えばJavaやGoはエラーの詳細等のためにcallee-saved registersを利用するらしい(Wiki調べ) "><a href="#fn2">2</a></sup>｡
 同様に､<code>try</code>節から抜けるときにもレジスタを戻す操作も不要である｡
 つまり､例外ハンドラの導入はハンドラのprogram counter(<code>pc</code>)と現在のコンテキストの例外ハンドラへのポインタ(<code>exn_ptr</code>)をスタックにpushするだけでよいのだ(図<a href="#programstack">2.1</a>
@@ -162,7 +162,7 @@ callee-saved registersを使わないことにより､<code>try</code>節の中
 より引用､筆者メモつき)<sup id="fnref3" title="全く説明してないがOCamlは外部呼び出しのCも含めて単一のcall stackを使う｡またstackは下方に伸長する "><a href="#fn3">3</a></sup> 
 </p>
 </center>
-<p>それぞれ<em>allocation pointer</em>と<code>Caml_state</code>への参照として利用している｡
+<p>ちなむと､x86_64バックエンドではcallee-saved registersである<code>r15</code>と<code>r14</code>をそれぞれ<em>allocation pointer</em>と<code>Caml_state</code>への参照として利用している｡
 Allocation pointerとは､bump pointer<sup id="fnref4" title="この辺を参照: https://rust-hosted-langs.github.io/book/chapter-simple-bump.html "><a href="#fn4">4</a></sup>のallocationに使われるマイナーヒープへのポインタ､<code>Caml_state</code>はランタイムのグローバル変数を管理するテーブルである｡</p>
 <p>なるほど確かに､例外ハンドラの導入および例外発生は軽量そうである｡
 数字で見てみると<a href="https://dev.realworldocaml.org/error-handling.html" target="_blank" rel="noopener noreferrer">こういう感じ</a><sup id="fnref5" title="OCamlの例外は速いため､しばしばループや再帰などを抜けるためにも使われる｡記事中にもあるとおり､backtraceを生成しないraise_notraceという関数を使うと一層速い "><a href="#fn5">5</a></sup>｡</p>
@@ -185,18 +185,18 @@ fiberは図<a href="#omlayout">4.1</a>
 より引用､筆者メモつき)
 </p>
 </center>
-<p>OCamlのフレームが可変長となっているので､fiberのサイズも同様に可変となる｡
-Fiberのサイズは小さくしたいので､このスペースの初期値は16 wordsにしておく｡
-そして､stack pointer <code>rsp</code>が図中のstack thresholdを下回るとoverflowとみなされ(stackは下方に伸長する)､2倍のサイズを確保した領域にfiberをコピーする｡
+<p>OCaml frames部分が可変長となっているので､fiberのサイズも同様に可変となる｡
+Fiberのサイズは小さくしたいので､このスペースの初期値はまず16 wordsにしておく｡
+Stack pointer <code>rsp</code>が図中のstack thresholdを下回るときoverflow状態とみなし(stackは下方に伸長する)､2倍のサイズを確保した領域にfiberをコピーする｡
 Multicore OCamlではstack overflow checkをOCaml関数のfunction prologueに導入した｡
 ただ､overflowはあまりおきないため､CPU branch predictionでほとんど解消される｡</p>
 <p>とはいえ毎度の関数呼び出しでチェックするのはランタイムコストがかさむ｡
 ところで､多くの実用的なOCamlプログラム<sup id="fnref6" title="[1]
 6章のベンチマークで利用したプログラム群 "><a href="#fn6">6</a></sup>では多くの関数はそれ以上別の関数を呼ばないleaf functionsであることが観察されており､これはframe sizeが充分小さい｡
-つまりほとんどチェックする必要がないんじゃないか?
+つまりほとんどstack overflow のチェックをする必要はないんじゃないか?
 そこで､固定長の<em>red zone</em>をstack topに追加する｡
-Redo zoneよりサイズを下回るframeを持つleaf functionsに対してcompilerはstack overflow checkを挟まないようにした｡
-このred zoneのサイズは16 wordsである｡</p>
+Red zoneよりサイズを下回るframeを持つleaf functionsに対してcompilerはstack overflow checkを挟まないようにした｡
+このred zoneのサイズは16 wordsであり､理由については後述する｡</p>
 <h1 id="5.+%E3%83%99%E3%83%B3%E3%83%81%E3%83%9E%E3%83%BC%E3%82%AF"><a class="headerlink" href="#5.+%E3%83%99%E3%83%B3%E3%83%81%E3%83%9E%E3%83%BC%E3%82%AF">5. ベンチマーク</a></h1>
 <h2 id="5-1.+With+no+effects"><a class="headerlink" href="#5-1.+With+no+effects">5-1. With no effects</a></h2>
 <p>Effectを利用していない既存のプログラムはどれくらい影響を受けるのか｡
