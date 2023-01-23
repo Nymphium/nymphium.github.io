@@ -14,9 +14,9 @@ tags: [OCaml,言語実装,Algebraic Effects]
 
 # はじめに
 OCaml 5.0が去年末に[リリースされた](https://ocaml.org/news/ocaml-5.0)｡
-並列処理のプリミティブに加え､Algebraic Effectsを用いた並行処理も書けるようになり､これはとても素晴らしいことですよ｡
-本日はOCaml 5.0のベースとなるMulticore OCamlにおけるAlgebraic Effectsの実装論文『Retrofitting Effect Handlers onto OCaml』[fnref:1]について解説する｡
-該当論文ではeffect handlerの実装デザインにあたって以下の4つを考慮している:
+並列処理のプリミティブに加え､algebraic effectsを用いた並行処理も書けるようになり､これはとても素晴らしいことですよ｡
+本日はOCaml 5.0のベースとなるMulticore OCamlにおけるalgebraic effectsの実装論文『Retrofitting Effect Handlers onto OCaml』[fnref:1]について解説する｡
+該当論文ではeffect handlersの実装デザインにあたって以下の4つを考慮している:
 
 - **Backward compatibility**
 
@@ -34,17 +34,17 @@ OCaml 5.0が去年末に[リリースされた](https://ocaml.org/news/ocaml-5.0
 
     modularityの理念に基づいて､ブロッキングI/Oのあるコードもeffect handlersを利用して*透過的に*非同期化できること
 
-互換性の重視も本論文および実装の大きなcontributionとなっているが､今回は特にAlgebraic effect handlersの実装部分に焦点を当てる｡
+互換性の重視も本論文および実装の大きなcontributionとなっているが､今回は特にalgebraic effect handlersの実装部分に焦点を当てる｡
 
 # OCamlの例外は速い
 様々なプログラム言語で`try-catch`などによる例外処理は遅いというのはよく聞くだろう｡
-その一報､OCamlの例外は速いという話は聞いたことがあるかもしれない｡
+その一方､OCamlの例外は速いという話は聞いたことがあるかもしれない｡
 まあランタイムが異なるので例外処理の速度だけ比較しようもないのでなんとも言えないが､OCamlは例外処理コストをおさえる工夫をしている｡
 
-## OCamlはC calling conventionを使わない
+## OCamlはC calling conventionに従わない
 OCamlはC calling conventionに従わないので`try-catch`が速くなる｡
 どういうことだろう｡
-具体的には､OCamlはcallee-saved registersを利用せず､例えばx86-64バックエンドでは`r15`と`r14`を別の用途に使う｡
+具体的には､OCamlはcallee-saved registersを利用しない｡
 callee-saved registersを使わないことにより､`try`節の中を評価する前にレジスタを保存する必要がない[^4]｡
 同様に､`try`節から抜けるときにもレジスタを戻す操作も不要である｡
 つまり､例外ハンドラの導入はハンドラのprogram counter(`pc`)と現在のコンテキストの例外ハンドラへのポインタ(`exn_ptr`)をスタックにpushするだけでよいのだ(図[ref: programstack])｡
@@ -57,7 +57,7 @@ callee-saved registersを使わないことにより､`try`節の中を評価�
 図[ref: programstack] Program stack on stock OCaml ([fnref:1]より引用､筆者メモつき)[^3] 
 </center>
 
-それぞれ*allocation pointer*と`Caml_state`への参照として利用している｡
+ちなむと､x86\_64バックエンドではcallee-saved registersである`r15`と`r14`をそれぞれ*allocation pointer*と`Caml_state`への参照として利用している｡
 Allocation pointerとは､bump pointer[^2]のallocationに使われるマイナーヒープへのポインタ､`Caml_state`はランタイムのグローバル変数を管理するテーブルである｡
 
 なるほど確かに､例外ハンドラの導入および例外発生は軽量そうである｡
@@ -79,18 +79,18 @@ fiberは図[ref:omlayout](a)のようになる｡
 図[ref:omlayout] Layout of Multicore OCaml effect handlers ([fnref:1]より引用､筆者メモつき)
 </center>
 
-OCamlのフレームが可変長となっているので､fiberのサイズも同様に可変となる｡
-Fiberのサイズは小さくしたいので､このスペースの初期値は16 wordsにしておく｡
-そして､stack pointer `rsp`が図中のstack thresholdを下回るとoverflowとみなされ(stackは下方に伸長する)､2倍のサイズを確保した領域にfiberをコピーする｡
+OCaml frames部分が可変長となっているので､fiberのサイズも同様に可変となる｡
+Fiberのサイズは小さくしたいので､このスペースの初期値はまず16 wordsにしておく｡
+Stack pointer `rsp`が図中のstack thresholdを下回るときoverflow状態とみなし(stackは下方に伸長する)､2倍のサイズを確保した領域にfiberをコピーする｡
 Multicore OCamlではstack overflow checkをOCaml関数のfunction prologueに導入した｡
 ただ､overflowはあまりおきないため､CPU branch predictionでほとんど解消される｡
 
 とはいえ毎度の関数呼び出しでチェックするのはランタイムコストがかさむ｡
 ところで､多くの実用的なOCamlプログラム[^6]では多くの関数はそれ以上別の関数を呼ばないleaf functionsであることが観察されており､これはframe sizeが充分小さい｡
-つまりほとんどチェックする必要がないんじゃないか?
+つまりほとんどstack overflow のチェックをする必要はないんじゃないか?
 そこで､固定長の*red zone*をstack topに追加する｡
-Redo zoneよりサイズを下回るframeを持つleaf functionsに対してcompilerはstack overflow checkを挟まないようにした｡
-このred zoneのサイズは16 wordsである｡
+Red zoneよりサイズを下回るframeを持つleaf functionsに対してcompilerはstack overflow checkを挟まないようにした｡
+このred zoneのサイズは16 wordsであり､理由については後述する｡
 
 # ベンチマーク
 ## With no effects
