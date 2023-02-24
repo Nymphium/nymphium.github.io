@@ -5,8 +5,8 @@
     <description>lily, Aikatsu, Programming language, and more</description>
     <link>https://nymphium.github.io/</link>
     <atom:link href="https://nymphium.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 25 Feb 2023 01:34:55 +0900</pubDate>
-    <lastBuildDate>Sat, 25 Feb 2023 01:34:55 +0900</lastBuildDate>
+    <pubDate>Sat, 25 Feb 2023 04:07:20 +0900</pubDate>
+    <lastBuildDate>Sat, 25 Feb 2023 04:07:20 +0900</lastBuildDate>
     <generator>Jekyll v4.3.1</generator>
     
       <item>
@@ -32,10 +32,10 @@
 &lt;p&gt;OCaml5.0が22年12月にリリースされて早くも3ヶ月くらい経つ｡
 新たなバージョンでは並列並行計算プリミティブが組み込まれた話を1年前にした｡&lt;/p&gt;
 &lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;/2021/12/12/ocaml-5_0.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;/pictures/no_image.png&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://nymphium.github.io/2021/12/12/ocaml-5_0.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://nymphium.github.io/pictures/github_icon.png&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
-    &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;/2021/12/12/ocaml-5_0.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;/a&gt;&lt;/div&gt;
-    &lt;div class=&quot;description&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://nymphium.github.io/2021/12/12/ocaml-5_0.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;並行並列OCaml5.0 - lilyum ensemble&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;こんにちは､びしょ〜じょです｡これはMeta Languages Advent Calendar 2021の3日目の記事です｡今日は12月3日､冴草きいちゃんの誕生日です｡いいね? めでたいです...&lt;/div&gt;
   &lt;/span&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;code&gt;Domain&lt;/code&gt;モジュールで並列プリミティブが使えるが､低レベルAPIで少々使いづらいので､ocaml-multicoreが提供するdomainslibを使うのが推奨されている&lt;sup id=&quot;fnref1&quot; title=&apos;&quot;We recommend the users to utilise higher-level parallel programming libraries such as domainslib.&quot;, https://v2.ocaml.org/releases/5.0/manual/parallelism.html &apos;&gt;&lt;a href=&quot;#fn1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;｡&lt;/p&gt;
