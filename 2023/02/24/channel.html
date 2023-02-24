@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html;charset=UTF-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="format-detection" content="telephone=no"/>
+
+    <title>OCamlで非同期ちゃんねる - lilyum ensemble</title>
+    <meta itemprop="name" content="OCamlで非同期ちゃんねる - lilyum ensemble"/>
+    <meta name="keywords" content="OCaml"/>
+    <meta name="thumbnail" content="/pictures/github_icon.png"/>
+    <meta itemprop="image" content="/pictures/github_icon.png"/>
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="lilyum ensemble"/>
+    <meta name="twitter:title" content="OCamlで非同期ちゃんねる - lilyum ensemble"/>
+    <meta name="twitter:url" content="/2023/02/24/channel.html"/> 
+    <meta name="twitter:text:description" content="こんにちは､びしょ～じょです｡最近『並行プログラミング入門』を読みました｡        並行プログラミング入門 ―Rust、C、アセンブリによる実装からのアプローチ | 高野 祐輝 |本 | ..."/>
+    <meta name="twitter:image" content="https://nymphium.github.io/pictures/github_icon.png"/>
+    <meta name="twitter:image:src" content="https://nymphium.github.io/pictures/github_icon.png"/>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="OCamlで非同期ちゃんねる" />
+<meta name="author" content="Satoru Kawahara" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="こんにちは､びしょ～じょです｡ 最近『並行プログラミング入門』を読みました｡ 並行プログラミング入門 ―Rust、C、アセンブリによる実装からのアプローチ | 高野 祐輝 |本 | 通販 | Amazon Amazonで高野 祐輝の並行プログラミング入門 ―Rust、C、アセンブリによる実装からのアプローチ。アマゾンならポイント還元本が多数。高野 祐輝作品ほか、お急ぎ便対象商品は当日お届けも可能。また並行プログラミング入門 ―Rust、C、アセンブリによる実装からのアプローチもアマゾン配送商品なら通常配送無料。 並行計算のためのCPU命令やアルゴリズムの説明が順序立てておこなわれていて､わかりやすく面白かったです｡ 初版は結構エラッタが多かったので､みなさんは最新版や電子書籍などで買ってください｡" />
+<meta property="og:description" content="こんにちは､びしょ～じょです｡ 最近『並行プログラミング入門』を読みました｡ 並行プログラミング入門 ―Rust、C、アセンブリによる実装からのアプローチ | 高野 祐輝 |本 | 通販 | Amazon Amazonで高野 祐輝の並行プログラミング入門 ―Rust、C、アセンブリによる実装からのアプローチ。アマゾンならポイント還元本が多数。高野 祐輝作品ほか、お急ぎ便対象商品は当日お届けも可能。また並行プログラミング入門 ―Rust、C、アセンブリによる実装からのアプローチもアマゾン配送商品なら通常配送無料。 並行計算のためのCPU命令やアルゴリズムの説明が順序立てておこなわれていて､わかりやすく面白かったです｡ 初版は結構エラッタが多かったので､みなさんは最新版や電子書籍などで買ってください｡" />
+<link rel="canonical" href="https://nymphium.github.io/2023/02/24/channel.html" />
+<meta property="og:url" content="https://nymphium.github.io/2023/02/24/channel.html" />
+<meta property="og:site_name" content="lilyum ensemble" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-02-24T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="OCamlで非同期ちゃんねる" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Satoru Kawahara"},"dateModified":"2023-02-24T00:00:00+09:00","datePublished":"2023-02-24T00:00:00+09:00","description":"こんにちは､びしょ～じょです｡ 最近『並行プログラミング入門』を読みました｡ 並行プログラミング入門 ―Rust、C、アセンブリによる実装からのアプローチ | 高野 祐輝 |本 | 通販 | Amazon Amazonで高野 祐輝の並行プログラミング入門 ―Rust、C、アセンブリによる実装からのアプローチ。アマゾンならポイント還元本が多数。高野 祐輝作品ほか、お急ぎ便対象商品は当日お届けも可能。また並行プログラミング入門 ―Rust、C、アセンブリによる実装からのアプローチもアマゾン配送商品なら通常配送無料。 並行計算のためのCPU命令やアルゴリズムの説明が順序立てておこなわれていて､わかりやすく面白かったです｡ 初版は結構エラッタが多かったので､みなさんは最新版や電子書籍などで買ってください｡","headline":"OCamlで非同期ちゃんねる","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2023/02/24/channel.html"},"url":"https://nymphium.github.io/2023/02/24/channel.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta property="og:image" content="/pictures/github_icon.png"/>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="wrapper" style="font-family: 'Comfortaa';">
+        <a class="site-title" href="/">lilyum ensemble</a>
+        <nav class="site-nav">
+          <div class="trigger">
+            <a class="page-link" href="/aboutme.html">About</a>
+            <a class="page-link" href="/slide.html">Slides</a>
+            <a class="page-link" href="/tags.html">Tags</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-content">
+      <div class="wrapper" lang="ja">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <h1 class="post-title" itemprop="name headline">OCamlで非同期ちゃんねる</h1>
+            <span class="post-meta">
+              <time datetime="2023-02-24T00:00:00+09:00" itemprop="datePublished">Feb 24, 2023</time>
+              <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2023-02-24-channel.md" target="_blank" rel="noopener noreferrer">src</a>
+              <p class="tags">tag: {<span class="tag"><a href="/tags.html#OCaml-ref">OCaml</a></span>}</p>
+              <a class="twitter-share-button" href="https://twitter.com/intent/tweet" target="_blank" rel="noopener noreferrer">Tweet</a> 
+
+              <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja" title="OCamlで非同期ちゃんねる" target="_blank" rel="noopener noreferrer">
+                <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマークに追加" width="20" height="20" style="border: none;">
+              </a>
+              <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+
+            </span>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <script type="text/javascript" src="/js/GithubRepoWidget.min.js"></script>
+            <script type="text/javascript">setTimeout(GithubRepoWidget.init, 3000);</script>
+
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                renderMathInElement(document.body, {
+                  // customised options
+                  // • auto-render specific keys, e.g.:
+                  delimiters: [
+                                  {left: '$$', right: '$$', display: true},
+                                  {left: '$', right: '$', display: false},
+                                  {left: '\\(', right: '\\)', display: false},
+                                  {left: '\\[', right: '\\]', display: true},
+                                  {left: '\\\\(', right: '\\\\)', display: false},
+                                  {left: '\\\\[', right: '\\\\]', display: true}
+                                ],
+                  // • rendering keys, e.g.:
+                  throwOnError : false
+                });
+              });
+            </script>
+
+          </header>
+          <div class="post-content" itemprop="articleBody">
+<p>こんにちは､びしょ～じょです｡
+最近『並行プログラミング入門』を読みました｡
+</p>
+<div class="twicard">
+  <span class="image"><a href="https://www.amazon.co.jp/dp/4873119596" target="_blank" rel="noopener noreferrer"><div><img src="/pictures/no_image.png"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="https://www.amazon.co.jp/dp/4873119596" target="_blank" rel="noopener noreferrer">並行プログラミング入門 ―Rust、C、アセンブリによる実装からのアプローチ | 高野 祐輝 |本 | 通販 | Amazon</a></div>
+    <div class="description">Amazonで高野 祐輝の並行プログラミング入門 ―Rust、C、アセンブリによる実装からのアプローチ。アマゾンならポイント還元本が多数。高野 祐輝作品ほか、お急ぎ便対象商品は当日お届けも可能。また並行プログラミング入門 ―Rust、C、アセンブリによる実装からのアプローチもアマゾン配送商品なら通常配送無料。</div>
+  </span>
+</div>
+<p>並行計算のためのCPU命令やアルゴリズムの説明が順序立てておこなわれていて､わかりやすく面白かったです｡
+初版は結構エラッタが多かったので､みなさんは最新版や電子書籍などで買ってください｡</p>
+<p>個人的には､プログラムがアルゴリズム記述用の擬似言語だともう少しアルゴリズムを追いやすかったかなと思いました｡
+もちろんRustによる記述はそれがそのまま動かせるという利点はとても良いです｡
+あと～pi計算の説明でメタ変数が<code>α</code>とセリフ･サンセリフの<code>a</code>が極めて近いセンテンスで使われるなど大変な部分があったので､そこは気になった｡</p>
+<p>とにかく並行プログランミに熱が出たんで､別の熱源のOCaml5.0でぶち上げる｡</p>
+<h1 id="Domainslib%E3%81%AE%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB"><a class="headerlink" href="#Domainslib%E3%81%AE%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB">Domainslibのチャンネル</a></h1>
+<p>OCaml5.0が22年12月にリリースされて早くも3ヶ月くらい経つ｡
+新たなバージョンでは並列並行計算プリミティブが組み込まれた話を1年前にした｡</p>
+<div class="twicard">
+  <span class="image"><a href="/2021/12/12/ocaml-5_0.html" target="_blank" rel="noopener noreferrer"><div><img src="/pictures/no_image.png"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="/2021/12/12/ocaml-5_0.html" target="_blank" rel="noopener noreferrer"></a></div>
+    <div class="description"></div>
+  </span>
+</div>
+<p><code>Domain</code>モジュールで並列プリミティブが使えるが､低レベルAPIで少々使いづらいので､ocaml-multicoreが提供するdomainslibを使うのが推奨されている<sup id="fnref1" title='"We recommend the users to utilise higher-level parallel programming libraries such as domainslib.", https://v2.ocaml.org/releases/5.0/manual/parallelism.html '><a href="#fn1">1</a></sup>｡</p>
+<div class="twicard">
+  <span class="image"><a href="https://github.com/ocaml-multicore/domainslib" target="_blank" rel="noopener noreferrer"><div><img src="https://opengraph.githubassets.com/6b75c140670a5bc9850e2670f0567734492290c8924f288f8e07989483ed203a/ocaml-multicore/domainslib"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="https://github.com/ocaml-multicore/domainslib" target="_blank" rel="noopener noreferrer">GitHub - ocaml-multicore/domainslib: Parallel Programming over Domains</a></div>
+    <div class="description">Parallel Programming over Domains. Contribute to ocaml-multicore/domainslib development by creating an account on GitHub.</div>
+  </span>
+</div>
+<p>そんなdomainslibにはthread-safeなチャンネルがある｡</p>
+<div class="highlight">
+<span class="listing-name">channels example</span><pre><code class="language-ocaml" data-lang="ocaml"><span class="n">utop</span> <span class="o">#</span> <span class="o">#</span><span class="n">require</span> <span class="s2">"domainslib"</span><span class="p">;;</span>
+<span class="n">utop</span> <span class="o">#</span> <span class="k">module</span> <span class="nc">Chan</span>  <span class="o">=</span> <span class="nn">Domainslib</span><span class="p">.</span><span class="nc">Chan</span><span class="p">;;</span>
+<span class="k">module</span> <span class="nc">Chan</span> <span class="o">=</span> <span class="nn">Domainslib</span><span class="p">.</span><span class="nc">Chan</span>
+<span class="n">utop</span> <span class="o">#</span> <span class="k">let</span> <span class="n">c</span> <span class="o">=</span> <span class="nn">Chan</span><span class="p">.</span><span class="n">make_bounded</span> <span class="mi">2</span><span class="p">;;</span> <span class="c">(* buffer size 2のチャンネル *)</span>
+<span class="k">val</span> <span class="n">c</span> <span class="o">:</span> <span class="k">'</span><span class="n">_weak1</span> <span class="nn">Chan</span><span class="p">.</span><span class="n">t</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">abstr</span><span class="o">&gt;</span>
+<span class="n">utop</span> <span class="o">#</span> <span class="nn">Chan</span><span class="p">.</span><span class="n">recv_poll</span> <span class="n">c</span><span class="p">;;</span> <span class="c">(* `*_poll`でノンブロッキングにsend/recvする *)</span>
+<span class="o">-</span> <span class="o">:</span> <span class="k">'</span><span class="n">_weak2</span> <span class="n">option</span> <span class="o">=</span> <span class="nc">None</span>
+<span class="n">utop</span> <span class="o">#</span> <span class="nn">Chan</span><span class="p">.</span><span class="n">send_poll</span> <span class="n">c</span> <span class="mi">10</span><span class="p">;;</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">bool</span> <span class="o">=</span> <span class="bp">true</span>
+<span class="n">utop</span> <span class="o">#</span> <span class="nn">Chan</span><span class="p">.</span><span class="n">send_poll</span> <span class="n">c</span> <span class="mi">20</span><span class="p">;;</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">bool</span> <span class="o">=</span> <span class="bp">true</span>
+<span class="n">utop</span> <span class="o">#</span> <span class="nn">Chan</span><span class="p">.</span><span class="n">send_poll</span> <span class="n">c</span> <span class="mi">21</span><span class="p">;;</span> <span class="c">(* buffer sizeの上限に達するのでsend失敗 *)</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">bool</span> <span class="o">=</span> <span class="bp">false</span>
+<span class="n">utop</span> <span class="o">#</span> <span class="nn">Chan</span><span class="p">.</span><span class="n">recv_poll</span> <span class="n">c</span><span class="p">;;</span> <span class="c">(* FILO *)</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">int</span> <span class="n">option</span> <span class="o">=</span> <span class="nc">Some</span> <span class="mi">10</span>
+<span class="n">utop</span> <span class="o">#</span> <span class="nn">Chan</span><span class="p">.</span><span class="n">recv_poll</span> <span class="n">c</span><span class="p">;;</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">int</span> <span class="n">option</span> <span class="o">=</span> <span class="nc">Some</span> <span class="mi">20</span>
+<span class="n">utop</span> <span class="o">#</span> <span class="nn">Chan</span><span class="p">.</span><span class="n">recv_poll</span> <span class="n">c</span><span class="p">;;</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">int</span> <span class="n">option</span> <span class="o">=</span> <span class="nc">None</span>
+</code></pre>
+</div>
+<h1 id="Eio"><a class="headerlink" href="#Eio">Eio</a></h1>
+<p>ところで!
+並行計算もできるようになったんで､そのwrapperであるeioも､あります｡</p>
+<div class="twicard">
+  <span class="image"><a href="https://github.com/ocaml-multicore/eio" target="_blank" rel="noopener noreferrer"><div><img src="https://opengraph.githubassets.com/aebee4374bdec27b32bbfa0102f5cdbc794c03c3dbd5d756b315cd2e8beb3e73/ocaml-multicore/eio"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="https://github.com/ocaml-multicore/eio" target="_blank" rel="noopener noreferrer">GitHub - ocaml-multicore/eio: Effects-based direct-style IO for multicore OCaml</a></div>
+    <div class="description">Effects-based direct-style IO for multicore OCaml. Contribute to ocaml-multicore/eio development by creating an account on GitHub.</div>
+  </span>
+</div>
+<p>networkingやclock､fileなどのIOを非同期に､さらに<a href="https://github.com/ocsigen/lwt" target="_blank" rel="noopener noreferrer">Lwt</a>や<a href="https://github.com/janestreet/async" target="_blank" rel="noopener noreferrer">Async</a>のようにmonadicではなくdirect-styleで書くことができる｡
+非同期IOバックエンドにはlibuvとio_uringを採用しており､プラットフォームに応じて選択できる｡
+『並行プログラミング入門』でいうところのプロセスはeffect handlersが切り取るcontinuationに相当し(おかげでdirect-styleに書ける)､API上は隠蔽されている｡</p>
+<div class="highlight">
+<span class="listing-name">async example</span><pre><code class="language-ocaml" data-lang="ocaml"><span class="n">utop</span> <span class="o">#</span> <span class="k">let</span> <span class="n">main</span> <span class="o">~</span><span class="n">clock</span> <span class="o">~</span><span class="n">stdout</span> <span class="o">=</span>
+         <span class="nn">Eio</span><span class="p">.</span><span class="nn">Fiber</span><span class="p">.</span><span class="n">both</span>
+           <span class="p">(</span><span class="k">fun</span> <span class="bp">()</span> <span class="o">-&gt;</span>
+             <span class="k">for</span> <span class="n">_</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">to</span> <span class="mi">5</span> <span class="k">do</span>
+               <span class="nn">Eio</span><span class="p">.</span><span class="nn">Flow</span><span class="p">.</span><span class="n">copy_string</span> <span class="s2">"hello</span><span class="se">\n</span><span class="s2">"</span> <span class="n">stdout</span><span class="p">;</span>
+               <span class="nn">Eio</span><span class="p">.</span><span class="nn">Time</span><span class="p">.</span><span class="n">sleep</span> <span class="n">clock</span> <span class="mi">0</span><span class="o">.</span><span class="mi">1</span>
+             <span class="k">done</span><span class="p">)</span>
+           <span class="p">(</span><span class="k">fun</span> <span class="bp">()</span> <span class="o">-&gt;</span>
+             <span class="k">for</span> <span class="n">_</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">to</span> <span class="mi">5</span> <span class="k">do</span>
+               <span class="nn">Eio</span><span class="p">.</span><span class="nn">Flow</span><span class="p">.</span><span class="n">copy_string</span> <span class="s2">"world</span><span class="se">\n</span><span class="s2">"</span> <span class="n">stdout</span><span class="p">;</span>
+               <span class="nn">Eio</span><span class="p">.</span><span class="nn">Time</span><span class="p">.</span><span class="n">sleep</span> <span class="n">clock</span> <span class="mi">0</span><span class="o">.</span><span class="mi">2</span>
+             <span class="k">done</span><span class="p">)</span>
+       <span class="p">;;</span>
+<span class="k">val</span> <span class="n">main</span> <span class="o">:</span> <span class="n">clock</span><span class="o">:#</span><span class="nn">Eio</span><span class="p">.</span><span class="nn">Time</span><span class="p">.</span><span class="n">clock</span> <span class="o">-&gt;</span> <span class="n">stdout</span><span class="o">:#</span><span class="nn">Eio</span><span class="p">.</span><span class="nn">Flow</span><span class="p">.</span><span class="n">sink</span> <span class="o">-&gt;</span> <span class="kt">unit</span> <span class="o">=</span> <span class="o">&lt;</span><span class="k">fun</span><span class="o">&gt;</span>
+<span class="n">utop</span> <span class="o">#</span> <span class="k">let</span> <span class="n">run</span> <span class="n">main</span> <span class="o">=</span>
+         <span class="nn">Eio_main</span><span class="p">.</span><span class="n">run</span> <span class="o">@@</span> <span class="k">fun</span> <span class="n">env</span> <span class="o">-&gt;</span> <span class="c">(* プラットフォームに応じた`env`オブジェクトが渡される *)</span>
+         <span class="k">let</span> <span class="n">t1</span> <span class="o">=</span> <span class="nn">Eio</span><span class="p">.</span><span class="nn">Time</span><span class="p">.</span><span class="n">now</span> <span class="n">env</span><span class="o">#</span><span class="n">clock</span> <span class="k">in</span>
+         <span class="k">let</span> <span class="bp">()</span> <span class="o">=</span> <span class="n">main</span> <span class="o">~</span><span class="n">clock</span><span class="o">:</span><span class="n">env</span><span class="o">#</span><span class="n">clock</span> <span class="o">~</span><span class="n">stdout</span><span class="o">:</span><span class="n">env</span><span class="o">#</span><span class="n">stdout</span> <span class="k">in</span>
+         <span class="k">let</span> <span class="n">t2</span> <span class="o">=</span> <span class="nn">Eio</span><span class="p">.</span><span class="nn">Time</span><span class="p">.</span><span class="n">now</span> <span class="n">env</span><span class="o">#</span><span class="n">clock</span> <span class="k">in</span>
+         <span class="nn">Eio</span><span class="p">.</span><span class="nn">Flow</span><span class="p">.</span><span class="n">copy_string</span> <span class="p">(</span><span class="nn">Printf</span><span class="p">.</span><span class="n">sprintf</span> <span class="s2">"%f</span><span class="se">\n</span><span class="s2">"</span> <span class="p">(</span><span class="n">t2</span> <span class="o">-.</span> <span class="n">t1</span><span class="p">))</span> <span class="n">env</span><span class="o">#</span><span class="n">stdout</span>
+       <span class="p">;;</span>
+<span class="k">val</span> <span class="n">run</span> <span class="o">:</span> <span class="p">(</span><span class="n">clock</span><span class="o">:</span><span class="nn">Eio</span><span class="p">.</span><span class="nn">Time</span><span class="p">.</span><span class="n">clock</span> <span class="o">-&gt;</span> <span class="n">stdout</span><span class="o">:</span><span class="nn">Eio</span><span class="p">.</span><span class="nn">Flow</span><span class="p">.</span><span class="n">sink</span> <span class="o">-&gt;</span> <span class="kt">unit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">unit</span> <span class="o">=</span>
+  <span class="o">&lt;</span><span class="k">fun</span><span class="o">&gt;</span>
+<span class="n">utop</span> <span class="o">#</span> <span class="n">run</span> <span class="n">main</span><span class="p">;;</span>
+<span class="n">hello</span>
+<span class="n">world</span>
+<span class="n">hello</span>
+<span class="n">world</span>
+<span class="n">hello</span>
+<span class="n">hello</span>
+<span class="n">world</span>
+<span class="n">hello</span>
+<span class="n">world</span>
+<span class="n">world</span>
+<span class="mi">1</span><span class="o">.</span><span class="mi">009868</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">unit</span> <span class="o">=</span> <span class="bp">()</span>
+</code></pre>
+</div>
+<p>ええやん｡
+<code>Eio.Time.sleep</code>が非同期-capableなので0.1*5秒と0.2*5秒別々にsleepしても合計実行時間は1.0秒になる｡</p>
+<h1 id="%E9%9D%9E%E5%90%8C%E6%9C%9F%E3%81%AA%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB%E3%81%8C%E3%81%BB%E3%81%97%E3%81%84%E3%82%93%E3%81%A7%E3%81%99%E3%81%8C"><a class="headerlink" href="#%E9%9D%9E%E5%90%8C%E6%9C%9F%E3%81%AA%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB%E3%81%8C%E3%81%BB%E3%81%97%E3%81%84%E3%82%93%E3%81%A7%E3%81%99%E3%81%8C">非同期なチャンネルがほしいんですが</a></h1>
+<p>では､domainslibのチャンネルに非同期APIはあるかというと､ない｡
+とはいえできそうな雰囲気はあるんで､やりますか｡</p>
+<p>パッと思いつくイメージのままに､<code>*_poll</code>してsend/recv失敗すればrerunすればいいだろう｡</p>
+<div class="highlight">
+<span class="listing-name"><label id="chan_async"></label>
+chan_async.ml (1)</span><pre><code class="language-ocaml" data-lang="ocaml"><span class="k">module</span> <span class="nc">C</span> <span class="o">=</span> <span class="nn">Domainslib</span><span class="p">.</span><span class="nc">Chan</span>
+
+<span class="k">let</span> <span class="n">make</span> <span class="bp">()</span> <span class="o">=</span> <span class="nn">C</span><span class="p">.</span><span class="n">make_unbound</span> <span class="bp">()</span>
+
+<span class="k">let</span> <span class="k">rec</span> <span class="n">recv</span> <span class="n">c</span> <span class="o">=</span>
+  <span class="k">match</span> <span class="nn">C</span><span class="p">.</span><span class="n">recv_poll</span> <span class="n">c</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="nc">Some</span> <span class="n">v</span> <span class="o">-&gt;</span> <span class="n">v</span>
+  <span class="o">|</span> <span class="nc">None</span> <span class="o">-&gt;</span>
+    <span class="nn">Eio</span><span class="p">.</span><span class="nn">Fiber</span><span class="p">.</span><span class="n">yield</span> <span class="bp">()</span><span class="p">;</span>
+    <span class="n">recv</span> <span class="bp">()</span>
+<span class="p">;;</span>
+
+<span class="k">let</span> <span class="k">rec</span> <span class="n">send</span> <span class="n">c</span> <span class="n">v</span> <span class="o">=</span>
+  <span class="k">if</span> <span class="nn">C</span><span class="p">.</span><span class="n">send_poll</span> <span class="n">c</span> <span class="n">v</span>
+  <span class="k">then</span> <span class="bp">()</span>
+  <span class="k">else</span> <span class="p">(</span>
+    <span class="nn">Eio</span><span class="p">.</span><span class="nn">Fiber</span><span class="p">.</span><span class="n">yield</span> <span class="bp">()</span><span class="p">;</span>
+    <span class="n">send</span> <span class="bp">()</span><span class="p">)</span>
+<span class="p">;;</span>
+
+<span class="c">(* 便利やつ *)</span>
+<span class="k">module</span> <span class="nc">Syntax</span> <span class="o">=</span> <span class="k">struct</span>
+  <span class="k">let</span> <span class="p">(</span> <span class="o">&lt;~</span> <span class="p">)</span> <span class="n">c</span> <span class="n">v</span> <span class="o">=</span> <span class="n">send</span> <span class="n">c</span> <span class="n">v</span>
+  <span class="k">let</span> <span class="p">(</span> <span class="o">~&gt;</span> <span class="p">)</span> <span class="n">c</span> <span class="o">=</span> <span class="n">recv</span> <span class="n">c</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+<p>無難な気がする｡
+<code>*_poll</code>で一回トライして､ダメだったら一旦<code>yield</code>して他のプロセスに実行を移す｡
+プロセス再開時にリトライする｡
+たしかに非同期っぽい｡</p>
+<h2 id="Go+as+Example"><a class="headerlink" href="#Go+as+Example">Go as Example</a></h2>
+<p>ええ感じな例として､Go by Exampleの例をやってみる｡</p>
+<div class="highlight">
+<span class="listing-name"><a href="https://gobyexample.com/worker-pools" target="_blank" rel="noopener noreferrer">Go by Example: Worker Pools</a>より引用</span><pre><code class="language-go" data-lang="go"><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+    <span class="s">"time"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">worker</span><span class="p">(</span><span class="n">id</span> <span class="kt">int</span><span class="p">,</span> <span class="n">jobs</span> <span class="o">&lt;-</span><span class="k">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="n">results</span> <span class="k">chan</span><span class="o">&lt;-</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="o">:=</span> <span class="k">range</span> <span class="n">jobs</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"worker"</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="s">"started  job"</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">Sleep</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">Second</span><span class="p">)</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"worker"</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="s">"finished job"</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+        <span class="n">results</span> <span class="o">&lt;-</span> <span class="n">j</span> <span class="o">*</span> <span class="m">2</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">const</span> <span class="n">numJobs</span> <span class="o">=</span> <span class="m">5</span>
+    <span class="n">jobs</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="k">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="n">numJobs</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="k">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="n">numJobs</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">w</span> <span class="o">:=</span> <span class="m">1</span><span class="p">;</span> <span class="n">w</span> <span class="o">&lt;=</span> <span class="m">3</span><span class="p">;</span> <span class="n">w</span><span class="o">++</span> <span class="p">{</span>
+        <span class="k">go</span> <span class="n">worker</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">jobs</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="o">:=</span> <span class="m">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">numJobs</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span> <span class="p">{</span>
+        <span class="n">jobs</span> <span class="o">&lt;-</span> <span class="n">j</span>
+    <span class="p">}</span>
+    <span class="nb">close</span><span class="p">(</span><span class="n">jobs</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">a</span> <span class="o">:=</span> <span class="m">1</span><span class="p">;</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="n">numJobs</span><span class="p">;</span> <span class="n">a</span><span class="o">++</span> <span class="p">{</span>
+        <span class="o">&lt;-</span><span class="n">results</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>え､何?
+このブログでGoの話が出るのは<a href="/2018/11/16/Lua-VM%E3%81%AB%E8%A6%8B%E3%82%8B%E5%A4%9A%E5%80%A4%E3%81%AE%E6%89%B1%E3%81%84.html">4年ぶり</a>なんで全くわかりません｡
+チャンネルに対する<code>range</code>文は､渡されたチャンネルから値をreceiveしてiterateするらしい｡
+なんつーか<code>range</code>っていうkeywordでやるんだ……て感じだが､keywordsを圧縮したい気持ちも分からなくもない｡
+<code>&lt;-</code>がsend/recvの演算子で､チャンネルがlhsにあるかrhsにあるかでsend/recvが決まるらしい｡</p>
+<p><code>go</code> keywordで関数をgoroutineに突っ込んで非同期に呼び出せる｡
+さらに､Go 1.14からgoroutineはpreemptiveになったので､yieldなどを手動で挿入する必要がない｡
+これは嬉しい｡</p>
+<p></p>
+<center>
+<a href="https://blog.zelkova.cc/2021/08/go1.14-asynchronous%20preemption.html" target="_blank" rel="noopener noreferrer">欅樹雑記: Go 1.14からgoroutineがプリエンプティブになったらしい</a>
+</center>
+<blockquote>
+<p>これが1.14以降では、</p>
+
+<ol>
+<li><p>関数の実行を監視しているモニター（sysmon）は、長時間実行されているgoroutineに対してpreemptフラグを立てる←これは1.13でも同じ</p></li>
+<li><p>該当のgoroutineを処理しているスケジューラーにSIGURGというシグナルを送る</p></li>
+<li><p>スケジューラーはSIGURGを受け取ったら、別のgoroutine（gsignal）を起動して実行しているgoroutineの代わりに割り付ける</p></li>
+<li><p>gsignalはpreemptフラグが立っている場合に自分自身を停止する</p></li>
+</ol>
+</blockquote>
+<p>へーですね｡
+先程の<a href="#chan_async"><code>Chan_async</code></a>
+に<code>range</code>を実装すると､</p>
+<div class="highlight">
+<span class="listing-name">chan_async.ml(cont'd)</span><pre><code class="language-ocaml" data-lang="ocaml"><span class="k">let</span><span class="p">[</span><span class="o">@</span><span class="n">warning</span> <span class="s2">"-nonreturning-statement"</span><span class="p">]</span> <span class="k">rec</span> <span class="n">recv_forever</span> <span class="n">c</span> <span class="n">f</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="k">open</span> <span class="nc">Syntax</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="n">v</span> <span class="o">=</span> <span class="o">~&gt;</span><span class="n">c</span> <span class="k">in</span>
+  <span class="n">ignore</span> <span class="o">@@</span> <span class="n">f</span> <span class="n">v</span><span class="p">;</span>
+  <span class="n">recv_forever</span> <span class="bp">()</span>
+<span class="p">;;</span>
+</code></pre>
+</div>
+<p>うん､普通だ｡
+syntacticに分岐がないので(実際にプロセス上はループを脱出できない)nonreturning statementで怒られるため､supressしている｡</p>
+<p>え～もうできたやん､使いましょう｡</p>
+<div class="highlight"><pre><code class="language-ocaml" data-lang="ocaml"><span class="n">utop</span> <span class="o">#</span> <span class="k">let</span> <span class="n">worker</span> <span class="o">~</span><span class="n">clock</span> <span class="o">~</span><span class="n">stdout</span> <span class="n">id</span> <span class="n">jobs</span> <span class="n">results</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="k">open</span> <span class="nn">Chan_async</span><span class="p">.</span><span class="nc">Syntax</span> <span class="k">in</span>
+  <span class="nn">Chan_async</span><span class="p">.</span><span class="n">recv_forever</span> <span class="n">jobs</span>
+  <span class="o">@@</span> <span class="k">fun</span> <span class="n">j</span> <span class="o">-&gt;</span>
+  <span class="nn">Eio</span><span class="p">.</span><span class="nn">Flow</span><span class="p">.</span><span class="n">copy_string</span> <span class="p">(</span><span class="nn">Printf</span><span class="p">.</span><span class="n">sprintf</span> <span class="s2">"worker %d started job %d</span><span class="se">\n</span><span class="s2">"</span> <span class="n">id</span> <span class="n">j</span><span class="p">)</span> <span class="n">stdout</span><span class="p">;</span>
+  <span class="nn">Eio</span><span class="p">.</span><span class="nn">Time</span><span class="p">.</span><span class="n">sleep</span> <span class="n">clock</span> <span class="mi">1</span><span class="o">.;</span>
+  <span class="nn">Eio</span><span class="p">.</span><span class="nn">Flow</span><span class="p">.</span><span class="n">copy_string</span> <span class="p">(</span><span class="nn">Printf</span><span class="p">.</span><span class="n">sprintf</span> <span class="s2">"worker %d finished job %d</span><span class="se">\n</span><span class="s2">"</span> <span class="n">id</span> <span class="n">j</span><span class="p">)</span> <span class="n">stdout</span><span class="p">;</span>
+  <span class="n">results</span> <span class="o">&lt;~</span> <span class="n">j</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="p">;;</span>
+<span class="k">val</span> <span class="n">worker</span> <span class="o">:</span>
+  <span class="n">clock</span><span class="o">:#</span><span class="nn">Eio</span><span class="p">.</span><span class="nn">Time</span><span class="p">.</span><span class="n">clock</span> <span class="o">-&gt;</span>
+  <span class="n">stdout</span><span class="o">:#</span><span class="nn">Eio</span><span class="p">.</span><span class="nn">Flow</span><span class="p">.</span><span class="n">sink</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="nn">Chan_async</span><span class="p">.</span><span class="n">t</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="nn">Chan_async</span><span class="p">.</span><span class="n">t</span> <span class="o">-&gt;</span> <span class="kt">unit</span> <span class="o">=</span>
+  <span class="o">&lt;</span><span class="k">fun</span><span class="o">&gt;</span>
+</code></pre></div>
+<p><code>Chan_async.recv_forever jobs @@ fun j -&gt; ...</code>を<code>for j := range jobs { ... }</code>と読み替えるともとの通りに読める｡</p>
+<div class="highlight"><pre><code class="language-ocaml" data-lang="ocaml"><span class="n">utop</span> <span class="o">#</span> <span class="k">let</span> <span class="n">main</span> <span class="n">sw</span> <span class="o">~</span><span class="n">clock</span> <span class="o">~</span><span class="n">stdout</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="k">open</span> <span class="nn">Chan_async</span><span class="p">.</span><span class="nc">Syntax</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="n">jobs</span> <span class="o">=</span> <span class="nn">Chan_async</span><span class="p">.</span><span class="n">make</span> <span class="bp">()</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="n">results</span> <span class="o">=</span> <span class="nn">Chan_async</span><span class="p">.</span><span class="n">make</span> <span class="bp">()</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="n">num_jobs</span> <span class="o">=</span> <span class="mi">5</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="n">start</span> <span class="o">=</span> <span class="nn">Eio</span><span class="p">.</span><span class="nn">Time</span><span class="p">.</span><span class="n">now</span> <span class="n">clock</span> <span class="k">in</span>
+  <span class="k">for</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">to</span> <span class="mi">3</span> <span class="k">do</span>
+    <span class="nn">Eio</span><span class="p">.</span><span class="nn">Fiber</span><span class="p">.</span><span class="n">fork</span> <span class="o">~</span><span class="n">sw</span>
+    <span class="o">@@</span> <span class="k">fun</span> <span class="bp">()</span> <span class="o">-&gt;</span> <span class="n">worker</span> <span class="o">~</span><span class="n">clock</span> <span class="o">~</span><span class="n">stdout</span> <span class="n">w</span> <span class="n">jobs</span> <span class="n">results</span>
+  <span class="k">done</span><span class="p">;</span>
+  <span class="k">for</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">to</span> <span class="n">num_jobs</span> <span class="k">do</span>
+    <span class="n">jobs</span> <span class="o">&lt;~</span> <span class="n">j</span>
+  <span class="k">done</span><span class="p">;</span>
+  <span class="k">for</span> <span class="n">_</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">to</span> <span class="n">num_jobs</span> <span class="k">do</span>
+    <span class="n">ignore</span> <span class="o">@@</span> <span class="o">~&gt;</span><span class="n">results</span>
+  <span class="k">done</span><span class="p">;</span>
+  <span class="k">let</span> <span class="n">end'</span> <span class="o">=</span> <span class="nn">Eio</span><span class="p">.</span><span class="nn">Time</span><span class="p">.</span><span class="n">now</span> <span class="n">clock</span> <span class="k">in</span>
+  <span class="nn">Eio</span><span class="p">.</span><span class="nn">Flow</span><span class="p">.</span><span class="n">copy_string</span> <span class="p">(</span><span class="nn">Printf</span><span class="p">.</span><span class="n">sprintf</span> <span class="s2">"%f sec</span><span class="se">\n</span><span class="s2">"</span> <span class="p">(</span><span class="n">end'</span> <span class="o">-.</span> <span class="n">start</span><span class="p">))</span> <span class="n">stdout</span>
+<span class="p">;;</span>
+<span class="k">val</span> <span class="n">main</span> <span class="o">:</span>
+  <span class="nn">Eio</span><span class="p">.</span><span class="nn">Switch</span><span class="p">.</span><span class="n">t</span> <span class="o">-&gt;</span> <span class="n">clock</span><span class="o">:#</span><span class="nn">Eio</span><span class="p">.</span><span class="nn">Time</span><span class="p">.</span><span class="n">clock</span> <span class="o">-&gt;</span> <span class="n">stdout</span><span class="o">:#</span><span class="nn">Eio</span><span class="p">.</span><span class="nn">Flow</span><span class="p">.</span><span class="n">sink</span> <span class="o">-&gt;</span> <span class="kt">unit</span> <span class="o">=</span>
+  <span class="o">&lt;</span><span class="k">fun</span><span class="o">&gt;</span>
+<span class="n">utop</span> <span class="o">#</span> <span class="k">let</span> <span class="bp">()</span> <span class="o">=</span>
+         <span class="nn">Eio_main</span><span class="p">.</span><span class="n">run</span>
+         <span class="o">@@</span> <span class="k">fun</span> <span class="n">env</span> <span class="o">-&gt;</span> <span class="nn">Eio</span><span class="p">.</span><span class="nn">Switch</span><span class="p">.</span><span class="n">run</span>
+         <span class="o">@@</span> <span class="n">main</span> <span class="o">~</span><span class="n">clock</span><span class="o">:</span><span class="n">env</span><span class="o">#</span><span class="n">clock</span> <span class="o">~</span><span class="n">stdout</span><span class="o">:</span><span class="n">env</span><span class="o">#</span><span class="n">stdout</span>
+<span class="p">;;</span>
+<span class="n">worker</span> <span class="mi">1</span> <span class="n">started</span> <span class="n">job</span> <span class="mi">1</span>
+<span class="n">worker</span> <span class="mi">2</span> <span class="n">started</span> <span class="n">job</span> <span class="mi">2</span>
+<span class="n">worker</span> <span class="mi">3</span> <span class="n">started</span> <span class="n">job</span> <span class="mi">3</span>
+<span class="n">worker</span> <span class="mi">1</span> <span class="n">finished</span> <span class="n">job</span> <span class="mi">1</span>
+<span class="n">worker</span> <span class="mi">2</span> <span class="n">finished</span> <span class="n">job</span> <span class="mi">2</span>
+<span class="n">worker</span> <span class="mi">3</span> <span class="n">finished</span> <span class="n">job</span> <span class="mi">3</span>
+<span class="n">worker</span> <span class="mi">1</span> <span class="n">started</span> <span class="n">job</span> <span class="mi">4</span>
+<span class="n">worker</span> <span class="mi">2</span> <span class="n">started</span> <span class="n">job</span> <span class="mi">5</span>
+<span class="n">worker</span> <span class="mi">1</span> <span class="n">finished</span> <span class="n">job</span> <span class="mi">4</span>
+<span class="n">worker</span> <span class="mi">2</span> <span class="n">finished</span> <span class="n">job</span> <span class="mi">5</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">000017</span> <span class="n">sec</span>
+<span class="o">^</span><span class="nc">CUncaught</span> <span class="k">exception</span> <span class="k">in</span> <span class="n">run</span> <span class="n">loop</span><span class="o">:</span>
+<span class="nc">Exception</span><span class="o">:</span> <span class="nn">Stdlib</span><span class="p">.</span><span class="nn">Sys</span><span class="p">.</span><span class="nc">Break</span>
+<span class="nc">No</span> <span class="n">backtrace</span> <span class="n">available</span><span class="o">.</span>
+<span class="nc">Exception</span><span class="o">:</span>
+<span class="nc">Failure</span>
+ <span class="s2">"Deadlock detected: no events scheduled but main function hasn't returned"</span><span class="o">.</span>
+</code></pre></div>
+<p>なんか止まらないんで<kbd><kbd>Ctrl</kbd>+<kbd>C</kbd></kbd>したらデッドロックしたんですけど!
+まあ<code>recv_forever</code>が止まらないからっすね｡
+Goの例ではチャンネルをちゃんと<code>close</code>していたのでworkerが止まった<sup id="fnref2" title="実はウソで､preemptiveなおかげか､closeの行を消しても､チャンネルに対するrangeが受けているときに他のプロセスが終了して値がやってこないことが分かるとプロセス全体が終了する "><a href="#fn2">2</a></sup>が､OCamlの実装だと止まらない｡</p>
+<h2 id="%0A%3Ccode%3Eclose%3C%2Fcode%3E%E3%81%99%E3%82%8B"><a class="headerlink" href="#%0A%3Ccode%3Eclose%3C%2Fcode%3E%E3%81%99%E3%82%8B">
+<code>close</code>する</a></h2>
+<p>ということで真面目に<code>close</code>に向き合う｡
+domainslibはチャンネルに対するclose操作を提供していない｡
+とりあえず､<code>close</code>するとフラグを立てて､フラグ立ってたらsend/recv止まるようにしよう｡</p>
+<div class="highlight">
+<span class="listing-name">chan_async.ml(2)</span><pre><code class="language-ocaml" data-lang="ocaml"><span class="k">module</span> <span class="nc">Chan_async</span> <span class="o">=</span> <span class="k">struct</span>
+  <span class="k">module</span> <span class="nc">C</span> <span class="o">=</span> <span class="nn">Domainslib</span><span class="p">.</span><span class="nc">Chan</span>
+
+  <span class="k">type</span> <span class="k">'</span><span class="n">a</span> <span class="n">t</span> <span class="o">=</span>
+    <span class="p">{</span> <span class="n">chan</span> <span class="o">:</span> <span class="k">'</span><span class="n">a</span> <span class="nn">C</span><span class="p">.</span><span class="n">t</span>
+    <span class="p">;</span> <span class="n">closed</span> <span class="o">:</span> <span class="kt">bool</span> <span class="nn">Atomic</span><span class="p">.</span><span class="n">t</span>
+    <span class="p">}</span>
+
+  <span class="k">let</span> <span class="n">make</span> <span class="bp">()</span> <span class="o">=</span> <span class="p">{</span> <span class="n">chan</span> <span class="o">=</span> <span class="nn">C</span><span class="p">.</span><span class="n">make_unbounded</span> <span class="bp">()</span><span class="p">;</span> <span class="n">closed</span> <span class="o">=</span> <span class="nn">Atomic</span><span class="p">.</span><span class="n">make</span> <span class="bp">false</span> <span class="p">}</span>
+
+  <span class="k">exception</span> <span class="nc">Recv_closed</span>
+</code></pre>
+</div>
+<p>フラグとして<code>closed</code>を持つ型<code>'a t</code>を定義する｡
+thread-safeにしたいので､4.12から導入された<a href="https://v2.ocaml.org/api/Atomic.html" target="_blank" rel="noopener noreferrer"><code>Atomic</code></a>コンテナを使う<sup id="fnref3" title="実装を見ると確かにthread-safeな命令を使っている "><a href="#fn3">3</a></sup>｡</p>
+<p>天下り式に書くと､recvしたときすでに<code>closed</code>だと値を返しようがないので､適当な型の代わりに例外を発生させる｡</p>
+<div class="highlight">
+<span class="listing-name">chan_async.ml(2,cont'd)</span><pre><code class="language-ocaml" data-lang="ocaml">  <span class="k">let</span> <span class="n">recv</span> <span class="n">t</span> <span class="o">=</span>
+    <span class="k">match</span> <span class="nn">C</span><span class="p">.</span><span class="n">recv_poll</span> <span class="n">t</span><span class="o">.</span><span class="n">chan</span> <span class="k">with</span>
+    <span class="o">|</span> <span class="nc">Some</span> <span class="n">v</span> <span class="o">-&gt;</span> <span class="n">v</span>
+    <span class="o">|</span> <span class="nc">None</span> <span class="o">-&gt;</span>
+      <span class="k">if</span> <span class="nn">Atomic</span><span class="p">.</span><span class="n">get</span> <span class="n">t</span><span class="o">.</span><span class="n">closed</span> <span class="k">then</span> <span class="k">raise</span> <span class="nc">Recv_closed</span> <span class="k">else</span> <span class="nn">Eio</span><span class="p">.</span><span class="nn">Fiber</span><span class="p">.</span><span class="n">yield</span> <span class="bp">()</span><span class="p">;</span>
+      <span class="n">recv</span> <span class="n">t</span>
+  <span class="p">;;</span>
+
+  <span class="k">let</span> <span class="k">rec</span> <span class="n">send</span> <span class="n">t</span> <span class="n">v</span> <span class="o">=</span>
+    <span class="k">if</span> <span class="nn">C</span><span class="p">.</span><span class="n">send_poll</span> <span class="n">t</span><span class="o">.</span><span class="n">chan</span> <span class="n">v</span>
+    <span class="k">then</span> <span class="bp">()</span>
+    <span class="k">else</span> <span class="p">(</span>
+      <span class="k">if</span> <span class="nn">Atomic</span><span class="p">.</span><span class="n">get</span> <span class="n">t</span><span class="o">.</span><span class="n">closed</span> <span class="k">then</span> <span class="bp">()</span> <span class="k">else</span> <span class="nn">Eio</span><span class="p">.</span><span class="nn">Fiber</span><span class="p">.</span><span class="n">yield</span> <span class="bp">()</span><span class="p">;</span>
+      <span class="n">send</span> <span class="n">t</span> <span class="n">v</span><span class="p">)</span>
+  <span class="p">;;</span>
+
+  <span class="k">let</span> <span class="n">close</span> <span class="n">t</span> <span class="o">=</span> <span class="nn">Atomic</span><span class="p">.</span><span class="n">set</span> <span class="n">t</span><span class="o">.</span><span class="n">closed</span> <span class="bp">true</span>
+
+  <span class="k">let</span> <span class="k">rec</span> <span class="n">recv_forever</span> <span class="n">t</span> <span class="n">f</span> <span class="o">=</span>
+    <span class="k">try</span>
+      <span class="k">let</span> <span class="n">v</span> <span class="o">=</span> <span class="n">recv</span> <span class="n">t</span> <span class="k">in</span>
+      <span class="n">ignore</span> <span class="o">@@</span> <span class="n">f</span> <span class="n">v</span><span class="p">;</span>
+      <span class="n">recv_forever</span> <span class="n">t</span> <span class="n">f</span>
+    <span class="k">with</span>
+    <span class="o">|</span> <span class="nc">Recv_closed</span> <span class="o">-&gt;</span> <span class="bp">()</span>
+  <span class="p">;;</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+<p>他はまったく考えた通り｡
+<code>recv_forever</code>で<code>Recv_closed</code>例外を受ければループから抜けられる｡</p>
+<p>いいんじゃないでしょうか｡</p>
+<div class="highlight"><pre><code class="language-ocaml" data-lang="ocaml"><span class="n">utop</span> <span class="o">#</span> <span class="k">let</span> <span class="bp">()</span> <span class="o">=</span>
+         <span class="nn">Eio_main</span><span class="p">.</span><span class="n">run</span>
+         <span class="o">@@</span> <span class="k">fun</span> <span class="n">env</span> <span class="o">-&gt;</span> <span class="nn">Eio</span><span class="p">.</span><span class="nn">Switch</span><span class="p">.</span><span class="n">run</span>
+         <span class="o">@@</span> <span class="n">main</span> <span class="o">~</span><span class="n">clock</span><span class="o">:</span><span class="n">env</span><span class="o">#</span><span class="n">clock</span> <span class="o">~</span><span class="n">stdout</span><span class="o">:</span><span class="n">env</span><span class="o">#</span><span class="n">stdout</span>
+<span class="p">;;</span>
+<span class="n">worker</span> <span class="mi">1</span> <span class="n">started</span> <span class="n">job</span> <span class="mi">1</span>
+<span class="n">worker</span> <span class="mi">2</span> <span class="n">started</span> <span class="n">job</span> <span class="mi">2</span>
+<span class="n">worker</span> <span class="mi">3</span> <span class="n">started</span> <span class="n">job</span> <span class="mi">3</span>
+<span class="n">worker</span> <span class="mi">1</span> <span class="n">finished</span> <span class="n">job</span> <span class="mi">1</span>
+<span class="n">worker</span> <span class="mi">2</span> <span class="n">finished</span> <span class="n">job</span> <span class="mi">2</span>
+<span class="n">worker</span> <span class="mi">3</span> <span class="n">finished</span> <span class="n">job</span> <span class="mi">3</span>
+<span class="n">worker</span> <span class="mi">1</span> <span class="n">started</span> <span class="n">job</span> <span class="mi">4</span>
+<span class="n">worker</span> <span class="mi">2</span> <span class="n">started</span> <span class="n">job</span> <span class="mi">5</span>
+<span class="n">worker</span> <span class="mi">1</span> <span class="n">finished</span> <span class="n">job</span> <span class="mi">4</span>
+<span class="n">worker</span> <span class="mi">2</span> <span class="n">finished</span> <span class="n">job</span> <span class="mi">5</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">000396</span> <span class="n">sec</span>
+<span class="n">utop</span> <span class="o">#</span> <span class="err">↵</span>
+</code></pre></div>
+<p>よかったです｡</p>
+<h1 id="%E3%81%A1%E3%81%AA%E3%82%80%E3%81%A8"><a class="headerlink" href="#%E3%81%A1%E3%81%AA%E3%82%80%E3%81%A8">ちなむと</a></h1>
+<p><a href="https://github.com/ocaml-multicore/eio/blob/e332fdbfec500f7ac6f4380f32278f734053990c/README.md#example-worker-pool" target="_blank" rel="noopener noreferrer">Eioのexampleにあるworker pool</a>のほうがeioっぽく書ける｡
+非同期なチャンネルはとりあえず<code>Eio.Stream</code>を使ってくださいとのことです｡</p>
+<p>Eio探訪記を書くつもりだったが､まあメジャーリリースされてからにするか｡</p>
+<div class="footnotes">
+<hr>
+<ol>
+
+<li id="fn1">
+<p>"We recommend the users to utilise higher-level parallel programming libraries such as domainslib.", <a href="https://v2.ocaml.org/releases/5.0/manual/parallelism.html" target="_blank" rel="noopener noreferrer">https://v2.ocaml.org/releases/5.0/manual/parallelism.html</a> <a href="#fnref1">↩</a></p>
+</li>
+
+<li id="fn2">
+<p>実はウソで､preemptiveなおかげか､<code>close</code>の行を消しても､チャンネルに対する<code>range</code>が受けているときに他のプロセスが終了して値がやってこないことが分かるとプロセス全体が終了する <a href="#fnref2">↩</a></p>
+</li>
+
+<li id="fn3">
+<p><a href="https://github.com/ocaml/ocaml/blob/e43ba89c6dfcd7988e7b6e8623af0b193a4592a5/runtime/caml/camlatomic.h" target="_blank" rel="noopener noreferrer">実装を見ると</a>確かにthread-safeな命令を使っている <a href="#fnref3">↩</a></p>
+</li>
+
+</ol>
+</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+    <footer>
+      <div class="pagination btn-group" style="text-align: center; font-family: 'Comfortaa';">
+        <a class="btn prev" href="/2023/02/20/migrate_enoshima.html" title="江ノ島のチューリングと呼ばれて(ない)1年">← Prev</a>
+        /<a class="btn" href="/">Top</a>/
+        <span class="btn next disabled">Next →</span>
+      </div>
+    </footer>
+
+  </body>
+</html>
