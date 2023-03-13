@@ -3,6 +3,7 @@ with pkgs;
 mkShell {
   buildInputs = [
     libffi
+    libsass
     pkgconfig
     ruby
   ];

@@ -31,9 +31,9 @@ body {
   font-feature-settings: "palt" 1;
   font-kerning: normal;
 
-  @include media-query($on-palm) {
-    font-size: $base-font-size * 0.8;
-  }
+  // @include media-query($on-palm) {
+    // font-size: $base-font-size * 0.8;
+  // }
 }
 
 
@@ -89,9 +89,9 @@ figure > img {
 figcaption {
   font-size: $small-font-size;
 
-  @include media-query($on-palm) {
-    font-size: $small-font-size * 0.8;
-  }
+  // @include media-query($on-palm) {
+    // font-size: $small-font-size * 0.8;
+  // }
 }
 
 
@@ -130,7 +130,7 @@ article {
   }
 
   header {
-    background: rgba(166, 200, 212, 0.3);
+    background: $header-background-color;
     padding: 5pt 20pt 5pt 20pt;
   }
 
@@ -206,7 +206,7 @@ blockquote {
   color: $grey-color;
   border-left: 4px solid $grey-color-light;
   padding-left: $spacing-unit / 2;
-  font-size: 18px;
+  font-size: $base-font-size;
   letter-spacing: -1px;
   font-style: italic;
 
@@ -214,9 +214,9 @@ blockquote {
     margin-bottom: 0;
   }
 
-  @include media-query($on-palm) {
-    font-size: $base-font-size;
-  }
+  // @include media-query($on-palm) {
+    // font-size: $base-font-size;
+  // }
 }
 
 
@@ -234,9 +234,9 @@ pre, code {
   border-radius: 3px;
   background: $pre-background;
 
-  @include media-query($on-palm) {
-    font-size: $base-font-size * 0.8;
-  }
+  // @include media-query($on-palm) {
+    // font-size: $base-font-size * 0.8;
+  // }
 }
 
 code {

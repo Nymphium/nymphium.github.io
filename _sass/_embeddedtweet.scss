@@ -1,13 +1,13 @@
-twitterwidget {
-	margin: 0 auto;
-}
+// twitterwidget {
+	// margin: 0 auto;
+// }
 
 .twitter-not-found {
 	color: rgba(0, 0, 0, 0.4);
 }
 
 blockquote.twitter-tweet {
-	font-size: $base-font-size;
+	font-size: $base-font-size * 0.9;
 	color: $text-color;
 	background: white;
 	width: 60%;
@@ -29,4 +29,9 @@ blockquote.twitter-tweet {
 	@include media-query($on-palm) {
 		font-size: $base-font-size * 0.8;
 	}
+}
+
+.twitter-tweet.twitter-tweet-rendered {
+	max-width: 358px !important;
+	margin: 10px auto;
 }
