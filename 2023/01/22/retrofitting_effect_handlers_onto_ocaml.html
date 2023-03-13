@@ -63,19 +63,27 @@
       <div class="wrapper" lang="ja">
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
           <header class="post-header">
-            <h1 class="post-title" itemprop="name headline">Retrofitting Effect Handlers onto OCaml</h1>
-            <span class="post-meta">
-              <time datetime="2023-01-22T00:00:00+09:00" itemprop="datePublished">Jan 22, 2023</time>
-              <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2023-01-22-retrofitting_effect_handlers_onto_ocaml.md" target="_blank" rel="noopener noreferrer">src</a>
-              <p class="tags">tag: {<span class="tag"><a href="/tags.html#OCaml-ref">OCaml</a></span><span></span> <span class="tag"><a href="/tags.html#%E8%A8%80%E8%AA%9E%E5%AE%9F%E8%A3%85-ref">言語実装</a></span><span></span> <span class="tag"><a href="/tags.html#Algebraic%20Effects-ref">Algebraic Effects</a></span>}</p>
-              <a class="twitter-share-button" href="https://twitter.com/intent/tweet" target="_blank" rel="noopener noreferrer">Tweet</a> 
+            <div class="post-header-info">
+              <h1 class="post-title" itemprop="name headline">Retrofitting Effect Handlers onto OCaml</h1>
+              <span class="post-meta">
+                <time datetime="2023-01-22T00:00:00+09:00" itemprop="datePublished">Jan 22, 2023</time>
+                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2023-01-22-retrofitting_effect_handlers_onto_ocaml.md" target="_blank" rel="noopener noreferrer">src</a>
+                <p class="tags">tag: {<span class="tag">
+                    <a href="/tags.html#OCaml-ref">OCaml</a>
+                  </span><span></span><span class="tag">
+                    <a href="/tags.html#%E8%A8%80%E8%AA%9E%E5%AE%9F%E8%A3%85-ref">言語実装</a>
+                  </span><span></span><span class="tag">
+                    <a href="/tags.html#Algebraic%20Effects-ref">Algebraic Effects</a>
+                  </span>}
+                </p>
+                <a class="twitter-share-button" href="https://twitter.com/intent/tweet" target="_blank" rel="noopener noreferrer">Tweet</a> 
 
-              <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja" title="Retrofitting Effect Handlers onto OCaml" target="_blank" rel="noopener noreferrer">
-                <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマークに追加" width="20" height="20" style="border: none;">
-              </a>
-              <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-
-            </span>
+                <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja" title="Retrofitting Effect Handlers onto OCaml" target="_blank" rel="noopener noreferrer">
+                  <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマークに追加" width="20" height="20" style="border: none;">
+                </a>
+                <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+              </span>
+            </div>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             <script type="text/javascript" src="/js/GithubRepoWidget.min.js"></script>
             <script type="text/javascript">setTimeout(GithubRepoWidget.init, 3000);</script>
@@ -101,8 +109,8 @@
                 });
               });
             </script>
-
           </header>
+
           <div class="post-content" itemprop="articleBody">
 <p>あけましておめでとうございます､びしょ～じょです｡
 これは<a href="https://qiita.com/advent-calendar/2022/lang_dev" target="_blank" rel="noopener noreferrer">言語実装Advent Calendar2022</a> 17日目の記事です｡

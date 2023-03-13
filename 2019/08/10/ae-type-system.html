@@ -63,19 +63,25 @@
       <div class="wrapper" lang="ja">
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
           <header class="post-header">
-            <h1 class="post-title" itemprop="name headline">Algebraic Effectsの型システム入門</h1>
-            <span class="post-meta">
-              <time datetime="2019-08-10T00:00:00+09:00" itemprop="datePublished">Aug 10, 2019</time>
-              <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2019-08-10-ae-type-system.md" target="_blank" rel="noopener noreferrer">src</a>
-              <p class="tags">tag: {<span class="tag"><a href="/tags.html#%E5%9E%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0-ref">型システム</a></span><span></span> <span class="tag"><a href="/tags.html#Algebraic%20Effects-ref">Algebraic Effects</a></span>}</p>
-              <a class="twitter-share-button" href="https://twitter.com/intent/tweet" target="_blank" rel="noopener noreferrer">Tweet</a> 
+            <div class="post-header-info">
+              <h1 class="post-title" itemprop="name headline">Algebraic Effectsの型システム入門</h1>
+              <span class="post-meta">
+                <time datetime="2019-08-10T00:00:00+09:00" itemprop="datePublished">Aug 10, 2019</time>
+                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2019-08-10-ae-type-system.md" target="_blank" rel="noopener noreferrer">src</a>
+                <p class="tags">tag: {<span class="tag">
+                    <a href="/tags.html#%E5%9E%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0-ref">型システム</a>
+                  </span><span></span><span class="tag">
+                    <a href="/tags.html#Algebraic%20Effects-ref">Algebraic Effects</a>
+                  </span>}
+                </p>
+                <a class="twitter-share-button" href="https://twitter.com/intent/tweet" target="_blank" rel="noopener noreferrer">Tweet</a> 
 
-              <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja" title="Algebraic Effectsの型システム入門" target="_blank" rel="noopener noreferrer">
-                <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマークに追加" width="20" height="20" style="border: none;">
-              </a>
-              <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-
-            </span>
+                <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja" title="Algebraic Effectsの型システム入門" target="_blank" rel="noopener noreferrer">
+                  <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマークに追加" width="20" height="20" style="border: none;">
+                </a>
+                <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+              </span>
+            </div>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             <script type="text/javascript" src="/js/GithubRepoWidget.min.js"></script>
             <script type="text/javascript">setTimeout(GithubRepoWidget.init, 3000);</script>
@@ -101,8 +107,8 @@
                 });
               });
             </script>
-
           </header>
+
           <div class="post-content" itemprop="articleBody">
 <h1 id="%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><a class="headerlink" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">はじめに</a></h1>
 <p>Algebraic Effectsは計算エフェクトを扱う言語機能である｡エフェクトとハンドラから成り､エフェクトの発生をハンドラが捕捉し､なんらかの値を返してエフェクト発生部分からの計算を再開する｡エフェクト自体は何もせず､ハンドラが具体的な計算をおこないという部分が重要である｡例えばDependency Injectionにおいては､インターフェースで定義されたメソッドがエフェクトの<em>定義</em>､メソッドを呼び出すのがエフェクトの<em>発生</em>､インターフェースの具体的な実装が<em>ハンドラ</em>､と対応づけることができる｡

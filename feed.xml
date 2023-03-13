@@ -5,8 +5,8 @@
     <description>lily, Aikatsu, Programming language, and more</description>
     <link>https://nymphium.github.io/</link>
     <atom:link href="https://nymphium.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 25 Feb 2023 04:07:20 +0900</pubDate>
-    <lastBuildDate>Sat, 25 Feb 2023 04:07:20 +0900</lastBuildDate>
+    <pubDate>Tue, 14 Mar 2023 01:40:11 +0900</pubDate>
+    <lastBuildDate>Tue, 14 Mar 2023 01:40:11 +0900</lastBuildDate>
     <generator>Jekyll v4.3.1</generator>
     
       <item>
@@ -40,7 +40,7 @@
 &lt;/div&gt;
 &lt;p&gt;&lt;code&gt;Domain&lt;/code&gt;モジュールで並列プリミティブが使えるが､低レベルAPIで少々使いづらいので､ocaml-multicoreが提供するdomainslibを使うのが推奨されている&lt;sup id=&quot;fnref1&quot; title=&apos;&quot;We recommend the users to utilise higher-level parallel programming libraries such as domainslib.&quot;, https://v2.ocaml.org/releases/5.0/manual/parallelism.html &apos;&gt;&lt;a href=&quot;#fn1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;｡&lt;/p&gt;
 &lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/domainslib&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/6b75c140670a5bc9850e2670f0567734492290c8924f288f8e07989483ed203a/ocaml-multicore/domainslib&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/domainslib&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/31db40ff70fd0c9a022397eef0493a347648e587b962ed50e9811236820036c7/ocaml-multicore/domainslib&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/domainslib&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;GitHub - ocaml-multicore/domainslib: Parallel Programming over Domains&lt;/a&gt;&lt;/div&gt;
     &lt;div class=&quot;description&quot;&gt;Parallel Programming over Domains. Contribute to ocaml-multicore/domainslib development by creating an account on GitHub.&lt;/div&gt;
@@ -73,7 +73,7 @@
 &lt;p&gt;ところで!
 並行計算もできるようになったんで､そのwrapperであるeioも､あります｡&lt;/p&gt;
 &lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/eio&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/aebee4374bdec27b32bbfa0102f5cdbc794c03c3dbd5d756b315cd2e8beb3e73/ocaml-multicore/eio&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/eio&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/7da28c1bbd92e7fabd1d045c6fe8a79cc3dedab5d38a9be03bab43df1c97d6c5/ocaml-multicore/eio&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/eio&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;GitHub - ocaml-multicore/eio: Effects-based direct-style IO for multicore OCaml&lt;/a&gt;&lt;/div&gt;
     &lt;div class=&quot;description&quot;&gt;Effects-based direct-style IO for multicore OCaml. Contribute to ocaml-multicore/eio development by creating an account on GitHub.&lt;/div&gt;
@@ -454,14 +454,14 @@ thread-safeにしたいので､4.12から導入された&lt;a href=&quot;https:
   &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14078150/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://tblg.k-img.com/resize/640x640c/restaurant/images/Rvw/131470/131470696.jpg?token=202844c&amp;amp;api=v2&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14078150/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;江乃華 JAPAN RAMEN (江ノ島/ラーメン)&lt;/a&gt;&lt;/div&gt;
-    &lt;div class=&quot;description&quot;&gt;★★★☆☆3.42 ■江の島にNEW OPEN！罪悪感のないラーメン！！厳選カツオ、オリーブオイルに全粒粉淡麗系 ■予算(夜):～￥999&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;★★★☆☆3.43 ■江の島にNEW OPEN！罪悪感のないラーメン！！厳選カツオ、オリーブオイルに全粒粉淡麗系 ■予算(夜):～￥999&lt;/div&gt;
   &lt;/span&gt;
 &lt;/div&gt;
 &lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14084919/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://tblg.k-img.com/resize/640x640c/restaurant/images/Rvw/196205/939a65cc77bfc9920f6a01cb134696db.jpg?token=8415e2c&amp;amp;api=v2&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14084919/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://tblg.k-img.com/resize/640x640c/restaurant/images/Rvw/198484/eb108b3dd26870e3b7220eb3a46bd065.jpg?token=a4a6164&amp;amp;api=v2&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14084919/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;炭火焼ひもの 伝 (江ノ島/食堂)&lt;/a&gt;&lt;/div&gt;
-    &lt;div class=&quot;description&quot;&gt;★★★☆☆3.19 ■予算(昼):～￥999&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;★★★☆☆3.19 ■予算(昼):￥1,000～￥1,999&lt;/div&gt;
   &lt;/span&gt;
 &lt;/div&gt;
 &lt;div class=&quot;twicard&quot;&gt;
@@ -481,8 +481,8 @@ thread-safeにしたいので､4.12から導入された&lt;a href=&quot;https:
 &lt;div class=&quot;twicard&quot;&gt;
   &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14036346/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://tblg.k-img.com/resize/640x640c/restaurant/images/Rvw/192094/2b87fb260ceae9d62d1f3d956164fa60.jpg?token=3c87d72&amp;amp;api=v2&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
-    &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14036346/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;紀伊国屋旅館 (片瀬江ノ島/旅館)&lt;/a&gt;&lt;/div&gt;
-    &lt;div class=&quot;description&quot;&gt;★★★☆☆3.26 ■予算(夜):￥1,000～￥1,999&lt;/div&gt;
+    &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14036346/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;紀伊国屋旅館 (片瀬江ノ島/料理旅館)&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;★★★☆☆3.26 ■予算(昼):￥1,000～￥1,999&lt;/div&gt;
   &lt;/span&gt;
 &lt;/div&gt;
 &lt;div class=&quot;twicard&quot;&gt;
@@ -496,7 +496,7 @@ thread-safeにしたいので､4.12から導入された&lt;a href=&quot;https:
   &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14046151/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://tblg.k-img.com/resize/640x640c/restaurant/images/Rvw/194887/58228ed13e4bc0b7ffb105f97755c041.jpg?token=e071ad2&amp;amp;api=v2&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14046151/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;お蕎麦 結 (腰越/そば)&lt;/a&gt;&lt;/div&gt;
-    &lt;div class=&quot;description&quot;&gt;★★★☆☆3.63 ■予算(夜):～￥999&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;★★★☆☆3.60 ■予算(夜):￥3,000～￥3,999&lt;/div&gt;
   &lt;/span&gt;
 &lt;/div&gt;
 &lt;h1 id=&quot;%E4%BA%A4%E9%80%9A&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E4%BA%A4%E9%80%9A&quot;&gt;交通&lt;/a&gt;&lt;/h1&gt;
