@@ -5,9 +5,110 @@
     <description>lily, Aikatsu, Programming language, and more</description>
     <link>https://nymphium.github.io/</link>
     <atom:link href="https://nymphium.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 14 Mar 2023 01:40:11 +0900</pubDate>
-    <lastBuildDate>Tue, 14 Mar 2023 01:40:11 +0900</lastBuildDate>
+    <pubDate>Tue, 14 Mar 2023 11:17:07 +0900</pubDate>
+    <lastBuildDate>Tue, 14 Mar 2023 11:17:07 +0900</lastBuildDate>
     <generator>Jekyll v4.3.1</generator>
+    
+      <item>
+        <title>PPL 2023を､スポンサー枠で｡</title>
+        <enclosure type="image/png" length="0" url="https://nymphium.github.io/pictures/github_icon.png"></enclosure>
+        <description>&lt;p&gt;こんにちは､びしょ〜じょです｡
+&lt;a href=&quot;https://jssst-ppl.org/workshop/2023/&quot;&gt;PPL2023&lt;/a&gt;にて今年も弊社がゴールドスポンサーになったんで､一般参加枠を貰って行ってきしました｡&lt;/p&gt;
+&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
+&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;【お知らせ】&lt;br&gt;3月6日〜8日に開催される「第25回プログラミングおよびプログラミング言語ワークショップ　PPL 2023」にゴールドスポンサーとして協賛いたします。&lt;br&gt;&lt;br&gt;2020年から協賛を続けており、今回で4回目の取り組みとなります。&lt;br&gt;&lt;br&gt;PPL2023についての詳細はこちら&lt;a href=&quot;https://t.co/yVQXTZd6oK&quot;&gt;https://t.co/yVQXTZd6oK&lt;/a&gt; &lt;a href=&quot;https://t.co/UfFaSQbprN&quot;&gt;pic.twitter.com/UfFaSQbprN&lt;/a&gt;&lt;/p&gt;— HERP, Inc. (@herp_inc) &lt;a href=&quot;https://twitter.com/herp_inc/status/1632661312542248960?ref_src=twsrc%5Etfw&quot;&gt;March 6, 2023&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
+&lt;p&gt;今年はなんとオンラインオフラインのハイブリッド開催でした｡
+オンライン会話ネイティブじゃないんで､現地行って口角泡飛ばしたほうが良いんで(感染症対策はしましょう)､名古屋に行ってきました｡&lt;/p&gt;
+&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
+&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;こんにちは &lt;a href=&quot;https://t.co/HYwb6XK4cv&quot;&gt;pic.twitter.com/HYwb6XK4cv&lt;/a&gt;&lt;/p&gt;— びしょ〜じょ (@Nymphium) &lt;a href=&quot;https://twitter.com/Nymphium/status/1632588644266692608?ref_src=twsrc%5Etfw&quot;&gt;March 6, 2023&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
+&lt;p&gt;知り合いの方とか先生とか研究室の後輩に挨拶できたり､発表でよくわかんなかったところを後で発表者の方に聞きに行ったり､オフラインなりの気軽なコミュニケーションがあります｡
+今回が初めてのオフライン学会という方もいっぱいいたので､大変な時代だなあと思うと同時に､オフライン会場が再び設けられるようになって本当によかった｡&lt;/p&gt;
+&lt;p&gt;量子プログラミングに関する発表(うち1つはIBMからの招待講演!)もあり､量子の波を感じています｡&lt;/p&gt;
+&lt;p&gt;1セッションすべて正規表現関連のものもあり､また論文賞も正規表現に関する研究が受賞しており､今年は正規表現がアツいのかもしれません｡&lt;/p&gt;
+&lt;p&gt;継続やalgebraic effect handlersに関するものが数少ないよく分かる話なんですが､今回も継続やalgebraic effect handlersの話が結構あって楽しかったです｡
+CPSとshift/resetのReflectionに関する発表のお話をうかがいまくった結果algebraic effectsの研究の土台ながるが道のりは遠いとのことで､今後もすごく楽しみにしています｡&lt;/p&gt;
+&lt;p&gt;言語のテクい定義方法や言語最新の最新情報が得られて大変満足しました｡
+野に降りて理論的な話から遠くなってしまった俺たちこそもっとプラクティカルに面白い話やアプリケーションを持っていかないといけないなと思ったので､私も頑張りたいと思います｡
+ありがとうございました｡&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;久々のオフラインなんで街をあるき回ったんですが､名古屋は食文化が発達していてよいなあと思いました｡&lt;/p&gt;
+&lt;p&gt;ロースカツカレーうどんはかなり名古屋っぽいので飛びつきました｡
+とんでもなく熱かったのでうどんを1本ずつしか食べられず､しかも口の中をやけどして翌日も口の中が少々痛かった｡&lt;/p&gt;
+&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
+&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;ハンバーグカレーラーメンに類する夢を実践してるんですよ、ここ名古屋はね &lt;a href=&quot;https://t.co/vylp39jAI8&quot;&gt;pic.twitter.com/vylp39jAI8&lt;/a&gt;&lt;/p&gt;— びしょ〜じょ (@Nymphium) &lt;a href=&quot;https://twitter.com/Nymphium/status/1632719303341666305?ref_src=twsrc%5Etfw&quot;&gt;March 6, 2023&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
+&lt;p&gt;これはオタク･レコメンデッド喫茶店に行ったところ大満足した様子&lt;/p&gt;
+&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
+&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;𝓜𝓸𝓻𝓷𝓲𝓷𝓰… &lt;a href=&quot;https://t.co/QXsmk5GlAU&quot;&gt;pic.twitter.com/QXsmk5GlAU&lt;/a&gt;&lt;/p&gt;— びしょ〜じょ (@Nymphium) &lt;a href=&quot;https://twitter.com/Nymphium/status/1632874431675768833?ref_src=twsrc%5Etfw&quot;&gt;March 6, 2023&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
+&lt;p&gt;先生にメチャウマひつまぶしをおごっていただいて大変恐縮したのですが､ボクが国際学会の飛行機に乗り遅れた話を3回くらい嬉々として研究室の後輩の皆さんやご飯同席された方々にお話されていたので､まあ､よかったです｡&lt;/p&gt;
+&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
+&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;感謝します &lt;a href=&quot;https://t.co/81Lz5UaHUb&quot;&gt;pic.twitter.com/81Lz5UaHUb&lt;/a&gt;&lt;/p&gt;— びしょ〜じょ (@Nymphium) &lt;a href=&quot;https://twitter.com/Nymphium/status/1633099748218646528?ref_src=twsrc%5Etfw&quot;&gt;March 7, 2023&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
+&lt;p&gt;マウンテンに行って甘口抹茶小倉スパを食べたんですが､一度口に入れたら｢フォークを止めたらもう二度と食えなくなる｣と瞬時に思い､一心不乱に口に頬張った｡
+とにかくホイップクリームが重いので､小倉あんを箸休めに使うのがポイント｡&lt;/p&gt;
+&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
+&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;登頂する男 &lt;a href=&quot;https://t.co/CceJqZUROi&quot;&gt;pic.twitter.com/CceJqZUROi&lt;/a&gt;&lt;/p&gt;— びしょ〜じょ (@Nymphium) &lt;a href=&quot;https://twitter.com/Nymphium/status/1633332860739522560?ref_src=twsrc%5Etfw&quot;&gt;March 8, 2023&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
+&lt;p&gt;帰りにおすすめしていただいた新幹線のホームの立ち食いきしめんを食べたんですが､これもまたうまい｡
+次名古屋に行くときも寄ろうと思います｡&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;それでは皆さんまた来年｡
+次はまた温泉に入ったり部屋で酒をしこたま飲みながらお話できるようになってると幸いです｡&lt;/p&gt;
+&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
+&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;ありがとうございました &lt;a href=&quot;https://t.co/vRWf5iLs6i&quot;&gt;pic.twitter.com/vRWf5iLs6i&lt;/a&gt;&lt;/p&gt;— びしょ〜じょ (@Nymphium) &lt;a href=&quot;https://twitter.com/Nymphium/status/1633371366404796422?ref_src=twsrc%5Etfw&quot;&gt;March 8, 2023&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;p&gt;ここでCMです｡ PPL2023のゴールドスポンサーである株式会社HERPはプログラミングおよびプログラミング言語が大好きな人材を募集しています｡ 型と値の安全性と表現力の間をかいくぐってウェブアプリケーションを開発してみませんか｡&lt;/p&gt;
+&lt;div class=&quot;twicard&quot;&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://herp.careers/v1/herpinc&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://v1.herp.cloud/resources/company_logos/C-464R6&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;txt&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://herp.careers/v1/herpinc&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;株式会社HERP の全ての求人一覧&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;株式会社HERP の全ての求人一覧です。&lt;/div&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;twicard&quot;&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/herp-inc/engineering-careers&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://repository-images.githubusercontent.com/292805383/d9a2cae3-0977-4f1c-970f-9e9abc6d7fa1&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;txt&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://github.com/herp-inc/engineering-careers&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;GitHub - herp-inc/engineering-careers: 株式会社HERPのエンジニア向け採用資料&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;株式会社HERPのエンジニア向け採用資料. Contribute to herp-inc/engineering-careers development by creating an account on GitHub.&lt;/div&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+&lt;p&gt;この記事は業務時間中に書かれました｡&lt;/p&gt;</description>
+        <pubDate>Mon, 13 Mar 2023 00:00:00 +0900</pubDate>
+        <link>https://nymphium.github.io/2023/03/13/ppl2023.html</link>
+        <guid isPermaLink="true">https://nymphium.github.io/2023/03/13/ppl2023.html</guid>
+        
+        <category>雑感</category>
+        
+        <category>PPL</category>
+        
+        <category>宣伝</category>
+        
+        
+      </item>
     
       <item>
         <title>OCamlで非同期ちゃんねる</title>
@@ -2009,233 +2110,6 @@ DSL も相まってわかりやすい(自画自賛)｡&lt;/p&gt;
         <category>日刊Coroutines</category>
         
         <category>coroutines</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Extending OCaml&apos;s open</title>
-        <enclosure type="image/png" length="0" url="https://nymphium.github.io/pictures/github_icon.png"></enclosure>
-        <description>&lt;h1 id=&quot;1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot;&gt;1. はじめに&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;こんにちは､びしょ〜じょです｡
-これは &lt;a href=&quot;https://qiita.com/advent-calendar/2020/ml&quot;&gt;ML Advent Calendar 2020&lt;/a&gt; の22日目の記事です｡
-皆さんは大晦日ですか? 私は22日にいます｡&lt;/p&gt;
-&lt;p&gt;さて話は OCaml 4.08 まで戻るのですが､みなさんは&lt;code&gt;open&lt;/code&gt;の次に module path のみならず module &lt;em&gt;expression&lt;/em&gt; を書けるようになっていたのをご存知でしたか?
-本日はそういった話をした論文&lt;span class=&quot;cite&quot;&gt;[&lt;a href=&quot;#fn1&quot; title=&apos;Li, Runhang and Yallop, Jeremy. &quot;Extending OCaml’s “open”&quot;. arXiv. 2019. &apos; id=&quot;fnref1&quot;&gt;1&lt;/a&gt;]&lt;/span&gt;
-の話をします｡&lt;/p&gt;
-&lt;p&gt;モジュールのフィールドを現在のモジュールのスコープに展開する方法として&lt;code&gt;include&lt;/code&gt;と&lt;code&gt;open&lt;/code&gt;がある｡
-&lt;code&gt;include&lt;/code&gt;はモジュールの中身を文字どおり &lt;em&gt;include&lt;/em&gt; ､つまり内容が継ぎ足されます｡
-&lt;code&gt;open&lt;/code&gt;はスコープ上で見えるようにするだけでモジュールの定義に展開されたメンバーは含まれません｡&lt;/p&gt;
-&lt;p&gt;さて､&lt;code&gt;include&lt;/code&gt;にはいろいろ書けるのですが､&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;sig&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;(** val x : t = &amp;lt;abstr&amp;gt; *)&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;(**
- *  t は opaque なので int としては扱えない
- *  # x + 3;;
- *  Error: This expression has type t but an expression was expected of type int
- *)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;open&lt;/code&gt;はなんか不自由だったんですよねぇ&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;c&quot;&gt;(** 
- *   # open struct end;;
- *   Error: Syntax error
- *)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;Q.+%E3%81%AA%E3%82%93%E3%81%A7%3F&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#Q.+%E3%81%AA%E3%82%93%E3%81%A7%3F&quot;&gt;Q. なんで?&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&quot;A.&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#A.&quot;&gt;A.&lt;/a&gt;&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This distinction is less useful: &lt;strong&gt;there is no fundamental reason why &lt;code&gt;include&lt;/code&gt; should accept
-arbitrary module expressions, while &lt;code&gt;open&lt;/code&gt; should not.&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;2.+extending+%3Ccode%3Eopen%3C%2Fcode%3E+in+structures&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#2.+extending+%3Ccode%3Eopen%3C%2Fcode%3E+in+structures&quot;&gt;2. extending &lt;code&gt;open&lt;/code&gt; in structures&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;さて OCaml 4.08 以降は豊かな&lt;code&gt;open&lt;/code&gt;が使えます｡やりましたね｡
-でもなにができるんですか?&lt;/p&gt;
-&lt;h2 id=&quot;2-1.+Unexported+top-level+values&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#2-1.+Unexported+top-level+values&quot;&gt;2-1. Unexported top-level values&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;signature や mli ファイルを用意しないと definitions は全てそれらが属するモジュールのフィールドになります｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;
-&lt;span class=&quot;listing-name&quot;&gt;hoge.ml というファイルがあるとする&lt;/span&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Utils&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;(* 適当 *)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Some&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;None&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Utils&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;Utils&lt;/code&gt; モジュールは門外不出にしたいんで mli を書く&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;
-&lt;span class=&quot;listing-name&quot;&gt;hoge.mli&lt;/span&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;または&lt;code&gt;include (M : Sig)&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Utils&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;......&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;sig&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;えっ&lt;code&gt;t&lt;/code&gt;の定義2回書くんですか? ダル…
-&lt;code&gt;Utils&lt;/code&gt;だけ外したいのにそれ以外全部について記述するのでなんかイヤーて感じですね｡&lt;/p&gt;
-&lt;p&gt;というときに &lt;code&gt;open struct&lt;/code&gt; を使ってみましょう｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;
-&lt;span class=&quot;listing-name&quot;&gt;hoge.ml&lt;/span&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;open&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Utils&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;......&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-  &lt;span class=&quot;c&quot;&gt;(* なんでもいい *)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tsukawan_t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tsukawan_other&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TsukawanSig&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;sig&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;nonrec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Some&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
-  &lt;span class=&quot;c&quot;&gt;(* 使う側はそのまま *)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;None&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Utils&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;open struct ... end&lt;/code&gt;でモジュール外に出したくないものを定義できます｡
-なんとなく mli を書きたくない勢にとっては大変嬉しい｡
-この便利な使い方を知らずに OCaml 4.08 以降を使っていたので皆さんにもお伝えしたかった｡&lt;/p&gt;
-&lt;h2 id=&quot;2-2.+%E3%81%9D%E3%81%AE%E4%BB%96&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#2-2.+%E3%81%9D%E3%81%AE%E4%BB%96&quot;&gt;2-2. その他&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;詳細は論文を読んでくれい｡
-recursive な型の名前の shadowing をしたり(2.2)&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;M&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;open&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;C&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;複数の関数にまたがる変数を簡単に用意したり(2.3)&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;c&quot;&gt;(**
- *  let f, g =
- *    let aux x y = ... in
- *    (fun p -&amp;gt; aux p true),
- *    (fun p -&amp;gt; aux p false)
- *)&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt;
-  &lt;span class=&quot;c&quot;&gt;(* この無名モジュール外には aux は出ていかない *)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;open&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;aux&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;aux&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;true&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;aux&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;false&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;ローカルな例外を簡単に定義したり(2.4)､
-共有ステートで状態だけ隠してオペレータを提供するのを簡単に定義したり(2.5)､
-ppx などで自動生成される変数をうまく隠すだとか(2.6)､
-&lt;code&gt;open (M : S)&lt;/code&gt;も書けるようになったんで&lt;code&gt;open&lt;/code&gt;されるものを絞ったり(2.7)など､
-人生に大切なことが書かれています｡&lt;/p&gt;
-&lt;h1 id=&quot;3.+extending+%3Ccode%3Eopen%3C%2Fcode%3E+in+signatures&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#3.+extending+%3Ccode%3Eopen%3C%2Fcode%3E+in+signatures&quot;&gt;3. extending &lt;code&gt;open&lt;/code&gt; in signatures&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;ところで signature 内でも&lt;code&gt;open&lt;/code&gt;は使える｡
-signature は深掘ってこなかったので､知らないことが書いてあって面白かった｡&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The OCaml compiler has a feature that is often useful during development: passing the -i flag
-when compiling a module causes OCaml to display the inferred signature of the module. However,
-users are sometimes surprised to find that a signature generated by OCaml is subsequently
-rejected by OCaml, because it is incompatible with the original module, or even because it is
-invalid when considered in isolation.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;マジかい!w という感じですが例を見るとまぁしゃーなしやなぁという気にもなります｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;
-&lt;span class=&quot;listing-name&quot;&gt;fuga.ml&lt;/span&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;T1&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;M&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;T2&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;T1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;T2&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;(**
- *  the signature generated by the compiler with -i flag
- *
- *  type t = T1
- *  module M : sig
- *    type t = T2
- *    val f : t -&amp;gt; t  (* !?w *)
- *  end
- *)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;ファイルの成すモジュールは recursive に定義できないので､&lt;code&gt;Fuga.t&lt;/code&gt;を&lt;code&gt;Fuga.M&lt;/code&gt;内で参照できないわけですね｡
-そして&lt;code&gt;M.t&lt;/code&gt;が型引数を持つと興味深い結果になります｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;T&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;M&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;S&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;S&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;(**
- *  type t = T
- *  module M : sig
- *    type &apos;a t = S
- *    val f : t -&amp;gt; t (* え?! *)
- *  end
- *)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;型変数が虚空に消えました｡これはすごい｡
-そしてこの問題の本質は OCaml コンパイラが頑張ってくれないことではなく､人間も手で書けないということですね｡
-余計なフィールドを追加せずに書けますか? ちょいと無理そうやな〜というところで &lt;code&gt;open struct&lt;/code&gt; しますと&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;T1&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;open&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;M&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;sig&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;T2&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;ヨシ!
-ついでに OCaml 4.11 で試したところ生成するほうもいい感じになってました｡&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;T1&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;M&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;sig&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;T2&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1 id=&quot;4.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#4.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB&quot;&gt;4. おわりに&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;面白かったんで4章の restriction と6章の alteranative designs(Standard ML の&lt;code&gt;local&lt;/code&gt;､ OOP みたいな&lt;code&gt;private&lt;/code&gt;､destructive substitution&lt;sup id=&quot;fnref2&quot; title=&quot;with type ですね｡これも用語を知らなかった｡ &quot;&gt;&lt;a href=&quot;#fn2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;を拡張するやつ)も読んでみてください｡5章の implementation sketch は遠目で眺めました…｡&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;よし!
-書き終わったので大晦日に私も追いつきました｡
-みなさん良いお年を｡&lt;/p&gt;
-&lt;div class=&quot;footnotes&quot;&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-
-&lt;li id=&quot;fn1&quot;&gt;
-&lt;p&gt;Li, Runhang and Yallop, Jeremy. &quot;Extending OCaml’s “open”&quot;. &lt;a href=&quot;http://dx.doi.org/10.4204/EPTCS.294.1&quot;&gt;arXiv&lt;/a&gt;. 2019. &lt;a href=&quot;#fnref1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li id=&quot;fn2&quot;&gt;
-&lt;p&gt;&lt;code&gt;with type&lt;/code&gt; ですね｡これも用語を知らなかった｡ &lt;a href=&quot;#fnref2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;/ol&gt;
-&lt;/div&gt;</description>
-        <pubDate>Thu, 31 Dec 2020 00:00:00 +0900</pubDate>
-        <link>https://nymphium.github.io/2020/12/31/Extending-OCaml's-open.html</link>
-        <guid isPermaLink="true">https://nymphium.github.io/2020/12/31/Extending-OCaml's-open.html</guid>
-        
-        <category>OCaml</category>
-        
-        <category>modules</category>
-        
-        <category>Advent Calendar</category>
         
         
       </item>
