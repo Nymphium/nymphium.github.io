@@ -30,7 +30,7 @@ while getopts ":d::D:h" OPT; do
 
       if [[ ! "${sdate}" =~ \d{4}-\d{2}-\d{2} ]]; then
         timestamp=$sdate
-        arr=($(echo ${timestamp//-/ }))
+        arr=("${timestamp//-/ }")
         year=${arr[0]}
         month=${arr[1]}
         date=${arr[2]}
@@ -39,10 +39,13 @@ while getopts ":d::D:h" OPT; do
         exit 1
       fi
       ;;
+    *)
+      exit 1
+      ;;
   esac
 done
 
-shift $(($OPTIND - 1))
+shift $((OPTIND - 1))
 
 filename=${1}
 articlename=${2:-${1}}
