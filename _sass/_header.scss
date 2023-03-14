@@ -1,4 +1,5 @@
 $nav-height: 56px;
+$nav-page-link-padding-h: 5px;
 
 .site-header {
 	border-bottom: 1px solid $grey-color-light;
@@ -52,7 +53,7 @@ $nav-height: 56px;
 	}
 
 	@include media-query($on-palm) {
-		font-size: $base-font-size - 4;
+		font-size: $base-font-size * 0.6;
 
 		position: absolute;
 		right: 0;
@@ -61,7 +62,8 @@ $nav-height: 56px;
 		border-bottom: 1px solid $grey-color-light;
 		text-align: right;
 		transition: .3s ease-in-out;
-		transform: translateY(-84px);
+		// バーの高さ + (nav-page-link-padding-h * ((上1+下1) * 要素数 - (上1下1)))
+		transform: translateY(calc(-1 * (#{$nav-height} + #{$nav-page-link-padding-h} * 4)));
 
 		&:active, &:hover {
 			transform: translateY(0px);
@@ -77,7 +79,7 @@ $nav-height: 56px;
 
 		.page-link {
 			display: block;
-			padding: 5px 10px;
+			padding: $nav-page-link-padding-h 10px;
 			margin-left: 10px;
 			margin-right: 10px;
 
