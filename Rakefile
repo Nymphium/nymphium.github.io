@@ -72,13 +72,13 @@ task :deploy do
   rescue Exception => _e
     puts '# ! Error - git command abort'
     sh 'git checkout source'
-    sh "mv #{dir}/cache ."
+    sh "mv #{dir}/cache/* #{dir}/cache/.* ."
     sh "rm -rf #{dir}"
     exit - 1
   end
   sh 'git checkout source'
   sh 'git submodule update'
-  sh "mv #{dir}/cache ."
+  sh "mv #{dir}/cache/* #{dir}/cache/.* ."
   sh "rm -rf #{dir}"
 end
 
