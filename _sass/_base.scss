@@ -48,10 +48,6 @@ ul, ol, dl, figure,
   margin-bottom: $spacing-unit / 2;
 }
 
-article > .post-content > p + p {
-  margin-top: $spacing-unit / 2;
-}
-
 p {
   margin-bottom: $spacing-unit / 8;
 }
@@ -128,9 +124,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 article {
-  > .post-content > p {
-    text-indent: 1rem;
-	text-align: justify;
+  > .post-content {
+    > p {
+      text-indent: 1rem;
+      text-align: justify;
+    }
+
+    > p + p {
+      margin-top: $spacing-unit / 2;
+    }
   }
 
   header {
