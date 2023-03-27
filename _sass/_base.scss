@@ -48,6 +48,10 @@ ul, ol, dl, figure,
   margin-bottom: $spacing-unit / 2;
 }
 
+article > .post-content > p + p {
+  margin-top: $spacing-unit / 2;
+}
+
 p {
   margin-bottom: $spacing-unit / 8;
 }

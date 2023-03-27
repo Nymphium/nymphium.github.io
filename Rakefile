@@ -45,12 +45,13 @@ end
 # Usage: rake deploy
 desc 'Begin a push static file to GitHub'
 task :deploy do
-  dir = '/tmp/nymphiumgithubio' + `echo $$`.chomp
+  dir = '/tmp/nymphiumgithubio-' + `echo $$`.chomp
   puts '# Build...'
   sh '_bin/twicardpic_update'
   sh "JEKYLL_ENV=production #{BUNDLE} exec jekyll build"
-  sh "mkdir -p #{dir}"
-  sh "mv _site/* #{dir}"
+  sh "mkdir -p #{dir}/{dist,cache}"
+  sh "mv _site/* #{dir}/dist"
+  sh "mv .jekyll-cache twicache twicard_cache #{dir}/cache"
 
   message = "deploy at #{Time.now}"
 
@@ -62,7 +63,7 @@ task :deploy do
 
   sh 'git checkout master'
   sh 'rm -rf $(ls | grep -v .git)'
-  sh "cp -r #{dir}/* ."
+  sh "cp -r #{dir}/dist/* ."
   puts '# Push to master branch of GitHub'
   sh 'git add *'
   begin
@@ -71,11 +72,13 @@ task :deploy do
   rescue Exception => _e
     puts '# ! Error - git command abort'
     sh 'git checkout source'
+    sh "mv #{dir}/cache ."
     sh "rm -rf #{dir}"
     exit - 1
   end
   sh 'git checkout source'
   sh 'git submodule update'
+  sh "mv #{dir}/cache ."
   sh "rm -rf #{dir}"
 end
 
