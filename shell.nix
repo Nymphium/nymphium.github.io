@@ -5,6 +5,7 @@ mkShell {
     libffi
     libsass
     pkgconfig
+    solargraph
     ruby
   ];
   shellHook = ''
