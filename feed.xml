@@ -5,8 +5,8 @@
     <description>lily, Aikatsu, Programming language, and more</description>
     <link>https://nymphium.github.io/</link>
     <atom:link href="https://nymphium.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 28 Mar 2023 02:13:23 +0900</pubDate>
-    <lastBuildDate>Tue, 28 Mar 2023 02:13:23 +0900</lastBuildDate>
+    <pubDate>Wed, 05 Apr 2023 18:58:52 +0900</pubDate>
+    <lastBuildDate>Wed, 05 Apr 2023 18:58:52 +0900</lastBuildDate>
     <generator>Jekyll v4.3.1</generator>
     
       <item>
@@ -141,7 +141,7 @@ CPSとshift/resetのReflectionに関する発表のお話をうかがいまく�
 &lt;/div&gt;
 &lt;p&gt;&lt;code&gt;Domain&lt;/code&gt;モジュールで並列プリミティブが使えるが､低レベルAPIで少々使いづらいので､ocaml-multicoreが提供するdomainslibを使うのが推奨されている&lt;sup id=&quot;fnref1&quot; title=&apos;&quot;We recommend the users to utilise higher-level parallel programming libraries such as domainslib.&quot;, https://v2.ocaml.org/releases/5.0/manual/parallelism.html &apos;&gt;&lt;a href=&quot;#fn1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;｡&lt;/p&gt;
 &lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/domainslib&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/31db40ff70fd0c9a022397eef0493a347648e587b962ed50e9811236820036c7/ocaml-multicore/domainslib&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/domainslib&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/f12899bf5b4623d73c6be955c5df636a7b9283949559aff9855cb0e6a1b43ffb/ocaml-multicore/domainslib&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/domainslib&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;GitHub - ocaml-multicore/domainslib: Parallel Programming over Domains&lt;/a&gt;&lt;/div&gt;
     &lt;div class=&quot;description&quot;&gt;Parallel Programming over Domains. Contribute to ocaml-multicore/domainslib development by creating an account on GitHub.&lt;/div&gt;
@@ -174,7 +174,7 @@ CPSとshift/resetのReflectionに関する発表のお話をうかがいまく�
 &lt;p&gt;ところで!
 並行計算もできるようになったんで､そのwrapperであるeioも､あります｡&lt;/p&gt;
 &lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/eio&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/a99b7d6ea823fbcd7e7f6599a9757af35b419474d8840a787c1377acc03f1423/ocaml-multicore/eio&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/eio&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/67b93f5c7c5237c783acbbf24cfe176b46527567005acc0e11fd0d498f3cd039/ocaml-multicore/eio&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/eio&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;GitHub - ocaml-multicore/eio: Effects-based direct-style IO for multicore OCaml&lt;/a&gt;&lt;/div&gt;
     &lt;div class=&quot;description&quot;&gt;Effects-based direct-style IO for multicore OCaml. Contribute to ocaml-multicore/eio development by creating an account on GitHub.&lt;/div&gt;
@@ -865,7 +865,7 @@ Go(1.13)はnet/httpを利用し､並列実行はしない(&lt;code&gt;GOMAXPROC
   &lt;/span&gt;
 &lt;/div&gt;
 &lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/parallel-programming-in-multicore-ocaml&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/41e4f622b55144626b3afff7c8b6d08e319f2a3d0201927fa12234ca695edfd6/ocaml-multicore/parallel-programming-in-multicore-ocaml&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/parallel-programming-in-multicore-ocaml&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/4dc16f5cdcb01de01c033edf10dc4be341666397bb37161e05226b6c0da89684/ocaml-multicore/parallel-programming-in-multicore-ocaml&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/parallel-programming-in-multicore-ocaml&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;GitHub - ocaml-multicore/parallel-programming-in-multicore-ocaml: Tutorial on Multicore OCaml parallel programming with domainslib&lt;/a&gt;&lt;/div&gt;
     &lt;div class=&quot;description&quot;&gt;Tutorial on Multicore OCaml parallel programming with domainslib - GitHub - ocaml-multicore/parallel-programming-in-multicore-ocaml: Tutorial on Multicore OCaml parallel programming with domainslib&lt;/div&gt;
