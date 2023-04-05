@@ -13,7 +13,8 @@ lambda { |content|
     else
       tweet_json = URI.open("https://api.twitter.com/1/statuses/oembed.json?id=#{id}").read
       tweet_html = JSON.parse(tweet_json, { symbolize_names: true })[:html]
-      File.open("twicache/#{id}", 'w') { |f| f.write(tweet_html) }
+      Dir.mkdir('twicache') unless File.exist?('twicache')
+      File.open("twicache/#{id}", 'w+') { |f| f.write(tweet_html) }
     end
 
     embedded_content = embedded_content.gsub(/#{url}/,

@@ -19,7 +19,6 @@ exclude:
   - .sass-cache
   - twicache
   - twicard_cache
-  - about/
 
 plugins:
   - jekyll-seo-tag
