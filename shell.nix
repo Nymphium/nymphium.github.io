@@ -5,12 +5,11 @@ mkShell {
     libffi
     libsass
     pkgconfig
-    solargraph
     ruby
   ];
   shellHook = ''
     export LANG="en_US.UTF-8"
     export PATH="''${PWD}/.bundle/ruby/${ruby.version.libDir}/bin":''${PATH}
-    bundle config set --local path .bundle
+    bundle config set --local path "''${PWD}/.bundle"
   '';
 }
