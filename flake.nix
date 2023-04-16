@@ -11,10 +11,11 @@
           inherit system;
         };
         ruby = pkgs.ruby_3_0;
+        rubyPkgs = pkgs.rubyPackages_3_0;
       in
       {
         legacyPackages = pkgs;
-        devShells.default = import ./shell.nix { inherit pkgs ruby; };
+        devShells.default = import ./shell.nix { inherit pkgs ruby rubyPkgs; };
       }
     );
 }

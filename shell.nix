@@ -1,11 +1,15 @@
-{ pkgs, ruby }:
+{ pkgs, ruby, rubyPkgs }:
 with pkgs;
+let
+  solargraph = rubyPkgs.solargraph;
+in
 mkShell {
   buildInputs = [
     libffi
     libsass
     pkgconfig
     ruby
+    solargraph
   ];
   shellHook = ''
     export LANG="en_US.UTF-8"
