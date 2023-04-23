@@ -46,11 +46,11 @@ end
 # Usage: rake deploy
 desc 'Begin a push static file to GitHub'
 task :deploy do
-  dir = "/tmp/nymphiumgithubio-#{echo $PID.chomp}"
+  dir = "/tmp/nymphiumgithubio-#{$PID}"
   puts '# Build...'
   sh '_bin/twicardpic_update'
   sh "JEKYLL_ENV=production #{BUNDLE} exec jekyll build"
-  sh "mkdir -p #{dir}/{dist,cache}"
+  sh "mkdir -p #{dir}/dist #{dir}/cache"
   sh "mv _site/* #{dir}/dist"
   sh "mv .jekyll-cache twicache twicard_cache #{dir}/cache"
 

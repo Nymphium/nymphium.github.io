@@ -70,7 +70,7 @@ def extract(alt, url)
     if File.exist? path
       File.open(path, 'r') { |f| html = f.read }
     else
-      html = URI.open(Addressable::URI.encode(url), allow_redirections: :all, &:read)
+      html = URI.open(url, allow_redirections: :all, &:read)
       Dir.mkdir(dir) unless Dir.exist? dir
       File.open(path, 'w+') { |f| f.write(html) }
       puts File.exist? path
