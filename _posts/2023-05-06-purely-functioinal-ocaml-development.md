@@ -1,6 +1,6 @@
 ---
 layout: post
-title: OCaml環境をNixで
+title: OCaml環境をNixでセットアップしてGitHub Actionsでopamに楽にパッケージを上げる
 tags: [ocaml, nix]
 ---
 
