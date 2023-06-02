@@ -21,7 +21,7 @@ thumb: yes
 
 {% twicard "Algebraic Effectsであそぼう - lilyum ensemble" https://nymphium.github.io/2018/08/13/algebraic_effects_tutorial.html %}
 {% twicard "Dive into Algebraic Effects - lilyum ensemble" https://nymphium.github.io/pdf/mlday2.html %}
-{% twicard "Algebraic Effectsとは? 出身は? 使い方は? その特徴とは? 調べてみました! - Qiita" https://qiita.com/Nymphium/items/e6ce580da8b87ded912b %}
+{% twicard "Algebraic Effectsとは? 出身は? 使い方は? その特徴とは? 調べてみました! - lilyum ensemble" https://nymphium.github.io/2018/10/30/what-is-algebraic-effects.html %}
 
 なるほど､ **復帰可能な例外** ですね｡承知しました｡
 
@@ -36,7 +36,7 @@ thumb: yes
 感覚としては､ `shift/reset` の `shift` が継続を切り取るときに `reset` がくっついてくるけど､ `shift0/reset0` ではくっついてこないという関係と同じですね｡
 `shift/reset` などについてはコチラ
 
-{% twicard "delimited continuationの夏 - lilyum ensemble" https://nymphium.github.io/2018/07/19/delimited-continuationの夏.html %}
+{% twicard "delimited continuationの夏 - lilyum ensemble" https://nymphium.github.io/2018/07/19/delimited-continuation%E3%81%AE%E5%A4%8F.html %}
 
 ごちゃごちゃ言ったけど[Eff言語](https://www.eff-lang.org/)でサクッと例を見てみましょう｡
 こんなエフェクトと関数を定義します｡
