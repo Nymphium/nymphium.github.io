@@ -1,4 +1,4 @@
 [submodule "about"]
 	path = about
-	url = https://github.com/nymphium/nymphium
+	url = https://github.com/Nymphium/aboutme
 	ignore = dirty
