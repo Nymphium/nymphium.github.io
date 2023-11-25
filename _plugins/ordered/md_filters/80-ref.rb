@@ -1,92 +1,93 @@
+# frozen_string_literal: true
+
 # foo[label: hoge] (in section x.y.z) --> foo<label id="ref-hoge"/>
 # refer to [ref: hoge]  --> refer to <a href="ref-hoge">x.y.z</a>
 # [fnref: n] --> [<a href="#fn[n]">n</a>]
 
-lambda{|content|
-	if ! content.match(/\[fnref\s*:\s*\d+\]|\[(ref|label)\s*:\s*[^\]\s]+\]/)
-		return content
-	end
+lambda { |content|
+  return content unless content.match(/\[fnref\s*:\s*\d+\]|\[(ref|label)\s*:\s*[^\]\s]+\]/)
 
-	cont0, cont = "", ""
-	codeflag = false
-	@secnum, @num = 0, 0
+  cont0 = ''
+  cont = ''
+  codeflag = false
+  @secnum = 0
+  @num = 0
 
-	@isSectionized = !!content.match(/<!--+\s*sectionize on\s*--+>/)
+  @is_sectionized = !content.match(/<!--+\s*sectionize on\s*--+>/).nil?
 
-	def secIncr line
-		if @isSectionized and line.match(/^#\s*[^!#].*$/)
-			@secnum += 1
-			@num = 0
-		end
-	end
+  def sec_incr(line)
+    return unless @is_sectionized && line.match(/^#\s*[^!#].*$/)
 
-	def render
-		if @isSectionized
-			sprintf "%d.%d", @secnum, @num
-		else
-			@num.to_s
-		end
-	end
+    @secnum += 1
+    @num = 0
+  end
 
-	ref_val = {}
+  def render
+    if @is_sectionized
+      format('%<sec>d.%<sub>d', { sec: @secnum, sub: @num })
+    else
+      @num.to_s
+    end
+  end
 
-	# phase 1: look labels
-	content.each_line {|txt|
-		if codeflag = (txt.match(/^\s*```(?!`)/) != nil) ^ codeflag
-			cont0 += txt
-			next
-		end
+  ref_val = {}
 
-		secIncr txt
+  # phase 1: look labels
+  content.each_line do |txt|
+    if (codeflag = (!txt.match(/^\s*```(?!`)/).nil?) ^ codeflag)
+      cont0 += txt
+      next
+    end
 
-		convd = true
+    sec_incr txt
 
-		while convd do
-			convd = false
-			if label = txt.match(/\[label\s*:\s*([a-zA-Z][^\]]*)\s*\]/)
-				esc = label[1]
-				txt.sub!(/\[label\s*:\s*[a-zA-Z][^\]]*\]/, "<label id=\"#{esc}\"/>\n")
-				@num += 1
-				ref_val[esc] = render
-				convd = true
-			end
-		end
+    convd = true
 
-		cont0 += txt
-	}
+    while convd
+      convd = false
+      next unless (label = txt.match(/\[label\s*:\s*([a-zA-Z][^\]]*)\s*\]/))
 
+      esc = label[1]
+      txt.sub!(/\[label\s*:\s*[a-zA-Z][^\]]*\]/, "<label id=\"#{esc}\"/>")
+      @num += 1
+      ref_val[esc] = render
+      convd = true
+    end
 
-	convd = false
+    cont0 += txt
+  end
 
-	# phase 2: look and replace ref
-	cont0.each_line {|txt|
-		if codeflag = (txt.match(/^\s*```(?!`)/) != nil) ^ codeflag
-			cont += txt
-			next
-		end
+  convd = false
 
-		convd = true
+  # phase 2: look and replace ref
+  cont0.each_line do |txt|
+    if (codeflag = (!txt.match(/^\s*```(?!`)/).nil?) ^ codeflag)
+      cont += txt
+      next
+    end
 
-		while convd do
-			# [ref: LABEL]
-			if ref = txt.match(/<(?<disp>[^>]+)>\s*\[ref\s*:\s*(?<refl>[^\]]+)\s*\]/)
-				esc = ref[:refl]
-				disp = ref[:disp]
-				txt.sub!(/<[^>]+>\s*\[ref\s*:\s*[^\]]+\s*\]/, "<a href=\"##{esc}\">#{disp}</a>\n")
-			elsif ref = txt.match(/\[ref\s*:\s*([^\]]+)\s*\]/)
-				esc = ref[1]
-				txt.sub!(/\[ref\s*:\s*[^\]]+\s*\]/, "<a href=\"##{esc}\">#{ref_val[esc]}</a>\n")
-			# [fnref: n]
-			elsif ref = txt.match(/\[fnref\s*:\s*(\d+)\]/)
-				nth = ref[1]
-				txt.sub!(ref.to_s, "<span class=\"cite\">[<fnref>[^#{nth}]</fnref>]</span>\n")
-			else
-				convd = false
-			end
-		end
+    convd = true
 
-		cont += txt
-	}
+    while convd
+      # [ref: LABEL]
+      if (ref = txt.match(/{(?<disp>[^}]+)}\s*\[ref\s*:\s*(?<refl>[^\]]+)\s*\]/))
+        esc = ref[:refl]
+        disp = ref[:disp]
+        txt.sub!(/{[^}]+}\s*\[ref\s*:\s*[^\]]+\s*\]/, "<a href=\"##{esc}\">#{disp}</a>")
+      elsif (ref = txt.match(/\[ref\s*:\s*([^\]]+)\s*\]/))
+        esc = ref[1]
+        txt.sub!(/\[ref\s*:\s*[^\]]+\s*\]/, "<a href=\"##{esc}\">#{ref_val[esc]}</a>")
+      # [fnref: n]
+      elsif (ref = txt.match(/\[fnref\s*:\s*(\d+)\]/))
+        nth = ref[1]
+        txt.sub!(ref.to_s, "<span class=\"cite\">[<fnref>[^#{nth}]</fnref>]</span>")
+      else
+        convd = false
+      end
+    end
 
-	cont
+    cont += txt
+  end
+
+  cont
 }

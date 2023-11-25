@@ -45,7 +45,7 @@ evaってるのは`Toploop.execute_phrase`で､戻り値はランタイムエ�
 話おわり
 
 # 解
-<eval>[ref:fig-origeval]の`Toploop.execute_phrase`に渡している引数を観察すると､
+{eval}[ref:fig-origeval]の`Toploop.execute_phrase`に渡している引数を観察すると､
 `true`と`Format.std_formatter`を渡していることが分かる｡
 
 `true`は後述｡第2引数は件の`format`じゃねえかい｡

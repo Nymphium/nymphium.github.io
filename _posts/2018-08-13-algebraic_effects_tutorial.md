@@ -104,7 +104,7 @@ let _ = chooseh f
 ここでHaskellerは｢Freeモナドやんけ!｣となるらしいですがボクはHaskellをやっていってないのでわかりませんでした｡
 型だけ定義して､interpretationはユーザに任せるということなので確かに同じようだ｡
 そもそもalgebraic effectの*algebraic*は"free *algebra*"から来てるそう[^2]なので､袂を分かつ存在である｡
-実際<Effインタプリタ>[ref: effinterp]はFreeモナドを使って実装しているようだ｡
+実際{Effインタプリタ}[ref: effinterp]はFreeモナドを使って実装しているようだ｡
 
 そしていろんなeffectsをいっぺんにハンドルするぜ!
 
