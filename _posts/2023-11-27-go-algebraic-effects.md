@@ -273,7 +273,7 @@ Goroutine自体は値としての実態がないので､1回走らせてchannel
 図[ref:stackful]. asymmetric stackful coroutinesのcall stackのわかりやすい図
 </center>
 
-良い頭なのでGopherくんも感心してます｡
+良い図なのでGopherくんも感心してます｡
 Channelsはsend/recvを両方兼ねているので､sendするときにchannelをstackに突っ込んでrecvしつつgoroutineを遷移し､呼ばれた側がpopしてsendしてrecv側に戻る｡
 関数呼び出しのコールスタックのようなものを､channelのスタックで表現することになる｡
 難しいことを考えずにこのcall stackはグローバルに1つ持つようにしよう([ref:asym-go])｡
