@@ -29,4 +29,5 @@ sass:
   style: compressed
 markdown: MyCustomProcessor
 encoding: "utf-8"
+future: true
 host: 0.0.0.0

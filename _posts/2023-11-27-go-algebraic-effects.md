@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "From Goroutines to Coroutines: goroutines+channelsから考えるコルーチンの分類"
-tags: [Go, Algebraic Effects, effect system, coroutines]
-date: 2023-10-10
+tags: [Go, coroutines]
 ---
 
 <!--sectionize on-->
@@ -20,13 +19,10 @@ date: 2023-10-10
 
 
 # はじめに
-非同期プログラミングは現代のソフトウェア開発における中心的なテーマの一つであり､特にGo言語はこの領域において独特なアプローチを取っている｡
-Goの非同期処理の中心には､goroutinesとchannelsという二つの主要な概念が存在する｡
+非同期プログラミングは､現代のソフトウェア開発における中心的なテーマの一つである｡
+特にGo言語はこの領域において､goroutinesとchannelsという二つの機能を用いた独特なアプローチを取っている｡
 本稿では､これらGoの基礎的な要素と､より一般的な非同期プログラミングの概念であるcoroutinesとの関連性を考察する｡
 
-<!-- 本記事の考察による最終的な成果はコチラでone-shot algebraic effect handlersとなった: -->
-
-<!-- {% gh_repo Nymphium/eff.go %} -->
 
 # Goroutinesとchannels
 GoroutinesはGoにおける軽量スレッドの実装であり､独立したタスクの非同期実行を可能にするものである｡
@@ -139,7 +135,7 @@ console.log(str);
 | symmetric coroutines | goroutines+channels|
 |:-:|:-:|
 |スレッド | goroutine |
-|transfer | channel send/recv|
+|`transfer` | channel `send`/`recv`|
 
 </center>
 
@@ -261,27 +257,133 @@ Goroutine自体は値としての実態がないので､1回走らせてchannel
 最終的に呼ばれる`Transfer`に値を返すために､ラップされる関数の戻り値を`defer`でchannelに流し込む｡
 いろんな型が出たり入ったりするので`any`です[^4]｡
 
-# asymmetric stackless coroutinesとchannelsの管理
+# Asymmetric stackful coroutinesとcall stack
 
-    通信用のchannelの管理とasymmetric stacklessの関連性｡
-    実際の使用例や利点を示す｡
+よし､ではasymmetricにしていくぞ｡
+後述するが､asymmetric stackless coroutinesは**Goではエミュレートできない**｡
+ので､asymmetric stackful coroutinesを作っていく｡
 
-では今作ったsymmetric coroutinesをasymmetricにしていこう｡
-表[ref:tbl1]を見るにcallee-caller関係を作ればいいわけだから､いいわけですね｡
+表[ref:tbl2]にあるように､asymmetric coroutinesは呼び出しに親子関係がある｡
+`resume`が呼び出すcoroutineを指定できるのに対して､`yield`はリターンポイントを指定できず､呼び出し元の親に戻る｡
+つまり(ここで論理の飛躍)スタックが使えますね(図[ref:stackful])!
 
-# asymmetric stackful coroutinesとcall stackの関係
+<center>
+[label:stackful]
+![/pictures{{page.id}}/asym-stack.jpg](/pictures/{{ page.id }}/asym-stack.jpg)
+図[ref:stackful]. asymmetric stackful coroutinesのcall stackのわかりやすい図
+</center>
 
-    call stackをコルーチンにどのように適用するか｡
-    その結果としての動作や利益｡
+Gopherくんも感心してます｡
+Channelsはsend/recvを両方兼ねているので､sendするときにchannelをstackに突っ込んでrecvしつつgoroutineを遷移し､呼ばれた側がpopしてsendしてrecv側に戻る｡
+関数呼び出しのコールスタックのようなものを､channelのスタックで表現することになる｡
+難しいことを考えずにこのcall stackはグローバルに1つ持つようにしよう([ref:asym-go])｡
 
-# 結論
+```go :[label:asym-go][ref:asym-go]. asymmetric stackful coroutineの実装
+type stack []*T
 
-    goroutinesとchannelsからコルーチンの分類を理解する利点｡
-    Goとcoroutinesを使用する際のヒントや考慮点｡
+func (s *stack) push(t *T) {
+	*s = append(*s, t)
+}
+func (s *stack) pop() *T {
+	t := (*s)[len(*s)-1]
+	*s = (*s)[:len(*s)-1]
+	return t
+}
 
-# GoroutinesとChannels
+// global stack
+var s stack = make([]*T, 0)
+
+type T struct {
+	ch chan any
+}
+
+// これは同じ
+func New(f func(any) any) *T {
+	ch := make(chan any)
+	co := &T{ch}
+	go func() {
+		var res any
+		defer func() {
+			ch <- res
+		}()
+		res = f(<-ch)
+	}()
+	return co
+}
+
+// channelをpushして値を送って返ってくるのを待つ
+func (co *T) Resume(v any) any {
+	s.push(co)
+	co.ch <- v
+	return <-co.ch
+}
+
+// popして値を送り返してさらに値が来るのを待つ
+func Yield(v any) any {
+	ch := s.pop().ch
+	ch <- v
+	return <-ch
+}
+
+func main() {
+	var f1, f2 *T
+	f1 = New(func(mark any) any {
+		name := f2.Resume(nil)
+		fmt.Printf("hello, %s%s\n", name, mark)
+		return nil
+	})
+	f2 = New(func(any) any {
+		Yield("world")
+		return nil
+	})
+	
+	f1.Resume("!")
+}
+
+// hello, world!
+```
+
+なんかいい感じじゃないですか｡
+図が良かったですね｡
+
+# Stacklessはギブ
+
+さて､stackless asymmetric coroutinesの話で締める｡
+改めて､stackless coroutinesはGoではエミュレートできない｡
+[label:tbl2]にまとめてあるとおり､stackless coroutinesは関数呼び出しをまたぐことができない｡
+
+Stackless asymmetric coroutinesの本質は､関数呼び出しをまたぐことができない､という制約にある｡
+"coroutineが関数呼び出しをまたぐ"とは､`resume`したcoroutineの中で関数を呼び出し､その中で`yield`する､というケースである｡
+これが"できない"とは､例えばJSのGeneratorsのように`function*`の中でしか`yield`が使えないという制約で表現される｡
+
+Goでは､このような関数呼び出しに制限を設ける方法がないため､stacklessnessを表現することは今のところ不可能である｡
+しかし､このstacklessnessは､coroutinesのcall stackを関数をまたいで管理しないことによるパフォーマンス向上というデザインチョイスや､coroutineごとに関数のコールスタックを管理できないというランタイムの制約を反映している(可能性がある)｡
+したがって､Goを初めとした特定の形の関数呼び出しを表現する機能の無い言語でstackless coroutinesを実装できないことを､そこまで悲観する必要はない[^5]｡
+
+# おわりに
+さて､今回はgoroutinesとchannelsを用いてcoroutinesの分類を実装サイドから考えてみた｡
+Symmetric coroutinesはgoroutinesとchannelsだけで概ねOKなのに対して､asymmetric coroutinesはcall stackを実装する必要があった｡
+このことは､表現力の階層がsymmetric coroutines =? goroutines+channels < asymmetric coroutines =? goroutines+channels+call stackのような関係になることを示唆している｡
+
+もうすこし真面目に実装したものがこちらにあります:
+
+{% gh_repo Nymphium/eff.go %}
+
+まあいつもの[Asymmetric stackful coroutinesがあればone-shot algebraic effectsが実装できる](https://nymphium.github.io/2018/12/09/asymmetric-coroutines%E3%81%AB%E3%82%88%E3%82%8Boneshot-algebraic-effects%E3%81%AE%E5%AE%9F%E8%A3%85.html)という話で､そのサブパーツとしてasymmetric coroutinesを実装した｡
+
+---
+
+ところでGoのchannelsの操作ってなんで単項演算子の`<-`と二項演算子の`<-`なんですかね｡
+さすがに人間の生産性を落とすために矢印の方向を揃えたとしか思えん､素直に｡
+
+ところでついでで昨日は私の誕生日でした｡
+とくに関係ないんですがほしいものリスト貼っときますね｡
+
+{% twicard "ほしいものリスト" https://www.amazon.co.jp/hz/wishlist/ls/ZOVWRPLLOMCI %}
+
 
 [^1]: <https://nymphium.github.io/2019/01/27/stackfulness-of-coroutines.html>
 [^2]: [fnref:1] の表を参照､修正
 [^3]: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator>より引用､筆者によるコメント
 [^4]: Typed coroutinesをご所望の場合はこのあたりを参照のこと <https://link.springer.com/chapter/10.1007/978-3-642-22941-1_2> <https://arxiv.org/abs/2308.10548> けっこう大変そうではある｡
+[^5]: 例えばshift0/reset0のほうがshift/resetより表現力が高いように､Stacklessとstackfulで後者のほうが表現力が高い場合は悲観すべきだが､感覚としてそうでもなさそうなのと､今のところそういった話は聞かない｡ずっと気になっているので､知っている方は教えてください｡
