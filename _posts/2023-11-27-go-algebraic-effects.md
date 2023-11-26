@@ -228,7 +228,7 @@ func (co *T) Transfer(v any) any {
 }
 
 func main() {
-	var f1, f2, f3 *symgoT
+	var f1, f2, f3 *T
 
 	f1 = New(func(any) any {
 		fmt.Println("f1")
@@ -273,12 +273,14 @@ Goroutine自体は値としての実態がないので､1回走らせてchannel
 図[ref:stackful]. asymmetric stackful coroutinesのcall stackのわかりやすい図
 </center>
 
-Gopherくんも感心してます｡
+良い頭なのでGopherくんも感心してます｡
 Channelsはsend/recvを両方兼ねているので､sendするときにchannelをstackに突っ込んでrecvしつつgoroutineを遷移し､呼ばれた側がpopしてsendしてrecv側に戻る｡
 関数呼び出しのコールスタックのようなものを､channelのスタックで表現することになる｡
 難しいことを考えずにこのcall stackはグローバルに1つ持つようにしよう([ref:asym-go])｡
 
 ```go :[label:asym-go][ref:asym-go]. asymmetric stackful coroutineの実装
+package main
+
 type stack []*T
 
 func (s *stack) push(t *T) {
@@ -328,13 +330,13 @@ func Yield(v any) any {
 func main() {
 	var f1, f2 *T
 	f1 = New(func(mark any) any {
-		name := f2.Resume(nil)
+		name := f2.Resume(0)
 		fmt.Printf("hello, %s%s\n", name, mark)
-		return nil
+		return 0
 	})
 	f2 = New(func(any) any {
 		Yield("world")
-		return nil
+		return 0
 	})
 	
 	f1.Resume("!")
@@ -363,7 +365,7 @@ Goでは､このような関数呼び出しに制限を設ける方法がない
 # おわりに
 さて､今回はgoroutinesとchannelsを用いてcoroutinesの分類を実装サイドから考えてみた｡
 Symmetric coroutinesはgoroutinesとchannelsだけで概ねOKなのに対して､asymmetric coroutinesはcall stackを実装する必要があった｡
-このことは､表現力の階層がsymmetric coroutines =? goroutines+channels < asymmetric coroutines =? goroutines+channels+call stackのような関係になることを示唆している｡
+このことは､表現力の階層がsymmetric coroutines ≒ goroutines+channels < asymmetric coroutines ≒ goroutines+channels+call stackのような関係になることを示唆している｡
 
 もうすこし真面目に実装したものがこちらにあります:
 
