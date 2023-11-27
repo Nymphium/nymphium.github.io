@@ -86,7 +86,7 @@ end
 # Usage: rake preview
 desc 'Launch preview environment'
 task :preview do
-  command = "JEKYLL_ENV=development #{BUNDLE} exec jekyll serve -w --drafts"
+  command = "JEKYLL_ENV=development #{BUNDLE} exec jekyll serve -w --drafts --incremental"
   command += " --host #{ENV['host']}" if ENV['host']
 
   sh command
