@@ -15,3 +15,5 @@ gem 'open_uri_redirections'
 gem 'rake'
 gem 'redcarpet'
 gem 'webrick'
+
+gem "faraday-retry", "~> 2.2"

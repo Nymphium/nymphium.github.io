@@ -15,8 +15,8 @@ def head_extract(head, attr, start_prop)
 
     content = content.text
 
-    if sort_ = sort.match(/(description|image|title)$/)
-      ret.push [sort_[0].to_sym, content]
+    if (sort = sort.match(/(description|image|title)$/))
+      ret.push [sort[0].to_sym, content]
     end
   end
 
@@ -31,21 +31,21 @@ def resizing(base_size, txt)
     len = base_size
     len -= (difflen / 3) if difflen.positive?
 
-    txt.match(Regexp.new("^.{#{len}}"))[0] + '...'
+    %(#{txt.match(Regexp.new("^.{#{len}}"))[0]}...)
   else
     txt
   end
 end
 
-def render_twicard(h)
-  desc = h[:description]
-  title = h[:title]
+def render_twicard(metainfo)
+  desc = metainfo[:description]
+  title = metainfo[:title]
 
   <<~HTML
     <div class="twicard">
-      <span class="image"><a href="#{h[:url]}" target="_blank" rel="noopener noreferrer"><div><img src=#{h[:image]}></div></a></span>
+      <span class="image"><a href="#{metainfo[:url]}" target="_blank" rel="noopener noreferrer"><div><img src=#{metainfo[:image]}></div></a></span>
       <span class="txt">
-        <div class="title"><a href="#{h[:url]}" target="_blank" rel="noopener noreferrer">#{title}</a></div>
+        <div class="title"><a href="#{metainfo[:url]}" target="_blank" rel="noopener noreferrer">#{title}</a></div>
         <div class="description">#{desc}</div>
       </span>
     </div>
@@ -53,16 +53,16 @@ def render_twicard(h)
 end
 
 def extract(alt, url)
-  hash = ''
+  fragment = ''
   dir = 'twicard_cache'
 
-  if h = url.match(/^([^#]*)(#.*)$/)
-    url = h[1]
-    hash = h[2]
+  if (metainfo = url.match(/^([^#]*)(#.*)$/))
+    url = metainfo[1]
+    fragment = metainfo[2]
   end
 
   html, title = nil
-  h = {}
+  metainfo = {}
 
   path = "#{dir}/#{url.gsub(%r{/}i, '')}"
 
@@ -70,7 +70,7 @@ def extract(alt, url)
     if File.exist? path
       File.open(path, 'r') { |f| html = f.read }
     else
-      html = URI.open(url, allow_redirections: :all, &:read)
+      html = URI(url).open(allow_redirections: :all, &:read)
       Dir.mkdir(dir) unless Dir.exist? dir
       File.open(path, 'w+') { |f| f.write(html) }
       puts File.exist? path
@@ -82,25 +82,25 @@ def extract(alt, url)
     title = head.xpath('title')
 
     title = title.text if title
-    title = alt if !title.nil? && title.length.zero?
+    title = alt if !title.nil? && title.empty?
 
-    h = (head_extract head, 'property', '')
-        .merge(head_extract(head, 'name', ''))
-        .merge(head_extract(head, 'property', 'og:'))
-        .merge(head_extract(head, 'name', 'og:'))
-        .merge(head_extract(head, 'property', 'twitter:'))
-        .merge(head_extract(head, 'name', 'twitter:'))
-        .merge(head_extract(head, 'property', 'twitter:text:'))
-        .merge(head_extract(head, 'name', 'twitter:text:'))
+    metainfo = (head_extract head, 'property', '')
+               .merge(head_extract(head, 'name', ''))
+               .merge(head_extract(head, 'property', 'og:'))
+               .merge(head_extract(head, 'name', 'og:'))
+               .merge(head_extract(head, 'property', 'twitter:'))
+               .merge(head_extract(head, 'name', 'twitter:'))
+               .merge(head_extract(head, 'property', 'twitter:text:'))
+               .merge(head_extract(head, 'name', 'twitter:text:'))
   rescue StandardError => e
     puts e
   end
 
-  h[:description]&.gsub!(/[\n\r]/i, '')
-  h[:title] = (h[:title] || title) || ''
-  h[:url] = "#{url}#{hash}"
-  h[:image] = h[:image] || '/pictures/no_image.png'
-  render_twicard h
+  metainfo[:description]&.gsub!(/[\n\r]/i, '')
+  metainfo[:title] = (metainfo[:title] || title) || ''
+  metainfo[:url] = "#{url}#{fragment}"
+  metainfo[:image] = metainfo[:image] || '/pictures/no_image.png'
+  render_twicard metainfo
 end
 
 module Jekyll
