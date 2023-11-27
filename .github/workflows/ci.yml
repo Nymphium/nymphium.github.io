@@ -20,4 +20,5 @@ jobs:
 
     - name: Check build
       run: |
+        nix develop -c bundle install
         nix develop -c bundle exec rake build

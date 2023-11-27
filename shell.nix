@@ -5,11 +5,15 @@ let
 in
 mkShell {
   buildInputs = [
-    libffi
-    libsass
-    pkgconfig
     ruby
     solargraph
+    pkg-config
+    zlib
+    libffi
+    libsass
+    protobuf
+    libxml2
+    libxslt
   ];
   LOCALE_ARCHIVE = lib.optionalString stdenv.isLinux "${glibcLocales}/lib/locale/locale-archive";
   LANG="en_US.UTF-8";
