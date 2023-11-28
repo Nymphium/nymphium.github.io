@@ -98,7 +98,7 @@ let is_value = function
 まぁコールスタックというか継続みたいなもんですね｡
 
 <center>
-![](/pictures/2021/01/04/nikkan-coroutines-2/evaluation-context.png)
+<img src="/pictures/2021/01/04/nikkan-coroutines-2/evaluation-context.png" alt="">
 [label:ec]
 図[ref:ec]. 超図解 評価文脈
 </center>

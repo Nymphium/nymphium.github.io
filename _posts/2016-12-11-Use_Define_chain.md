@@ -174,7 +174,7 @@ cfg = { <1>{
 ```
 
 ビジュアライザーも作ったんでよかったら見ていってください｡
-![Control Flow Graph](/pictures/2016-12-11-duchain_cfg.png)
+<img src="/pictures/2016-12-11-duchain_cfg.png" alt="Control Flow Graph">
 
 CFGそれ自体は本題でないので､説明はこの辺にとどめます｡
 

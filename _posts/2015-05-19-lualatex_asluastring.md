@@ -32,7 +32,7 @@ end
 
 適当なファイル名にして､`lualatex tekitou.tex`とでもすると､こんな感じのPDFが出る｡
 
-<center>![hello](/pictures/2015-05-19-lualatex1.png "tekitou.pdf")</center>
+<center><img src="/pictures/2015-05-19-lualatex1.png" alt="hello"></center>
 
 `tex.print`は受け取った文字列を*LaTeXの入力として*受け取り､コンパイル(実行)時に出力先に吐き出す｡`tex.write`は受け取った文字列をただの文字列として受け取る｡
 
@@ -85,7 +85,7 @@ ltj{,s}articleには`\asluastring`というLaTeXコマンドがあり､良い�
 }
 ```
 
-<center> ![LuaLaTeX](/pictures/2015-05-19-lualatex.png "こんなものを書くな.pdf") </center>
+<center> <img src="/pictures/2015-05-19-lualatex.png" alt="LuaLaTeX"> </center>
 
 プレアンブルでも`\directlua`は使うことができ､こういった悲劇を編み出すことも可能*(全然良い感じじゃないんだよなぁ…)*｡
 

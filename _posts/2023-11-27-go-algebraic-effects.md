@@ -269,7 +269,7 @@ Goroutine自体は値としての実態がないので､1回走らせてchannel
 
 <center>
 [label:stackful]
-![/pictures{{page.id}}/asym-stack.jpg](/pictures/{{ page.id }}/asym-stack.jpg)
+<img src="{{site.baseurl}}/pictures/{{page.id}}/asym-stack.jpg">
 図[ref:stackful]. asymmetric stackful coroutinesのcall stackのわかりやすい図
 </center>
 

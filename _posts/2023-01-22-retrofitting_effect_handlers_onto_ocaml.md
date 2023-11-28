@@ -53,7 +53,7 @@ callee-saved registersを使わないことにより､`try`節の中を評価�
 
 <center>
 [label: programstack]
-![Program stack](/pictures/{{ page.id }}/program_stack.png)
+<img src="/pictures/{{ page.id }}/program_stack.png" alt="Program stack">
 図[ref: programstack] Program stack on stock OCaml ([fnref:1]より引用､筆者メモつき)[^3] 
 </center>
 
@@ -75,7 +75,7 @@ fiberは図[ref:omlayout](a)のようになる｡
 
 <center>
 [label:omlayout]
-![Layout of Multicore OCaml effect handlers](/pictures/{{ page.id }}/molayout.png)
+<img src="/pictures/{{ page.id }}/molayout.png" alt="Layout of Multicore OCaml effect handlers">
 図[ref:omlayout] Layout of Multicore OCaml effect handlers ([fnref:1]より引用､筆者メモつき)
 </center>
 
