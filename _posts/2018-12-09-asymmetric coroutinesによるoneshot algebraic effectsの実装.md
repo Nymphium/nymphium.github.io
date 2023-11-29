@@ -119,11 +119,11 @@ Asymmetric coroutinesは対象のコルーチンへ*飛ぶ*操作resumeと操作
 <center>
 [label:tbl-cor]
 表[ref:tbl-cor]. the comparision of a?symmetric coroutines
+</center>
 
 |                      | ***a***symmetric coroutines | symmetric coroutines |
 |:--------------------:|:----------------------------|:---------------------|
 | control manipuration | resume, yield               | conttrol             |
-</center>
 
 Asymmetric coroutinesはresumeで呼び出す呼び出し側と､呼び出される側という呼ぶ呼ばれるの関係がコルーチン(とメインスレッド)間にあるのが特徴となっている｡
 
@@ -199,13 +199,13 @@ call/1ccとは､継続の実行が高々1回に制限されているcall/ccで�
 <center>
 [label:tbl-cont-cor]
 表[ref:tbl-cont-cor]. the correspondence between continuations and asymmetric coroutines
+</center>
 
 |                     | continuations      | asymmetric coroutines |
 |:--------------------|:-------------------|:----------------------|
 | continuation object | function           | coroutine thread      |
 | run continuation    | call function      | `resume`              |
 | suspend             | waste continuation | `yield`               |
-</center>
 
 ##!コラム: JavaScriptのgenerator
 ES2015からgeneratorというものが追加された｡
@@ -264,6 +264,7 @@ Core Effから\\(\lambda_{\text{\textit{cor}}}\\)への変換､つまり言語A
 <center>
 [label:tbl-aeac]
 表[ref:tbl-aeac]. the intuitional correspondence between (oneshot ) algebraic effects and asymmetric coroutines
+</center>
 
 | (oneshot) algebraic effects | asymmetric coroutines |
 |:----------------------------|:----------------------|
@@ -271,7 +272,6 @@ Core Effから\\(\lambda_{\text{\textit{cor}}}\\)への変換､つまり言語A
 | perform                     | `yield`               |
 | continuation                | coroutine thread      |
 | run continuation            | `resume`              |
-</center>
 
 ハンドラは対応が取りづらいので曖昧になっている｡
 ハンドラの動作を思い出そう｡

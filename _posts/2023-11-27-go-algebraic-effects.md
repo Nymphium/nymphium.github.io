@@ -76,13 +76,13 @@ Coroutinesは､プログラムの実行を中断し､後で再開すること�
 <center>
 [label:tbl1]
 表[ref:tbl1]. callee-callerの対称性によるコルーチンの分類[fnref:2]
+</center>
 
 |             | symmetric coroutines | asymmetric coroutines |
 |:--          | :--:           | :--:             |
 | "戻る" 操作<br> & 親子関係 | ない           | ある
 | Examples    | Rubyの`Fiber.transfer`, Modula-2 | だいたいのcoroutines
 
-</center>
 
 Symmetric coroutinesは､callee-callerに親子関係はなく､コントロールを他方に"移す"操作しか存在しない｡
 Modula-2に搭載されたサブルーチンを行き来する機能として"coroutine"という名前が使用された｡このcoroutinesがsymmetricであった｡
@@ -94,13 +94,13 @@ Asymmetric onesは対象のcoroutineを"呼び出す"操作と､現在のcorout
 <center>
 [label:tbl2]
 表[ref:tbl2]. stackfulnessによる分類[fnref:2]
+</center>
 
 |              | stackful         | stackless |
 |:--           | :--              | :--       |
 |関数をまたいだ呼び出し | できる           | できない  |
 | examples     | Luaのcoroutine, RubyのFiber | Rustのcoroutine, JSのGenerator|
 
-</center>
 
 Stackful coroutinesは関数呼び出しをまたいだ､複数の関数の階層をもつことができる｡
 一方stackless onesは関数呼び出しをまたぐことができない｡
@@ -131,13 +131,13 @@ console.log(str);
 <center>
 [label:symco-goch]
 表[ref:symco-goch]. Symmetric coroutinesとgoroutines+channelsの対応
+</center>
 
 | symmetric coroutines | goroutines+channels|
 |:-:|:-:|
 |スレッド | goroutine |
 |`transfer` | channel `send`/`recv`|
 
-</center>
 
 というか､対応付けるための材料が他に無いよね｡
 Channelsはrecvしてる側に対してsendするためcallee-callerの関係が生まれそうだが､send側にrecv側は戻す必要がないので､実は関係としてはフラットである([ref:round])｡

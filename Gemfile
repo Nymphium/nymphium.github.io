@@ -16,6 +16,4 @@ gem 'rake'
 gem 'redcarpet'
 gem 'webrick'
 
-gem "faraday-retry", "~> 2.2"
-
-gem "jekyll-feed", "~> 0.17.0"
+gem "jekyll-feed"

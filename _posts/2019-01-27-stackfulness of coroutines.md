@@ -47,13 +47,13 @@ end)
 <center>
 [label:tbl2]
 表[ref:tbl2]. stackfulnessによる分類
+</center>
 
 |              | stackful         | stackless |
 |:--           | :--              | :--       |
 |またいでyield | できる           | できない  |
 | examples     | Luaのcoroutine, RubyのFiber | Rustのcoroutine, JSのGenerator|
 
-</center>
 
 stackful coroutinesは単に "coroutine" ､ あるいは "fiber" と呼ばれ､
 stackless coroutinesは "generator" と称される傾向にある｡
