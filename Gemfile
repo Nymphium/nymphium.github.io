@@ -17,3 +17,4 @@ gem 'redcarpet'
 gem 'webrick'
 
 gem "jekyll-feed"
+gem "liquid", ">= 4.0.4"

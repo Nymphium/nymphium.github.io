@@ -127,6 +127,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  arm64-darwin-23
   x86_64-darwin-21
   x86_64-darwin-22
   x86_64-linux
@@ -139,6 +140,7 @@ DEPENDENCIES
   jekyll-target-blank
   jemoji
   json
+  liquid (>= 4.0.4)
   nokogiri
   open_uri_redirections
   rake
