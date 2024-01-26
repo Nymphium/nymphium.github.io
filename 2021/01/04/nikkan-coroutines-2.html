@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<meta name="generator" content="Jekyll v4.3.1" />
+<meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="日刊Coroutines(2) あとはやるだけ(終)" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -52,7 +52,6 @@
         <nav class="site-nav">
           <div class="trigger">
             <a class="page-link" href="/about/README.html">About me</a>
-            <a class="page-link" href="/aboutme.html">About me</a>
             <a class="page-link" href="/slide.html">Slides</a>
             <a class="page-link" href="/tags.html">Tags</a>
           </div>
@@ -68,7 +67,7 @@
               <h1 class="post-title" itemprop="name headline">日刊Coroutines(2) あとはやるだけ(終)</h1>
               <span class="post-meta">
                 <time datetime="2021-01-04T00:00:00+09:00" itemprop="datePublished">Jan 4, 2021</time>
-                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2021-01-04-nikkan-coroutines-2.md" target="_blank" rel="noopener noreferrer">src</a>
+                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2021-01-04-nikkan-coroutines-2.md" target="_blank" rel="noopener noreferrer noopener noreferrer">src</a>
                 <p class="tags">tag: {<span class="tag">
                     <a href="/tags.html#%E6%97%A5%E5%88%8ACoroutines-ref">日刊Coroutines</a>
                   </span><span></span><span class="tag">
@@ -116,9 +115,9 @@
 構文を定義したのであとは評価器を実装するだけです｡</p>
 <p>そういえば前回オキャモーを書いてましたが全体はこちらにあります｡</p>
 <div class="twicard">
-  <span class="image"><a href="https://github.com/nymphium/lambda-c" target="_blank" rel="noopener noreferrer"><div><img src="https://opengraph.githubassets.com/38b1a1765b48347eedecd77af64d1196cd7b8ce74bcf7b0a3406645d6cca0b55/Nymphium/lambda-c"></div></a></span>
+  <span class="image"><a href="https://github.com/nymphium/lambda-c" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://opengraph.githubassets.com/38b1a1765b48347eedecd77af64d1196cd7b8ce74bcf7b0a3406645d6cca0b55/Nymphium/lambda-c"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://github.com/nymphium/lambda-c" target="_blank" rel="noopener noreferrer">GitHub - Nymphium/lambda-c: lambda calculus + coroutines</a></div>
+    <div class="title"><a href="https://github.com/nymphium/lambda-c" target="_blank" rel="noopener noreferrer noopener noreferrer">GitHub - Nymphium/lambda-c: lambda calculus + coroutines</a></div>
     <div class="description">lambda calculus + coroutines. Contribute to Nymphium/lambda-c development by creating an account on GitHub.</div>
   </span>
 </div>
@@ -185,8 +184,7 @@ t ::= ... | l:e
   <span class="o">|</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="bp">false</span>
 </code></pre></div>
 <h1 id="3.+%E6%84%8F%E5%91%B3%E8%AB%96"><a class="headerlink" href="#3.+%E6%84%8F%E5%91%B3%E8%AB%96">3. 意味論</a></h1>
-<p><span class="cite">[<a href="#fn1" title="河原悟 『コルーチンを用いた代数的効果の新しい実装方法の提案』 (令和元年度 筑波大学大学院 博士課程 システム情報工学研究科 修士論文) " id="fnref1">1</a>]</span>
-の図3.7を参照のこと｡
+<p><span class="cite">[<a href="#fn1" title="河原悟 『コルーチンを用いた代数的効果の新しい実装方法の提案』 (令和元年度 筑波大学大学院 博士課程 システム情報工学研究科 修士論文) " id="fnref1">1</a>]</span>の図3.7を参照のこと｡
 今回は再帰がないので \(\textrm{L{\small et}R{\small ec}}\) 規則は除く｡
 図3.8もパターンマッチングに関するものなので無視シャス｡
 そしてなんとミスを見つけました!!!! \(\textrm{L{\small et}}\) 規則の左辺と右辺で prime があったりなかったりします!!!!!</p>
@@ -194,14 +192,10 @@ t ::= ... | l:e
 <p>ところで <code>C[]</code> とは何だ?
 これは evaluation context です｡
 まぁコールスタックというか継続みたいなもんですね｡</p>
-<p></p>
 <center>
 <img src="/pictures/2021/01/04/nikkan-coroutines-2/evaluation-context.png" alt="">
 <label id="ec"></label>
-
-<p>図<a href="#ec">3.1</a>
-. 超図解 評価文脈
-</p>
+図<a href="#ec">3.1</a>. 超図解 評価文脈
 </center>
 <p>ある項から､評価文脈と評価したい項(というか評価文脈が<code>[ ]</code>なる項､つまり値)を分離する関数<code>punch</code>を定義する｡
 ガボッとやるのでpunchです｡慣習などではない｡</p>
@@ -242,15 +236,13 @@ t ::= ... | l:e
 評価したい subterm がまだ値でない場合､さらに再帰的に punch していき､ hole に context を適用することで evaluation context を重ねていきます｡
 そして､ subterms のうち1つだけ値でないものがある場合はそこで打ち切ります｡
 というのも､意味論が小ステップなのでそんなに細かく文脈区切っても意味ないんですね｡</p>
-<p><span class="cite">[<a href="#fn1" title="河原悟 『コルーチンを用いた代数的効果の新しい実装方法の提案』 (令和元年度 筑波大学大学院 博士課程 システム情報工学研究科 修士論文) " id="fnref1">1</a>]</span>
-ではラベル式も評価文脈を分解できるのですが､実際に実装してみるとここでは分解しないほうが良いということに気づきました｡
+<p><span class="cite">[<a href="#fn1" title="河原悟 『コルーチンを用いた代数的効果の新しい実装方法の提案』 (令和元年度 筑波大学大学院 博士課程 システム情報工学研究科 修士論文) " id="fnref1">1</a>]</span>ではラベル式も評価文脈を分解できるのですが､実際に実装してみるとここでは分解しないほうが良いということに気づきました｡
 コメントにもあるとおり､ここでラベル式の subterm に潜ってしまうと<code>yield</code>をうまく評価できないんですねぇ｡
 評価器の実装でもう一度触れます｡
 こういったアハ体験があると初めて実装してよかったなと思いますね｡</p>
 <h2 id="3-2.+%E3%82%B9%E3%83%88%E3%82%A2"><a class="headerlink" href="#3-2.+%E3%82%B9%E3%83%88%E3%82%A2">3-2. ストア</a></h2>
 <p>変数とかラベルを保持しておくのに使います｡
-<span class="cite">[<a href="#fn1" title="河原悟 『コルーチンを用いた代数的効果の新しい実装方法の提案』 (令和元年度 筑波大学大学院 博士課程 システム情報工学研究科 修士論文) " id="fnref1">1</a>]</span>
-上の\(\theta\)です｡</p>
+<span class="cite">[<a href="#fn1" title="河原悟 『コルーチンを用いた代数的効果の新しい実装方法の提案』 (令和元年度 筑波大学大学院 博士課程 システム情報工学研究科 修士論文) " id="fnref1">1</a>]</span>上の\(\theta\)です｡</p>
 <div class="highlight"><pre><code class="language-ocaml" data-lang="ocaml"><span class="c">(**
   * environment θ for variables and labels
   * each variables / labels is unique and global
@@ -387,9 +379,7 @@ DSL も相まってわかりやすい(自画自賛)｡</p>
 ただ実装しないとわからないことがあったのは面白いです｡
 あんまり深みないんですが終わりです｡
 ありがとうございました｡
-本ブログでも再三再四触れていますが､<span class="cite">[<a href="#fn1" title="河原悟 『コルーチンを用いた代数的効果の新しい実装方法の提案』 (令和元年度 筑波大学大学院 博士課程 システム情報工学研究科 修士論文) " id="fnref1">1</a>]</span>
-の\(\lambda_{\rm ac}\)の意味論を考えるにあたりベースにした論文<span class="cite">[<a href="#fn2" title='Moura, Ana Lúcia De, and Roberto Ierusalimschy. "Revisiting coroutines." ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. ' id="fnref2">2</a>]</span>
-も面白いので読んでみてください｡</p>
+本ブログでも再三再四触れていますが､<span class="cite">[<a href="#fn1" title="河原悟 『コルーチンを用いた代数的効果の新しい実装方法の提案』 (令和元年度 筑波大学大学院 博士課程 システム情報工学研究科 修士論文) " id="fnref1">1</a>]</span>の\(\lambda_{\rm ac}\)の意味論を考えるにあたりベースにした論文<span class="cite">[<a href="#fn2" title='Moura, Ana Lúcia De, and Roberto Ierusalimschy. "Revisiting coroutines." ACM Transactions on Programming Languages and Systems (TOPLAS) 31.2 (2009): 6. ' id="fnref2">2</a>]</span>も面白いので読んでみてください｡</p>
 <div class="footnotes">
 <hr>
 <ol>

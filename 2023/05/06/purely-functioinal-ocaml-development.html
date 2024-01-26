@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html;charset=UTF-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="format-detection" content="telephone=no"/>
+
+    <title>OCaml環境をNixでセットアップしてGitHub Actionsでopamに楽にパッケージを上げる - lilyum ensemble</title>
+    <meta itemprop="name" content="OCaml環境をNixでセットアップしてGitHub Actionsでopamに楽にパッケージを上げる - lilyum ensemble"/>
+    <meta name="keywords" content="OCaml,Nix"/>
+    <meta name="thumbnail" content="/pictures/github_icon.png"/>
+    <meta itemprop="image" content="/pictures/github_icon.png"/>
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="lilyum ensemble"/>
+    <meta name="twitter:title" content="OCaml環境をNixでセットアップしてGitHub Actionsでopamに楽にパッケージを上げる - lilyum ensemble"/>
+    <meta name="twitter:url" content="/2023/05/06/purely-functioinal-ocaml-development.html"/> 
+    <meta name="twitter:text:description" content="こんにちは､びしょ～じょです｡パン作りにドハマリしました｡今回は､Nixを使ったOCaml開発環境構築の話をします｡といってもテンプレを引っ張るだけで基本OKにしておいたので､テンプレを引っ張る..."/>
+    <meta name="twitter:image" content="https://nymphium.github.io/pictures/github_icon.png"/>
+    <meta name="twitter:image:src" content="https://nymphium.github.io/pictures/github_icon.png"/>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="OCaml環境をNixでセットアップしてGitHub Actionsでopamに楽にパッケージを上げる" />
+<meta name="author" content="Satoru Kawahara" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="こんにちは､びしょ～じょです｡ パン作りにドハマリしました｡" />
+<meta property="og:description" content="こんにちは､びしょ～じょです｡ パン作りにドハマリしました｡" />
+<link rel="canonical" href="https://nymphium.github.io/2023/05/06/purely-functioinal-ocaml-development.html" />
+<meta property="og:url" content="https://nymphium.github.io/2023/05/06/purely-functioinal-ocaml-development.html" />
+<meta property="og:site_name" content="lilyum ensemble" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-05-06T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="OCaml環境をNixでセットアップしてGitHub Actionsでopamに楽にパッケージを上げる" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Satoru Kawahara"},"dateModified":"2023-05-06T00:00:00+09:00","datePublished":"2023-05-06T00:00:00+09:00","description":"こんにちは､びしょ～じょです｡ パン作りにドハマリしました｡","headline":"OCaml環境をNixでセットアップしてGitHub Actionsでopamに楽にパッケージを上げる","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2023/05/06/purely-functioinal-ocaml-development.html"},"url":"https://nymphium.github.io/2023/05/06/purely-functioinal-ocaml-development.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta property="og:image" content="/pictures/github_icon.png"/>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="wrapper" style="font-family: 'Comfortaa';">
+        <a class="site-title" href="/">lilyum ensemble</a>
+        <nav class="site-nav">
+          <div class="trigger">
+            <a class="page-link" href="/about/README.html">About me</a>
+            <a class="page-link" href="/slide.html">Slides</a>
+            <a class="page-link" href="/tags.html">Tags</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-content">
+      <div class="wrapper" lang="ja">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <div class="post-header-info">
+              <h1 class="post-title" itemprop="name headline">OCaml環境をNixでセットアップしてGitHub Actionsでopamに楽にパッケージを上げる</h1>
+              <span class="post-meta">
+                <time datetime="2023-05-06T00:00:00+09:00" itemprop="datePublished">May 6, 2023</time>
+                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2023-05-06-purely-functioinal-ocaml-development.md" target="_blank" rel="noopener noreferrer noopener noreferrer">src</a>
+                <p class="tags">tag: {<span class="tag">
+                    <a href="/tags.html#OCaml-ref">OCaml</a>
+                  </span><span></span><span class="tag">
+                    <a href="/tags.html#Nix-ref">Nix</a>
+                  </span>}
+                </p>
+                <a class="twitter-share-button" href="https://twitter.com/intent/tweet" target="_blank" rel="noopener noreferrer">Tweet</a> 
+
+                <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja" title="OCaml環境をNixでセットアップしてGitHub Actionsでopamに楽にパッケージを上げる" target="_blank" rel="noopener noreferrer">
+                  <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマークに追加" width="20" height="20" style="border: none;">
+                </a>
+                <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+              </span>
+            </div>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <script type="text/javascript" src="/js/GithubRepoWidget.min.js"></script>
+            <script type="text/javascript">setTimeout(GithubRepoWidget.init, 3000);</script>
+
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                renderMathInElement(document.body, {
+                  // customised options
+                  // • auto-render specific keys, e.g.:
+                  delimiters: [
+                                  {left: '$$', right: '$$', display: true},
+                                  {left: '$', right: '$', display: false},
+                                  {left: '\\(', right: '\\)', display: false},
+                                  {left: '\\[', right: '\\]', display: true},
+                                  {left: '\\\\(', right: '\\\\)', display: false},
+                                  {left: '\\\\[', right: '\\\\]', display: true}
+                                ],
+                  // • rendering keys, e.g.:
+                  throwOnError : false
+                });
+              });
+            </script>
+          </header>
+
+          <div class="post-content" itemprop="articleBody">
+<p>こんにちは､びしょ～じょです｡
+パン作りにドハマリしました｡</p>
+<p>今回は､Nixを使ったOCaml開発環境構築の話をします｡
+といってもテンプレを引っ張るだけで基本OKにしておいたので､テンプレを引っ張る部分と仕組みの簡単な説明をし､その後テンプレの内容を説明する｡
+では､やっていき｡</p>
+<h1 id="TL%3BDR"><a class="headerlink" href="#TL%3BDR">TL;DR</a></h1>
+<ol>
+<li>Install Nix on your PC and brain.</li>
+<li><code>$ nix flake init -t github:Nymphium/templates#ocaml</code></li>
+<li>Refer to README.md obtained to setup GitHub Actions.</li>
+</ol>
+<h1 id="1.+Nix"><a class="headerlink" href="#1.+Nix">1. Nix</a></h1>
+<p>Nixという便利なものがある｡
+<a href="https://tech-hub.herp.co.jp/tags/nix/1.html" target="_blank" rel="noopener noreferrer">前職でめちゃくちゃ使って</a>ノウハウも溜まったが､本ブログでは全く触れてなかった｡
+説明がやや面倒なのが原因だと思う｡
+なのでNixの導入は各自がんばってください｡
+<a href="https://nixos.org/download.html" target="_blank" rel="noopener noreferrer">Download Nix</a>の"Multi-user installation (recommended)"をおこなってください｡recommendedなんで｡</p>
+<p>Nixの良いところといえば､再現可能性が極めて高い環境を構築できること｡
+悪いところは､ドキュメントがない､若干の変更で再度ビルドが走る<sup id="fnref1" title="朗報は差分ビルドだが､悲報は差分がよくわからず全ビルドになることが多々ある "><a href="#fn1">1</a></sup>､などなど｡
+ただ使い方がわかると気分がいいので使ってしまう｡
+Docker以上に手元でintegratedされてる感がある｡
+メタキャラではないが独特の使用感があり楽しいのでピックするイメージ｡</p>
+<h2 id="1-1.+Nix+Flake"><a class="headerlink" href="#1-1.+Nix+Flake">1-1. Nix Flake</a></h2>
+<p>では皆さんNixは完全に理解できましたね｡
+最近は<code>nix flake</code>というサブコマンドが生えた｡
+極めて雰囲気だけ説明すると､npmとpackage.jsonに対してyarnとpackage.json+yarn.lockみたいな感じで､flake.nixとflake.lockというファイルが生えることになる｡
+flake.nixに色々書くと､環境構築のみならず設定を共有できるビルド環境も提供してくれる｡いいですね｡</p>
+<p>さらに､こいつはテンプレートを引っ張ってくる機能があるので､引っ張ります｡</p>
+<div class="github-widget" data-repo="Nymphium/flake-templates"></div>
+<div class="highlight">
+<span class="listing-name">テンプレートを引っ張る</span><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>nix flake init <span class="nt">-t</span> github:Nymphium/templates#ocaml
+</code></pre>
+</div>
+<p>これで上記リポジトリの<code>templates/ocaml</code>ディレクトリをそのまま引っ張ってくる｡</p>
+<p>ところで! direnvという便利なものがあり､.envrcというbashファイルを置いて<code>$ direnv allow</code>とすると､そのファイルの内容を実行してシェルセッションに反映してくれる｡</p>
+<div class="twicard">
+  <span class="image"><a href="https://direnv.net/" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="/pictures/no_image.png"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="https://direnv.net/" target="_blank" rel="noopener noreferrer noopener noreferrer">direnv – unclutter your .profile</a></div>
+    <div class="description">unclutter your .profile</div>
+  </span>
+</div>
+<div class="highlight">
+<span class="listing-name">direnvは便利じゃぞい</span><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">cat</span> .envrc
+<span class="nb">export </span><span class="nv">FOO</span><span class="o">=</span>3
+<span class="nv">$ </span>direnv allow
+<span class="nv">$ </span><span class="nb">echo</span> <span class="nv">$FOO</span>
+3
+</code></pre>
+</div>
+<p>そして､direnvはnix-flakeをサポートしており､<code>use flake</code>コマンドを.envrcに書くことで､flake.nix(の<code>devShells.default</code>)を読み込んでくれる｡
+多分direnvの説明も必要だったのが執筆から遠ざけたのを､本節を書いて思い出した｡</p>
+<p>上記のテンプレートは.envrcも用意しているので､あとは<code>$ dirienv allow</code>するだけで…ocaml､ocamlformat､ocamllsp､utop…のビルドが走る｡</p>
+<div class="highlight">
+<span class="listing-name">ご確認ください</span><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>direnv allow
+<span class="c"># 初回は数分かかる</span>
+<span class="nv">$ </span>dune <span class="nb">exec </span>app/main.exe
+hello
+</code></pre>
+</div>
+<p>たったこれだけで再現性のあるOCaml開発環境が無事整備された｡
+お好きなエディタでOCamlを書いてください｡</p>
+<p>nix-direnvを導入するとビルドをいい感じにキャッシュしてくれるので､是非セットアップされたし｡</p>
+<div class="github-widget" data-repo="nix-community/nix-direnv"></div>
+<h2 id="1-2.+opam-nix"><a class="headerlink" href="#1-2.+opam-nix">1-2. opam-nix</a></h2>
+<p>まあなんて手軽なんでしょう｡
+とにかく動かしたい皆さん(誰?)のためにゴールまでバーッといってしまいましたが､もう少し中身を見ていきます｡</p>
+<p>ライブラリの依存をopamファイルに記述してアレしてコレしてというopam-usualな手法を取ってはいる｡
+opamとnixをつなぐのが､opam-nixである｡</p>
+<div class="github-widget" data-repo="tweag/opam-nix"></div>
+<p>詳細は↑を見てくださいなんだが､<code>buildOpamProject'</code>の<code>resolveArgs</code>に<code>with-test</code>と<code>with-doc</code>を渡すと､プロジェクトだけでなく<em>ライブラリのテストとドキュメントの依存も引っ張ってしまう</em>｡
+これを抑制するために､<code>opam__with_test</code>と<code>opam__with_doc</code>に<code>"false"</code>を渡す<sup id="fnref2" title="この辺を参照: https://github.com/tweag/opam-nix#package 各パッケージのwith-{test,doc}フラグを折る "><a href="#fn2">2</a></sup>｡</p>
+<div class="highlight">
+<span class="listing-name">part of flake.nix</span><pre><code class="language-nix" data-lang="nix"><span class="o">......</span>
+<span class="nv">overlay</span> <span class="o">=</span> <span class="nv">self</span><span class="p">:</span> <span class="nv">super</span><span class="p">:</span>
+  <span class="kn">with</span> <span class="kr">builtins</span><span class="p">;</span>
+  <span class="kd">let</span>
+    <span class="nv">super</span><span class="err">'</span> <span class="o">=</span> <span class="nv">mapAttrs</span>
+      <span class="p">(</span><span class="nv">p</span><span class="p">:</span> <span class="nv">_</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nv">hasAttr</span> <span class="s2">"passthru"</span> <span class="nv">super</span><span class="o">.</span><span class="p">${</span><span class="nv">p</span><span class="p">}</span>
+          <span class="o">&amp;&amp;</span> <span class="nv">hasAttr</span> <span class="s2">"pkgdef"</span> <span class="nv">super</span><span class="o">.</span><span class="p">${</span><span class="nv">p</span><span class="p">}</span><span class="o">.</span><span class="nv">passthru</span>
+        <span class="c"># これね</span>
+        <span class="k">then</span> <span class="nv">super</span><span class="o">.</span><span class="p">${</span><span class="nv">p</span><span class="p">}</span><span class="o">.</span><span class="nv">overrideAttrs</span> <span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nv">opam__with_test</span> <span class="o">=</span> <span class="s2">"false"</span><span class="p">;</span>
+          <span class="nv">opam__with_doc</span> <span class="o">=</span> <span class="s2">"false"</span><span class="p">;</span> <span class="p">})</span>
+        <span class="k">else</span> <span class="nv">super</span><span class="o">.</span><span class="p">${</span><span class="nv">p</span><span class="p">})</span>
+      <span class="nv">super</span><span class="p">;</span>
+    <span class="nv">local</span><span class="err">'</span> <span class="o">=</span> <span class="nv">mapAttrs</span>
+      <span class="p">(</span><span class="nv">p</span><span class="p">:</span> <span class="nv">_</span><span class="p">:</span>
+        <span class="nv">super</span><span class="o">.</span><span class="p">${</span><span class="nv">p</span><span class="p">}</span><span class="o">.</span><span class="nv">overrideAttrs</span> <span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nv">doNixSupport</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}))</span>
+      <span class="nv">localPackagesQuery</span><span class="p">;</span>
+  <span class="kn">in</span>
+  <span class="nv">super</span><span class="err">'</span> <span class="o">//</span> <span class="nv">local</span><span class="err">'</span><span class="p">;</span>
+<span class="o">......</span>
+</code></pre>
+</div>
+<h2 id="1-3.+%E3%81%9D%E3%81%AE%E4%BB%96"><a class="headerlink" href="#1-3.+%E3%81%9D%E3%81%AE%E4%BB%96">1-3. その他</a></h2>
+<h3 id="1-3-1.+ocamlformat"><a class="headerlink" href="#1-3-1.+ocamlformat">1-3-1. ocamlformat</a></h3>
+<p>ocamlformatは使うのに微妙にコツがいる｡
+具体的には､設定ファイルに指定したバージョンとコマンドのバージョンをあわせる必要がある｡
+ひと手間ではあるのだが､ひと手間すらかけたくないのがエンジニアの怠惰な性｡
+opam-nixで依存を解決するときに､nix expressionで設定ファイルからバージョンを取得し､該当するバージョンのocamlformatを使うようにしている｡</p>
+<div class="highlight">
+<span class="listing-name">それ､nixでできるよ</span><pre><code class="language-nix" data-lang="nix"><span class="c"># part of flake.niix</span>
+<span class="o">......</span>
+<span class="nv">ocamlformat</span> <span class="o">=</span> <span class="nv">pkgs</span><span class="o">.</span><span class="nv">callPackage</span> <span class="sx">./nix/ocamlformat.nix</span> <span class="p">{</span> <span class="nv">ocamlformat</span> <span class="o">=</span> <span class="s2">"</span><span class="si">${</span><span class="nv">src</span><span class="si">}</span><span class="s2">/.ocamlformat"</span><span class="p">;</span> <span class="p">};</span>
+<span class="o">......</span>
+
+<span class="c"># ocamlformat.nix</span>
+<span class="p">{</span> <span class="nv">pkgs</span><span class="p">,</span> <span class="nv">lib</span><span class="p">,</span> <span class="nv">ocamlformat</span> <span class="p">}:</span>
+<span class="kd">let</span>
+  <span class="nv">ocamlformat_config</span> <span class="o">=</span> <span class="nv">lib</span><span class="o">.</span><span class="nv">strings</span><span class="o">.</span><span class="nv">splitString</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="p">(</span><span class="kr">builtins</span><span class="o">.</span><span class="nv">readFile</span> <span class="nv">ocamlformat</span><span class="p">);</span>
+  <span class="nv">re</span> <span class="o">=</span> <span class="kr">builtins</span><span class="o">.</span><span class="nv">match</span> <span class="s2">"version</span><span class="se">\s</span><span class="s2">*=</span><span class="se">\s</span><span class="s2">*(.*)</span><span class="se">\s</span><span class="s2">*$"</span><span class="p">;</span>
+  <span class="nv">version_line</span> <span class="o">=</span> <span class="nv">lib</span><span class="o">.</span><span class="nv">lists</span><span class="o">.</span><span class="nv">findFirst</span>
+    <span class="p">(</span><span class="nv">l</span><span class="p">:</span> <span class="kr">builtins</span><span class="o">.</span><span class="nv">isList</span> <span class="p">(</span><span class="nv">re</span> <span class="nv">l</span><span class="p">))</span>
+    <span class="p">(</span><span class="kr">throw</span> <span class="s2">"no version specified in .ocamlformat"</span><span class="p">)</span>
+    <span class="nv">ocamlformat_config</span><span class="p">;</span>
+  <span class="nv">version</span> <span class="o">=</span> <span class="kr">builtins</span><span class="o">.</span><span class="nv">elemAt</span> <span class="p">(</span><span class="nv">re</span> <span class="nv">version_line</span><span class="p">)</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kn">in</span>
+<span class="kr">builtins</span><span class="o">.</span><span class="nv">trace</span>
+  <span class="s2">"detect ocamlformat version: </span><span class="si">${</span><span class="nv">version</span><span class="si">}</span><span class="s2">"</span>
+  <span class="nv">version</span>
+</code></pre>
+</div>
+<h1 id="2.+opam-repository%E3%81%AB%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%82%92%E4%B8%8A%E3%81%92%E3%82%8B"><a class="headerlink" href="#2.+opam-repository%E3%81%AB%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%82%92%E4%B8%8A%E3%81%92%E3%82%8B">2. opam-repositoryにパッケージを上げる</a></h1>
+<p>さて､ライブラリかなんかができたんでopamに上げたくなったかもしれない｡
+opamはopam-repositoryにPRを出して､approve &amp; mergeされると<code>opam install</code>等で引っ張ることができるようになる<sup id="fnref3" title="全部ビルド等がうまくいくことや､マリシャスでないパッケージかどうかがチェックされるというメリットがある反面､パッケージのアップロードにコミュニケーションが必要になったりメンテナが休んでるときにアップロードできなかったりというデメリットもある｡OCamlのエコシステムがあまり成長しないのはこのせいなんj… "><a href="#fn3">3</a></sup>｡</p>
+<div class="github-widget" data-repo="ocaml/opam-repository"></div>
+<h2 id="2-1.+dune-release"><a class="headerlink" href="#2-1.+dune-release">2-1. dune-release</a></h2>
+<p>｢PR作るのダリィよ｣と思いましたよね｡dune-releaseを使うとopamファイルのvalidityチェックからPR自動生成までやってくれる｡</p>
+<div class="github-widget" data-repo="tarides/dune-release"></div>
+<p>当テンプレートはタグを切ってpushするとopam-repositoryにパッケージをアップロードするためのPRを作ってくれる｡
+GitHub Actioinsで使うには微妙に工夫が必要なので､する｡
+GitHub APIでopam-repositoryをフォークしてPRを作るので､GitHub API tokenを生成する｡
+また､内部的にsshではなくtokenを使ったhttpsでリポジトリのclone&amp;pushをするようにする｡</p>
+<div class="highlight">
+<span class="listing-name">なんでこんなことせなあかんねん</span><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>git config <span class="nt">--global</span> user.email <span class="s2">"</span><span class="k">${</span><span class="p">{ env.GIT_EMAIL </span><span class="k">}</span><span class="s2">}"</span>
+<span class="nv">$ </span>git config <span class="nt">--global</span> user.name <span class="s2">"</span><span class="k">${</span><span class="p">{ env.GIT_NAME </span><span class="k">}</span><span class="s2">}"</span>
+<span class="nv">$ </span>git config <span class="nt">--global</span> url.<span class="s2">"https://github.com/"</span>.pushInsteadOf <span class="s2">"git@github.com:"</span>
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"machine github.com login </span><span class="k">${</span><span class="p">{ env.GITHUB_ID </span><span class="k">}</span><span class="s2">} password </span><span class="k">${</span><span class="p">{ secrets.GH_TOKEN </span><span class="k">}</span><span class="s2">}"</span> <span class="o">&gt;</span> ~/.netrc
+</code></pre>
+</div>
+<p>そして､dune-releaseがデフォルトでopam-repositoryの保存場所を<code>$HOME/git/opam-repository</code>にしているので､そこにopam-repositoryを<em>手動で</em>引っ張る｡</p>
+<div class="highlight">
+<span class="listing-name">なんでこんなことせな2</span><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$HOME</span>/git
+<span class="nv">$ </span>git clone https://github.com/ocaml/opam-repository <span class="nv">$HOME</span>/git/opam-repository
+</code></pre>
+</div>
+<p>あとはdune-releaseを実行すればOK｡</p>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">eval</span> <span class="si">$(</span>opam <span class="nb">env</span><span class="si">)</span>
+<span class="nv">$ </span>dune-release distrib <span class="nt">--skip-lint</span> <span class="nt">--skip-build</span>
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"https://github.com/</span><span class="k">${</span><span class="p">{ env.GITHUB_ID </span><span class="k">}</span><span class="s2">}/</span><span class="k">${</span><span class="p">{ env.GITHUB_REPO_NAME </span><span class="k">}</span><span class="s2">}/archive/refs/tags/</span><span class="k">${</span><span class="p">{ env.RELEASE_VERSION </span><span class="k">}</span><span class="s2">}.tar.gz"</span> <span class="o">&gt;</span> _build/asset-<span class="k">${</span><span class="p">{ env.RELEASE_VERSION </span><span class="k">}</span><span class="o">}</span>.url
+<span class="nv">$ </span>dune-release opam pkg
+<span class="nv">$ </span>dune-release opam submit <span class="nt">-y</span> <span class="nt">--no-auto-open</span> <span class="nt">--token</span> <span class="k">${</span><span class="p">{ secrets.GH_TOKEN </span><span class="k">}</span><span class="o">}</span>
+</code></pre></div>
+<p>あとはタグを切ってpushすればリリースが切られてopam-repositoryにPRが作られる｡
+メンテナがレビューしてくれるので､問題なければマージしてもらう｡</p>
+<hr>
+<p>これでOCamlの開発環境セットアップからCIとパッケージアップデートまで簡単にできるようになる｡
+ぜひみなさんも使ってください｡</p>
+<hr>
+<div class="footnotes">
+<hr>
+<ol>
+
+<li id="fn1">
+<p>朗報は差分ビルドだが､悲報は差分がよくわからず全ビルドになることが多々ある <a href="#fnref1">↩</a></p>
+</li>
+
+<li id="fn2">
+<p>この辺を参照: <a href="https://github.com/tweag/opam-nix#package" target="_blank" rel="noopener noreferrer">https://github.com/tweag/opam-nix#package</a> 各パッケージの<code>with-{test,doc}</code>フラグを折る <a href="#fnref2">↩</a></p>
+</li>
+
+<li id="fn3">
+<p>全部ビルド等がうまくいくことや､マリシャスでないパッケージかどうかがチェックされるというメリットがある反面､パッケージのアップロードにコミュニケーションが必要になったりメンテナが休んでるときにアップロードできなかったりというデメリットもある｡OCamlのエコシステムがあまり成長しないのはこのせいなんj… <a href="#fnref3">↩</a></p>
+</li>
+
+</ol>
+</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+    <footer>
+      <div class="pagination btn-group" style="text-align: center; font-family: 'Comfortaa';">
+        <a class="btn prev" href="/2023/04/23/decade.html" title="すまん､他社行くわ (ボツ案: プログラミングを始めて10年目になるし､新卒で入った会社もやめて転職する)">← Prev</a>
+        /<a class="btn" href="/">Top</a>/
+        <a class="btn next" href="/2023/06/02/gocon2023-ctf.html" title="GoCon2023だのCTF Writeupだの">Next →</a>
+      </div>
+    </footer>
+
+  </body>
+</html>

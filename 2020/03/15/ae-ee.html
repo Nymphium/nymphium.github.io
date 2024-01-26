@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<meta name="generator" content="Jekyll v4.3.1" />
+<meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="Algebraic EffectsとExtensible Effectsの違いってなんや? 関係あんの?" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -52,7 +52,6 @@
         <nav class="site-nav">
           <div class="trigger">
             <a class="page-link" href="/about/README.html">About me</a>
-            <a class="page-link" href="/aboutme.html">About me</a>
             <a class="page-link" href="/slide.html">Slides</a>
             <a class="page-link" href="/tags.html">Tags</a>
           </div>
@@ -72,7 +71,7 @@
               <h1 class="post-title" itemprop="name headline">Algebraic EffectsとExtensible Effectsの違いってなんや? 関係あんの?</h1>
               <span class="post-meta">
                 <time datetime="2020-03-15T00:00:00+09:00" itemprop="datePublished">Mar 15, 2020</time>
-                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2020-03-15-ae-ee.md" target="_blank" rel="noopener noreferrer">src</a>
+                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2020-03-15-ae-ee.md" target="_blank" rel="noopener noreferrer noopener noreferrer">src</a>
                 <p class="tags">tag: {<span class="tag">
                     <a href="/tags.html#Algebraic%20Effects-ref">Algebraic Effects</a>
                   </span><span></span><span class="tag">
@@ -120,15 +119,12 @@
 <p>度々この2つの違いは何なのかという質問を見ます｡</p>
 <p>比較というわけでも無いんですが､今回はこの2つを並べて見比べてみましょう｡</p>
 <p>そいうえばだいぶ前の<a href="/pdf/ae_from_0.html">発表</a>でこんなこと言ってましたけど</p>
-<p><img src="/pictures//2020/03/15/ae-ee/%E3%81%93%E3%82%93%E3%81%AA%E3%81%93%E3%81%A8.png" alt="/pictures/2020/03/15/ae-ee/こんなこと.png">
+<p><img src="/pictures//2020/03/15/ae-ee/%E3%81%93%E3%82%93%E3%81%AA%E3%81%93%E3%81%A8.png" alt="こんなこと">
 </p>
-<center>図<a href="#fig:compare">1.1</a>
-. 雑な比較</center>
+<center>図<a href="#fig:compare">1.1</a>. 雑な比較</center>
 <label id="fig:compare"></label><p>本当かしら</p>
 <h1 id="2.+Algebraic+Effects+and+Handlers"><a class="headerlink" href="#2.+Algebraic+Effects+and+Handlers">2. Algebraic Effects and Handlers</a></h1>
-<p>PlotkinとPowerによりもたらされた､計算エフェクトを代数的に表現するという考え方<span class="cite">[<a href="#fn1" title='Plotkin, Gordon, and John Power. "Adequacy for algebraic effects." International Conference on Foundations of Software Science and Computation Structures. Springer, Berlin, Heidelberg, 2001. ' id="fnref1">1</a>]</span>
-に､PlotkinとPretnarがハンドラを追加したもの<span class="cite">[<a href="#fn2" title='Plotkin, Gordon, and Matija Pretnar. "Handlers of algebraic effects." European Symposium on Programming. Springer, Berlin, Heidelberg, 2009. ' id="fnref2">2</a>]</span>
-である｡</p>
+<p>PlotkinとPowerによりもたらされた､計算エフェクトを代数的に表現するという考え方<span class="cite">[<a href="#fn1" title='Plotkin, Gordon, and John Power. "Adequacy for algebraic effects." International Conference on Foundations of Software Science and Computation Structures. Springer, Berlin, Heidelberg, 2001. ' id="fnref1">1</a>]</span>に､PlotkinとPretnarがハンドラを追加したもの<span class="cite">[<a href="#fn2" title='Plotkin, Gordon, and Matija Pretnar. "Handlers of algebraic effects." European Symposium on Programming. Springer, Berlin, Heidelberg, 2009. ' id="fnref2">2</a>]</span>である｡</p>
 <p>詳細はカツアイしますんで､本ブログをご巡回ください｡
 簡単にまとめると､</p>
 <ul>
@@ -174,8 +170,7 @@ fun main() : console () {
 </code></pre>
 </div>
 <h1 id="3.+Extensible+Effects"><a class="headerlink" href="#3.+Extensible+Effects">3. Extensible Effects</a></h1>
-<p>Kiselyovらにより考案された､Monad Transformerに代わるエフェクトをガチャガチャやる方法である<span class="cite">[<a href="#fn3" title='Kiselyov, Oleg, Amr Sabry, and Cameron Swords. "Extensible effects: an alternative to monad transformers." ACM SIGPLAN Notices 48.12 (2013): 59-70. ' id="fnref3">3</a>]</span>
-｡
+<p>Kiselyovらにより考案された､Monad Transformerに代わるエフェクトをガチャガチャやる方法である<span class="cite">[<a href="#fn3" title='Kiselyov, Oleg, Amr Sabry, and Cameron Swords. "Extensible effects: an alternative to monad transformers." ACM SIGPLAN Notices 48.12 (2013): 59-70. ' id="fnref3">3</a>]</span>｡
 論文を読むと分かるとおり､こちらは計算体系のようなコンセプトではなく､いい感じのライブラリの実装手法である｡</p>
 <p>耳タコだと思いますが､簡単に言うと､Freeモナドのお手軽monadic interpreter作成機能にOpen Unionで型安全に拡張性をゲット(のちにFreerとかTASeqが盛られて早くなったり)という感じです｡</p>
 <p>筆者はあまり詳しくないんですがまとめてみるとこんな所感</p>
@@ -197,22 +192,16 @@ fun main() : console () {
 </ul>
 <p>Unionを二分探索したりするのはまあいいかな､ハンドラのあたりをちょっと論文から引用します｡
 <code>Eff e w</code>というのがエフェクト<code>e</code>が発生しうる<code>w</code>型の値です｡</p>
-<p><label id="lst:run"></label></p>
 <div class="highlight">
-<span class="listing-name">Fig<a href="#lst:run">3.1</a>
-. run</span><pre><code class="language-haskell" data-lang="haskell"><span class="n">run</span> <span class="o">::</span> <span class="kt">Eff</span> <span class="kt">Void</span> <span class="n">w</span> <span class="o">-&gt;</span> <span class="n">w</span>
+<span class="listing-name">Fig<a href="#lst:run">3.1</a>. run</span><pre><code class="language-haskell" data-lang="haskell"><span class="n">run</span> <span class="o">::</span> <span class="kt">Eff</span> <span class="kt">Void</span> <span class="n">w</span> <span class="o">-&gt;</span> <span class="n">w</span>
 <span class="n">run</span> <span class="n">m</span> <span class="o">=</span> <span class="kr">case</span> <span class="n">admin</span> <span class="n">m</span> <span class="kr">of</span> <span class="kt">Pure</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span>
 </code></pre>
 </div>
-<p>プログラム<a href="#lst:run">3.1</a>
-は<code>Void</code>エフェクトが発生する(つまりエフェクトが発生しない)値からコンストラクタを剥がす操作です｡
+<p>プログラム<a href="#lst:run">3.1</a>は<code>Void</code>エフェクトが発生する(つまりエフェクトが発生しない)値からコンストラクタを剥がす操作です｡
 <code>admin</code>は論文のターミノロジーを使えば､コルーチンをグルグル走らせて最終的な結果まで実行する関数です｡</p>
-<p>続いて <code>Reader</code>エフェクトを追加してみましょう(図<a href="#lst:reader">3.2</a>
-)｡</p>
-<p><label id="lst:reader"></label></p>
+<p>続いて <code>Reader</code>エフェクトを追加してみましょう(図<a href="#lst:reader">3.2</a>)｡</p>
 <div class="highlight">
-<span class="listing-name">Fig<a href="#lst:reader">3.2</a>
-. Readerエフェクト</span><pre><code class="language-haskell" data-lang="haskell"><span class="kr">newtype</span> <span class="kt">Reader</span> <span class="n">e</span> <span class="n">v</span> <span class="o">=</span> <span class="kt">Reader</span> <span class="p">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">v</span><span class="p">)</span>
+<span class="listing-name">Fig<a href="#lst:reader">3.2</a>. Readerエフェクト</span><pre><code class="language-haskell" data-lang="haskell"><span class="kr">newtype</span> <span class="kt">Reader</span> <span class="n">e</span> <span class="n">v</span> <span class="o">=</span> <span class="kt">Reader</span> <span class="p">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">v</span><span class="p">)</span>
                      <span class="kr">deriving</span> <span class="p">(</span><span class="kt">Typeable</span><span class="p">,</span> <span class="kt">Functor</span><span class="p">)</span>
 
 <span class="n">ask</span> <span class="o">::</span> <span class="p">(</span><span class="kt">Typeable</span> <span class="n">e</span><span class="p">,</span> <span class="kt">Member</span> <span class="p">(</span><span class="kt">Reader</span> <span class="n">e</span><span class="p">)</span> <span class="n">r</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="kt">Eff</span> <span class="n">r</span> <span class="n">e</span>
@@ -306,8 +295,7 @@ Iが違う 星が違う 違うだろ すべてが</p>
 一方後者はハンドラをよりモジュラーに定義できる｡</p>
 <p>他にもいろいろありそうだが､本日はこの辺で……｡</p>
 <h1 id="5.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB"><a class="headerlink" href="#5.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">5. おわりに</a></h1>
-<p>Extensible Effectsは必須のデータ構造があるので､図<a href="#fig:compare">1.1</a>
-はまあなんとなくあたってるようなそうでもないような……｡
+<p>Extensible Effectsは必須のデータ構造があるので､図<a href="#fig:compare">1.1</a>はまあなんとなくあたってるようなそうでもないような……｡
 ま､ユーザにとっちゃああんま関係ねえ話にゃんですが……(おわり)</p>
 <div class="footnotes">
 <hr>

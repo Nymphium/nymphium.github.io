@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<meta name="generator" content="Jekyll v4.3.1" />
+<meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="Algebraic Effectsとは? 出身は? 使い方は? その特徴とは? 調べてみました!" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -52,7 +52,6 @@
         <nav class="site-nav">
           <div class="trigger">
             <a class="page-link" href="/about/README.html">About me</a>
-            <a class="page-link" href="/aboutme.html">About me</a>
             <a class="page-link" href="/slide.html">Slides</a>
             <a class="page-link" href="/tags.html">Tags</a>
           </div>
@@ -68,7 +67,7 @@
               <h1 class="post-title" itemprop="name headline">Algebraic Effectsとは? 出身は? 使い方は? その特徴とは? 調べてみました!</h1>
               <span class="post-meta">
                 <time datetime="2018-10-30T00:00:00+09:00" itemprop="datePublished">Oct 30, 2018</time>
-                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2018-10-30-what-is-algebraic-effects.md" target="_blank" rel="noopener noreferrer">src</a>
+                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2018-10-30-what-is-algebraic-effects.md" target="_blank" rel="noopener noreferrer noopener noreferrer">src</a>
                 <p class="tags">tag: {<span class="tag">
                     <a href="/tags.html#Algebraic%20Effects-ref">Algebraic Effects</a>
                   </span><span></span><span class="tag">
@@ -121,13 +120,13 @@
 <span class="nx">effect</span> <span class="nx">Foo</span> <span class="cm">/* : int -&gt; int */</span><span class="p">;</span>
 
 <span class="c1">// handler</span>
-<span class="nx">handle</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">perform</span><span class="cm">/* invocation */</span> <span class="nx">Foo</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span><span class="p">))</span> <span class="p">{</span>
+<span class="nf">handle</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">perform</span><span class="cm">/* invocation */</span> <span class="nc">Foo</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span><span class="p">))</span> <span class="p">{</span>
     <span class="k">case</span> <span class="nx">x</span><span class="p">:</span> <span class="p">{</span>
        <span class="nx">x</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="k">case</span> <span class="nx">Foo</span><span class="p">(</span><span class="nx">x</span><span class="p">),</span> <span class="nx">k</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">k</span><span class="p">(</span><span class="nx">x</span> <span class="o">*</span> <span class="nx">x</span><span class="p">);</span>
+    <span class="k">case</span> <span class="nc">Foo</span><span class="p">(</span><span class="nx">x</span><span class="p">),</span> <span class="nx">k</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nf">k</span><span class="p">(</span><span class="nx">x</span> <span class="o">*</span> <span class="nx">x</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -156,34 +155,34 @@
 
 <span class="c1">// 標準出力に書き込む</span>
 <span class="kd">const</span> <span class="nx">print_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">handle</span><span class="p">(</span><span class="nx">th</span><span class="p">()){</span>
+    <span class="nf">handle</span><span class="p">(</span><span class="nf">th</span><span class="p">()){</span>
         <span class="k">case</span> <span class="na">x</span><span class="p">:</span> <span class="nx">x</span><span class="p">;</span>
-        <span class="k">case</span> <span class="nx">Write</span><span class="p">(</span><span class="nx">str</span><span class="p">),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">k</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">));</span>
+        <span class="k">case</span> <span class="nc">Write</span><span class="p">(</span><span class="nx">str</span><span class="p">),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nf">k</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">str</span><span class="p">));</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// ファイルに書き込む</span>
 <span class="kd">const</span> <span class="nx">write_file_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">handle</span><span class="p">(</span><span class="nx">th</span><span class="p">()){</span>
+    <span class="nf">handle</span><span class="p">(</span><span class="nf">th</span><span class="p">()){</span>
         <span class="k">case</span> <span class="na">x</span><span class="p">:</span> <span class="nx">x</span><span class="p">;</span>
-        <span class="k">case</span> <span class="nx">Write</span><span class="p">(</span><span class="nx">str</span><span class="p">),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">str</span><span class="p">,</span> <span class="nx">k</span><span class="p">);</span>
+        <span class="k">case</span> <span class="nc">Write</span><span class="p">(</span><span class="nx">str</span><span class="p">),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">fs</span><span class="p">.</span><span class="nf">writeFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">str</span><span class="p">,</span> <span class="nx">k</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 
-<span class="nx">print_handler</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">perform</span> <span class="nx">Write</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello</span><span class="dl">"</span><span class="p">);</span>
-    <span class="nx">perform</span> <span class="nx">Write</span><span class="p">(</span><span class="dl">"</span><span class="s2">World</span><span class="dl">"</span><span class="p">);</span>
+<span class="nf">print_handler</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">perform</span> <span class="nc">Write</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">perform</span> <span class="nc">Write</span><span class="p">(</span><span class="dl">"</span><span class="s2">World</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">});</span>
 <span class="c1">// ==&gt; prints `Hello\nWorld`</span>
 
-<span class="nx">write_file_handler</span><span class="p">(</span><span class="dl">"</span><span class="s2">hoge.txt</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">perform</span> <span class="nx">Write</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello</span><span class="dl">"</span><span class="p">);</span>
-    <span class="nx">perform</span> <span class="nx">Write</span><span class="p">(</span><span class="dl">"</span><span class="s2">World</span><span class="dl">"</span><span class="p">);</span>
+<span class="nf">write_file_handler</span><span class="p">(</span><span class="dl">"</span><span class="s2">hoge.txt</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">perform</span> <span class="nc">Write</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">perform</span> <span class="nc">Write</span><span class="p">(</span><span class="dl">"</span><span class="s2">World</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">});</span>
 <span class="c1">// ==&gt; write "Hello" and "World" to hoge.txt</span>
 </code></pre></div>
@@ -193,26 +192,26 @@
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">effect</span> <span class="nx">GetAccountList</span> <span class="cm">/* : void -&gt; DB */</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">filter</span> <span class="o">=</span> <span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">perform</span> <span class="nx">GetAccountList</span><span class="p">();</span>
-    <span class="nx">list</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">perform</span> <span class="nc">GetAccountList</span><span class="p">();</span>
+    <span class="nx">list</span><span class="p">.</span><span class="nf">filter</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>例えばテスト用DBのためのハンドラは</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">test_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">handle</span><span class="p">(</span><span class="nx">th</span><span class="p">()){</span>
+    <span class="nf">handle</span><span class="p">(</span><span class="nf">th</span><span class="p">()){</span>
         <span class="k">case</span> <span class="na">x</span><span class="p">:</span> <span class="nx">x</span><span class="p">;</span>
-        <span class="k">case</span> <span class="nx">GetAccountList</span><span class="p">(),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">k</span><span class="p">(</span><span class="nx">db_for_test</span><span class="p">());</span>
+        <span class="k">case</span> <span class="nc">GetAccountList</span><span class="p">(),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nf">k</span><span class="p">(</span><span class="nf">db_for_test</span><span class="p">());</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>また本番のDBを返すハンドラは</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">production_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">handle</span><span class="p">(</span><span class="nx">th</span><span class="p">()){</span>
+    <span class="nf">handle</span><span class="p">(</span><span class="nf">th</span><span class="p">()){</span>
         <span class="k">case</span> <span class="na">x</span><span class="p">:</span> <span class="nx">x</span><span class="p">;</span>
-        <span class="k">case</span> <span class="nx">GetAccountList</span><span class="p">(),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">k</span><span class="p">(</span><span class="nx">db_for_production</span><span class="p">());</span>
+        <span class="k">case</span> <span class="nc">GetAccountList</span><span class="p">(),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nf">k</span><span class="p">(</span><span class="nf">db_for_production</span><span class="p">());</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -220,11 +219,11 @@
 <p>あとは実際に<code>filter</code>関数を使うシチュエーションごとにハンドラを変えればいい｡</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">test_main</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="p">......</span>
-    <span class="kd">const</span> <span class="nx">filtered_accounts</span> <span class="o">=</span> <span class="nx">filter</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">filtered_accounts</span> <span class="o">=</span> <span class="nf">filter</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
     <span class="p">......</span>
 <span class="p">}</span>
 
-<span class="nx">assert</span><span class="p">(</span><span class="nx">test_handler</span><span class="p">(</span><span class="nx">test_main</span><span class="p">))</span>
+<span class="nf">assert</span><span class="p">(</span><span class="nf">test_handler</span><span class="p">(</span><span class="nx">test_main</span><span class="p">))</span>
 </code></pre></div>
 <h2 id="%E3%83%8F%E3%83%B3%E3%83%89%E3%83%A9%E3%81%AE%E5%90%88%E6%88%90"><a class="headerlink" href="#%E3%83%8F%E3%83%B3%E3%83%89%E3%83%A9%E3%81%AE%E5%90%88%E6%88%90">ハンドラの合成</a></h2>
 <p>エフェクトハンドラは例外ハンドラと同様に､unhandledなエフェクトはより上位のハンドラに捕捉されます(あるいはされずにランタイムエラー)｡この性質を利用することでハンドラを合成することができます｡
@@ -233,20 +232,20 @@
 
 <span class="c1">// 標準出力に書き込む</span>
 <span class="kd">const</span> <span class="nx">print_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">handle</span><span class="p">(</span><span class="nx">th</span><span class="p">()){</span>
+    <span class="nf">handle</span><span class="p">(</span><span class="nf">th</span><span class="p">()){</span>
         <span class="k">case</span> <span class="na">x</span><span class="p">:</span> <span class="nx">x</span><span class="p">;</span>
-        <span class="k">case</span> <span class="nx">Write</span><span class="p">(</span><span class="nx">str</span><span class="p">),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">k</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">));</span>
+        <span class="k">case</span> <span class="nc">Write</span><span class="p">(</span><span class="nx">str</span><span class="p">),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nf">k</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">str</span><span class="p">));</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// ファイルに書き込む</span>
 <span class="kd">const</span> <span class="nx">write_file_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">handle</span><span class="p">(</span><span class="nx">th</span><span class="p">()){</span>
+    <span class="nf">handle</span><span class="p">(</span><span class="nf">th</span><span class="p">()){</span>
         <span class="k">case</span> <span class="na">x</span><span class="p">:</span> <span class="nx">x</span><span class="p">;</span>
-        <span class="k">case</span> <span class="nx">Write</span><span class="p">(</span><span class="nx">str</span><span class="p">),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">str</span><span class="p">,</span> <span class="nx">k</span><span class="p">);</span>
+        <span class="k">case</span> <span class="nc">Write</span><span class="p">(</span><span class="nx">str</span><span class="p">),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">fs</span><span class="p">.</span><span class="nf">writeFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">str</span><span class="p">,</span> <span class="nx">k</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -256,44 +255,44 @@
 </code></pre></div>
 <p>そしてやるだけ｡</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">scan_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">handle</span><span class="p">(</span><span class="nx">th</span><span class="p">()){</span>
+    <span class="nf">handle</span><span class="p">(</span><span class="nf">th</span><span class="p">()){</span>
         <span class="k">case</span> <span class="na">x</span><span class="p">:</span> <span class="nx">x</span><span class="p">;</span>
-        <span class="k">case</span> <span class="nx">Read</span><span class="p">(),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">k</span><span class="p">(</span><span class="nx">readline</span><span class="p">())</span>
+        <span class="k">case</span> <span class="nc">Read</span><span class="p">(),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nf">k</span><span class="p">(</span><span class="nf">readline</span><span class="p">())</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kd">const</span> <span class="nx">scan_file_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">handle</span><span class="p">(</span><span class="nx">th</span><span class="p">()){</span>
+    <span class="nf">handle</span><span class="p">(</span><span class="nf">th</span><span class="p">()){</span>
         <span class="k">case</span> <span class="na">x</span><span class="p">:</span> <span class="nx">x</span><span class="p">;</span>
-        <span class="k">case</span> <span class="nx">Read</span><span class="p">(),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">readFileAsync</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">k</span><span class="p">);</span>
+        <span class="k">case</span> <span class="nc">Read</span><span class="p">(),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nf">readFileAsync</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">k</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>標準入出力とファイルの入出力をごっちゃにするシーンはあまり多くないので1つのハンドラにしたいと思います｡せっかくハンドラをそれぞれ書いたのでこれを使ってみます｡</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">stdio_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">print_handler</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">scan_handler</span><span class="p">(</span><span class="nx">th</span><span class="p">));</span>
+    <span class="nf">print_handler</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nf">scan_handler</span><span class="p">(</span><span class="nx">th</span><span class="p">));</span>
 <span class="p">}</span>
 
 <span class="kd">const</span> <span class="nx">fileio_handler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">write_file_handler</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">scan_file_handler</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">th</span><span class="p">));</span>
+    <span class="nf">write_file_handler</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nf">scan_file_handler</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">th</span><span class="p">));</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>オッええやん｡<code>stdio_handler</code>の受け取るサンクの中で<code>Write</code>が発生した場合､<code>scan_handler</code>を突き抜けて<code>print_handler</code>によりハンドルされます｡これが合成だ､花京院｡
 もちろんいちどきに一つのハンドラも実装できます｡</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">stdio</span> <span class="o">=</span> <span class="p">(</span><span class="nx">th</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">handle</span><span class="p">(</span><span class="nx">th</span><span class="p">()){</span>
+    <span class="nf">handle</span><span class="p">(</span><span class="nf">th</span><span class="p">()){</span>
         <span class="k">case</span> <span class="na">x</span><span class="p">:</span> <span class="nx">x</span><span class="p">;</span>
 
-        <span class="k">case</span> <span class="nx">Write</span><span class="p">(</span><span class="nx">str</span><span class="p">),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">k</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">));</span>
+        <span class="k">case</span> <span class="nc">Write</span><span class="p">(</span><span class="nx">str</span><span class="p">),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nf">k</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">str</span><span class="p">));</span>
         <span class="p">}</span>
 
-        <span class="k">case</span> <span class="nx">Read</span><span class="p">(),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">k</span><span class="p">(</span><span class="nx">readline</span><span class="p">())</span>
+        <span class="k">case</span> <span class="nc">Read</span><span class="p">(),</span> <span class="na">k</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nf">k</span><span class="p">(</span><span class="nf">readline</span><span class="p">())</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -301,10 +300,10 @@
 <span class="c1">// fileも同様に(略)</span>
 </code></pre></div>
 <p>また､同じエフェクトのハンドラをネストすることで､<em>部分的に実装を変える</em>ことができる｡</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">fileio_handler</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">perform</span> <span class="nx">Write</span><span class="p">(</span><span class="dl">"</span><span class="s2">hoge</span><span class="dl">"</span><span class="p">);</span>  <span class="c1">// fileに"hoge"を書き込む</span>
-    <span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">perform</span> <span class="nx">Read</span><span class="p">();</span>  <span class="c1">// fileから読む</span>
-    <span class="nx">print_handler</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">perform</span> <span class="nx">Write</span><span class="p">(</span><span class="nx">str</span><span class="p">));</span>  <span class="c1">// *標準出力に*書き込む</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nf">fileio_handler</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">perform</span> <span class="nc">Write</span><span class="p">(</span><span class="dl">"</span><span class="s2">hoge</span><span class="dl">"</span><span class="p">);</span>  <span class="c1">// fileに"hoge"を書き込む</span>
+    <span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">perform</span> <span class="nc">Read</span><span class="p">();</span>  <span class="c1">// fileから読む</span>
+    <span class="nf">print_handler</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">perform</span> <span class="nc">Write</span><span class="p">(</span><span class="nx">str</span><span class="p">));</span>  <span class="c1">// *標準出力に*書き込む</span>
 <span class="p">})</span>
 </code></pre></div>
 <p>同じ<code>Write</code>を<code>fileio_handler</code>内で発生させているが､2つ目の<code>Write</code>はさらに<code>print_handler</code>に包んで発生させている｡このエフェクトの発生を最初に捕捉するハンドラは<code>print_handler</code>になるため､<code>str</code>はファイルではなく標準出力に書き込まれる｡</p>
@@ -315,14 +314,14 @@
 <p>簡単のため､ファイル名と文字列を受け取るエフェクト<code>WriteToFile</code>を定義して様子を見る｡</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">effect</span> <span class="nx">WriteToFile</span> <span class="cm">/* : (string, string) -&gt; void */</span><span class="p">;</span>
 
-<span class="nx">handle</span><span class="p">((()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="nf">handle</span><span class="p">((()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="p">......</span>
-    <span class="nx">perform</span> <span class="nx">WriteToFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="dl">"</span><span class="s2">hogehoge</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">perform</span> <span class="nc">WriteToFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="dl">"</span><span class="s2">hogehoge</span><span class="dl">"</span><span class="p">);</span>
     <span class="p">......</span>
 <span class="p">})()){</span>
     <span class="k">case</span> <span class="nx">x</span><span class="p">:</span> <span class="nx">x</span><span class="p">;</span>
-    <span class="k">case</span> <span class="nx">WriteToFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">str</span><span class="p">),</span> <span class="nx">k</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">writeFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">str</span><span class="p">,</span> <span class="nx">k</span><span class="p">);</span>
+    <span class="k">case</span> <span class="nc">WriteToFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">str</span><span class="p">),</span> <span class="nx">k</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nf">writeFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">str</span><span class="p">,</span> <span class="nx">k</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>

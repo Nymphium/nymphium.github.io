@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<meta name="generator" content="Jekyll v4.3.1" />
+<meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="Qiitaっぽいlistingのcaption" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -52,7 +52,6 @@
         <nav class="site-nav">
           <div class="trigger">
             <a class="page-link" href="/about/README.html">About me</a>
-            <a class="page-link" href="/aboutme.html">About me</a>
             <a class="page-link" href="/slide.html">Slides</a>
             <a class="page-link" href="/tags.html">Tags</a>
           </div>
@@ -68,7 +67,7 @@
               <h1 class="post-title" itemprop="name headline">Qiitaっぽいlistingのcaption</h1>
               <span class="post-meta">
                 <time datetime="2017-06-18T00:00:00+09:00" itemprop="datePublished">Jun 18, 2017</time>
-                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2017-06-18-qiita-listing-name.md" target="_blank" rel="noopener noreferrer">src</a>
+                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2017-06-18-qiita-listing-name.md" target="_blank" rel="noopener noreferrer noopener noreferrer">src</a>
                 <p class="tags">tag: {<span class="tag">
                     <a href="/tags.html#%E9%9B%91%E6%84%9F-ref">雑感</a>
                   </span><span></span><span class="tag">
@@ -136,7 +135,7 @@
 
     <span class="n">content</span><span class="p">.</span><span class="nf">each_line</span><span class="p">{</span><span class="o">|</span><span class="n">txt</span><span class="o">|</span>
         <span class="k">if</span> <span class="n">l</span> <span class="o">=</span> <span class="n">txt</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="sr">/^\s*```\s*([^:]*)\s*:?\s*(.*)$/</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">not</span> <span class="n">in_listing</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">in_listing</span>
                 <span class="n">in_listing</span> <span class="o">=</span> <span class="kp">true</span>
                 <span class="n">acc</span> <span class="o">+=</span> <span class="s2">"&lt;span class=</span><span class="se">\"</span><span class="s2">listing-name</span><span class="se">\"</span><span class="s2">&gt;</span><span class="si">#{</span><span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/span&gt;</span><span class="se">\n\n</span><span class="s2">```</span><span class="si">#{</span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">.</span><span class="nf">chomp</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span>
             <span class="k">else</span>
@@ -187,9 +186,9 @@
 </div>
 <p>Jekyllではメソッドをいくつかのタイミングでフックすることができる｡</p>
 <div class="twicard">
-  <span class="image"><a href="https://jekyllrb.com/docs/plugins/hooks" target="_blank" rel="noopener noreferrer"><div><img src="https://jekyllrb.com/img/jekyll-og.png"></div></a></span>
+  <span class="image"><a href="https://jekyllrb.com/docs/plugins/hooks" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://jekyllrb.com/img/jekyll-og.png"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://jekyllrb.com/docs/plugins/hooks" target="_blank" rel="noopener noreferrer">Hooks</a></div>
+    <div class="title"><a href="https://jekyllrb.com/docs/plugins/hooks" target="_blank" rel="noopener noreferrer noopener noreferrer">Hooks</a></div>
     <div class="description">Using hooks, your plugin can exercise fine-grained control over various aspects of the build process. If your plugin defines any hooks, Jekyll will call them at pre-defined points.</div>
   </span>
 </div>

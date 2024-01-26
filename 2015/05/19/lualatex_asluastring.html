@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<meta name="generator" content="Jekyll v4.3.1" />
+<meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="texluaとtex.print" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -52,7 +52,6 @@
         <nav class="site-nav">
           <div class="trigger">
             <a class="page-link" href="/about/README.html">About me</a>
-            <a class="page-link" href="/aboutme.html">About me</a>
             <a class="page-link" href="/slide.html">Slides</a>
             <a class="page-link" href="/tags.html">Tags</a>
           </div>
@@ -68,7 +67,7 @@
               <h1 class="post-title" itemprop="name headline">texluaとtex.print</h1>
               <span class="post-meta">
                 <time datetime="2015-05-19T00:00:00+09:00" itemprop="datePublished">May 19, 2015</time>
-                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2015-05-19-lualatex_asluastring.md" target="_blank" rel="noopener noreferrer">src</a>
+                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2015-05-19-lualatex_asluastring.md" target="_blank" rel="noopener noreferrer noopener noreferrer">src</a>
                 <p class="tags">tag: {<span class="tag">
                     <a href="/tags.html#LaTeX-ref">LaTeX</a>
                   </span><span></span><span class="tag">
@@ -132,8 +131,7 @@ end
 <span class="nt">\end{document}</span>
 </code></pre></div>
 <p>適当なファイル名にして､<code>lualatex tekitou.tex</code>とでもすると､こんな感じのPDFが出る｡</p>
-<p></p>
-<center><img src="/pictures/2015-05-19-lualatex1.png" alt="hello" title="tekitou.pdf"></center>
+<center><img src="/pictures/2015-05-19-lualatex1.png" alt="hello"></center>
 <p><code>tex.print</code>は受け取った文字列を<em>LaTeXの入力として</em>受け取り､コンパイル(実行)時に出力先に吐き出す｡<code>tex.write</code>は受け取った文字列をただの文字列として受け取る｡</p>
 <p>画像を見ると､<code>tex.print</code>で出力した\(2^i\)は意図通りに出力されており<sup id="fnref1" title="(jekyll + redcarpetでは意図通り2^iが出ませんね💢) (追記2015/06/04:と思ったけどMatJax使えるじゃねーか｡ごめんなさい｡) "><a href="#fn1">1</a></sup>､<code>tex.write</code>を用いた部分では"$2^-1$"とかよく分からない感じになっている｡</p>
 <p>ここで､｢おっこれはLaTeXコマンドもいけるんちゃうか〜｣と思った好奇心旺盛な少年が多いことは間違いない｡しかし､texluaはちょっとここで少年たちを嘲笑う｡</p>
@@ -167,8 +165,7 @@ tex.print(\asluastring{Hello, \LaTeX})
     )
 <span class="p">}</span>
 </code></pre></div>
-<p></p>
-<center> <img src="/pictures/2015-05-19-lualatex.png" alt="LuaLaTeX" title="こんなものを書くな.pdf"> </center>
+<center> <img src="/pictures/2015-05-19-lualatex.png" alt="LuaLaTeX"> </center>
 <p>プレアンブルでも<code>\directlua</code>は使うことができ､こういった悲劇を編み出すことも可能<em>(全然良い感じじゃないんだよなぁ…)</em>｡</p>
 <p>しかし<code>tex.print</code>を2個使って<code>\begin{document}</code>と<code>\end{document}</code>を､環境を分けることができない｡うーん､<code>tex.print</code>で環境をネストさせたい時は滅茶苦茶にキモくなるので､
 ~~こういうことはやめておこう~~環境の中身は適当な変数に突っ込むべきだろう｡</p>

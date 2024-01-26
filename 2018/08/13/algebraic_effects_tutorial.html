@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<meta name="generator" content="Jekyll v4.3.1" />
+<meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="Algebraic Effectsであそぼう" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -52,7 +52,6 @@
         <nav class="site-nav">
           <div class="trigger">
             <a class="page-link" href="/about/README.html">About me</a>
-            <a class="page-link" href="/aboutme.html">About me</a>
             <a class="page-link" href="/slide.html">Slides</a>
             <a class="page-link" href="/tags.html">Tags</a>
           </div>
@@ -68,7 +67,7 @@
               <h1 class="post-title" itemprop="name headline">Algebraic Effectsであそぼう</h1>
               <span class="post-meta">
                 <time datetime="2018-08-13T00:00:00+09:00" itemprop="datePublished">Aug 13, 2018</time>
-                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2018-08-13-algebraic_effects_tutorial.md" target="_blank" rel="noopener noreferrer">src</a>
+                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2018-08-13-algebraic_effects_tutorial.md" target="_blank" rel="noopener noreferrer noopener noreferrer">src</a>
                 <p class="tags">tag: {<span class="tag">
                     <a href="/tags.html#OCaml-ref">OCaml</a>
                   </span><span></span><span class="tag">
@@ -119,8 +118,7 @@
 <p>Algebraic effectsとは､2001年くらいに提唱されてから､爆流行らずともにわかに盛り上がりを見せつつある言語機能である｡
 極めて雑に説明すると､<em>継続を取ってこれる例外</em>である｡
 Plotkin氏(またお前か)が代数学的アプローチによる基盤を作り､そこにハンドラが付いてプログラム言語の機能として考えられるようになった｡
-ボクの話のうち1〜10割間違っていることは確かなので､誤った情報を一切入れたくない人は<span class="cite">[<a href="#fn1" title='Matija Prentar. "An Introduction to Algebraic Effects and Handlers." Electronic Notes in Theoretical Computer Science 319. 2015. ' id="fnref1">1</a>]</span>
-を読んでください｡</p>
+ボクの話のうち1〜10割間違っていることは確かなので､誤った情報を一切入れたくない人は<span class="cite">[<a href="#fn1" title='Matija Prentar. "An Introduction to Algebraic Effects and Handlers." Electronic Notes in Theoretical Computer Science 319. 2015. ' id="fnref1">1</a>]</span>を読んでください｡</p>
 <h2 id="1-1.+algebraic+effects%E5%AE%9F%E8%A3%85%E3%81%AE%E6%9C%89%E5%90%8D%E3%81%A9%E3%81%93%E3%82%8D"><a class="headerlink" href="#1-1.+algebraic+effects%E5%AE%9F%E8%A3%85%E3%81%AE%E6%9C%89%E5%90%8D%E3%81%A9%E3%81%93%E3%82%8D">1-1. algebraic effects実装の有名どころ</a></h2>
 <ul>
 <li>
@@ -213,8 +211,7 @@ continuationがoneshotとなっており､明示的にクローンしないと2
 ここでHaskellerは｢Freeモナドやんけ!｣となるらしいですがボクはHaskellをやっていってないのでわかりませんでした｡
 型だけ定義して､interpretationはユーザに任せるということなので確かに同じようだ｡
 そもそもalgebraic effectの<em>algebraic</em>は"free <em>algebra</em>"から来てるそう<sup id="fnref3" title='Andrej Bauer. "What is algebraic about algebraic effects and handlers?." eprint arXiv:1807.05923. 2018. '><a href="#fn3">3</a></sup>なので､袂を分かつ存在である｡
-実際<a href="#effinterp">Effインタプリタ</a>
-はFreeモナドを使って実装しているようだ｡</p>
+実際<a href="#effinterp">Effインタプリタ</a>はFreeモナドを使って実装しているようだ｡</p>
 <p>そしていろんなeffectsをいっぺんにハンドルするぜ!</p>
 <div class="highlight"><pre><code class="language-ocaml" data-lang="ocaml"><span class="k">let</span> <span class="n">h</span> <span class="o">=</span> <span class="n">handler</span>
   <span class="o">|</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span>
@@ -222,16 +219,12 @@ continuationがoneshotとなっており､明示的にクローンしないと2
   <span class="o">|</span> <span class="n">effect</span> <span class="p">(</span><span class="nc">Choose</span> <span class="p">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="p">))</span> <span class="n">k</span> <span class="o">-&gt;</span> <span class="n">k</span> <span class="n">x</span>
 </code></pre></div>
 <p>手軽だ｡
-HaskellではFreeモナドを発展させたextensible effects<span class="cite">[<a href="#fn4" title="快速のExtensible effects  -- モナドとわたしとコモナド https://fumieval.hatenablog.com/entry/2017/08/02/230422 " id="fnref4">4</a>]</span>
-<span class="cite">[<a href="#fn5" title='Oleg Kiselyov, Amr Sabry, Cameron Swords. "Extensible Effeects: An Alternative to Monad Transformers." ACM SIGPLAN Notices. Vol. 48. No. 12. ACM, 2013. ' id="fnref5">5</a>]</span>
-といったものが流行っているそうで､
+HaskellではFreeモナドを発展させたextensible effects<span class="cite">[<a href="#fn4" title="快速のExtensible effects  -- モナドとわたしとコモナド https://fumieval.hatenablog.com/entry/2017/08/02/230422 " id="fnref4">4</a>]</span><span class="cite">[<a href="#fn5" title='Oleg Kiselyov, Amr Sabry, Cameron Swords. "Extensible Effeects: An Alternative to Monad Transformers." ACM SIGPLAN Notices. Vol. 48. No. 12. ACM, 2013. ' id="fnref5">5</a>]</span>といったものが流行っているそうで､
 確かにモナドトランスフォーマーガン積みして爆重になるという困難から抜け出せるらしい｡</p>
 <h1 id="3.+%E5%BF%9C%E7%94%A8"><a class="headerlink" href="#3.+%E5%BF%9C%E7%94%A8">3. 応用</a></h1>
 <p>delimited continuationが扱えるうえにCPS的な書き方ではなくdirect-styleで記述できるため､
 syntacticにきれいに､バグらず簡単に書ける､というありがたみがある｡
-ボクの語彙が少ないので詳細は文献<span class="cite">[<a href="#fn6" title='Anderj Bauer, Matija Prentar. "Programming with algebraic effects and handlers." Journal of Logical and Algebraic Methods in Programming, 84(1), pp.108-123. ' id="fnref6">6</a>]</span>
-<span class="cite">[<a href="#fn7" title='Dolan, Stephen, Spiros Eliopoulos, Daniel Hillerström, Anil Madhavapeddy, K. C. Sivaramakrishnan, Leo White. "Concurrent system programming with effect handlers." International Symposium on Trends in Functional Programming, pp. 98-117. Springer, Cham, 2017. ' id="fnref7">7</a>]</span>
-を読んでください｡</p>
+ボクの語彙が少ないので詳細は文献<span class="cite">[<a href="#fn6" title='Anderj Bauer, Matija Prentar. "Programming with algebraic effects and handlers." Journal of Logical and Algebraic Methods in Programming, 84(1), pp.108-123. ' id="fnref6">6</a>]</span><span class="cite">[<a href="#fn7" title='Dolan, Stephen, Spiros Eliopoulos, Daniel Hillerström, Anil Madhavapeddy, K. C. Sivaramakrishnan, Leo White. "Concurrent system programming with effect handlers." International Symposium on Trends in Functional Programming, pp. 98-117. Springer, Cham, 2017. ' id="fnref7">7</a>]</span>を読んでください｡</p>
 <h1 id="4.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB"><a class="headerlink" href="#4.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">4. おわりに</a></h1>
 <p>また情報量が0になってしまった……!!!</p>
 <h1 id="%E8%BF%BD%E8%A8%9820181030"><a class="headerlink" href="#%E8%BF%BD%E8%A8%9820181030">追記20181030</a></h1>

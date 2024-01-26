@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<meta name="generator" content="Jekyll v4.3.1" />
+<meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="貧者の Algebraic Data Types と(浅い)網羅性判定" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -52,7 +52,6 @@
         <nav class="site-nav">
           <div class="trigger">
             <a class="page-link" href="/about/README.html">About me</a>
-            <a class="page-link" href="/aboutme.html">About me</a>
             <a class="page-link" href="/slide.html">Slides</a>
             <a class="page-link" href="/tags.html">Tags</a>
           </div>
@@ -68,7 +67,7 @@
               <h1 class="post-title" itemprop="name headline">貧者の Algebraic Data Types と(浅い)網羅性判定</h1>
               <span class="post-meta">
                 <time datetime="2020-12-03T00:00:00+09:00" itemprop="datePublished">Dec 3, 2020</time>
-                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2020-12-03-%E8%B2%A7%E8%80%85%E3%81%AE%20Algebraic%20Data%20Types%20%E3%81%A8%28%E6%B5%85%E3%81%84%29%E7%B6%B2%E7%BE%85%E6%80%A7%E5%88%A4%E5%AE%9A.md" target="_blank" rel="noopener noreferrer">src</a>
+                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2020-12-03-%E8%B2%A7%E8%80%85%E3%81%AE%20Algebraic%20Data%20Types%20%E3%81%A8%28%E6%B5%85%E3%81%84%29%E7%B6%B2%E7%BE%85%E6%80%A7%E5%88%A4%E5%AE%9A.md" target="_blank" rel="noopener noreferrer noopener noreferrer">src</a>
                 <p class="tags">tag: {<span class="tag">
                     <a href="/tags.html#TypeScript-ref">TypeScript</a>
                   </span><span></span><span class="tag">
@@ -122,9 +121,7 @@
 <p>関数型プログラミングといえばなんですか? はい円楽さん早かった! はいはい､ <strong>パターンマッチング</strong>､いいですね｡
 パターンマッチングといえばプリミティブな数値や文字列のリテラルのみならず､ユーザが定義した型もその構造によってマッチできます｡回りくどい言い方をしましたが代数的データ型(Algebraic Data Types, ADTs)です｡</p>
 <div class="highlight">
-<span class="listing-name"><label id="ocaml1"></label>
- listing <a href="#ocaml1">1.1</a>
-. 例えば OCaml</span><pre><code class="language-ocaml" data-lang="ocaml"><span class="k">type</span> <span class="k">'</span><span class="n">a</span> <span class="n">option</span> <span class="o">=</span>
+<span class="listing-name"><label id="ocaml1"></label> listing <a href="#ocaml1">1.1</a>. 例えば OCaml</span><pre><code class="language-ocaml" data-lang="ocaml"><span class="k">type</span> <span class="k">'</span><span class="n">a</span> <span class="n">option</span> <span class="o">=</span>
   <span class="o">|</span> <span class="nc">None</span>
   <span class="o">|</span> <span class="nc">Some</span> <span class="k">of</span> <span class="k">'</span><span class="n">a</span>
 
@@ -161,15 +158,13 @@
 </code></pre></div>
 <p>そんなことある??? って感じになりました｡
 nullish coalescing 使えとかそういう話ではありません｡</p>
-<div class="highlight"><pre><code class="language-typescript" data-lang="typescript"><span class="nx">toDefault</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">{</span> <span class="na">value</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="na">hoge</span><span class="p">:</span> <span class="dl">"</span><span class="s2">aaa</span><span class="dl">"</span> <span class="p">});</span> <span class="c1">// ==&gt; `10` !!</span>
+<div class="highlight"><pre><code class="language-typescript" data-lang="typescript"><span class="nf">toDefault</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">{</span> <span class="na">value</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="na">hoge</span><span class="p">:</span> <span class="dl">"</span><span class="s2">aaa</span><span class="dl">"</span> <span class="p">});</span> <span class="c1">// ==&gt; `10` !!</span>
 </code></pre></div>
 <p>TypeScript は構造的部分型を採用しているため､ <code>Some&lt;T&gt;</code> が指すものは property に <code>value: T</code> のある object なわけですね｡つまりなんでもアリです｡
 これはマズい! という民草の嘆きに答えたのかは知りませんが､言語レベルの UUID みたいな <code>Symbol</code> という便利なものがあり､これを使います</p>
 <div class="highlight">
-<span class="listing-name"><label id="option1"></label>
- listing <a href="#option1">2.1</a>
-. 真面目に定義した Option<t></t></span><pre><code class="language-typescript" data-lang="typescript"><span class="kd">const</span> <span class="nx">someSym</span> <span class="o">=</span> <span class="nb">Symbol</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">noneSym</span> <span class="o">=</span> <span class="nb">Symbol</span><span class="p">();</span>
+<span class="listing-name"><label id="option1"></label> listing <a href="#option1">2.1</a>. 真面目に定義した Option<t></t></span><pre><code class="language-typescript" data-lang="typescript"><span class="kd">const</span> <span class="nx">someSym</span> <span class="o">=</span> <span class="nc">Symbol</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">noneSym</span> <span class="o">=</span> <span class="nc">Symbol</span><span class="p">();</span>
 <span class="c1">// someSym !== noneSym</span>
 
 <span class="kd">type</span> <span class="nx">Some</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span> <span class="na">_tag</span><span class="p">:</span> <span class="k">typeof</span> <span class="nx">someSym</span><span class="p">;</span> <span class="nl">value</span><span class="p">:</span> <span class="nx">T</span> <span class="p">}</span>
@@ -181,9 +176,7 @@ nullish coalescing 使えとかそういう話ではありません｡</p>
 <p>なんとかなったな｡
 パターンマッチングをいい感じにやるためのオペレータも用意します｡</p>
 <div class="highlight">
-<span class="listing-name"><label id="match1"></label>
- listing <a href="#match1">2.2</a>
-. match</span><pre><code class="language-typescript" data-lang="typescript"><span class="cm">/**
+<span class="listing-name"><label id="match1"></label> listing <a href="#match1">2.2</a>. match</span><pre><code class="language-typescript" data-lang="typescript"><span class="cm">/**
  * @example
  *   match(o,
  *     (v) =&gt; v,
@@ -191,7 +184,7 @@ nullish coalescing 使えとかそういう話ではありません｡</p>
  *   );
  */</span>
 <span class="kd">const</span> <span class="nx">match</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">A</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">o</span><span class="p">:</span> <span class="nx">Option</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">onSome</span><span class="p">:</span> <span class="p">(</span><span class="nx">_</span><span class="p">:</span> <span class="nx">T</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">A</span><span class="p">,</span> <span class="nx">onNone</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">A</span><span class="p">):</span> <span class="nx">A</span> <span class="o">=&gt;</span>
-  <span class="nx">o</span><span class="p">.</span><span class="nx">_tag</span> <span class="o">===</span> <span class="nx">someSym</span> <span class="p">?</span> <span class="nx">onSome</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span> <span class="p">:</span> <span class="nx">onNone</span><span class="p">();</span>
+  <span class="nx">o</span><span class="p">.</span><span class="nx">_tag</span> <span class="o">===</span> <span class="nx">someSym</span> <span class="p">?</span> <span class="nf">onSome</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span> <span class="p">:</span> <span class="nf">onNone</span><span class="p">();</span>
 </code></pre>
 </div>
 <p>はぁ……と一瞬で関心が薄れそうな味気ない実装ですがちょっとまって!!
@@ -219,7 +212,7 @@ Typed Racket も同様に control-flow based type analysis を組み込んだ Oc
 </div>
 <p>よし! そしてこちらを御覧ください｡</p>
 <div class="highlight"><pre><code class="language-typescript" data-lang="typescript"><span class="kd">const</span> <span class="nx">to123</span> <span class="o">=</span> <span class="p">(</span><span class="nx">num</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span>
-  <span class="nx">num</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">num</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="p">?</span> <span class="nx">Some</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">:</span> <span class="nx">None</span><span class="p">()</span>
+  <span class="nx">num</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">num</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="p">?</span> <span class="nc">Some</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">:</span> <span class="nc">None</span><span class="p">()</span>
 </code></pre></div>
 <p>突然ですがクイズです! <code>to123</code> の return type は何でしょう?
 はい残念または正解! <code>None&lt;number&gt; | Some&lt;unknown&gt;</code> です｡絶望しましたか? 私はしました｡
@@ -245,7 +238,7 @@ return type は <code>Option&lt;T&gt;</code> ですが､この <code>T</code> �
 <p>よし｡
 ちなみにワーワー騒いだが､型注釈をつけると</p>
 <div class="highlight"><pre><code class="language-typescript" data-lang="typescript"><span class="kd">const</span> <span class="nx">to123</span> <span class="o">=</span> <span class="p">(</span><span class="nx">num</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="nx">Option</span><span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span> <span class="o">=&gt;</span>
-  <span class="nx">num</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">num</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="p">?</span> <span class="nx">Some</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">:</span> <span class="nx">None</span><span class="p">();</span>
+  <span class="nx">num</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">num</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="p">?</span> <span class="nc">Some</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">:</span> <span class="nc">None</span><span class="p">();</span>
 </code></pre></div>
 <h1 id="4.+Scala-like+ADT+definition"><a class="headerlink" href="#4.+Scala-like+ADT+definition">4. Scala-like ADT definition</a></h1>
 <p>上記でワーワーやったアホアホ推論をおこなわず､注釈にしたがいます｡
@@ -264,13 +257,13 @@ return type は <code>Option&lt;T&gt;</code> ですが､この <code>T</code> �
 <div class="highlight">
 <span class="listing-name">TS でもやってみよう</span><pre><code class="language-typescript" data-lang="typescript"><span class="kr">interface</span> <span class="nx">Option</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span> <span class="na">_tag</span><span class="p">:</span> <span class="nx">symbol</span> <span class="p">}</span>
 
-<span class="kd">const</span> <span class="nx">someSym</span> <span class="o">=</span> <span class="nb">Symbol</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">someSym</span> <span class="o">=</span> <span class="nc">Symbol</span><span class="p">();</span>
 <span class="kr">interface</span> <span class="nx">Some</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="nx">Option</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
   <span class="na">_tag</span><span class="p">:</span> <span class="k">typeof</span> <span class="nx">someSym</span><span class="p">;</span>
   <span class="nl">value</span><span class="p">:</span> <span class="nx">T</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kd">const</span> <span class="nx">noneSym</span> <span class="o">=</span> <span class="nb">Symbol</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">noneSym</span> <span class="o">=</span> <span class="nc">Symbol</span><span class="p">();</span>
 <span class="kr">interface</span> <span class="nx">None</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="nx">Option</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
   <span class="na">_tag</span><span class="p">:</span> <span class="k">typeof</span> <span class="nx">noneSym</span><span class="p">;</span>
 <span class="p">}</span>
@@ -286,17 +279,13 @@ return type は <code>Option&lt;T&gt;</code> ですが､この <code>T</code> �
 マジか～て感じですが <code>Some&lt;T&gt; &lt;: Option&lt;T&gt;</code> という関係がすでにあるのであんまり困らない｡</p>
 <p>では先程の <code>to123</code> は型推論でバシッと return type がいい感じになるか?
 ……なりますねぇ!! 無事 <code>Option&lt;number&gt;</code> に推論してくれます｡心､つながったね｡</p>
-<p>スマコンの型をいい感じにしたから <code>to123</code> の型が合ったんじゃないか? と思い listing <a href="#option1">2.1</a>
-の方法で定義したやつのスマコンも上記と同じようにすると､ <code>to123</code> の return type は <code>Some&lt;number&gt; | None&lt;unknown&gt;</code> になりました｡
+<p>スマコンの型をいい感じにしたから <code>to123</code> の型が合ったんじゃないか? と思い listing <a href="#option1">2.1</a>の方法で定義したやつのスマコンも上記と同じようにすると､ <code>to123</code> の return type は <code>Some&lt;number&gt; | None&lt;unknown&gt;</code> になりました｡
 お腹いっぱいなんでもういいです｡</p>
 <h1 id="5.+%E5%8A%9B%E3%81%AE%E4%BB%A3%E5%84%9F%3A+%E7%B6%B2%E7%BE%85%E6%80%A7%E5%88%A4%E5%AE%9A"><a class="headerlink" href="#5.+%E5%8A%9B%E3%81%AE%E4%BB%A3%E5%84%9F%3A+%E7%B6%B2%E7%BE%85%E6%80%A7%E5%88%A4%E5%AE%9A">5. 力の代償: 網羅性判定</a></h1>
-<p>さーて listing <a href="#match1">2.2</a>
- の <code>match</code> も実装しておわりおわり</p>
+<p>さーて listing <a href="#match1">2.2</a> の <code>match</code> も実装しておわりおわり</p>
 <div class="highlight">
-<span class="listing-name"><label id="match2"></label>
- listing <a href="#match2">5.1</a>
-. match その2</span><pre><code class="language-typescript" data-lang="typescript"><span class="kd">const</span> <span class="nx">match</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">A</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">o</span><span class="p">:</span> <span class="nx">Option</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">onSome</span><span class="p">:</span> <span class="p">(</span><span class="nx">_</span><span class="p">:</span> <span class="nx">T</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">A</span><span class="p">,</span> <span class="nx">onNone</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">A</span><span class="p">)</span> <span class="o">=&gt;</span>
-    <span class="nx">o</span><span class="p">.</span><span class="nx">_tag</span> <span class="o">===</span> <span class="nx">someSym</span> <span class="p">?</span> <span class="nx">onSome</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span> <span class="p">:</span> <span class="nx">onNone</span><span class="p">();</span>
+<span class="listing-name"><label id="match2"></label> listing <a href="#match2">5.1</a>. match その2</span><pre><code class="language-typescript" data-lang="typescript"><span class="kd">const</span> <span class="nx">match</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">A</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">o</span><span class="p">:</span> <span class="nx">Option</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">onSome</span><span class="p">:</span> <span class="p">(</span><span class="nx">_</span><span class="p">:</span> <span class="nx">T</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">A</span><span class="p">,</span> <span class="nx">onNone</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">A</span><span class="p">)</span> <span class="o">=&gt;</span>
+    <span class="nx">o</span><span class="p">.</span><span class="nx">_tag</span> <span class="o">===</span> <span class="nx">someSym</span> <span class="p">?</span> <span class="nf">onSome</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span> <span class="p">:</span> <span class="nf">onNone</span><span class="p">();</span>
 <span class="c1">// 🤬 Property 'value' does not exist on type 'Option&lt;T&gt;'.</span>
 </code></pre>
 </div>
@@ -323,22 +312,19 @@ return type は <code>Option&lt;T&gt;</code> ですが､この <code>T</code> �
 <p>まあそれなりに根拠のある <code>as any as T</code> みたいな感じですね｡</p>
 <p>では､いきます｡</p>
 <div class="highlight">
-<span class="listing-name"><label id="match2'"></label>
- listing <a href="#match2'">5.2</a>
-. match その2'</span><pre><code class="language-typescript" data-lang="typescript"><span class="kd">const</span> <span class="nx">match</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">A</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">o</span><span class="p">:</span> <span class="nx">Option</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">onSome</span><span class="p">:</span> <span class="p">(</span><span class="nx">_</span><span class="p">:</span> <span class="nx">T</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">A</span><span class="p">,</span> <span class="nx">onNone</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">A</span><span class="p">):</span> <span class="nx">A</span> <span class="o">=&gt;</span>
-  <span class="nx">isNone</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">?</span> <span class="nx">onNone</span><span class="p">()</span> <span class="p">:</span> <span class="nx">onSome</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<span class="listing-name"><label id="match2'"></label> listing <a href="#match2'">5.2</a>. match その2'</span><pre><code class="language-typescript" data-lang="typescript"><span class="kd">const</span> <span class="nx">match</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">A</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">o</span><span class="p">:</span> <span class="nx">Option</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">onSome</span><span class="p">:</span> <span class="p">(</span><span class="nx">_</span><span class="p">:</span> <span class="nx">T</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">A</span><span class="p">,</span> <span class="nx">onNone</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">A</span><span class="p">):</span> <span class="nx">A</span> <span class="o">=&gt;</span>
+  <span class="nf">isNone</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">?</span> <span class="nf">onNone</span><span class="p">()</span> <span class="p">:</span> <span class="nf">onSome</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
 <span class="c1">// 🤬 Property 'value' does not exist on type 'Option&lt;T&gt;'.</span>
 </code></pre>
 </div>
 <p>｢こいつ､やったな｣と思った方正解なんですが､ちょっと例が悪かったんで恣意的に <code>onSome</code> と <code>onNone</code> の位置を flip しました｡
-まずこれが何故エラーなのかというと､ listing <a href="#match2">5.1</a>
- と同様に <code>onSome</code> 側に <code>o</code> が <code>Some&lt;T&gt;</code> という情報が渡ってないからですね｡
+まずこれが何故エラーなのかというと､ listing <a href="#match2">5.1</a> と同様に <code>onSome</code> 側に <code>o</code> が <code>Some&lt;T&gt;</code> という情報が渡ってないからですね｡
 <code>Option&lt;_&gt;</code> の定義からわかるとおり､<code>None&lt;T&gt;</code> でないは <code>Some&lt;T&gt;</code> である <em>ではない</em> わけです｡
 なので､ flip するとあたかも問題が解決してるようですが､例えば <code>Either&lt;E, A&gt;</code> みたいに2パラメータある型を分解するときに困る｡なのでちょっと強引にでも問題提起しました｡</p>
 <p>では <code>isSome</code> 使えばEジャンとなるんですが……</p>
 <div class="highlight"><pre><code class="language-typescript" data-lang="typescript"><span class="kd">const</span> <span class="nx">match</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">A</span><span class="o">&gt;</span><span class="p">(...)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">isSome</span><span class="p">(</span><span class="nx">o</span><span class="p">))</span> <span class="k">return</span> <span class="nx">onSome</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">isNone</span><span class="p">(</span><span class="nx">o</span><span class="p">))</span> <span class="k">return</span> <span class="nx">onNone</span><span class="p">();</span>
+  <span class="k">if </span><span class="p">(</span><span class="nf">isSome</span><span class="p">(</span><span class="nx">o</span><span class="p">))</span> <span class="k">return</span> <span class="nf">onSome</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+  <span class="k">if </span><span class="p">(</span><span class="nf">isNone</span><span class="p">(</span><span class="nx">o</span><span class="p">))</span> <span class="k">return</span> <span class="nf">onNone</span><span class="p">();</span>
 <span class="p">};</span>
 <span class="c1">// 🤬 Not all code paths return a value.</span>
 </code></pre></div>
@@ -346,8 +332,7 @@ return type は <code>Option&lt;T&gt;</code> ですが､この <code>T</code> �
 ここまで来ればなんで怒られるかも理由がつきますね｡
 そう､ <code>Option&lt;T&gt;</code> が <code>Some&lt;T&gt;</code> でも <code>None&lt;T&gt;</code> でもない場合にどうするかを書いてません｡
 んな場合無いよ! と人は思うんですが必ずしもそうではない｡
-<a href="#type-inference">3</a>
-章で熱弁した通り､注釈をつけないととんでもない場合があるので <code>Option&lt;T&gt;</code> は <code>export</code> して他のモジュールで利用する場合があります｡
+<a href="#type-inference">3</a>章で熱弁した通り､注釈をつけないととんでもない場合があるので <code>Option&lt;T&gt;</code> は <code>export</code> して他のモジュールで利用する場合があります｡
 特にこれをライブラリとして開発していたら知らんところで人が使います｡
 そして <strong><code>Option&lt;T&gt;</code> が <code>extends</code> され得るのです</strong> !
 また TypeScript も極めて賢いわけではないため､ <code>export</code> がついてるかどうかなどのアクセス制御と連携した型システムは備わっていないようです｡</p>
@@ -355,10 +340,10 @@ return type は <code>Option&lt;T&gt;</code> ですが､この <code>T</code> �
 この手法では <code>match</code> が not exhaustive なので怒られました｡</p>
 <div class="highlight">
 <span class="listing-name">キモいけどしゃーなし</span><pre><code class="language-typescript" data-lang="typescript"><span class="kd">const</span> <span class="nx">match</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">A</span><span class="o">&gt;</span><span class="p">(...)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">isSome</span><span class="p">(</span><span class="nx">o</span><span class="p">))</span> <span class="k">return</span> <span class="nx">onSome</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">isNone</span><span class="p">(</span><span class="nx">o</span><span class="p">))</span> <span class="k">return</span> <span class="nx">onNone</span><span class="p">();</span>
+  <span class="k">if </span><span class="p">(</span><span class="nf">isSome</span><span class="p">(</span><span class="nx">o</span><span class="p">))</span> <span class="k">return</span> <span class="nf">onSome</span><span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+  <span class="k">if </span><span class="p">(</span><span class="nf">isNone</span><span class="p">(</span><span class="nx">o</span><span class="p">))</span> <span class="k">return</span> <span class="nf">onNone</span><span class="p">();</span>
 
-  <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">may be unreachable</span><span class="dl">'</span><span class="p">);</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">may be unreachable</span><span class="dl">'</span><span class="p">);</span>
 <span class="p">};</span>
 <span class="c1">// よし､通れ</span>
 </code></pre>
@@ -424,9 +409,9 @@ must include a wild card pattern in order to be exhaustive.
 ちなみに弊社新サービスなどの実装言語には <em>Haskell が採用されがちです</em>｡
 この記事の大半は労働時間中に書かれました｡</p>
 <div class="twicard">
-  <span class="image"><a href="https://herp.careers/v1/herpinc" target="_blank" rel="noopener noreferrer"><div><img src="https://v1.herp.cloud/resources/company_logos/C-464R6"></div></a></span>
+  <span class="image"><a href="https://herp.careers/v1/herpinc" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://v1.herp.cloud/resources/company_logos/C-464R6"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://herp.careers/v1/herpinc" target="_blank" rel="noopener noreferrer">株式会社HERP の全ての求人一覧</a></div>
+    <div class="title"><a href="https://herp.careers/v1/herpinc" target="_blank" rel="noopener noreferrer noopener noreferrer">株式会社HERP の全ての求人一覧</a></div>
     <div class="description">株式会社HERP の全ての求人一覧です。</div>
   </span>
 </div>

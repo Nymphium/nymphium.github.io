@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<meta name="generator" content="Jekyll v4.3.1" />
+<meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="Extending OCaml&#39;s open" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -52,7 +52,6 @@
         <nav class="site-nav">
           <div class="trigger">
             <a class="page-link" href="/about/README.html">About me</a>
-            <a class="page-link" href="/aboutme.html">About me</a>
             <a class="page-link" href="/slide.html">Slides</a>
             <a class="page-link" href="/tags.html">Tags</a>
           </div>
@@ -68,7 +67,7 @@
               <h1 class="post-title" itemprop="name headline">Extending OCaml's open</h1>
               <span class="post-meta">
                 <time datetime="2020-12-31T00:00:00+09:00" itemprop="datePublished">Dec 31, 2020</time>
-                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2020-12-31-Extending%20OCaml%27s%20open.md" target="_blank" rel="noopener noreferrer">src</a>
+                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2020-12-31-Extending%20OCaml%27s%20open.md" target="_blank" rel="noopener noreferrer noopener noreferrer">src</a>
                 <p class="tags">tag: {<span class="tag">
                     <a href="/tags.html#OCaml-ref">OCaml</a>
                   </span><span></span><span class="tag">
@@ -118,8 +117,7 @@
 これは <a href="https://qiita.com/advent-calendar/2020/ml" target="_blank" rel="noopener noreferrer">ML Advent Calendar 2020</a> の22日目の記事です｡
 皆さんは大晦日ですか? 私は22日にいます｡</p>
 <p>さて話は OCaml 4.08 まで戻るのですが､みなさんは<code>open</code>の次に module path のみならず module <em>expression</em> を書けるようになっていたのをご存知でしたか?
-本日はそういった話をした論文<span class="cite">[<a href="#fn1" title='Li, Runhang and Yallop, Jeremy. "Extending OCaml’s “open”". arXiv. 2019. ' id="fnref1">1</a>]</span>
-の話をします｡</p>
+本日はそういった話をした論文<span class="cite">[<a href="#fn1" title='Li, Runhang and Yallop, Jeremy. "Extending OCaml’s “open”". arXiv. 2019. ' id="fnref1">1</a>]</span>の話をします｡</p>
 <p>モジュールのフィールドを現在のモジュールのスコープに展開する方法として<code>include</code>と<code>open</code>がある｡
 <code>include</code>はモジュールの中身を文字どおり <em>include</em> ､つまり内容が継ぎ足されます｡
 <code>open</code>はスコープ上で見えるようにするだけでモジュールの定義に展開されたメンバーは含まれません｡</p>

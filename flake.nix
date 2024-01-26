@@ -10,11 +10,12 @@
         pkgs = import nixpkgs {
           inherit system;
         };
-        ruby = pkgs.ruby_3_0;
+        ruby = pkgs.ruby_3_2;
+        rubyPkgs = pkgs.rubyPackages_3_2;
       in
       {
         legacyPackages = pkgs;
-        devShells.default = import ./shell.nix { inherit pkgs ruby; };
+        devShells.default = import ./shell.nix { inherit pkgs ruby rubyPkgs; };
       }
     );
 }

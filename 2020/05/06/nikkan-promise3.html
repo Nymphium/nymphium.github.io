@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<meta name="generator" content="Jekyll v4.3.1" />
+<meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="日刊Promise(3) スレッドプールっぽいものを作ってsetTimeoutを改修" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -52,7 +52,6 @@
         <nav class="site-nav">
           <div class="trigger">
             <a class="page-link" href="/about/README.html">About me</a>
-            <a class="page-link" href="/aboutme.html">About me</a>
             <a class="page-link" href="/slide.html">Slides</a>
             <a class="page-link" href="/tags.html">Tags</a>
           </div>
@@ -72,7 +71,7 @@
               <h1 class="post-title" itemprop="name headline">日刊Promise(3) スレッドプールっぽいものを作ってsetTimeoutを改修</h1>
               <span class="post-meta">
                 <time datetime="2020-05-06T00:00:00+09:00" itemprop="datePublished">May 6, 2020</time>
-                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2020-05-06-nikkan-promise3.md" target="_blank" rel="noopener noreferrer">src</a>
+                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2020-05-06-nikkan-promise3.md" target="_blank" rel="noopener noreferrer noopener noreferrer">src</a>
                 <p class="tags">tag: {<span class="tag">
                     <a href="/tags.html#%E6%97%A5%E5%88%8APromise-ref">日刊Promise</a>
                   </span><span></span><span class="tag">
@@ -122,9 +121,9 @@
 本当は<code>Promise</code>までイッキにいきたかったが､もう一発大改修が必要そうだったので今回は諦めました｡</p>
 <p>今回も放映した</p>
 <div class="twicard">
-  <span class="image"><a href="https://www.youtube.com/watch?v=D5ZkCvEomm4" target="_blank" rel="noopener noreferrer"><div><img src="https://i.ytimg.com/vi/D5ZkCvEomm4/maxresdefault.jpg"></div></a></span>
+  <span class="image"><a href="https://www.youtube.com/watch?v=D5ZkCvEomm4" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://i.ytimg.com/vi/D5ZkCvEomm4/maxresdefault.jpg"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://www.youtube.com/watch?v=D5ZkCvEomm4" target="_blank" rel="noopener noreferrer">おたくがボソボソ喋りながら言語実装する written in OCaml 2</a></div>
+    <div class="title"><a href="https://www.youtube.com/watch?v=D5ZkCvEomm4" target="_blank" rel="noopener noreferrer noopener noreferrer">おたくがボソボソ喋りながら言語実装する written in OCaml 2</a></div>
     <div class="description">これの実装続き サムネも1つ前のやつhttps://nymphium.github.io/2020/05/03/nikkan-promise2.html</div>
   </span>
 </div>
@@ -135,7 +134,7 @@
 <div class="highlight">
 <span class="listing-name">fが環境[{name: "x"; value: 3}]をclosingしている</span><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">f</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">x</span><span class="p">;</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">f</span><span class="p">());</span> <span class="c1">// ==&gt; 3</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">f</span><span class="p">());</span> <span class="c1">// ==&gt; 3</span>
 </code></pre>
 </div>
 <p><code>let</code>にした場合(内部的に)reference cellになるので外側から書き換えができますが､今回の実装はJSのサブセットになっており<code>let</code>はomitしているので考えません｡</p>
@@ -275,11 +274,11 @@ pendingしたらもとの実行に戻る｡
 <span class="p">;;</span>
 </code></pre></div>
 <p>しかしこれだけだと､</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">world</span><span class="dl">"</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">world</span><span class="dl">"</span><span class="p">)</span>
 <span class="p">},</span> <span class="mi">500</span><span class="p">);</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">);</span>
 </code></pre></div>
 <p>というプログラムを実行したときに､(500/20=)25回も式を評価しないため､<code>setTimeout</code>に渡さされた関数が実行されない｡
 ではどうするか?</p>
@@ -411,31 +410,31 @@ pendingしたらもとの実行に戻る｡
 <code>Wait</code>がうまくproimiseを待ってくれない｡
 これはまあまあ検討がついている｡</p>
 <p>JSの<code>Promise</code>を思い出してみると､</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">f</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">promise</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span> <span class="o">=&gt;</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">);</span>
-    <span class="nx">resolve</span><span class="p">();</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">f</span> <span class="o">=</span> <span class="k">async </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">promise</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Promise</span><span class="p">(</span><span class="nx">resolve</span> <span class="o">=&gt;</span> <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nf">resolve</span><span class="p">();</span>
   <span class="p">},</span> <span class="mi">500</span><span class="p">));</span>
   <span class="k">await</span> <span class="nx">promise</span><span class="p">;</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">world</span><span class="dl">"</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">world</span><span class="dl">"</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="nx">f</span><span class="p">();</span>
+<span class="nf">f</span><span class="p">();</span>
 </code></pre></div>
 <p>そういえば<code>resolve</code>とかいうやつあったな｡
 上記のJSプログラムで<code>resolve</code>を<code>setTimeout</code>内で呼ばないと結構面白い結果が得られる｡
 ……どうですか? 結果は500ミリ秒の沈黙ののちに<code>hello</code>が出力されるのみである｡
 <code>await</code>は何なのかを思い出してみると､<code>await</code>を使わなければ上記のプログラムは以下のように変形できる｡</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">f</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">promise</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span> <span class="o">=&gt;</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">);</span>
-    <span class="nx">resolve</span><span class="p">();</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">f</span> <span class="o">=</span> <span class="k">async </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">promise</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Promise</span><span class="p">(</span><span class="nx">resolve</span> <span class="o">=&gt;</span> <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nf">resolve</span><span class="p">();</span>
   <span class="p">},</span> <span class="mi">500</span><span class="p">))</span>
-  <span class="nx">promise</span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">world</span><span class="dl">"</span><span class="p">));</span>
+  <span class="nx">promise</span><span class="p">.</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">world</span><span class="dl">"</span><span class="p">));</span>
 <span class="p">}</span>
 
-<span class="nx">f</span><span class="p">();</span>
+<span class="nf">f</span><span class="p">();</span>
 </code></pre></div>
 <p>まるで<code>call/cc</code>だな｡
 実際のところは現在のscope内の限定継続を利用しているのだが｡</p>

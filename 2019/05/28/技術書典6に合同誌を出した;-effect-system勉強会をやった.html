@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<meta name="generator" content="Jekyll v4.3.1" />
+<meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="技術書典6に合同誌を出した; effect system勉強会をやった" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -52,7 +52,6 @@
         <nav class="site-nav">
           <div class="trigger">
             <a class="page-link" href="/about/README.html">About me</a>
-            <a class="page-link" href="/aboutme.html">About me</a>
             <a class="page-link" href="/slide.html">Slides</a>
             <a class="page-link" href="/tags.html">Tags</a>
           </div>
@@ -68,7 +67,7 @@
               <h1 class="post-title" itemprop="name headline">技術書典6に合同誌を出した; effect system勉強会をやった</h1>
               <span class="post-meta">
                 <time datetime="2019-05-28T00:00:00+09:00" itemprop="datePublished">May 28, 2019</time>
-                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2019-05-28-%E6%8A%80%E8%A1%93%E6%9B%B8%E5%85%B86%E3%81%AB%E5%90%88%E5%90%8C%E8%AA%8C%E3%82%92%E5%87%BA%E3%81%97%E3%81%9F%3B%20effect%20system%E5%8B%89%E5%BC%B7%E4%BC%9A%E3%82%92%E3%82%84%E3%81%A3%E3%81%9F.md" target="_blank" rel="noopener noreferrer">src</a>
+                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2019-05-28-%E6%8A%80%E8%A1%93%E6%9B%B8%E5%85%B86%E3%81%AB%E5%90%88%E5%90%8C%E8%AA%8C%E3%82%92%E5%87%BA%E3%81%97%E3%81%9F%3B%20effect%20system%E5%8B%89%E5%BC%B7%E4%BC%9A%E3%82%92%E3%82%84%E3%81%A3%E3%81%9F.md" target="_blank" rel="noopener noreferrer noopener noreferrer">src</a>
                 <p class="tags">tag: {<span class="tag">
                     <a href="/tags.html#%E6%8A%80%E8%A1%93%E6%9B%B8%E5%85%B8-ref">技術書典</a>
                   </span><span></span><span class="tag">
@@ -133,18 +132,18 @@
 <p>『Let's go Algebraic Effects and Handlers: from an introduction to advanced topics』というタイトルで書きましたが､3月はPPLに行ったり九州旅行に行ったりして気づけばギリギリになってしまいadvanced topicsに関してはちょっと物足りなくなってます｡
 他3記事も面白いのでそれで目をつぶってください｡</p>
 <div class="twicard">
-  <span class="image"><a href="https://dragonuniversity.booth.pm/items/1317197" target="_blank" rel="noopener noreferrer"><div><img src="https://booth.pximg.net/c/620x620/a00fe615-aca9-4ac2-9e73-c117987944f4/i/1317197/bd45f811-5cda-44ff-addf-b6306223184d_base_resized.jpg"></div></a></span>
+  <span class="image"><a href="https://dragonuniversity.booth.pm/items/1317197" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://booth.pximg.net/c/620x620/a00fe615-aca9-4ac2-9e73-c117987944f4/i/1317197/bd45f811-5cda-44ff-addf-b6306223184d_base_resized.jpg"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://dragonuniversity.booth.pm/items/1317197" target="_blank" rel="noopener noreferrer">Dragon University 2019.4(技術書典6) - Dragon University - BOOTH</a></div>
+    <div class="title"><a href="https://dragonuniversity.booth.pm/items/1317197" target="_blank" rel="noopener noreferrer noopener noreferrer">Dragon University 2019.4(技術書典6) - Dragon University - BOOTH</a></div>
     <div class="description">Dragon Universityも今回で4回目、今回は人気のAlgebraic Effectsやスマートコントラクト・SGXに加えCORE(本当に人気か？)の各種解説記事が揃ってます！ 「Let’s go Algebraic Effects and Handlers: from an introduction to advanced topics」 「スマートコントラクトCTF入門」 「SGX-ROP 不完全解説」 「CORE で作るテストベッド」</div>
   </span>
 </div>
 <h1 id="effect+system%E5%8B%89%E5%BC%B7%E4%BC%9A%E3%82%92%E3%82%84%E3%81%A3%E3%81%9F"><a class="headerlink" href="#effect+system%E5%8B%89%E5%BC%B7%E4%BC%9A%E3%82%92%E3%82%84%E3%81%A3%E3%81%9F">effect system勉強会をやった</a></h1>
 <p><a href="http://nymphium.github.io/2019/03/28/%E5%8B%89%E5%BC%B7%E4%BC%9A%E3%82%92%E9%96%8B%E5%82%AC%E3%81%97%E3%81%9F%E3%82%89big-name%E3%82%92%E5%8F%AC%E5%96%9A%E3%81%97%E3%81%A6%E3%81%97%E3%81%BE%E3%81%A3%E3%81%9F.html">前回</a>触れたとおり､来る5月26日に日本全国のeffect system researcherやuserが集うかもしれないeffect system勉強会がありました｡</p>
 <div class="twicard">
-  <span class="image"><a href="https://connpass.com/event/124786/" target="_blank" rel="noopener noreferrer"><div><img src="https://connpass.com/static/img/468_468.png"></div></a></span>
+  <span class="image"><a href="https://connpass.com/event/124786/" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://connpass.com/static/img/468_468.png"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://connpass.com/event/124786/" target="_blank" rel="noopener noreferrer">effect system勉強会 (2019/05/26 13:00〜)</a></div>
+    <div class="title"><a href="https://connpass.com/event/124786/" target="_blank" rel="noopener noreferrer noopener noreferrer">effect system勉強会 (2019/05/26 13:00〜)</a></div>
     <div class="description">## 会場の入館について  入館方法についてはこちらをご確認ください｡ 入館IDについてはメッセージを送ってあるのでそちっらをご確認ください｡  ## タイムテーブル  時間 | 発表者 | タイトル   ---|---|---   12:45~ | - | 開場   13:00~13:10 | びしょ〜じょ | 諸注意など   13:10~13:40 | halcat0x15a | Extensible Eff Applicative   13:40~13:50 | fumieval | (LT) 名前付きeffects   13:50~14:00 | - | 休憩 (10分)   1...</div>
   </span>
 </div>
@@ -206,17 +205,17 @@
 <p>open unionをdictionaryにするのはなかなかおもしろいですね｡</p>
 <p style="font-size: 34pt;">今すぐダウンロー</p>
 <div class="twicard">
-  <span class="image"><a href="http://hackage.haskell.org/package/extensible" target="_blank" rel="noopener noreferrer"><div><img src="/pictures/no_image.png"></div></a></span>
+  <span class="image"><a href="http://hackage.haskell.org/package/extensible" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="/pictures/no_image.png"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="http://hackage.haskell.org/package/extensible" target="_blank" rel="noopener noreferrer">extensible</a></div>
+    <div class="title"><a href="http://hackage.haskell.org/package/extensible" target="_blank" rel="noopener noreferrer noopener noreferrer">extensible</a></div>
     <div class="description">Extensible, efficient, optics-friendly data types and effects</div>
   </span>
 </div>
 <p style="font-size: 34pt;">ド</p>
 <div class="twicard">
-  <span class="image"><a href="https://github.com/fumieval/extensible" target="_blank" rel="noopener noreferrer"><div><img src="https://repository-images.githubusercontent.com/28671219/0ce84a80-cb6b-11e9-8882-b3e82c2f327d"></div></a></span>
+  <span class="image"><a href="https://github.com/fumieval/extensible" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://repository-images.githubusercontent.com/28671219/0ce84a80-cb6b-11e9-8882-b3e82c2f327d"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://github.com/fumieval/extensible" target="_blank" rel="noopener noreferrer">GitHub - fumieval/extensible: Extensible records, variants, structs, effects, tangles</a></div>
+    <div class="title"><a href="https://github.com/fumieval/extensible" target="_blank" rel="noopener noreferrer noopener noreferrer">GitHub - fumieval/extensible: Extensible records, variants, structs, effects, tangles</a></div>
     <div class="description">Extensible records, variants, structs, effects, tangles - GitHub - fumieval/extensible: Extensible records, variants, structs, effects, tangles</div>
   </span>
 </div>
@@ -259,9 +258,9 @@
 <h2 id="Effect%7Bive%2Cful%7D+Cycle.js"><a class="headerlink" href="#Effect%7Bive%2Cful%7D+Cycle.js">Effect{ive,ful} Cycle.js</a></h2>
 <p>3番手は<a href="https://twitter.com/ryotakameoka" target="_blank" rel="noopener noreferrer">@ryotakameoka </a>さんの発表でした｡</p>
 <div class="twicard">
-  <span class="image"><a href="https://qiita.com/ryota-ka/items/b46f43dc18a9229feb03" target="_blank" rel="noopener noreferrer"><div><img src="https://qiita-user-contents.imgix.net/https%3A%2F%2Fcdn.qiita.com%2Fassets%2Fpublic%2Farticle-ogp-background-9f5428127621718a910c8b63951390ad.png?ixlib=rb-4.0.0&amp;w=1200&amp;mark64=aHR0cHM6Ly9xaWl0YS11c2VyLWNvbnRlbnRzLmltZ2l4Lm5ldC9-dGV4dD9peGxpYj1yYi00LjAuMCZ3PTkxNiZ0eHQ9RWZmZWN0JTdCaXZlJTJDZnVsJTdEJTIwQ3ljbGUuanMmdHh0LWNvbG9yPSUyMzIxMjEyMSZ0eHQtZm9udD1IaXJhZ2lubyUyMFNhbnMlMjBXNiZ0eHQtc2l6ZT01NiZ0eHQtY2xpcD1lbGxpcHNpcyZ0eHQtYWxpZ249bGVmdCUyQ3RvcCZzPWM4YjRjYTUyZDAwZDc1MjU4NTk2OWM4OTZmOGVkZDMw&amp;mark-x=142&amp;mark-y=112&amp;blend64=aHR0cHM6Ly9xaWl0YS11c2VyLWNvbnRlbnRzLmltZ2l4Lm5ldC9-dGV4dD9peGxpYj1yYi00LjAuMCZ3PTYxNiZ0eHQ9JTQwcnlvdGEta2EmdHh0LWNvbG9yPSUyMzIxMjEyMSZ0eHQtZm9udD1IaXJhZ2lubyUyMFNhbnMlMjBXNiZ0eHQtc2l6ZT0zNiZ0eHQtYWxpZ249bGVmdCUyQ3RvcCZzPThjMDgzN2ViOWE1Y2IwYzJmNjU4NmZjZDY3YmZhMDFh&amp;blend-x=142&amp;blend-y=491&amp;blend-mode=normal&amp;s=e50318d47f1a863478adc9ec2ef9f744"></div></a></span>
+  <span class="image"><a href="https://qiita.com/ryota-ka/items/b46f43dc18a9229feb03" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://qiita-user-contents.imgix.net/https%3A%2F%2Fcdn.qiita.com%2Fassets%2Fpublic%2Farticle-ogp-background-9f5428127621718a910c8b63951390ad.png?ixlib=rb-4.0.0&amp;w=1200&amp;mark64=aHR0cHM6Ly9xaWl0YS11c2VyLWNvbnRlbnRzLmltZ2l4Lm5ldC9-dGV4dD9peGxpYj1yYi00LjAuMCZ3PTkxNiZ0eHQ9RWZmZWN0JTdCaXZlJTJDZnVsJTdEJTIwQ3ljbGUuanMmdHh0LWNvbG9yPSUyMzIxMjEyMSZ0eHQtZm9udD1IaXJhZ2lubyUyMFNhbnMlMjBXNiZ0eHQtc2l6ZT01NiZ0eHQtY2xpcD1lbGxpcHNpcyZ0eHQtYWxpZ249bGVmdCUyQ3RvcCZzPWM4YjRjYTUyZDAwZDc1MjU4NTk2OWM4OTZmOGVkZDMw&amp;mark-x=142&amp;mark-y=112&amp;blend64=aHR0cHM6Ly9xaWl0YS11c2VyLWNvbnRlbnRzLmltZ2l4Lm5ldC9-dGV4dD9peGxpYj1yYi00LjAuMCZ3PTYxNiZ0eHQ9JTQwcnlvdGEta2EmdHh0LWNvbG9yPSUyMzIxMjEyMSZ0eHQtZm9udD1IaXJhZ2lubyUyMFNhbnMlMjBXNiZ0eHQtc2l6ZT0zNiZ0eHQtYWxpZ249bGVmdCUyQ3RvcCZzPThjMDgzN2ViOWE1Y2IwYzJmNjU4NmZjZDY3YmZhMDFh&amp;blend-x=142&amp;blend-y=491&amp;blend-mode=normal&amp;s=e50318d47f1a863478adc9ec2ef9f744"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://qiita.com/ryota-ka/items/b46f43dc18a9229feb03" target="_blank" rel="noopener noreferrer">Effect{ive,ful} Cycle.js - Qiita</a></div>
+    <div class="title"><a href="https://qiita.com/ryota-ka/items/b46f43dc18a9229feb03" target="_blank" rel="noopener noreferrer noopener noreferrer">Effect{ive,ful} Cycle.js - Qiita</a></div>
     <div class="description">おことわりこの発表はかなりお気持ちです他の発表とは異なり(？)なんら学術的裏付けがあるものではありませんなんと(？)まったく数式が出てきません自己紹介亀岡 亮太株式会社HERP リードエンジニアT...</div>
   </span>
 </div>
@@ -272,9 +271,9 @@ HERP社さん面白いですね｡
 product-capableなCycle.jsの実装を見ていくと面白いものが見られるかも｡</p>
 <p>ryotakaさんがトゥギャ(?)ってたのを引用します｡</p>
 <div class="twicard">
-  <span class="image"><a href="https://twitter.com/i/moments/1132869165562310656" target="_blank" rel="noopener noreferrer"><div><img src="/pictures/no_image.png"></div></a></span>
+  <span class="image"><a href="https://twitter.com/i/moments/1132869165562310656" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="/pictures/no_image.png"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://twitter.com/i/moments/1132869165562310656" target="_blank" rel="noopener noreferrer">Twitter</a></div>
+    <div class="title"><a href="https://twitter.com/i/moments/1132869165562310656" target="_blank" rel="noopener noreferrer noopener noreferrer">Twitter</a></div>
     <div class="description"></div>
   </span>
 </div>
@@ -335,18 +334,18 @@ product-capableなCycle.jsの実装を見ていくと面白いものが見られ
 </div>
 <p>書典6で販売したRustのジェネレータの解説本をBOOTHでも販売中とのこと｡</p>
 <div class="twicard">
-  <span class="image"><a href="https://booth.pm/ja/items/1318774" target="_blank" rel="noopener noreferrer"><div><img src="https://booth.pximg.net/c/620x620/b3df3e2a-38d7-4eda-8df5-f70aa806cdfa/i/1318774/6f724242-516e-425b-a2bc-5fdc97f23bab_base_resized.jpg"></div></a></span>
+  <span class="image"><a href="https://booth.pm/ja/items/1318774" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://booth.pximg.net/c/620x620/b3df3e2a-38d7-4eda-8df5-f70aa806cdfa/i/1318774/6f724242-516e-425b-a2bc-5fdc97f23bab_base_resized.jpg"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://booth.pm/ja/items/1318774" target="_blank" rel="noopener noreferrer">Rustジェネレータ徹底解説 - 井山梃子歴史館 - BOOTH</a></div>
+    <div class="title"><a href="https://booth.pm/ja/items/1318774" target="_blank" rel="noopener noreferrer noopener noreferrer">Rustジェネレータ徹底解説 - 井山梃子歴史館 - BOOTH</a></div>
     <div class="description">技術書典6で頒布した『Rustジェネレータ徹底解説』です． ジェネレータとは，RustでもPythonやJavaSciprtのyield式を使うために実装された言語機能であり，Rustにおける非同期プログラミングを裏から支えています． 『Rustジェネレータ徹底解説』では 1. なぜFutureに基づく非同期プログラミングがジェネレータの発明に繋がったのか 2. ジェネレータはコンパイラ内部でどのように扱われるのか などコンパイラのソースコードも見ながら紹介します</div>
   </span>
 </div>
 <h2 id="Monads+and+Effects"><a class="headerlink" href="#Monads+and+Effects">Monads and Effects</a></h2>
 <p>5番目は<a href="https://twitter.com/myuon_myon" target="_blank" rel="noopener noreferrer">@myuon_myon </a>さんの発表でした｡</p>
 <div class="twicard">
-  <span class="image"><a href="https://speakerdeck.com/myuon/monads-and-effects" target="_blank" rel="noopener noreferrer"><div><img src="https://files.speakerdeck.com/presentations/32863616b9924a559e5f0c307d38e788/slide_0.jpg?12661568"></div></a></span>
+  <span class="image"><a href="https://speakerdeck.com/myuon/monads-and-effects" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://files.speakerdeck.com/presentations/32863616b9924a559e5f0c307d38e788/slide_0.jpg?12661568"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://speakerdeck.com/myuon/monads-and-effects" target="_blank" rel="noopener noreferrer">Monads and Effects</a></div>
+    <div class="title"><a href="https://speakerdeck.com/myuon/monads-and-effects" target="_blank" rel="noopener noreferrer noopener noreferrer">Monads and Effects</a></div>
     <div class="description"></div>
   </span>
 </div>
@@ -355,9 +354,9 @@ product-capableなCycle.jsの実装を見ていくと面白いものが見られ
 あとshift0/reset0は書けるけどshift/resetは型で弾かれた経験があるので､もう少し頑張ってトライしてみたいです｡
 </p>
 <div class="twicard">
-  <span class="image"><a href="https://gist.github.com/Nymphium/3cb574cb511a179a30390599e6e51669" target="_blank" rel="noopener noreferrer"><div><img src="https://github.githubassets.com/images/modules/gists/gist-og-image.png"></div></a></span>
+  <span class="image"><a href="https://gist.github.com/Nymphium/3cb574cb511a179a30390599e6e51669" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://github.githubassets.com/images/modules/gists/gist-og-image.png"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://gist.github.com/Nymphium/3cb574cb511a179a30390599e6e51669" target="_blank" rel="noopener noreferrer">typed prompt-less shift/reset in Koka language</a></div>
+    <div class="title"><a href="https://gist.github.com/Nymphium/3cb574cb511a179a30390599e6e51669" target="_blank" rel="noopener noreferrer noopener noreferrer">typed prompt-less shift/reset in Koka language</a></div>
     <div class="description">typed prompt-less shift/reset in Koka language. GitHub Gist: instantly share code, notes, and snippets.</div>
   </span>
 </div>
@@ -493,9 +492,9 @@ product-capableなCycle.jsの実装を見ていくと面白いものが見られ
 </div>
 <p>手前味噌で持ってきたN-Barreled CPSですが､質問で耳寄り情報をいただきましたが､すでにAlgebraic EffectsをCPS変換する研究はあるそうです(当然)</p>
 <div class="twicard">
-  <span class="image"><a href="https://bentnib.org/handlers-cps.html" target="_blank" rel="noopener noreferrer"><div><img src="/pictures/no_image.png"></div></a></span>
+  <span class="image"><a href="https://bentnib.org/handlers-cps.html" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="/pictures/no_image.png"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://bentnib.org/handlers-cps.html" target="_blank" rel="noopener noreferrer">Continuation Passing Style for Effect Handlers - Bob Atkey</a></div>
+    <div class="title"><a href="https://bentnib.org/handlers-cps.html" target="_blank" rel="noopener noreferrer noopener noreferrer">Continuation Passing Style for Effect Handlers - Bob Atkey</a></div>
     <div class="description"></div>
   </span>
 </div>
@@ -503,9 +502,9 @@ product-capableなCycle.jsの実装を見ていくと面白いものが見られ
 なんかいろいろまとめたやつです｡
 大事なことなので2回</p>
 <div class="twicard">
-  <span class="image"><a href="https://dragonuniversity.booth.pm/items/1317197" target="_blank" rel="noopener noreferrer"><div><img src="https://booth.pximg.net/c/620x620/a00fe615-aca9-4ac2-9e73-c117987944f4/i/1317197/bd45f811-5cda-44ff-addf-b6306223184d_base_resized.jpg"></div></a></span>
+  <span class="image"><a href="https://dragonuniversity.booth.pm/items/1317197" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://booth.pximg.net/c/620x620/a00fe615-aca9-4ac2-9e73-c117987944f4/i/1317197/bd45f811-5cda-44ff-addf-b6306223184d_base_resized.jpg"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://dragonuniversity.booth.pm/items/1317197" target="_blank" rel="noopener noreferrer">Dragon University 2019.4(技術書典6) - Dragon University - BOOTH</a></div>
+    <div class="title"><a href="https://dragonuniversity.booth.pm/items/1317197" target="_blank" rel="noopener noreferrer noopener noreferrer">Dragon University 2019.4(技術書典6) - Dragon University - BOOTH</a></div>
     <div class="description">Dragon Universityも今回で4回目、今回は人気のAlgebraic Effectsやスマートコントラクト・SGXに加えCORE(本当に人気か？)の各種解説記事が揃ってます！ 「Let’s go Algebraic Effects and Handlers: from an introduction to advanced topics」 「スマートコントラクトCTF入門」 「SGX-ROP 不完全解説」 「CORE で作るテストベッド」</div>
   </span>
 </div>

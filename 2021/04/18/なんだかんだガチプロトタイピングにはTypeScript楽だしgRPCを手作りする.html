@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<meta name="generator" content="Jekyll v4.3.1" />
+<meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="なんだかんだガチプロトタイピングにはTypeScript楽だしgRPCを手作りする" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -52,7 +52,6 @@
         <nav class="site-nav">
           <div class="trigger">
             <a class="page-link" href="/about/README.html">About me</a>
-            <a class="page-link" href="/aboutme.html">About me</a>
             <a class="page-link" href="/slide.html">Slides</a>
             <a class="page-link" href="/tags.html">Tags</a>
           </div>
@@ -68,7 +67,7 @@
               <h1 class="post-title" itemprop="name headline">なんだかんだガチプロトタイピングにはTypeScript楽だしgRPCを手作りする</h1>
               <span class="post-meta">
                 <time datetime="2021-04-18T00:00:00+09:00" itemprop="datePublished">Apr 18, 2021</time>
-                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2021-04-18-%E3%81%AA%E3%82%93%E3%81%A0%E3%81%8B%E3%82%93%E3%81%A0%E3%82%AC%E3%83%81%E3%83%97%E3%83%AD%E3%83%88%E3%82%BF%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%AFTypeScript%E6%A5%BD%E3%81%A0%E3%81%97gRPC%E3%82%92%E6%89%8B%E4%BD%9C%E3%82%8A%E3%81%99%E3%82%8B.md" target="_blank" rel="noopener noreferrer">src</a>
+                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2021-04-18-%E3%81%AA%E3%82%93%E3%81%A0%E3%81%8B%E3%82%93%E3%81%A0%E3%82%AC%E3%83%81%E3%83%97%E3%83%AD%E3%83%88%E3%82%BF%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%AFTypeScript%E6%A5%BD%E3%81%A0%E3%81%97gRPC%E3%82%92%E6%89%8B%E4%BD%9C%E3%82%8A%E3%81%99%E3%82%8B.md" target="_blank" rel="noopener noreferrer noopener noreferrer">src</a>
                 <p class="tags">tag: {<span class="tag">
                     <a href="/tags.html#TypeScript-ref">TypeScript</a>
                   </span><span></span><span class="tag">
@@ -125,8 +124,7 @@ protobufのシリアライズ/デシリアライズはライブラリでやっ�
 <p>今回使うライブラリは､新しめのNodeの標準ライブラリの<a href="https://nodejs.org/api/http2.html" target="_blank" rel="noopener noreferrer">http2</a>と<a href="https://github.com/improbable-eng/ts-protoc-gen" target="_blank" rel="noopener noreferrer">ts-protoc-gen</a>｡
 クライアントはダルいんで<a href="https://github.com/fullstorydev/grpcurl" target="_blank" rel="noopener noreferrer">grpcurl</a>を使う｡
 便利｡</p>
-<p>gRPC over HTTP/2はとりあえず公式のspec<span class="cite">[<a href="#fn1" title="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md " id="fnref1">1</a>]</span>
-を読めば全部OK!!
+<p>gRPC over HTTP/2はとりあえず公式のspec<span class="cite">[<a href="#fn1" title="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md " id="fnref1">1</a>]</span>を読めば全部OK!!
 どいうったものを送ればいいのかABNFで書かれており追いやすい｡</p>
 <p>では､いきます｡</p>
 <h1 id="2.+proto"><a class="headerlink" href="#2.+proto">2. proto</a></h1>
@@ -154,8 +152,7 @@ protobufのシリアライズ/デシリアライズはライブラリでやっ�
 <h1 id="3.+%E3%81%BE%E3%81%9A%E3%81%AF%E5%8F%97%E3%81%91%E3%82%8B"><a class="headerlink" href="#3.+%E3%81%BE%E3%81%9A%E3%81%AF%E5%8F%97%E3%81%91%E3%82%8B">3. まずは受ける</a></h1>
 <h2 id="3-1.+%E4%BB%95%E6%A7%98%E3%82%92%E3%82%88%E3%82%80"><a class="headerlink" href="#3-1.+%E4%BB%95%E6%A7%98%E3%82%92%E3%82%88%E3%82%80">3-1. 仕様をよむ</a></h2>
 <p>とりあえずどういったリクエストがやってくるか見る｡
-<span class="cite">[<a href="#fn1" title="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md " id="fnref1">1</a>]</span>
-曰く､</p>
+<span class="cite">[<a href="#fn1" title="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md " id="fnref1">1</a>]</span>曰く､</p>
 <table>
 <thead>
 <tr>
@@ -207,10 +204,10 @@ protobufのシリアライズ/デシリアライズはライブラリでやっ�
 <span class="k">export</span> <span class="kd">const</span> <span class="nx">call</span> <span class="o">=</span> <span class="p">(</span><span class="nx">request</span><span class="p">:</span> <span class="nx">H2</span><span class="p">.</span><span class="nx">Http2ServerRequest</span><span class="p">,</span> <span class="nx">response</span><span class="p">:</span> <span class="nx">H2</span><span class="p">.</span><span class="nx">Http2ServerResponse</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="na">chunks</span><span class="p">:</span> <span class="nx">Buffer</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
 
-    <span class="nx">request</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="na">chunk</span><span class="p">:</span> <span class="nx">Buffer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">chunks</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">chunk</span><span class="p">));</span>
-    <span class="nx">request</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">chunks</span><span class="p">);</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+    <span class="nx">request</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="na">chunk</span><span class="p">:</span> <span class="nx">Buffer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">chunks</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">chunk</span><span class="p">));</span>
+    <span class="nx">request</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">chunks</span><span class="p">);</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nf">end</span><span class="p">();</span>
     <span class="p">});</span>
 <span class="p">};</span>
 </code></pre>
@@ -219,16 +216,16 @@ protobufのシリアライズ/デシリアライズはライブラリでやっ�
 <span class="listing-name">index.ts</span><pre><code class="language-typescript" data-lang="typescript"><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">H2</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">http2</span><span class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">EchoService</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./echo-service</span><span class="dl">'</span>
 
-<span class="kd">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">H2</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">switch</span> <span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="dl">'</span><span class="s1">:method</span><span class="dl">'</span><span class="p">]}${</span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="dl">'</span><span class="s1">:path</span><span class="dl">'</span><span class="p">]}</span><span class="s2">`</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">H2</span><span class="p">.</span><span class="nf">createServer</span><span class="p">((</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">switch </span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="dl">'</span><span class="s1">:method</span><span class="dl">'</span><span class="p">]}${</span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="dl">'</span><span class="s1">:path</span><span class="dl">'</span><span class="p">]}</span><span class="s2">`</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">case</span> <span class="dl">'</span><span class="s1">POST/services.Echo/Call</span><span class="dl">'</span><span class="p">:</span>
-            <span class="nx">EchoService</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">);</span>
+            <span class="nx">EchoService</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">});</span>
 
 <span class="kd">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">50051</span><span class="p">;</span>
-<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`listen on localhost:</span><span class="p">${</span><span class="nx">port</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+<span class="nx">server</span><span class="p">.</span><span class="nf">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`listen on localhost:</span><span class="p">${</span><span class="nx">port</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre>
 </div>
@@ -315,27 +312,27 @@ protoc <span class="se">\</span>
 
 <span class="kd">type</span> <span class="nx">T</span> <span class="o">=</span> <span class="nb">Uint8Array</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">encoder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TextEncoder</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">decoder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TextDecoder</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">encoder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextEncoder</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">decoder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextDecoder</span><span class="p">();</span>
 
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">fromString</span> <span class="o">=</span> <span class="p">(</span><span class="nx">v</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nx">T</span> <span class="o">=&gt;</span> <span class="nx">encoder</span><span class="p">.</span><span class="nx">encode</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">fromString</span> <span class="o">=</span> <span class="p">(</span><span class="nx">v</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nx">T</span> <span class="o">=&gt;</span> <span class="nx">encoder</span><span class="p">.</span><span class="nf">encode</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
 <span class="k">export</span> <span class="kd">const</span> <span class="nx">fromBit</span> <span class="o">=</span> <span class="p">(</span><span class="nx">i</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">):</span> <span class="nx">T</span> <span class="o">=&gt;</span> <span class="nb">Uint8Array</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="nx">i</span> <span class="p">?</span> <span class="mi">1</span> <span class="p">:</span> <span class="mi">0</span><span class="p">);</span>
 <span class="c1">// uint32をいい感じにuint8 arrayに敷き詰める</span>
 <span class="k">export</span> <span class="kd">const</span> <span class="nx">fromByte</span> <span class="o">=</span> <span class="p">(</span><span class="nx">i</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="nx">T</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="c1">// がんばる</span>
-    <span class="nx">Assert</span><span class="p">.</span><span class="nx">ok</span><span class="p">(</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">32</span><span class="p">);</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="nb">Uint8Array</span><span class="p">(</span><span class="nb">Uint32Array</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">buffer</span><span class="p">).</span><span class="nx">reverse</span><span class="p">();</span>
+    <span class="nx">Assert</span><span class="p">.</span><span class="nf">ok</span><span class="p">(</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">32</span><span class="p">);</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nc">Uint8Array</span><span class="p">(</span><span class="nb">Uint32Array</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">buffer</span><span class="p">).</span><span class="nf">reverse</span><span class="p">();</span>
 <span class="p">};</span>
 <span class="c1">// ビャッとやる</span>
 <span class="k">export</span> <span class="kd">const</span> <span class="nx">toString</span> <span class="o">=</span> <span class="p">(...</span><span class="nx">ts</span><span class="p">:</span> <span class="nx">T</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">tmp</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Uint8Array</span><span class="p">(</span><span class="nx">ts</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">acc</span> <span class="o">+</span> <span class="nx">t</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+    <span class="kd">const</span> <span class="nx">tmp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Uint8Array</span><span class="p">(</span><span class="nx">ts</span><span class="p">.</span><span class="nf">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">acc</span> <span class="o">+</span> <span class="nx">t</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
 
-    <span class="nx">ts</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">offset</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nx">tmp</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">offset</span><span class="p">);</span>
+    <span class="nx">ts</span><span class="p">.</span><span class="nf">reduce</span><span class="p">((</span><span class="nx">offset</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">tmp</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">offset</span><span class="p">);</span>
         <span class="k">return</span> <span class="nx">t</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="nx">offset</span><span class="p">;</span>
     <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
 
-    <span class="k">return</span> <span class="nx">decoder</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="nx">tmp</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">decoder</span><span class="p">.</span><span class="nf">decode</span><span class="p">(</span><span class="nx">tmp</span><span class="p">);</span>
 <span class="p">};</span>
 </code></pre>
 </div>
@@ -351,12 +348,12 @@ request bodyには先頭5byteにmessageの情報が入っているが､今回�
 <span class="k">export</span> <span class="kd">const</span> <span class="nx">call</span> <span class="o">=</span> <span class="p">(</span><span class="nx">request</span><span class="p">:</span> <span class="nx">H2</span><span class="p">.</span><span class="nx">Http2ServerRequest</span><span class="p">,</span> <span class="nx">response</span><span class="p">:</span> <span class="nx">H2</span><span class="p">.</span><span class="nx">Http2ServerResponse</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="na">chunks</span><span class="p">:</span> <span class="nx">Buffer</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
 
-    <span class="nx">request</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="na">chunk</span><span class="p">:</span> <span class="nx">Buffer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">chunks</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">chunk</span><span class="p">));</span>
-    <span class="nx">request</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">request</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="na">chunk</span><span class="p">:</span> <span class="nx">Buffer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">chunks</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">chunk</span><span class="p">));</span>
+    <span class="nx">request</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="c1">// Array&lt;Buffer&gt;を合体して雑に5byte捨てる</span>
-        <span class="kd">const</span> <span class="nx">echoRequest</span> <span class="o">=</span> <span class="nx">Echo</span><span class="p">.</span><span class="nx">EchoRequest</span><span class="p">.</span><span class="nx">deserializeBinary</span><span class="p">(</span><span class="nx">HexData</span><span class="p">.</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">chunks</span><span class="p">.</span><span class="nx">join</span><span class="p">().</span><span class="nx">substring</span><span class="p">(</span><span class="mi">5</span><span class="p">)));</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">echoRequest</span><span class="p">.</span><span class="nx">toObject</span><span class="p">()));</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+        <span class="kd">const</span> <span class="nx">echoRequest</span> <span class="o">=</span> <span class="nx">Echo</span><span class="p">.</span><span class="nx">EchoRequest</span><span class="p">.</span><span class="nf">deserializeBinary</span><span class="p">(</span><span class="nx">HexData</span><span class="p">.</span><span class="nf">fromString</span><span class="p">(</span><span class="nx">chunks</span><span class="p">.</span><span class="nf">join</span><span class="p">().</span><span class="nf">substring</span><span class="p">(</span><span class="mi">5</span><span class="p">)));</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">echoRequest</span><span class="p">.</span><span class="nf">toObject</span><span class="p">()));</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nf">end</span><span class="p">();</span>
     <span class="p">});</span>
 <span class="p">};</span>
 </code></pre>
@@ -460,20 +457,20 @@ request bodyには先頭5byteにmessageの情報が入っているが､今回�
 <p>今回は異常系も考えんでいいか｡</p>
 <div class="highlight">
 <span class="listing-name">echo-service.ts</span><pre><code class="language-typescript" data-lang="typescript"><span class="p">...</span>
-    <span class="nx">request</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">chunk</span><span class="p">:</span> <span class="nx">Buffer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">chunks</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">chunk</span><span class="p">));</span>
-    <span class="nx">request</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="kd">const</span> <span class="nx">echoRequest</span> <span class="o">=</span> <span class="nx">decodeEchoRequest</span><span class="p">(</span><span class="nx">chunks</span><span class="p">.</span><span class="nx">join</span><span class="p">().</span><span class="nx">substring</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
-        <span class="kd">const</span> <span class="nx">echoResponse</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Echo</span><span class="p">.</span><span class="nx">EchoResponse</span><span class="p">();</span>
-        <span class="nx">echoResponse</span><span class="p">.</span><span class="nx">setMessage</span><span class="p">(</span><span class="nx">echoRequest</span><span class="p">.</span><span class="nx">getMessage</span><span class="p">());</span>
-        <span class="kd">const</span> <span class="nx">msg</span> <span class="o">=</span> <span class="nx">echoResponse</span><span class="p">.</span><span class="nx">serializeBinary</span><span class="p">();</span>
-        <span class="kd">const</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">HexData</span><span class="p">.</span><span class="nx">fromByte</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+    <span class="nx">request</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">chunk</span><span class="p">:</span> <span class="nx">Buffer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">chunks</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">chunk</span><span class="p">));</span>
+    <span class="nx">request</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">echoRequest</span> <span class="o">=</span> <span class="nf">decodeEchoRequest</span><span class="p">(</span><span class="nx">chunks</span><span class="p">.</span><span class="nf">join</span><span class="p">().</span><span class="nf">substring</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
+        <span class="kd">const</span> <span class="nx">echoResponse</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Echo</span><span class="p">.</span><span class="nc">EchoResponse</span><span class="p">();</span>
+        <span class="nx">echoResponse</span><span class="p">.</span><span class="nf">setMessage</span><span class="p">(</span><span class="nx">echoRequest</span><span class="p">.</span><span class="nf">getMessage</span><span class="p">());</span>
+        <span class="kd">const</span> <span class="nx">msg</span> <span class="o">=</span> <span class="nx">echoResponse</span><span class="p">.</span><span class="nf">serializeBinary</span><span class="p">();</span>
+        <span class="kd">const</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">HexData</span><span class="p">.</span><span class="nf">fromByte</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
         <span class="c1">// compressしない</span>
-        <span class="kd">const</span> <span class="nx">compression</span> <span class="o">=</span> <span class="nx">HexData</span><span class="p">.</span><span class="nx">fromBit</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
-        <span class="kd">const</span> <span class="nx">responseBody</span> <span class="o">=</span> <span class="nx">HexData</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">compression</span><span class="p">,</span> <span class="nx">len</span><span class="p">,</span> <span class="nx">msg</span><span class="p">);</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">content-type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/grpc+proto</span><span class="dl">'</span> <span class="p">});</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">responseBody</span><span class="p">);</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">grpc-status: 0</span><span class="dl">'</span><span class="p">);</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+        <span class="kd">const</span> <span class="nx">compression</span> <span class="o">=</span> <span class="nx">HexData</span><span class="p">.</span><span class="nf">fromBit</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+        <span class="kd">const</span> <span class="nx">responseBody</span> <span class="o">=</span> <span class="nx">HexData</span><span class="p">.</span><span class="nf">toString</span><span class="p">(</span><span class="nx">compression</span><span class="p">,</span> <span class="nx">len</span><span class="p">,</span> <span class="nx">msg</span><span class="p">);</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nf">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">content-type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/grpc+proto</span><span class="dl">'</span> <span class="p">});</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="nx">responseBody</span><span class="p">);</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">grpc-status: 0</span><span class="dl">'</span><span class="p">);</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nf">end</span><span class="p">();</span>
     <span class="p">});</span>
 <span class="p">...</span>
 </code></pre>
@@ -502,8 +499,7 @@ ERROR:
 <p>は?</p>
 <h2 id="5-1.+HTTP%2F2%E3%81%AE%3Ccode%3Etrailers%3C%2Fcode%3E%0A"><a class="headerlink" href="#5-1.+HTTP%2F2%E3%81%AE%3Ccode%3Etrailers%3C%2Fcode%3E%0A">5-1. HTTP/2の<code>trailers</code>
 </a></h2>
-<p><span class="cite">[<a href="#fn1" title="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md " id="fnref1">1</a>]</span>
-をガッコリ読むと</p>
+<p><span class="cite">[<a href="#fn1" title="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md " id="fnref1">1</a>]</span>をガッコリ読むと</p>
 <blockquote>
 <p>For responses end-of-stream is indicated by the presence of the END_STREAM flag on the last received HEADERS frame that carries Trailers.</p>
 </blockquote>
@@ -531,10 +527,10 @@ streaming rpcをやっていってエラーを吐くときにメッセージを�
 <h2 id="5-2.+%E3%81%82%E3%81%A8%E3%81%AF%E3%82%84%E3%82%8B%E3%81%A0%E3%81%91"><a class="headerlink" href="#5-2.+%E3%81%82%E3%81%A8%E3%81%AF%E3%82%84%E3%82%8B%E3%81%A0%E3%81%91">5-2. あとはやるだけ</a></h2>
 <div class="highlight">
 <span class="listing-name">echo-server.ts</span><pre><code class="language-typescript" data-lang="typescript"><span class="p">...</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">content-type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/grpc+proto</span><span class="dl">'</span> <span class="p">});</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">responseBody</span><span class="p">);</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">addTrailers</span><span class="p">({</span> <span class="dl">'</span><span class="s1">grpc-status</span><span class="dl">'</span><span class="p">:</span> <span class="mi">0</span> <span class="p">});</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nf">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">content-type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/grpc+proto</span><span class="dl">'</span> <span class="p">});</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="nx">responseBody</span><span class="p">);</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nf">addTrailers</span><span class="p">({</span> <span class="dl">'</span><span class="s1">grpc-status</span><span class="dl">'</span><span class="p">:</span> <span class="mi">0</span> <span class="p">});</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nf">end</span><span class="p">();</span>
 <span class="p">...</span>
 </code></pre>
 </div>
@@ -565,14 +561,13 @@ Sent 1 request and received 1 response )
 <p>あーキタキタこれこれ</p>
 <h1 id="6.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB"><a class="headerlink" href="#6.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">6. おわりに</a></h1>
 <p>あ～～～～～～～今日もgRPCを完全に理解しちまったな……｡
-完全に理解したんですが､<span class="cite">[<a href="#fn1" title="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md " id="fnref1">1</a>]</span>
-の<code>Request</code>を見ると<code>grpc-timeout</code>とか<code>grpc-accept-encoding</code>とか<code>grpc-message-type</code>とかあるし､ステータスコードもなんか色々あるし､当然ながらgRPCのライブラリを使ったほうがよい｡
+完全に理解したんですが､<span class="cite">[<a href="#fn1" title="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md " id="fnref1">1</a>]</span>の<code>Request</code>を見ると<code>grpc-timeout</code>とか<code>grpc-accept-encoding</code>とか<code>grpc-message-type</code>とかあるし､ステータスコードもなんか色々あるし､当然ながらgRPCのライブラリを使ったほうがよい｡
 でもgRPCは何をやってるか知ってると良いことがあるかもしれない｡gRPCライブラリのない言語でgRPCサーバをやっていきたい場合など<sup id="fnref4" title="筆者はOCamlでgRPCサーバを実装したかったが､gRPCのOCaml bindingがなかったために本稿を書ける程度にはgRPCについて調べたという経緯がある｡HTTP/2に関する部分がかなり渋いので諦めてenvoyでHTTP/2と1.1をやっていったほうが良いかなと思っている｡ "><a href="#fn4">4</a></sup>｡</p>
 <p>今回のコード全体はこちら</p>
 <div class="twicard">
-  <span class="image"><a href="https://github.com/Nymphium/grpc-over-http2-by-hand" target="_blank" rel="noopener noreferrer"><div><img src="https://opengraph.githubassets.com/8d32afc89eff3fb6b220c41b12e83a69bd214017fc48e8f4ffb60630854f4318/Nymphium/grpc-over-http2-by-hand"></div></a></span>
+  <span class="image"><a href="https://github.com/Nymphium/grpc-over-http2-by-hand" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://opengraph.githubassets.com/8d32afc89eff3fb6b220c41b12e83a69bd214017fc48e8f4ffb60630854f4318/Nymphium/grpc-over-http2-by-hand"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://github.com/Nymphium/grpc-over-http2-by-hand" target="_blank" rel="noopener noreferrer">GitHub - Nymphium/grpc-over-http2-by-hand</a></div>
+    <div class="title"><a href="https://github.com/Nymphium/grpc-over-http2-by-hand" target="_blank" rel="noopener noreferrer noopener noreferrer">GitHub - Nymphium/grpc-over-http2-by-hand</a></div>
     <div class="description">Contribute to Nymphium/grpc-over-http2-by-hand development by creating an account on GitHub.</div>
   </span>
 </div>

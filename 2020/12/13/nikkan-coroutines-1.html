@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<meta name="generator" content="Jekyll v4.3.1" />
+<meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="日刊Coroutines(1) 初回は嬉しいASTの定義付き" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -52,7 +52,6 @@
         <nav class="site-nav">
           <div class="trigger">
             <a class="page-link" href="/about/README.html">About me</a>
-            <a class="page-link" href="/aboutme.html">About me</a>
             <a class="page-link" href="/slide.html">Slides</a>
             <a class="page-link" href="/tags.html">Tags</a>
           </div>
@@ -68,7 +67,7 @@
               <h1 class="post-title" itemprop="name headline">日刊Coroutines(1) 初回は嬉しいASTの定義付き</h1>
               <span class="post-meta">
                 <time datetime="2020-12-13T00:00:00+09:00" itemprop="datePublished">Dec 13, 2020</time>
-                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2020-12-13-nikkan-coroutines-1.md" target="_blank" rel="noopener noreferrer">src</a>
+                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2020-12-13-nikkan-coroutines-1.md" target="_blank" rel="noopener noreferrer noopener noreferrer">src</a>
                 <p class="tags">tag: {<span class="tag">
                     <a href="/tags.html#%E6%97%A5%E5%88%8ACoroutines-ref">日刊Coroutines</a>
                   </span><span></span><span class="tag">
@@ -116,8 +115,7 @@
 さて前回発作が出ちゃってコルーチンの話したんですが､発作に次ぐ発作でコルーチンを持つ体系を考えて実装していきます｡</p>
 <h1 id="2.+%E3%82%B3%E3%83%B3%E3%82%BB%E3%83%97%E3%83%88"><a class="headerlink" href="#2.+%E3%82%B3%E3%83%B3%E3%82%BB%E3%83%97%E3%83%88">2. コンセプト</a></h1>
 <p>今回はコルーチン以外興味ないね(クラウド)なので作りなれたラムダ計算にコルーチンの操作を乗せるだけでいきます｡
-具体的には修論<span class="cite">[<a href="#fn1" title="河原悟 『コルーチンを用いた代数的効果の新しい実装方法の提案』 (令和元年度 筑波大学大学院 博士課程 システム情報工学研究科 修士論文) " id="fnref1">1</a>]</span>
-で定義した\(\lambda_{\mathit{ac}}\)からコルーチン的な本質だけ抜き出したサブセットを作りましょう｡
+具体的には修論<span class="cite">[<a href="#fn1" title="河原悟 『コルーチンを用いた代数的効果の新しい実装方法の提案』 (令和元年度 筑波大学大学院 博士課程 システム情報工学研究科 修士論文) " id="fnref1">1</a>]</span>で定義した\(\lambda_{\mathit{ac}}\)からコルーチン的な本質だけ抜き出したサブセットを作りましょう｡
 今更修論の話するの結構こじらせてる感なくもないですが､コルーチンを持つ体系で扱いやすいものがあんまりないので許してほしい｡</p>
 <h1 id="3.+%E6%A7%8B%E6%96%87"><a class="headerlink" href="#3.+%E6%A7%8B%E6%96%87">3. 構文</a></h1>
 <p>ある言語を論じるための皆さんと私の共通の道具として､なにはともあれ構文を用意します｡</p>
@@ -180,8 +178,7 @@
 <span class="k">end</span>
 </code></pre></div>
 <p><code>open struct</code> で <code>Builder</code> に signature を書かなくても<code>gensym</code>を外から参照できなくしてます｡
-これについてはML Advent Calendarの小ネタ枠として書こうかなと思いますが､<span class="cite">[<a href="#fn2" title="Li, Runhang, and Jeremy Yallop. Extending OCaml's 'open'.&quot; " id="fnref2">2</a>]</span>
-を読んでいただければ多分私の駄文をまたなくてよくなります｡
+これについてはML Advent Calendarの小ネタ枠として書こうかなと思いますが､<span class="cite">[<a href="#fn2" title="Li, Runhang, and Jeremy Yallop. Extending OCaml's 'open'.&quot; " id="fnref2">2</a>]</span>を読んでいただければ多分私の駄文をまたなくてよくなります｡
 HOASで書けばイージャンみたいなところもありますが､説明すんのもダルいんでナイーブにやっていきます｡</p>
 <p>ほいでこんな具合に</p>
 <div class="highlight"><pre><code class="language-ocaml" data-lang="ocaml"><span class="k">let</span> <span class="n">program</span> <span class="o">=</span>

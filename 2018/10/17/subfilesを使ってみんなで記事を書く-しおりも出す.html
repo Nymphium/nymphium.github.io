@@ -25,7 +25,7 @@
     <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<meta name="generator" content="Jekyll v4.3.1" />
+<meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="subfilesを使ってみんなで記事を書く､しおりも出す" />
 <meta name="author" content="Satoru Kawahara" />
 <meta property="og:locale" content="en_US" />
@@ -52,7 +52,6 @@
         <nav class="site-nav">
           <div class="trigger">
             <a class="page-link" href="/about/README.html">About me</a>
-            <a class="page-link" href="/aboutme.html">About me</a>
             <a class="page-link" href="/slide.html">Slides</a>
             <a class="page-link" href="/tags.html">Tags</a>
           </div>
@@ -68,7 +67,7 @@
               <h1 class="post-title" itemprop="name headline">subfilesを使ってみんなで記事を書く､しおりも出す</h1>
               <span class="post-meta">
                 <time datetime="2018-10-17T00:00:00+09:00" itemprop="datePublished">Oct 17, 2018</time>
-                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2018-10-17-subfiles%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%93%E3%81%AA%E3%81%A7%E8%A8%98%E4%BA%8B%E3%82%92%E6%9B%B8%E3%81%8F%EF%BD%A4%E3%81%97%E3%81%8A%E3%82%8A%E3%82%82%E5%87%BA%E3%81%99.md" target="_blank" rel="noopener noreferrer">src</a>
+                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/_posts%2F2018-10-17-subfiles%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%93%E3%81%AA%E3%81%A7%E8%A8%98%E4%BA%8B%E3%82%92%E6%9B%B8%E3%81%8F%EF%BD%A4%E3%81%97%E3%81%8A%E3%82%8A%E3%82%82%E5%87%BA%E3%81%99.md" target="_blank" rel="noopener noreferrer noopener noreferrer">src</a>
                 <p class="tags">tag: {<span class="tag">
                     <a href="/tags.html#%E6%8A%80%E8%A1%93%E6%9B%B8%E5%85%B8-ref">技術書典</a>
                   </span><span></span><span class="tag">
@@ -136,16 +135,11 @@
 <p>追記おわり</p>
 <hr>
 <p>さて､LaTeX文書からPDFを作成してpublishした人の多くはhyperrefパッケージを使っているかと思います｡
-hyperrefにはしおりを作る機能があります(図<a href="#bookmarks">1</a>
-)｡</p>
-<p></p>
+hyperrefにはしおりを作る機能があります(図<a href="#bookmarks">1</a>)｡</p>
 <center>
 <label id="bookmarks"></label>
-
-<p><img src="/pictures/2018/10/17/subfiles%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%93%E3%81%AA%E3%81%A7%E8%A8%98%E4%BA%8B%E3%82%92%E6%9B%B8%E3%81%8F%EF%BD%A4%E3%81%97%E3%81%8A%E3%82%8A%E3%82%82%E5%87%BA%E3%81%99/bookmarks.png" alt="しおり" title="しおり">
-図<a href="#bookmarks">1</a>
- evinceで正しく表示されるしおり
-</p>
+<img src="/pictures/2018/10/17/subfiles%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%93%E3%81%AA%E3%81%A7%E8%A8%98%E4%BA%8B%E3%82%92%E6%9B%B8%E3%81%8F%EF%BD%A4%E3%81%97%E3%81%8A%E3%82%8A%E3%82%82%E5%87%BA%E3%81%99/bookmarks.png" alt="しおり">
+図<a href="#bookmarks">1</a> evinceで正しく表示されるしおり
 </center>
 <p>今回我々はsubfilesで各々がファイルを書いてプロジェクトのルートのmain.texで各人のmainファイルを読むようにしました｡</p>
 <p><a href="https://github.com/Nymphium/nymphium.github.io/tree/source/src/latex-subfiles" target="_blank" rel="noopener noreferrer">src/latex-subfiles</a></p>
@@ -223,17 +217,12 @@ hyperrefにはしおりを作る機能があります(図<a href="#bookmarks">1<
 <p>この辺は好みによる｡
 今回はltjsarticleの<code>\maketitle</code>コマンドを改造している｡
 section等のカウンタを0で初期化しているのがミソで､これをしないと各記事のカウンタが連番になってしまう｡
-しかしそうするとしおりが壊れる(図<a href="#brokenbm">2</a>
-)｡</p>
-<p></p>
+しかしそうするとしおりが壊れる(図<a href="#brokenbm">2</a>)｡</p>
 <center>
 <label id="brokenbm"></label>
-
-<p>記事<code>あああ</code>のサブセクション位置に次の記事が来てしまっている｡
-<img src="/pictures/2018/10/17/subfiles%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%93%E3%81%AA%E3%81%A7%E8%A8%98%E4%BA%8B%E3%82%92%E6%9B%B8%E3%81%8F%EF%BD%A4%E3%81%97%E3%81%8A%E3%82%8A%E3%82%82%E5%87%BA%E3%81%99/broken.png" alt="壊れたしおり" title="壊れたしおり">
-図<a href="#brokenbm">2</a>
- 壊れたしおり
-</p>
+記事`あああ`のサブセクション位置に次の記事が来てしまっている｡
+<img src="/pictures/2018/10/17/subfiles%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%93%E3%81%AA%E3%81%A7%E8%A8%98%E4%BA%8B%E3%82%92%E6%9B%B8%E3%81%8F%EF%BD%A4%E3%81%97%E3%81%8A%E3%82%8A%E3%82%82%E5%87%BA%E3%81%99/broken.png%20" alt="壊れたしおり">
+図<a href="#brokenbm">2</a> 壊れたしおり
 </center>
 <p>hyperrefパッケージのオプションに<code>hypertexnames=false</code>を渡すことで解決する｡</p>
 <div class="highlight"><pre><code class="language-tex" data-lang="tex">......
@@ -243,17 +232,12 @@ section等のカウンタを0で初期化しているのがミソで､これを
 , luatex]<span class="p">{</span>hyperref<span class="p">}</span>
 ......
 </code></pre></div>
-<p></p>
 <center>
 <label id="ok1"></label>
-
-<p><img src="/pictures/2018/10/17/subfiles%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%93%E3%81%AA%E3%81%A7%E8%A8%98%E4%BA%8B%E3%82%92%E6%9B%B8%E3%81%8F%EF%BD%A4%E3%81%97%E3%81%8A%E3%82%8A%E3%82%82%E5%87%BA%E3%81%99/ok1.png" alt="ok1" title="ok1">
-図<a href="#ok1">3</a>
- ok1
-</p>
+<img src="/pictures/2018/10/17/subfiles%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%93%E3%81%AA%E3%81%A7%E8%A8%98%E4%BA%8B%E3%82%92%E6%9B%B8%E3%81%8F%EF%BD%A4%E3%81%97%E3%81%8A%E3%82%8A%E3%82%82%E5%87%BA%E3%81%99/ok1.png%20" ok1 alt="ok1">
+図<a href="#ok1">3</a> ok1
 </center>
-<p>図<a href="#bookmarks">1</a>
-のように記事名もしおりに入れたい｡
+<p>図<a href="#bookmarks">1</a>のように記事名もしおりに入れたい｡
 記事名の子に各セクションが来てほしいので｡<code>\maketitle</code>に手を加える｡</p>
 <div class="highlight"><pre><code class="language-tex" data-lang="tex">
 ......
@@ -271,17 +255,14 @@ section等のカウンタを0で初期化しているのがミソで､これを
 </p>
 <center>
 <label id="broken2"></label>
-
-<p><img src="/pictures/2018/10/17/subfiles%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%93%E3%81%AA%E3%81%A7%E8%A8%98%E4%BA%8B%E3%82%92%E6%9B%B8%E3%81%8F%EF%BD%A4%E3%81%97%E3%81%8A%E3%82%8A%E3%82%82%E5%87%BA%E3%81%99/broken2.png" alt="broken2" title="broken2">
-図<a href="#broken2">4</a>
- こわれる
-</p>
+<img src="/pictures/2018/10/17/subfiles%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%93%E3%81%AA%E3%81%A7%E8%A8%98%E4%BA%8B%E3%82%92%E6%9B%B8%E3%81%8F%EF%BD%A4%E3%81%97%E3%81%8A%E3%82%8A%E3%82%82%E5%87%BA%E3%81%99/broken2.png%20" broken2 alt="broken2">
+図<a href="#broken2">4</a> こわれる
 </center>
 <p>ここでおもむろに<code>\phantomsection</code>を挿入する｡</p>
 <div class="twicard">
-  <span class="image"><a href="https://tex.stackexchange.com/questions/44088/when-do-i-need-to-invoke-phantomsection" target="_blank" rel="noopener noreferrer"><div><img src="https://cdn.sstatic.net/Sites/tex/Img/apple-touch-icon@2.png?v=eaf26b461720"></div></a></span>
+  <span class="image"><a href="https://tex.stackexchange.com/questions/44088/when-do-i-need-to-invoke-phantomsection" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://cdn.sstatic.net/Sites/tex/Img/apple-touch-icon@2.png?v=eaf26b461720"></div></a></span>
   <span class="txt">
-    <div class="title"><a href="https://tex.stackexchange.com/questions/44088/when-do-i-need-to-invoke-phantomsection" target="_blank" rel="noopener noreferrer">When do I need to invoke \phantomsection?</a></div>
+    <div class="title"><a href="https://tex.stackexchange.com/questions/44088/when-do-i-need-to-invoke-phantomsection" target="_blank" rel="noopener noreferrer noopener noreferrer">When do I need to invoke \phantomsection?</a></div>
     <div class="description">Inspired by question When do I need invoke \clearpage manually?:When do I need to invoke \phantomsection?In what condition is invoking \phantomsection necessary?</div>
   </span>
 </div>
@@ -295,8 +276,7 @@ section等のカウンタを0で初期化しているのがミソで､これを
 ......
 
 </code></pre></div>
-<p>これでやっと図<a href="#bookmarks">1</a>
-のようになった｡</p>
+<p>これでやっと図<a href="#bookmarks">1</a>のようになった｡</p>
 <hr>
 <p>ということでpdf版制作にもワザがありました｡
 表紙の"interpr <em>i</em> ter"も修正されていると思いますので､近々出るpdf版もよろしくおねがいします｡</p>
