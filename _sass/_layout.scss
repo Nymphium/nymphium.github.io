@@ -22,6 +22,15 @@
     font-size: $small-font-size;
     color: $grey-color;
 
+    & .at {
+        margin-left: 3px;
+        margin-bottom: 3px;
+
+        &:before {
+            content: "@";
+        }
+    }
+
     & .src {
       margin-left: 3px;
       margin-bottom: 3px;

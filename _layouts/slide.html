@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+    <div class="page-content">
+      <div class="wrapper" lang="ja">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <div class="post-header-info">
+              <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+              <span class="post-meta">
+                <div>
+                  <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
+                  {%- if page.at -%}
+                  <span class="at">{{page.at}}</span>
+                  {%- endif -%}
+                </div>
+
+                {%- if page.tags -%}
+                <p class="tags" >tag: &#123;{%- for tag in page.tags -%}
+                <span class="tag">
+                  <a href="{{BASE_PATH}}/tags.html#{{tag}}-ref">{{tag}}</a>
+                </span>
+                {%- unless forloop.last  -%}<span/>{%- endunless -%}
+                  {%- endfor -%}&#125;
+                </p>
+                {%- endif -%}
+                <a class="twitter-share-button" href="https://twitter.com/intent/tweet">Tweet</a> 
+                <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja" title="{{page.title}}">
+                  <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマークに追加" width="20" height="20" style="border: none;" />
+                </a>
+                <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+                </span>
+            </div>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <noscript>
+              <style>
+.slide-container {
+  display: none;
+}
+              </style>
+            </noscript>
+          </header>
+          <aside class="slide-controller">
+            <a class="download" href="{{ page.pdf }}" title="{{ page.title }}"></a>
+            <!-- <button id="fullscreen-button"></button> -->
+          </aside>
+          <div class="slide-container">
+            <iframe id="slide"
+              src="https://azu.github.io/slide-pdf.js/?slide=https://nymphium.github.io{{ page.pdf }}"
+              width="100%"
+              height="100%"
+              scrolling="no"
+              allowfullscreen
+              webkitallowfullscreen
+              style="border:0;">
+            </iframe>
+          </div>
+          <script>
+            (function () {
+              var slide = document.getElementById("slide");
+              // focus slide
+              slide.focus();
+              var fullScreenButton = document.getElementById("fullscreen-button");
+              fullScreenButton.addEventListener("click", function () {
+                slide.focus();
+                slide.requestFullscreen();
+              });
+            })();
+          </script>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

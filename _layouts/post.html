@@ -19,17 +19,21 @@ layout: default
             <div class="post-header-info">
               <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
               <span class="post-meta">
-                <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
-                <a class="src" href="https://github.com/nymphium/nymphium.github.io/blob/source/{{page.path | url_encode | replace: '+', '%20' }}" target="_blank" rel="noopener noreferrer">src</a>
-                <p class="tags" >tag: &#123;{%- for tag in page.tags -%}
+                <div>
+                  <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
+                  <a class="src" href="{{ site.repository }}/blob/source/{{page.path | url_encode | replace: '+', '%20' }}" target="_blank" rel="noopener noreferrer">src</a>
+                  {%- if page.tags -%}
+                  <p class="tags" >tag: &#123;{%- for tag in page.tags -%}
                   <span class="tag">
                     <a href="{{BASE_PATH}}/tags.html#{{tag}}-ref">{{tag}}</a>
                   </span>
                   {%- unless forloop.last  -%}<span/>{%- endunless -%}
-                  {%- endfor -%}&#125;
-                </p>
-                <a class="twitter-share-button" href="https://twitter.com/intent/tweet">Tweet</a> 
+                    {%- endfor -%}&#125;
+                  </p>
+                  {%- endif -%}
+                </div>
 
+                <a class="twitter-share-button" href="https://twitter.com/intent/tweet">Tweet</a> 
                 <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja" title="{{page.title}}">
                   <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマークに追加" width="20" height="20" style="border: none;" />
                 </a>

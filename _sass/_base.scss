@@ -12,6 +12,10 @@ dl, dd, ol, ul, figure {
   overflow-wrap: break-word;
 }
 
+html, body, .page-content, div.wrapper {
+  height: 100%;
+}
+
 hr {
   border-top: none;
   border-bottom: solid 2px rgba(138, 138, 138, 0.35);
@@ -124,6 +128,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 article {
+  height: 100%;
+
   > .post-content {
     > p {
       text-indent: 1rem;

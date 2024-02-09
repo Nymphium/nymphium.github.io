@@ -1,0 +1,53 @@
+.slide-container .svg-icon {
+  height: 1em;
+  vertical-align: text-bottom;
+}
+
+.slide-controller {
+  margin: 0 auto;
+  display: block;
+  text-align: left;
+
+  > .download {
+    margin-right: 5px;
+    font-size: $base-font-size * 0.8;
+
+    &:after {
+      content: "Download";
+    }
+  }
+}
+
+#fullscreen-button {
+  font-size: $base-font-size * 0.8;
+  display: inline-block;
+  border: none;
+  background-color: $background-color;
+  padding: 0;
+  &:after {
+    color: $brand-color;
+    text-decoration: none;
+
+    &:visited {
+      color: darken($brand-color, 15%);
+    }
+
+    &:hover {
+      color: $text-color;
+      text-decoration: underline;
+    }
+
+    content: "Fullscreen";
+  }
+}
+
+.slide-container {
+  height: 75%;
+  padding: 0px;
+  margin: 0 auto;
+}
+
+#slide {
+  margin: 0 auto;
+  display: block;
+}
