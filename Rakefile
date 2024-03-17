@@ -8,7 +8,7 @@ BUNDLE = ENV['BUNDLE']&.length&.> 0 ? ENV['BUNDLE'] : 'bundle'
 # Usage: rake deploy
 desc 'Begin a push static file to GitHub'
 task :deploy do
-  dir = "/tmp/nymphiumgithubio-#{$PID}"
+  dir = "/tmp/nymphiumgithubio-#{Process.pid}"
   puts '# Build...'
   sh '_bin/twicardpic_update'
   sh "JEKYLL_ENV=production #{BUNDLE} exec jekyll build"
