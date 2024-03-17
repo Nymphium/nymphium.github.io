@@ -4,7 +4,7 @@
 source 'https://rubygems.org'
 ENV['NOKOGIRI_USE_SYSTEM_LIBRARIES'] = 'YES'
 
-gem 'jekyll'
+gem 'jekyll', "< 5.0.0"
 gem 'jekyll-gist'
 gem 'jekyll-seo-tag'
 gem 'jekyll-target-blank'
