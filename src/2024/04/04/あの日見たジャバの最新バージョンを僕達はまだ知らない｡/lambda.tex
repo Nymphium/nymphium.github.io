@@ -1,0 +1,13 @@
+\begin{array}{rcl}
+  % the syntax of lambda calculus
+  x &\in& \text{Var} \\
+  t & ::= & x \mid \lambda x.t \mid t_1t_2 \\
+  v & ::= & \lambda x.t \mid v_1v_2 \\
+  \theta & ::= & \emptyset \mid \theta[x \mapsto v] \\
+  \newline
+  % the semantics of lambda calculus with environment
+  \langle x, \theta \rangle &\to& \theta(x) \\
+  \langle \lambda x.t, \theta \rangle &\to& \lambda x.t \\
+  \langle t_1t_2, \theta \rangle &\to& \langle t_1, \theta \rangle \langle t_2, \theta \rangle \\
+  \langle \left(\lambda x.t_1\right)v, \theta \rangle &\to& \langle t_1, \theta[x \mapsto v] \rangle \\
+\end{array}
