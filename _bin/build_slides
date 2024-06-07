@@ -1,27 +1,67 @@
-#!/bin/ruby
+#!/usr/bin/env ruby
 # exec "./_bin/build_slides"
 
-require'./slides.rb'
-require'cgi'
+require 'cgi'
+require 'yaml'
+require 'pathname'
+require 'date'
 
-slide = slides
-slides_item = ""
+def extract_section_from_markdown(file_path)
+  section_content = ''
+  section_started = false
 
-slide.each {|i|
-	slides_item += "              <li><a href=\"/pdf/#{i[:href]}.html\">#{i[:date]} #{CGI.escapeHTML i[:institute]}</a></li>\n"
-}
+  File.foreach(file_path) do |line|
+    if line.strip == '---'
+      section_started = !section_started
+      next
+    end
 
-slides_html = <<HTML
----
-layout: page
-title: Slides
-header: Slides
-group: navigation
----
-            <ul>
-#{slides_item.chomp}
-            </ul>
+    section_content += line if section_started
+  end
+
+  res = YAML.safe_load(section_content, permitted_classes: [Date])
+
+  res['at'].gsub!(%r{<a[^>]*>(.*?)</a>}, '\1') if res['at'].is_a?(String)
+
+  res
+end
+
+def extract_sections_from_all_markdown_files
+  markdown_files = Pathname.glob('pdf/*.md')
+  sections = {}
+
+  markdown_files.each do |file|
+    f = extract_section_from_markdown(file)
+
+    next if f['date'].nil? || f['at'].nil?
+
+    sections[file.to_s] = f
+  end
+
+  sections.sort { |a, b| b[1]['date'] <=> a[1]['date'] }
+end
+
+slides = extract_sections_from_all_markdown_files
+slides_item = ''
+
+slides.each do |i|
+  path = i[0].gsub(%r{pdf/(.*).md}, '/pdf/\1.html')
+  date = i[1]['date'].strftime('%Y/%m/%d')
+  s = i[1]
+
+  slides_item += "              <li><a href=\"#{path}\">#{date} #{CGI.escapeHTML s['at']}</a></li>\n"
+end
+
+slides_html = <<~HTML
+  ---
+  layout: page
+  title: Slides
+  header: Slides
+  group: navigation
+  ---
+              <ul>
+  #{slides_item.chomp}
+              </ul>
 HTML
 
-File.write("slide.html", slides_html)
-
+File.write('slide.html', slides_html)
