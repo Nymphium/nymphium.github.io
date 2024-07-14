@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html;charset=UTF-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="format-detection" content="telephone=no"/>
+
+    <title>GoCon2024の補足: Goと見るコンパイラ最適化事情 - lilyum ensemble</title>
+    <meta itemprop="name" content="GoCon2024の補足: Goと見るコンパイラ最適化事情 - lilyum ensemble"/>
+    <meta name="keywords" content="Go"/>
+    <meta name="thumbnail" content="/pictures/github_icon.png"/>
+    <meta itemprop="image" content="/pictures/github_icon.png"/>
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="lilyum ensemble"/>
+    <meta name="twitter:title" content="GoCon2024の補足: Goと見るコンパイラ最適化事情 - lilyum ensemble"/>
+    <meta name="twitter:url" content="/2024/07/15/gocon-appendix.html"/> 
+    <meta name="twitter:text:description" content="こんにちは､びしょ～じょです｡まずはこちらを御覧ください｡        有村 麻央 ｜ 学園アイドルマスター（学マス）｜君と出会い、夢に翔ける    ―君と出会い、夢に翔ける―歌とダンスが上手..."/>
+    <meta name="twitter:image" content="https://nymphium.github.io/pictures/github_icon.png"/>
+    <meta name="twitter:image:src" content="https://nymphium.github.io/pictures/github_icon.png"/>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="GoCon2024の補足: Goと見るコンパイラ最適化事情" />
+<meta name="author" content="Satoru Kawahara" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="こんにちは､びしょ～じょです｡" />
+<meta property="og:description" content="こんにちは､びしょ～じょです｡" />
+<link rel="canonical" href="https://nymphium.github.io/2024/07/15/gocon-appendix.html" />
+<meta property="og:url" content="https://nymphium.github.io/2024/07/15/gocon-appendix.html" />
+<meta property="og:site_name" content="lilyum ensemble" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-07-15T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="GoCon2024の補足: Goと見るコンパイラ最適化事情" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Satoru Kawahara"},"dateModified":"2024-07-15T00:00:00+09:00","datePublished":"2024-07-15T00:00:00+09:00","description":"こんにちは､びしょ～じょです｡","headline":"GoCon2024の補足: Goと見るコンパイラ最適化事情","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2024/07/15/gocon-appendix.html"},"url":"https://nymphium.github.io/2024/07/15/gocon-appendix.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta property="og:image" content="/pictures/github_icon.png"/>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="wrapper" style="font-family: 'Comfortaa';">
+        <a class="site-title" href="/">lilyum ensemble</a>
+        <nav class="site-nav">
+          <div class="trigger">
+            <a class="page-link" href="/about/README.html">About me</a>
+            <a class="page-link" href="/slide.html">Slides</a>
+            <a class="page-link" href="/tags.html">Tags</a>
+            <a class="page-link feed" href="/feed.xml">Feed</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-content">
+      <div class="wrapper" lang="ja">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <div class="post-header-info">
+              <h1 class="post-title" itemprop="name headline">GoCon2024の補足: Goと見るコンパイラ最適化事情</h1>
+              <span class="post-meta">
+                <div>
+                  <time datetime="2024-07-15T00:00:00+09:00" itemprop="datePublished">Jul 15, 2024</time>
+                  <a class="src" href="https://github.com/Nymphium/nymphium.github.io/blob/source/_posts%2F2024-07-15-gocon-appendix.md" target="_blank" rel="noopener noreferrer noopener noreferrer">src</a><p class="tags">tag: {<span class="tag">
+                    <a href="/tags.html#Go-ref">Go</a>
+                  </span>}
+                  </p>
+</div>
+
+                <a class="twitter-share-button" href="https://twitter.com/intent/tweet" target="_blank" rel="noopener noreferrer">Tweet</a> 
+                <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja" title="GoCon2024の補足: Goと見るコンパイラ最適化事情" target="_blank" rel="noopener noreferrer">
+                  <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマークに追加" width="20" height="20" style="border: none;">
+                </a>
+                <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+              </span>
+            </div>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <script type="text/javascript" src="/js/GithubRepoWidget.min.js"></script>
+            <script type="text/javascript">setTimeout(GithubRepoWidget.init, 3000);</script>
+
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                renderMathInElement(document.body, {
+                  // customised options
+                  // • auto-render specific keys, e.g.:
+                  delimiters: [
+                                  {left: '$$', right: '$$', display: true},
+                                  {left: '$', right: '$', display: false},
+                                  {left: '\\(', right: '\\)', display: false},
+                                  {left: '\\[', right: '\\]', display: true},
+                                  {left: '\\\\(', right: '\\\\)', display: false},
+                                  {left: '\\\\[', right: '\\\\]', display: true}
+                                ],
+                  // • rendering keys, e.g.:
+                  throwOnError : false
+                });
+              });
+            </script>
+          </header>
+
+          <div class="post-content" itemprop="articleBody">
+<p>こんにちは､びしょ～じょです｡</p>
+<p>まずはこちらを御覧ください｡</p>
+<div class="twicard">
+  <span class="image"><a href="https://gakuen.idolmaster-official.jp/idol/mao/" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://gakuen.idolmaster-official.jp/assets/img/idol/mao/ogp.png?date=0320"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="https://gakuen.idolmaster-official.jp/idol/mao/" target="_blank" rel="noopener noreferrer noopener noreferrer">有村 麻央 ｜ 学園アイドルマスター（学マス）｜君と出会い、夢に翔ける</a></div>
+    <div class="description">―君と出会い、夢に翔ける―歌とダンスが上手くなるアイドル育成シミュレーション！『アイドルマスター』シリーズ完全新作スマホゲーム『学マス』好評配信中！</div>
+  </span>
+</div>
+<p>有村麻央さんはカッコよさを求めている一方どうしてもかわいくなってしまう､アンビバレントなキャラクターです｡
+なりたい自分､認識される､期待される自分､本来の自分､それらの乖離による悩み､向き合い方､そういった葛藤と成長がストーリーラインとして描かれます｡
+彼女のソロ楽曲『Fluorite』のMVでもその様子がみえます｡</p>
+<div class="twicard">
+  <span class="image"><a href="https://www.youtube.com/watch?v=4AcOcsvGluY" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://i.ytimg.com/vi/4AcOcsvGluY/maxresdefault.jpg"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="https://www.youtube.com/watch?v=4AcOcsvGluY" target="_blank" rel="noopener noreferrer noopener noreferrer">初星学園 「Fluorite」Official Music Video (HATSUBOSHI GAKUEN - Fluorite)</a></div>
+    <div class="description">Fluorite------------------------------EN Credits.▶MusicSong by Mao Arimura (VA. Tsumugi Nanase)Lyric written by Kana YaginumaComposed, Arranged by Moe Shop▶M...</div>
+  </span>
+</div>
+<p>ってアイマスでMoe Shopマジ?! しかもカワイイ系ではなくクール､だけど甘さも残るメロディラインで､まさに有村麻央さんのための曲で間違いないです｡</p>
+<p>では次に､有村麻央さんの親愛度を10にしてください｡</p>
+<p>有村麻央さん､いいよね｡いい…｡</p>
+<h1 id="1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><a class="headerlink" href="#1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">1. はじめに</a></h1>
+<p>先日GoConでお話をしてきました｡</p>
+<div class="twicard">
+  <span class="image"><a href="https://nymphium.github.io/pdf/gocon2024.html" target="_blank" rel="noopener noreferrer"><div><img src="https://nymphium.github.io/pdf/gocon2024.png"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="https://nymphium.github.io/pdf/gocon2024.html" target="_blank" rel="noopener noreferrer">Guide to Profile-Guided Optimization: inlining, devirtualizing, and profiling - lilyum ensemble</a></div>
+    <div class="description">lily, Aikatsu, Programming language, and more</div>
+  </span>
+</div>
+<p>Go初心者枠ということで20分の枠だったため､GoのPGOを紹介するための最短ルートで説明した｡
+しかしてエッセンシャルな前提を結構端折っていったため､また語りたい部分をだいぶ削ったので､この記事でその補足をおこなう｡</p>
+<p>以下､Goの話は公式のコンパイラとそれによりemitされるランタイムの話とする｡</p>
+<h1 id="2.+Go%E3%81%AE%E5%9F%BA%E6%9C%AC%E6%88%A6%E7%95%A5"><a class="headerlink" href="#2.+Go%E3%81%AE%E5%9F%BA%E6%9C%AC%E6%88%A6%E7%95%A5">2. Goの基本戦略</a></h1>
+<p>他言語との比較をおこなうために､まずはGoの基本戦略について個人的見解を述べる｡</p>
+<p>Goはシンプルな言語である｡難しそうな言語機能でパッと思いつくのが､多相とインターフェイスだろうか｡
+しかし､多相はあるものの､型変数の導入位置は限られている｡インターフェイスメソッドも一見難しそうだが冷静に考えると別に難しくない｡インターフェイスメソッドが型変数を持てればワンチャン難しさが生まれそうだったが､無いんでムズくない｡
+別方面の難しさとしては､スライスのインデックスの<code>range</code>記法とか､ポインタや<code>nil</code>があるところ､エラー送出が単に関数の戻り値なので無視できてしまうなどのがあるが､ランタイムに難しくないので一旦見なかったことにする｡
+そう､ランタイムですげー頑張っているところはさほどない(個人の感想です)｡
+Goroutines…? すみません､見なかったことにさせてください､すみません｡</p>
+<p>そんなわけで､Goはコンパイル時に爆最適化しなくてもそこそこ早くプログラムを実行できるポテンシャルが､意味論から分かるわけだ｡
+しかしてGoコンパイラも､コンパイルパスの一つである最適化を保守的におこなっている｡</p>
+<p>保守性の興味深い例としては､structのレイアウトだ｡
+各プリミティブ型の値のサイズは定まっている｡任意型のポインタ並びに文字列は8bytes, <code>uint8</code>は2bytes, <code>struct{}</code>は実質<code>void</code>で0bytes｡
+多相型は､全て特殊化された新たに作られるためコンパイル時に確定する｡
+フィールドを持つstructは､各フィールドのサイズ､そして順番で決まる｡</p>
+<p>このレイアウトルールを､令和のプログラマが解決せなあかんの?!
+そうだ｡そのデータがCPUのキャッシュに乗るかどうかは全てあなたにかかっている｡</p>
+<p>代わりにコンパイルは高速におこなえるし､コンパイラ自身をシンプルな設計にしておける｡
+Rust､Scala､かかってこい｡
+とにかく､Goは言語仕様もコンパイラもランタイムもシンプルにしている､そういう思想がある｡</p>
+<ul>
+<li>言語仕様がシンプル</li>
+<li>コンパイル時間が短い</li>
+<li>実行予測性が高いランタイム生成</li>
+</ul>
+<p>ベターな書き方が基本的に無いので､書きながら考えることが少ない｡
+愚直に書かざるを得ないので､(実行をそのままなぞるという意味で)読みやすい｡
+コンパイル時間が短いので､フィードバックが早い｡
+最適化を保守的におこなうことで､ランタイムを予想した書き方ができる｡</p>
+<p>このように､ジュニア・シニア関係ない開発が容易におこなえる環境を提供するのが､Goのコンセプトになっていると､筆者はかんがえる｡</p>
+<h1 id="3.+%E3%82%A4%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3%E5%8C%96%E6%88%A6%E7%95%A5%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><a class="headerlink" href="#3.+%E3%82%A4%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3%E5%8C%96%E6%88%A6%E7%95%A5%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">3. インライン化戦略について</a></h1>
+<p>発表のとおり､Goはbudgetによってインライン化を制限している｡
+これはわりとありがちな制限｡
+一方､non-leafな関数をデフォルトでインライン化しないというのはなんか絶妙なラインで､non-leaf functionsに関して自分が誤解しているかもだが､インライン化全然しないか基本的に全部インライン化するかだと思う｡肌感｡
+例外ハンドラがエラーの設計上存在せず関数呼び出しと戻り値の検査になっているので､インライン化ガンガンしてもいいと思うんだけどな〜｡
+そしてインライン化を強制するタグがない｡</p>
+<p>最適化なんてあんまり考えずにとっとと実装しろよというメッセージを感じる｡</p>
+<h1 id="4.+%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%A8%E3%81%9D%E3%81%AE%E6%9C%80%E9%81%A9%E5%8C%96"><a class="headerlink" href="#4.+%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%A8%E3%81%9D%E3%81%AE%E6%9C%80%E9%81%A9%E5%8C%96">4. いろんなメソッドとその最適化</a></h1>
+<p>インターフェイスメソッドの呼び出しと最適化は､ランタイムの設計とべったりなため個々のケースを見ていくしかない｡
+Goの事情は発表にて分かったんで､よその様子を見てみる｡</p>
+<h2 id="4-1.+C%2B%2B%28gcc%29"><a class="headerlink" href="#4-1.+C%2B%2B%28gcc%29">4-1. C++(gcc)</a></h2>
+<p>C++は通常仮想関数テーブルを使ってメソッドを動的に解決する｡
+いわゆるvtableで､発表あったinterface value+method listによる動的ディスパッチと同じようなもの｡
+C++もここでは最適化をおこなわないらしい｡</p>
+<p>一方､最適化とは別に､型変数まわりでは様子が異なる｡
+先述のとおり､Goはインターフェイスメソッドに多相な型を持てない｡
+C++はテンプレートパラメータを使って､メソッド自体に型変数を導入できる｡
+しかして､例えば<code>List&lt;T&gt;</code>上の<code>map&lt;V&gt; : (T -&gt; V) -&gt; List&lt;V&gt;</code>のようなことが書ける｡
+ただし､これはコンパイル時に<em>すべて</em>特殊化されるため､コンパイル時間が結構たいへんになり､型検査のエラーもごっつ長いことがある<sup id="fnref1" title="これはどちらかというと型変数があるかどうかよりも､C++(gcc)における型変数がプリプロセッサによりもたらされる､すなわちコード生成によるものであるため｡Template Haskellのエラーがまるで読めないのと同じ｡ "><a href="#fn1">1</a></sup>｡</p>
+<h2 id="4-2.+Scala%28scala%29"><a class="headerlink" href="#4-2.+Scala%28scala%29">4-2. Scala(scala)</a></h2>
+<p><a href="https://docs.scala-lang.org/overviews/compiler-options/optimizer.html" target="_blank" rel="noopener noreferrer">Optimizerのページ</a>を読むとなかなかおもしろい｡
+JVMがJITしてくれるのでScalaはもともとコンパイル時最適化をおこなわなかったらしい｡
+Scalaは関数型プログラミングをサポートしているが､JVMが想定しているソースがJavaだったため､Scalaで書かれたプログラムを実行するのにJITがあまり効かなかったため､コンパイル時の最適化器をあとからとりいれたとのこと｡
+この問題はJava8以降のラムダ式でも同様に起こるらしい｡</p>
+<p>一方上記のページ自体Scala2の話で､Scala3はまだ最適化器が無いらしい｡
+意味論がより整理されたScala3での最適化はどうなるか気になる｡</p>
+<p>メソッド呼び出しの解決はJVMによっておこなわれ､JITによってホットパスが最適化される｡
+型変数､いわゆるジェネリクスは実行時に基底型(<code>Object</code>､または制約があればその基底型)に潰され､適宜型キャストがはさまる｡
+Go､C++と比べるとなんつうかリッチだな〜という印象｡
+JIT最高ですね｡</p>
+<h2 id="4-3.+Rust%28rustc%29"><a class="headerlink" href="#4-3.+Rust%28rustc%29">4-3. Rust(rustc)</a></h2>
+<p>Rustはtraitsと､structに対する<code>impl</code>でメソッドを定義する｡
+Traitは静的に解決される｡
+<a href="https://doc.rust-lang.org/rust-by-example/trait/dyn.html" target="_blank" rel="noopener noreferrer"><code>dyn</code></a>を使えば動的ディスパッチができる｡</p>
+<h2 id="4-4.+Haskell%28GHC%29"><a class="headerlink" href="#4-4.+Haskell%28GHC%29">4-4. Haskell(GHC)</a></h2>
+<p>Haskellはtype classes+instancesでメソッドを定義する｡
+ここでいうクラスは型上の分類と考えてほしく､ランタイムにクラスインスタンスが生成されるとかではない｡
+したがって､"メソッド"呼び出しは値ではなく呼び出しのコンテキストに依存する｡
+こちらは型上の話なので､コンパイル時にすべて解決できる｡</p>
+<hr>
+<p>この辺のランタイム設計や最適化は言語設計と強く関わっていることが､あらためて分かった｡
+Goがインターフェイスメソッドに型変数を導入することは､しばらく､あるいは未来永劫､ないだろう｡
+なので皆さんPGOを使ってください!</p>
+<h1 id="5.+PGO+vs+JIT"><a class="headerlink" href="#5.+PGO+vs+JIT">5. PGO vs JIT</a></h1>
+<p>ScalaがJVMをターゲットにしたコンパイラのためAOT Optimizationsをおこなうつもりがなかったというのは面白い話だった｡
+JITが実行時の情報を用いて<em>実行時に</em>最適化をおこなうのに対し､PGOは実行時情報をかき集めて<em>コンパイル時に</em>最適化をする｡</p>
+<ul>
+<li>JIT
+
+<ul>
+<li>実行時に最適化してくれる</li>
+<li>コンパイルの(相対的)速さ</li>
+</ul>
+</li>
+<li>PGO
+
+<ul>
+<li>世代をまたいだ実行時情報に基づく最適化</li>
+<li>ランタイムの暖気が不要</li>
+</ul>
+</li>
+</ul>
+<p>良し悪しといえば良し悪し｡</p>
+<p>なんか似てるのでバトルになりそう､という話がある｡</p>
+<div class="enclosed-tweet" align="center">
+<blockquote class="twitter-tweet">
+<p lang="ja" dir="ltr">1ヶ月とか1年みたいに超長期間プログラムをずっとランさせ続けるとしたら、JVMのようなJITコンパイルとGoのようなAOTコンパイルでいうと、実行中にどんどんプロファイルを最適化できるJITが最終的に勝利する可能性もあるのか？🤔</p>— 吉村 優 ☕ YOSHIMURA Yuu (@_yyu_) <a href="https://twitter.com/_yyu_/status/1800394513778970751?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">June 11, 2024</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</div>
+<p>JITは1 generationの実行時情報のみ参照できるのに対し､GoのPGOはmulti generationsの実行時情報を加味できるため､PGOを用いて生成されたexecutableのほうが､最終的には高速に動作するんではないかと予想する｡
+そもそも､JITもPGOもある処理系がないと検証は困難な話ではある｡</p>
+<h1 id="6.+Dynamic+PGO"><a class="headerlink" href="#6.+Dynamic+PGO">6. Dynamic PGO</a></h1>
+<p>そんな実行時のJIT､コンパイル時のPGOという虎と龍がいたんですが､.NETはDynamic PGOという､虎と龍の子のようなものを持っているそうです｡</p>
+<div class="twicard">
+  <span class="image"><a href="https://devblogs.microsoft.com/dotnet/announcing-net-6/" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/10/2021/11/dotnet-overview.png"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="https://devblogs.microsoft.com/dotnet/announcing-net-6/" target="_blank" rel="noopener noreferrer noopener noreferrer">Announcing .NET 6 - The Fastest .NET Yet - .NET Blog</a></div>
+    <div class="description">.NET 6 is now available. It is easier to use, runs faster, and has many new features.</div>
+  </span>
+</div>
+<p>最新の.NET 8だとデフォルトで有効の模様｡すげえ｡</p>
+<p>このスライドに詳しいことがまとまっており､.NET runtimeの変態さも相まって面白い｡</p>
+<div class="twicard">
+  <span class="image"><a href="https://speakerdeck.com/nenonaninu/dot-net-8-deji-ding-deyou-xiao-ninatuta-dynamic-pgo-nituite" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://files.speakerdeck.com/presentations/5bf674425e6d44e38a4a840766497eea/slide_0.jpg?27606851"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="https://speakerdeck.com/nenonaninu/dot-net-8-deji-ding-deyou-xiao-ninatuta-dynamic-pgo-nituite" target="_blank" rel="noopener noreferrer noopener noreferrer">.NET 8 で既定で有効になった Dynamic PGO について</a></div>
+    <div class="description">.NET ラボ 2023/10/28 での発表資料ブログhttps://blog.neno.dev/entry/2023/10/29/131336</div>
+  </span>
+</div>
+<p>JITはオッいけるやんとなったら即最適化して終わりのアグロプレイに対し､Dynamic PGOはstaticなPGOと同様､プロファイルを取得し､より最適化されたコードを生成するのを繰り返すため､レイトになるたびにどんどん性能が(理論上)上がっていく｡
+.NETではTier Compilationという複数段階(Tier-0､Tier-1の2段)のJIT compilationフェーズがあり､Tier-0ではコンパイル時間の短いサクッとした最適化をおこない､Tier-1のほうでDynamic PGOをおこなうようだ｡
+これにより､暖気の必要を最小限にしつつ､ライフサイクルの長い実行プロセスのパフォーマンスを爆上げできる｡</p>
+<p>これでええやん! と一瞬思うが､ネイティブバイナリでも同じようなことができるんかしらという疑問や､単純にランタイムが複雑になりますねというGoの思想と相反するところがある｡</p>
+<h1 id="7.+PGO%E3%81%AE%E8%AA%B2%E9%A1%8C"><a class="headerlink" href="#7.+PGO%E3%81%AE%E8%AA%B2%E9%A1%8C">7. PGOの課題</a></h1>
+<p>さて､〆にPGOの話をする｡
+PGOには実行情報が必要とのことだが､これの<em>品質</em>について気になるところである｡
+発表のとおり､K社のGoアプリケーションでは､1ヶ月のうちに得られたプロファイルのCPU使用率が高い上位30個のプロファイルをPGOに利用していた｡
+このプロファイルは実行時間20分ごとに生成されるプロファイルであり､また1ヶ月に10〜20回は本番デプロイしているため､ランタイムのリビジョンも異なる｡</p>
+<p>いくつか数字やらが出てきたのでみんな大好き箇条書きにする｡</p>
+<ul>
+<li>プロファイル数</li>
+<li>プロファイル1つあたりの計測時間</li>
+<li>リビジョン数</li>
+</ul>
+<p>サンプルアプリケーションを動かし､プロファイルが多ければ多いほど最適化が進むというのが手元で観測できたので､プロファイル数は多く取るようにしてある｡
+このプロファイルは単一リビジョンだった｡
+プロファイル1つあたりの計測時間も同様に､長いほうが良さそうだった｡</p>
+<p>じゃあ､プロファイルを24時間取得するとどうなる? 1ヶ月取ると最適化できるものはすべて最適化できるのか?
+これはなんとも言い難い｡
+というのも､K社のサービスへのアクセスが24時間でまばらなため､例えば深夜はまったくアクセスがなく､夕方などにアクセスが増加し､APIエンドポイントが多く叩かれる｡
+これをさらに1ヶ月というスパンでみると､月の頭や給料日にピークがくることもわかる｡
+じゃあ､夕方のプロファイルだけ使いますか? 月初のプロファイルだけ使いますか?
+しかし月末に月初のプロファイルを使っても､リビジョンが違いすぎて関数が増えたり減ったりしてて本当に有意なプロファイルなのか…?
+などなど､最適化をちゃんとすすめてくれる良いプロファイルは何なのか､アプリケーション特性による可能性が高い｡
+とはいえ､アプリケーションユーザの流入出によってどれくらいアプリケーションが稼働するのか変わるため､プロファイル取得の最適化はなかなか困難に見える｡</p>
+<p>総括すると､</p>
+<ul>
+<li>プロファイル数 … 多いとよさそう</li>
+<li>プロファイル1つあたりの計測時間 … 長いとよさそう､ただし長すぎると微妙かもしれないしタイミングによるかもしれない</li>
+<li>リビジョン数 … あんまり世代が離れると意味ないんじゃないかなあ</li>
+</ul>
+<p>GoのPGO導入は難しくないのでガンガンして良い､一方<em>PGOの最適化</em>はブルーオーシャンかつアプリケーション特性に依存する可能性が高いので難しい｡</p>
+<h1 id="8.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB"><a class="headerlink" href="#8.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">8. おわりに</a></h1>
+<p>今回はGoConの発表のフォローアップという名目で､書きたいことをつらつらと書いた｡
+コンパイル技術はまだまだ味がしておいしいですね｡</p>
+<hr>
+<div class="footnotes">
+<hr>
+<ol>
+
+<li id="fn1">
+<p>これはどちらかというと型変数があるかどうかよりも､C++(gcc)における型変数がプリプロセッサによりもたらされる､すなわちコード生成によるものであるため｡Template Haskellのエラーがまるで読めないのと同じ｡ <a href="#fnref1">↩</a></p>
+</li>
+
+</ol>
+</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+    <footer>
+      <div class="pagination btn-group" style="text-align: center; font-family: 'Comfortaa';">
+        <a class="btn prev" href="/2024/04/04/%E3%81%82%E3%81%AE%E6%97%A5%E8%A6%8B%E3%81%9F%E3%82%B8%E3%83%A3%E3%83%90%E3%81%AE%E6%9C%80%E6%96%B0%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%92%E5%83%95%E9%81%94%E3%81%AF%E3%81%BE%E3%81%A0%E7%9F%A5%E3%82%89%E3%81%AA%E3%81%84.html" title="あの日見たジャバの最新バージョンを僕達はまだ知らない｡">← Prev</a>
+        /<a class="btn" href="/">Top</a>/
+        <span class="btn next disabled">Next →</span>
+      </div>
+    </footer>
+
+  </body>
+</html>
