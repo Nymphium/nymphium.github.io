@@ -5,8 +5,8 @@
     <description>lily, Aikatsu, Programming language, and more</description>
     <link>https://nymphium.github.io/</link>
     <atom:link href="https://nymphium.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 15 Jul 2024 13:15:33 +0900</pubDate>
-    <lastBuildDate>Mon, 15 Jul 2024 13:15:33 +0900</lastBuildDate>
+    <pubDate>Sun, 01 Sep 2024 21:48:17 +0900</pubDate>
+    <lastBuildDate>Sun, 01 Sep 2024 21:48:17 +0900</lastBuildDate>
     <generator>Jekyll v4.3.3</generator>
     
       <item>
@@ -1715,7 +1715,7 @@ CPSとshift/resetのReflectionに関する発表のお話をうかがいまく�
 &lt;/div&gt;
 &lt;p&gt;&lt;code&gt;Domain&lt;/code&gt;モジュールで並列プリミティブが使えるが､低レベルAPIで少々使いづらいので､ocaml-multicoreが提供するdomainslibを使うのが推奨されている&lt;sup id=&quot;fnref1&quot; title=&apos;&quot;We recommend the users to utilise higher-level parallel programming libraries such as domainslib.&quot;, https://v2.ocaml.org/releases/5.0/manual/parallelism.html &apos;&gt;&lt;a href=&quot;#fn1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;｡&lt;/p&gt;
 &lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/domainslib&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/5a5b98ac48e7543c04060e6bc8daff29e6451b0818b67cd32e911865bda6420b/ocaml-multicore/domainslib&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/domainslib&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/d6248fe77c9693abb15fd9e3efccd58634d85cd792da6d75eeac04cafbd7b543/ocaml-multicore/domainslib&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/domainslib&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;GitHub - ocaml-multicore/domainslib: Parallel Programming over Domains&lt;/a&gt;&lt;/div&gt;
     &lt;div class=&quot;description&quot;&gt;Parallel Programming over Domains. Contribute to ocaml-multicore/domainslib development by creating an account on GitHub.&lt;/div&gt;
@@ -1748,7 +1748,7 @@ CPSとshift/resetのReflectionに関する発表のお話をうかがいまく�
 &lt;p&gt;ところで!
 並行計算もできるようになったんで､そのwrapperであるeioも､あります｡&lt;/p&gt;
 &lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/eio&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/9049b9c62c0f1790fd4e296b67b19041490545ce1692626f77450467aef72a9f/ocaml-multicore/eio&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/eio&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/e26c346adfaffacab7a1aedc535e062d871b6c8a91eadb4e0585b53338f8a41e/ocaml-multicore/eio&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://github.com/ocaml-multicore/eio&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;GitHub - ocaml-multicore/eio: Effects-based direct-style IO for multicore OCaml&lt;/a&gt;&lt;/div&gt;
     &lt;div class=&quot;description&quot;&gt;Effects-based direct-style IO for multicore OCaml. Contribute to ocaml-multicore/eio development by creating an account on GitHub.&lt;/div&gt;
@@ -2137,21 +2137,21 @@ thread-safeにしたいので､4.12から導入された&lt;a href=&quot;https:
   &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14084919/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://tblg.k-img.com/resize/640x640c/restaurant/images/Rvw/224243/08dc04e8f8bc372b7aa773a6e0c59ed5.jpg?token=736d04f&amp;amp;api=v2&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14084919/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;炭火焼ひもの 伝 (江ノ島/食堂)&lt;/a&gt;&lt;/div&gt;
-    &lt;div class=&quot;description&quot;&gt;★★★☆☆3.24 ■予算(昼):～￥999&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;★★★☆☆3.23 ■予算(昼):～￥999&lt;/div&gt;
   &lt;/span&gt;
 &lt;/div&gt;
 &lt;div class=&quot;twicard&quot;&gt;
   &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14028719/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://tblg.k-img.com/resize/640x640c/restaurant/images/Rvw/247570/80bb4e5514484789ec5f1fc4a8690f7d.jpg?token=144c152&amp;amp;api=v2&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14028719/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;喜食家 (江ノ島/海鮮)&lt;/a&gt;&lt;/div&gt;
-    &lt;div class=&quot;description&quot;&gt;★★★☆☆3.40 ■予算(夜):￥2,000～￥2,999&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;★★★☆☆3.39 ■予算(夜):￥2,000～￥2,999&lt;/div&gt;
   &lt;/span&gt;
 &lt;/div&gt;
 &lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14074553/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://tblg.k-img.com/resize/640x640c/restaurant/images/Rvw/238307/0ab1f97e9ec78b31dac0c130055e3862.jpg?token=e2f1e65&amp;amp;api=v2&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14074553/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://tblg.k-img.com/resize/640x640c/restaurant/images/Rvw/256249/9d6046739f10ebb6cf452b341c1f9594.jpg?token=2e68875&amp;amp;api=v2&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14074553/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;かき氷 ベタナギ (江ノ島/かき氷)&lt;/a&gt;&lt;/div&gt;
-    &lt;div class=&quot;description&quot;&gt;★★★☆☆3.38 ■予算(昼):￥1,000～￥1,999&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;★★★☆☆3.37 ■予算(昼):￥1,000～￥1,999&lt;/div&gt;
   &lt;/span&gt;
 &lt;/div&gt;
 &lt;div class=&quot;twicard&quot;&gt;
@@ -2165,14 +2165,14 @@ thread-safeにしたいので､4.12から導入された&lt;a href=&quot;https:
   &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14074668/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://tblg.k-img.com/resize/640x640c/restaurant/images/Rvw/187067/7a117157f2b4f909f0912137be4ad908.jpg?token=18fc01a&amp;amp;api=v2&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14074668/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;居酒屋 和 (江ノ島/居酒屋)&lt;/a&gt;&lt;/div&gt;
-    &lt;div class=&quot;description&quot;&gt;★★★☆☆3.18 ■予算(昼):～￥999&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;★★★☆☆3.17 ■予算(昼):～￥999&lt;/div&gt;
   &lt;/span&gt;
 &lt;/div&gt;
 &lt;div class=&quot;twicard&quot;&gt;
   &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14046151/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://tblg.k-img.com/resize/640x640c/restaurant/images/Rvw/251254/9ca9b9cf066f19cf47ac4068e740c270.jpg?token=52b6e08&amp;amp;api=v2&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
   &lt;span class=&quot;txt&quot;&gt;
     &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://tabelog.com/kanagawa/A1404/A140403/14046151/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;お蕎麦 結 (腰越/そば)&lt;/a&gt;&lt;/div&gt;
-    &lt;div class=&quot;description&quot;&gt;★★★☆☆3.54 ■予算(夜):～￥999&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;★★★☆☆3.53 ■予算(夜):～￥999&lt;/div&gt;
   &lt;/span&gt;
 &lt;/div&gt;
 &lt;h1 id=&quot;%E4%BA%A4%E9%80%9A&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E4%BA%A4%E9%80%9A&quot;&gt;交通&lt;/a&gt;&lt;/h1&gt;

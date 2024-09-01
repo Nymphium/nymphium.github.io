@@ -10,8 +10,8 @@
         pkgs = import nixpkgs {
           inherit system;
         };
-        ruby = pkgs.ruby_3_3;
-        rubyPkgs = pkgs.rubyPackages_3_3;
+        ruby = pkgs.ruby;
+        rubyPkgs = pkgs.rubyPackages;
       in
       {
         legacyPackages = pkgs;
