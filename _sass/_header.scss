@@ -17,11 +17,6 @@ $nav-page-link-padding-h: 5px;
 .site-title {
 	font-size: 26px;
 
-	@include media-query($on-palm) {
-		font-size: 20px;
-		margin-top: 4px;
-	}
-
 	font-weight: 300;
 	line-height: $nav-height;
 	letter-spacing: -1px;
@@ -31,6 +26,11 @@ $nav-page-link-padding-h: 5px;
 
 	&, &:visited {
 		color: $grey-color-dark;
+	}
+
+	@include media-query($on-palm) {
+		font-size: 20px;
+		margin-top: 4px;
 	}
 }
 
@@ -65,6 +65,17 @@ $nav-page-link-padding-h: 5px;
 		// 1つのリンクの高さ * リンクの数
 		transform: translateY(calc(-1 * (#{$base-font-size} * 1.5 * 4)));
 
+		.page-link {
+			display: block;
+      height: $base-font-size * 1.5;
+			margin-left: 10px;
+			margin-right: 10px;
+
+			&:last-child {
+				margin-right: 20px;
+			}
+		}
+
 		&:active, &:hover {
 			transform: translateY(0px);
 		}
@@ -76,17 +87,6 @@ $nav-page-link-padding-h: 5px;
 			display: block;
 			top: 0;
 		}
-
-		.page-link {
-			display: block;
-      height: $base-font-size * 1.5;
-			margin-left: 10px;
-			margin-right: 10px;
-
-			&:last-child {
-				margin-right: 20px;
-			}
-		}
 	}
 }
 
@@ -96,4 +96,3 @@ $nav-page-link-padding-h: 5px;
 	padding: 2px 1px 0 1px;
 	background: #aaaaaa5e;
 }
-
