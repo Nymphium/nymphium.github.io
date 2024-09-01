@@ -153,11 +153,6 @@ article {
     border-radius: 5px;
     padding: 5px $article-margin 30px $article-margin;
 
-    @include media-query($on-palm) {
-      padding: 5px 0 30px 0;
-      border-style: none;;
-    }
-
     margin-top: -10px;
 
     h1:not(:first-child) {
@@ -175,6 +170,11 @@ article {
         border-bottom: solid 1px #eee;
         margin-top: 1rem;
       }
+    }
+
+    @include media-query($on-palm) {
+      padding: 5px 0 30px 0;
+      border-style: none;;
     }
   }
 }

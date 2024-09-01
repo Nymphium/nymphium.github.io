@@ -151,6 +151,10 @@ div.twicard {
   padding-bottom: 0px;
 
   & > .image {
+    width: $twicard-img;
+    display: inline-block;
+    vertical-align: middle;
+
     & > a > div {
       position:relative;
 
@@ -165,13 +169,16 @@ div.twicard {
         border-radius: 5px 0px 0px 5px / 5px 0px 0px 5px;
       }
     }
-
-    width: $twicard-img;
-    display: inline-block;
-    vertical-align: middle;
   }
 
   & > .txt {
+    vertical-align: top;
+    width: $twicard-txt;
+    margin-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    max-height: 125px;
+
     & > .title {
       width: 100%;
       white-space: nowrap;
@@ -189,13 +196,6 @@ div.twicard {
 
       font-size: smaller;
     }
-
-    vertical-align: top;
-    width: $twicard-txt;
-    margin-left: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    max-height: 125px;
   }
 
   & > span {

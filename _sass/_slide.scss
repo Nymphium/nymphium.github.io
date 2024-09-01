@@ -27,6 +27,7 @@
   &:after {
     color: $brand-color;
     text-decoration: none;
+    content: "Fullscreen";
 
     &:visited {
       color: darken($brand-color, 15%);
@@ -36,8 +37,6 @@
       color: $text-color;
       text-decoration: underline;
     }
-
-    content: "Fullscreen";
   }
 }
 
