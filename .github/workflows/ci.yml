@@ -7,17 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: cachix/install-nix-action@V27
+    - uses: DeterminateSystems/nix-installer-action@main
       with:
         extra_nix_config: |
           max-jobs = auto
           cores = 0
-
     - uses: cachix/cachix-action@v15
       with:
         name: blog-ci
         authToken: '${{ secrets.CACHIX_SIGNING_KEY }}'
-
     - name: Check build
       run: |
         nix develop -c bundle install
