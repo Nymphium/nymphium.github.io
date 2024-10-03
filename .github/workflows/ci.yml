@@ -20,3 +20,7 @@ jobs:
       run: |
         nix develop -c bundle install
         nix develop -c bundle exec rake build
+
+    - name: Check nix format
+      run: |
+        nix develop -c -- nixfmt -c $(git ls-files *.nix)

@@ -7,3 +7,4 @@ twicard_cache/*
 !**/.gitkeep
 .jekyll-cache
 .jekyll-metadata
+.direnv
