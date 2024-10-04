@@ -27,6 +27,3 @@ jobs:
         run: |
           nix develop -c bundle install
           nix develop -c bundle exec rake build
-      - uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.ACCESS_TOKEN }}
