@@ -13,7 +13,8 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
         with:
-          extra_nix_config: |
+          github-token: ${{ secrets.ACCESS_TOKEN }}
+          extra-conf: |
             max-jobs = auto
             cores = 0
       - name: Update flake.lock
