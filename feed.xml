@@ -5,8 +5,8 @@
     <description>lily, Aikatsu, Programming language, and more</description>
     <link>https://nymphium.github.io/</link>
     <atom:link href="https://nymphium.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 07 Nov 2024 23:02:25 +0900</pubDate>
-    <lastBuildDate>Thu, 07 Nov 2024 23:02:25 +0900</lastBuildDate>
+    <pubDate>Thu, 07 Nov 2024 23:05:58 +0900</pubDate>
+    <lastBuildDate>Thu, 07 Nov 2024 23:05:58 +0900</lastBuildDate>
     <generator>Jekyll v4.3.3</generator>
     
       <item>
@@ -82,7 +82,7 @@ f9             c0        40
 &lt;p&gt;になる｡&lt;/p&gt;
 &lt;h1 id=&quot;%E7%B5%90%E8%AB%96&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E7%B5%90%E8%AB%96&quot;&gt;結論&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;Protobufでフィールド番号が15より大きいフィールドの場合､エンコーディング時にタグが2bytes以上になる｡
-不必要に大きなフィールド番号はprotobufでメッセージを送受信するときに通信量に不可がかかるためSDGsでない｡
+不必要に大きなフィールド番号はprotobufでメッセージを送受信するときに通信量に負荷がかかるためSDGsでない｡
 したがって可能な限りフィールド番号は小さくしましょう｡&lt;/p&gt;
 &lt;p&gt;フィールド番号$k$に対し､$n\ \mathrm{for}\ 2^{\left(4+7\left(n-1\right)\right)}\leq k+1 \lt 2^{\left(4+7n\right)}$bytes必要になるので､ネットワーク環境に配慮したフィールド番号の付与をお願いします｡&lt;/p&gt;</description>
         <pubDate>Thu, 07 Nov 2024 00:00:00 +0900</pubDate>
