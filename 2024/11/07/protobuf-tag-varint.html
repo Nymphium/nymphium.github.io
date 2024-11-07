@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html;charset=UTF-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="format-detection" content="telephone=no"/>
+
+    <title>Protobufのフィールド番号は15未満のほうがSDGs - VARINTのvariability - lilyum ensemble</title>
+    <meta itemprop="name" content="Protobufのフィールド番号は15未満のほうがSDGs - VARINTのvariability - lilyum ensemble"/>
+    <meta name="keywords" content="Protocol Buffers"/>
+    <meta name="thumbnail" content="/pictures/github_icon.png"/>
+    <meta itemprop="image" content="/pictures/github_icon.png"/>
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="lilyum ensemble"/>
+    <meta name="twitter:title" content="Protobufのフィールド番号は15未満のほうがSDGs - VARINTのvariability - lilyum ensemble"/>
+    <meta name="twitter:url" content="/2024/11/07/protobuf-tag-varint.html"/> 
+    <meta name="twitter:text:description" content="こんにちは､びしょ〜じょです｡今日は皆さん大好きprotobufのbinary wire formatのVARINTの話｡おさらいこんなmessageがあるとする(プログラム1)｡1 hello..."/>
+    <meta name="twitter:image" content="https://nymphium.github.io/pictures/github_icon.png"/>
+    <meta name="twitter:image:src" content="https://nymphium.github.io/pictures/github_icon.png"/>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="Protobufのフィールド番号は15未満のほうがSDGs - VARINTのvariability" />
+<meta name="author" content="Satoru Kawahara" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="こんにちは､びしょ〜じょです｡ 今日は皆さん大好きprotobufのbinary wire formatのVARINTの話｡" />
+<meta property="og:description" content="こんにちは､びしょ〜じょです｡ 今日は皆さん大好きprotobufのbinary wire formatのVARINTの話｡" />
+<link rel="canonical" href="https://nymphium.github.io/2024/11/07/protobuf-tag-varint.html" />
+<meta property="og:url" content="https://nymphium.github.io/2024/11/07/protobuf-tag-varint.html" />
+<meta property="og:site_name" content="lilyum ensemble" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-11-07T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Protobufのフィールド番号は15未満のほうがSDGs - VARINTのvariability" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Satoru Kawahara"},"dateModified":"2024-11-07T00:00:00+09:00","datePublished":"2024-11-07T00:00:00+09:00","description":"こんにちは､びしょ〜じょです｡ 今日は皆さん大好きprotobufのbinary wire formatのVARINTの話｡","headline":"Protobufのフィールド番号は15未満のほうがSDGs - VARINTのvariability","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2024/11/07/protobuf-tag-varint.html"},"url":"https://nymphium.github.io/2024/11/07/protobuf-tag-varint.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta property="og:image" content="/pictures/github_icon.png"/>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="wrapper" style="font-family: 'Comfortaa';">
+        <a class="site-title" href="/">lilyum ensemble</a>
+        <nav class="site-nav">
+          <div class="trigger">
+            <a class="page-link" href="/about/README.html">About me</a>
+            <a class="page-link" href="/slide.html">Slides</a>
+            <a class="page-link" href="/tags.html">Tags</a>
+            <a class="page-link feed" href="/feed.xml">Feed</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-content">
+      <div class="wrapper" lang="ja">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <div class="post-header-info">
+              <h1 class="post-title" itemprop="name headline">Protobufのフィールド番号は15未満のほうがSDGs - VARINTのvariability</h1>
+              <span class="post-meta">
+                <div>
+                  <time datetime="2024-11-07T00:00:00+09:00" itemprop="datePublished">Nov 7, 2024</time>
+                  <a class="src" href="https://github.com/Nymphium/nymphium.github.io/blob/source/_posts%2F2024-11-07-protobuf-tag-varint.md" target="_blank" rel="noopener noreferrer noopener noreferrer">src</a><p class="tags">tag: {<span class="tag">
+                    <a href="/tags.html#Protocol%20Buffers-ref">Protocol Buffers</a>
+                  </span>}
+                  </p>
+</div>
+
+                <a class="twitter-share-button" href="https://twitter.com/intent/tweet" target="_blank" rel="noopener noreferrer">Tweet</a> 
+                <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja" title="Protobufのフィールド番号は15未満のほうがSDGs - VARINTのvariability" target="_blank" rel="noopener noreferrer">
+                  <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマークに追加" width="20" height="20" style="border: none;">
+                </a>
+                <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+              </span>
+            </div>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <script type="text/javascript" src="/js/GithubRepoWidget.min.js"></script>
+            <script type="text/javascript">setTimeout(GithubRepoWidget.init, 3000);</script>
+
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                renderMathInElement(document.body, {
+                  // customised options
+                  // • auto-render specific keys, e.g.:
+                  delimiters: [
+                                  {left: '$$', right: '$$', display: true},
+                                  {left: '$', right: '$', display: false},
+                                  {left: '\\(', right: '\\)', display: false},
+                                  {left: '\\[', right: '\\]', display: true},
+                                  {left: '\\\\(', right: '\\\\)', display: false},
+                                  {left: '\\\\[', right: '\\\\]', display: true}
+                                ],
+                  // • rendering keys, e.g.:
+                  throwOnError : false
+                });
+              });
+            </script>
+          </header>
+
+          <div class="post-content" itemprop="articleBody">
+<p>こんにちは､びしょ〜じょです｡
+今日は皆さん大好きprotobufのbinary wire formatのVARINTの話｡</p>
+<h1 id="%E3%81%8A%E3%81%95%E3%82%89%E3%81%84"><a class="headerlink" href="#%E3%81%8A%E3%81%95%E3%82%89%E3%81%84">おさらい</a></h1>
+<p>こんなmessageがあるとする(プログラム<a href="#helloproto">1</a>)｡</p>
+<div class="highlight">
+<span class="listing-name"><a href="#helloproto">1</a> hello.proto</span><pre><code class="language-protobuf" data-lang="protobuf"><span class="kd">message</span> <span class="nc">Hello</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>あるんですが､binary wire formatではフィールド名は消えてフィールド番号と値のペアになるんで､<code>{ 1: "John" }</code>のようなものになる｡
+実際にエンコードすると､次のようになる(図<a href="#johnbin">2</a>)｡</p>
+<div class="highlight">
+<span class="listing-name">図<a href="#johnbin">2</a> { 1: "John" } のbinary wire format</span><pre><code class="language-plaintext" data-lang="plaintext">0a 04 4a 6f 68 6e
+</code></pre>
+</div>
+<p><a href="https://protobuf.dev/programming-guides/encoding/" target="_blank" rel="noopener noreferrer">Protobufのドキュメント</a>を読むと､binary wire formatは<code>(tag value)*</code>で表されている｡
+で<code>value</code>はここでは<code>"John"</code>(<code>4a 6f 68 6e</code>)なはずなんで､<code>tag</code>は<code>1:</code>(<code>0a 04</code>)ですな｡
+<code>tag</code>はVARINTで定義され､MSB(most-significant bit)+7bitsの値から成る｡
+MSBは今回用がないんで<code>0</code>なんで､7bitsでフィールド番号とwire typeを示す｡
+文字列なのでwire typeはLEN (<code>010</code>)､フィールド番号は1だから､<code>0 0001 010</code> → <code>0a</code>(図<a href="#wakariyasuizu">3</a>)｡</p>
+<div class="highlight">
+<span class="listing-name"><a href="#wakariyasuizu">3</a> 極めてわかりやすい図</span><pre><code class="language-plaintext" data-lang="plaintext">0a
+---------------------- to bin
+0000 1010
+----------------------
+0     0001             010
+^     ^                ^
+MSB   フィールド番号   wire type
+</code></pre>
+</div>
+<p>LEN wire typeなので､後続のデータの長さが必要になり<code>"John".length = 0x04</code>｡
+いいじゃないですか｡</p>
+<p>コマンドでも念の為やると</p>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>xxd <span class="nt">-r</span> <span class="nt">-ps</span> <span class="o">&lt;&lt;&lt;</span> <span class="s2">"0a044a6f686e"</span> | protoscope
+1: <span class="o">{</span><span class="s2">"John"</span><span class="o">}</span>
+</code></pre></div>
+<p>ええやんか｡</p>
+<h1 id="%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89%E7%95%AA%E5%8F%B7%E3%81%8C%E5%A4%A7%E3%81%8D%E3%81%84%E3%81%A8%E3%81%A9%E3%81%86%E3%81%AA%E3%82%8B%E3%81%A0%3F"><a class="headerlink" href="#%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89%E7%95%AA%E5%8F%B7%E3%81%8C%E5%A4%A7%E3%81%8D%E3%81%84%E3%81%A8%E3%81%A9%E3%81%86%E3%81%AA%E3%82%8B%E3%81%A0%3F">フィールド番号が大きいとどうなるだ?</a></h1>
+<p>VARINTなので､n-bytesになる｡
+話おわりなんで皆さん帰ってもらってOKです｡</p>
+<p>以下解説</p>
+<hr>
+<p><a href="#johnbin">2</a>の解説で､フィールド番号1だと<code>0 0001 xxx</code>(<code>xxx</code>はwire type)にエンコードされた｡
+MSBとかいう訳わかんねー奴を考えると､0b1111=15より大きい場合どうなるか｡
+MSBとかいう訳わかんねー奴を使う｡
+0b10000以上のフィールド番号は､複数bytesにまたがって表現される｡
+最初の1byteではwire type(+MSB)を含めるので4bits分｡
+後続のデータは､MSBが0まではずっとtrailing dataとして読み込まれる｡</p>
+<p>フィールド番号が0b100000010000001111のI64 type(<code>001</code>)の<code>42</code>を考える(<code>{ 132111: 42i64 }</code>)｡
+VARINTはリトルエンディアン､最初は4bits､MSBを除くと1byteに7bitsの情報､なので</p>
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">100000010000001111
+-------------------- 分割
+1000000 1000000 1111
+-------------------- big endian
+1111 1000000 1000000
+-------------------- VARINT
+1    1111 001  1 1000000 0 1000000
+^         ^    ^         ^
+MSB       I64  MSB       MSB (end)
+-------------------- to hex
+f9             c0        40
+</code></pre></div>
+<p>I64は〜わからんが<code>2a00000000000000</code>らしいです｡
+なんで､</p>
+<div class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">f9 c0 40 2a 00 00 00 00 00 00 00
+</code></pre></div>
+<p>になる｡</p>
+<h1 id="%E7%B5%90%E8%AB%96"><a class="headerlink" href="#%E7%B5%90%E8%AB%96">結論</a></h1>
+<p>Protobufでフィールド番号が15より大きいフィールドの場合､エンコーディング時にタグが2bytes以上になる｡
+不必要に大きなフィールド番号はprotobufでメッセージを送受信するときに通信量に不可がかかるためSDGsでない｡
+したがって可能な限りフィールド番号は小さくしましょう｡</p>
+<p>フィールド番号$k$に対し､$n\ \mathrm{for}\ 2^{\left(4+7\left(n-1\right)\right)}\leq k+1 \lt 2^{\left(4+7n\right)}$bytes必要になるので､ネットワーク環境に配慮したフィールド番号の付与をお願いします｡</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+    <footer>
+      <div class="pagination btn-group" style="text-align: center; font-family: 'Comfortaa';">
+        <a class="btn prev" href="/2024/07/15/gocon-appendix.html" title="GoCon2024の補足: Goと見るコンパイラ最適化事情">← Prev</a>
+        /<a class="btn" href="/">Top</a>/
+        <span class="btn next disabled">Next →</span>
+      </div>
+    </footer>
+
+  </body>
+</html>
