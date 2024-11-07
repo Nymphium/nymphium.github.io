@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Protobufのフィールド番号は15未満のほうがSDGs - VARINTのvariability
+title: Protobufのフィールド番号は15以下のほうがSDGs - VARINTのvariability
 tags: [Protocol Buffers]
 ---
 
