@@ -5,7 +5,11 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    assignees:
+      - "nymphium"
   - package-ecosystem: bundler
     directory: "/"
     schedule:
       interval: "monthly"
+    assignees:
+      - "nymphium"
