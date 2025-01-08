@@ -1,16 +1,16 @@
 {
   activesupport = {
-    dependencies = ["base64" "bigdecimal" "concurrent-ruby" "connection_pool" "drb" "i18n" "logger" "minitest" "securerandom" "tzinfo"];
+    dependencies = ["base64" "benchmark" "bigdecimal" "concurrent-ruby" "connection_pool" "drb" "i18n" "logger" "minitest" "securerandom" "tzinfo" "uri"];
     groups = ["default"];
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "094cv9kxa8hwlsw3c0njkvvayd0wszcz9b6xywv4yajrg83zlmvm";
+      sha256 = "0drfj44a16r86clrrqz3vqmg93qri6bqghjm21ac6jn2853cfnzx";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "7.2.1";
+    version = "8.0.1";
   };
   addressable = {
     dependencies = ["public_suffix"];
@@ -36,6 +36,18 @@
     };
     targets = [];
     version = "0.2.0";
+  };
+  benchmark = {
+    groups = ["default"];
+    platforms = [];
+    source = {
+      remotes = ["https://rubygems.org"];
+      sha256 = "0jl71qcgamm96dzyqk695j24qszhcc7liw74qc83fpjljp2gh4hg";
+      target = "ruby";
+      type = "gem";
+    };
+    targets = [];
+    version = "0.4.0";
   };
   bigdecimal = {
     groups = ["default"];
@@ -78,12 +90,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1x32mcpm2cl5492kd6lbjbaf17qsssmpx9kdyr7z1wcif2cwyh0g";
+      sha256 = "1z7bag6zb2vwi7wp2bkdkmk7swkj6zfnbsnc949qq0wfsgw94fr3";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "2.4.1";
+    version = "2.5.0";
   };
   date = {
     groups = ["default" "development"];
@@ -525,12 +537,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1n1akmc6bibkbxkzm1p1wmfb4n9vv397knkgz0ffykb3h1d7kdix";
+      sha256 = "0izrg03wn2yj3gd76ck7ifbm9h2kgy8kpg4fk06ckpy4bbicmwlw";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "5.25.1";
+    version = "5.25.4";
   };
   net-http = {
     dependencies = ["uri"];
@@ -845,12 +857,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1phv6kh417vkanhssbjr960c0gfqvf8z7d3d9fd2yvd41q64bw4q";
+      sha256 = "1cd0iriqfsf1z91qg271sm88xjnfd92b832z49p1nd542ka96lfc";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.3.1";
+    version = "0.4.1";
   };
   sorbet-runtime = {
     groups = ["default" "development"];
