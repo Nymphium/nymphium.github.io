@@ -25,10 +25,13 @@ jobs:
         with:
           name: blog-ci
           authToken: '${{ secrets.CACHIX_SIGNING_KEY }}'
-      - run: nix develop -c bundix
-      - env:
-          GITHUB_TOKEN: ${{ secrets.BOT_PAT }}
+      - name: Authenticate with PAT
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
+          echo "machine github.com login $GITHUB_ACTOR password ${{ secrets.BOT_PAT }}" > ~/.netrc
+      - run: nix develop -c bundix
+      - run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git commit --all -m "Update gemset.nix via bundix" || echo "No changes to commit"
