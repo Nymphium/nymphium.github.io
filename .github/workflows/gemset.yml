@@ -4,7 +4,10 @@ on:
   pull_request:
     types:
       - labeled
-      - opened
+
+concurrency:
+  group: bundix-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   run-on-specific-labels:
@@ -14,6 +17,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: echo "NEW_BRAHCH=dependabot-update-bundix-${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+      - name: Check for existing branch
+        run: |
+          if git ls-remote --exit-code --heads origin update-bundix-${{ env.NEW_BRAHCH }}; then
+            echo "Branch already exists. Exiting..."
+            exit 0
+          fi
       - uses: DeterminateSystems/nix-installer-action@main
         with:
           extra-conf: |
@@ -27,17 +37,18 @@ jobs:
       - run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git checkout -b update-bundix-${{ github.event.pull_request.number }}
+          git checkout -b ${{ env.NEW_BRAHCH }}
           git add gemset.nix
           git commit -m "Update gemset.nix via bundix"
       - env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git push origin update-bundix-${{ github.event.pull_request.number }}
-      - uses: peter-evans/create-pull-request@v4
+          git push origin ${{ env.NEW_BRAHCH }}
+      - uses: peter-evans/create-pull-request@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: update-bundix-${{ github.event.pull_request.number }}
+          branch: ${{ env.NEW_BRAHCH }}
           title: 'Update gemset.nix via bundix'
           body: 'This PR updates gemset.nix by running bundix.'
           base: ${{ github.event.pull_request.base.ref }}
+          labels: 'dependencies,bundix'
