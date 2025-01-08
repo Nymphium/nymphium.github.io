@@ -5,8 +5,10 @@ on:
     types:
       - labeled
 
+
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   run-on-specific-labels:
