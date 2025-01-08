@@ -18,8 +18,7 @@ jobs:
         authToken: '${{ secrets.CACHIX_SIGNING_KEY }}'
     - name: Check build
       run: |
-        nix develop -c bundle install
-        nix develop -c bundle exec rake build
+        nix develop -c rake build
 
     - name: Check nix format
       run: |

@@ -87,6 +87,15 @@ or
 {% twid id %}
 ```
 
+# Ops
+
+```sh
+$ bundle add GEM --skip-install # add gem to Gemfile
+$ bundle lock --update=GEM # update gem
+$ bundix # regenerate gemset.nix
+$ direnv reload
+```
+
 # LICENSE
 [MIT](http://opensource.org/licenses/MIT)
 

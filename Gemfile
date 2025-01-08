@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ENV['NOKOGIRI_USE_SYSTEM_LIBRARIES'] = 'YES'
 
 gem 'jekyll', '< 5.0.0'
 gem 'jekyll-gist'
@@ -16,3 +15,9 @@ gem 'redcarpet'
 
 gem 'jekyll-feed'
 gem 'liquid', '>= 4.0.4'
+
+group :development do
+  gem "ruby-lsp"
+  gem "typeprof"
+  gem "debug"
+end
