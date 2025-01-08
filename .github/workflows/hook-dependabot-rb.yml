@@ -7,11 +7,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
-
-concurrency:
-  group: bundix-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
 
 jobs:
   run-on-specific-labels:
@@ -21,13 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: echo "NEW_BRAHCH=dependabot-update-bundix-${{ github.event.pull_request.number }}" >> $GITHUB_ENV
-      - name: Check for existing branch
-        run: |
-          if git ls-remote --exit-code --heads origin update-bundix-${{ env.NEW_BRAHCH }}; then
-            echo "Branch already exists. Exiting..."
-            exit 0
-          fi
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
       - uses: DeterminateSystems/nix-installer-action@main
         with:
           extra-conf: |
@@ -43,6 +33,5 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add gemset.nix
-          git commit -m "Update gemset.nix via bundix" || echo "No changes to commit"
-          git push origin ${{ github.event.pull_request.head.ref }}
+          git commit --all -m "Update gemset.nix via bundix" || echo "No changes to commit"
+          git push origin --force-with-lease ${{ github.event.pull_request.head.ref }}:refs/heads/${{ github.event.pull_request.head.ref }}
