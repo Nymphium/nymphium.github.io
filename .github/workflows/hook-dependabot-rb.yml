@@ -26,8 +26,6 @@ jobs:
           name: blog-ci
           authToken: '${{ secrets.CACHIX_SIGNING_KEY }}'
       - name: Authenticate with PAT
-        env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           echo "machine github.com login $GITHUB_ACTOR password ${{ secrets.BOT_PAT }}" > ~/.netrc
       - run: nix develop -c bundix
