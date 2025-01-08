@@ -13,10 +13,13 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
         with:
-          github-token: ${{ secrets.ACCESS_TOKEN }}
           extra-conf: |
             max-jobs = auto
             cores = 0
+      - uses: cachix/cachix-action@v15
+        with:
+          name: blog-ci
+          authToken: '${{ secrets.CACHIX_SIGNING_KEY }}'
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@main
         with:
