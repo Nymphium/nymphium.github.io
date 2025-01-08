@@ -15,7 +15,7 @@ jobs:
     - uses: cachix/cachix-action@v15
       with:
         name: blog-ci
-        authToken: '${{ secrets.CACHIX_SIGNING_KEY }}'
+        authToken: '${{ secrets.CACHIX_TOKEN }}'
     - name: Check build
       run: |
         nix develop -c rake build
