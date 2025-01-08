@@ -38,21 +38,11 @@ jobs:
           name: blog-ci
           authToken: '${{ secrets.CACHIX_SIGNING_KEY }}'
       - run: nix develop -c bundix
-      - uses: peter-evans/create-pull-request@main
-        id: create_pr
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ env.NEW_BRAHCH }}
-          commit-message: 'Update gemset.nix via bundix'
-          title: 'Update gemset.nix via bundix'
-          body: |
-            This PR updates gemset.nix by running `bundix`.
-            It is related to the original PR: [#${{ github.event.pull_request.number }}](${{ github.event.pull_request.html_url }})
-          base: ${{ github.event.pull_request.head.ref }}
-          labels: 'dependencies,bundix'
-      - name: Add comment to original PR
-        uses: thollander/actions-comment-pull-request@v3
-        with:
-          message: |
-            A new PR has been created to update gemset: [${{ steps.create_pr.outputs.pull-request-url }}](${{ steps.create_pr.outputs.pull-request-url }})
-          pr-number: ${{ github.event.pull_request.number }}
+      - env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add gemset.nix
+          git commit -m "Update gemset.nix via bundix" || echo "No changes to commit"
+          git push origin ${{ github.event.pull_request.head.ref }}
