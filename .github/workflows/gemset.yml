@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
       - run: echo "NEW_BRAHCH=dependabot-update-bundix-${{ github.event.pull_request.number }}" >> $GITHUB_ENV
       - name: Check for existing branch
         run: |
@@ -39,9 +41,8 @@ jobs:
           git checkout -b ${{ env.NEW_BRAHCH }}
       - run: nix develop -c bundix
       - run: |
-          git add gemset.nix
-          git commit -m "Update gemset.nix via bundix"
-      - run: git push origin ${{ env.NEW_BRAHCH }}
+          git commit --all -m "Update gemset.nix via bundix"
+          git push origin --force ${{ env.NEW_BRAHCH }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: peter-evans/create-pull-request@main
@@ -50,5 +51,5 @@ jobs:
           branch: ${{ env.NEW_BRAHCH }}
           title: 'Update gemset.nix via bundix'
           body: 'This PR updates gemset.nix by running bundix.'
-          base: ${{ github.event.pull_request.base.ref }}
+          base: ${{ github.event.pull_request.head.ref }}
           labels: 'dependencies,bundix'
