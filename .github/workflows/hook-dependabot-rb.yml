@@ -37,13 +37,11 @@ jobs:
         with:
           name: blog-ci
           authToken: '${{ secrets.CACHIX_SIGNING_KEY }}'
-      - run: |
-          git checkout -b ${{ env.NEW_BRAHCH }}
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
       - run: nix develop -c bundix
       - env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git commit --all -m "Update gemset.nix via bundix" || echo "No changes to commit"
           git push origin --force-with-lease ${{ github.event.pull_request.head.ref }}
