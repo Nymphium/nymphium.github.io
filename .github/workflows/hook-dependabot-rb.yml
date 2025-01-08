@@ -6,10 +6,11 @@ on:
       - labeled
 
 jobs:
-  run-on-specific-labels:
+  followup-bundix:
     if: |
       contains(github.event.pull_request.labels.*.name, 'dependencies') &&
-      contains(github.event.pull_request.labels.*.name, 'ruby')
+      contains(github.event.pull_request.labels.*.name, 'ruby') &&
+      github.actor == 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,7 +25,7 @@ jobs:
       - uses: cachix/cachix-action@v15
         with:
           name: blog-ci
-          authToken: '${{ secrets.CACHIX_SIGNING_KEY }}'
+          authToken: '${{ secrets.CACHIX_TOKEN }}'
       - name: Authenticate with PAT
         run: |
           echo "machine github.com login $GITHUB_ACTOR password ${{ secrets.BOT_PAT }}" > ~/.netrc
