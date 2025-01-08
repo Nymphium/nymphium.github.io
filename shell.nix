@@ -5,7 +5,7 @@
 }:
 pkgs.mkShell {
   packages =
-    [ bundixcli ]
+    [bundixcli]
     ++ (with rubyNix; [
       ruby
       env
