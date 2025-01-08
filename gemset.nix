@@ -148,17 +148,17 @@
     version = "1.2.7";
   };
   faraday = {
-    dependencies = ["faraday-net_http" "logger"];
+    dependencies = ["faraday-net_http" "json" "logger"];
     groups = ["default"];
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "00pd34pnfmij5iw1xv73f6d68zng63wyjhmk7dyi010kmb4x5sp6";
+      sha256 = "1mls9g490k63rdmjc9shqshqzznfn1y21wawkxrwp2vvbk13jwqm";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "2.11.0";
+    version = "2.12.2";
   };
   faraday-net_http = {
     dependencies = ["net-http"];
@@ -166,12 +166,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0rg54k4skaz8z7j358p6pdzc9pr84fjq7sdlpicf7s5ig7vb1rlk";
+      sha256 = "0jp5ci6g40d6i50bsywp35l97nc2fpi9a592r2cibwicdb6y9wd1";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "3.3.0";
+    version = "3.4.0";
   };
   ffi = {
     groups = ["default"];
@@ -497,16 +497,16 @@
     version = "3.9.0";
   };
   logger = {
-    groups = ["default"];
+    groups = ["default" "development"];
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0gpg8gzi0xwymw4aaq2iafcbx31i3xzkg3fb30mdxn1d4qhc3dqa";
+      sha256 = "1rrf3y8j3fjjmn74d2i3l85pjm7yhvl8xgz7684hac92j8fbj9xn";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "1.6.0";
+    version = "1.6.4";
   };
   mercenary = {
     groups = ["default"];
@@ -538,12 +538,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "10n2n9aq00ih8v881af88l1zyrqgs5cl3njdw8argjwbl5ggqvm9";
+      sha256 = "1ysrwaabhf0sn24jrp0nnp51cdv0jf688mh5i6fsz63q2c6b48cn";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.4.1";
+    version = "0.6.0";
   };
   nokogiri = {
     dependencies = ["racc"];
@@ -932,12 +932,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "07ndgxyhzd02cg94s6rnfhkb9rwx9z72lzk368sa9j78wc9qnbfz";
+      sha256 = "09qyg6a29cfgd46qid8qvx4sjbv596v19ym73xvhanbyxd6500xk";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.13.1";
+    version = "1.0.2";
   };
   webrick = {
     groups = ["default"];
