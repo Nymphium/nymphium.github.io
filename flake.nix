@@ -13,15 +13,17 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    flake-utils,
-    bundix,
-    ruby-nix,
-  }:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      bundix,
+      ruby-nix,
+    }:
     flake-utils.lib.eachDefaultSystem (
-      system: let
+      system:
+      let
         pkgs = import nixpkgs {
           inherit system;
         };
@@ -30,9 +32,10 @@
           gemset = ./gemset.nix;
         };
         bundixcli = bundix.packages.${system}.default;
-      in {
+      in
+      {
         legacyPackages = pkgs;
-        devShells.default = import ./shell.nix {inherit pkgs rubyNix bundixcli;};
+        devShells.default = import ./shell.nix { inherit pkgs rubyNix bundixcli; };
       }
     );
 }
