@@ -19,7 +19,7 @@ jobs:
       - uses: cachix/cachix-action@v15
         with:
           name: blog-ci
-          authToken: '${{ secrets.CACHIX_SIGNING_KEY }}'
+          authToken: '${{ secrets.CACHIX_TOKEN }}'
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@main
         with:
@@ -29,5 +29,6 @@ jobs:
             automated
       - name: Check build
         run: |
-          nix develop -c bundle install
-          nix develop -c bundle exec rake build
+          nix develop -c nixfmt gemset.nix
+          nix develop -c rake build
+          git diff --exit-code
