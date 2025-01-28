@@ -27,4 +27,3 @@ jobs:
     - name: Check nix format
       run: |
         nix develop -c -- nixfmt -c $(git ls-files *.nix | grep -v gemset.nix)
-        git diff --exit-code
