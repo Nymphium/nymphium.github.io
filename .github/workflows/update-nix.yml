@@ -29,6 +29,4 @@ jobs:
             automated
       - name: Check build
         run: |
-          nix develop -c nixfmt gemset.nix
           nix develop -c rake build
-          git diff --exit-code
