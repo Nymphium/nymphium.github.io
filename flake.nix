@@ -27,15 +27,22 @@
         pkgs = import nixpkgs {
           inherit system;
         };
+        ruby = pkgs.ruby;
         rubyNix = (ruby-nix.lib pkgs) {
-          inherit (pkgs) ruby;
+          inherit ruby;
           gemset = ./gemset.nix;
         };
-        bundixcli = bundix.packages.${system}.default;
+        bundix' = pkgs.callPackage ./nix/bundix.nix {
+          inherit ruby bundix;
+        };
       in
       {
         legacyPackages = pkgs;
-        devShells.default = import ./shell.nix { inherit pkgs rubyNix bundixcli; };
+        apps.patched-bundix = {
+          type = "app";
+          program = bundix' + "/bin/patched-bundix";
+        };
+        devShells.default = import ./shell.nix { inherit pkgs rubyNix; };
       }
     );
 }
