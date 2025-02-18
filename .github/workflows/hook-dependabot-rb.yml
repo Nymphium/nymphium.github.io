@@ -29,9 +29,6 @@ jobs:
         with:
           name: blog-ci
           authToken: '${{ secrets.CACHIX_TOKEN }}'
-      - name: Authenticate with PAT
-        run: |
-          echo "machine github.com login $GITHUB_ACTOR password ${{ secrets.BOT_PAT }}" > ~/.netrc
       - run: nix run '.#patched-bundix'
       - run: |
           git config --global user.name 'github-actions[bot]'
