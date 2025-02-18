@@ -5,6 +5,9 @@ on:
     types:
       - labeled
 
+permissions:
+  contents: write
+
 jobs:
   followup-bundix:
     if: |
