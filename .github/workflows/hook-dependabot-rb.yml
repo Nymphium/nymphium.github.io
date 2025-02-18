@@ -32,7 +32,7 @@ jobs:
       - name: Authenticate with PAT
         run: |
           echo "machine github.com login $GITHUB_ACTOR password ${{ secrets.BOT_PAT }}" > ~/.netrc
-      - run: nix develop -c bundix
+      - run: nix run '.#patched-bundix'
       - run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
