@@ -953,12 +953,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "09qyg6a29cfgd46qid8qvx4sjbv596v19ym73xvhanbyxd6500xk";
+      sha256 = "04bhfvc25b07jaiaf62yrach7khhr5jlr5bx6nygg8pf11329wp9";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "1.0.2";
+    version = "1.0.3";
   };
   webrick = {
     groups = ["default"];
