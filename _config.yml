@@ -7,12 +7,8 @@ image: pictures/github_icon.png
 url: "https://nymphium.github.io"
 repository: "https://github.com/Nymphium/nymphium.github.io"
 exclude:
-  - .rvmrc
-  - .rbenv-version
   - README.md
   - Rakefile
-  - changelog.md
-  - vendor
   - Gemfile
   - Gemfile.lock
   - _bin

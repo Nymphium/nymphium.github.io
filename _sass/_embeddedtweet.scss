@@ -1,3 +1,5 @@
+@use "mixins";
+
 // twitterwidget {
 	// margin: 0 auto;
 // }
@@ -18,15 +20,15 @@ blockquote.twitter-tweet {
 	margin-top: 5px;
 	text-align: left;
 
-	@include media-query($on-laptop) {
+	@include mixins.media-query($on-laptop) {
 		width: 80%;
 	}
 
-	@include media-query($on-palm) {
+	@include mixins.media-query($on-palm) {
 		width: 90%;
 	}
 
-	@include media-query($on-palm) {
+	@include mixins.media-query($on-palm) {
 		font-size: $base-font-size * 0.8;
 	}
 }

@@ -1,3 +1,7 @@
+@use "sass:color";
+@use "variables";
+@use "mixins";
+
 /**
  * Reset some basic elements
  */
@@ -40,7 +44,37 @@ body {
   // }
 }
 
+table {
+	width: auto;
+	margin: 1em 0;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #ddd #ccc #ccc #ddd;
+	background-color: #fff;
+	margin: 0 auto;
+}
 
+caption {
+	padding-bottom: 0.3em;
+}
+
+th,
+td {
+	padding: 0.3em 10px;
+	border-collapse: separate;
+	border-spacing: 1px;
+}
+
+th {
+	border-right: 1px solid #ddd;
+	color: #333;
+	background-color: #f5f5f5;
+}
+
+td {
+	border-right: 1px solid #eee;
+	border-top: 1px solid #eee;
+}
 
 /**
  * Set `margin-bottom` to maintain vertical rhythm
@@ -172,7 +206,7 @@ article {
       }
     }
 
-    @include media-query($on-palm) {
+    @include mixins.media-query($on-palm) {
       padding: 5px 0 30px 0;
       border-style: none;;
     }
@@ -187,7 +221,7 @@ a {
   text-decoration: none;
 
   &:visited {
-    color: darken($brand-color, 15%);
+    color: color.adjust($brand-color, $lightness: -15%);
   }
 
   &:hover {

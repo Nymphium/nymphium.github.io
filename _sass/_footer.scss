@@ -1,3 +1,5 @@
+@use "mixins";
+
 .pagination.btn-group {
 	position: fixed;
 	bottom: 0;
@@ -7,7 +9,7 @@
 	background: $background-color-transp;
 	padding-bottom: 1rem;
 	border-top: 1px solid #e8e8e8;
-	@include  media-query($on-palm) {
+	@include  mixins.media-query($on-palm) {
 		padding-bottom: 0;
 	}
 }
