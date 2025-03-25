@@ -1,6 +1,7 @@
 {
   pkgs,
   rubyNix,
+  formatter,
 }:
 pkgs.mkShell {
   packages =
@@ -10,6 +11,6 @@ pkgs.mkShell {
     ])
     ++ (with pkgs; [
       nil
-      nixfmt-rfc-style
+      formatter
     ]);
 }

@@ -26,6 +26,7 @@
       let
         pkgs = import nixpkgs {
           inherit system;
+          config.allowUnfree = true;
         };
         ruby = pkgs.ruby;
         rubyNix = (ruby-nix.lib pkgs) {
@@ -35,14 +36,18 @@
         bundix' = pkgs.callPackage ./nix/bundix.nix {
           inherit ruby bundix;
         };
+        backstop = pkgs.callPackage ./nix/backstop.nix { };
+
+        formatter = pkgs.nixfmt-rfc-style;
       in
       {
         legacyPackages = pkgs;
-        apps.patched-bundix = {
-          type = "app";
-          program = bundix' + "/bin/patched-bundix";
+        apps = {
+          patched-bundix = bundix'.app;
+          backstop = backstop.puppeteer.app;
         };
-        devShells.default = import ./shell.nix { inherit pkgs rubyNix; };
+        devShells.default = import ./shell.nix { inherit pkgs rubyNix formatter; };
+        inherit formatter;
       }
     );
 }

@@ -1,17 +1,23 @@
-{ pkgs, ruby, stdenvNoCC, lib, bundix }:
+{
+  pkgs,
+  ruby,
+  stdenvNoCC,
+  lib,
+  bundix,
+}:
 let
   bundix' = pkgs.callPackage bundix {
     inherit ruby;
   };
-in
-stdenvNoCC.mkDerivation {
+  drv = stdenvNoCC.mkDerivation {
   name = "patched-bundix";
   src = builtins.filterSource (
     path: type:
     (lib.any (suffix: lib.hasSuffix suffix path) [
       "Gemfile"
       "Gemfile.lock"
-    ])) ../.;
+    ])
+  ) ../.;
 
   buildInputs = with pkgs; [ makeWrapper ];
 
@@ -25,4 +31,11 @@ stdenvNoCC.mkDerivation {
       --append-flags "--gemfile=$out/Gemfile" \
       --append-flags "--lockfile=$out/Gemfile.lock"
   '';
-}
+
+    passthru.app = {
+      type = "app";
+      program = drv + "/bin/patched-bundix";
+    };
+};
+  in
+  drv

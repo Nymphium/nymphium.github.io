@@ -8,3 +8,6 @@ twicard_cache/*
 .jekyll-cache
 .jekyll-metadata
 .direnv
+
+test/backstop/html_report/
+test/backstop/bitmaps_test/

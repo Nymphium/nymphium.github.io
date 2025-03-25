@@ -19,6 +19,8 @@ exclude:
   - .ruby-lsp
   - .direnv
   - '*.nix'
+  - test
+  - backstop.json
 headersite:
   - slides.html
   - tags.html
