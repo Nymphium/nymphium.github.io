@@ -18,6 +18,7 @@ exclude:
   - twicard_cache
   - .ruby-lsp
   - .direnv
+  - '*.nix'
 headersite:
   - slides.html
   - tags.html

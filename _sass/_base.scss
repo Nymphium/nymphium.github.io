@@ -1,6 +1,6 @@
 @use "sass:color";
-@use "variables";
-@use "mixins";
+@use "variables" as *;
+@use "mixins" as *;
 
 /**
  * Reset some basic elements
@@ -206,7 +206,7 @@ article {
       }
     }
 
-    @include mixins.media-query($on-palm) {
+    @include media-query($on-palm) {
       padding: 5px 0 30px 0;
       border-style: none;;
     }

@@ -1,4 +1,5 @@
-@use "mixins";
+@use "variables" as *;
+@use "mixins" as *;
 
 .pagination.btn-group {
 	position: fixed;
@@ -7,9 +8,8 @@
 	left: 0;
 	width: 100%;
 	background: $background-color-transp;
-	padding-bottom: 1rem;
 	border-top: 1px solid #e8e8e8;
-	@include  mixins.media-query($on-palm) {
+	@include media-query($on-palm) {
 		padding-bottom: 0;
 	}
 }
@@ -22,4 +22,3 @@ div.footnotes {
 		content: "Footnote";
 	}
 }
-

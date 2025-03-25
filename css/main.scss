@@ -1,11 +1,13 @@
-@import
-	"../_sass/base",
-	"../_sass/layout",
-	"../_sass/syntax",
-	"../_sass/slide",
-	"../_sass/header",
-	"../_sass/footer",
-	"../_sass/embeddedtweet",
-	"../_sass/mathjax",
-	"../_sass/github-widget"
-;
+---
+# aaa
+---
+
+@use "base";
+@use "layout";
+@use "syntax";
+@use "slide";
+@use "header";
+@use "footer";
+@use "embeddedtweet";
+@use "mathjax";
+@use "github-widget";

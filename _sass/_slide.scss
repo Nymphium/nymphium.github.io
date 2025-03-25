@@ -1,4 +1,6 @@
 @use "sass:color";
+@use "variables" as *;
+
 .slide-container .svg-icon {
   height: 1em;
   vertical-align: text-bottom;
