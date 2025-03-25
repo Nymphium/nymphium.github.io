@@ -1,0 +1,10 @@
+_site
+.sass-cache
+.bundle
+vendor
+twicache/*
+twicard_cache/*
+!**/.gitkeep
+.jekyll-cache
+.jekyll-metadata
+.direnv
