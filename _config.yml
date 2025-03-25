@@ -23,7 +23,7 @@ exclude:
   - .ruby-lsp
   - .direnv
 headersite:
-  - slide.html
+  - slides.html
   - tags.html
   - about/README.md
 plugins:

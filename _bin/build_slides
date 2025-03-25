@@ -64,4 +64,4 @@ slides_html = <<~HTML
               </ul>
 HTML
 
-File.write('slide.html', slides_html)
+File.write('slides.html', slides_html)
