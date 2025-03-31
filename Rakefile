@@ -23,8 +23,7 @@ task :deploy do
     sh 'git fetch origin'
     sh 'git add -A'
     sh "git commit -m \"#{message}\" --allow-empty"
-    sh 'git push origin source:source'
-    sh 'rm about/*'
+    sh 'rme about/\*'
 
     sh 'git checkout master'
     sh 'rm -rf $(ls | grep -v .git)'
@@ -33,7 +32,6 @@ task :deploy do
     sh 'git add --all'
     begin
       sh "git commit -m \"#{message}\" --allow-empty"
-      sh 'git push -f origin master'
     rescue StandardError => e
       puts "# ! Error - git command abort: #{e.message}"
       raise
@@ -42,6 +40,7 @@ task :deploy do
       sh 'git submodule update'
       sh "mv #{dir}/cache/* #{dir}/cache/.jekyll-cache ."
       sh "rm -rf #{dir}"
+      sh 'git push origin master source'
     end
   rescue StandardError => e
     puts "# ! Deployment failed: #{e.message}"
