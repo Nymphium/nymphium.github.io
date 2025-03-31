@@ -51,7 +51,6 @@
         <a class="site-title" href="/">lilyum ensemble</a>
         <nav class="site-nav">
           <div class="trigger">
-            <a class="page-link" href="/about/README.html">About me</a>
             <a class="page-link" href="/slides.html">Slides</a>
             <a class="page-link" href="/tags.html">Tags</a>
             <a class="page-link feed" href="/feed.xml">Feed</a>
@@ -129,7 +128,7 @@
 もうすこしなんかやりたいところでしたね…｡</p>
 <p>他には面白い発表が聞けたので楽しかったです｡</p>
 <h2 id="intro"><a class="headerlink" href="#intro">intro</a></h2>
-<p>さて､同イベントに参加した<a href="https://twitter.com/_yyu_" target="_blank" rel="noopener noreferrer">@_yyu_ </a>さんにLuaのtableの実装について聞かれたんですが､そこまで詳しくなかったので答えられないというインシデントがありました｡
+<p>さて､同イベントに参加した<a href="https://x.com/_yyu_" target="_blank" rel="noopener noreferrer">@_yyu_ </a>さんにLuaのtableの実装について聞かれたんですが､そこまで詳しくなかったので答えられないというインシデントがありました｡
 唯一のデータ構造といわれると確かにそこが気になるはずだ｡ちなみにScalaでは<a href="https://en.wikipedia.org/wiki/Hash_array_mapped_trie" target="_blank" rel="noopener noreferrer">HAMT</a>という高速な操作ができるデータ構造が用意されているようだ｡</p>
 <p>さんざんLuaについて語っておいてそれはマズい､というわけでちょっとだけ調べた｡
 実装の詳細については資料がなかったのでソースを読まざるを得ない､しかしCはもう読みたくない､ということで実装の詳細には迫れなかったが､動作の概略を今回は掴んでみたい｡</p>
@@ -252,7 +251,7 @@ moor on MoonScript version 0.4.0 on Lua 5.3
 <p>なるほど｡面白いのは最初(from 0 to 4999)のtableへの値の追加とケツの方ではあまり時間が変わらないんですねぇ｡
 前者は短い内でのtableの成長が大量に起きるので若干遅くなっている｡</p>
 <h1 id="4.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB"><a class="headerlink" href="#4.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">4. おわりに</a></h1>
-<p><a href="https://twitter.com/_yyu_" target="_blank" rel="noopener noreferrer">@_yyu_ </a>さんが知りたいのは多分key-valueの保持とひも付けの方法だと思うんです､ボクもそれが知りたかった｡</p>
+<p><a href="https://x.com/_yyu_" target="_blank" rel="noopener noreferrer">@_yyu_ </a>さんが知りたいのは多分key-valueの保持とひも付けの方法だと思うんです､ボクもそれが知りたかった｡</p>
 <h1 id="%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><a class="headerlink" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE">参考文献</a></h1>
 <ul>
 <li><a href="https://www.lua.org/doc/jucs05.pdf" target="_blank" rel="noopener noreferrer">The implementation of Lua 5.0</a></li>

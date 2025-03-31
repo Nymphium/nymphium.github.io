@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html;charset=UTF-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="format-detection" content="telephone=no"/>
+
+    <title>DependabotのPRにフックして追いcommitする - lilyum ensemble</title>
+    <meta itemprop="name" content="DependabotのPRにフックして追いcommitする - lilyum ensemble"/>
+    <meta name="keywords" content="Dependabot,Nix,GitHub Actions"/>
+    <meta name="thumbnail" content="/pictures/2025/03/31/dependabot-hook/thumb.png"/>
+    <meta itemprop="image" content="/pictures/2025/03/31/dependabot-hook/thumb.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:site" content="lilyum ensemble"/>
+    <meta name="twitter:title" content="DependabotのPRにフックして追いcommitする - lilyum ensemble"/>
+    <meta name="twitter:url" content="/2025/03/31/dependabot-hook.html"/> 
+    <meta name="twitter:text:description" content="こんにちは､びしょ〜じょです｡寒すぎる｡俺達の春を返せよ…｡1. はじめに本ブログはJekyllで運用されており､GitHubでホストされ､Dependabotで依存ライブラリのアップデートを最..."/>
+    <meta name="twitter:image" content="https://nymphium.github.io/pictures/2025/03/31/dependabot-hook/thumb.png"/>
+    <meta name="twitter:image:src" content="https://nymphium.github.io/pictures/2025/03/31/dependabot-hook/thumb.png"/>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="alternate" type="application/rss+xml" title="lilyum ensemble" href="/feed.xml"/>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="DependabotのPRにフックして追いcommitする" />
+<meta name="author" content="Satoru Kawahara" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="lily, Aikatsu, Programming language, and more" />
+<meta property="og:description" content="lily, Aikatsu, Programming language, and more" />
+<link rel="canonical" href="https://nymphium.github.io/2025/03/31/dependabot-hook.html" />
+<meta property="og:url" content="https://nymphium.github.io/2025/03/31/dependabot-hook.html" />
+<meta property="og:site_name" content="lilyum ensemble" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-03-31T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="DependabotのPRにフックして追いcommitする" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Satoru Kawahara"},"dateModified":"2025-03-31T00:00:00+09:00","datePublished":"2025-03-31T00:00:00+09:00","description":"lily, Aikatsu, Programming language, and more","headline":"DependabotのPRにフックして追いcommitする","mainEntityOfPage":{"@type":"WebPage","@id":"https://nymphium.github.io/2025/03/31/dependabot-hook.html"},"url":"https://nymphium.github.io/2025/03/31/dependabot-hook.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta property="og:image" content="/pictures/2025/03/31/dependabot-hook/thumb.png"/>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="wrapper" style="font-family: 'Comfortaa';">
+        <a class="site-title" href="/">lilyum ensemble</a>
+        <nav class="site-nav">
+          <div class="trigger">
+            <a class="page-link" href="/slides.html">Slides</a>
+            <a class="page-link" href="/tags.html">Tags</a>
+            <a class="page-link feed" href="/feed.xml">Feed</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-content">
+      <div class="wrapper" lang="ja">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+          <header class="post-header">
+            <div class="post-header-image">
+              <div class="container"><img src="/pictures/2025/03/31/dependabot-hook/thumb.png"></div>
+              <div class="post-header-image-margin"></div>
+            </div>
+            <div class="post-header-info">
+              <h1 class="post-title" itemprop="name headline">DependabotのPRにフックして追いcommitする</h1>
+              <span class="post-meta">
+                <div>
+                  <time datetime="2025-03-31T00:00:00+09:00" itemprop="datePublished">Mar 31, 2025</time>
+                  <a class="src" href="https://github.com/Nymphium/nymphium.github.io/blob/source/_posts%2F2025-03-31-dependabot-hook.md" target="_blank" rel="noopener noreferrer noopener noreferrer">src</a><p class="tags">tag: {<span class="tag">
+                    <a href="/tags.html#Dependabot-ref">Dependabot</a>
+                  </span><span></span><span class="tag">
+                    <a href="/tags.html#Nix-ref">Nix</a>
+                  </span><span></span><span class="tag">
+                    <a href="/tags.html#GitHub%20Actions-ref">GitHub Actions</a>
+                  </span>}
+                  </p>
+</div>
+
+                <a class="twitter-share-button" href="https://twitter.com/intent/tweet" target="_blank" rel="noopener noreferrer">Tweet</a> 
+                <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja" title="DependabotのPRにフックして追いcommitする" target="_blank" rel="noopener noreferrer">
+                  <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマークに追加" width="20" height="20" style="border: none;">
+                </a>
+                <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+              </span>
+            </div>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <script type="text/javascript" src="/js/GithubRepoWidget.min.js"></script>
+            <script type="text/javascript">setTimeout(GithubRepoWidget.init, 3000);</script>
+
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                renderMathInElement(document.body, {
+                  // customised options
+                  // • auto-render specific keys, e.g.:
+                  delimiters: [
+                                  {left: '$$', right: '$$', display: true},
+                                  {left: '$', right: '$', display: false},
+                                  {left: '\\(', right: '\\)', display: false},
+                                  {left: '\\[', right: '\\]', display: true},
+                                  {left: '\\\\(', right: '\\\\)', display: false},
+                                  {left: '\\\\[', right: '\\\\]', display: true}
+                                ],
+                  // • rendering keys, e.g.:
+                  throwOnError : false
+                });
+              });
+            </script>
+          </header>
+
+          <div class="post-content" itemprop="articleBody">
+<p>こんにちは､びしょ〜じょです｡</p>
+<p>寒すぎる｡俺達の春を返せよ…｡</p>
+<h1 id="1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><a class="headerlink" href="#1.+%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">1. はじめに</a></h1>
+<p>本ブログはJekyllで運用されており､GitHubでホストされ､Dependabotで依存ライブラリのアップデートを最近自動化した｡</p>
+<p>ところで､このシステムでは開発にNixを使っており､<a href="https://github.com/inscapist/ruby-nix" target="_blank" rel="noopener noreferrer">ruby-nix</a>によってRubyの依存ライブラリをNix化している｡
+<a href="https://github.com/Nymphium/nymphium.github.io/blob/75e1119fbc2e3effc73efcc47feb8e87ff477b78/nix/bundix.nix" target="_blank" rel="noopener noreferrer">bundix</a>でGemfile.lockからgemset.nixを生成し､ruby-nixでNix化されたgemsのパスが通っているshellが動いており､そこで開発をおこなう｡</p>
+<p>でもよぉDependabotのPRではgemset更新してくれないやんけ､ということで↓をやりたい｡</p>
+<ol>
+<li>DependabotがGemfile{,.lock}更新のPRが出たら</li>
+<li>PRにhookして
+
+<ol>
+<li>gemset.nixを更新して</li>
+<li>PR branchにpushする</li>
+</ol>
+</li>
+</ol>
+<h1 id="2.+hook+%E3%82%84%E3%82%8A%E3%81%8B%E3%81%9F"><a class="headerlink" href="#2.+hook+%E3%82%84%E3%82%8A%E3%81%8B%E3%81%9F">2. hook やりかた</a></h1>
+<p>DependabotのPRがどういう挙動をするかを確認する｡
+例えばこのPR:
+</p>
+<div class="twicard">
+  <span class="image"><a href="https://github.com/Nymphium/nymphium.github.io/pull/65" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://opengraph.githubassets.com/d3d88c28648a3c9cc4421313bc48b557abae6bea65b53d3d8283bff984bd572f/Nymphium/nymphium.github.io/pull/65"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="https://github.com/Nymphium/nymphium.github.io/pull/65" target="_blank" rel="noopener noreferrer noopener noreferrer">Bump nokogiri from 1.18.2 to 1.18.3 by dependabot[bot] · Pull Request #65 · Nymphium/nymphium.github.io</a></div>
+    <div class="description">Bumps nokogiri from 1.18.2 to 1.18.3.Release notesSourced from nokogiri&amp;#39;s releases.v1.18.3 / 2025-02-18Security[CRuby] Vendored libxml2 is updated to v2.13.6 to address CVE-2025-249...</div>
+  </span>
+</div>
+<ul>
+<li>
+<code>dependabot[bot]</code>というユーザがPRを作り<sup id="fnref1" title="commitを見るとユーザ名がわかる｡彼の本名は dependabot[bot] "><a href="#fn1">1</a></sup>
+</li>
+<li>
+<code>dependencies</code> <code>ruby</code> というラベルをつける</li>
+</ul>
+<p>ふむ｡
+PRにラベルがついたときにGitHub Actionsを発火させられるので､それをやるとよい｡</p>
+<div class="highlight">
+<span class="listing-name">.github/workflows/dependabot-hook.yml</span><pre><code class="language-yaml" data-lang="yaml"><span class="na">on</span><span class="pi">:</span> 
+  <span class="na">pull_request</span><span class="pi">:</span>
+    <span class="na">types</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">labeled</span><span class="pi">]</span>
+</code></pre>
+</div>
+<p>ちょっと丁寧に､<code>dependabot</code>というユーザが<code>dependencies</code> <code>ruby</code> ラベルをつけたときに絞る｡</p>
+<div class="highlight">
+<span class="listing-name">.github/workflows/dependabot-hook.yml</span><pre><code class="language-yaml" data-lang="yaml"><span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">hook</span><span class="pi">:</span>
+    <span class="na">if</span><span class="pi">:</span> <span class="pi">|</span>
+        <span class="s">github.event.label.name == 'dependencies' &amp;&amp;</span>
+        <span class="s">github.event.label.name == 'ruby' &amp;&amp;</span>
+        <span class="s">github.actor == 'dependabot[bot]'</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">...</span>
+</code></pre>
+</div>
+<p><code>ruby</code>以外にもhookしたい環境がある場合便利ですな｡</p>
+<h1 id="3.+%E3%82%84%E3%82%8B%E3%81%A0%E3%81%91"><a class="headerlink" href="#3.+%E3%82%84%E3%82%8B%E3%81%A0%E3%81%91">3. やるだけ</a></h1>
+<p>あとはやるだけ｡
+bundixでgemsetを更新し､PR branchにcommit &amp; pushする｡</p>
+<div class="highlight">
+<span class="listing-name">.github/workflows/dependabot-hook.yml</span><pre><code class="language-yaml" data-lang="yaml"><span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">nix run '.#patched-bundix'</span> <span class="c1"># gmsetを更新</span>
+<span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+    <span class="s">git config --global user.name 'github-actions[bot]'</span>
+    <span class="s">git config --global user.email 'github-actions[bot]@users.noreply.github.com'</span>
+    <span class="s">git commit --all -m "Update gemset.nix via bundix" || echo "No changes to commit"</span>
+    <span class="s">git fetch origin</span>
+    <span class="s">git rebase origin/$ || git merge origin/$</span>
+    <span class="s">git push "https://${GITHUB_ACTOR}:$@github.com/${GITHUB_REPOSITORY}.git" $:refs/heads/$</span>
+</code></pre>
+</div>
+<p>ユーザ名とemailは適当で良いが､無いとcommitできないので設定しておく｡
+<code>${GITHUB_ACTOR}</code> は自動で設定されており､PRのauthorに同じ <code>dependabot[bot]</code>｡
+<code>$</code> もGithub Actionsで自動で発行されるトークンで､リポジトリに閉じた権限で使える｡</p>
+<p>こういう賢いactionsを使ってもいいかもしれない｡</p>
+<div class="twicard">
+  <span class="image"><a href="https://github.com/marketplace/actions/github-push" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://avatars.githubusercontent.com/u/3618479?s=400&amp;v=4"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="https://github.com/marketplace/actions/github-push" target="_blank" rel="noopener noreferrer noopener noreferrer">GitHub Push - GitHub Marketplace</a></div>
+    <div class="description">Pushing to GitHub repository local changes</div>
+  </span>
+</div>
+<p>PRに書き込むために､permissionを設定する必要があるので､やる</p>
+<div class="highlight">
+<span class="listing-name">.github/workflows/dependabot-hook.yml</span><pre><code class="language-yaml" data-lang="yaml"><span class="na">permissions</span><span class="pi">:</span>
+  <span class="na">contents</span><span class="pi">:</span> <span class="s">write</span>
+  <span class="na">actions</span><span class="pi">:</span> <span class="s">write</span>
+  <span class="na">pull-requests</span><span class="pi">:</span> <span class="s">write</span>
+</code></pre>
+</div>
+<p>なんか多くね? まあ一旦ええか､一旦…｡</p>
+<p>これでPRにhookして自動でgemsetが更新される｡</p>
+<div class="twicard">
+  <span class="image"><a href="https://github.com/Nymphium/nymphium.github.io/pull/74/commits/c2bb00e1782dced565eaa4a3b880722cb2316cbb" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://avatars.githubusercontent.com/in/29110?s=400&amp;v=4"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="https://github.com/Nymphium/nymphium.github.io/pull/74/commits/c2bb00e1782dced565eaa4a3b880722cb2316cbb" target="_blank" rel="noopener noreferrer noopener noreferrer">Bump nokogiri from 1.18.3 to 1.18.4 by dependabot[bot] · Pull Request #74 · Nymphium/nymphium.github.io</a></div>
+    <div class="description">Bumps nokogiri from 1.18.3 to 1.18.4.Release notesSourced from nokogiri&amp;#39;s releases.v1.18.4 / 2025-03-14Security[CRuby] Vendored libxslt is updated to v1.1.43 to address CVE-2025-248...</div>
+  </span>
+</div>
+<p>ええな｡</p>
+<h1 id="4.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB"><a class="headerlink" href="#4.+%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">4. おわりに</a></h1>
+<p>Dependabotがhookサポートしてくれねえかな…｡</p>
+<hr>
+<p>この記事は業務時間中に書かれた｡
+株式会社eiiconではCIとNixのノウハウが豊富な人材を募集しています｡</p>
+<div class="twicard">
+  <span class="image"><a href="https://corp.eiicon.net/career/tfixCb-R" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://storage.googleapis.com/studio-cms-assets/projects/ogO078KDW2/s-2400x1601_v-frms_webp_0102348a-25e5-46b1-81cc-ce9578eaa613.jpg"></div></a></span>
+  <span class="txt">
+    <div class="title"><a href="https://corp.eiicon.net/career/tfixCb-R" target="_blank" rel="noopener noreferrer noopener noreferrer">【開発部】バックエンドエンジニア  | キャリア(採用情報)</a></div>
+    <div class="description">様々な企業でテックリードを経験しているCTOとともに働き学べる！｜Go言語での開発｜エンジニア組織を一緒に作る第二創業期メンバー </div>
+  </span>
+</div>
+<p>本記事で使われたテクニックはプロダクトの開発でも利用されている｡</p>
+<div class="footnotes">
+<hr>
+<ol>
+
+<li id="fn1">
+<p>commitを見るとユーザ名がわかる｡彼の本名は <code>dependabot[bot]</code> <a href="#fnref1">↩</a></p>
+</li>
+
+</ol>
+</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+    <footer>
+      <div class="pagination btn-group" style="text-align: center; font-family: 'Comfortaa';">
+        <a class="btn prev" href="/2024/11/07/protobuf-tag-varint.html" title="Protobufのフィールド番号は15以下のほうがSDGs - VARINTのvariability">← Prev</a>
+        /<a class="btn" href="/">Top</a>/
+        <span class="btn next disabled">Next →</span>
+      </div>
+    </footer>
+
+  </body>
+</html>

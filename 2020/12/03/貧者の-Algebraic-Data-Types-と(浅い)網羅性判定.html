@@ -51,7 +51,6 @@
         <a class="site-title" href="/">lilyum ensemble</a>
         <nav class="site-nav">
           <div class="trigger">
-            <a class="page-link" href="/about/README.html">About me</a>
             <a class="page-link" href="/slides.html">Slides</a>
             <a class="page-link" href="/tags.html">Tags</a>
             <a class="page-link feed" href="/feed.xml">Feed</a>
@@ -219,7 +218,7 @@ Typed Racket も同様に control-flow based type analysis を組み込んだ Oc
 <p>突然ですがクイズです! <code>to123</code> の return type は何でしょう?
 はい残念または正解! <code>None&lt;number&gt; | Some&lt;unknown&gt;</code> です｡絶望しましたか? 私はしました｡
 絶望したんですが､なぜ絶望したか考えていきましょう｡
-結局私も何が起きたのか分からなかったのですが､<a href="https://twitter.com/hiroqn" target="_blank" rel="noopener noreferrer">@hiroqn </a>さんがかなりそれっぽい回答をしていたのでそれを書きます｡</p>
+結局私も何が起きたのか分からなかったのですが､<a href="https://x.com/hiroqn" target="_blank" rel="noopener noreferrer">@hiroqn </a>さんがかなりそれっぽい回答をしていたのでそれを書きます｡</p>
 <p>まず <code>None</code> のスマコンがよくない｡
 return type は <code>Option&lt;T&gt;</code> ですが､この <code>T</code> が何者によっても与えられていないので解決できません｡
 したがって､型注釈を書かないかぎりは､ TypeScript の型システムは推論できない型変数を<code>unknown</code> で埋めます｡
