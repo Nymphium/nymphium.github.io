@@ -28,6 +28,14 @@
       "selectors": ["document"],
       "misMatchThreshold": 0.1,
       "requireSameDimensions": true
+    },
+    {
+      "label": "Blog Page",
+      "url": "http://localhost:4000/2018/12/09/asymmetric-coroutines%E3%81%AB%E3%82%88%E3%82%8Boneshot-algebraic-effects%E3%81%AE%E5%AE%9F%E8%A3%85.html",
+      "referenceUrl": "https://nymphium.github.io/2018/12/09/asymmetric-coroutines%E3%81%AB%E3%82%88%E3%82%8Boneshot-algebraic-effects%E3%81%AE%E5%AE%9F%E8%A3%85.html",
+      "selectors": ["document"],
+      "misMatchThreshold": 0.1,
+      "requireSameDimensions": true
     }
   ],
   "paths": {
@@ -44,4 +52,6 @@
   },
   "asyncCaptureLimit": 5,
   "asyncCompareLimit": 50,
+  "debug": false,
+  "debugWindow": false
 }
