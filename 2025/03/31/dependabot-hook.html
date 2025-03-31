@@ -51,6 +51,7 @@
         <a class="site-title" href="/">lilyum ensemble</a>
         <nav class="site-nav">
           <div class="trigger">
+            <a class="page-link" href="/about/README.html">About me</a>
             <a class="page-link" href="/slides.html">Slides</a>
             <a class="page-link" href="/tags.html">Tags</a>
             <a class="page-link feed" href="/feed.xml">Feed</a>
@@ -184,13 +185,13 @@ bundixでgemsetを更新し､PR branchにcommit &amp; pushする｡</p>
     <span class="s">git config --global user.email 'github-actions[bot]@users.noreply.github.com'</span>
     <span class="s">git commit --all -m "Update gemset.nix via bundix" || echo "No changes to commit"</span>
     <span class="s">git fetch origin</span>
-    <span class="s">git rebase origin/$ || git merge origin/$</span>
-    <span class="s">git push "https://${GITHUB_ACTOR}:$@github.com/${GITHUB_REPOSITORY}.git" $:refs/heads/$</span>
+    <span class="s">git rebase origin/${{ github.event.pull_request.head.ref }} || git merge origin/${{ github.event.pull_request.head.ref }}</span>
+    <span class="s">git push "https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" ${{ github.event.pull_request.head.ref }}:refs/heads/${{ github.event.pull_request.head.ref }}</span>
 </code></pre>
 </div>
 <p>ユーザ名とemailは適当で良いが､無いとcommitできないので設定しておく｡
 <code>${GITHUB_ACTOR}</code> は自動で設定されており､PRのauthorに同じ <code>dependabot[bot]</code>｡
-<code>$</code> もGithub Actionsで自動で発行されるトークンで､リポジトリに閉じた権限で使える｡</p>
+<code>${{ secrets.GITHUB_TOKEN }}</code> もGithub Actionsで自動で発行されるトークンで､リポジトリに閉じた権限で使える｡</p>
 <p>こういう賢いactionsを使ってもいいかもしれない｡</p>
 <div class="twicard">
   <span class="image"><a href="https://github.com/marketplace/actions/github-push" target="_blank" rel="noopener noreferrer noopener noreferrer"><div><img src="https://avatars.githubusercontent.com/u/3618479?s=400&amp;v=4"></div></a></span>
