@@ -62,6 +62,7 @@ jobs:
 あとはやるだけ｡
 bundixでgemsetを更新し､PR branchにcommit & pushする｡
 
+{% raw %}
 ```yaml :.github/workflows/dependabot-hook.yml
 - run: nix run '.#patched-bundix' # gmsetを更新
 - run: |
@@ -76,6 +77,7 @@ bundixでgemsetを更新し､PR branchにcommit & pushする｡
 ユーザ名とemailは適当で良いが､無いとcommitできないので設定しておく｡
 `${GITHUB_ACTOR}` は自動で設定されており､PRのauthorに同じ `dependabot[bot]`｡
 `${{ secrets.GITHUB_TOKEN }}` もGithub Actionsで自動で発行されるトークンで､リポジトリに閉じた権限で使える｡
+{% endraw %}
 
 こういう賢いactionsを使ってもいいかもしれない｡
 

@@ -22,12 +22,6 @@ def build_on_source_branch(temp_dir)
   run_command("mv .jekyll-cache twicache twicard_cache #{temp_dir}/cache")
 end
 
-# ソースブランチ上で不要なファイル（例：about/ 以下のゴミ）を削除
-def clean_source_branch
-  puts '# ソースブランチの不要ファイルを削除'
-  run_command('rm -rf about/*')
-end
-
 # master ブランチへビルド成果物を展開してコミット
 def deploy_to_master(temp_dir, message)
   puts '# Master branch に展開開始'
@@ -50,9 +44,6 @@ task :deploy do
     # ソースブランチ上でビルド（成果物は一時ディレクトリへ）
     build_on_source_branch(temp_dir)
  
-    # ソースブランチ内の不要ファイルを削除し、ビルド成果物が含まれないようにする
-    # clean_source_branch
-
     # ソースブランチでの変更（ソースコードの修正など）をコミット
     puts '# Source branch でコミット'
     run_command('git fetch origin')
