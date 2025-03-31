@@ -5,47 +5,75 @@ require 'time'
 
 BUNDLE = ENV['BUNDLE']&.length&.> 0 ? ENV['BUNDLE'] : 'bundle'
 
+
+def run_command(cmd)
+  sh cmd
+end
+
+# ソースブランチでビルドを実施し、成果物を一時ディレクトリに退避
+def build_on_source_branch(temp_dir)
+  puts '# Source branch でビルド開始'
+  run_command('_bin/twicardpic_update')
+  run_command("JEKYLL_ENV=production #{BUNDLE} exec jekyll build")
+  
+  # 一時ディレクトリの作成と成果物・キャッシュの移動
+  run_command("mkdir -p #{temp_dir}/dist #{temp_dir}/cache")
+  run_command("mv _site/* #{temp_dir}/dist")
+  run_command("mv .jekyll-cache twicache twicard_cache #{temp_dir}/cache")
+end
+
+# ソースブランチ上で不要なファイル（例：about/ 以下のゴミ）を削除
+def clean_source_branch
+  puts '# ソースブランチの不要ファイルを削除'
+  run_command('rm -rf about/*')
+end
+
+# master ブランチへビルド成果物を展開してコミット
+def deploy_to_master(temp_dir, message)
+  puts '# Master branch に展開開始'
+  run_command('git checkout master')
+  # .git を除くすべてのファイルを削除して、クリーンな状態にする
+  run_command('rm -rf $(ls | grep -v .git)')
+  # 一時ディレクトリから成果物をコピー
+  run_command("cp -r #{temp_dir}/dist/* .")
+  puts '# Master branch でコミット'
+  run_command('git add --all')
+  run_command("git commit -m \"#{message}\" --allow-empty")
+end
+
 # Usage: rake deploy
 desc 'Begin a push static file to GitHub'
 task :deploy do
-  dir = "/tmp/nymphiumgithubio-#{Process.pid}"
+  temp_dir = "/tmp/nymphiumgithubio-#{Process.pid}"
+  message = "deploy at #{Time.now}"
   begin
-    puts '# Build...'
-    sh '_bin/twicardpic_update'
-    sh "JEKYLL_ENV=production #{BUNDLE} exec jekyll build"
-    sh "mkdir -p #{dir}/dist #{dir}/cache"
-    sh "mv _site/* #{dir}/dist"
-    sh "mv .jekyll-cache twicache twicard_cache #{dir}/cache"
+    # ソースブランチ上でビルド（成果物は一時ディレクトリへ）
+    build_on_source_branch(temp_dir)
+ 
+    # ソースブランチ内の不要ファイルを削除し、ビルド成果物が含まれないようにする
+    # clean_source_branch
 
-    message = "deploy at #{Time.now}"
+    # ソースブランチでの変更（ソースコードの修正など）をコミット
+    puts '# Source branch でコミット'
+    run_command('git fetch origin')
+    run_command('git add -A')
+    run_command("git commit -m \"#{message}\" --allow-empty")
 
-    puts '# Push to source branch of GitHub'
-    sh 'git fetch origin'
-    sh 'git add -A'
-    sh "git commit -m \"#{message}\" --allow-empty"
-    sh 'rme about/\*'
+    # master ブランチへ成果物を展開
+    deploy_to_master(temp_dir, message)
 
-    sh 'git checkout master'
-    sh 'rm -rf $(ls | grep -v .git)'
-    sh "cp -r #{dir}/dist/* ."
-    puts '# Push to master branch of GitHub'
-    sh 'git add --all'
-    begin
-      sh "git commit -m \"#{message}\" --allow-empty"
-    rescue StandardError => e
-      puts "# ! Error - git command abort: #{e.message}"
-      raise
-    ensure
-      sh 'git checkout source'
-      sh 'git submodule update'
-      sh "mv #{dir}/cache/* #{dir}/cache/.jekyll-cache ."
-      sh "rm -rf #{dir}"
-      sh 'git push origin master source'
-    end
+    # デプロイ完了後、ソースブランチに戻りサブモジュール更新などを実施
+    run_command('git checkout source')
+    run_command('git submodule update')
+    # キャッシュも戻す
+    run_command("mv #{temp_dir}/cache/* #{temp_dir}/cache/.jekyll-cache .")
+    run_command('git push origin master source')
   rescue StandardError => e
     puts "# ! Deployment failed: #{e.message}"
-    sh "rm -rf #{dir}"
     exit 1
+  ensure
+    # 一時ディレクトリは必ず削除
+    run_command("rm -rf #{temp_dir}")
   end
 end
 
