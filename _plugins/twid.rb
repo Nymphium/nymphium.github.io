@@ -7,7 +7,7 @@ module Jekyll
       end
 
       def render(_context)
-        "[@#{@post}](https://twitter.com/#{@post})".gsub('_', '\\_')
+        "[@#{@post}](https://x.com/#{@post})".gsub('_', '\\_')
       end
     end
   end

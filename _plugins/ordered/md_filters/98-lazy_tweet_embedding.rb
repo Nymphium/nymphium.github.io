@@ -5,7 +5,7 @@ require 'json'
 # convert tweet url to embedding html
 lambda { |content|
   embedded_content = content
-  content.scan(%r{(https?://twitter\.com/[a-zA-Z0-9_]+/status/([0-9]+)/?)}).each do |url, id|
+  content.scan(%r{(https?://(twitter|x)\.com/[a-zA-Z0-9_]+/status/([0-9]+)/?)}).each do |url, _, id|
     tweet_html = nil
 
     if File.exist? "twicache/#{id}"
