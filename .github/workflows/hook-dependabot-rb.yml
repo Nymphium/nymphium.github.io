@@ -27,7 +27,7 @@ jobs:
           extra-conf: |
             max-jobs = auto
             cores = 0
-      - uses: cachix/cachix-action@v15
+      - uses: cachix/cachix-action@v16
         with:
           name: blog-ci
           authToken: '${{ secrets.CACHIX_TOKEN }}'
