@@ -757,12 +757,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1sg9sbf9pm91l7lac7fs4silabyn0vflxwaa2x3lrzsm0ff8ilca";
+      sha256 = "0iglapqs4av4za9yfaac0lna7s16fq2xn36wpk380m55d8792i6l";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "3.6.0";
+    version = "3.6.1";
   };
   reline = {
     dependencies = ["io-console"];
