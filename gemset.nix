@@ -511,12 +511,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "05s008w9vy7is3njblmavrbdzyrwwc1fsziffdr58w9pwqj8sqfx";
+      sha256 = "00q2zznygpbls8asz5knjvvj2brr3ghmqxgr83xnrdj4rk3xwvhr";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "1.6.6";
+    version = "1.7.0";
   };
   mercenary = {
     groups = ["default"];
@@ -645,12 +645,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0fi7hvrm2wzbhm21d3w87z5nrqx6z0gwhilvdizcpc9ik21205mi";
+      sha256 = "0gkhpdjib9zi9i27vd9djrxiwjia03cijmd6q8yj2q1ix403w3nw";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "1.3.0";
+    version = "1.4.0";
   };
   psych = {
     dependencies = ["date" "stringio"];
@@ -732,12 +732,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "07cwjkx7b3ssy8ccqq1s34sc5snwvgxan2ikmp9y2rz2a9wy6v1b";
+      sha256 = "1wpslq5nzfaff13kpdzvskx0ag8cspcndgf3gidc2g8zl40msfw7";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "3.8.1";
+    version = "3.9.2";
   };
   rdoc = {
     dependencies = ["psych"];
@@ -807,12 +807,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1hx0hb0j0jpzizc76sjrmvgvwifr7507xap66wzg6mj3mqc0y46r";
+      sha256 = "0j4zcp7nncrr6sn0m3scnqsxcf7j2v82pxcd7p3436m70ncmm1x1";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.23.11";
+    version = "0.23.13";
   };
   safe_yaml = {
     groups = ["default"];
@@ -878,12 +878,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0gpmy3p508k6mq1wal4r1a1axakc7lhy16hkzh9rd6mmgy5wc2y1";
+      sha256 = "0waywxpbjw39df37q2ab2mhfw06ms05py10cy8m4v786xs8dwq8y";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.5.11834";
+    version = "0.5.11971";
   };
   stringio = {
     groups = ["default" "development"];
