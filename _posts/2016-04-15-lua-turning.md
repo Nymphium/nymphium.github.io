@@ -57,7 +57,7 @@ return {
 --[[
 2_1_nolocal.lua
 
-loacalなんて知らねえぜ
+localなんて知らねえぜ
 ]]
 
 local _ENV = setmetatable(require'testsuite', {__index=_ENV})
