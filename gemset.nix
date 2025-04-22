@@ -562,20 +562,20 @@
     source = null;
     targets = [{
       remotes = ["https://rubygems.org"];
-      sha256 = "01c0l6iwyhv5m7zkrpdgfn4c3c683fv6ky30sw9xxvrdxd3gj2rs";
-      target = "x86_64-linux-gnu";
-      targetCPU = "x86_64";
-      targetOS = "linux";
-      type = "gem";
-    } {
-      remotes = ["https://rubygems.org"];
-      sha256 = "1mg9lanipnhwpy0smbyacih8qras920sk0dlyrh6hr6jkqpbnfh8";
+      sha256 = "04l2029jkdirm84wikq7wzq6iwhmlfgd005ybkqgclrnnfgmnfs8";
       target = "arm64-darwin";
       targetCPU = "arm64";
       targetOS = "darwin";
       type = "gem";
+    } {
+      remotes = ["https://rubygems.org"];
+      sha256 = "1k2y1sid2n5wbxidlafn990ll307lqhc7qjyk2i1hgc7vdsphx2a";
+      target = "x86_64-linux-gnu";
+      targetCPU = "x86_64";
+      targetOS = "linux";
+      type = "gem";
     }];
-    version = "1.18.7";
+    version = "1.18.8";
   };
   octokit = {
     dependencies = ["faraday" "sawyer"];
