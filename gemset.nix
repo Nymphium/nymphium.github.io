@@ -807,12 +807,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0j4zcp7nncrr6sn0m3scnqsxcf7j2v82pxcd7p3436m70ncmm1x1";
+      sha256 = "1489l5jf5iwkq9dqjay2d2kxhrssrm3byjb690bw1q59833898vj";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.23.13";
+    version = "0.23.16";
   };
   safe_yaml = {
     groups = ["default"];
@@ -878,12 +878,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0waywxpbjw39df37q2ab2mhfw06ms05py10cy8m4v786xs8dwq8y";
+      sha256 = "16dkjnr3ndnbncbqw2p4s5h9m61g7ilrf15xdzid48hazy621c69";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.5.11971";
+    version = "0.5.12048";
   };
   stringio = {
     groups = ["default" "development"];
