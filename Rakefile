@@ -60,7 +60,7 @@ task :deploy do
     sh('git checkout source')
     sh('git submodule update')
 
-    sh("mv #{temp_dir}/cache/* #{temp_dir}/cache/.jekyll-cache #{tmp_dir}/twicache #{tmp_dif}/twicard_cache .")
+    sh("mv #{temp_dir}/cache/* #{temp_dir}/cache/.jekyll-cache #{temp_dir}/twicache #{temp_dif}/twicard_cache .")
     # 一時ディレクトリは必ず削除
     sh("rm -rf #{temp_dir}")
   end
