@@ -20,6 +20,9 @@ end
 # master ブランチへビルド成果物を展開してコミット
 def deploy_to_master(temp_dir, message)
   puts '# Master branch に展開開始'
+
+  sh('git submodule update --init --recursive')
+  sh('git clean -fd')
   sh('git checkout master')
   # .git を除くすべてのファイルを削除して、クリーンな状態にする
   sh('rm -rf $(ls | grep -v .git)')
@@ -57,7 +60,7 @@ task :deploy do
     sh('git checkout source')
     sh('git submodule update')
 
-    sh("mv #{temp_dir}/cache/* #{temp_dir}/cache/.jekyll-cache .")
+    sh("mv #{temp_dir}/cache/* #{temp_dir}/cache/.jekyll-cache #{tmp_dir}/twicache #{tmp_dif}/twicard_cache .")
     # 一時ディレクトリは必ず削除
     sh("rm -rf #{temp_dir}")
   end
