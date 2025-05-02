@@ -1,0 +1,13 @@
+_site
+.sass-cache
+.bundle
+vendor
+twicache/*
+twicard_cache/*
+!**/.gitkeep
+.jekyll-cache
+.jekyll-metadata
+.direnv
+
+test/backstop/html_report/
+test/backstop/bitmaps_test/
