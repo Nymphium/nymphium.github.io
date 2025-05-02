@@ -5,9 +5,10 @@ on:
     types:
       - opened
       - synchronize
+
   push:
     branches:
-      - '**'
+      - source
 
 jobs:
   tests:

@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: '0 0 1 * *' # runs every monyh 1st
 
+permissions:
+  pull-requests: write
+
 jobs:
   lockfile:
     runs-on: ubuntu-latest
