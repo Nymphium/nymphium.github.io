@@ -5,34 +5,29 @@ require 'time'
 
 BUNDLE = ENV['BUNDLE']&.length&.> 0 ? ENV['BUNDLE'] : 'bundle'
 
-
-def run_command(cmd)
-  sh cmd
-end
-
 # ソースブランチでビルドを実施し、成果物を一時ディレクトリに退避
 def build_on_source_branch(temp_dir)
   puts '# Source branch でビルド開始'
-  run_command('_bin/twicardpic_update')
-  run_command("JEKYLL_ENV=production #{BUNDLE} exec jekyll build")
+  sh('_bin/twicardpic_update')
+  sh("JEKYLL_ENV=production #{BUNDLE} exec jekyll build")
   
   # 一時ディレクトリの作成と成果物・キャッシュの移動
-  run_command("mkdir -p #{temp_dir}/dist #{temp_dir}/cache")
-  run_command("mv _site/* #{temp_dir}/dist")
-  run_command("mv .jekyll-cache twicache twicard_cache #{temp_dir}/cache")
+  sh("mkdir -p #{temp_dir}/dist #{temp_dir}/cache")
+  sh("mv _site/* #{temp_dir}/dist")
+  sh("mv .jekyll-cache twicache twicard_cache #{temp_dir}/cache")
 end
 
 # master ブランチへビルド成果物を展開してコミット
 def deploy_to_master(temp_dir, message)
   puts '# Master branch に展開開始'
-  run_command('git checkout master')
+  sh('git checkout master')
   # .git を除くすべてのファイルを削除して、クリーンな状態にする
-  run_command('rm -rf $(ls | grep -v .git)')
+  sh('rm -rf $(ls | grep -v .git)')
   # 一時ディレクトリから成果物をコピー
-  run_command("cp -r #{temp_dir}/dist/* .")
+  sh("cp -r #{temp_dir}/dist/* .")
   puts '# Master branch でコミット'
-  run_command('git add --all')
-  run_command("git commit -m \"#{message}\" --allow-empty")
+  sh('git add --all')
+  sh("git commit -m \"#{message}\" --allow-empty")
 end
 
 # Usage: rake deploy
@@ -46,25 +41,25 @@ task :deploy do
  
     # ソースブランチでの変更（ソースコードの修正など）をコミット
     puts '# Source branch でコミット'
-    run_command('git fetch origin')
-    run_command('git add -A')
-    run_command("git commit -m \"#{message}\" --allow-empty")
+    sh('git fetch origin')
+    sh('git add -A')
+    sh("git commit -m \"#{message}\" --allow-empty")
 
     # master ブランチへ成果物を展開
     deploy_to_master(temp_dir, message)
 
-    run_command('git push origin master source')
+    sh('git push origin master source')
   rescue StandardError => e
     puts "# ! Deployment failed: #{e.message}"
     exit 1
   ensure
     # デプロイ完了後、ソースブランチに戻りサブモジュール更新などを実施
-    run_command('git checkout source')
-    run_command('git submodule update')
+    sh('git checkout source')
+    sh('git submodule update')
 
-    run_command("mv #{temp_dir}/cache/* #{temp_dir}/cache/.jekyll-cache .")
+    sh("mv #{temp_dir}/cache/* #{temp_dir}/cache/.jekyll-cache .")
     # 一時ディレクトリは必ず削除
-    run_command("rm -rf #{temp_dir}")
+    sh("rm -rf #{temp_dir}")
   end
 end
 
