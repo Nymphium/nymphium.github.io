@@ -33,6 +33,7 @@ jobs:
       url: "https://nymphium.github.io"
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Upload static files as artifact
         uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
         with:
