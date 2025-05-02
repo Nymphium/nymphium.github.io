@@ -53,16 +53,16 @@ task :deploy do
     # master ブランチへ成果物を展開
     deploy_to_master(temp_dir, message)
 
-    # デプロイ完了後、ソースブランチに戻りサブモジュール更新などを実施
-    run_command('git checkout source')
-    run_command('git submodule update')
-    # キャッシュも戻す
-    run_command("mv #{temp_dir}/cache/* #{temp_dir}/cache/.jekyll-cache .")
     run_command('git push origin master source')
   rescue StandardError => e
     puts "# ! Deployment failed: #{e.message}"
     exit 1
   ensure
+    # デプロイ完了後、ソースブランチに戻りサブモジュール更新などを実施
+    run_command('git checkout source')
+    run_command('git submodule update')
+
+    run_command("mv #{temp_dir}/cache/* #{temp_dir}/cache/.jekyll-cache .")
     # 一時ディレクトリは必ず削除
     run_command("rm -rf #{temp_dir}")
   end
