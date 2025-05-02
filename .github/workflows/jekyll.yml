@@ -30,7 +30,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: "https://nymphium.github.io"
     runs-on: ubuntu-latest
     steps:
       - name: Upload static files as artifact
