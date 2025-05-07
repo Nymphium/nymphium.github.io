@@ -11,3 +11,6 @@ twicard_cache/*
 
 test/backstop/html_report/
 test/backstop/bitmaps_test/
+
+/about
+!/about/README.html
