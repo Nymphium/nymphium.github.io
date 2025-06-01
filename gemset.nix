@@ -474,12 +474,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0scnz2fvdczdgadvjn0j9d49118aqm3hj66qh8sd2kv6g1j65164";
+      sha256 = "1k0311vah76kg5m6zr7wmkwyk5p2f9d9hyckjpn3xgr83ajkj7px";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "3.17.0.4";
+    version = "3.17.0.5";
   };
   liquid = {
     groups = ["default"];
@@ -732,12 +732,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1wpslq5nzfaff13kpdzvskx0ag8cspcndgf3gidc2g8zl40msfw7";
+      sha256 = "1mx533jn2nv29xc5faw9g5xj9qbdaiwl9wv2byv98bgw6gqwhhlf";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "3.9.2";
+    version = "3.9.4";
   };
   rdoc = {
     dependencies = ["psych"];
@@ -807,12 +807,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1489l5jf5iwkq9dqjay2d2kxhrssrm3byjb690bw1q59833898vj";
+      sha256 = "0aw13lrs516j1di994bq4854jglc7d3yrvf3vvjid8vazqxkrywx";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.23.16";
+    version = "0.23.23";
   };
   safe_yaml = {
     groups = ["default"];
@@ -878,12 +878,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "16dkjnr3ndnbncbqw2p4s5h9m61g7ilrf15xdzid48hazy621c69";
+      sha256 = "0q6m0b57c19sr7xmswv8ddiap15psjr5jjbfdnf5q92pglfzypsw";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.5.12048";
+    version = "0.5.12142";
   };
   stringio = {
     groups = ["default" "development"];
