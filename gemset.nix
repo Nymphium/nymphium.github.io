@@ -200,11 +200,22 @@
   ffi = {
     groups = ["default"];
     platforms = [];
-    source = {
+    source = null;
+    targets = [{
       remotes = ["https://rubygems.org"];
       sha256 = "0kbvwrcnafwd2a1b03pclh075f12815zz7vzxra2qx3msdwlzq58";
+      target = "arm64-darwin";
+      targetCPU = "arm64";
+      targetOS = "darwin";
       type = "gem";
-    };
+    } {
+      remotes = ["https://rubygems.org"];
+      sha256 = "1l03r43wyzxqdn2iqx1f7sg1apxf2vh5hfzyrhmngwqrblmdw2lc";
+      target = "x86_64-linux-gnu";
+      targetCPU = "x86_64";
+      targetOS = "linux";
+      type = "gem";
+    }];
     version = "1.17.1";
   };
   forwardable-extended = {
@@ -235,11 +246,22 @@
     dependencies = ["bigdecimal" "rake"];
     groups = ["default"];
     platforms = [];
-    source = {
+    source = null;
+    targets = [{
       remotes = ["https://rubygems.org"];
       sha256 = "01x4363wapq17kl321x20g5j4g4di1xy4r95y5r8ml3lwqrrmz60";
+      target = "arm64-darwin";
+      targetCPU = "arm64";
+      targetOS = "darwin";
       type = "gem";
-    };
+    } {
+      remotes = ["https://rubygems.org"];
+      sha256 = "03id9b74ibx1cpq5xzmwkl00xdb06z85f78xrrbr8mardjq99haa";
+      target = "x86_64-linux";
+      targetCPU = "x86_64";
+      targetOS = "linux";
+      type = "gem";
+    }];
     version = "4.29.3";
   };
   html-pipeline = {
@@ -537,11 +559,22 @@
     dependencies = ["racc"];
     groups = ["default"];
     platforms = [];
-    source = {
+    source = null;
+    targets = [{
       remotes = ["https://rubygems.org"];
       sha256 = "04l2029jkdirm84wikq7wzq6iwhmlfgd005ybkqgclrnnfgmnfs8";
+      target = "arm64-darwin";
+      targetCPU = "arm64";
+      targetOS = "darwin";
       type = "gem";
-    };
+    } {
+      remotes = ["https://rubygems.org"];
+      sha256 = "1k2y1sid2n5wbxidlafn990ll307lqhc7qjyk2i1hgc7vdsphx2a";
+      target = "x86_64-linux-gnu";
+      targetCPU = "x86_64";
+      targetOS = "linux";
+      type = "gem";
+    }];
     version = "1.18.8";
   };
   octokit = {
@@ -797,11 +830,22 @@
     dependencies = ["google-protobuf"];
     groups = ["default"];
     platforms = [];
-    source = {
+    source = null;
+    targets = [{
+      remotes = ["https://rubygems.org"];
+      sha256 = "1522krw9k8p37zlbsx018m94pxnhq9xxlp8w88mcwz28kldv1qih";
+      target = "x86_64-linux-gnu";
+      targetCPU = "x86_64";
+      targetOS = "linux";
+      type = "gem";
+    } {
       remotes = ["https://rubygems.org"];
       sha256 = "1bw9ac44r45a0bjpy66zgkm37ib6wwx8h5b2kanc3njl72cbpil5";
+      target = "arm64-darwin";
+      targetCPU = "arm64";
+      targetOS = "darwin";
       type = "gem";
-    };
+    }];
     version = "1.85.0";
   };
   sawyer = {
