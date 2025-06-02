@@ -3,12 +3,20 @@ version: 2
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
+    groups:
+      github-actions-all:
+        patterns:
+          - '*'
     schedule:
       interval: "monthly"
     assignees:
       - "nymphium"
   - package-ecosystem: bundler
     directory: "/"
+    groups:
+      bundler-all:
+        patterns:
+          - '*'
     schedule:
       interval: "monthly"
     assignees:
