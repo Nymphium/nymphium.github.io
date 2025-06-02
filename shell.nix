@@ -12,5 +12,6 @@ pkgs.mkShell {
     ++ (with pkgs; [
       nil
       formatter
+      actionlint
     ]);
 }
