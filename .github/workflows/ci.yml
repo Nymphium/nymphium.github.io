@@ -28,6 +28,7 @@ jobs:
       run: |
         nix develop -c rake build
 
-    - name: Check nix format
+    - name: Check format
       run: |
-        nix develop -c -- nixfmt -c $(git ls-files *.nix | grep -v gemset.nix)
+        nix develop -c -- bash -c 'git ls-files "*.nix" | grep -v gemset.nix | xargs -P0 nixfmt -c'
+        nix develop -c actionlint
