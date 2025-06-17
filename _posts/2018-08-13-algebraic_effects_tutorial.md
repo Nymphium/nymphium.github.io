@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Algebraic Effectsであそぼう
-tags: [OCaml, Algebraic Effects]
+tags: [OCaml, Algebraic Effects, Effect system]
 ---
 
 <!--sectionize on-->

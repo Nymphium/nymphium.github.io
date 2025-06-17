@@ -1,7 +1,7 @@
 ---
 layout: post
 title: fcontrol/runでshallow effect handler
-tags: [Algebraic Effects, Delimited Continuation, Racket]
+tags: [Algebraic Effects, Effect System, Continuations, Racket]
 thumb: yes
 ---
 

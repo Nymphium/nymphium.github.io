@@ -1,7 +1,7 @@
 ---
 layout: post
 title: delimited continuationの夏
-tags: [Delimited Continuation, Racket, OCaml]
+tags: [Continuations, Racket, OCaml]
 ---
 
 <!--sectionize on-->

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: エフェクト､do､ANF､継続､継続
-tags: [Continuation, CPS, ANF, effect system, OCaml, Haskell]
+tags: [Continuations, CPS, ANF, Effect System, OCaml, Haskell]
 date: 2019-07-21
 ---
 
