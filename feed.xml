@@ -5,9 +5,245 @@
     <description>lily, Aikatsu, Programming language, and more</description>
     <link>https://nymphium.github.io/</link>
     <atom:link href="https://nymphium.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 15 Jun 2025 23:40:46 +0900</pubDate>
-    <lastBuildDate>Sun, 15 Jun 2025 23:40:46 +0900</lastBuildDate>
+    <pubDate>Tue, 17 Jun 2025 23:11:11 +0900</pubDate>
+    <lastBuildDate>Tue, 17 Jun 2025 23:11:11 +0900</lastBuildDate>
     <generator>Jekyll v4.4.1</generator>
+    
+      <item>
+        <title>関数型まつり2025ありがとう､そして補足</title>
+        <enclosure type="image/png" length="0" url="https://nymphium.github.io/pictures//2025/06/17/fpmatsuri-ty/thumb.png"></enclosure>
+        <description>&lt;p&gt;こんにちは､びしょ〜じょです｡&lt;/p&gt;
+&lt;p&gt;ナイトレインは買ったら最後資料が作れなくなると思って発表終わるまで買うまいとしていたんですが､結局LoLのブロウルを無限にやってました｡
+ショウジンTF黒斧のファイタールシアンが面白いですが､ナヴォリ積むならショウジンじゃなくてIEでよくないか? と思わなくもない｡
+今ならポーションで無限スケールするので､天啓で金策ビルドも良いかもしれない｡
+みんなのブロウル用クソビルドはどうかな?&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot;&gt;はじめに&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://2025.fp-matsuri.org/&quot;&gt;関数型まつり2025&lt;/a&gt;にスピーカーおよびスポンサーとして参加した｡&lt;/p&gt;
+&lt;div class=&quot;twicard&quot;&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://nymphium.github.io/pdf/fp_matsuri_2025.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://nymphium.github.io/pdf/fp_matsuri_2025.png&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;txt&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://nymphium.github.io/pdf/fp_matsuri_2025.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Continuations: continued and to be continued - lilyum ensemble&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;lily, Aikatsu, Programming language, and more&lt;/div&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+&lt;p&gt;とりあえず発表すると人から声を掛けてもらえるのと､他の発表者に声を掛けやすいという雑なモチベで応募した｡
+ちゅうか関数型というある程度話す内容のあるドメインではあるし｡
+スライド作るのが､ジジイになって馬力や集中力が減り､当日発表30分前まで泣きながら作るという激ヤバだったんですが､とりあえず情報を詰め込むという発表においてはアンチパターン寄りな方向でバリューを出しにいった｡&lt;/p&gt;
+&lt;h2 id=&quot;%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B5%E3%83%BC%E3%83%96%E3%83%BC%E3%82%B9&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B5%E3%83%BC%E3%83%96%E3%83%BC%E3%82%B9&quot;&gt;スポンサーブース&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;ブースに来てくれた方々にも話したが､弊社は積極的に関数型言語を使っているわけではなく､&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;び｢これどうすか? プロポーザルも一応投げているが｣ &lt;/li&gt;
+&lt;li&gt;社｢関数型明るくないけど採択されたらいいですよ｣&lt;/li&gt;
+&lt;li&gt;→採択された&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;という流れでスポンサー出展が決まった｡
+そもそも&lt;a href=&quot;https://note.com/eiicon/n/nd8df6784778d&quot;&gt;PPLにもスポンサーしていた&lt;/a&gt;ので､社内での出展ハードルはそんなに高くはなかったんですが､よかったですね｡&lt;/p&gt;
+&lt;p&gt;自転車置き場の議論のように誰でも参加できる､さらにインタラクションのある催しをしたいなと思ってたんで､仕事で書きたい言語にシールを貼ってもらうというアクティビティをした｡&lt;/p&gt;
+&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
+&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;関数型まつり &lt;a href=&quot;https://twitter.com/hashtag/fp_matsuri?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#fp_matsuri&lt;/a&gt; 全日程終了！&lt;br&gt;株式会社eiicon開発部として初めての出展でしたが、大きな刺激をいただける2日間でした。&lt;br&gt;運営の皆様、また弊社ブースにお越しいただきました方々本当にありがとうございました！🙇 &lt;a href=&quot;https://t.co/eiAEmaHs6p&quot;&gt;pic.twitter.com/eiAEmaHs6p&lt;/a&gt;&lt;/p&gt;— 株式会社eiicon 開発部 (@eiicon_dev) &lt;a href=&quot;https://twitter.com/eiicon_dev/status/1934188461940158531?ref_src=twsrc%5Etfw&quot;&gt;June 15, 2025&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
+&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;世界の40人に1人がOCamlで仕事したいと思っている、これが民意です&lt;/p&gt;— びしょ〜じょ (@Nymphium) &lt;a href=&quot;https://twitter.com/Nymphium/status/1934500447915745508?ref_src=twsrc%5Etfw&quot;&gt;June 16, 2025&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;/div&gt;
+&lt;p&gt;シールを貼っていただいた言語について自分がたまによくわかんねえ話をするという謎システムですが､盛り上がってよかったです｡感謝&lt;/p&gt;
+&lt;h1 id=&quot;%E6%84%9F%E6%83%B3&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E6%84%9F%E6%83%B3&quot;&gt;感想&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;まず自分の発表以外の部分｡
+最初に言いたいのは…コーヒーがうまかった! ホットとアイスがあって大変うれしかったです｡ありがとうございました｡&lt;/p&gt;
+&lt;p&gt;Rustにモナドを入れたい話&lt;sup id=&quot;fnref1&quot; title=&quot;Rust世界の二つのモナド──Rust でも do 式をしてプログラムを直感的に記述する件について by konn &quot;&gt;&lt;a href=&quot;#fn1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;はなかなかおもしろく啓発的だった｡
+MonadはRustのようなリソースセンシティブな型の上では､継続を使える回数でData Functor(anytime)とControl Functor(up to/ exact once)の2つに分かれる(そしてData Functor ⊃ Affine-Control ones ⊃ Linear-Control ones)(と非線形な富豪モナド)という発表最大のポイントも良かった｡&lt;/p&gt;
+&lt;p&gt;んですが､ &lt;em&gt;モナドは&lt;code&gt;do&lt;/code&gt;を記述するためのデータ構造&lt;/em&gt; という､おおよそ普段とは逆方向の見方が興味深い｡
+&lt;code&gt;do&lt;/code&gt; expressionの初出っぽい&lt;a href=&quot;https://github.com/typeclasses/haskell-report-archive/blob/master/1996-05-haskell-1.3/haskell-report.pdf&quot;&gt;Haskell 1.3 report&lt;/a&gt;では､&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A do expression provides a more readable syntax for monadic programming.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;とあり､へぇ〜proceduralではないのだな､となるが､proceduralがreadableなことをimplyしてるのかなぁ〜とは思う｡
+セミコロンによるsequenceはCなどの手続き的記述を流石に意識してないわけがないだろう｡
+確かに副作用が起こる部分が1行ずつに分かれると､プログラムを追うのが大変ラクになる｡
+コントロールを直列にする､CPSよりANF､ﾑﾆｬﾑﾆｬ…&lt;/p&gt;
+&lt;p&gt;非同期のやつ&lt;sup id=&quot;fnref2&quot; title=&quot;ラムダ計算と抽象機械と非同期ランタイム by Kory &quot;&gt;&lt;a href=&quot;#fn2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;は､確かに非同期ランタイムを言語の上でやる場合Freeとインタプリタになって､計算木とCEKだ〜になった｡
+CEK tripleを非同期キューで回すことで人々が思うような非同期ランタイムになれるとか､big-step semanticsだと継続が取り出せないんで&lt;sup id=&quot;fnref3&quot; title=&quot;制御演算子を持つ言語を､CPSを使わずに実装すると感覚が得られる: https://github.com/Nymphium/lambdaeff/blob/master/text/main.pdf &quot;&gt;&lt;a href=&quot;#fn3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;非同期ランタイムとしては採用できず､プログラムをナイーブに読むときってbig-step semanticsなのかもなぁ……など｡&lt;/p&gt;
+&lt;p&gt;Scalaのcats-effectの例は､JVMのJITが頑張るんでナイーブなインタプリタでもOKとのことでしたが､ユーザレベルのランタイムでちゃんとやるってむずいよなぁ〜計算木を最適化するのかインタプリタをCPSで書いて言語自体の処理系がいい感じに最適化してくれるのを祈るかガチgotoで手動dispatchか…楽しいですね｡&lt;/p&gt;
+&lt;h1 id=&quot;%E8%A3%9C%E8%B6%B3%E3%81%AA%E3%81%A9&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E8%A3%9C%E8%B6%B3%E3%81%AA%E3%81%A9&quot;&gt;補足など&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;完走した感想ですが､もう二度とBeamerでスライドは作りません……&lt;sup id=&quot;fnref4&quot; title=&quot;前回もそう誓ったはずだが…｡ &quot;&gt;&lt;a href=&quot;#fn4&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;｡
+あと奇しくも知り合いの方が直近で継続の話をしており､タイトルのテイストもなんとなく似ててウケ&lt;/p&gt;
+&lt;div class=&quot;twicard&quot;&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://www.wantedly.com/companies/wantedly/post_articles/890437?utm_source=t.co&amp;amp;utm_medium=share&amp;amp;lang=ja&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://images.wantedly.com/i/gsYDHeh?w=1200&amp;amp;h=630&amp;amp;style=cover&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;txt&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://www.wantedly.com/companies/wantedly/post_articles/890437?utm_source=t.co&amp;amp;utm_medium=share&amp;amp;lang=ja&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;RubyKaigi 2025 で継続の話をしてきました | Wantedly Engineer Blog&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;　ウォンテッドリーのバックエンドエンジニアの水野雅之です。4月16日から18日まで開催された RubyKaigi 2025 において、Ruby にネイティブ実装されている継続オペレータの解説とよ...&lt;/div&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+&lt;p&gt;call/ccよりmodularなshift/resetや! という自分もすこし触れたものをRubyで掘り下げた内容｡
+人は一般に､継続で何か話そうとすると､&lt;code&gt;/*Compiling with(out)? Continuations*/&lt;/code&gt;というタイトルを先に考えたくなってしまい､そこから変形するので似てしまうわけですね｡&lt;/p&gt;
+&lt;p&gt;内容はまぁ〜先述のとおりカツカツだったのでゴチャついてるんですが､functionalとproceduralの比較とエフェクトになんで継続が絡むのかが整理できてよかったかなと｡
+前者の対応関係は思ったより評判がよく､継続への理解がしやすいのとCPS-SSAはそんなにメジャーな話じゃないからかな｡
+SSAのphi関数は､Join Point&lt;sup id=&quot;fnref5&quot; title=&quot;多分AspectJのJの部分｡ 思っているのはこちらの方: https://www.microsoft.com/en-us/research/wp-content/uploads/2016/11/join-points-pldi17.pdf &quot;&gt;&lt;a href=&quot;#fn5&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;とかK-Normal Form&lt;sup id=&quot;fnref6&quot; title=&quot;https://esumii.github.io/min-caml/tutorial-mincaml-9.eng.htm &quot;&gt;&lt;a href=&quot;#fn6&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;に当たるが､素のCPSはcontinuationのコピーになる｡ちょっと重いですね｡
+話し足りなかった部分でいくと､ANFとかdouble-barreled CPSとかSelective CPSなどといった様々な中間表現…｡&lt;/p&gt;
+&lt;p&gt;後者については､&lt;a href=&quot;https://nymphium.github.io/2019/07/21/effect_cont.html&quot;&gt;昔ダラダラ書いた内容&lt;/a&gt;をシャキッと話せたんで個人的にかなりスッキリしました｡
+悔しいのは､スライド制作でChatGPTと相談していたときにこういった整理をチャGがしてきたこと｡
+俺はもうAIに勝てないんや…いや俺のブログ学習してんだろ? 学習禁止〜!!&lt;/p&gt;
+&lt;p&gt;それはさておき､この発表で継続に興味を持った方とかもちらほら居て､やってよかったなぁ〜…｡&lt;/p&gt;
+&lt;h2 id=&quot;Q+%E3%81%AA%E3%81%A9&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#Q+%E3%81%AA%E3%81%A9&quot;&gt;Q など&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;バカタレなんで､発表30分前に資料作り終えたんで､発表練習ができず質問時間分も食ってしまった｡
+申し訳ございません｡
+懇親会などで質問等してくださった方々がおり､大変うれしいですマジで｡&lt;/p&gt;
+&lt;h3 id=&quot;OCaml%E3%81%AE%E4%BA%BA%E3%82%89%E3%81%8Cshift%2Freset%E3%82%92%E8%AA%9E%E3%82%8B%E3%81%AE%E3%81%AF%E3%81%AA%E3%81%9C&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#OCaml%E3%81%AE%E4%BA%BA%E3%82%89%E3%81%8Cshift%2Freset%E3%82%92%E8%AA%9E%E3%82%8B%E3%81%AE%E3%81%AF%E3%81%AA%E3%81%9C&quot;&gt;OCamlの人らがshift/resetを語るのはなぜ&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;OCamlで限定継続といえば&lt;a href=&quot;https://okmij.org/ftp/continuations/implementations.html&quot;&gt;delimcc&lt;/a&gt;と浅井先生の&lt;a href=&quot;http://pllab.is.ocha.ac.jp/%7Easai/cw2011tutorial/main-j.pdf&quot;&gt;shift/resetプログラミング入門&lt;/a&gt;&lt;sup id=&quot;fnref7&quot; title=&quot;正しくはOCamlではなくてOchaCamlというvariant｡Answer-Type Modificationも導入されており型を含めた限定継続の雰囲気を掴むのに大変よい｡ &quot;&gt;&lt;a href=&quot;#fn7&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;なんですが､いずれもshift/resetを題材にしているため｡
+Scala2.12に入っていた限定継続もshift/resetじゃなかったか?&lt;/p&gt;
+&lt;p&gt;スライド中でいっぱいでてきたdelimited controlsたちですが､一番強いのがcontrol0/prompt0で､GHCはさらにプロンプトつきのものを採用している&lt;sup id=&quot;fnref8&quot; title=&quot;https://github.com/ghc-proposals/ghc-proposals/blob/master/proposals/0313-delimited-continuation-primops.rst &quot;&gt;&lt;a href=&quot;#fn8&quot;&gt;8&lt;/a&gt;&lt;/sup&gt;｡
+0系のが表現力高いというのは､(中略)よりプリミティブな操作のほうが強いということですね&lt;sup id=&quot;fnref9&quot; title=&quot;継続の中で再度限定継続を取り出すとき､delimiterの指定が自動で入るのがshift/reset等､入らないのがshift0/reset0など0系｡rehandleの自由度が高い(≒表現力が高い)のが後者ということ｡ &quot;&gt;&lt;a href=&quot;#fn9&quot;&gt;9&lt;/a&gt;&lt;/sup&gt;｡&lt;/p&gt;
+&lt;h3 id=&quot;%E5%A6%84%E6%83%B3+--+parallel+effect+handlers&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E5%A6%84%E6%83%B3+--+parallel+effect+handlers&quot;&gt;妄想 -- parallel effect handlers&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;このあたりの話をしていて&lt;/p&gt;
+&lt;div class=&quot;github-widget&quot; data-repo=&quot;nymphium/eff.go&quot;&gt;&lt;/div&gt;
+&lt;p&gt;Goにコルーチンを作ってone-shot algebraic effect handlersといういつものテクをやろうとしたんですが&lt;/p&gt;
+&lt;div class=&quot;twicard&quot;&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://nymphium.github.io/2023/11/27/go-algebraic-effects.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://nymphium.github.io/pictures/github_icon.png&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;txt&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://nymphium.github.io/2023/11/27/go-algebraic-effects.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;From Goroutines to Coroutines: goroutines+channelsから考えるコルーチンの分類 - lilyum ensemble&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;こんにちは､びしょ～じょです｡だいぶ前にコルーチンの分類について記事を書きました[1]｡今回は､この分類を実装サイドから考えていこうという企画です｡実装にはGoのgoroutinesとchann...&lt;/div&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+&lt;p&gt;コルーチンの管理にgoroutinesの参照をグローバルなstackで持つということをやっていて､並列にするとぶっ壊れるわけですな｡
+事情は全然ちゃうんだけど､並列処理が標準で使えるようになったOCamlのalgebraic effect handlersでも､エフェクトの捕捉はスレッドをまたげないという制約がある｡
+C FFIのコールスタックをまたげないという部分とも絡んでいるが､まあ､無理っちゅうわけですな｡
+パラフレーズしておいてどれくらい関連あるか謎なんだけど､algebraic effect handlersは並列に少し弱いらしい｡&lt;/p&gt;
+&lt;p&gt;ランタイムの継続の表現､つまりコールスタックと変数ストアをポータブルな形にするとか､Cの呼び出し部分とのcompatibilityを保つとか､そのあたりをケアした話が出るんじゃないかなぁという妄想を語った｡
+先に実装の話が､それこそOCamlのグループから出て来ると思うが､物好きな理論系の人が並列計算+代数的効果のモデルを提案するかもしれない｡&lt;/p&gt;
+&lt;h3 id=&quot;%22%E7%B6%99%E7%B6%9A%22%E3%81%A8%E3%81%84%E3%81%86%E9%82%A6%E8%A8%B3%E2%80%A6%E2%80%A6&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%22%E7%B6%99%E7%B6%9A%22%E3%81%A8%E3%81%84%E3%81%86%E9%82%A6%E8%A8%B3%E2%80%A6%E2%80%A6&quot;&gt;&quot;継続&quot;という邦訳……&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&quot;Continuations&quot;なんだからまあ&quot;継続&quot;ではあるが､じゃあ先に&quot;継続&quot;がでてきたらどう思いますか?
+確かに……残りの計算というモノっぽい概念に対して&quot;継続&quot;って､あまり日本語話者の感覚ではない気がする｡
+という話をしたら&quot;残りの計算&quot;もなんだか分からんと｡
+&quot;計算&quot;もなんやねん! と｡&lt;/p&gt;
+&lt;p&gt;継続はstaticなのに&quot;継続&quot;といういかにもdynamicな語がワカラン! と言われたんですが､これはそもそも継続がdynamicなんですな｡
+CPSにするとまあなんとなく感覚が掴めて､ほらCPS変換で得られたmetacontinuationは実行時に到達するんだしdynamicやないですか?
+と説明したんだけど､だからって継続……ウーン……あなたはタイムスリップできたらもっとプロパーな名前付けられそうですか?&lt;/p&gt;
+&lt;h3 id=&quot;Haskell%E3%81%AA%E3%81%AB%E3%81%8C%E7%B4%94%E7%B2%8B%E3%82%84%E3%81%AD%E3%82%93%E4%BD%95%E3%81%8Cdo%E3%81%A0%E3%83%A2%E3%83%8A%E3%83%89%E3%81%A0&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#Haskell%E3%81%AA%E3%81%AB%E3%81%8C%E7%B4%94%E7%B2%8B%E3%82%84%E3%81%AD%E3%82%93%E4%BD%95%E3%81%8Cdo%E3%81%A0%E3%83%A2%E3%83%8A%E3%83%89%E3%81%A0&quot;&gt;Haskellなにが純粋やねん何がdoだモナドだ&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;igrepさんと懇親会でお話して､彼の発表にもある↑について
+&lt;a href=&quot;https://the.igreque.info/slides/2025-06-15-fp-matsuri#(22)&quot;&gt;https://the.igreque.info/slides/2025-06-15-fp-matsuri#(22)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;私も昔は確かに､IOは実際に発火してんだから純粋じゃないやんけHaskellerは詐欺師集団か!! と憤りを覚えたこともある｡
+まあ今なら､純粋は &quot;(Monadでエフェクトを隠蔽しているのであたかも)純粋(かのようにプログラムを記述し､&lt;code&gt;main&lt;/code&gt;に&lt;code&gt;IO a&lt;/code&gt;を接着させないと発火しませんよ)&quot;の略であることは分かる｡
+ただ､この&quot;純粋&quot;が略語であることを初心者は分からないんで､確かに純粋関数型言語って何言ってんだコイツにはなる｡
+この辺もうすこし議論があるらしいんですが､議論のすえHaskellが&quot;純粋&quot;の看板を下ろしてもランタイムとIOのシステムは変わらないと思うんで､別にこの辺のレトリックにこだわらなくていいです(という話を↑ですこししてくれています)｡&lt;/p&gt;
+&lt;p&gt;IOプログラミングの本質は順序があってchainするという部分の話を共感してもらえ､手続き的に書く(&lt;code&gt;do&lt;/code&gt;)にはmonadという構造が必要になる､というkonnさんの話にも戻っていって､エッセンシャルな部分なんやなぁということが再確認できた｡&lt;/p&gt;
+&lt;h3 id=&quot;fcontrol%2Frun%E3%81%A8SCIENCE+TOKYO&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#fcontrol%2Frun%E3%81%A8SCIENCE+TOKYO&quot;&gt;fcontrol/runとSCIENCE TOKYO&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;SCIENCE TOKYOでは某お茶女の研究室を出た方が継続を布教しまくってるらしい｡
+今年のPPLではポスター発表にて､私も熱烈推奨しているfcontrol/runが理解しやすく学生ウケがよいという話を聞いた｡
+しかし懇親会でshift/resetのみならずfcontrol/runも講義でもはや利用されてないと言われ椅子から転げ落ち横転して号泣して顔がなくなった｡
+しかしよく聞くと､全部algebraic effect handlersに統一されるとのことで､逆にどうなってんねん､と真顔になった｡
+SCIENCE TOKYOでとんでもないことが起きてますよ｡&lt;/p&gt;
+&lt;h3 id=&quot;WASM%E3%81%A8effect+handler&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#WASM%E3%81%A8effect+handler&quot;&gt;WASMとeffect handler&lt;/a&gt;&lt;/h3&gt;
+&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
+&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;wasm effect handler もう動いてるんだっけ&lt;a href=&quot;https://t.co/z485QM5zrC&quot;&gt;https://t.co/z485QM5zrC&lt;/a&gt;&lt;br&gt;&lt;br&gt; &lt;a href=&quot;https://twitter.com/hashtag/fp_matsuri_a?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#fp_matsuri_a&lt;/a&gt;&lt;/p&gt;— mizchi (@mizchi) &lt;a href=&quot;https://twitter.com/mizchi/status/1933808299285389329?ref_src=twsrc%5Etfw&quot;&gt;June 14, 2025&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;/div&gt;
+&lt;p&gt;なぁWasmFX､息してるか…? してる…&lt;/p&gt;
+&lt;div class=&quot;github-widget&quot; data-repo=&quot;wasmfx/specfx&quot;&gt;&lt;/div&gt;
+&lt;p&gt;発表で触れたOCamlのWASMバックエンドはselective CPSまたはJSPIでPromiseに変換される&lt;sup id=&quot;fnref10&quot; title=&quot;https://github.com/ocsigen/js_of_ocaml/blob/master/manual/effects.wiki &quot;&gt;&lt;a href=&quot;#fn10&quot;&gt;10&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&quot;fnref11&quot; title=&quot;https://v8.dev/blog/jspi &quot;&gt;&lt;a href=&quot;#fn11&quot;&gt;11&lt;/a&gt;&lt;/sup&gt;｡
+特にJSPIでOKなのは継続がone-shotなところが出たわね｡&lt;/p&gt;
+&lt;h3 id=&quot;%E3%81%9D%E3%81%AE%E4%BB%96&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E3%81%9D%E3%81%AE%E4%BB%96&quot;&gt;その他&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;2日目に発表していたYoutuberの大堀さん…いや､あの大堀先生が､奇跡的なかみ合わせで本日継続に関する動画を投稿してました｡&lt;/p&gt;
+&lt;div class=&quot;twicard&quot;&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=0ViMkBxYsnk&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://i.ytimg.com/vi/0ViMkBxYsnk/maxresdefault.jpg&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;txt&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=0ViMkBxYsnk&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;手続き型言語機能の導入（２）継続計算（型付ラムダ計算拡張 第９回．プログラミング言語の基礎理論シリーズ （第3章））&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;今回は，型付きラムダ計算Λを，手続き型言語の広域的ジャンプに相当する継続計算計で拡張した型システムΛ^{cont}定義し，その操作的意味論を自然意味論の枠組を用いて定義する．さらに，Λ^{cont}の型システムが操作的意味論に関して健全であることを示す．教科書 大堀 淳、新装版 プログラミング言語の基礎理論、共立...&lt;/div&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+&lt;p&gt;継続に興味持った方も持ってない方も絶対これ見たほうが良いです｡
+2日目のSML#の話を､大堀先生と上野先生の2連続で聞けたのも大変すばらしかった｡&lt;/p&gt;
+&lt;h1 id=&quot;%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB&quot;&gt;&lt;a class=&quot;headerlink&quot; href=&quot;#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB&quot;&gt;おわりに&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;わりと満足｡&lt;/p&gt;
+&lt;p&gt;このブログの読者ですという人々がたまに弊社ブースなどでお声がけしてくださったりして大変うれしかったです｡
+令和の日本において信仰の自由は保証されているので､弊ブログのファンというのはもっと声を大にしていただいて大丈夫です｡多分迫害されません｡&lt;/p&gt;
+&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
+&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;うおｗ &lt;a href=&quot;https://t.co/O32xGI86mh&quot;&gt;pic.twitter.com/O32xGI86mh&lt;/a&gt;&lt;/p&gt;— びしょ〜じょ (@Nymphium) &lt;a href=&quot;https://twitter.com/Nymphium/status/1933706679985811725?ref_src=twsrc%5Etfw&quot;&gt;June 14, 2025&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;/div&gt;
+&lt;p&gt;元同僚の方に｢江の島のチューリングと呼ばれている｣まで詠唱されてウケました｡&lt;/p&gt;
+&lt;div class=&quot;twicard&quot;&gt;
+  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://nymphium.github.io/2023/02/20/migrate_enoshima.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://nymphium.github.io/pictures/github_icon.png&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
+  &lt;span class=&quot;txt&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://nymphium.github.io/2023/02/20/migrate_enoshima.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;江ノ島のチューリングと呼ばれて(ない)1年 - lilyum ensemble&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;はじめにこんにちは､びしょ～じょです｡実は1年前に守谷から江ノ島の前に引っ越してまして｡せっかくなんで一筆したためる｡新居情報あざす pic.twitter.com/kthNIMNKZe— びし...&lt;/div&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+
+&lt;li id=&quot;fn1&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://fortee.jp/2025fp-matsuri/proposal/a8cd6d02-37c5-4009-90a4-9495c3189420&quot;&gt;Rust世界の二つのモナド──Rust でも do 式をしてプログラムを直感的に記述する件について by konn&lt;/a&gt; &lt;a href=&quot;#fnref1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li id=&quot;fn2&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://fortee.jp/2025fp-matsuri/proposal/3bdbadb9-7d77-4de0-aa37-5a7a38c577c3&quot;&gt;ラムダ計算と抽象機械と非同期ランタイム by Kory&lt;/a&gt; &lt;a href=&quot;#fnref2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li id=&quot;fn3&quot;&gt;
+&lt;p&gt;制御演算子を持つ言語を､CPSを使わずに実装すると感覚が得られる: &lt;a href=&quot;https://github.com/Nymphium/lambdaeff/blob/master/text/main.pdf&quot;&gt;https://github.com/Nymphium/lambdaeff/blob/master/text/main.pdf&lt;/a&gt; &lt;a href=&quot;#fnref3&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li id=&quot;fn4&quot;&gt;
+&lt;p&gt;前回もそう誓ったはずだが…｡ &lt;a href=&quot;#fnref4&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li id=&quot;fn5&quot;&gt;
+&lt;p&gt;多分AspectJのJの部分｡ 思っているのはこちらの方: &lt;a href=&quot;https://www.microsoft.com/en-us/research/wp-content/uploads/2016/11/join-points-pldi17.pdf&quot;&gt;https://www.microsoft.com/en-us/research/wp-content/uploads/2016/11/join-points-pldi17.pdf&lt;/a&gt; &lt;a href=&quot;#fnref5&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li id=&quot;fn6&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://esumii.github.io/min-caml/tutorial-mincaml-9.eng.htm&quot;&gt;https://esumii.github.io/min-caml/tutorial-mincaml-9.eng.htm&lt;/a&gt; &lt;a href=&quot;#fnref6&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li id=&quot;fn7&quot;&gt;
+&lt;p&gt;正しくはOCamlではなくてOchaCamlというvariant｡Answer-Type Modificationも導入されており型を含めた限定継続の雰囲気を掴むのに大変よい｡ &lt;a href=&quot;#fnref7&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li id=&quot;fn8&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ghc-proposals/ghc-proposals/blob/master/proposals/0313-delimited-continuation-primops.rst&quot;&gt;https://github.com/ghc-proposals/ghc-proposals/blob/master/proposals/0313-delimited-continuation-primops.rst&lt;/a&gt; &lt;a href=&quot;#fnref8&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li id=&quot;fn9&quot;&gt;
+&lt;p&gt;継続の中で再度限定継続を取り出すとき､delimiterの指定が自動で入るのがshift/reset等､入らないのがshift0/reset0など0系｡rehandleの自由度が高い(≒表現力が高い)のが後者ということ｡ &lt;a href=&quot;#fnref9&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li id=&quot;fn10&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ocsigen/js_of_ocaml/blob/master/manual/effects.wiki&quot;&gt;https://github.com/ocsigen/js_of_ocaml/blob/master/manual/effects.wiki&lt;/a&gt; &lt;a href=&quot;#fnref10&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li id=&quot;fn11&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://v8.dev/blog/jspi&quot;&gt;https://v8.dev/blog/jspi&lt;/a&gt; &lt;a href=&quot;#fnref11&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;/ol&gt;
+&lt;/div&gt;</description>
+        <pubDate>Tue, 17 Jun 2025 00:00:00 +0900</pubDate>
+        <link>https://nymphium.github.io/2025/06/17/fpmatsuri-ty.html</link>
+        <guid isPermaLink="true">https://nymphium.github.io/2025/06/17/fpmatsuri-ty.html</guid>
+        
+        <category>関数型まつり</category>
+        
+        <category>Continuations</category>
+        
+        <category>雑感</category>
+        
+        
+      </item>
     
       <item>
         <title>キーボードアルティメイタム 第2話 Corne V4 Chocolate</title>
@@ -2041,114 +2277,6 @@ Goは嫌い寄りの言語だが､Go wayに従えば設計に一貫性は感じ
         <guid isPermaLink="true">https://nymphium.github.io/2023/04/23/decade.html</guid>
         
         <category>雑感</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>PPL 2023を､スポンサー枠で｡</title>
-        <enclosure type="image/png" length="0" url="https://nymphium.github.io/pictures//2023/03/13/ppl2023/thumb.png"></enclosure>
-        <description>&lt;p&gt;こんにちは､びしょ〜じょです｡
-&lt;a href=&quot;https://jssst-ppl.org/workshop/2023/&quot;&gt;PPL2023&lt;/a&gt;にて今年も弊社がゴールドスポンサーになったんで､一般参加枠を貰って行ってきしました｡&lt;/p&gt;
-&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
-&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
-&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;【お知らせ】&lt;br&gt;3月6日〜8日に開催される「第25回プログラミングおよびプログラミング言語ワークショップ　PPL 2023」にゴールドスポンサーとして協賛いたします。&lt;br&gt;&lt;br&gt;2020年から協賛を続けており、今回で4回目の取り組みとなります。&lt;br&gt;&lt;br&gt;PPL2023についての詳細はこちら&lt;a href=&quot;https://t.co/yVQXTZd6oK&quot;&gt;https://t.co/yVQXTZd6oK&lt;/a&gt; &lt;a href=&quot;https://t.co/UfFaSQbprN&quot;&gt;pic.twitter.com/UfFaSQbprN&lt;/a&gt;&lt;/p&gt;— HERP, Inc. (@herp_inc) &lt;a href=&quot;https://twitter.com/herp_inc/status/1632661312542248960?ref_src=twsrc%5Etfw&quot;&gt;March 6, 2023&lt;/a&gt;
-&lt;/blockquote&gt;
-&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-
-&lt;/div&gt;
-&lt;p&gt;今年はなんとオンラインオフラインのハイブリッド開催でした｡
-オンライン会話ネイティブじゃないんで､現地行って口角泡飛ばしたほうが良いんで(感染症対策はしましょう)､名古屋に行ってきました｡&lt;/p&gt;
-&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
-&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
-&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;こんにちは &lt;a href=&quot;https://t.co/HYwb6XK4cv&quot;&gt;pic.twitter.com/HYwb6XK4cv&lt;/a&gt;&lt;/p&gt;— びしょ〜じょ (@Nymphium) &lt;a href=&quot;https://twitter.com/Nymphium/status/1632588644266692608?ref_src=twsrc%5Etfw&quot;&gt;March 6, 2023&lt;/a&gt;
-&lt;/blockquote&gt;
-&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-
-&lt;/div&gt;
-&lt;p&gt;知り合いの方とか先生とか研究室の後輩に挨拶できたり､発表でよくわかんなかったところを後で発表者の方に聞きに行ったり､オフラインなりの気軽なコミュニケーションがあります｡
-今回が初めてのオフライン学会という方もいっぱいいたので､大変な時代だなあと思うと同時に､オフライン会場が再び設けられるようになって本当によかった｡&lt;/p&gt;
-&lt;p&gt;量子プログラミングに関する発表(うち1つはIBMからの招待講演!)もあり､量子の波を感じています｡&lt;/p&gt;
-&lt;p&gt;1セッションすべて正規表現関連のものもあり､また論文賞も正規表現に関する研究が受賞しており､今年は正規表現がアツいのかもしれません｡&lt;/p&gt;
-&lt;p&gt;継続やalgebraic effect handlersに関するものが数少ないよく分かる話なんですが､今回も継続やalgebraic effect handlersの話が結構あって楽しかったです｡
-CPSとshift/resetのReflectionに関する発表のお話をうかがいまくった結果algebraic effectsの研究の土台ながるが道のりは遠いとのことで､今後もすごく楽しみにしています｡&lt;/p&gt;
-&lt;p&gt;言語のテクい定義方法や言語最新の最新情報が得られて大変満足しました｡
-野に降りて理論的な話から遠くなってしまった俺たちこそもっとプラクティカルに面白い話やアプリケーションを持っていかないといけないなと思ったので､私も頑張りたいと思います｡
-ありがとうございました｡&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;久々のオフラインなんで街をあるき回ったんですが､名古屋は食文化が発達していてよいなあと思いました｡&lt;/p&gt;
-&lt;p&gt;ロースカツカレーうどんはかなり名古屋っぽいので飛びつきました｡
-とんでもなく熱かったのでうどんを1本ずつしか食べられず､しかも口の中をやけどして翌日も口の中が少々痛かった｡&lt;/p&gt;
-&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
-&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
-&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;ハンバーグカレーラーメンに類する夢を実践してるんですよ、ここ名古屋はね &lt;a href=&quot;https://t.co/vylp39jAI8&quot;&gt;pic.twitter.com/vylp39jAI8&lt;/a&gt;&lt;/p&gt;— びしょ〜じょ (@Nymphium) &lt;a href=&quot;https://twitter.com/Nymphium/status/1632719303341666305?ref_src=twsrc%5Etfw&quot;&gt;March 6, 2023&lt;/a&gt;
-&lt;/blockquote&gt;
-&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-
-&lt;/div&gt;
-&lt;p&gt;これはオタク･レコメンデッド喫茶店に行ったところ大満足した様子&lt;/p&gt;
-&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
-&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
-&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;𝓜𝓸𝓻𝓷𝓲𝓷𝓰… &lt;a href=&quot;https://t.co/QXsmk5GlAU&quot;&gt;pic.twitter.com/QXsmk5GlAU&lt;/a&gt;&lt;/p&gt;— びしょ〜じょ (@Nymphium) &lt;a href=&quot;https://twitter.com/Nymphium/status/1632874431675768833?ref_src=twsrc%5Etfw&quot;&gt;March 6, 2023&lt;/a&gt;
-&lt;/blockquote&gt;
-&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-
-&lt;/div&gt;
-&lt;p&gt;先生にメチャウマひつまぶしをおごっていただいて大変恐縮したのですが､ボクが国際学会の飛行機に乗り遅れた話を3回くらい嬉々として研究室の後輩の皆さんやご飯同席された方々にお話されていたので､まあ､よかったです｡&lt;/p&gt;
-&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
-&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
-&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;感謝します &lt;a href=&quot;https://t.co/81Lz5UaHUb&quot;&gt;pic.twitter.com/81Lz5UaHUb&lt;/a&gt;&lt;/p&gt;— びしょ〜じょ (@Nymphium) &lt;a href=&quot;https://twitter.com/Nymphium/status/1633099748218646528?ref_src=twsrc%5Etfw&quot;&gt;March 7, 2023&lt;/a&gt;
-&lt;/blockquote&gt;
-&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-
-&lt;/div&gt;
-&lt;p&gt;マウンテンに行って甘口抹茶小倉スパを食べたんですが､一度口に入れたら｢フォークを止めたらもう二度と食えなくなる｣と瞬時に思い､一心不乱に口に頬張った｡
-とにかくホイップクリームが重いので､小倉あんを箸休めに使うのがポイント｡&lt;/p&gt;
-&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
-&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
-&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;登頂する男 &lt;a href=&quot;https://t.co/CceJqZUROi&quot;&gt;pic.twitter.com/CceJqZUROi&lt;/a&gt;&lt;/p&gt;— びしょ〜じょ (@Nymphium) &lt;a href=&quot;https://twitter.com/Nymphium/status/1633332860739522560?ref_src=twsrc%5Etfw&quot;&gt;March 8, 2023&lt;/a&gt;
-&lt;/blockquote&gt;
-&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-
-&lt;/div&gt;
-&lt;p&gt;帰りにおすすめしていただいた新幹線のホームの立ち食いきしめんを食べたんですが､これもまたうまい｡
-次名古屋に行くときも寄ろうと思います｡&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;それでは皆さんまた来年｡
-次はまた温泉に入ったり部屋で酒をしこたま飲みながらお話できるようになってると幸いです｡&lt;/p&gt;
-&lt;div class=&quot;enclosed-tweet&quot; align=&quot;center&quot;&gt;
-&lt;blockquote class=&quot;twitter-tweet&quot;&gt;
-&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;ありがとうございました &lt;a href=&quot;https://t.co/vRWf5iLs6i&quot;&gt;pic.twitter.com/vRWf5iLs6i&lt;/a&gt;&lt;/p&gt;— びしょ〜じょ (@Nymphium) &lt;a href=&quot;https://twitter.com/Nymphium/status/1633371366404796422?ref_src=twsrc%5Etfw&quot;&gt;March 8, 2023&lt;/a&gt;
-&lt;/blockquote&gt;
-&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-
-&lt;/div&gt;
-&lt;hr&gt;
-&lt;p&gt;ここでCMです｡ PPL2023のゴールドスポンサーである株式会社HERPはプログラミングおよびプログラミング言語が大好きな人材を募集しています｡ 型と値の安全性と表現力の間をかいくぐってウェブアプリケーションを開発してみませんか｡&lt;/p&gt;
-&lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://herp.careers/v1/herpinc&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://v1.herp.cloud/resources/company_logos/C-464R6&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
-  &lt;span class=&quot;txt&quot;&gt;
-    &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://herp.careers/v1/herpinc&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;株式会社HERP の全ての求人一覧&lt;/a&gt;&lt;/div&gt;
-    &lt;div class=&quot;description&quot;&gt;株式会社HERP の全ての求人一覧です。&lt;/div&gt;
-  &lt;/span&gt;
-&lt;/div&gt;
-&lt;div class=&quot;twicard&quot;&gt;
-  &lt;span class=&quot;image&quot;&gt;&lt;a href=&quot;https://github.com/herp-inc/engineering-careers&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;div&gt;&lt;img src=&quot;https://repository-images.githubusercontent.com/292805383/d9a2cae3-0977-4f1c-970f-9e9abc6d7fa1&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/span&gt;
-  &lt;span class=&quot;txt&quot;&gt;
-    &lt;div class=&quot;title&quot;&gt;&lt;a href=&quot;https://github.com/herp-inc/engineering-careers&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;GitHub - herp-inc/engineering-careers: 株式会社HERPのエンジニア向け採用資料&lt;/a&gt;&lt;/div&gt;
-    &lt;div class=&quot;description&quot;&gt;株式会社HERPのエンジニア向け採用資料. Contribute to herp-inc/engineering-careers development by creating an account on GitHub.&lt;/div&gt;
-  &lt;/span&gt;
-&lt;/div&gt;
-&lt;p&gt;この記事は業務時間中に書かれました｡&lt;/p&gt;</description>
-        <pubDate>Mon, 13 Mar 2023 00:00:00 +0900</pubDate>
-        <link>https://nymphium.github.io/2023/03/13/ppl2023.html</link>
-        <guid isPermaLink="true">https://nymphium.github.io/2023/03/13/ppl2023.html</guid>
-        
-        <category>雑感</category>
-        
-        <category>PPL</category>
-        
-        <category>宣伝</category>
         
         
       </item>
