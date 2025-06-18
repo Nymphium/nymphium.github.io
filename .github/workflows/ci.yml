@@ -24,6 +24,16 @@ jobs:
       with:
         name: blog-ci
         authToken: '${{ secrets.CACHIX_TOKEN }}'
+
+    - uses: actions/cache@v4
+      with:
+        path: |
+          .jekyll-cache
+          twicache
+          twicard_cache
+        key: ${{ runner.os }}-contents-cache
+
+
     - name: Check build
       run: |
         nix develop -c rake build
