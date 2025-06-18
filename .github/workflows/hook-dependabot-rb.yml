@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ env.head_ref }}
           persist-credentials: false
       - uses: DeterminateSystems/nix-installer-action@main
         with:
@@ -35,6 +35,6 @@ jobs:
       - run: nix run '.#patched-bundix'
       - uses: EndBug/add-and-commit@v9
         with:
-          author_name: github-actions[bot]
-          author_email: github-actions[bot]@users.noreply.github.com
-          message: Update gemset.nix via bundix
+          author_name: 'github-actions[bot]'
+          author_email: 'github-actions[bot]@users.noreply.github.com'
+          message: 'Update gemset.nix via bundix'
