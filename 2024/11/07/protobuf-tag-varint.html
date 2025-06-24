@@ -113,7 +113,7 @@
           </header>
 
           <div class="post-content" itemprop="articleBody">
-<p>こんにちは､びしょ〜じょです｡
+  <p>こんにちは､びしょ〜じょです｡
 今日は皆さん大好きprotobufのbinary wire formatのVARINTの話｡</p>
 <h1 id="%E3%81%8A%E3%81%95%E3%82%89%E3%81%84"><a class="headerlink" href="#%E3%81%8A%E3%81%95%E3%82%89%E3%81%84">おさらい</a></h1>
 <p>こんなmessageがあるとする(プログラム<a href="#helloproto">1</a>)｡</p>
@@ -186,6 +186,13 @@ f9             c0        40
 不必要に大きなフィールド番号はprotobufでメッセージを送受信するときに通信量に負荷がかかるためSDGsでない｡
 したがって可能な限りフィールド番号は小さくしましょう｡</p>
 <p>フィールド番号$k$に対し､$n\ \mathrm{for}\ 2^{\left(4+7\left(n-1\right)\right)}\leq k+1 \lt 2^{\left(4+7n\right)}$bytes必要になるので､ネットワーク環境に配慮したフィールド番号の付与をお願いします｡</p>
+
+            <hr>
+            <div class="comments">
+              <p><a href="https://github.com/Nymphium/comments.nymphium.github.io" target="_blank" rel="noopener noreferrer noopener noreferrer">投稿されたコメントはCC BY 4.0ライセンスの下で公開されます｡</a></p>
+              <script src="https://utteranc.es/client.js" repo="Nymphium/comments.nymphium.github.io" issue-term="title" label="Comment" theme="preferred-color-scheme" crossorigin="anonymous" async>
+              </script>
+            </div>
           </div>
         </article>
 

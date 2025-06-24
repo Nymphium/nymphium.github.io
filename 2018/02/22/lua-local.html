@@ -113,7 +113,7 @@
           </header>
 
           <div class="post-content" itemprop="articleBody">
-<h1 id="%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><a class="headerlink" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">はじめに</a></h1>
+  <h1 id="%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><a class="headerlink" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">はじめに</a></h1>
 <p>こんにちは､びしょ〜じょです｡今日はPUC-Luaにおいて､<code>local</code>修飾子がどういう働きを持っているのかを見ていきたいと思います｡</p>
 <p>PUC-Luaとは､リオデジャネイロカトレア大学が開発している､いわゆる本家Lua処理系｡正式名称は"Lua"で良いと思うが､Luaというプログラム言語のみならずその言語処理系について言及している､ということを強調するためにもPUC-Luaとした｡Luaの処理系といえば他にもLaJITなんかがあるが､LuaJITの仕組みは本記事の限りではない｡ということで今回はPUC-Luaの挙動を見ていく｡
 Luaプログラムと､生成されるLua VMの命令列を比較して何がどうなってるのかを見てみましょう｡PUC-Luaといえば軽量さが売りであるため､様々なプロダクトに埋め込まれていたりする｡例えばLuaTeX､Wireshark､FreeBSD etc. であり､バイトコードコンパイラおよびVMが大改造されていなければ本記事の内容が有効であろう｡</p>
@@ -280,6 +280,13 @@ upvalues (1) for 0x234bca0:
 <h1 id="%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB"><a class="headerlink" href="#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">おわりに</a></h1>
 <p>"<code>local</code>をつけないとグローバル定義になっちゃうなんて…"なんて言ってLuaを敬遠するのはもったいない!
 これからどんどん組み込みスクリプト言語として流行っていく…気がする…</p>
+
+            <hr>
+            <div class="comments">
+              <p><a href="https://github.com/Nymphium/comments.nymphium.github.io" target="_blank" rel="noopener noreferrer noopener noreferrer">投稿されたコメントはCC BY 4.0ライセンスの下で公開されます｡</a></p>
+              <script src="https://utteranc.es/client.js" repo="Nymphium/comments.nymphium.github.io" issue-term="title" label="Comment" theme="preferred-color-scheme" crossorigin="anonymous" async>
+              </script>
+            </div>
           </div>
         </article>
 
