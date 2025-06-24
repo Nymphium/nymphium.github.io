@@ -6,7 +6,12 @@
  */
 .page-content {
   padding-top: 0;
+
   margin-bottom: 40px;
+
+  @include media-query($on-palm) {
+    margin-bottom: 0;
+  }
 }
 
 .page-heading {

@@ -14,7 +14,7 @@ def build_on_source_branch(temp_dir)
   # 一時ディレクトリの作成と成果物・キャッシュの移動
   sh("mkdir -p #{temp_dir}/dist #{temp_dir}/cache")
   sh("mv _site/* #{temp_dir}/dist")
-  sh("mv .jekyll-cache twicache twicard_cache #{temp_dir}/cache")
+  sh("mv .jekyll-cache twicache twicard_cache #{temp_dir}/cache/")
 end
 
 # master ブランチへビルド成果物を展開してコミット
@@ -62,7 +62,7 @@ task :deploy do
     sh('git checkout source')
     sh('git submodule update --init about')
 
-    sh("mv #{temp_dir}/cache/* #{temp_dir}/cache/.jekyll-cache #{temp_dir}/twicache #{temp_dir}/twicard_cache .")
+    sh("mv #{temp_dir}/cache/* #{temp_dir}/cache/.jekyll-cache #{temp_dir}/cache/twicache #{temp_dir}/cache/twicard_cache .")
     # 一時ディレクトリは必ず削除
     sh("rm -rf #{temp_dir}")
   end
