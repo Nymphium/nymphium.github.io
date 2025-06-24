@@ -68,6 +68,19 @@ layout: default
           </header>
 
           <div class="post-content" itemprop="articleBody">
-{{ content }}
+  {{ content }}
+
+            <hr>
+            <div class="comments">
+              <p><a href="https://github.com/Nymphium/comments.nymphium.github.io" target="_blank" rel="noopener noreferrer">投稿されたコメントはCC BY 4.0ライセンスの下で公開されます｡</a></p>
+              <script src="https://utteranc.es/client.js"
+                repo="Nymphium/comments.nymphium.github.io"
+                issue-term="title"
+                label="Comment"
+                theme="preferred-color-scheme"
+                crossorigin="anonymous"
+                async>
+              </script>
+            </div>
           </div>
         </article>

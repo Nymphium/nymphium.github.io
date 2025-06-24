@@ -16,10 +16,6 @@ dl, dd, ol, ul, figure {
   overflow-wrap: break-word;
 }
 
-html, body, .page-content, div.wrapper {
-  height: 100%;
-}
-
 hr {
   border-top: none;
   border-bottom: solid 2px rgba(138, 138, 138, 0.35);
@@ -185,7 +181,7 @@ article {
     border-color: rgba(138, 138, 138, 0.35);
     border-width: 2px;
     border-radius: 5px;
-    padding: 5px $article-margin 30px $article-margin;
+    padding: 5px $article-margin 0px $article-margin;
 
     margin-top: -10px;
 
@@ -359,5 +355,12 @@ pre {
 .footnotes {
   p {
     margin-bottom: 3pt;
+  }
+
+  font-size: $base-font-size * 0.8;
+  color: $grey-color-dark;
+
+  &:before {
+    content: "Footnotes";
   }
 }

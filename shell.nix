@@ -10,6 +10,7 @@ pkgs.mkShell {
       env
     ])
     ++ (with pkgs; [
+      xpdf
       nil
       formatter
       actionlint

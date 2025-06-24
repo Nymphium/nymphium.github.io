@@ -13,12 +13,3 @@
 		padding-bottom: 0;
 	}
 }
-
-div.footnotes {
-	font-size: $base-font-size * 0.8;
-	color: $grey-color-dark;
-
-	&:before {
-		content: "Footnote";
-	}
-}

@@ -1,0 +1,17 @@
+@use "variables" as *;
+
+.comments {
+  &:before {
+    content: "Comments";
+    text-decoration: underline;
+  }
+
+  > p {
+    margin-top: 3pt;
+    font-size: $base-font-size * 0.8;
+  }
+
+  .utterances {
+    max-width: unset;
+  }
+}

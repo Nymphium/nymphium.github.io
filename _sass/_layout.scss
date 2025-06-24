@@ -5,7 +5,8 @@
  * Page content
  */
 .page-content {
-    padding: $spacing-unit 0;
+  padding-top: 0;
+  margin-bottom: 40px;
 }
 
 .page-heading {
@@ -109,8 +110,6 @@
 }
 
 .post-content {
-    margin-bottom: $spacing-unit;
-
     h1 {
         font-size: 32px;
 

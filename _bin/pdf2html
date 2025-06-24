@@ -6,7 +6,7 @@ slide_base="$(basename "${slide}")"
 if [[ ! "${2}" = "" ]]; then
 	title=$(echo "${2}" | ruby -rcgi -e "puts CGI.escapeHTML ARGF.read")
 else
-	title=$(pdfinfo "${slide}.pdf" | awk '$1=="Title:"{print $0}' | sed -e 's/^Title:\s*//' | ruby -rcgi -e "puts CGI.escapeHTML ARGF.read")
+	title=$(pdfinfo "${slide}.pdf" | awk '$1=="Title:" {sub(/^Title:\s*/, ""); print}' | ruby -rcgi -e "puts CGI.escapeHTML ARGF.read")
 fi
 
 convert       \

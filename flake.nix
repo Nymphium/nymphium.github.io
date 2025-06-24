@@ -27,6 +27,9 @@
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
+          config.permittedInsecurePackages = [
+            "xpdf-4.05"
+          ];
         };
         ruby = pkgs.ruby;
         rubyNix = (ruby-nix.lib pkgs) {
