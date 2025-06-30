@@ -20,6 +20,7 @@ exclude:
   - .ruby-lsp
   - .direnv
   - '*.nix'
+  - flake.lock
   - test
   - backstop.json
 headersite:
