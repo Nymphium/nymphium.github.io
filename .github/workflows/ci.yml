@@ -42,3 +42,31 @@ jobs:
       run: |
         nix develop -c -- bash -c 'git ls-files "*.nix" | grep -v gemset.nix | xargs -P0 nixfmt -c'
         nix develop -c actionlint
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: site
+        path: _site
+
+  publish:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/source'
+    needs: tests
+    environment:
+      name: github-pages
+      url: "https://nymphium.github.io"
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+      - name: Upload static files as artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
