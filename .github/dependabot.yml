@@ -8,9 +8,11 @@ updates:
         patterns:
           - '*'
     schedule:
-      interval: "monthly"
+      interval: "weekly"
+    cooldown:
+      - default-days: 30
     assignees:
-      - "nymphium"
+      - "@Nymphium"
   - package-ecosystem: bundler
     directory: "/"
     groups:
@@ -18,6 +20,8 @@ updates:
         patterns:
           - '*'
     schedule:
-      interval: "monthly"
+      interval: "weekly"
+    cooldown:
+      - default-days: 30
     assignees:
-      - "nymphium"
+      - "@Nymphium"
