@@ -127,12 +127,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1977s95s9ns6mpbhg68pg6ggnpxxf8wly4244ihrx5vm92kqrqhi";
+      sha256 = "1wmfy5n5v2rzpr5vz698sqfj1gl596bxrqw44sahq4x0rxjdn98l";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "1.10.0";
+    version = "1.11.0";
   };
   drb = {
     groups = ["default"];
@@ -158,6 +158,18 @@
     };
     targets = [];
     version = "0.5.3";
+  };
+  erb = {
+    groups = ["default" "development"];
+    platforms = [];
+    source = {
+      remotes = ["https://rubygems.org"];
+      sha256 = "08rc8pzri3g7c85c76x84j05hkk12jvalrm2m3n97k1n7f03j13n";
+      target = "ruby";
+      type = "gem";
+    };
+    targets = [];
+    version = "5.0.1";
   };
   eventmachine = {
     groups = ["default"];
@@ -320,12 +332,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1478m97wiy6nwg6lnl0szy39p46acsvrhax552vsh1s2mi2sgg6r";
+      sha256 = "1fpxa2m83rb7xlzs57daqwnzqjmz6j35xr7zb15s73975sak4br2";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "1.15.1";
+    version = "1.15.2";
   };
   jekyll = {
     dependencies = ["addressable" "base64" "colorator" "csv" "em-websocket" "i18n" "jekyll-sass-converter" "jekyll-watch" "json" "kramdown" "kramdown-parser-gfm" "liquid" "mercenary" "pathutil" "rouge" "safe_yaml" "terminal-table" "webrick"];
@@ -658,12 +670,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1vjrx3yd596zzi42dcaq5xw7hil1921r769dlbz08iniaawlp9c4";
+      sha256 = "0vii1xc7x81hicdbp7dlllhmbw5w3jy20shj696n0vfbbnm2hhw1";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "5.2.3";
+    version = "5.2.6";
   };
   public_suffix = {
     groups = ["default"];
@@ -740,17 +752,17 @@
     version = "3.9.4";
   };
   rdoc = {
-    dependencies = ["psych"];
+    dependencies = ["erb" "psych"];
     groups = ["default" "development"];
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1q2nkyk6r3m15a2an7lwm4ilkcxzdh3j93s4ib8sbzqb0xp70vvx";
+      sha256 = "0ssi6b33bwr1b1qsssnyjkldwwy087z33yzl58jyz5njdiwzlplh";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "6.12.0";
+    version = "6.14.1";
   };
   redcarpet = {
     groups = ["default"];
@@ -770,12 +782,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1lirwlw59apc8m1wjk85y2xidiv0fkxjn6f7p84yqmmyvish6qjp";
+      sha256 = "1yvm0svcdk6377ng6l00g39ldkjijbqg4whdg2zcsa8hrgbwkz0s";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.6.0";
+    version = "0.6.1";
   };
   rexml = {
     groups = ["default"];
@@ -807,12 +819,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0aw13lrs516j1di994bq4854jglc7d3yrvf3vvjid8vazqxkrywx";
+      sha256 = "1pn8w91d6iwj3pf0pfll1j08pir4nbw8c0b17srj6yk2r467xmbq";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.23.23";
+    version = "0.24.2";
   };
   safe_yaml = {
     groups = ["default"];
@@ -878,24 +890,24 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0q6m0b57c19sr7xmswv8ddiap15psjr5jjbfdnf5q92pglfzypsw";
+      sha256 = "0firq9y43jsn59srh59vj93hln27k0v95dpzyr7rchyvq53a2gpr";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.5.12142";
+    version = "0.5.12214";
   };
   stringio = {
     groups = ["default" "development"];
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1j5bjwbiwr5xa30jfi44rswgwiynf9fakknsvw79m6p9kqvbiv8y";
+      sha256 = "1yh78pg6lm28c3k0pfd2ipskii1fsraq46m6zjs5yc9a4k5vfy2v";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "3.1.3";
+    version = "3.1.7";
   };
   terminal-table = {
     dependencies = ["unicode-display_width"];
