@@ -44,6 +44,32 @@
           </header>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf_viewer.css">
           <style>
+            .post {
+              position: relative;
+            }
+            #viewerContainer {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              left: 0;
+            }
+            #viewer .page {
+              margin: 0 auto;
+            }
+            .progress-bar {
+              width: 100%;
+              height: 4px;
+              background-color: #eee;
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              z-index: 100;
+            }
+            .progress {
+              width: 0;
+              height: 100%;
+              background-color: #007bff;
+            }
           </style>
           <aside class="slide-controller">
             <a class="download" href="{{ page.pdf }}" title="{{ page.title }}"></a>
@@ -56,6 +82,9 @@
             <div id="viewerContainer">
               <div id="viewer" class="pdfViewer"></div>
             </div>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" id="progress"></div>
           </div>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf_viewer.js"></script>
@@ -88,19 +117,6 @@
                 }
               });
 
-              container.addEventListener('click', (e) => {
-                if (e.target.nodeName === 'A') {
-                  return;
-                }
-                const { width, left } = container.getBoundingClientRect();
-                const clickX = e.clientX - left;
-                if (clickX < width / 2) {
-                  onPrevPage();
-                } else {
-                  onNextPage();
-                }
-              });
-
               fullscreenButton.addEventListener('click', () => {
                 if (container.requestFullscreen) {
                   container.requestFullscreen();
@@ -121,8 +137,11 @@
                 pdfViewer.currentScaleValue = 'page-fit';
               });
 
+              const progressBar = document.getElementById('progress');
               pdfViewer.eventBus.on('pagechanging', (e) => {
                 pageNumSpan.textContent = `${e.pageNumber} / ${pdfViewer.pagesCount}`;
+                const progress = (e.pageNumber / pdfViewer.pagesCount) * 100;
+                progressBar.style.width = `${progress}%`;
               });
             })();
           </script>
