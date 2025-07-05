@@ -1,18 +1,13 @@
 @use "sass:color";
 @use "variables" as *;
 
-.slide-container .svg-icon {
-  height: 1em;
-  vertical-align: text-bottom;
-}
-
 .slide-controller {
   margin: 0 auto;
   display: block;
   text-align: left;
 
   > .download {
-    margin-right: 5px;
+    // margin-right: 5px;
     font-size: $base-font-size * 0.8;
 
     &:after {
@@ -47,9 +42,69 @@
   height: 75%;
   padding: 0px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .svg-icon {
+    height: 1em;
+    vertical-align: text-bottom;
+  }
 }
 
 #slide {
   margin: 0 auto;
   display: block;
 }
+
+#pdf-canvas {
+  margin: 0 auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#prev-page, #next-page {
+  font-size: $base-font-size * 0.8;
+  display: inline-block;
+  border: none;
+  background-color: $background-color;
+  padding: 0;
+  &:after {
+    color: $brand-color;
+    text-decoration: none;
+  }
+  &:visited {
+    color: color.adjust($brand-color, $lightness: -15%);
+  }
+  &:hover {
+    color: $text-color;
+    text-decoration: underline;
+  }
+}
+
+#prev-page:after {
+  content: "Prev";
+}
+
+#next-page:after {
+  content: "Next";
+}
+//
+// #page-num {
+//   margin: 0 5px;
+// }
+
+.pdfViewer .page {
+  margin: 0;
+}
+#viewer .page {
+  margin: 0;
+}
+
+#viewerContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
