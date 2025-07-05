@@ -7,7 +7,6 @@
   text-align: left;
 
   > .download {
-    // margin-right: 5px;
     font-size: $base-font-size * 0.8;
 
     &:after {
@@ -84,23 +83,24 @@
 }
 
 #prev-page:after {
-  content: "Prev";
+  content: "◀";
 }
 
 #next-page:after {
-  content: "Next";
+  content: "▶";
 }
-//
-// #page-num {
-//   margin: 0 5px;
-// }
 
 .pdfViewer .page {
-  margin: 0;
+  margin: 0 auto;
+  border: unset;
+  background-color: none;
+  background-image: none;
+  // background-clip: none;
 }
-#viewer .page {
-  margin: 0;
-}
+//
+// #viewer .page {
+//   margin: 0 auto;
+// }
 
 #viewerContainer {
   position: absolute;
@@ -108,3 +108,21 @@
   height: 100%;
 }
 
+.post {
+  position: relative;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #eee;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+}
+.progress {
+  width: 0;
+  height: 100%;
+  background-color: #007bff;
+}
