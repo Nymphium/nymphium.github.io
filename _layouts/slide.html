@@ -35,12 +35,8 @@
             </div>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           </header>
-          <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf_viewer.css"> -->
           <aside class="slide-controller">
-            <a class="download" href="{{ page.pdf }}" title="{{ page.title }}"></a>
-            <button id="fullscreen-button"></button>
-            <button id="prev-page"></button>
-            <button id="next-page"></button>
+            <a class="download" href="{{ page.pdf }}" title="{{ page.title }}"></a><button id="fullscreen-button"/><button id="prev-page"/><button id="next-page"/>
           </aside>
           <div class="slide-container">
             <div class="progress-bar">
@@ -50,12 +46,11 @@
               <div id="viewer" class="pdfViewer"></div>
             </div>
           </div>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf_viewer.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf_viewer.js"></script>
           <script>
             (function () {
-              const url = 'https://nymphium.github.io{{ page.pdf }}';
-              // const pageNumSpan = document.getElementById('page-num');
+              const path = '{{ page.pdf }}';
               const prevButton = document.getElementById('prev-page');
               const nextButton = document.getElementById('next-page');
               const fullscreenButton = document.getElementById('fullscreen-button');
@@ -93,7 +88,7 @@
                 }
               });
 
-              pdfjsLib.getDocument(url).promise.then(pdfDoc => {
+              pdfjsLib.getDocument(path).promise.then(pdfDoc => {
                 pdfViewer.setDocument(pdfDoc);
               });
 
@@ -102,10 +97,61 @@
               });
 
               const progressBar = document.getElementById('progress');
+              const progressBarContainer = progressBar.parentElement;
+
+              const getPageFromX = (x) => {
+                const { left, width } = progressBarContainer.getBoundingClientRect();
+                const page = Math.round(((x - left) / width) * (pdfViewer.pagesCount - 1)) + 1;
+                return Math.max(1, Math.min(page, pdfViewer.pagesCount));
+              };
+
+              progressBarContainer.addEventListener('click', (e) => {
+                pdfViewer.currentPageNumber = getPageFromX(e.clientX);
+              });
+
+              let isDragging = false;
+              progressBarContainer.addEventListener('mousedown', () => isDragging = true);
+              progressBarContainer.addEventListener('mouseup', () => isDragging = false);
+              progressBarContainer.addEventListener('mouseleave', () => isDragging = false);
+              progressBarContainer.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                  pdfViewer.currentPageNumber = getPageFromX(e.clientX);
+                }
+              });
+
+              document.addEventListener('fullscreenchange', () => {
+                if (document.fullscreenElement) {
+                  if (window.screen.width > window.screen.height) {
+                    pdfViewer.currentScaleValue = 'page-height';
+                  } else {
+                    pdfViewer.currentScaleValue = 'page-width';
+                  }
+                } else {
+                  pdfViewer.currentScaleValue = 'page-fit';
+                }
+              });
+
+              const article = document.querySelector('.post');
+              const setViewerWidth = () => {
+                container.style.width = `${article.clientWidth}px`;
+              };
+              setViewerWidth();
+              window.addEventListener('resize', setViewerWidth);
+
               pdfViewer.eventBus.on('pagechanging', (e) => {
                 // pageNumSpan.textContent = `${e.pageNumber} / ${pdfViewer.pagesCount}`;
                 const progress = ((e.pageNumber - 1) / (pdfViewer.pagesCount - 1)) * 100;
                 progressBar.style.width = `${progress}%`;
+              });
+
+              pdfViewer.eventBus.on('pagerendered', () => {
+                const links = document.querySelectorAll('.page .annotationLayer a');
+                links.forEach(link => {
+                  if (link.href.startsWith('http')) {
+                    link.target = '_blank';
+                    link.rel = 'noopener';
+                  }
+                });
               });
             })();
           </script>

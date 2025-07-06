@@ -38,6 +38,9 @@
     <meta name="twitter:image:src" content="{{ site.url }}{{ thumbnail }}"/>
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+{%- if page.layout == "slide" %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf_viewer.min.css">
+    {% endif -%}
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}"/>
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: BASE_PATH }}"/>
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300%7CDroid+Sans+Mono%7CCrimson+Text:400,400i" rel="stylesheet"/>
