@@ -448,12 +448,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1x5b8ipv6g0z44wgc45039k04smsyf95h2m5m67mqq35sa5a955s";
+      sha256 = "0s5vklcy2fgdxa9c6da34jbfrqq7xs6mryjglqqb5iilshcg3q82";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "2.12.2";
+    version = "2.13.2";
   };
   kramdown = {
     dependencies = ["rexml"];
@@ -574,20 +574,20 @@
     source = null;
     targets = [{
       remotes = ["https://rubygems.org"];
-      sha256 = "04l2029jkdirm84wikq7wzq6iwhmlfgd005ybkqgclrnnfgmnfs8";
-      target = "arm64-darwin";
-      targetCPU = "arm64";
-      targetOS = "darwin";
-      type = "gem";
-    } {
-      remotes = ["https://rubygems.org"];
-      sha256 = "1k2y1sid2n5wbxidlafn990ll307lqhc7qjyk2i1hgc7vdsphx2a";
+      sha256 = "0q23yhq04vd9ns431qd230cpw1vblq6rkbza3vvi8gf5xppmsbxm";
       target = "x86_64-linux-gnu";
       targetCPU = "x86_64";
       targetOS = "linux";
       type = "gem";
+    } {
+      remotes = ["https://rubygems.org"];
+      sha256 = "0y9rfr54sg7n4hx0mk5k3bdd0j297h1qhnzzsc4n7zv3ckqg38zf";
+      target = "arm64-darwin";
+      targetCPU = "arm64";
+      targetOS = "darwin";
+      type = "gem";
     }];
-    version = "1.18.8";
+    version = "1.18.9";
   };
   octokit = {
     dependencies = ["faraday" "sawyer"];
@@ -814,17 +814,17 @@
     version = "4.5.1";
   };
   ruby-lsp = {
-    dependencies = ["language_server-protocol" "prism" "rbs" "sorbet-runtime"];
+    dependencies = ["language_server-protocol" "prism" "rbs"];
     groups = ["development"];
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1pn8w91d6iwj3pf0pfll1j08pir4nbw8c0b17srj6yk2r467xmbq";
+      sha256 = "050qg73g4qs3xza441nafy7610daa3k4ra0pbi3sdlawy9fwfh6i";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.24.2";
+    version = "0.26.1";
   };
   safe_yaml = {
     groups = ["default"];
@@ -884,18 +884,6 @@
     };
     targets = [];
     version = "0.4.1";
-  };
-  sorbet-runtime = {
-    groups = ["default" "development"];
-    platforms = [];
-    source = {
-      remotes = ["https://rubygems.org"];
-      sha256 = "0firq9y43jsn59srh59vj93hln27k0v95dpzyr7rchyvq53a2gpr";
-      target = "ruby";
-      type = "gem";
-    };
-    targets = [];
-    version = "0.5.12214";
   };
   stringio = {
     groups = ["default" "development"];
