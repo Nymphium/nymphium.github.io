@@ -364,3 +364,21 @@ pre {
     content: "Footnotes";
   }
 }
+
+.rainbow {
+  color: #f00;
+
+  animation: rainbow-animation 1s linear infinite;
+}
+
+@keyframes rainbow-animation {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(180deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
