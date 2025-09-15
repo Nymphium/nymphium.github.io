@@ -7,36 +7,55 @@
   display: block;
   text-align: left;
 
-  > .download {
-    font-size: $base-font-size * 0.8;
-    margin-right: 2px;
+  & button {
+    font-size: $base-font-size;
+    display: inline-block;
+    border: none;
+    padding: 0;
+    background-color: $background-color;
 
     &:after {
+      color: $brand-color;
+      text-decoration: none;
+    }
+    &:visited {
+      color: color.adjust($brand-color, $lightness: -15%);
+    }
+    &:hover {
+      color: $text-color;
+    }
+  }
+
+  > .download {
+    font-size: $base-font-size;
+    margin-left: .5em;
+    margin-right: .5em;
+
+    &:after {
+      text-decoration: none;
       content: "Download";
     }
   }
 }
 
 #fullscreen-button {
-  font-size: $base-font-size * 0.8;
-  display: inline-block;
-  border: none;
-  background-color: $background-color;
-  padding: 0;
   margin-right: 2px;
+
   &:after {
-    color: $brand-color;
-    text-decoration: none;
     content: "Fullscreen";
-
-    &:visited {
-      color: color.adjust($brand-color, $lightness: -15%);
-    }
-
-    &:hover {
-      color: $text-color;
-    }
   }
+}
+
+#prev-page {
+  margin-right: 2px;
+
+  &:after {
+    content: "◀";
+  }
+}
+
+#next-page:after {
+  content: "▶";
 }
 
 .slide-container {
@@ -64,47 +83,25 @@
   height: auto;
 }
 
-#prev-page, #next-page {
-  font-size: $base-font-size * 0.8;
-  display: inline-block;
-  border: none;
-  background-color: $background-color;
-  padding: 0;
-  &:after {
-    color: $brand-color;
-    text-decoration: none;
-  }
-  &:visited {
-    color: color.adjust($brand-color, $lightness: -15%);
-  }
-  &:hover {
-    color: $text-color;
-  }
-}
-
-#prev-page {
-  margin-right: 2px;
-
-  &:after {
-    content: "◀";
-  }
-}
-
-#next-page:after {
-  content: "▶";
-}
-
 .pdfViewer .page {
-  margin: $progress-bar-height auto;
+  margin-top: $progress-bar-height;
   border: unset;
   background-color: none;
   background-image: none;
+  width: 100% !important;
+  height: 100% !important;
+
+  & canvas, .textLayer, .annotationLayer {
+    width: 100% !important;
+    height: 100% !important;
+  }
 }
 
 #viewerContainer {
   position: absolute;
   width: 100%;
-  height: 100%;
+  min-height: calc($content-width * 0.5);
+  padding-bottom: calc($progress-bar-height * 2);
 }
 
 .post {
@@ -119,6 +116,9 @@
   bottom: 0;
   left: 0;
   z-index: 100;
+
+  margin-left: auto;
+  margin-right: auto;
 
   .progress {
     width: 0;
