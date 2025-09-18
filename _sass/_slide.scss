@@ -7,7 +7,7 @@
   display: block;
   text-align: left;
 
-  & button {
+  > button {
     font-size: $base-font-size;
     display: inline-block;
     border: none;
@@ -50,11 +50,13 @@
   margin-right: 2px;
 
   &:after {
+    font-size: calc(1.3 * $base-font-size);
     content: "◀";
   }
 }
 
 #next-page:after {
+  font-size: calc(1.3 * $base-font-size);
   content: "▶";
 }
 

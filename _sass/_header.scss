@@ -40,6 +40,7 @@ $nav-page-link-padding-h: 5px;
 .site-nav {
 	float: right;
 	line-height: $nav-height;
+  z-index: 11;
 
 	.menu-icon {
 		display: none;
@@ -80,6 +81,7 @@ $nav-page-link-padding-h: 5px;
 		}
 
 		&:active, &:hover {
+      margin-top: 12px;
 			transform: translateY(0px);
 		}
 
