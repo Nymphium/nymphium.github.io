@@ -70,7 +70,6 @@
 
               pdfViewer.currentScaleValue = article.clientWidth / viewport.width;
               viewer.style = `--scale-factor: ${pdfViewer.currentScale};`;
-              console.log(article.clientWidth, viewport.width, pdfViewer.currentScale);
             };
 
             const params = new URLSearchParams(window.location.search);
@@ -103,18 +102,7 @@
               pdfViewer.setDocument(pdfDoc);
             });
 
-            let resizeTimer;
-            window.addEventListener('resize', function() {
-              if (document.fullscreenElement) {
-                return
-              }
-
-              clearTimeout(resizeTimer);
-
-              resizeTimer = setTimeout(setViewerWidth , 100);
-              console.log('resized');
-            });
-
+            // ---- page nav
             eventBus.on('pagechanging', (e) => {
               const progress = ((e.pageNumber - 1) / (pdfViewer.pagesCount - 1)) * 100;
               progressBar.style.width = `${progress}%`;
@@ -132,18 +120,6 @@
                 pdfViewer.previousPage();
               } else if (e.key === 'ArrowRight') {
                 pdfViewer.nextPage();
-              }
-            });
-
-            fullscreenButton.addEventListener('click', () => {
-              if (container.requestFullscreen) {
-                container.requestFullscreen();
-              } else if (container.mozRequestFullScreen) {
-                container.mozRequestFullScreen();
-              } else if (container.webkitRequestFullscreen) {
-                container.webkitRequestFullscreen();
-              } else if (container.msRequestFullscreen) {
-                container.msRequestFullscreen();
               }
             });
 
@@ -167,6 +143,66 @@
             progressBarContainer.addEventListener('mousemove', (e) => {
               if (isDragging) {
                 pdfViewer.currentPageNumber = getPageFromX(e.clientX);
+              }
+            });
+
+            // --- swipe to send pages
+            let touchStartX = 0;
+            let touchStartY = 0;
+            const swipeThreshold = 50; // Minimum horizontal distance for a swipe
+
+            const handleSwipe = (endX, endY) => {
+              const deltaX = endX - touchStartX;
+              const deltaY = endY - touchStartY;
+
+              // Ensure it's a horizontal swipe and not a vertical scroll
+              if (Math.abs(deltaX) > swipeThreshold && Math.abs(deltaX) > Math.abs(deltaY)) {
+                if (deltaX < 0) {
+                  // Swiped Left: Go to the next page
+                  pdfViewer.nextPage();
+                } else {
+                  // Swiped Right: Go to the previous page
+                  pdfViewer.previousPage();
+                }
+              }
+            }
+
+            container.addEventListener('touchstart', (e) => {
+              // Record the starting coordinates of the touch
+              touchStartX = e.changedTouches[0].screenX;
+              touchStartY = e.changedTouches[0].screenY;
+            }, { passive: true });
+
+            container.addEventListener('touchend', (e) => {
+              // Record the ending coordinates
+              const touchEndX = e.changedTouches[0].screenX;
+              const touchEndY = e.changedTouches[0].screenY;
+
+              handleSwipe(touchEndX, touchEndY);
+            }, { passive: true });
+
+            // --- resize / fullscreen
+
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+              if (document.fullscreenElement) {
+                return
+              }
+
+              clearTimeout(resizeTimer);
+
+              resizeTimer = setTimeout(setViewerWidth , 100);
+            });
+
+            fullscreenButton.addEventListener('click', () => {
+              if (container.requestFullscreen) {
+                container.requestFullscreen();
+              } else if (container.mozRequestFullScreen) {
+                container.mozRequestFullScreen();
+              } else if (container.webkitRequestFullscreen) {
+                container.webkitRequestFullscreen();
+              } else if (container.msRequestFullscreen) {
+                container.msRequestFullscreen();
               }
             });
 

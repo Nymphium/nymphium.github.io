@@ -94,6 +94,10 @@
     height: 100%;
     width: 100%;
 
+    &:fullscreen {
+      display: flex;
+    }
+
     & .page {
       margin-top: $progress-bar-height;
       border: unset;
