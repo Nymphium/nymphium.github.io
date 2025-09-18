@@ -51,6 +51,8 @@ const setup = () => {
 const setupNavigation = () => {
   const prevButton = document.getElementById('prev-page');
   const nextButton = document.getElementById('next-page');
+  const progressBar = document.getElementById('progress');
+  const progressBarContainer = progressBar.parentElement;
 
   eventBus.on('pagechanging', (e) => {
     const progress = ((e.pageNumber - 1) / (pdfViewer.pagesCount - 1)) * 100;
@@ -70,9 +72,6 @@ const setupNavigation = () => {
       pdfViewer.nextPage();
     }
   });
-
-  const progressBar = document.getElementById('progress');
-  const progressBarContainer = progressBar.parentElement;
 
   const getPageFromX = (x) => {
     const { left, width } = progressBarContainer.getBoundingClientRect();
@@ -138,12 +137,12 @@ const setupResizeFullscreen = () => {
 
   window.addEventListener('resize', function() {
     if (document.fullscreenElement) {
-      return
+      return;
     }
 
     clearTimeout(resizeTimer);
 
-    resizeTimer = setTimeout(setViewerWidth , 100);
+    resizeTimer = setTimeout(setViewerWidth, 100);
   });
 
   fullscreenButton.addEventListener('click', () => {
