@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html style="height:100%;">
+<html>
   {% include head.html %}
-  <body style="height:100%;">
+  <body>
     {% include header.html %}
-    <div class="page-content" style="height:100%;">
-      <div class="wrapper" lang="ja" style="height:100%;">
+    <div class="page-content">
+      <div class="wrapper" lang="ja">
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
           <header class="post-header">
             <div class="post-header-info">
@@ -34,41 +34,21 @@
                 </span>
             </div>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            <noscript>
-              <style>
-.slide-container {
-  display: none;
-}
-              </style>
-            </noscript>
           </header>
           <aside class="slide-controller">
-            <a class="download" href="{{ page.pdf }}" title="{{ page.title }}"></a>
-             <button id="fullscreen-button"></button> 
+            <button id="prev-page"></button><button id="next-page"></button><a class="download" href="{{ page.pdf }}" title="{{ page.title }}"></a><button id="fullscreen-button"></button>
           </aside>
           <div class="slide-container">
-            <iframe id="slide"
-              src="https://azu.github.io/slide-pdf.js/?slide=https://nymphium.github.io{{ page.pdf }}"
-              width="100%"
-              height="100%"
-              scrolling="no"
-              allowtransparency="true"
-              allowfullscreen
-              webkitallowfullscreen
-              style="border:0;">
-            </iframe>
+            <div class="progress-bar">
+              <div class="progress" id="progress"></div>
+            </div>
+            <div id="viewerContainer">
+              <div id="viewer" class="pdfViewer"></div>
+            </div>
           </div>
-          <script>
-            (function () {
-              const slide = document.getElementById("slide");
-              // focus slide
-              slide.focus();
-              const fullScreenButton = document.getElementById("fullscreen-button");
-              fullScreenButton.addEventListener("click", function () {
-                slide.focus();
-                slide.requestFullscreen();
-              });
-            })();
+          <script type="module">
+            import { initializePDFViewer } from '{{ BASE_PATH }}/js/pdf-viewer.js';
+            initializePDFViewer('{{ page.pdf }}');
           </script>
         </article>
       </div>
