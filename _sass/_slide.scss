@@ -103,7 +103,7 @@
     & .page {
       margin-top: $progress-bar-height;
       border: unset;
-      background-color: none;
+      background-color: transparent;
       background-image: none;
 
       & canvas, .textLayer, .annotationLayer {
