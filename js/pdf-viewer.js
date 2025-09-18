@@ -42,7 +42,7 @@ const setup = () => {
     links.forEach(link => {
       if (link.href.startsWith('http')) {
         link.target = '_blank';
-        link.rel = 'noopener noreferer';
+        link.rel = 'noopener noreferrer';
       }
     });
   });
