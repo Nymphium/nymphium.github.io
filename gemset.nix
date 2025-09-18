@@ -794,12 +794,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1jmbf6lf7pcyacpb939xjjpn1f84c3nw83dy3p1lwjx0l2ljfif7";
+      sha256 = "0hninnbvqd2pn40h863lbrn9p11gvdxp928izkag5ysx8b1s5q0r";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "3.4.1";
+    version = "3.4.4";
   };
   rouge = {
     groups = ["default"];
