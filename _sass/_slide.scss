@@ -83,25 +83,29 @@
   height: auto;
 }
 
-.pdfViewer .page {
-  margin-top: $progress-bar-height;
-  border: unset;
-  background-color: none;
-  background-image: none;
-  width: 100% !important;
-  height: 100% !important;
-
-  & canvas, .textLayer, .annotationLayer {
-    width: 100% !important;
-    height: 100% !important;
-  }
-}
-
 #viewerContainer {
   position: absolute;
   width: 100%;
   min-height: calc($content-width * 0.5);
   padding-bottom: calc($progress-bar-height * 2);
+
+  .pdfViewer {
+    margin-top: $progress-bar-height;
+    height: 100%;
+    width: 100%;
+
+    & .page {
+      margin-top: $progress-bar-height;
+      border: unset;
+      background-color: none;
+      background-image: none;
+
+      & canvas, .textLayer, .annotationLayer {
+        width: 100% !important;
+        height: 100% !important;
+      }
+    }
+  }
 }
 
 .post {

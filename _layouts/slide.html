@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   {% include head.html %}
-  <body style="height:100%;">
+  <body>
     {% include header.html %}
     <div class="page-content">
       <div class="wrapper" lang="ja">
@@ -57,35 +57,81 @@
             const fullscreenButton = document.getElementById('fullscreen-button');
             const container = document.getElementById('viewerContainer');
 
-            let resizeTimer;
-            window.addEventListener('resize', function() {
-              // タイマーが設定されていたらクリアする (連続発火の防止)
-              clearTimeout(resizeTimer);
-
-              // 100ミリ秒後にリサイズ処理を実行するタイマーを設定
-              // これにより、リサイズ操作中の無駄な再描画を防ぎ、パフォーマンスを向上させる
-              resizeTimer = setTimeout(() => {
-                pdfViewer.currentScaleValue = 'page-width';
-              }, 100);
-            }, false);
-
             const eventBus = new pdfjsViewer.EventBus();
             const pdfViewer = new pdfjsViewer.PDFSinglePageViewer({
               container: container,
               eventBus: eventBus,
             });
 
-            const onPrevPage = () => pdfViewer.previousPage();
-            const onNextPage = () => pdfViewer.nextPage();
+            const article = document.querySelector('.post');
+            const setViewerWidth = async () => {
+              const pdfDoc = await pdfViewer.pdfDocument.getPage(1);
+              const viewport = pdfDoc.getViewport({scale: 1})
 
-            prevButton.addEventListener('click', onPrevPage);
-            nextButton.addEventListener('click', onNextPage);
+              pdfViewer.currentScaleValue = article.clientWidth / viewport.width;
+              viewer.style = `--scale-factor: ${pdfViewer.currentScale};`;
+              console.log(article.clientWidth, viewport.width, pdfViewer.currentScale);
+            };
+
+            const params = new URLSearchParams(window.location.search);
+            const specifiedPage = parseInt(params.get('page'), 10);
+
+            eventBus.on('pagesinit', async () => {
+              await setViewerWidth();
+
+              const pdfDoc = await pdfViewer.pdfDocument.getPage(1);
+              const viewport = pdfDoc.getViewport({scale: pdfViewer.currentScale});
+
+              container.style.height = `${viewport.height}px`;
+
+              if (specifiedPage && specifiedPage > 0 && specifiedPage <= pdfViewer.pagesCount) {
+                pdfViewer.currentPageNumber = specifiedPage;
+              }
+            });
+
+            eventBus.on('pagerendered', () => {
+              const links = document.querySelectorAll('.page .annotationLayer a');
+              links.forEach(link => {
+                if (link.href.startsWith('http')) {
+                  link.target = '_blank';
+                  link.rel = 'noopener';
+                }
+              });
+            });
+
+            pdfjsLib.getDocument(path).promise.then(pdfDoc => {
+              pdfViewer.setDocument(pdfDoc);
+            });
+
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+              if (document.fullscreenElement) {
+                return
+              }
+
+              clearTimeout(resizeTimer);
+
+              resizeTimer = setTimeout(setViewerWidth , 100);
+              console.log('resized');
+            });
+
+            eventBus.on('pagechanging', (e) => {
+              const progress = ((e.pageNumber - 1) / (pdfViewer.pagesCount - 1)) * 100;
+              progressBar.style.width = `${progress}%`;
+
+              const url = new URL(window.location);
+              url.searchParams.set('page', e.pageNumber);
+              history.replaceState({page: e.pageNumber}, '', url);
+            });
+
+            prevButton.addEventListener('click', pdfViewer.previousPage);
+            nextButton.addEventListener('click', pdfViewer.nextPage);
 
             document.addEventListener('keydown', (e) => {
               if (e.key === 'ArrowLeft') {
-                onPrevPage();
+                pdfViewer.previousPage();
               } else if (e.key === 'ArrowRight') {
-                onNextPage();
+                pdfViewer.nextPage();
               }
             });
 
@@ -100,14 +146,6 @@
                 container.msRequestFullscreen();
               }
             });
-
-            pdfjsLib.getDocument(path).promise.then(pdfDoc => {
-              pdfViewer.setDocument(pdfDoc);
-              pdfViewer.currentScaleValue = 'page-fit';
-            });
-
-            // eventBus.on('pagesinit', () => {
-            // });
 
             const progressBar = document.getElementById('progress');
             const progressBarContainer = progressBar.parentElement;
@@ -132,39 +170,11 @@
               }
             });
 
-            document.addEventListener('fullscreenchange', () => {
-              if (document.fullscreenElement) {
-                if (window.screen.width > window.screen.height) {
-                  pdfViewer.currentScaleValue = 'page-height';
-                } else {
-                  pdfViewer.currentScaleValue = 'page-width';
-                }
-              } else {
-                pdfViewer.currentScaleValue = 'page-fit';
+            document.addEventListener('fullscreenchange', async () => {
+              if (!document.fullscreenElement) {
+                return
               }
-            });
-
-            const article = document.querySelector('.post');
-            const setViewerWidth = () => {
-              container.style.width = `${article.clientWidth}px`;
-              // pdfViewer.currentScaleValue = 'page-width';
-            };
-            setViewerWidth();
-            window.addEventListener('resize', setViewerWidth);
-
-            eventBus.on('pagechanging', (e) => {
-              const progress = ((e.pageNumber - 1) / (pdfViewer.pagesCount - 1)) * 100;
-              progressBar.style.width = `${progress}%`;
-            });
-
-            eventBus.on('pagerendered', () => {
-              const links = document.querySelectorAll('.page .annotationLayer a');
-              links.forEach(link => {
-                if (link.href.startsWith('http')) {
-                  link.target = '_blank';
-                  link.rel = 'noopener';
-                }
-              });
+              pdfViewer.currentScaleValue = 'page-fit';
             });
           </script>
         </article>
