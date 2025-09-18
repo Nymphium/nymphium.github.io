@@ -17,7 +17,7 @@ const setViewerWidth = async () => {
   const viewport = pdfDoc.getViewport({scale: 1})
 
   pdfViewer.currentScaleValue = article.clientWidth / viewport.width;
-  viewer.style = `--scale-factor: ${pdfViewer.currentScale};`;
+  document.getElementById('viewer').style = `--scale-factor: ${pdfViewer.currentScale};`;
 };
 
 const setup = () => {
@@ -56,6 +56,7 @@ const setupNavigation = () => {
     const progress = ((e.pageNumber - 1) / (pdfViewer.pagesCount - 1)) * 100;
     progressBar.style.width = `${progress}%`;
 
+    const url = new URL(window.location);
     history.replaceState({page: e.pageNumber}, '', url);
   });
 
