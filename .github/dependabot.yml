@@ -6,22 +6,18 @@ updates:
     groups:
       github-actions-all:
         patterns:
-          - '*'
+          - "*"
     schedule:
       interval: "weekly"
     cooldown:
       default-days: 30
-    assignees:
-      - Nymphium
   - package-ecosystem: bundler
     directory: "/"
     groups:
       bundler-all:
         patterns:
-          - '*'
+          - "*"
     schedule:
       interval: "weekly"
     cooldown:
       default-days: 30
-    assignees:
-      - Nymphium

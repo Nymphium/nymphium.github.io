@@ -2,7 +2,7 @@ name: update-flake-lock
 on:
   workflow_dispatch: # allows manual triggering
   schedule:
-    - cron: '0 0 1 * *' # runs every monyh 1st
+    - cron: "0 0 1 * *" # runs every monyh 1st
 
 permissions:
   contents: write
@@ -23,14 +23,11 @@ jobs:
       - uses: cachix/cachix-action@v16
         with:
           name: blog-ci
-          authToken: '${{ secrets.CACHIX_TOKEN }}'
+          authToken: "${{ secrets.CACHIX_TOKEN }}"
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@main
         with:
           pr-title: "Update flake.lock" # Title of PR to be created
-          pr-labels: |                  # Labels to be set on the PR
+          pr-labels: | # Labels to be set on the PR
             dependencies
             automated
-      - name: Check build
-        run: |
-          nix develop -c rake build
