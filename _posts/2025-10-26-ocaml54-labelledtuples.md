@@ -143,7 +143,7 @@ val g : (x:int * y:int) -> int = <fun>
 
 # 関数のラベル付き引数と雰囲気似てますが
 たしカーニハン｡
-ただ､明確な違いとしては､ラベル付き引数には順序がない一方､先述のとおりlabeled tuplesにはある｡
+ただ明確な違いとしては､ラベル付き引数には順序がない一方､先述のとおりlabeled tuplesにはある｡
 
 ```ocaml
 (* ラベル付き引数は順不同 *)
@@ -159,7 +159,7 @@ Error: This expression has type y:'a * x:'b
        Labels y and x do not match
 ```
 
-また､ラベル付き引数の特徴であるオプショナル引数(`?arg`)も､labeled tuplesにはない｡
+また､ラベル付き引数の特徴であるオプショナル引数(`?arg`)もlabeled tuplesにはない｡
 
 ```ocaml
 (* ラベル付き引数のoptional引数 *)
@@ -175,7 +175,7 @@ val f : ?x:int -> unit -> int = <fun>
 Error: Syntax error
 ```
 
-[公式マニュアルのlimitationの項](https://ocaml.org/manual/5.4/labeledtuples.html#sss:labledtuples-limitations)にも､ラベル付き引数との曖昧性に関する言及がある｡
+[公式マニュアルのlimitationの項](https://ocaml.org/manual/5.4/labeledtuples.html#sss:labledtuples-limitations)にもラベル付き引数との曖昧性に関する言及がある｡
 > Parentheses are necessary to disambiguate functions types with labeled arguments from function types with labeled tuple arguments when the first element of the tuple has a label.
 
 あっ逆に関数の引数以外ではカッコ省略できるんだ
@@ -184,7 +184,7 @@ Error: Syntax error
 # ~x:3, ~y:5;;
 - : x:int * y:int = (~x:3, ~y:5)
 
-(* 関数定義で括弧を省略すると､ラベル付き引数と解釈されて構文エラー *)
+(* 関数定義で括弧を省略するとラベル付き引数と解釈されて構文エラー *)
 # let h ~x, ~y = x + y;;
 Error: Syntax error
 
@@ -195,7 +195,7 @@ val h : (x:int * y:int) -> int = <fun>
 
 # Recordsより使い勝手いいんですかってね
 類似の機能にrecordがあるやん｡
-Recordsは型-モジュール(名前空間)に束縛されるが､labeled tuplesは自由なところが個人的に大きく感じる｡
+Recordsは型-モジュール(名前空間)に束縛されるが､labeled tuplesは自由なところが個人的に大きなポイントに感じる｡
 
 Recordsは基本的に名前がついており[^3]､名前があるということは名前空間に属するということ｡
 しかし､labeled tuplesはそうした制約から自由｡定義なしにアドホックに作ることができる｡
@@ -231,7 +231,7 @@ val y : int = 5
 
 手軽でイイネ｡
 
-一方､recordsのフィールドには順序がない一方､先述の通りlabeled tuplesには順序があるなどの取り回しずらさはある｡
+一方､recordsのフィールドには順序がないが､先述の通りlabeled tuplesには順序があるなどの取り回しずらさはある｡
 加えて､recordsのフィールド省略やprojectionといった操作もない｡
 
 ```ocaml
