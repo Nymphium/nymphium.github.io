@@ -54,7 +54,7 @@ jobs:
         git ls-files "*.nix" | grep -v gemset.nix | xargs -P0 nixfmt -c
         actionlint
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v5
       with:
         name: site
         path: _site
@@ -71,7 +71,7 @@ jobs:
       pages: write
       id-token: write
     steps:
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with:
           name: site
       - name: Upload static files as artifact
