@@ -448,12 +448,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "09zss44bw5sx8c619qy1ci611r1h5nfd1biyjnpxrl6jcvcy2s0h";
+      sha256 = "098m3q2jrx4xbf0knrbmflsynmmb5x9q9b0bzpmj7jmm1cr30mna";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "2.15.2";
+    version = "2.16.0";
   };
   kramdown = {
     dependencies = ["rexml"];
@@ -657,12 +657,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0gkhpdjib9zi9i27vd9djrxiwjia03cijmd6q8yj2q1ix403w3nw";
+      sha256 = "0sqwckzzpj1mmmjnqcvqmq6adlxbhkf5ij3b6ir4i33ih4d2ih5z";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "1.4.0";
+    version = "1.6.0";
   };
   psych = {
     dependencies = ["date" "stringio"];
@@ -706,12 +706,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "14s4jdcs1a4saam9qmzbsa2bsh85rj9zfxny5z315x3gg0nhkxcn";
+      sha256 = "175iisqb211n0qbfyqd8jz2g01q6xj038zjf4q0nm8k6kz88k7lc";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "13.3.0";
+    version = "13.3.1";
   };
   rb-fsevent = {
     groups = ["default"];
@@ -819,12 +819,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "050qg73g4qs3xza441nafy7610daa3k4ra0pbi3sdlawy9fwfh6i";
+      sha256 = "0xnrl4zlrk0nlhla2qx7pdarj65byabm21hzz7l3libxv5hdmq5l";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.26.1";
+    version = "0.26.2";
   };
   safe_yaml = {
     groups = ["default"];
@@ -911,17 +911,17 @@
     version = "3.0.2";
   };
   typeprof = {
-    dependencies = ["rbs"];
+    dependencies = ["prism" "rbs"];
     groups = ["development"];
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0x8f0dhsggbxmfab2z422azzhfcrb81swzbsrgkxhl1hn3d75zrj";
+      sha256 = "0blw7ap8klc242ngsgzgzsdv7wrs77n8g4fsyw7c1h3n7nanmkbf";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.30.1";
+    version = "0.31.0";
   };
   tzinfo = {
     dependencies = ["concurrent-ruby"];
