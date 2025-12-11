@@ -28,7 +28,7 @@
           inherit system;
           config.allowUnfree = true;
           config.permittedInsecurePackages = [
-            "xpdf-4.05"
+            "xpdf-4.06"
           ];
         };
         ruby = pkgs.ruby;
