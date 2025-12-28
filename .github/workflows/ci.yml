@@ -22,42 +22,42 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
-      with:
-        submodules: recursive
-    - uses: DeterminateSystems/nix-installer-action@main
-      with:
-        extra-conf: |
-          max-jobs = auto
-          cores = 0
-    - uses: cachix/cachix-action@v16
-      with:
-        name: blog-ci
-        authToken: '${{ secrets.CACHIX_TOKEN }}'
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+      - uses: DeterminateSystems/nix-installer-action@main
+        with:
+          extra-conf: |
+            max-jobs = auto
+            cores = 0
+      - uses: cachix/cachix-action@v16
+        with:
+          name: blog-ci
+          authToken: "${{ secrets.CACHIX_TOKEN }}"
 
-    - uses: actions/cache@v4
-      with:
-        path: |
-          .jekyll-cache
-          twicache
-          twicard_cache
-        key: ${{ runner.os }}-contents-cache
+      - uses: actions/cache@v5
+        with:
+          path: |
+            .jekyll-cache
+            twicache
+            twicard_cache
+          key: ${{ runner.os }}-contents-cache-1
 
-    - uses: nicknovitski/nix-develop@v1
+      - uses: nicknovitski/nix-develop@v1
 
-    - name: Check build
-      run: |
-        rake build
+      - name: Check build
+        run: |
+          rake build
 
-    - name: Check format
-      run: |
-        git ls-files "*.nix" | grep -v gemset.nix | xargs -P0 nixfmt -c
-        actionlint
+      - name: Check format
+        run: |
+          git ls-files "*.nix" | grep -v gemset.nix | xargs -P0 nixfmt -c
+          actionlint
 
-    - uses: actions/upload-artifact@v5
-      with:
-        name: site
-        path: _site
+      - uses: actions/upload-artifact@v6
+        with:
+          name: site
+          path: _site
 
   publish:
     runs-on: ubuntu-latest
@@ -71,7 +71,7 @@ jobs:
       pages: write
       id-token: write
     steps:
-      - uses: actions/download-artifact@v6
+      - uses: actions/download-artifact@v7
         with:
           name: site
       - name: Upload static files as artifact
