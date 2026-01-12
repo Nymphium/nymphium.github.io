@@ -115,7 +115,9 @@ COPY --from=builder /image.tar.zst /
 $ docker buildx build --platform linux/arm64 -t app:latest . -o .
 ```
 
-もう一つは[darwin.linux-builder](https://nixos.org/manual/nixpkgs/stable/#sec-darwin-builder)を使う｡
+この方法の注意点は､当然ながらDocker上でビルドされるため､Nixのキャッシュがホストに保存されない｡
+
+これの解決のため､もう一つの[darwin.linux-builder](https://nixos.org/manual/nixpkgs/stable/#sec-darwin-builder)を使う手法を紹介する｡
 
 {% twicard "" https://nixos.org/manual/nixpkgs/stable/#sec-darwin-builder %}
 
@@ -170,6 +172,10 @@ $ nix build .#packages.aarch64-linux.image --no-link -o image.tar.zst
 ```
 
 を叩くとビルドに成功する｡`-L`オプションなどつけてログを観察すると､linux-builderにcopyして生成物をpullしているのが見える｡
+
+この手法の良い点は､Nixキャッシュがホスト側に保存されるところにある｡
+ソースからderivationのハッシュが得られ､ *どうやって生成されるかにかかわらず* ホスト側にderivationが得られれば`/nix/store`に置かれるので､linux-builder上でビルドしてもOKなんやね｡
+なのでlinux-builder VMを再起動したり変更をほどこしても､ちゃんと差分だけをビルドしてくれる｡
 
 ---
 
