@@ -109,7 +109,7 @@ COPY --from=builder /image.tar.zst /
 ```
 
 
-`buildx`で`linux/amd64`を指定し､output optionを利用することで`image.tar.zst`が生成されるので､あとは上記同様に`docker image load -i image.tar.zst`すれば無事`hello`を実行できるコンテナが展開される｡
+`buildx`で`linux/${ホストのCPU arch}`を指定し､output optionを利用することで`image.tar.zst`が生成されるので､あとは上記同様に`docker image load -i image.tar.zst`すれば無事`hello`を実行できるコンテナが展開される｡
 
 ```sh
 $ docker buildx build --platform linux/arm64 -t app:latest . -o .
@@ -124,7 +124,7 @@ $ docker buildx build --platform linux/arm64 -t app:latest . -o .
 簡単に申し上げると､(Linuxベースである)NixOSのVMをQEMUから起動し､そこにホストからコピーしたソースをderivationとしてビルドする｡
 つまり分散コンパイルですね｡
 
-まずユーザをtrusted-userとして登録し､`${ホストのinstruction set}-linux`用のビルダーとして追加する｡
+まずユーザをtrusted-userとして登録し､`${ホストのCPU arch}-linux`用のビルダーとして追加する｡
 darwin.linux-builderはSSHで接続するので､あらかじめSSH鍵ペアを生成し､公開鍵を`builder`ユーザの`~/.ssh/authorized_keys`に登録しておく必要がある｡
 
 ```sh :リンクをかいつまむと
