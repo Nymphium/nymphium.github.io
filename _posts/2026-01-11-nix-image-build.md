@@ -125,7 +125,7 @@ $ docker buildx build --platform linux/arm64 -t app:latest . -o .
 つまり分散コンパイルですね｡
 
 まずユーザをtrusted-userとして登録し､`${ホストのCPU arch}-linux`用のビルダーとして追加する｡
-darwin.linux-builderはSSHで接続するので､あらかじめSSH鍵ペアを生成し､公開鍵を`builder`ユーザの`~/.ssh/authorized_keys`に登録しておく必要がある｡
+darwin.linux-builderはSSHで接続するが､SSH鍵はdarwin.linux-builderが生成してくれるのでSSHの設定だけ追加する｡
 
 ```sh :リンクをかいつまむと
 $ echo "extra-trusted-users = $USER" >> /etc/nix/nix.conf
