@@ -74,7 +74,7 @@ hello
 まず大前提として､Dockerコンテナの実体はLinuxである｡
 macOSホストでDockerを実行する場合､LinuxのVMがDocker Desktop等により立ち上げられており､そのLinuxカーネルが各コンテナに共有されて動作する｡
 
-ところで､`nix build .#image` の指す `.#image` は `.#packages.${builtins.CurrentSystem}.image` のエイリアスであり､現在のアーキテクチャのパッケージをビルドする｡
+ところで､`nix build .#image` の指す `.#image` は `.#packages.${builtins.currentSystem}.image` のエイリアスであり､現在のアーキテクチャのパッケージをビルドする｡
 
 つまりホストOSが`x86_64-linux`ならばx86_64向けのELFから成るバイナリの詰まったDockerイメージをビルドしてくれるが､`*-darwin`なら *Mach-O形式のバイナリから成るDockerイメージ* がビルドされる｡
 これをLinuxが動いているコンテナ上で実行すると当然executable format errorになる｡
