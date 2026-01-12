@@ -41,7 +41,13 @@
         };
         backstop = pkgs.callPackage ./nix/backstop.nix { };
 
-        formatter = pkgs.nixfmt-rfc-style;
+        formatter = pkgs.nixfmt-tree.override {
+          settings.formatter.nixfmt = {
+            command = "nixfmt";
+            includes = [ "*.nix" ];
+            excludes = [ "gemset.nix" ];
+          };
+        };
       in
       {
         legacyPackages = pkgs;

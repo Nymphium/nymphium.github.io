@@ -51,7 +51,7 @@ jobs:
 
       - name: Check format
         run: |
-          git ls-files "*.nix" | grep -v gemset.nix | xargs -P0 nixfmt -c
+          nix fmt . && git diff --exit-code
           actionlint
 
       - uses: actions/upload-artifact@v6
