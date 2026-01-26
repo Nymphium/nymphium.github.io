@@ -657,12 +657,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "00silqnlzzm97gn21lm39q95hjn058waqky44j25r67p9drjy1hh";
+      sha256 = "0m0jkk1y537xc2rw5fg7sid5fnd4a9mw2gphqmiflc2mxwb3lic4";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "1.7.0";
+    version = "1.8.0";
   };
   psych = {
     dependencies = ["date" "stringio"];
@@ -928,12 +928,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0blw7ap8klc242ngsgzgzsdv7wrs77n8g4fsyw7c1h3n7nanmkbf";
+      sha256 = "122hzjwkgqjvl1dqdgzix20s7n2g8s28mdskhfl45ijjxk0ckz12";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.31.0";
+    version = "0.31.1";
   };
   tzinfo = {
     dependencies = ["concurrent-ruby"];
