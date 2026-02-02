@@ -23,5 +23,5 @@ end
 # Usage: rake clean
 desc 'Clean generated site and cache'
 task :clean do
-  sh( 'jekyll', 'clean')
+  sh('jekyll', 'clean')
 end
