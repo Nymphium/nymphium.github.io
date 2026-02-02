@@ -100,7 +100,7 @@ module Jekyll
                         .merge(head_extract(head, 'property', 'twitter:text:'))
                         .merge(head_extract(head, 'name', 'twitter:text:'))
 
-            metainfo = extracted
+            metainfo.merge!(extracted)
             metainfo[:title] ||= title
             metainfo[:description]&.gsub!(/[\n\r]/i, '')
 
