@@ -41,7 +41,7 @@ jobs:
             .jekyll-cache
             twicache
             twicard_cache
-          key: ${{ runner.os }}-contents-cache-1
+          key: ${{ runner.os }}-contents-cache-2
 
       - uses: nicknovitski/nix-develop@v1
 

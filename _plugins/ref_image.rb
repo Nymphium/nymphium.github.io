@@ -1,21 +1,24 @@
+# frozen_string_literal: true
+
 module Jekyll
   class RefImage < Liquid::Tag
     def initialize(name, filename_alternative, tokens)
       super
 
-      sp = nil
+      sp = if filename_alternative.match?(/^\s*"/)
+             filename_alternative.match(/^\s*"([^"]+)"\s*(.*?)\s*$/)
+           else
+             filename_alternative.match(/^\s*(\S+)\s+(.*?)\s*$/)
+           end
 
-      if filename_alternative.match(/^\s*"/)
-	sp = filename_alternative.match(/^\s*"([^"]+)"\s*(.*?)\s*$/)
-      else
-	sp = filename_alternative.match(/^\s*(\S+)\s+(.*?)\s*$/)
+      unless sp
+        raise ArgumentError, "Invalid arguments for ref_image tag: #{filename_alternative.inspect}"
       end
-
       @filename = sp[1]
       @alternative = sp[2]
     end
 
-    def render(context)
+    def render(_context)
       @filename
     end
   end
