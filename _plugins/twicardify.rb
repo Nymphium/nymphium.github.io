@@ -108,7 +108,7 @@ module Jekyll
 
           File.write(cache_file, JSON.generate(metainfo))
         rescue StandardError => e
-          puts "Error processing #{clean_url}: #{e}"
+          puts "Error processing #{clean_url} : #{e}"
           metainfo = {}
         end
 
