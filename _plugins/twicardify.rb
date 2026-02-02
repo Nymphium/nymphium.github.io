@@ -126,7 +126,7 @@ module Jekyll
         def initialize(tag_name, args, tokens)
           super
 
-          if args.strip.start_with?('"')
+          if args.match?(/^\s*"/)
             sp = args.match(/^\s*"([^"]*)"\s*(.*?)\s*$/)
           else
             sp = args.match(/^\s*(\S+)\s+(.*?)\s*$/)
