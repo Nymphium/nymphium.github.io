@@ -24,7 +24,7 @@
    ```bash
    nix run .#patched-bundix
    ```
-   ※ `-l` フラグにより `Gemfile.lock` の生成も同時に行われます。
+   ※ このコマンドは `Gemfile.lock` も同時に更新します。
 3. **環境の再ロード**:
    ```bash
    direnv reload
