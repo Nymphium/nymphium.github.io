@@ -112,7 +112,7 @@ module Jekyll
         end
 
         # Post-processing (fallback logic same as original)
-        metainfo[:title] = alt if !metainfo[:title].nil? && metainfo[:title].empty?
+        metainfo[:title] = alt if metainfo[:title].nil? || metainfo[:title].empty?
         metainfo[:url] = "#{clean_url}#{fragment}"
         metainfo[:image] = metainfo[:image] || '/pictures/no_image.png'
 
