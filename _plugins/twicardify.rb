@@ -106,17 +106,16 @@ module Jekyll
 
             File.write(cache_file, JSON.generate(metainfo))
           end
+
+          # Post-processing (fallback logic same as original)
+          metainfo[:title] = alt if metainfo[:title].nil? || metainfo[:title].empty?
+          metainfo[:url] = "#{clean_url}#{fragment}"
+          metainfo[:image] = metainfo[:image] || '/pictures/no_image.png'
+
+          render_twicard metainfo
         rescue StandardError => e
           puts "Error processing #{clean_url} : #{e}"
-          metainfo = {}
         end
-
-        # Post-processing (fallback logic same as original)
-        metainfo[:title] = alt if metainfo[:title].nil? || metainfo[:title].empty?
-        metainfo[:url] = "#{clean_url}#{fragment}"
-        metainfo[:image] = metainfo[:image] || '/pictures/no_image.png'
-
-        render_twicard metainfo
       end
     end
 
