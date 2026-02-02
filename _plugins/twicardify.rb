@@ -132,6 +132,10 @@ module Jekyll
             sp = args.match(/^\s*(\S+)\s+(.*?)\s*$/)
           end
 
+          unless sp
+            raise Liquid::SyntaxError,
+                  "twicard tag syntax error: expected {% twicard \"ALT\" URL %} or {% twicard ALT URL %}, got: #{args.strip.inspect}"
+          end
           @alt = sp[1]
           @post = sp[2]
         end
