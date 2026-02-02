@@ -11,6 +11,9 @@ module Jekyll
              filename_alternative.match(/^\s*(\S+)\s+(.*?)\s*$/)
            end
 
+      unless sp
+        raise ArgumentError, "Invalid arguments for ref_image tag: #{filename_alternative.inspect}"
+      end
       @filename = sp[1]
       @alternative = sp[2]
     end
