@@ -3,7 +3,7 @@
   rubyNix,
   formatter,
 }:
-pkgs.mkShell {
+pkgs.mkShellNoCC {
   packages =
     (with rubyNix; [
       ruby

@@ -19,10 +19,11 @@ exclude:
   - twicard_cache
   - .ruby-lsp
   - .direnv
-  - '*.nix'
+  - "*.nix"
   - flake.lock
   - test
   - backstop.json
+  - .github
 headersite:
   - slides.html
   - tags.html

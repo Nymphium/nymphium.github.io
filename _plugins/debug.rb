@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # A simple way to inspect liquid template variables.
 # Usage:
 #  Can be used anywhere liquid syntax is parsed (templates, includes, posts/pages)
@@ -5,6 +7,7 @@
 #  {{ site.posts | debug }}
 #
 require 'pp'
+
 module Jekyll
   # Need to overwrite the inspect method here because the original
   # uses < > to encapsulate the psuedo post/page objects in which case
@@ -12,27 +15,22 @@ module Jekyll
   #
   class Post
     def inspect
-      "#Jekyll:Post @id=#{self.id.inspect}"
+      "#Jekyll:Post @id=#{id.inspect}"
     end
   end
-  
+
   class Page
     def inspect
-      "#Jekyll:Page @name=#{self.name.inspect}"
+      "#Jekyll:Page @name=#{name.inspect}"
     end
   end
-  
-end # Jekyll
-  
-module Jekyll
+
   module DebugFilter
-    
-    def debug(obj, stdout=false)
+    def debug(obj, stdout = false)
       puts obj.pretty_inspect if stdout
       "<pre>#{obj.class}\n#{obj.pretty_inspect}</pre>"
     end
-
-  end # DebugFilter
-end # Jekyll
+  end
+end
 
 Liquid::Template.register_filter(Jekyll::DebugFilter)

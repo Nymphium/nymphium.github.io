@@ -1,15 +1,15 @@
+# frozen_string_literal: true
+
 module Jekyll
   class GHRepo < Liquid::Tag
+    def initialize(name, repository, tokens)
+      super
+      @repository = repository.strip
+    end
 
-	def initialize(name, repository, tokens)
-	  super
-	  @repository = repository.strip
-
-	end
-
-	def render(context)
-	  "<div class=\"github-widget\" data-repo=\"#{@repository}\"></div>"
-	end
+    def render(_context)
+      "<div class=\"github-widget\" data-repo=\"#{@repository}\"></div>"
+    end
   end
 end
 

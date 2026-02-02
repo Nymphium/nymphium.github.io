@@ -10,6 +10,8 @@ lambda { |content|
 
     if File.exist? "twicache/#{id}"
       File.open("twicache/#{id}", 'r') { |f| tweet_html = f.read }
+    elsif ENV['SKIP_NET'] == 'true'
+      tweet_html = "<p>Tweet embedding skipped (SKIP_NET is set). <a href='#{url}'>Link to tweet</a></p>"
     else
       tweet_json = URI.open("https://api.twitter.com/1/statuses/oembed.json?id=#{id}").read
       tweet_html = JSON.parse(tweet_json, { symbolize_names: true })[:html]
