@@ -104,8 +104,9 @@ module Jekyll
             metainfo[:title] ||= title
             metainfo[:description]&.gsub!(/[\n\r]/i, '')
 
-            File.write(cache_file, JSON.generate(metainfo))
           end
+
+          File.write(cache_file, JSON.generate(metainfo))
         rescue StandardError => e
           puts "Error processing #{clean_url}: #{e}"
           metainfo = {}
@@ -113,7 +114,6 @@ module Jekyll
 
         # Post-processing (fallback logic same as original)
         metainfo[:title] = alt if !metainfo[:title].nil? && metainfo[:title].empty?
-        metainfo[:title] = (metainfo[:title] || alt) || ''
         metainfo[:url] = "#{clean_url}#{fragment}"
         metainfo[:image] = metainfo[:image] || '/pictures/no_image.png'
 
