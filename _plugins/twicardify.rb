@@ -104,9 +104,8 @@ module Jekyll
             metainfo[:title] ||= title
             metainfo[:description]&.gsub!(/[\n\r]/i, '')
 
+            File.write(cache_file, JSON.generate(metainfo))
           end
-
-          File.write(cache_file, JSON.generate(metainfo))
         rescue StandardError => e
           puts "Error processing #{clean_url} : #{e}"
           metainfo = {}
