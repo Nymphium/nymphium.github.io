@@ -97,7 +97,7 @@ Hillerströmらの論文では､pipe/copipeのように生成と消費をおこ
 [修論](http://logic.cs.tsukuba.ac.jp/~sat/pdf/master_thesis.pdf)ではshallowな方の埋め込み方法も乗せているんですが､ご覧の通りなんかぱっとしないし効率もよく無さそうだ｡
 
 ところで `fcontrol/run` というコントロールオペレータがあるのですが
-{% twicard "CiteSeerX — Handling Control" http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.22.7256 %}
+{% twicard "" https://dl.acm.org/doi/10.1145/173262.155104 %}
 あんまりいい感じに意味論が書かれてないんで[`racket/control` のドキュメント](https://docs.racket-lang.org/reference/cont.html#%28def._%28%28lib._racket%2Fcontrol..rkt%29._fcontrol%29%29)より引用すると
 
 $$
@@ -115,7 +115,7 @@ $$
 ところでRacketの `fcontrol/run` はプロンプトタグが使えます｡
 つまり `fcontrol` が評価されたときに､どのdelimiterまで戻ればいいかをタグにより指定することができるんですねえ｡
 ここで吉報です｡multi-prompt shift/resetによるEff言語の埋め込みはKiselyovらにより示されています｡
-{% twicard "(PDF) Eff Directly in OCaml" https://www.researchgate.net/publication/308969161_Eff_Directly_in_OCaml %}
+{% twicard "(PDF) Eff Directly in OCaml" https://www.researchgate.net/publication/329971742_Eff_Directly_in_OCaml %}
 
 よし! では実装しましたはいこちら
 
