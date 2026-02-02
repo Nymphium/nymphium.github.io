@@ -6,7 +6,7 @@ require 'time'
 # Usage: rake preview
 desc 'Launch preview environment'
 task :preview do
-  skip_net = ENV['SKIP_NET'] || 'true'
+  skip_net = ENV['SKIP_NET'] || 'false'
   env = { 'SKIP_NET' => skip_net, 'JEKYLL_ENV' => 'development' }
   cmd = [ 'jekyll', 'serve', '-w', '--drafts', '--incremental']
   cmd += ['--host', ENV['host']] if ENV['host']
