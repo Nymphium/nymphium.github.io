@@ -2,6 +2,7 @@
 layout: post
 title: "\"シェルスクリプトの依存関係､ちゃんと把握してますか? depextifyを作った\"までAIに書かせる"
 tags: [Go]
+thumb: true
 ---
 
 こんにちは､びしょ～じょです｡
