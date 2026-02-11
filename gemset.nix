@@ -189,12 +189,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1mls9g490k63rdmjc9shqshqzznfn1y21wawkxrwp2vvbk13jwqm";
+      sha256 = "077n5ss3z3ds4vj54w201kd12smai853dp9c9n7ii7g3q7nwwg54";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "2.12.2";
+    version = "2.14.1";
   };
   faraday-net_http = {
     dependencies = ["net-http"];
@@ -202,12 +202,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0jp5ci6g40d6i50bsywp35l97nc2fpi9a592r2cibwicdb6y9wd1";
+      sha256 = "0v4hfmc7d4lrqqj2wl366rm9551gd08zkv2ppwwnjlnkc217aizi";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "3.4.0";
+    version = "3.4.2";
   };
   ffi = {
     groups = ["default"];
@@ -560,12 +560,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1ysrwaabhf0sn24jrp0nnp51cdv0jf688mh5i6fsz63q2c6b48cn";
+      sha256 = "15k96fj6qwbaiv6g52l538ass95ds1qwgynqdridz29yqrkhpfi5";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.6.0";
+    version = "0.9.1";
   };
   nokogiri = {
     dependencies = ["racc"];
@@ -965,12 +965,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0jrl2vkdvc5aq8q3qvjmmrgjxfm784w8h7fal19qg7q7gh9msj1l";
+      sha256 = "1ijpbj7mdrq7rhpq2kb51yykhrs2s54wfs6sm9z3icgz4y6sb7rp";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "1.0.4";
+    version = "1.1.1";
   };
   webrick = {
     groups = ["default"];
