@@ -33,8 +33,10 @@ for prod_img in "$prod_dir"/*.png; do
   fi
 
   # magick compare returns 1 when images differ, 2 on error
-  pixels=$(magick compare -metric AE "$prod_img" "$local_img" "$diff_img" 2>&1 || true)
-  pixels="${pixels%%.*}" # truncate decimal if any
+  # magick compare outputs "N (ratio)" to stderr; extract just the integer
+  raw=$(magick compare -metric AE "$prod_img" "$local_img" "$diff_img" 2>&1 || true)
+  pixels="${raw%% *}"
+  pixels="${pixels%%.*}"
 
   if [ "$pixels" -gt "$THRESHOLD" ] 2>/dev/null; then
     echo "| $name | $pixels | FAIL |"
