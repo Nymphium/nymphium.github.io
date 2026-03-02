@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { mkdirSync } from "node:fs";
 import { firefox } from "playwright-core";
 
 const VIEWPORTS = [
@@ -24,7 +25,6 @@ async function main() {
     process.exit(1);
   }
 
-  const { mkdirSync } = await import("node:fs");
   mkdirSync(outDir, { recursive: true });
 
   const browser = await firefox.launch({ headless: true });
@@ -37,7 +37,7 @@ async function main() {
       const page = await context.newPage();
 
       for (const pg of PAGES) {
-        const url = `${origin.replace(/\/$/, "")}${pg.path}`;
+        const url = new URL(pg.path, origin).href;
         console.log(`[${viewport.label}] ${pg.label}: ${url}`);
 
         await page.goto(url, { waitUntil: "networkidle" });

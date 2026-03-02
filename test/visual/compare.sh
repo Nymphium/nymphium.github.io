@@ -38,7 +38,11 @@ for prod_img in "$prod_dir"/*.png; do
   pixels="${raw%% *}"
   pixels="${pixels%%.*}"
 
-  if [ "$pixels" -gt "$THRESHOLD" ] 2>/dev/null; then
+  if ! [[ "$pixels" =~ ^[0-9]+$ ]]; then
+    echo "| $name | N/A | ERROR |"
+    echo "Error: 'magick compare' produced non-numeric output: '$raw'" >&2
+    has_diff=1
+  elif [ "$pixels" -gt "$THRESHOLD" ]; then
     echo "| $name | $pixels | FAIL |"
     has_diff=1
   else
