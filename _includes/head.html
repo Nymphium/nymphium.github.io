@@ -39,7 +39,9 @@
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 {%- if page.layout == "slide" %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf_viewer.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.149/web/pdf_viewer.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/solid.min.css">
     {% endif -%}
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}"/>
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: BASE_PATH }}"/>

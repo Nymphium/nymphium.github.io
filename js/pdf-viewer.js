@@ -1,177 +1,194 @@
 import * as pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.149/build/pdf.min.mjs';
-import * as pdfjsViewer from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.149/web/pdf_viewer.mjs';
+import {
+  EventBus,
+  PDFLinkService,
+  PDFSinglePageViewer,
+} from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.149/web/pdf_viewer.mjs';
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.149/build/pdf.worker.min.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+  'https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.149/build/pdf.worker.min.mjs';
 
-const container = document.getElementById('viewerContainer');
+class SlideViewer {
+  #container;
+  #eventBus;
+  #linkService;
+  #viewer;
+  #progressBar;
+  #progressBarContainer;
+  #baseViewport = null;
+  #isDragging = false;
 
-const eventBus = new pdfjsViewer.EventBus();
-const pdfViewer = new pdfjsViewer.PDFSinglePageViewer({
-  container: container,
-  eventBus: eventBus,
-});
+  constructor(pdfPath) {
+    this.#container = document.getElementById('viewerContainer');
+    this.#progressBar = document.getElementById('progress');
+    this.#progressBarContainer = this.#progressBar.parentElement;
 
-const article = document.querySelector('.post');
-const setViewerWidth = async () => {
-  const pdfDoc = await pdfViewer.pdfDocument.getPage(1);
-  const viewport = pdfDoc.getViewport({scale: 1})
-
-  pdfViewer.currentScaleValue = article.clientWidth / viewport.width;
-  document.getElementById('viewer').style = `--scale-factor: ${pdfViewer.currentScale};`;
-};
-
-const setup = () => {
-  const params = new URLSearchParams(window.location.search);
-  const specifiedPage = parseInt(params.get('page'), 10);
-
-  eventBus.on('pagesinit', async () => {
-    await setViewerWidth();
-
-    const pdfDoc = await pdfViewer.pdfDocument.getPage(1);
-    const viewport = pdfDoc.getViewport({scale: pdfViewer.currentScale});
-
-    container.style.height = `${viewport.height}px`;
-
-    if (specifiedPage && specifiedPage > 0 && specifiedPage <= pdfViewer.pagesCount) {
-      pdfViewer.currentPageNumber = specifiedPage;
-    }
-  });
-
-  eventBus.on('pagerendered', () => {
-    const links = document.querySelectorAll('.page .annotationLayer a');
-    links.forEach(link => {
-      if (link.href.startsWith('http')) {
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-      }
+    this.#eventBus = new EventBus();
+    this.#linkService = new PDFLinkService({ eventBus: this.#eventBus });
+    this.#viewer = new PDFSinglePageViewer({
+      container: this.#container,
+      eventBus: this.#eventBus,
+      linkService: this.#linkService,
     });
-  });
-}
+    this.#linkService.setViewer(this.#viewer);
 
-const setupNavigation = () => {
-  const prevButton = document.getElementById('prev-page');
-  const nextButton = document.getElementById('next-page');
-  const progressBar = document.getElementById('progress');
-  const progressBarContainer = progressBar.parentElement;
-
-  eventBus.on('pagechanging', (e) => {
-    const progress = ((e.pageNumber - 1) / (pdfViewer.pagesCount - 1)) * 100;
-    progressBar.style.width = `${progress}%`;
-
-    const url = new URL(window.location);
-    history.replaceState({page: e.pageNumber}, '', url);
-  });
-
-  prevButton.addEventListener('click', () => pdfViewer.previousPage());
-  nextButton.addEventListener('click', () => pdfViewer.nextPage());
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') {
-      pdfViewer.previousPage();
-    } else if (e.key === 'ArrowRight') {
-      pdfViewer.nextPage();
-    }
-  });
-
-  const getPageFromX = (x) => {
-    const { left, width } = progressBarContainer.getBoundingClientRect();
-    const page = Math.round(((x - left) / width) * (pdfViewer.pagesCount - 1)) + 1;
-    return Math.max(1, Math.min(page, pdfViewer.pagesCount));
-  };
-
-  progressBarContainer.addEventListener('click', (e) => {
-    pdfViewer.currentPageNumber = getPageFromX(e.clientX);
-  });
-
-  let isDragging = false;
-  progressBarContainer.addEventListener('mousedown', () => isDragging = true);
-  progressBarContainer.addEventListener('mouseup', () => isDragging = false);
-  progressBarContainer.addEventListener('mouseleave', () => isDragging = false);
-  progressBarContainer.addEventListener('mousemove', (e) => {
-    if (isDragging) {
-      pdfViewer.currentPageNumber = getPageFromX(e.clientX);
-    }
-  });
-}
-
-const setupSwipe = () => {
-  // --- swipe to send pages
-  let touchStartX = 0;
-  let touchStartY = 0;
-  const swipeThreshold = 50; // Minimum horizontal distance for a swipe
-
-  const handleSwipe = (endX, endY) => {
-    const deltaX = endX - touchStartX;
-    const deltaY = endY - touchStartY;
-
-    // Ensure it's a horizontal swipe and not a vertical scroll
-    if (Math.abs(deltaX) > swipeThreshold && Math.abs(deltaX) > Math.abs(deltaY)) {
-      if (deltaX < 0) {
-        // Swiped Left: Go to the next page
-        pdfViewer.nextPage();
-      } else {
-        // Swiped Right: Go to the previous page
-        pdfViewer.previousPage();
-      }
-    }
+    this.#setupEvents();
+    this.#setupNavigation();
+    this.#setupSwipe();
+    this.#setupResizeFullscreen();
+    this.#loadDocument(pdfPath);
   }
 
-  container.addEventListener('touchstart', (e) => {
-    // Record the starting coordinates of the touch
-    touchStartX = e.changedTouches[0].screenX;
-    touchStartY = e.changedTouches[0].screenY;
-  }, { passive: true });
+  async #loadDocument(path) {
+    const pdfDoc = await pdfjsLib.getDocument(path).promise;
+    this.#viewer.setDocument(pdfDoc);
+    this.#linkService.setDocument(pdfDoc, null);
+  }
 
-  container.addEventListener('touchend', (e) => {
-    // Record the ending coordinates
-    const touchEndX = e.changedTouches[0].screenX;
-    const touchEndY = e.changedTouches[0].screenY;
+  #fitToWidth() {
+    const article = document.querySelector('.post');
+    this.#viewer.currentScaleValue = article.clientWidth / this.#baseViewport.width;
+    document.getElementById('viewer').style = `--scale-factor: ${this.#viewer.currentScale};`;
+    const height = this.#baseViewport.height * this.#viewer.currentScale;
+    this.#container.parentElement.style.height = `${height}px`;
+  }
 
-    handleSwipe(touchEndX, touchEndY);
-  }, { passive: true });
+  #updateProgressBar(pageNumber) {
+    const pagesCount = this.#viewer.pagesCount;
+    const progress = pagesCount > 1
+      ? ((pageNumber - 1) / (pagesCount - 1)) * 100
+      : 0;
+    this.#progressBar.style.width = `${progress}%`;
+
+    this.#progressBarContainer.setAttribute('aria-valuenow', pageNumber);
+    this.#progressBarContainer.setAttribute('aria-valuemax', pagesCount);
+  }
+
+  #setupEvents() {
+    const params = new URLSearchParams(window.location.search);
+    const specifiedPage = parseInt(params.get('page'), 10);
+
+    this.#eventBus.on('pagesinit', async () => {
+      const page = await this.#viewer.pdfDocument.getPage(1);
+      this.#baseViewport = page.getViewport({ scale: 1 });
+
+      this.#fitToWidth();
+
+      if (specifiedPage > 0 && specifiedPage <= this.#viewer.pagesCount) {
+        this.#viewer.currentPageNumber = specifiedPage;
+      }
+
+
+      this.#updateProgressBar(this.#viewer.currentPageNumber);
+    });
+
+    this.#eventBus.on('pagerendered', () => {
+      const links = document.querySelectorAll('.page .annotationLayer a');
+      links.forEach(link => {
+        if (link.href.startsWith('http')) {
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+        }
+      });
+    });
+
+    this.#eventBus.on('pagechanging', (e) => {
+      this.#updateProgressBar(e.pageNumber);
+
+
+      const url = new URL(window.location);
+      url.searchParams.set('page', e.pageNumber);
+      history.replaceState({ page: e.pageNumber }, '', url);
+    });
+  }
+
+  #setupNavigation() {
+    document.getElementById('prev-page')
+      .addEventListener('click', () => this.#viewer.previousPage());
+    document.getElementById('next-page')
+      .addEventListener('click', () => this.#viewer.nextPage());
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        this.#viewer.previousPage();
+      } else if (e.key === 'ArrowRight') {
+        this.#viewer.nextPage();
+      }
+    });
+
+    this.#progressBarContainer.addEventListener('click', (e) => {
+      this.#viewer.currentPageNumber = this.#getPageFromX(e.clientX);
+    });
+
+    this.#progressBarContainer.addEventListener('mousedown', () => {
+      this.#isDragging = true;
+    });
+
+    document.addEventListener('mouseup', () => {
+      this.#isDragging = false;
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (this.#isDragging) {
+        this.#viewer.currentPageNumber = this.#getPageFromX(e.clientX);
+      }
+    });
+  }
+
+  #getPageFromX(x) {
+    const { left, width } = this.#progressBarContainer.getBoundingClientRect();
+    const page = Math.round(((x - left) / width) * (this.#viewer.pagesCount - 1)) + 1;
+    return Math.max(1, Math.min(page, this.#viewer.pagesCount));
+  }
+
+  #setupSwipe() {
+    let touchStartX = 0;
+    let touchStartY = 0;
+    const swipeThreshold = 50;
+
+    this.#container.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    this.#container.addEventListener('touchend', (e) => {
+      const endX = e.changedTouches[0].screenX;
+      const endY = e.changedTouches[0].screenY;
+      const deltaX = endX - touchStartX;
+      const deltaY = endY - touchStartY;
+
+      if (Math.abs(deltaX) > swipeThreshold && Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX < 0) {
+          this.#viewer.nextPage();
+        } else {
+          this.#viewer.previousPage();
+        }
+      }
+    }, { passive: true });
+  }
+
+  #setupResizeFullscreen() {
+    let resizeTimer;
+
+    window.addEventListener('resize', () => {
+      if (document.fullscreenElement) return;
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => this.#fitToWidth(), 100);
+    });
+
+    document.getElementById('fullscreen-button')
+      .addEventListener('click', () => this.#container.requestFullscreen());
+
+    document.addEventListener('fullscreenchange', () => {
+      if (document.fullscreenElement) {
+        this.#viewer.currentScaleValue = 'page-fit';
+      } else {
+        this.#fitToWidth();
+      }
+    });
+  }
 }
 
-const setupResizeFullscreen = () => {
-  const fullscreenButton = document.getElementById('fullscreen-button');
-  let resizeTimer;
-
-  window.addEventListener('resize', function() {
-    if (document.fullscreenElement) {
-      return;
-    }
-
-    clearTimeout(resizeTimer);
-
-    resizeTimer = setTimeout(setViewerWidth, 100);
-  });
-
-  fullscreenButton.addEventListener('click', () => {
-    if (container.requestFullscreen) {
-      container.requestFullscreen();
-    } else if (container.mozRequestFullScreen) {
-      container.mozRequestFullScreen();
-    } else if (container.webkitRequestFullscreen) {
-      container.webkitRequestFullscreen();
-    } else if (container.msRequestFullscreen) {
-      container.msRequestFullscreen();
-    }
-  });
-
-  document.addEventListener('fullscreenchange', async () => {
-    if (!document.fullscreenElement) {
-      return
-    }
-    pdfViewer.currentScaleValue = 'page-fit';
-  });
-}
-
-export function initializePDFViewer(path) {
-  pdfjsLib.getDocument(path).promise.then(pdfDoc => {
-    pdfViewer.setDocument(pdfDoc);
-  });
-
-  setup();
-  setupNavigation();
-  setupSwipe();
-  setupResizeFullscreen();
+export function initSlideViewer(path) {
+  new SlideViewer(path);
 }

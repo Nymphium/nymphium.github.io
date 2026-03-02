@@ -1,57 +1,54 @@
-<!DOCTYPE html>
-<html>
-  {% include head.html %}
-  <body>
-    {% include header.html %}
-    <div class="page-content">
-      <div class="wrapper" lang="ja">
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-          <header class="post-header">
-            <div class="post-header-info">
-              <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-              <span class="post-meta">
-                <div>
-                  <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
-                  {%- if page.at -%}
-                  <span class="at">{{page.at}}</span>
-                  {%- endif -%}
-                </div>
+---
+layout: default
+---
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-header-info">
+      <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+      <span class="post-meta">
+        <div>
+          <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
+          {%- if page.at -%}
+          <span class="at">{{page.at}}</span>
+          {%- endif -%}
+        </div>
 
-                {%- if page.tags -%}
-                <p class="tags" >tag: &#123;{%- for tag in page.tags -%}
-                <span class="tag">
-                  <a href="{{BASE_PATH}}/tags.html#{{tag}}-ref">{{tag}}</a>
-                </span>
-                {%- unless forloop.last  -%}<span/>{%- endunless -%}
-                  {%- endfor -%}&#125;
-                </p>
-                {%- endif -%}
-                <a class="twitter-share-button" href="https://twitter.com/intent/tweet">Tweet</a> 
-                <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja" title="{{page.title}}">
-                  <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマークに追加" width="20" height="20" style="border: none;" />
-                </a>
-                <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-                </span>
-            </div>
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </header>
-          <aside class="slide-controller">
-            <button id="prev-page"></button><button id="next-page"></button><a class="download" href="{{ page.pdf }}" title="{{ page.title }}"></a><button id="fullscreen-button"></button>
-          </aside>
-          <div class="slide-container">
-            <div class="progress-bar">
-              <div class="progress" id="progress"></div>
-            </div>
-            <div id="viewerContainer">
-              <div id="viewer" class="pdfViewer"></div>
-            </div>
-          </div>
-          <script type="module">
-            import { initializePDFViewer } from '{{ BASE_PATH }}/js/pdf-viewer.js';
-            initializePDFViewer('{{ page.pdf }}');
-          </script>
-        </article>
+        {%- if page.tags -%}
+        <p class="tags" >tag: &#123;{%- for tag in page.tags -%}
+        <span class="tag">
+          <a href="{{BASE_PATH}}/tags.html#{{tag}}-ref">{{tag}}</a>
+        </span>
+        {%- unless forloop.last  -%}<span/>{%- endunless -%}
+          {%- endfor -%}&#125;
+        </p>
+        {%- endif -%}
+        <a class="twitter-share-button" href="https://twitter.com/intent/tweet">Tweet</a>
+        <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja" title="{{page.title}}">
+          <img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="はてなブックマークに追加" width="20" height="20" style="border: none;" />
+        </a>
+        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+        </span>
+    </div>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </header>
+  <div class="slide-container">
+    <div class="viewer-wrapper">
+      <div id="viewerContainer">
+        <div id="viewer" class="pdfViewer"></div>
       </div>
     </div>
-  </body>
-</html>
+    <div class="progress-bar" role="slider" aria-label="Slide progress" aria-valuemin="1" aria-valuemax="1" aria-valuenow="1">
+      <div class="progress" id="progress"></div>
+    </div>
+    <nav class="slide-controller" aria-label="Slide navigation">
+      <button id="prev-page" aria-label="Previous page"></button>
+      <button id="next-page" aria-label="Next page"></button>
+      <a class="download" href="{{ page.pdf }}" title="{{ page.title }}" download><i class="fa-solid fa-download"></i></a>
+      <button id="fullscreen-button" aria-label="Toggle fullscreen"><i class="fa-solid fa-expand"></i></button>
+    </nav>
+  </div>
+  <script type="module">
+    import { initSlideViewer } from '{{ BASE_PATH }}/js/pdf-viewer.js';
+    initSlideViewer('{{ page.pdf }}');
+  </script>
+</article>
