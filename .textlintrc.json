@@ -1,0 +1,18 @@
+{
+  "plugins": {
+    "@textlint/markdown": true
+  },
+  "rules": {
+    "preset-ja-technical-writing": {
+      "sentence-length": false,
+      "max-kanji-continuous-len": false,
+      "ja-no-mixed-period": false,
+      "no-exclamation-question-mark": false,
+      "no-hankaku-kana": false,
+      "no-doubled-conjunctive-particle-ga": false,
+      "no-doubled-joshi": false,
+      "ja-no-successive-word": false
+    },
+    "preset-ja-spacing": true
+  }
+}
