@@ -14,5 +14,6 @@ pkgs.mkShellNoCC {
       nil
       formatter
       actionlint
+      pnpm
     ]);
 }

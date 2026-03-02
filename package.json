@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "packageManager": "pnpm@10.28.0",
+  "scripts": {
+    "textlint": "textlint"
+  },
+  "devDependencies": {
+    "textlint": "^14.7.1",
+    "@textlint/textlint-plugin-markdown": "^14.7.1",
+    "textlint-rule-preset-ja-technical-writing": "^10.0.1",
+    "textlint-rule-preset-ja-spacing": "^2.4.2"
+  }
+}

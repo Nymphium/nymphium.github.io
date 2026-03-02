@@ -1,0 +1,47 @@
+name: Lint posts
+
+on:
+  pull_request:
+    paths:
+      - '_posts/**'
+
+permissions:
+  contents: read
+
+jobs:
+  textlint:
+    name: textlint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Get changed post files
+        id: changed
+        run: |
+          files=$(git diff --name-only --diff-filter=ACMR origin/${{ github.base_ref }}...HEAD -- '_posts/*.md' | tr '\n' ' ')
+          echo "files=$files" >> "$GITHUB_OUTPUT"
+
+      - name: Run textlint on changed posts
+        if: steps.changed.outputs.files != ''
+        run: pnpm textlint ${{ steps.changed.outputs.files }}
+
+  typos:
+    name: typos
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: crate-ci/typos@v1
+        with:
+          config: ./_typos.toml

@@ -1,0 +1,37 @@
+[files]
+extend-exclude = [
+  "*.lock",
+  "*.ico",
+  "gemset.nix",
+  "pdf/",
+  "pictures/",
+  "js/",
+  "css/",
+  "_sass/",
+  "_site/",
+]
+
+[default]
+extend-ignore-re = [
+  # Japanese text patterns
+  "[\\p{Hiragana}\\p{Katakana}\\p{Han}ー－]+",
+  # Front matter
+  "^---[\\s\\S]*?---",
+  # Code blocks
+  "```[\\s\\S]*?```",
+  # Inline code
+  "`[^`]+`",
+]
+
+[default.extend-words]
+# Common false positives in this blog
+nix = "nix"
+opam = "opam"
+dune = "dune"
+ocaml = "ocaml"
+hoge = "hoge"
+fuga = "fuga"
+piyo = "piyo"
+ba = "ba"
+nd = "nd"
+iff = "iff"
