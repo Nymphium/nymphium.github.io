@@ -1,0 +1,143 @@
+name: "Visual Regression"
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+    paths-ignore:
+      - "_posts/**"
+      - "about/**"
+      - "pdf/**"
+      - "pictures/**"
+      - "src/**"
+      - "**/*.nix"
+      - ".github/**"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  visual-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+      - uses: DeterminateSystems/nix-installer-action@main
+        with:
+          extra-conf: |
+            max-jobs = auto
+            cores = 0
+      - uses: cachix/cachix-action@v16
+        with:
+          name: blog-ci
+          authToken: "${{ secrets.CACHIX_TOKEN }}"
+
+      - uses: actions/cache@v5
+        with:
+          path: |
+            .jekyll-cache
+            twicache
+            twicard_cache
+          key: ${{ runner.os }}-contents-cache-2
+
+      - uses: nicknovitski/nix-develop@v1
+
+      - name: Serve local site
+        run: |
+          rake preview &
+          timeout 30 bash -c 'until curl -sf http://localhost:4000 > /dev/null; do sleep 1; done'
+
+      - name: Screenshot local
+        run: nix run .#visual-screenshots -- http://localhost:4000 test/visual/screenshots/local
+
+      - name: Screenshot production
+        run: nix run .#visual-screenshots -- https://nymphium.github.io test/visual/screenshots/production
+
+      - name: Compare screenshots
+        id: compare
+        continue-on-error: true
+        run: |
+          {
+            echo "## Visual Regression Report"
+            echo ""
+            nix run .#visual-compare -- \
+              test/visual/screenshots/production \
+              test/visual/screenshots/local \
+              test/visual/screenshots/diff
+          } > test/visual/report.md
+
+      - name: Build diff viewer HTML
+        if: always()
+        run: |
+          cat > test/visual/diff-report.html <<'HEADER'
+          <!DOCTYPE html>
+          <html><head><meta charset="utf-8"><title>Visual Regression Diff</title>
+          <style>
+          body{font-family:system-ui;max-width:1400px;margin:0 auto;padding:20px;background:#f6f8fa}
+          h1{border-bottom:2px solid #d0d7de;padding-bottom:8px}
+          .page{margin:24px 0;background:#fff;border:1px solid #d0d7de;border-radius:6px;padding:16px}
+          .page h2{margin-top:0}
+          .imgs{display:flex;gap:8px;overflow-x:auto}
+          .imgs figure{margin:0;flex:1;min-width:0}
+          .imgs figcaption{font-weight:600;text-align:center;padding:4px 0}
+          .imgs img{width:100%;border:1px solid #d0d7de;display:block}
+          </style></head><body><h1>Visual Regression Diff</h1>
+          HEADER
+          for diff_img in test/visual/screenshots/diff/*.png; do
+            [ -f "$diff_img" ] || continue
+            name="$(basename "$diff_img" .png)"
+            prod="test/visual/screenshots/production/$(basename "$diff_img")"
+            local="test/visual/screenshots/local/$(basename "$diff_img")"
+            echo "<div class='page'><h2>${name}</h2><div class='imgs'>" >> test/visual/diff-report.html
+            for pair in "Production:$prod" "Local:$local" "Diff:$diff_img"; do
+              label="${pair%%:*}"; img="${pair#*:}"
+              if [ -f "$img" ]; then
+                b64="$(base64 -w0 "$img")"
+                echo "<figure><figcaption>${label}</figcaption><img src='data:image/png;base64,${b64}'></figure>" >> test/visual/diff-report.html
+              fi
+            done
+            echo "</div></div>" >> test/visual/diff-report.html
+          done
+          echo "</body></html>" >> test/visual/diff-report.html
+
+      - name: Upload diff viewer
+        if: always()
+        id: diff-html
+        uses: actions/upload-artifact@v7
+        with:
+          path: test/visual/diff-report.html
+          archive: false
+
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: visual-diff
+          path: test/visual/screenshots/
+
+      - name: Comment on PR
+        if: always()
+        run: |
+          if [ -f test/visual/report.md ]; then
+            {
+              cat test/visual/report.md
+              echo ""
+              echo "[View diff images](${{ steps.diff-html.outputs.artifact-url }})"
+            } > test/visual/report-full.md
+          else
+            echo "## Visual Regression Report" > test/visual/report-full.md
+            echo "" >> test/visual/report-full.md
+            echo "_Failed to generate comparison report. Check workflow logs._" >> test/visual/report-full.md
+          fi
+
+      - uses: marocchino/sticky-pull-request-comment@v2
+        if: always()
+        with:
+          header: visual-regression
+          path: test/visual/report-full.md

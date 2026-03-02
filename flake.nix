@@ -39,7 +39,7 @@
         bundix' = pkgs.callPackage ./nix/bundix.nix {
           inherit ruby bundix;
         };
-        backstop = pkgs.callPackage ./nix/backstop.nix { };
+        visual-test = pkgs.callPackage ./nix/visual-test.nix { };
 
         formatter = pkgs.nixfmt-tree.override {
           settings.formatter.nixfmt = {
@@ -53,7 +53,14 @@
         legacyPackages = pkgs;
         apps = {
           patched-bundix = bundix'.app;
-          backstop = backstop.puppeteer.app;
+          visual-screenshots = {
+            type = "app";
+            program = "${visual-test}/bin/visual-screenshots";
+          };
+          visual-compare = {
+            type = "app";
+            program = "${visual-test}/bin/visual-compare";
+          };
         };
         devShells.default = import ./shell.nix { inherit pkgs rubyNix formatter; };
         inherit formatter;

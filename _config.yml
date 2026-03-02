@@ -22,7 +22,6 @@ exclude:
   - "*.nix"
   - flake.lock
   - test
-  - backstop.json
   - .github
 headersite:
   - slides.html
