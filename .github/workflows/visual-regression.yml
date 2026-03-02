@@ -1,0 +1,80 @@
+name: "Visual Regression"
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  visual-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+      - uses: DeterminateSystems/nix-installer-action@main
+        with:
+          extra-conf: |
+            max-jobs = auto
+            cores = 0
+      - uses: cachix/cachix-action@v16
+        with:
+          name: blog-ci
+          authToken: "${{ secrets.CACHIX_TOKEN }}"
+
+      - uses: actions/cache@v5
+        with:
+          path: |
+            .jekyll-cache
+            twicache
+            twicard_cache
+          key: ${{ runner.os }}-contents-cache-2
+
+      - uses: nicknovitski/nix-develop@v1
+
+      - name: Serve local site
+        run: |
+          rake preview &
+          timeout 30 bash -c 'until curl -sf http://localhost:4000 > /dev/null; do sleep 1; done'
+
+      - name: Screenshot local
+        run: nix run .#visual-screenshots -- http://localhost:4000 test/visual/screenshots/local
+
+      - name: Screenshot production
+        run: nix run .#visual-screenshots -- https://nymphium.github.io test/visual/screenshots/production
+
+      - name: Compare screenshots
+        id: compare
+        continue-on-error: true
+        run: |
+          {
+            echo "## Visual Regression Report"
+            echo ""
+            nix run .#visual-compare -- \
+              test/visual/screenshots/production \
+              test/visual/screenshots/local \
+              test/visual/screenshots/diff
+          } > test/visual/report.md
+
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: visual-diff
+          path: test/visual/screenshots/
+
+      - name: Comment on PR
+        if: always()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: visual-regression
+          path: test/visual/report.md
+          message: "## Visual Regression Report\n\n_Failed to generate comparison report. Check workflow logs._"

@@ -1,0 +1,69 @@
+#!/usr/bin/env node
+
+import { firefox } from "playwright-core";
+
+const VIEWPORTS = [
+  { label: "tablet", width: 1024, height: 768 },
+  { label: "desktop", width: 1280, height: 1024 },
+];
+
+const PAGES = [
+  { label: "homepage", path: "/" },
+  { label: "about", path: "/about/README.html" },
+  {
+    label: "blog",
+    path: "/2018/12/09/asymmetric-coroutines%E3%81%AB%E3%82%88%E3%82%8Boneshot-algebraic-effects%E3%81%AE%E5%AE%9F%E8%A3%85.html",
+  },
+  { label: "slide", path: "/pdf/gocon2024" },
+];
+
+async function main() {
+  const [origin, outDir] = process.argv.slice(2);
+  if (!origin || !outDir) {
+    console.error("Usage: node screenshots.mjs <origin-url> <output-dir>");
+    process.exit(1);
+  }
+
+  const { mkdirSync } = await import("node:fs");
+  mkdirSync(outDir, { recursive: true });
+
+  const browser = await firefox.launch({ headless: true });
+
+  try {
+    for (const viewport of VIEWPORTS) {
+      const context = await browser.newContext({
+        viewport: { width: viewport.width, height: viewport.height },
+      });
+      const page = await context.newPage();
+
+      for (const pg of PAGES) {
+        const url = `${origin.replace(/\/$/, "")}${pg.path}`;
+        console.log(`[${viewport.label}] ${pg.label}: ${url}`);
+
+        await page.goto(url, { waitUntil: "networkidle" });
+
+        if (pg.label === "slide") {
+          await page.waitForSelector("canvas", { timeout: 30000 });
+          // Allow rendering to settle
+          await page.waitForTimeout(2000);
+        }
+
+        const filename = `${pg.label}_${viewport.label}.png`;
+        await page.screenshot({
+          path: `${outDir}/${filename}`,
+          fullPage: true,
+        });
+        console.log(`  -> ${outDir}/${filename}`);
+      }
+
+      await context.close();
+    }
+  } finally {
+    await browser.close();
+  }
+}
+
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
