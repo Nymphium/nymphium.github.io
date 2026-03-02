@@ -50,7 +50,9 @@ class SlideViewer {
     this.#viewer.currentScaleValue = article.clientWidth / this.#baseViewport.width;
     document.getElementById('viewer').style = `--scale-factor: ${this.#viewer.currentScale};`;
     const height = this.#baseViewport.height * this.#viewer.currentScale;
+    this.#container.style.height = `${height}px`;
     this.#container.parentElement.style.height = `${height}px`;
+    this.#viewer.update();
   }
 
   #updateProgressBar(pageNumber) {
