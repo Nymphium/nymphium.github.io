@@ -5,6 +5,14 @@ on:
     types:
       - opened
       - synchronize
+    paths-ignore:
+      - "_posts/**"
+      - "about/**"
+      - "pdf/**"
+      - "pictures/**"
+      - "src/**"
+      - "**/*.nix"
+      - ".github/**"
 
 permissions:
   contents: read
