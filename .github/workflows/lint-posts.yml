@@ -5,6 +5,9 @@ on:
     paths:
       - '_posts/**'
 
+permissions:
+  contents: read
+
 jobs:
   textlint:
     name: textlint
