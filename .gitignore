@@ -13,3 +13,7 @@ node_modules
 test/visual/screenshots/
 test/visual/report.md
 result
+
+# Dolt database files (added by bd init)
+.dolt/
+*.db
