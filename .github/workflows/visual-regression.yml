@@ -118,7 +118,7 @@ jobs:
                 thumb="${img%/*}/thumbs/$(basename "$img")"
                 [ -f "$thumb" ] || thumb="$img"
                 b64="$(base64 -w0 "$thumb")"
-                echo "<figure><figcaption>${label}</figcaption><img src='data:image/png;base64,${b64}'></figure>" >> test/visual/diff-report.html
+                echo "<figure><figcaption>${label}</figcaption><img data-src='data:image/png;base64,${b64}'></figure>" >> test/visual/diff-report.html
               fi
             done
             echo "</div></div>" >> test/visual/diff-report.html
@@ -130,7 +130,12 @@ jobs:
             document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
             document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
             const el=document.getElementById(id);
-            if(el){el.classList.add('active');}
+            if(el){
+              el.classList.add('active');
+              el.querySelectorAll('img[data-src]').forEach(img=>{
+                img.src=img.dataset.src;img.removeAttribute('data-src');
+              });
+            }
             const tab=document.querySelector('nav a[href="#'+id+'"]');
             if(tab){tab.classList.add('active');}
           }
