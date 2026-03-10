@@ -31,19 +31,20 @@ async function main() {
 
   try {
     for (const viewport of VIEWPORTS) {
-      const context = await browser.newContext({
-        viewport: { width: viewport.width, height: viewport.height },
-      });
-      const page = await context.newPage();
-
       for (const pg of PAGES) {
+        // Fresh context per page so no :visited history accumulates
+        const context = await browser.newContext({
+          viewport: { width: viewport.width, height: viewport.height },
+        });
+        const page = await context.newPage();
+
         const url = new URL(pg.path, origin).href;
         console.log(`[${viewport.label}] ${pg.label}: ${url}`);
 
         await page.goto(url, { waitUntil: "networkidle", timeout: 30000 });
-        // Neutralize :visited styling so navigation order doesn't cause diffs
+        // Freeze CSS animations so timing-dependent styles (e.g. .rainbow hue-rotate) are deterministic
         await page.addStyleTag({
-          content: "a:visited { color: inherit !important; }",
+          content: "*, *::before, *::after { animation: none !important; transition: none !important; }",
         });
         await page.waitForTimeout(3000);
 
@@ -58,9 +59,9 @@ async function main() {
           fullPage: true,
         });
         console.log(`  -> ${outDir}/${filename}`);
-      }
 
-      await context.close();
+        await context.close();
+      }
     }
   } finally {
     await browser.close();
