@@ -57,6 +57,10 @@
             type = "app";
             program = "${visual-test}/bin/visual-screenshots";
           };
+          visual-optimize = {
+            type = "app";
+            program = "${visual-test}/bin/visual-optimize";
+          };
           visual-compare = {
             type = "app";
             program = "${visual-test}/bin/visual-compare";
