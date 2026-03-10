@@ -64,14 +64,28 @@ async function main() {
 
         if (pg.label === "blog") {
           // GithubRepoWidget.init is deferred with setTimeout(..., 3000),
-          // wait for it to actually finish rendering (not just .github-box
-          // which appears before the API response fills in content)
-          await page.waitForSelector(
-            '.github-widget[github-widget-rendered="1"]',
-            { timeout: 10000 },
-          );
+          // wait for it to actually finish rendering. Fall back to a delay
+          // if the GitHub API is rate-limited/unreachable.
+          await page
+            .waitForSelector('.github-widget[github-widget-rendered="1"]', {
+              timeout: 10000,
+            })
+            .catch(() => {
+              console.warn("  GitHub widget did not render; falling back to delay");
+              return page.waitForTimeout(5000);
+            });
         } else if (pg.label === "slide") {
+          // Wait for pdf.js to create and paint the canvas
           await page.waitForSelector("canvas", { timeout: 30000 });
+          await page.waitForFunction(
+            () => {
+              const c = document.querySelector("canvas");
+              if (!c) return false;
+              const r = c.getBoundingClientRect();
+              return c.width > 0 && c.height > 0 && r.width > 0 && r.height > 0;
+            },
+            { timeout: 30000 },
+          );
         }
 
         const filename = `${pg.label}_${viewport.label}.png`;
