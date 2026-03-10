@@ -41,6 +41,14 @@ async function main() {
       const context = await browser.newContext({
         viewport: { width: viewport.width, height: viewport.height },
       });
+      // Inject animation-disabling CSS before any page loads so the initial
+      // computed styles are deterministic (not frozen at a random mid-frame)
+      await context.addInitScript(() => {
+        const style = document.createElement("style");
+        style.textContent =
+          "*, *::before, *::after { animation: none !important; transition: none !important; }";
+        (document.head || document.documentElement).appendChild(style);
+      });
       const page = await context.newPage();
 
       for (const pg of PAGES) {
@@ -48,17 +56,14 @@ async function main() {
         console.log(`[${viewport.label}] ${pg.label}: ${url}`);
 
         await page.goto(url, { waitUntil: "networkidle", timeout: 30000 });
-        // Freeze CSS animations so timing-dependent styles (e.g. .rainbow hue-rotate) are deterministic
-        await page.addStyleTag({
-          content: "*, *::before, *::after { animation: none !important; transition: none !important; }",
-        });
 
         if (pg.label === "blog") {
           // GithubRepoWidget.init is deferred with setTimeout(..., 3000),
-          // so wait for the widget to signal it has rendered
+          // wait for it to actually finish rendering (not just .github-box
+          // which appears before the API response fills in content)
           await page
             .waitForSelector(
-              '.github-widget[github-widget-rendered="1"], .github-box',
+              '.github-widget[github-widget-rendered="1"]',
               { timeout: 10000 },
             )
             .catch(() => {
