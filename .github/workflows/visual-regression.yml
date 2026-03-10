@@ -152,12 +152,6 @@ jobs:
           path: test/visual/diff-report.html
           archive: false
 
-      - uses: actions/upload-artifact@v7
-        if: always()
-        with:
-          name: visual-diff
-          path: test/visual/screenshots/
-
       - name: Comment on PR
         if: always()
         env:
