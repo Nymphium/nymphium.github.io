@@ -55,22 +55,19 @@ async function main() {
         const url = new URL(pg.path, origin).href;
         console.log(`[${viewport.label}] ${pg.label}: ${url}`);
 
-        await page.goto(url, { waitUntil: "networkidle", timeout: 30000 });
+        // Use "load" instead of "networkidle" — third-party scripts
+        // (Twitter/Hatena/utteranc.es) can keep background requests going
+        // and prevent network from ever becoming idle
+        await page.goto(url, { waitUntil: "load", timeout: 30000 });
 
         if (pg.label === "blog") {
           // GithubRepoWidget.init is deferred with setTimeout(..., 3000),
           // wait for it to actually finish rendering (not just .github-box
           // which appears before the API response fills in content)
-          await page
-            .waitForSelector(
-              '.github-widget[github-widget-rendered="1"]',
-              { timeout: 10000 },
-            )
-            .catch(() => {
-              console.warn(
-                "  GitHub widget did not render in time; continuing",
-              );
-            });
+          await page.waitForSelector(
+            '.github-widget[github-widget-rendered="1"]',
+            { timeout: 10000 },
+          );
         } else if (pg.label === "slide") {
           await page.waitForSelector("canvas", { timeout: 30000 });
         }
