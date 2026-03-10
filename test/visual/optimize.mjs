@@ -16,7 +16,7 @@ const pngs = readdirSync(dir).filter((f) => f.endsWith(".png"));
 for (const png of pngs) {
   const path = join(dir, png);
   console.log(`optipng: ${path}`);
-  execFileSync("optipng", ["-o4", "-quiet", "-strip", "all", path]);
+  execFileSync("optipng", ["-o1", "-quiet", "-strip", "all", path]);
 }
 
 // Generate thumbnails for the diff viewer HTML
