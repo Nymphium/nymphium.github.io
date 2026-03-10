@@ -27,17 +27,23 @@ async function main() {
 
   mkdirSync(outDir, { recursive: true });
 
-  const browser = await firefox.launch({ headless: true });
+  const browser = await firefox.launch({
+    headless: true,
+    firefoxUserPrefs: {
+      // Disable :visited link styling so local vs production URLs
+      // don't produce diffs from different visited-link state
+      "layout.css.visited_links_enabled": false,
+    },
+  });
 
   try {
     for (const viewport of VIEWPORTS) {
-      for (const pg of PAGES) {
-        // Fresh context per page so no :visited history accumulates
-        const context = await browser.newContext({
-          viewport: { width: viewport.width, height: viewport.height },
-        });
-        const page = await context.newPage();
+      const context = await browser.newContext({
+        viewport: { width: viewport.width, height: viewport.height },
+      });
+      const page = await context.newPage();
 
+      for (const pg of PAGES) {
         const url = new URL(pg.path, origin).href;
         console.log(`[${viewport.label}] ${pg.label}: ${url}`);
 
@@ -70,9 +76,9 @@ async function main() {
           fullPage: true,
         });
         console.log(`  -> ${outDir}/${filename}`);
-
-        await context.close();
       }
+
+      await context.close();
     }
   } finally {
     await browser.close();
