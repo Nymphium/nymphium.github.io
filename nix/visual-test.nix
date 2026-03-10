@@ -5,6 +5,13 @@
 let
   playwright-browsers = pkgs.playwright-driver.browsers;
   node = pkgs.nodejs;
+
+  fonts = pkgs.symlinkJoin {
+    name = "visual-test-fonts";
+    paths = [ pkgs.noto-fonts-cjk-sans ];
+  };
+
+  fontconfig-conf = pkgs.makeFontsConf { fontDirectories = [ fonts ]; };
 in
 stdenv.mkDerivation {
   name = "visual-test";
@@ -33,6 +40,7 @@ stdenv.mkDerivation {
     makeWrapper ${node}/bin/node $out/bin/visual-screenshots \
       --set PLAYWRIGHT_BROWSERS_PATH ${playwright-browsers} \
       --set PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS true \
+      --set FONTCONFIG_FILE ${fontconfig-conf} \
       --prefix NODE_PATH : $out/lib/node_modules \
       --add-flags $out/lib/visual-test/screenshots.mjs
 
