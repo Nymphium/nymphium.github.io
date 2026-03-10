@@ -41,6 +41,10 @@ async function main() {
         console.log(`[${viewport.label}] ${pg.label}: ${url}`);
 
         await page.goto(url, { waitUntil: "networkidle", timeout: 30000 });
+        // Neutralize :visited styling so navigation order doesn't cause diffs
+        await page.addStyleTag({
+          content: "a:visited { color: inherit !important; }",
+        });
         await page.waitForTimeout(3000);
 
         if (pg.label === "slide") {
