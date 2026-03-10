@@ -40,8 +40,8 @@ async function main() {
         const url = new URL(pg.path, origin).href;
         console.log(`[${viewport.label}] ${pg.label}: ${url}`);
 
-        await page.goto(url, { waitUntil: "load", timeout: 10000 });
-        await page.waitForTimeout(2000);
+        await page.goto(url, { waitUntil: "networkidle", timeout: 30000 });
+        await page.waitForTimeout(3000);
 
         if (pg.label === "slide") {
           await page.waitForSelector("canvas", { timeout: 30000 });
