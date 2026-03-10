@@ -125,12 +125,12 @@ jobs:
           function show(id){
             document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
             document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
-            const el=document.getElementById(id);
+            const el=document.getElementById(id)||document.querySelector('.page');
             if(el){
               el.classList.add('active');
               el.querySelectorAll('img[data-src]').forEach(i=>{i.src=i.dataset.src;i.removeAttribute('data-src');});
             }
-            const tab=document.querySelector('nav a[href="#'+id+'"]');
+            const tab=document.querySelector('nav a[href="#'+(el?.id||id)+'"]');
             if(tab){tab.classList.add('active');}
           }
           document.querySelectorAll('.page').forEach(p=>{
