@@ -46,11 +46,22 @@ async function main() {
         await page.addStyleTag({
           content: "*, *::before, *::after { animation: none !important; transition: none !important; }",
         });
-        await page.waitForTimeout(3000);
 
-        if (pg.label === "slide") {
+        if (pg.label === "blog") {
+          // GithubRepoWidget.init is deferred with setTimeout(..., 3000),
+          // so wait for the widget to signal it has rendered
+          await page
+            .waitForSelector(
+              '.github-widget[github-widget-rendered="1"], .github-box',
+              { timeout: 10000 },
+            )
+            .catch(() => {
+              console.warn(
+                "  GitHub widget did not render in time; continuing",
+              );
+            });
+        } else if (pg.label === "slide") {
           await page.waitForSelector("canvas", { timeout: 30000 });
-          await page.waitForTimeout(2000);
         }
 
         const filename = `${pg.label}_${viewport.label}.png`;
