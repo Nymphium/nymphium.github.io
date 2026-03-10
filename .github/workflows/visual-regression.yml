@@ -81,83 +81,51 @@ jobs:
         if: always()
         run: nix run .#visual-optimize -- test/visual/screenshots/diff
 
-      - name: Build diff viewer HTML
+      - name: Build diff viewer pages
         if: always()
         run: |
-          cat > test/visual/diff-report.html <<'HEADER'
+          mkdir -p test/visual/diff-pages/img
+          # Copy thumbnails (or originals as fallback) into img/
+          for src_dir in production local diff; do
+            for img in test/visual/screenshots/${src_dir}/*.png; do
+              [ -f "$img" ] || continue
+              base="$(basename "$img" .png)"
+              thumb="test/visual/screenshots/${src_dir}/thumbs/$(basename "$img")"
+              [ -f "$thumb" ] || thumb="$img"
+              cp "$thumb" "test/visual/diff-pages/img/${base}_${src_dir}.png"
+            done
+          done
+          # Generate per-page HTML with relative image paths
+          for diff_img in test/visual/screenshots/diff/*.png; do
+            [ -f "$diff_img" ] || continue
+            name="$(basename "$diff_img" .png)"
+            cat > "test/visual/diff-pages/${name}.html" <<EOF
           <!DOCTYPE html>
-          <html><head><meta charset="utf-8"><title>Visual Regression Diff</title>
+          <html><head><meta charset="utf-8"><title>${name} - Visual Diff</title>
           <style>
           body{font-family:system-ui;max-width:1400px;margin:0 auto;padding:20px;background:#f6f8fa}
           h1{border-bottom:2px solid #d0d7de;padding-bottom:8px}
-          nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-          nav a{padding:6px 12px;border:1px solid #d0d7de;border-radius:6px;text-decoration:none;color:#0969da;background:#fff}
-          nav a.active{background:#0969da;color:#fff}
-          .page{display:none;background:#fff;border:1px solid #d0d7de;border-radius:6px;padding:16px}
-          .page.active{display:block}
-          .page h2{margin-top:0}
           .imgs{display:flex;gap:8px;overflow-x:auto}
           .imgs figure{margin:0;flex:1;min-width:0}
           .imgs figcaption{font-weight:600;text-align:center;padding:4px 0}
           .imgs img{width:100%;border:1px solid #d0d7de;display:block}
           </style></head><body>
-          <h1>Visual Regression Diff</h1><nav id="tabs"></nav>
-          HEADER
-
-          names=""
-          for diff_img in test/visual/screenshots/diff/*.png; do
-            [ -f "$diff_img" ] || continue
-            name="$(basename "$diff_img" .png)"
-            names="$names $name"
-            prod="test/visual/screenshots/production/$(basename "$diff_img")"
-            local="test/visual/screenshots/local/$(basename "$diff_img")"
-            echo "<div class='page' id='${name}'><h2>${name}</h2><div class='imgs'>" >> test/visual/diff-report.html
-            for pair in "Production:$prod" "Local:$local" "Diff:$diff_img"; do
-              label="${pair%%:*}"; img="${pair#*:}"
-              if [ -f "$img" ]; then
-                thumb="${img%/*}/thumbs/$(basename "$img")"
-                [ -f "$thumb" ] || thumb="$img"
-                b64="$(base64 -w0 "$thumb")"
-                echo "<figure><figcaption>${label}</figcaption><img data-src='data:image/png;base64,${b64}'></figure>" >> test/visual/diff-report.html
-              fi
-            done
-            echo "</div></div>" >> test/visual/diff-report.html
+          <h1>${name}</h1>
+          <div class='imgs'>
+          <figure><figcaption>Production</figcaption><img src='img/${name}_production.png'></figure>
+          <figure><figcaption>Local</figcaption><img src='img/${name}_local.png'></figure>
+          <figure><figcaption>Diff</figcaption><img src='img/${name}_diff.png'></figure>
+          </div></body></html>
+          EOF
           done
-
-          cat >> test/visual/diff-report.html <<'FOOTER'
-          <script>
-          function show(id){
-            document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-            document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
-            const el=document.getElementById(id);
-            if(el){
-              el.classList.add('active');
-              el.querySelectorAll('img[data-src]').forEach(img=>{
-                img.src=img.dataset.src;img.removeAttribute('data-src');
-              });
-            }
-            const tab=document.querySelector('nav a[href="#'+id+'"]');
-            if(tab){tab.classList.add('active');}
-          }
-          document.querySelectorAll('.page').forEach(p=>{
-            const a=document.createElement('a');
-            a.href='#'+p.id; a.textContent=p.id;
-            a.onclick=e=>{e.preventDefault();history.replaceState(null,'','#'+p.id);show(p.id);};
-            document.getElementById('tabs').appendChild(a);
-          });
-          const h=location.hash.slice(1);
-          show(h||document.querySelector('.page')?.id||'');
-          window.addEventListener('hashchange',()=>show(location.hash.slice(1)));
-          </script></body></html>
-          FOOTER
 
       - name: Upload diff viewer
         if: always()
         id: diff-html
         uses: actions/upload-artifact@v7
         with:
-          path: test/visual/diff-report.html
-          archive: false
+          name: visual-diff-viewer
+          path: test/visual/diff-pages/
 
       - uses: actions/upload-artifact@v7
         if: always()
@@ -171,8 +139,11 @@ jobs:
           DIFF_URL: ${{ steps.diff-html.outputs.artifact-url }}
         run: |
           if [ -f test/visual/report.md ]; then
-            sed -E "s%\| ([a-z_]+)\.png \|%| [\1.png](${DIFF_URL}#\1) |%g" \
-              test/visual/report.md > test/visual/report-full.md
+            {
+              cat test/visual/report.md
+              echo ""
+              echo "[Download diff viewer](${DIFF_URL})"
+            } > test/visual/report-full.md
           else
             echo "## Visual Regression Report" > test/visual/report-full.md
             echo "" >> test/visual/report-full.md
