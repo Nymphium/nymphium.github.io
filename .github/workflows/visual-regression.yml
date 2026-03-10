@@ -103,7 +103,7 @@ jobs:
             name="$(basename "$diff_img" .png)"
             prod="test/visual/screenshots/production/$(basename "$diff_img")"
             local="test/visual/screenshots/local/$(basename "$diff_img")"
-            echo "<div class='page'><h2>${name}</h2><div class='imgs'>" >> test/visual/diff-report.html
+            echo "<div class='page' id='${name}'><h2>${name}</h2><div class='imgs'>" >> test/visual/diff-report.html
             for pair in "Production:$prod" "Local:$local" "Diff:$diff_img"; do
               label="${pair%%:*}"; img="${pair#*:}"
               if [ -f "$img" ]; then
@@ -125,7 +125,7 @@ jobs:
           path: test/visual/diff-report.html
           archive: false
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: visual-diff
@@ -133,13 +133,12 @@ jobs:
 
       - name: Comment on PR
         if: always()
+        env:
+          DIFF_URL: ${{ steps.diff-html.outputs.artifact-url }}
         run: |
           if [ -f test/visual/report.md ]; then
-            {
-              cat test/visual/report.md
-              echo ""
-              echo "[View diff images](${{ steps.diff-html.outputs.artifact-url }})"
-            } > test/visual/report-full.md
+            sed -E "s%\| ([a-z_]+)\.png \|%| [\1.png](${DIFF_URL}#\1) |%g" \
+              test/visual/report.md > test/visual/report-full.md
           else
             echo "## Visual Regression Report" > test/visual/report-full.md
             echo "" >> test/visual/report-full.md
