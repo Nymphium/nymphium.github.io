@@ -70,9 +70,12 @@ async function main() {
             .waitForSelector('.github-widget[github-widget-rendered="1"]', {
               timeout: 10000,
             })
-            .catch(() => {
-              console.warn("  GitHub widget did not render; falling back to delay");
-              return page.waitForTimeout(5000);
+            .catch((err) => {
+              if (err.name === "TimeoutError" || err.message?.includes("Timeout")) {
+                console.warn("  GitHub widget timed out; falling back to delay");
+                return page.waitForTimeout(5000);
+              }
+              throw err;
             });
         } else if (pg.label === "slide") {
           // Wait for pdf.js to create and paint the canvas
