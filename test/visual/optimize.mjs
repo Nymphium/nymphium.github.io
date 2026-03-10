@@ -29,7 +29,7 @@ for (const png of pngs) {
   execFileSync("magick", [
     path,
     "-resize",
-    "360x",
+    "200x",
     "-strip",
     "-define",
     "png:compression-level=9",
