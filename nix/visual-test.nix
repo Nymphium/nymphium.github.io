@@ -48,7 +48,12 @@ stdenv.mkDerivation {
 
     makeWrapper ${node}/bin/node $out/bin/visual-optimize \
       --add-flags $out/lib/visual-test/optimize.mjs \
-      --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.optipng ]}
+      --prefix PATH : ${
+        pkgs.lib.makeBinPath [
+          pkgs.optipng
+          pkgs.imagemagick
+        ]
+      }
 
     makeWrapper $out/lib/visual-test/compare.sh $out/bin/visual-compare \
       --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.imagemagick ]}

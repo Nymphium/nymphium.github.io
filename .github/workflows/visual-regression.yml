@@ -77,6 +77,10 @@ jobs:
               test/visual/screenshots/diff
           } > test/visual/report.md
 
+      - name: Optimize diff images
+        if: always()
+        run: nix run .#visual-optimize -- test/visual/screenshots/diff
+
       - name: Build diff viewer HTML
         if: always()
         run: |
@@ -103,7 +107,9 @@ jobs:
             for pair in "Production:$prod" "Local:$local" "Diff:$diff_img"; do
               label="${pair%%:*}"; img="${pair#*:}"
               if [ -f "$img" ]; then
-                b64="$(magick "$img" -resize 480x png:- | base64 -w0)"
+                thumb="${img%/*}/thumbs/$(basename "$img")"
+                [ -f "$thumb" ] || thumb="$img"
+                b64="$(base64 -w0 "$thumb")"
                 echo "<figure><figcaption>${label}</figcaption><img src='data:image/png;base64,${b64}'></figure>" >> test/visual/diff-report.html
               fi
             done
