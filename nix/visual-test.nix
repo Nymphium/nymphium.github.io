@@ -25,12 +25,14 @@ stdenv.mkDerivation {
 
   buildInputs = [
     pkgs.imagemagick
+    pkgs.optipng
   ];
 
   installPhase = ''
     mkdir -p $out/bin $out/lib/visual-test $out/lib/node_modules
 
     cp $src/screenshots.mjs $out/lib/visual-test/
+    cp $src/optimize.mjs $out/lib/visual-test/
     cp $src/compare.sh $out/lib/visual-test/
     chmod +x $out/lib/visual-test/compare.sh
 
@@ -43,6 +45,10 @@ stdenv.mkDerivation {
       --set FONTCONFIG_FILE ${fontconfig-conf} \
       --prefix NODE_PATH : $out/lib/node_modules \
       --add-flags $out/lib/visual-test/screenshots.mjs
+
+    makeWrapper ${node}/bin/node $out/bin/visual-optimize \
+      --add-flags $out/lib/visual-test/optimize.mjs \
+      --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.optipng ]}
 
     makeWrapper $out/lib/visual-test/compare.sh $out/bin/visual-compare \
       --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.imagemagick ]}
