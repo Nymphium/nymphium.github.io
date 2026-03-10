@@ -16,7 +16,7 @@ const pngs = readdirSync(dir).filter((f) => f.endsWith(".png"));
 for (const png of pngs) {
   const path = join(dir, png);
   console.log(`optipng: ${path}`);
-  execFileSync("optipng", ["-o2", "-quiet", path]);
+  execFileSync("optipng", ["-o4", "-quiet", "-strip", "all", path]);
 }
 
 // Generate thumbnails for the diff viewer HTML
@@ -26,7 +26,7 @@ for (const png of pngs) {
   const src = join(dir, png);
   const dst = join(thumbDir, png);
   console.log(`thumbnail: ${dst}`);
-  execFileSync("magick", [src, "-resize", "480x", dst]);
+  execFileSync("magick", [src, "-resize", "360x", "-quality", "95", dst]);
 }
 
 console.log(`Optimized ${pngs.length} images`);
