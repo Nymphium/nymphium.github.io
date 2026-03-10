@@ -41,14 +41,6 @@ async function main() {
       const context = await browser.newContext({
         viewport: { width: viewport.width, height: viewport.height },
       });
-      // Inject animation-disabling CSS before any page loads so the initial
-      // computed styles are deterministic (not frozen at a random mid-frame)
-      await context.addInitScript(() => {
-        const style = document.createElement("style");
-        style.textContent =
-          "*, *::before, *::after { animation: none !important; transition: none !important; }";
-        (document.head || document.documentElement).appendChild(style);
-      });
       const page = await context.newPage();
 
       for (const pg of PAGES) {
@@ -59,6 +51,16 @@ async function main() {
         // (Twitter/Hatena/utteranc.es) can keep background requests going
         // and prevent network from ever becoming idle
         await page.goto(url, { waitUntil: "load", timeout: 30000 });
+
+        // Cancel all running animations and prevent new ones via CSS.
+        // This must happen after goto so the DOM is fully available.
+        await page.evaluate(() => {
+          document.getAnimations().forEach((a) => a.cancel());
+        });
+        await page.addStyleTag({
+          content:
+            "*, *::before, *::after { animation: none !important; transition: none !important; }",
+        });
 
         if (pg.label === "blog") {
           // GithubRepoWidget.init is deferred with setTimeout(..., 3000),
