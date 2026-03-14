@@ -34,7 +34,8 @@ stdenv.mkDerivation {
     cp $src/screenshots.mjs $out/lib/visual-test/
     cp $src/optimize.mjs $out/lib/visual-test/
     cp $src/compare.sh $out/lib/visual-test/
-    chmod +x $out/lib/visual-test/compare.sh
+    cp $src/diff-report.sh $out/lib/visual-test/
+    chmod +x $out/lib/visual-test/compare.sh $out/lib/visual-test/diff-report.sh
 
     # Symlink playwright-core from the Nix store so `import "playwright-core"` resolves
     ln -s ${pkgs.playwright-driver} $out/lib/node_modules/playwright-core
@@ -57,6 +58,9 @@ stdenv.mkDerivation {
 
     makeWrapper $out/lib/visual-test/compare.sh $out/bin/visual-compare \
       --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.imagemagick ]}
+
+    makeWrapper $out/lib/visual-test/diff-report.sh $out/bin/visual-diff-report \
+      --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.coreutils ]}
   '';
 
 }
