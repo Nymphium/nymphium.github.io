@@ -30,15 +30,15 @@ for (const entry of readdirSync(dir, { withFileTypes: true })) {
     console.log(`optipng: ${path}`);
     execFileSync("optipng", ["-o1", "-quiet", "-strip", "all", path]);
 
-    const dst = join(thumbDir, png);
+    const dst = join(thumbDir, png.replace(/\.png$/, ".jpg"));
     console.log(`thumbnail: ${dst}`);
     execFileSync("magick", [
       path,
       "-resize",
-      "200x",
+      "100x",
       "-strip",
-      "-define",
-      "png:compression-level=9",
+      "-quality",
+      "50",
       dst,
     ]);
   }
