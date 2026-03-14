@@ -26,6 +26,7 @@ jobs:
   screenshot:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         viewport: [mobile, tablet, desktop]
     steps:
