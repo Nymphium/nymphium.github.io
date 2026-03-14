@@ -20,10 +20,25 @@ const PAGES = [
 ];
 
 async function main() {
-  const [origin, outDir] = process.argv.slice(2);
+  const [origin, outDir, viewportFilter] = process.argv.slice(2);
   if (!origin || !outDir) {
-    console.error("Usage: node screenshots.mjs <origin-url> <output-dir>");
+    console.error(
+      "Usage: node screenshots.mjs <origin-url> <output-dir> [viewport]",
+    );
     process.exit(1);
+  }
+
+  const activeViewports = viewportFilter
+    ? VIEWPORTS.filter((v) => v.label === viewportFilter)
+    : VIEWPORTS;
+
+  if (viewportFilter && activeViewports.length === 0) {
+    console.error(`Unknown viewport: ${viewportFilter}`);
+    process.exit(1);
+  }
+
+  for (const pg of PAGES) {
+    mkdirSync(`${outDir}/${pg.label}`, { recursive: true });
   }
 
   const browser = await firefox.launch({
@@ -36,7 +51,7 @@ async function main() {
   });
 
   try {
-    for (const viewport of VIEWPORTS) {
+    for (const viewport of activeViewports) {
       const context = await browser.newContext({
         viewport: { width: viewport.width, height: viewport.height },
       });
@@ -44,8 +59,6 @@ async function main() {
 
       for (const pg of PAGES) {
         const pageDir = `${outDir}/${pg.label}`;
-        mkdirSync(pageDir, { recursive: true });
-
         const url = new URL(pg.path, origin).href;
         console.log(`[${viewport.label}] ${pg.label}: ${url}`);
 

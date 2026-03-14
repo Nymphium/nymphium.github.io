@@ -23,8 +23,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  visual-test:
+  screenshot:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        viewport: [mobile, tablet, desktop]
     steps:
       - uses: actions/checkout@v6
         with:
@@ -56,13 +59,42 @@ jobs:
 
       - name: Screenshot local
         run: |
-          nix run .#visual-screenshots -- http://localhost:4000 test/visual/screenshots/local
+          nix run .#visual-screenshots -- http://localhost:4000 test/visual/screenshots/local ${{ matrix.viewport }}
           nix run .#visual-optimize -- test/visual/screenshots/local
 
       - name: Screenshot production
         run: |
-          nix run .#visual-screenshots -- https://nymphium.github.io test/visual/screenshots/production
+          nix run .#visual-screenshots -- https://nymphium.github.io test/visual/screenshots/production ${{ matrix.viewport }}
           nix run .#visual-optimize -- test/visual/screenshots/production
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: screenshots-${{ matrix.viewport }}
+          path: test/visual/screenshots/
+
+  report:
+    needs: screenshot
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+      - uses: DeterminateSystems/nix-installer-action@main
+        with:
+          extra-conf: |
+            max-jobs = auto
+            cores = 0
+      - uses: cachix/cachix-action@v16
+        with:
+          name: blog-ci
+          authToken: "${{ secrets.CACHIX_TOKEN }}"
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: screenshots-*
+          path: test/visual/screenshots
+          merge-multiple: true
 
       - name: Compare screenshots
         id: compare
