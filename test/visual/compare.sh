@@ -14,40 +14,46 @@ prod_dir="$1"
 local_dir="$2"
 diff_dir="$3"
 
-mkdir -p "$diff_dir"
-
 has_diff=0
 
-echo "| Page | Diff pixels | Status |"
-echo "|------|-------------|--------|"
+echo "| Page | Viewport | Diff pixels | Status |"
+echo "|------|----------|-------------|--------|"
 
-for prod_img in "$prod_dir"/*.png; do
-  name="$(basename "$prod_img")"
-  local_img="$local_dir/$name"
-  diff_img="$diff_dir/$name"
+for page_dir in "$prod_dir"/*/; do
+  [ -d "$page_dir" ] || continue
+  page="$(basename "$page_dir")"
+  page_diff_dir="$diff_dir/$page"
+  mkdir -p "$page_diff_dir"
 
-  if [ ! -f "$local_img" ]; then
-    echo "| $name | N/A | MISSING |"
-    has_diff=1
-    continue
-  fi
+  for prod_img in "$page_dir"*.png; do
+    [ -f "$prod_img" ] || continue
+    viewport="$(basename "$prod_img" .png)"
+    local_img="$local_dir/$page/$viewport.png"
+    diff_img="$page_diff_dir/$viewport.png"
 
-  # magick compare returns 1 when images differ, 2 on error
-  # magick compare outputs "N (ratio)" to stderr; extract just the integer
-  raw=$(magick compare -metric AE "$prod_img" "$local_img" "$diff_img" 2>&1 || true)
-  pixels="${raw%% *}"
-  pixels="${pixels%%.*}"
+    if [ ! -f "$local_img" ]; then
+      echo "| $page | $viewport | N/A | MISSING |"
+      has_diff=1
+      continue
+    fi
 
-  if ! [[ "$pixels" =~ ^[0-9]+$ ]]; then
-    echo "| $name | N/A | ERROR |"
-    echo "Error: 'magick compare' produced non-numeric output: '$raw'" >&2
-    has_diff=1
-  elif [ "$pixels" -gt "$THRESHOLD" ]; then
-    echo "| $name | $pixels | FAIL |"
-    has_diff=1
-  else
-    echo "| $name | $pixels | PASS |"
-  fi
+    # magick compare returns 1 when images differ, 2 on error
+    # magick compare outputs "N (ratio)" to stderr; extract just the integer
+    raw=$(magick compare -metric AE "$prod_img" "$local_img" "$diff_img" 2>&1 || true)
+    pixels="${raw%% *}"
+    pixels="${pixels%%.*}"
+
+    if ! [[ "$pixels" =~ ^[0-9]+$ ]]; then
+      echo "| $page | $viewport | N/A | ERROR |"
+      echo "Error: 'magick compare' produced non-numeric output: '$raw'" >&2
+      has_diff=1
+    elif [ "$pixels" -gt "$THRESHOLD" ]; then
+      echo "| $page | $viewport | $pixels | FAIL |"
+      has_diff=1
+    else
+      echo "| $page | $viewport | $pixels | PASS |"
+    fi
+  done
 done
 
 exit "$has_diff"

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { existsSync, mkdirSync, readdirSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, statSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { join } from "node:path";
 
@@ -15,26 +15,35 @@ if (!existsSync(dir)) {
   process.exit(0);
 }
 
-const pngs = readdirSync(dir).filter((f) => f.endsWith(".png"));
-const thumbDir = join(dir, "thumbs");
-mkdirSync(thumbDir, { recursive: true });
+let total = 0;
 
-for (const png of pngs) {
-  const path = join(dir, png);
-  console.log(`optipng: ${path}`);
-  execFileSync("optipng", ["-o1", "-quiet", "-strip", "all", path]);
+for (const entry of readdirSync(dir)) {
+  const subdir = join(dir, entry);
+  if (!statSync(subdir).isDirectory() || entry === "thumbs") continue;
 
-  const dst = join(thumbDir, png);
-  console.log(`thumbnail: ${dst}`);
-  execFileSync("magick", [
-    path,
-    "-resize",
-    "200x",
-    "-strip",
-    "-define",
-    "png:compression-level=9",
-    dst,
-  ]);
+  const pngs = readdirSync(subdir).filter((f) => f.endsWith(".png"));
+  const thumbDir = join(subdir, "thumbs");
+  mkdirSync(thumbDir, { recursive: true });
+
+  for (const png of pngs) {
+    const path = join(subdir, png);
+    console.log(`optipng: ${path}`);
+    execFileSync("optipng", ["-o1", "-quiet", "-strip", "all", path]);
+
+    const dst = join(thumbDir, png);
+    console.log(`thumbnail: ${dst}`);
+    execFileSync("magick", [
+      path,
+      "-resize",
+      "200x",
+      "-strip",
+      "-define",
+      "png:compression-level=9",
+      dst,
+    ]);
+  }
+
+  total += pngs.length;
 }
 
-console.log(`Optimized ${pngs.length} images`);
+console.log(`Optimized ${total} images`);
