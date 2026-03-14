@@ -18,6 +18,11 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           FILES=$(gh pr diff "$PR_NUMBER" --name-only --repo "$GITHUB_REPOSITORY")
+          if [ -z "$FILES" ]; then
+            echo "No changed files found; skipping"
+            exit 0
+          fi
+
           CONTENT_ONLY=true
           while IFS= read -r f; do
             case "$f" in
@@ -28,8 +33,8 @@ jobs:
 
           if [ "$CONTENT_ONLY" = true ]; then
             echo "Content-only PR: using rebase merge"
-            gh pr merge "$PR_NUMBER" --rebase --repo "$GITHUB_REPOSITORY"
+            gh pr merge "$PR_NUMBER" --auto --rebase --repo "$GITHUB_REPOSITORY"
           else
             echo "Non-content PR: using merge commit"
-            gh pr merge "$PR_NUMBER" --merge --repo "$GITHUB_REPOSITORY"
+            gh pr merge "$PR_NUMBER" --auto --merge --repo "$GITHUB_REPOSITORY"
           fi
