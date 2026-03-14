@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { existsSync, mkdirSync, readdirSync, statSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { join } from "node:path";
 
@@ -17,9 +17,9 @@ if (!existsSync(dir)) {
 
 let total = 0;
 
-for (const entry of readdirSync(dir)) {
-  const subdir = join(dir, entry);
-  if (!statSync(subdir).isDirectory() || entry === "thumbs") continue;
+for (const entry of readdirSync(dir, { withFileTypes: true })) {
+  if (!entry.isDirectory() || entry.name === "thumbs") continue;
+  const subdir = join(dir, entry.name);
 
   const pngs = readdirSync(subdir).filter((f) => f.endsWith(".png"));
   const thumbDir = join(subdir, "thumbs");
