@@ -18,29 +18,41 @@ local_dir="$screenshots_dir/local"
 tmpl_dir="$(cd "$(dirname "$0")" && pwd)"
 tmpl="$tmpl_dir/diff-report.html.tmpl"
 
+html_escape() {
+  local s="$1"
+  s="${s//&/&amp;}"
+  s="${s//</&lt;}"
+  s="${s//>/&gt;}"
+  s="${s//\"/&quot;}"
+  s="${s//\'/&#39;}"
+  echo "$s"
+}
+
 # Split template at markers and write output
 while IFS= read -r line; do
   case "$line" in
     *'<!-- OPTIONS -->'*)
       for page_dir in "$diff_dir"/*/; do
         [ -d "$page_dir" ] || continue
-        page="$(basename "$page_dir")"
+        page="$(html_escape "$(basename "$page_dir")")"
         echo "<option value='${page}'>${page}</option>"
       done
       ;;
     *'<!-- PANELS -->'*)
       for page_dir in "$diff_dir"/*/; do
         [ -d "$page_dir" ] || continue
-        page="$(basename "$page_dir")"
+        raw_page="$(basename "$page_dir")"
+        page="$(html_escape "$raw_page")"
         for diff_img in "$page_dir"*.png; do
           [ -f "$diff_img" ] || continue
-          viewport="$(basename "$diff_img" .png)"
-          prod="$prod_dir/${page}/${viewport}.png"
-          local="$local_dir/${page}/${viewport}.png"
+          raw_viewport="$(basename "$diff_img" .png)"
+          viewport="$(html_escape "$raw_viewport")"
+          prod="$prod_dir/${raw_page}/${raw_viewport}.png"
+          local="$local_dir/${raw_page}/${raw_viewport}.png"
           echo "<div class='panel' data-page='${page}' data-viewport='${viewport}'>"
           echo "<h2>${page} / ${viewport}</h2><div class='imgs'>"
           for pair in "Production:$prod" "Local:$local" "Diff:$diff_img"; do
-            label="${pair%%:*}"; img="${pair#*:}"
+            label="$(html_escape "${pair%%:*}")"; img="${pair#*:}"
             if [ -f "$img" ]; then
               name="$(basename "$img" .png)"
               thumb="${img%/*}/thumbs/${name}.jpg"
