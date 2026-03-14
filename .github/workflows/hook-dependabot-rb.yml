@@ -21,7 +21,6 @@ jobs:
       - uses: actions/checkout@v6
         with:
           ref: ${{ env.head_ref }}
-          token: ${{ secrets.BOT_PAT }}
       - uses: DeterminateSystems/nix-installer-action@main
         with:
           extra-conf: |
@@ -37,3 +36,4 @@ jobs:
           author_name: "github-actions[bot]"
           author_email: "github-actions[bot]@users.noreply.github.com"
           message: "Update gemset.nix via bundix"
+          github_token: ${{ secrets.BOT_PAT || github.token }}
