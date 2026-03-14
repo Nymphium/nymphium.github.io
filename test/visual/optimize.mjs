@@ -35,7 +35,7 @@ for (const entry of readdirSync(dir, { withFileTypes: true })) {
     execFileSync("magick", [
       path,
       "-resize",
-      "100x",
+      "300x",
       "-strip",
       "-quality",
       "50",

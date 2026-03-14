@@ -35,6 +35,7 @@ stdenv.mkDerivation {
     cp $src/optimize.mjs $out/lib/visual-test/
     cp $src/compare.sh $out/lib/visual-test/
     cp $src/diff-report.sh $out/lib/visual-test/
+    cp $src/diff-report.html.tmpl $out/lib/visual-test/
     chmod +x $out/lib/visual-test/compare.sh $out/lib/visual-test/diff-report.sh
 
     # Symlink playwright-core from the Nix store so `import "playwright-core"` resolves
