@@ -4,6 +4,7 @@ import { mkdirSync } from "node:fs";
 import { firefox } from "playwright-core";
 
 const VIEWPORTS = [
+  { label: "mobile", width: 375, height: 812 },
   { label: "tablet", width: 1024, height: 768 },
   { label: "desktop", width: 1280, height: 1024 },
 ];
@@ -25,8 +26,6 @@ async function main() {
     process.exit(1);
   }
 
-  mkdirSync(outDir, { recursive: true });
-
   const browser = await firefox.launch({
     headless: true,
     firefoxUserPrefs: {
@@ -44,6 +43,9 @@ async function main() {
       const page = await context.newPage();
 
       for (const pg of PAGES) {
+        const pageDir = `${outDir}/${pg.label}`;
+        mkdirSync(pageDir, { recursive: true });
+
         const url = new URL(pg.path, origin).href;
         console.log(`[${viewport.label}] ${pg.label}: ${url}`);
 
@@ -91,12 +93,12 @@ async function main() {
           );
         }
 
-        const filename = `${pg.label}_${viewport.label}.png`;
+        const filename = `${viewport.label}.png`;
         await page.screenshot({
-          path: `${outDir}/${filename}`,
+          path: `${pageDir}/${filename}`,
           fullPage: true,
         });
-        console.log(`  -> ${outDir}/${filename}`);
+        console.log(`  -> ${pageDir}/${filename}`);
       }
 
       await context.close();
