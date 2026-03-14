@@ -65,6 +65,10 @@
             type = "app";
             program = "${visual-test}/bin/visual-compare";
           };
+          visual-diff-report = {
+            type = "app";
+            program = "${visual-test}/bin/visual-diff-report";
+          };
         };
         devShells.default = import ./shell.nix { inherit pkgs rubyNix formatter; };
         inherit formatter;
