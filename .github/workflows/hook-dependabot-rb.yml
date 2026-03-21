@@ -22,6 +22,7 @@ jobs:
         with:
           ref: ${{ env.head_ref }}
           token: ${{ secrets.ACCESS_TOKEN }}
+          persist-credentials: false
       - uses: DeterminateSystems/nix-installer-action@main
         with:
           extra-conf: |
