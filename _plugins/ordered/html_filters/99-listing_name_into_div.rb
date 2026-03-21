@@ -4,18 +4,20 @@ require 'nokogiri'
 DEVICON_LANG_ALIAS = {
   'html' => 'html5',
   'shell' => 'bash',
+  'shell-session' => 'bash',
+  'sh' => 'bash',
   'tex' => 'latex',
   'nix' => 'nixos',
 }.freeze
 
-DEVICON_SVG_BASE = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons'.freeze
+DEVICON_SVG_BASE = 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons'.freeze
 
 lambda { |content|
   html = Nokogiri::HTML(content)
 
   html.xpath('//p[span[@class="listing-name"]]').each do |pspan|
     highlight = pspan.next_element
-    highlight = highlight.next_element while highlight && !(highlight.name == 'div' && highlight['class']&.include?('highlight'))
+    highlight = highlight.next_element while highlight && !highlight.matches?('div.highlight')
     next unless highlight
 
     span = pspan.remove.xpath('span').remove
@@ -33,7 +35,7 @@ lambda { |content|
     icon['class'] = 'listing-icon'
     icon['src'] = "#{DEVICON_SVG_BASE}/#{devicon_name}/#{devicon_name}-original.svg"
     icon['alt'] = lang
-    icon['onerror'] = "this.style.display='none';this.nextSibling.dataset.noicon=''"
+    icon['onerror'] = "this.style.display='none'"
 
     if listing_name.children.empty?
       listing_name.add_child(icon)
