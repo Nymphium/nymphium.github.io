@@ -1,48 +1,43 @@
-lambda{|content|
-	newcontent = ""
+lambda { |content|
+  newcontent = ""
+  startwith = 0
+  codeacc = []
+  addlineno = false
 
-	startwith = 0
-	codeacc = []
-	addlineno = false
-	with_caption = false
+  content.each_line { |line|
+    unless addlineno
+      if (match = line.match(/^\s*<!--\s*linenumber(:(?<startline>\d+))?\s*-->/))
+        addlineno = true
+        startwith = (match['startline'] || 0).to_i
+      else
+        newcontent += line
+      end
 
-	content.each_line{|line|
-		if !addlineno
-			if match = line.match(/^\s*<!--\s*linenumber(:(?<startline>\d+))?\s*-->/)
-				addlineno = true
-				startwith = (match['startline'] or startwith).to_i
-			else
-				newcontent += line
-			end
+      next
+    end
 
-			next
-		end
+    if codeacc.empty?
+      if line.match(/^```/)
+        codeacc << line
+      else
+        newcontent += line
+      end
+    else
+      if line.match(/^```\s*$/)
+        codeacc << line
+        line_count = codeacc.length - 2
+        numbers = (1..line_count).map { |i| i + startwith }.join("\n")
+        newcontent += "<div class=\"lineno-source\">#{numbers}</div>\n\n"
+        newcontent += codeacc.join
 
-		if codeacc.length == 0
-			if match = line.match(/^```(?<cap>[^:]*:.*)?/)
-				codeacc << line
-				with_caption = !!match['cap']
-			else
-				newcontent += line
-			end
-		else
-			if line.match(/^```/)
-				codeacc << line
+        codeacc = []
+        addlineno = false
+        startwith = 0
+      else
+        codeacc << line
+      end
+    end
+  }
 
-				newcontent += "<div class=\"codeline#{with_caption ? " with_caption" : ""}\"><pre>" +
-					codeacc.take(codeacc.length - 2).map.with_index{|_, i|
-						i + 1 + startwith
-					}.join("\n") +
-					"</pre></div>\n\n" +
-					codeacc.join
-
-				codeacc = []
-				addlineno = false
-			else
-				codeacc << line
-			end
-		end
-	}
-
-	newcontent
+  newcontent
 }
