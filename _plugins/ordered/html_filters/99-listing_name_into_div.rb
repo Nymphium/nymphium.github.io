@@ -1,13 +1,45 @@
 require 'nokogiri'
 
-lambda { |content|
-  html = Nokogiri::HTML content
+# Rouge lang name → Devicon directory name (only where they differ)
+DEVICON_LANG_ALIAS = {
+  'html' => 'html5',
+  'shell' => 'bash',
+  'tex' => 'latex',
+  'nix' => 'nixos',
+}.freeze
 
-  pspans = html.xpath('//div[@class="highlight"]/preceding-sibling::p[span[@class="listing-name"]]')
-  divs = html.xpath('//p[span[@class="listing-name"]]/following-sibling::div[@class="highlight"]')
-  pspans.each_with_index do |pspan, idx|
+DEVICON_SVG_BASE = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons'.freeze
+
+lambda { |content|
+  html = Nokogiri::HTML(content)
+
+  html.xpath('//p[span[@class="listing-name"]]').each do |pspan|
+    highlight = pspan.next_element
+    highlight = highlight.next_element while highlight && !(highlight.name == 'div' && highlight['class']&.include?('highlight'))
+    next unless highlight
+
     span = pspan.remove.xpath('span').remove
-    divs[idx].children.first.add_previous_sibling(span)
+    highlight.children.first.add_previous_sibling(span)
+
+    listing_name = highlight.at_css('span.listing-name')
+    next unless listing_name
+
+    code_el = highlight.at_css('code[data-lang]')
+    lang = code_el&.[]('data-lang')
+    next unless lang
+
+    devicon_name = DEVICON_LANG_ALIAS.fetch(lang, lang)
+    icon = Nokogiri::XML::Node.new('img', html)
+    icon['class'] = 'listing-icon'
+    icon['src'] = "#{DEVICON_SVG_BASE}/#{devicon_name}/#{devicon_name}-original.svg"
+    icon['alt'] = lang
+    icon['onerror'] = "this.style.display='none';this.nextSibling.dataset.noicon=''"
+
+    if listing_name.children.empty?
+      listing_name.add_child(icon)
+    else
+      listing_name.children.first.add_previous_sibling(icon)
+    end
   end
 
   html.xpath('//span[@class="listing-name" and string-length(text()) = 0]').remove
