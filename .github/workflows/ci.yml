@@ -54,7 +54,7 @@ jobs:
           nix fmt . && git diff --exit-code
           actionlint
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: site
           path: _site
