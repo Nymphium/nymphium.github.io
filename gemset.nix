@@ -744,12 +744,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "01ra2q2akkjjg57lpdcvykqwvzc8aw7jz7rq1yznbckzg14zsdz2";
+      sha256 = "09ggg2zk0qrh0mc3fa23xjbn2gzqxd0jfqj6qm6460ydcqg6fxdg";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "4.0.1";
+    version = "4.0.2";
   };
   rdoc = {
     dependencies = ["erb" "psych" "tsort"];
@@ -819,12 +819,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "07zjrf2h2ycvacyvzsiyhdfp4da4z5a9hix2cf6k8ag3qygik8b0";
+      sha256 = "0aa1mg6bdl23wgrxd98wycq3963jfpnh9z0yh976p9q03h01r81k";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.26.7";
+    version = "0.26.9";
   };
   safe_yaml = {
     groups = ["default"];
