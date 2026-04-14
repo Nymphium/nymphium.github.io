@@ -91,7 +91,7 @@ jobs:
           name: blog-ci
           authToken: "${{ secrets.CACHIX_TOKEN }}"
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           pattern: screenshots-*
           path: test/visual/screenshots
@@ -140,7 +140,7 @@ jobs:
             echo "_Failed to generate comparison report. Check workflow logs._" >> test/visual/report-full.md
           fi
 
-      - uses: marocchino/sticky-pull-request-comment@v2
+      - uses: marocchino/sticky-pull-request-comment@v3
         if: always()
         with:
           header: visual-regression
