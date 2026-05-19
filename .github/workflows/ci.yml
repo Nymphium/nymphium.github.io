@@ -75,7 +75,7 @@ jobs:
         with:
           name: site
       - name: Upload static files as artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: .
       - name: Deploy to GitHub Pages
