@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     flake-utils.url = "github:numtide/flake-utils";
 
     bundix = {
