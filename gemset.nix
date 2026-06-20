@@ -164,12 +164,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1rcpq49pyaiclpjp3c3qjl25r95hqvin2q2dczaynaj7qncxvv18";
+      sha256 = "1faq0y37pmxiqz3illx82hmyl7jmzjprwxn5cx3akaaj0r35flyf";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "6.0.1";
+    version = "6.0.1.1";
   };
   eventmachine = {
     groups = ["default"];
