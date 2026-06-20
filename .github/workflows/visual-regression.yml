@@ -30,7 +30,7 @@ jobs:
       matrix:
         viewport: [mobile, tablet, desktop]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.2
         with:
           submodules: recursive
       - uses: DeterminateSystems/nix-installer-action@main
@@ -38,7 +38,7 @@ jobs:
           extra-conf: |
             max-jobs = auto
             cores = 0
-      - uses: cachix/cachix-action@v16
+      - uses: cachix/cachix-action@v17
         with:
           name: blog-ci
           authToken: "${{ secrets.CACHIX_TOKEN }}"
@@ -78,7 +78,7 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.2
         with:
           submodules: recursive
       - uses: DeterminateSystems/nix-installer-action@main
@@ -86,7 +86,7 @@ jobs:
           extra-conf: |
             max-jobs = auto
             cores = 0
-      - uses: cachix/cachix-action@v16
+      - uses: cachix/cachix-action@v17
         with:
           name: blog-ci
           authToken: "${{ secrets.CACHIX_TOKEN }}"
