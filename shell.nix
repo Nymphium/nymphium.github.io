@@ -11,6 +11,7 @@ pkgs.mkShellNoCC {
     ])
     ++ (with pkgs; [
       xpdf
+      ghostscript
       nil
       formatter
       actionlint

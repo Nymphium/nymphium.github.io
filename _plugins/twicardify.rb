@@ -138,8 +138,9 @@ module Jekyll
           @post = sp[2]
         end
 
-        def render(_context)
-          Jekyll::Twicardify.extract(@alt, @post)
+        def render(context)
+          post = context.scopes[0][@post.strip] || @post.strip
+          Jekyll::Twicardify.extract(@alt, post)
         end
       end
     end
