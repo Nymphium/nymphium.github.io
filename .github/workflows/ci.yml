@@ -35,7 +35,7 @@ jobs:
           name: blog-ci
           authToken: "${{ secrets.CACHIX_TOKEN }}"
 
-      - uses: actions/cache@v5
+      - uses: actions/cache@v5.0.5
         with:
           path: |
             .jekyll-cache
