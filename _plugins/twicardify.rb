@@ -84,7 +84,11 @@ module Jekyll
               image: '/pictures/no_image.png'
             }
           else
-            html = URI(clean_url).open(allow_redirections: :all, &:read)
+            html = URI(clean_url).open(
+              'User-Agent' => 'Twicardify/1.0 (+https://nymphium.github.io)',
+              allow_redirections: :all,
+              &:read
+            )
 
             doc = Nokogiri::HTML.parse(html)
             head = doc.xpath('/html/head')
