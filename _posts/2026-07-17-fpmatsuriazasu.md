@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "関数型まつり2026 感謝と補足: LLM言語作りからの学び"
+thumb: true
 tags: [雑感]
 ---
 
@@ -33,7 +34,7 @@ tags: [雑感]
 なんで､依存型はLLMちゃんと書けるのか? というのと､エラーを見て修正というのが回せるのか? という疑問が個人的にある｡
 何らかのガードレールとか言語側の工夫があればいけんのかな? というふわっとした考えでした｡
 
-またサブタイミング? もなんだかなあって感じだった｡
+またサブタイピング? もなんだかなあって感じだった｡
 Nexus言語は例外の定義をまとめる機能としてexception groupというものがある｡
 {% twicard "" https://nexus-llm-lang.github.io/latest/spec/effects/#exception-groups %}
 Scala2時代のADTsの定義っぽい感じですな｡
@@ -76,7 +77,7 @@ ScalaやRustなども､implicit parameterやtrait解決に失敗するときの
 その程度ではあるが､巨大な式があり､subexpressionに潜っていき…という関数型ってか式指向な言語よりは､statement listのほうがいわゆる"行ごとに読む"ができてLLMのワーキングメモリーにも優しいのか? と少し思っている｡
 で､そうなるとreturnという何気なくつかっているが強力なコントロール抽象は必須ですなあ｡
 あるいは式指向の言語にバックポートしてもえんちゃうかなとか少し思ったりする｡
-まず継続をaffnelyに､しかも末尾でのみ使えるtail-affine continuation monad(?)を用意し､関数は全てその中で評価され､全てのexpressionがそのmonadに持ち上がっておりいつでもreturnable…とすると意味論的にやれそうか?
+まず継続をaffinelyに､しかも末尾でのみ使えるtail-affine continuation monad(?)を用意し､関数は全てその中で評価され､全てのexpressionがそのmonadに持ち上がっておりいつでもreturnable…とすると意味論的にやれそうか?
 でもすでにlinear typesがある言語とかどうなるんでしょうねHaskellとか｡returnをspecial formの式として扱い､`return :: \a b. a -> b` として `return () + linearValue` を…最高やな｡
 
 ## ちなみに: 研究資金
