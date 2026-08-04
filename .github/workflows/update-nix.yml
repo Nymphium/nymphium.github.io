@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v7.0.0
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
         with:
@@ -25,7 +25,7 @@ jobs:
           name: blog-ci
           authToken: "${{ secrets.CACHIX_TOKEN }}"
       - name: Update flake.lock
-        uses: DeterminateSystems/update-flake-lock@fd9359ac79d0e912f1b4b947a48470b3e2799b56 # v27
+        uses: DeterminateSystems/update-flake-lock@ec13d37c32ca75bc750ecc133e944e5a18164688 # v27
         with:
           # PRs opened with the default GITHUB_TOKEN don't trigger `on: pull_request`
           # workflows, so `tests` never runs and the PR stays BLOCKED by branch rules.
