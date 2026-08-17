@@ -30,7 +30,7 @@ jobs:
       matrix:
         viewport: [mobile, tablet, desktop]
     steps:
-      - uses: actions/checkout@v7.0.0
+      - uses: actions/checkout@v7.0.1
         with:
           submodules: recursive
       - uses: DeterminateSystems/nix-installer-action@main
@@ -43,7 +43,7 @@ jobs:
           name: blog-ci
           authToken: "${{ secrets.CACHIX_TOKEN }}"
 
-      - uses: actions/cache@v5.0.5
+      - uses: actions/cache@v6.1.0
         with:
           path: |
             .jekyll-cache
@@ -78,7 +78,7 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7.0.0
+      - uses: actions/checkout@v7.0.1
         with:
           submodules: recursive
       - uses: DeterminateSystems/nix-installer-action@main
@@ -140,7 +140,7 @@ jobs:
             echo "_Failed to generate comparison report. Check workflow logs._" >> test/visual/report-full.md
           fi
 
-      - uses: marocchino/sticky-pull-request-comment@v3.0.4
+      - uses: marocchino/sticky-pull-request-comment@v3.0.5
         if: always()
         with:
           header: visual-regression
