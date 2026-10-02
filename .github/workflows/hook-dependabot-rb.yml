@@ -18,7 +18,7 @@ jobs:
     env:
       head_ref: ${{ github.event.pull_request.head.ref }}
     steps:
-      - uses: actions/checkout@v7.0.0
+      - uses: actions/checkout@v7.0.1
         with:
           ref: ${{ env.head_ref }}
           token: ${{ secrets.ACCESS_TOKEN }}
@@ -32,7 +32,7 @@ jobs:
           name: blog-ci
           authToken: "${{ secrets.CACHIX_TOKEN }}"
       - run: nix run '.#patched-bundix'
-      - uses: EndBug/add-and-commit@v10
+      - uses: EndBug/add-and-commit@v11
         with:
           author_name: "github-actions[bot]"
           author_email: "github-actions[bot]@users.noreply.github.com"
