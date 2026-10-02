@@ -56,7 +56,7 @@ jobs:
       - name: Serve local site
         run: |
           rake preview &
-          timeout 30 bash -c 'until curl -sf http://localhost:4000 > /dev/null; do sleep 1; done'
+          timeout 300 bash -c 'until curl -sf http://localhost:4000 > /dev/null; do sleep 1; done'
 
       - name: Screenshot local
         run: |
