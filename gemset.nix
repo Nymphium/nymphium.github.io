@@ -928,12 +928,12 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1kywk0j7s5z961bb7rspc46ihk5av52rrrhjihbf6ih1hm4jacdn";
+      sha256 = "0n84z5slffacq9bzz9p571zxmwp8jyjsj237s9fxszdxckxs7bdm";
       target = "ruby";
       type = "gem";
     };
     targets = [];
-    version = "0.33.0";
+    version = "0.33.1";
   };
   tzinfo = {
     dependencies = ["concurrent-ruby"];
