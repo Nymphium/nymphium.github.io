@@ -1,20 +1,26 @@
-name: Auto merge on approval
+name: Auto merge
 
 on:
   pull_request_review:
     types: [submitted]
+  pull_request:
+    types: [opened, reopened, ready_for_review]
 
 jobs:
   auto-merge:
-    if: github.event.review.state == 'approved'
+    # Owner PRs merge once required checks pass (self-approval is impossible);
+    # others (dependabot) need an approval.
+    if: |
+      (github.event_name == 'pull_request_review' && github.event.review.state == 'approved') ||
+      (github.event_name == 'pull_request' && !github.event.pull_request.draft &&
+        github.event.pull_request.user.login == github.repository_owner)
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
+    permissions: {}
     steps:
       - name: Determine merge strategy and merge
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # PAT, not GITHUB_TOKEN: merges made by GITHUB_TOKEN don't trigger the push-to-source deploy
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           FILES=$(gh pr diff "$PR_NUMBER" --name-only --repo "$GITHUB_REPOSITORY")
