@@ -8,19 +8,20 @@ on:
 
 jobs:
   auto-merge:
-    # Owner PRs merge once required checks pass (self-approval is impossible);
-    # others (dependabot) need an approval.
+    # Owner and dependabot PRs merge once required checks pass; others need an approval.
     if: |
       (github.event_name == 'pull_request_review' && github.event.review.state == 'approved') ||
       (github.event_name == 'pull_request' && !github.event.pull_request.draft &&
-        github.event.pull_request.user.login == github.repository_owner)
+        (github.event.pull_request.user.login == github.repository_owner ||
+          github.event.pull_request.user.login == 'dependabot[bot]'))
     runs-on: ubuntu-latest
     permissions: {}
     steps:
       - name: Determine merge strategy and merge
         env:
-          # PAT, not GITHUB_TOKEN: merges made by GITHUB_TOKEN don't trigger the push-to-source deploy
-          GH_TOKEN: ${{ secrets.BOT_PAT }}
+          # PAT, not GITHUB_TOKEN: merges made by GITHUB_TOKEN don't trigger the push-to-source deploy.
+          # Dependabot-triggered runs only see Dependabot secrets, hence ACCESS_TOKEN.
+          GH_TOKEN: ${{ secrets.BOT_PAT || secrets.ACCESS_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           FILES=$(gh pr diff "$PR_NUMBER" --name-only --repo "$GITHUB_REPOSITORY")
