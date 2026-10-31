@@ -11,9 +11,6 @@ on:
     branches:
       - source
 
-  # Dispatched on a PR head branch by retest-prs to test it merged with the latest source.
-  workflow_dispatch:
-
 permissions:
   contents: read
 
@@ -28,12 +25,6 @@ jobs:
       - uses: actions/checkout@v7.0.1
         with:
           submodules: recursive
-          fetch-depth: ${{ github.event_name == 'workflow_dispatch' && '0' || '1' }}
-      - name: Merge latest source
-        if: github.event_name == 'workflow_dispatch'
-        run: |
-          git fetch origin source:refs/remotes/origin/source
-          git -c user.name=ci -c user.email=ci@localhost merge --no-edit origin/source
       - uses: DeterminateSystems/nix-installer-action@main
         with:
           extra-conf: |
@@ -92,23 +83,21 @@ jobs:
         uses: actions/deploy-pages@v5
 
   # Required check "tests" is non-strict, so re-run it against the new base for open PRs.
-  # A merge that lands before the re-run starts is caught only by the post-merge run (which gates
-  # publish); a merge queue closes that gap but is unavailable on user-owned repos.
-  retest-prs:
+  # "tests" is strict, so PRs behind source can't merge; update them to let auto-merge proceed.
+  # PAT, not GITHUB_TOKEN: pushes by GITHUB_TOKEN don't trigger the re-test.
+  update-pr-branches:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/source'
-    permissions:
-      actions: write
-      pull-requests: read
+    permissions: {}
     steps:
-      - name: Dispatch tests on open PRs
+      - name: Update auto-merge PRs behind source
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.BOT_PAT }}
         run: |
           gh pr list --repo "$GITHUB_REPOSITORY" --base source --state open \
-            --json headRefName,isCrossRepository \
-            --jq '.[] | select(.isCrossRepository | not) | .headRefName' |
-            while IFS= read -r ref; do
-              gh workflow run ci.yml --repo "$GITHUB_REPOSITORY" --ref "$ref" ||
-                echo "::warning::failed to dispatch tests on $ref"
+            --json number,autoMergeRequest,isCrossRepository \
+            --jq '.[] | select(.autoMergeRequest != null and (.isCrossRepository | not)) | .number' |
+            while IFS= read -r pr; do
+              gh pr update-branch "$pr" --repo "$GITHUB_REPOSITORY" ||
+                echo "::warning::failed to update #$pr"
             done
