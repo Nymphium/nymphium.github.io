@@ -84,8 +84,11 @@ jobs:
 
   # "tests" is strict, so PRs behind source can't merge; update them to let auto-merge proceed.
   # PAT, not GITHUB_TOKEN: pushes by GITHUB_TOKEN don't trigger the re-test.
+  # Dependabot PRs are asked to rebase themselves so Dependabot keeps managing them
+  # and the bundix follow-up runs as dependabot.
   update-pr-branches:
     runs-on: ubuntu-latest
+    needs: tests
     if: github.event_name == 'push' && github.ref == 'refs/heads/source'
     permissions: {}
     steps:
@@ -93,10 +96,17 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.BOT_PAT }}
         run: |
-          gh pr list --repo "$GITHUB_REPOSITORY" --base source --state open \
-            --json number,autoMergeRequest,isCrossRepository \
-            --jq '.[] | select(.autoMergeRequest != null and (.isCrossRepository | not)) | .number' |
-            while IFS= read -r pr; do
-              gh pr update-branch "$pr" --repo "$GITHUB_REPOSITORY" ||
-                echo "::warning::failed to update #$pr"
-            done
+          failed=0
+          while IFS=$'\t' read -r pr head author; do
+            behind=$(gh api "repos/$GITHUB_REPOSITORY/compare/$head...$GITHUB_SHA" --jq .ahead_by)
+            [ "$behind" -gt 0 ] || continue
+            if [ "$author" = app/dependabot ]; then
+              gh pr comment "$pr" --repo "$GITHUB_REPOSITORY" --body '@dependabot rebase'
+            else
+              gh pr update-branch "$pr" --repo "$GITHUB_REPOSITORY"
+            fi || { echo "::error::failed to update #$pr"; failed=1; }
+          done < <(gh pr list --repo "$GITHUB_REPOSITORY" --base source --state open \
+            --json number,headRefOid,author,autoMergeRequest,isCrossRepository \
+            --jq '.[] | select(.autoMergeRequest != null and (.isCrossRepository | not))
+              | [.number, .headRefOid, .author.login] | @tsv')
+          exit "$failed"
