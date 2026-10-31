@@ -82,7 +82,6 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v5
 
-  # Required check "tests" is non-strict, so re-run it against the new base for open PRs.
   # "tests" is strict, so PRs behind source can't merge; update them to let auto-merge proceed.
   # PAT, not GITHUB_TOKEN: pushes by GITHUB_TOKEN don't trigger the re-test.
   update-pr-branches:
