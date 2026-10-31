@@ -32,6 +32,7 @@ jobs:
       - name: Merge latest source
         if: github.event_name == 'workflow_dispatch'
         run: |
+          git fetch origin source:refs/remotes/origin/source
           git -c user.name=ci -c user.email=ci@localhost merge --no-edit origin/source
       - uses: DeterminateSystems/nix-installer-action@main
         with:
