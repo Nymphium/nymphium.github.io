@@ -182,7 +182,7 @@ PLATFORMS
 
 DEPENDENCIES
   debug
-  jekyll (< 5.0.0)
+  jekyll (>= 4.4, < 5.0.0)
   jekyll-feed
   jekyll-gist
   jekyll-seo-tag
