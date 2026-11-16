@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'jekyll', '< 5.0.0'
+gem 'jekyll', '>= 4.4', '< 5.0.0'
 gem 'jekyll-gist'
 gem 'jekyll-seo-tag'
 gem 'jekyll-target-blank'
