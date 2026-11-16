@@ -32,7 +32,7 @@
               "xpdf-4.06"
             ];
           };
-          ruby = pkgs.ruby;
+          ruby = pkgs.ruby_4_0;
           rubyNix = (inputs.ruby-nix.lib pkgs) {
             inherit ruby;
             gemset = ./gemset.nix;
